@@ -1,0 +1,21 @@
+{
+  "name": "CHAINMIND",
+  "short_name": "CHAINMIND",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+  },
+  {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+  }
+  ],
+  "theme_color": "#0B0B39",
+  "background_color": "#0B0B39",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
+}
