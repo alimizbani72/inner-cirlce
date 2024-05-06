@@ -17,7 +17,7 @@
     "re-start": "rm -rf node_modules .next out dist build && bun run install && bun run dev",
     "re-build": "rm -rf node_modules .next out dist build && bun run install && bun run build",
     "codegen": "ts-node codegenScript.ts && bun run format && bun run lint:fix",
-    "prepare": "bunx husky init"
+    "prepare": "husky || true"
   },
   "dependencies": {
     "@emotion/cache": "^11.11.0",
