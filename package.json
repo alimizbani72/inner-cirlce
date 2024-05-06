@@ -14,8 +14,8 @@
     "lint:fix": "biome lint --apply ./src",
     "format": "biome format --write ./src",
     "clear-all": "rm -rf node_modules .next out dist build",
-    "re-start": "rm -rf node_modules .next out dist build && bun run install && bun run dev",
-    "re-build": "rm -rf node_modules .next out dist build && bun run install && bun run build",
+    "re-start": "rm -rf node_modules .next out dist build && bun install && bun run dev",
+    "re-build": "rm -rf node_modules .next out dist build && bun install && bun run build",
     "codegen": "ts-node codegenScript.ts && bun run format && bun run lint:fix",
     "prepare": "husky || true"
   },
