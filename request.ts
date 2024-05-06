@@ -307,10 +307,9 @@ export const catchErrorCodes = (options: ApiRequestOptions, result: ApiResult): 
  * @returns CancelablePromise<T>
  * @throws ApiError
  */
+// Function to perform authenticated fetch
 const fetchWithAuth = async (url: string, options: RequestInit): Promise<Response> => {
 	const session = await getSession(); // Get session to access token
-	
-	// Prepare headers ensuring they are correctly typed as HeadersInit
 	const headers = new Headers(options.headers);
 	if (session?.accessToken) {
 	  headers.set('Authorization', `Bearer ${session.accessToken}`);
@@ -318,7 +317,7 @@ const fetchWithAuth = async (url: string, options: RequestInit): Promise<Respons
   
 	const response = await fetch(url, {
 	  ...options,
-	  headers: headers
+	  headers
 	});
   
 	if (response.status === 401) {
@@ -328,7 +327,8 @@ const fetchWithAuth = async (url: string, options: RequestInit): Promise<Respons
 	return response;
   };
   
-  export const request = <T>(config: OpenAPIConfig, options: ApiRequestOptions, onCancel?: OnCancel): CancelablePromise<ApiResult<T>> => {
+  // Improved request function with generic type T for the expected API result
+  export function request<T>(config: OpenAPIConfig, options: ApiRequestOptions, onCancel?: OnCancel): CancelablePromise<T> {
 	const url = getUrl(config, options);
 	const fetchOptions: RequestInit = {
 	  method: options.method,
@@ -336,18 +336,22 @@ const fetchWithAuth = async (url: string, options: RequestInit): Promise<Respons
 		'Content-Type': 'application/json',
 		...(options.headers || {}),
 	  },
-	  body: options.body ? JSON.stringify(options.body) : null,
+	  body: JSON.stringify(options.body),
 	};
   
-	return new CancelablePromise<ApiResult<T>>(async (resolve: (result: ApiResult<T>) => void, reject: (reason?: any) => void, _onCancelToken: OnCancel) => {
-	  try {
-		const response = await fetchWithAuth(url, fetchOptions);
-		if (!response.ok) { throw new ApiError(response.statusText, response, await response.text()); }
-  
-		const data: T = await response.json();
-		resolve({ data, response }); // resolve expects an object of type ApiResult<T>
-	  } catch (error) {
-		reject(error); // reject can take any, typically an Error object
-	  }
+	return new CancelablePromise<T>((resolve, reject, _onCancelToken) => {
+	  fetchWithAuth(url, fetchOptions)
+		.then(async response => {
+		  if (!response.ok) {
+			const errorText = await response.text();
+			throw new ApiError(errorText, response);
+		  }
+		  return response.json() as Promise<T>;
+		})
+		.then(data => resolve(data))
+		.catch(error => {
+			signOut(); // Additional logout handling if needed
+		  reject(error);
+		});
 	}, onCancel);
-  };
+  }
