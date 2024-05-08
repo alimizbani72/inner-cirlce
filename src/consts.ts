@@ -19,4 +19,4 @@ export const videoURL = (projectKey: string | number | undefined, localeCode: st
   `${byteBaseStreamURL}${projectKey}/master.m3u8?language=${localeCode}`;
 
 export const downloadVideoURL = (videoKey: number | string | undefined, localeCode: string) =>
-  `${byteBaseBulkURL}${localeCode ? `${localeCode}_` : ''}${videoKey}`;
+  `${byteBaseBulkURL}${localeCode ? `${localeCode}_` : ""}${videoKey}`;

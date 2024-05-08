@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { type Dispatch, type SetStateAction, useCallback, useState } from 'react';
+import { type Dispatch, type SetStateAction, useCallback, useState } from "react";
 
 // ----------------------------------------------------------------------
 

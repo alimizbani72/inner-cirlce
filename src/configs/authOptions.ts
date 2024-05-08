@@ -1,7 +1,7 @@
-import type { NextAuthOptions } from 'next-auth';
-import CredentialsProvider from 'next-auth/providers/credentials';
-import GoogleProvider from 'next-auth/providers/google';
-import { dubcraftEndpoint } from 'src/consts';
+import type { NextAuthOptions } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
+import { dubcraftEndpoint } from "src/consts";
 
 type MyUser = {
   avatar_url?: string;
@@ -12,7 +12,7 @@ type MyUser = {
   phone?: string;
 };
 
-declare module 'next-auth' {
+declare module "next-auth" {
   interface User {
     user?: MyUser;
     access_token?: string;
@@ -20,7 +20,7 @@ declare module 'next-auth' {
   }
 }
 
-declare module 'next-auth' {
+declare module "next-auth" {
   interface Session {
     accessToken?: string;
     refreshToken?: string;
@@ -28,7 +28,7 @@ declare module 'next-auth' {
   }
 }
 
-declare module 'next-auth/jwt' {
+declare module "next-auth/jwt" {
   interface JWT {
     accessToken?: string;
     refreshToken?: string;
@@ -43,15 +43,15 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
     CredentialsProvider({
-      id: 'custom-login',
-      type: 'credentials',
+      id: "custom-login",
+      type: "credentials",
       credentials: {},
       async authorize(credentials: any) {
         try {
           const response = await fetch(`${dubcraftEndpoint}/login`, {
-            method: 'POST',
+            method: "POST",
             headers: {
-              'Content-Type': 'application/json',
+              "Content-Type": "application/json",
             },
             body: JSON.stringify({
               email: credentials?.email,
@@ -65,29 +65,29 @@ export const authOptions: NextAuthOptions = {
             return user.data;
           }
         } catch (_error) {
-          throw new Error('Failed to fetch user');
+          throw new Error("Failed to fetch user");
         }
         return null;
       },
     }),
     CredentialsProvider({
-      id: 'custom-signup',
-      type: 'credentials',
+      id: "custom-signup",
+      type: "credentials",
       credentials: {},
-      name: 'credentials',
+      name: "credentials",
       async authorize(credentials: any) {
         try {
           const response = await fetch(`${dubcraftEndpoint}/register`, {
-            method: 'POST',
+            method: "POST",
             headers: {
-              'Content-Type': 'application/json',
+              "Content-Type": "application/json",
             },
             body: JSON.stringify({
               first_name: credentials?.first_name,
               last_name: credentials?.last_name,
               password: credentials?.password,
               email: credentials?.email,
-              phone: credentials?.phone.replace(/\s/g, ''),
+              phone: credentials?.phone.replace(/\s/g, ""),
               firebase_token: credentials?.firebaseToken,
               policy_approved: !!credentials.policy_approved,
             }),
@@ -99,22 +99,22 @@ export const authOptions: NextAuthOptions = {
             return user.data;
           }
         } catch (_error) {
-          throw new Error('Failed to register user');
+          throw new Error("Failed to register user");
         }
         return null;
       },
     }),
     CredentialsProvider({
-      id: 'forgot-pass',
-      type: 'credentials',
+      id: "forgot-pass",
+      type: "credentials",
       credentials: {},
-      name: 'credentials',
+      name: "credentials",
       async authorize(credentials: any) {
         try {
           const response = await fetch(`${dubcraftEndpoint}/resetPassword`, {
-            method: 'POST',
+            method: "POST",
             headers: {
-              'Content-Type': 'application/json',
+              "Content-Type": "application/json",
             },
             body: JSON.stringify({
               firebase_token: credentials?.token,
@@ -129,7 +129,7 @@ export const authOptions: NextAuthOptions = {
             return user.data;
           }
         } catch (_error) {
-          throw new Error('Failed to reset password');
+          throw new Error("Failed to reset password");
         }
         return null;
       },
@@ -137,16 +137,16 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     jwt: async ({ token, user, account, trigger, session }) => {
-      if (trigger === 'update') {
+      if (trigger === "update") {
         token.user!.phone = session.phone;
       }
 
       if (account?.id_token) {
         try {
           const response = await fetch(`${dubcraftEndpoint}/googleLogin`, {
-            method: 'POST',
+            method: "POST",
             headers: {
-              'Content-Type': 'application/json',
+              "Content-Type": "application/json",
             },
             body: JSON.stringify({
               google_id_token: account.id_token,
@@ -158,7 +158,7 @@ export const authOptions: NextAuthOptions = {
           token.accessToken = data.data.access_token;
           token.refreshToken = data.data.refreshToken;
         } catch (_error) {
-          token.error = 'GoogleAuthError';
+          token.error = "GoogleAuthError";
         }
       } else if (user) {
         token.user = user.user;
@@ -168,8 +168,8 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
     session: async ({ session, token }) => {
-      if (token.error === 'GoogleAuthError') {
-        throw new Error('Google Authentication Error');
+      if (token.error === "GoogleAuthError") {
+        throw new Error("Google Authentication Error");
       }
 
       session.accessToken = token.accessToken;
@@ -179,8 +179,8 @@ export const authOptions: NextAuthOptions = {
     },
   },
   session: {
-    strategy: 'jwt',
+    strategy: "jwt",
     maxAge: 1209600, // 14 days
   },
-  pages: { signIn: '/auth/sign-in', error: '/auth/error' },
+  pages: { signIn: "/auth/sign-in", error: "/auth/error" },
 };

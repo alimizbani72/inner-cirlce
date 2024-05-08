@@ -1,8 +1,8 @@
 // form
 // @mui
-import type { MuiTelInputProps } from 'mui-tel-input';
-import { MuiTelInput } from 'mui-tel-input';
-import { Controller, useFormContext } from 'react-hook-form';
+import type { MuiTelInputProps } from "mui-tel-input";
+import { MuiTelInput } from "mui-tel-input";
+import { Controller, useFormContext } from "react-hook-form";
 
 // ----------------------------------------------------------------------
 
@@ -20,11 +20,11 @@ export default function RHFTelInput({ name, helperText, ...other }: Props) {
       render={({ field, fieldState: { error } }) => (
         <MuiTelInput
           {...field}
-          MenuProps={{ sx: { maxHeight: '500px', '& .MuiMenu-paper': { borderRadius: 0 } } }}
+          MenuProps={{ sx: { maxHeight: "500px", "& .MuiMenu-paper": { borderRadius: 0 } } }}
           forceCallingCode
           focusOnSelectCountry
           fullWidth
-          value={typeof field.value === 'number' && field.value === 0 ? '' : field.value}
+          value={typeof field.value === "number" && field.value === 0 ? "" : field.value}
           error={!!error}
           helperText={error ? error?.message : helperText}
           {...(other as any)}

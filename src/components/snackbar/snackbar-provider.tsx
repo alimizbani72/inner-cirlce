@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import Collapse from '@mui/material/Collapse';
-import { SnackbarProvider as NotistackProvider } from 'notistack';
-import { type ReactNode, useRef } from 'react';
+import Collapse from "@mui/material/Collapse";
+import { SnackbarProvider as NotistackProvider } from "notistack";
+import { type ReactNode, useRef } from "react";
 
-import Iconify from '../iconify';
-import { CustomIcon, StyledIcon, StyledNotistack } from './styles';
+import Iconify from "../iconify";
+import { CustomIcon, StyledIcon, StyledNotistack } from "./styles";
 
 // ----------------------------------------------------------------------
 
@@ -24,7 +24,7 @@ export default function SnackbarProvider({ children }: Props) {
       autoHideDuration={3000}
       TransitionComponent={Collapse}
       variant="success" // Set default variant
-      anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      anchorOrigin={{ vertical: "top", horizontal: "center" }}
       iconVariant={{
         info: (
           <StyledIcon color="info">

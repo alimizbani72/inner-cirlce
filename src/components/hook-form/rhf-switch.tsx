@@ -1,14 +1,14 @@
-import type { FormControlLabelProps } from '@mui/material/FormControlLabel';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormHelperText from '@mui/material/FormHelperText';
+import type { FormControlLabelProps } from "@mui/material/FormControlLabel";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormHelperText from "@mui/material/FormHelperText";
 // @mui
-import Switch from '@mui/material/Switch';
-import type { ReactNode } from 'react';
-import { Controller, useFormContext } from 'react-hook-form';
+import Switch from "@mui/material/Switch";
+import type { ReactNode } from "react";
+import { Controller, useFormContext } from "react-hook-form";
 
 // ----------------------------------------------------------------------
 
-interface Props extends Omit<FormControlLabelProps, 'control'> {
+interface Props extends Omit<FormControlLabelProps, "control"> {
   name: string;
   helperText?: ReactNode;
 }

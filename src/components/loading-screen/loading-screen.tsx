@@ -1,7 +1,7 @@
 // @mui
-import type { BoxProps } from '@mui/material/Box';
-import Box from '@mui/material/Box';
-import LinearProgress from '@mui/material/LinearProgress';
+import type { BoxProps } from "@mui/material/Box";
+import Box from "@mui/material/Box";
+import LinearProgress from "@mui/material/LinearProgress";
 
 // ----------------------------------------------------------------------
 
@@ -13,9 +13,9 @@ export default function LoadingScreen({ sx, ...other }: BoxProps) {
         width: 1,
         flexGrow: 1,
         minHeight: 1,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
         ...sx,
       }}
       {...other}

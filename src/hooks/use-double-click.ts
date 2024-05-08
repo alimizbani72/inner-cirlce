@@ -1,4 +1,4 @@
-import { type SyntheticEvent, useCallback, useRef, type MouseEvent } from 'react';
+import { type SyntheticEvent, useCallback, useRef, type MouseEvent } from "react";
 
 // ----------------------------------------------------------------------
 

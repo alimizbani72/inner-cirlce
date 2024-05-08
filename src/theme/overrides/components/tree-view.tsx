@@ -1,4 +1,4 @@
-import type { Theme } from '@mui/material/styles';
+import type { Theme } from "@mui/material/styles";
 
 // ----------------------------------------------------------------------
 
@@ -10,7 +10,7 @@ export function treeView(theme: Theme) {
           ...theme.typography.body2,
         },
         iconContainer: {
-          width: 'auto',
+          width: "auto",
         },
       },
     },

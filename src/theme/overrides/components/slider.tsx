@@ -1,10 +1,10 @@
-import { sliderClasses } from '@mui/material/Slider';
-import type { Theme } from '@mui/material/styles';
+import { sliderClasses } from "@mui/material/Slider";
+import type { Theme } from "@mui/material/styles";
 
 // ----------------------------------------------------------------------
 
 export function slider(theme: Theme) {
-  const lightMode = theme.palette.mode === 'light';
+  const lightMode = theme.palette.mode === "light";
 
   return {
     MuiSlider: {

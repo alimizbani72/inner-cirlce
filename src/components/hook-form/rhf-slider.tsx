@@ -1,9 +1,9 @@
 // @mui
-import FormHelperText from '@mui/material/FormHelperText';
-import type { SliderProps } from '@mui/material/Slider';
-import Slider from '@mui/material/Slider';
-import type { ReactNode } from 'react';
-import { Controller, useFormContext } from 'react-hook-form';
+import FormHelperText from "@mui/material/FormHelperText";
+import type { SliderProps } from "@mui/material/Slider";
+import Slider from "@mui/material/Slider";
+import type { ReactNode } from "react";
+import { Controller, useFormContext } from "react-hook-form";
 
 // ----------------------------------------------------------------------
 

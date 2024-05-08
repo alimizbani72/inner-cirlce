@@ -1,5 +1,5 @@
-import type { Theme } from '@mui/material';
-import { type ButtonPropsOverride, button } from './button';
+import type { Theme } from "@mui/material";
+import { type ButtonPropsOverride, button } from "./button";
 
 // ----------------------------------------------------------------------
 
@@ -75,16 +75,16 @@ const Indicator = () => (
 export function LoadingButton(theme: Theme) {
   return {
     MuiLoadingButton: {
-      defaultProps: { variant: 'contained', loadingIndicator: <Indicator /> },
+      defaultProps: { variant: "contained", loadingIndicator: <Indicator /> },
       styleOverrides: {
         root: ({ ownerState }: { ownerState: ButtonPropsOverride }) => ({
-          '.MuiLoadingButton-loadingIndicator': {
-            ...button(theme).MuiButton.styleOverrides.root({ ownerState })['.MuiButton-icon'],
-            svg: { animation: 'spin 2s linear infinite' },
+          ".MuiLoadingButton-loadingIndicator": {
+            ...button(theme).MuiButton.styleOverrides.root({ ownerState })[".MuiButton-icon"],
+            svg: { animation: "spin 2s linear infinite" },
           },
-          '&.Mui-disabled': {
+          "&.Mui-disabled": {
             ...button(theme).MuiButton.styleOverrides.contained({ ownerState }),
-            color: 'transparent',
+            color: "transparent",
           },
         }),
       },

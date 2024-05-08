@@ -1,39 +1,39 @@
-import type { AvatarProps } from '@mui/material/Avatar';
-import type { AvatarGroupProps } from '@mui/material/AvatarGroup';
-import { avatarGroupClasses } from '@mui/material/AvatarGroup';
-import type { Theme } from '@mui/material/styles';
-import { alpha } from '@mui/material/styles';
+import type { AvatarProps } from "@mui/material/Avatar";
+import type { AvatarGroupProps } from "@mui/material/AvatarGroup";
+import { avatarGroupClasses } from "@mui/material/AvatarGroup";
+import type { Theme } from "@mui/material/styles";
+import { alpha } from "@mui/material/styles";
 
 // ----------------------------------------------------------------------
 
-const COLORS = ['default', 'primary', 'secondary', 'info', 'success', 'warning', 'error'] as const;
+const COLORS = ["default", "primary", "secondary", "info", "success", "warning", "error"] as const;
 
 const colorByName = (name: string) => {
   const charAt = name.charAt(0);
 
-  if (['A', 'C', 'F'].includes(charAt)) {
-    return 'primary';
+  if (["A", "C", "F"].includes(charAt)) {
+    return "primary";
   }
-  if (['E', 'D', 'H'].includes(charAt)) {
-    return 'secondary';
+  if (["E", "D", "H"].includes(charAt)) {
+    return "secondary";
   }
-  if (['I', 'K', 'L'].includes(charAt)) {
-    return 'info';
+  if (["I", "K", "L"].includes(charAt)) {
+    return "info";
   }
-  if (['M', 'N', 'P'].includes(charAt)) {
-    return 'success';
+  if (["M", "N", "P"].includes(charAt)) {
+    return "success";
   }
-  if (['Q', 'S', 'T'].includes(charAt)) {
-    return 'warning';
+  if (["Q", "S", "T"].includes(charAt)) {
+    return "warning";
   }
-  if (['V', 'X', 'Y'].includes(charAt)) {
-    return 'error';
+  if (["V", "X", "Y"].includes(charAt)) {
+    return "error";
   }
-  return 'default';
+  return "default";
 };
 
 // NEW VARIANT
-declare module '@mui/material/AvatarGroup' {
+declare module "@mui/material/AvatarGroup" {
   interface AvatarGroupPropsVariantOverrides {
     compact: true;
   }
@@ -45,9 +45,9 @@ export function avatar(theme: Theme) {
   return {
     MuiAvatar: {
       variants: COLORS.map((color) =>
-        color === 'default'
+        color === "default"
           ? {
-              props: { color: 'default' },
+              props: { color: "default" },
               style: {
                 color: theme.palette.text.secondary,
                 backgroundColor: alpha(theme.palette.grey[500], 0.24),
@@ -71,7 +71,7 @@ export function avatar(theme: Theme) {
 
           return {
             ...(!!ownerState.alt && {
-              ...(color !== 'default'
+              ...(color !== "default"
                 ? {
                     color: theme.palette[color].contrastText,
                     backgroundColor: theme.palette[color].main,
@@ -88,22 +88,22 @@ export function avatar(theme: Theme) {
     MuiAvatarGroup: {
       styleOverrides: {
         root: ({ ownerState }: { ownerState: AvatarGroupProps }) => ({
-          justifyContent: 'flex-end',
-          ...(ownerState.variant === 'compact' && {
+          justifyContent: "flex-end",
+          ...(ownerState.variant === "compact" && {
             width: 40,
             height: 40,
-            position: 'relative',
+            position: "relative",
             [`& .${avatarGroupClasses.avatar}`]: {
               margin: 0,
               width: 28,
               height: 28,
-              position: 'absolute',
-              '&:first-of-type': {
+              position: "absolute",
+              "&:first-of-type": {
                 left: 0,
                 bottom: 0,
                 zIndex: 9,
               },
-              '&:last-of-type': {
+              "&:last-of-type": {
                 top: 0,
                 right: 0,
               },
@@ -113,7 +113,7 @@ export function avatar(theme: Theme) {
         avatar: {
           fontSize: 16,
           fontWeight: theme.typography.fontWeightBold,
-          '&:first-of-type': {
+          "&:first-of-type": {
             fontSize: 12,
             color: theme.palette.primary.dark,
             backgroundColor: theme.palette.primary.lighter,

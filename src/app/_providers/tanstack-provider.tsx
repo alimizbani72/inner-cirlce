@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import type { Session } from 'next-auth';
-import { SessionProvider } from 'next-auth/react';
-import type { ReactNode } from 'react';
+import { QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import type { Session } from "next-auth";
+import { SessionProvider } from "next-auth/react";
+import type { ReactNode } from "react";
 
-import { customQueryClient } from './customQueryClient';
+import { customQueryClient } from "./customQueryClient";
 
 export default function TanStackProvider({ children, session }: { children: ReactNode; session: Session | null }) {
   return (

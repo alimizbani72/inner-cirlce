@@ -1,4 +1,4 @@
-import type { TranEnterType, TranExitType, TranHoverType } from '../types';
+import type { TranEnterType, TranExitType, TranHoverType } from "../types";
 
 // ----------------------------------------------------------------------
 

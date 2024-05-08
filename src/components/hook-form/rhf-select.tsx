@@ -1,19 +1,19 @@
-import Box from '@mui/material/Box';
-import Checkbox from '@mui/material/Checkbox';
-import Chip from '@mui/material/Chip';
-import FormControl from '@mui/material/FormControl';
-import FormHelperText from '@mui/material/FormHelperText';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import type { SelectProps } from '@mui/material/Select';
-import Select from '@mui/material/Select';
+import Box from "@mui/material/Box";
+import Checkbox from "@mui/material/Checkbox";
+import Chip from "@mui/material/Chip";
+import FormControl from "@mui/material/FormControl";
+import FormHelperText from "@mui/material/FormHelperText";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import type { SelectProps } from "@mui/material/Select";
+import Select from "@mui/material/Select";
 // @mui
-import type { SxProps, Theme } from '@mui/material/styles';
-import type { TextFieldProps } from '@mui/material/TextField';
-import TextField from '@mui/material/TextField';
-import type { ReactNode } from 'react';
-import { Controller, useFormContext } from 'react-hook-form';
+import type { SxProps, Theme } from "@mui/material/styles";
+import type { TextFieldProps } from "@mui/material/TextField";
+import TextField from "@mui/material/TextField";
+import type { ReactNode } from "react";
+import { Controller, useFormContext } from "react-hook-form";
 
 // ----------------------------------------------------------------------
 
@@ -51,13 +51,13 @@ export function RHFSelect({
               PaperProps: {
                 sx: {
                   ...(!native && {
-                    maxHeight: typeof maxHeight === 'number' ? maxHeight : 'unset',
+                    maxHeight: typeof maxHeight === "number" ? maxHeight : "unset",
                   }),
                   ...PaperPropsSx,
                 },
               },
             },
-            sx: { textTransform: 'capitalize' },
+            sx: { textTransform: "capitalize" },
           }}
           error={!!error}
           helperText={error ? error?.message : helperText}
@@ -103,7 +103,7 @@ export function RHFMultiSelect({
 
     if (!selectedItems.length && placeholder) {
       return (
-        <Box component="em" sx={{ color: 'text.disabled' }}>
+        <Box component="em" sx={{ color: "text.disabled" }}>
           {placeholder}
         </Box>
       );
@@ -111,7 +111,7 @@ export function RHFMultiSelect({
 
     if (chip) {
       return (
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+        <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
           {selectedItems.map((item) => (
             <Chip key={item.value} size="small" label={item.label} />
           ))}
@@ -119,7 +119,7 @@ export function RHFMultiSelect({
       );
     }
 
-    return selectedItems.map((item) => item.label).join(', ');
+    return selectedItems.map((item) => item.label).join(", ");
   };
 
   return (

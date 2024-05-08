@@ -1,8 +1,8 @@
-import type { Theme } from '@mui/material/styles';
-import type { SvgIconProps } from '@mui/material/SvgIcon';
-import SvgIcon from '@mui/material/SvgIcon';
+import type { Theme } from "@mui/material/styles";
+import type { SvgIconProps } from "@mui/material/SvgIcon";
+import SvgIcon from "@mui/material/SvgIcon";
 // components
-import Iconify from 'src/components/iconify';
+import Iconify from "src/components/iconify";
 
 // ----------------------------------------------------------------------
 
@@ -156,7 +156,7 @@ export function defaultProps(theme: Theme) {
     },
     MuiAppBar: {
       defaultProps: {
-        color: 'transparent',
+        color: "transparent",
       },
     },
     MuiAvatarGroup: {
@@ -171,15 +171,15 @@ export function defaultProps(theme: Theme) {
     },
     MuiButton: {
       defaultProps: {
-        color: 'inherit',
+        color: "inherit",
         disableElevation: true,
       },
     },
     MuiCardHeader: {
       defaultProps: {
-        titleTypographyProps: { variant: 'medium-h6' },
+        titleTypographyProps: { variant: "medium-h6" },
         subheaderTypographyProps: {
-          variant: 'body2',
+          variant: "body2",
           marginTop: theme.spacing(0.5),
         },
       },
@@ -196,21 +196,21 @@ export function defaultProps(theme: Theme) {
     },
     MuiFab: {
       defaultProps: {
-        color: 'primary',
+        color: "primary",
       },
     },
     MuiLink: {
       defaultProps: {
-        underline: 'hover',
+        underline: "hover",
       },
     },
     MuiListItemText: {
       defaultProps: {
         primaryTypographyProps: {
-          typography: 'body2',
+          typography: "body2",
         },
         secondaryTypographyProps: {
-          component: 'span',
+          component: "span",
         },
       },
     },
@@ -221,8 +221,8 @@ export function defaultProps(theme: Theme) {
     },
     MuiSkeleton: {
       defaultProps: {
-        animation: 'wave',
-        variant: 'rounded',
+        animation: "wave",
+        variant: "rounded",
       },
     },
     MuiFilledInput: {
@@ -232,35 +232,35 @@ export function defaultProps(theme: Theme) {
     },
     MuiFormHelperText: {
       defaultProps: {
-        component: 'div',
+        component: "div",
       },
     },
     MuiTab: {
       defaultProps: {
         disableRipple: true,
-        iconPosition: 'start',
+        iconPosition: "start",
       },
     },
     MuiTabs: {
       defaultProps: {
-        textColor: 'inherit',
-        variant: 'scrollable',
+        textColor: "inherit",
+        variant: "scrollable",
         allowScrollButtonsMobile: true,
       },
     },
     MuiTablePagination: {
       defaultProps: {
         backIconButtonProps: {
-          size: 'small',
+          size: "small",
         },
         nextIconButtonProps: {
-          size: 'small',
+          size: "small",
         },
       },
     },
     MuiSlider: {
       defaultProps: {
-        size: 'small',
+        size: "small",
       },
     },
     MuiAutocomplete: {
@@ -280,7 +280,7 @@ export function defaultProps(theme: Theme) {
     },
     MuiCheckbox: {
       defaultProps: {
-        size: 'small',
+        size: "small",
         icon: <CheckboxIcon />,
         checkedIcon: <CheckboxCheckedIcon />,
         indeterminateIcon: <CheckboxIndeterminateIcon />,
@@ -288,7 +288,7 @@ export function defaultProps(theme: Theme) {
     },
     MuiRadio: {
       defaultProps: {
-        size: 'small',
+        size: "small",
         icon: <RadioIcon />,
         checkedIcon: <RadioCheckedIcon />,
       },

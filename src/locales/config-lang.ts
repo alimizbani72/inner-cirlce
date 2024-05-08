@@ -1,24 +1,24 @@
-'use client';
+"use client";
 
 // core
-import { enUS as enUSCore } from '@mui/material/locale';
+import { enUS as enUSCore } from "@mui/material/locale";
 // data-grid
-import { enUS as enUSDataGrid } from '@mui/x-data-grid/locales';
+import { enUS as enUSDataGrid } from "@mui/x-data-grid/locales";
 // date-pickers
-import { enUS as enUSDate } from '@mui/x-date-pickers/locales';
-import { enUS as enUSAdapter } from 'date-fns/locale';
-import merge from 'lodash/merge';
+import { enUS as enUSDate } from "@mui/x-date-pickers/locales";
+import { enUS as enUSAdapter } from "date-fns/locale";
+import merge from "lodash/merge";
 
 // PLEASE REMOVE `LOCAL STORAGE` WHEN YOU CHANGE SETTINGS.
 // ----------------------------------------------------------------------
 
 export const allLangs = [
   {
-    label: 'English',
-    value: 'en',
+    label: "English",
+    value: "en",
     systemValue: merge(enUSDate, enUSDataGrid, enUSCore),
     adapterLocale: enUSAdapter,
-    icon: 'flagpack:gb-nir',
+    icon: "flagpack:gb-nir",
   },
 ];
 

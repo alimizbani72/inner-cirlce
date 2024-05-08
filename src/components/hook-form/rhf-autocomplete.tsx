@@ -1,9 +1,9 @@
-import type { AutocompleteProps } from '@mui/material/Autocomplete';
-import Autocomplete from '@mui/material/Autocomplete';
+import type { AutocompleteProps } from "@mui/material/Autocomplete";
+import Autocomplete from "@mui/material/Autocomplete";
 // @mui
-import TextField from '@mui/material/TextField';
-import type { ReactNode } from 'react';
-import { Controller, useFormContext } from 'react-hook-form';
+import TextField from "@mui/material/TextField";
+import type { ReactNode } from "react";
+import { Controller, useFormContext } from "react-hook-form";
 
 // ----------------------------------------------------------------------
 
@@ -35,8 +35,8 @@ export default function RHFAutocomplete<
   loadMore,
   renderInput,
   ...other
-}: Omit<Props<T, Multiple, DisableClearable, FreeSolo>, 'renderInput'> & {
-  renderInput?: AutocompleteProps<T, Multiple, DisableClearable, FreeSolo>['renderInput'];
+}: Omit<Props<T, Multiple, DisableClearable, FreeSolo>, "renderInput"> & {
+  renderInput?: AutocompleteProps<T, Multiple, DisableClearable, FreeSolo>["renderInput"];
 }) {
   const { control, setValue } = useFormContext();
 
@@ -55,17 +55,17 @@ export default function RHFAutocomplete<
         <Autocomplete
           {...field}
           sx={{
-            '& .MuiInputBase-sizeSmall': {
-              borderRadius: '10px',
+            "& .MuiInputBase-sizeSmall": {
+              borderRadius: "10px",
             },
-            '& .MuiAutocomplete-tag': {
-              bgcolor: 'grey.400',
+            "& .MuiAutocomplete-tag": {
+              bgcolor: "grey.400",
             },
-            '& .MuiChip-deleteIcon': {
-              color: 'red',
+            "& .MuiChip-deleteIcon": {
+              color: "red",
             },
-            '& .MuiChip-label': {
-              color: 'grey.900',
+            "& .MuiChip-label": {
+              color: "grey.900",
             },
           }}
           onChange={(_, newValue) => setValue(name, newValue, { shouldValidate: true })}

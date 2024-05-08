@@ -1,23 +1,23 @@
-'use client';
+"use client";
 
 // @mui
-import CssBaseline from '@mui/material/CssBaseline';
-import type { ThemeOptions } from '@mui/material/styles';
-import { createTheme, ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
-import merge from 'lodash/merge';
-import { type ReactNode, useMemo } from 'react';
+import CssBaseline from "@mui/material/CssBaseline";
+import type { ThemeOptions } from "@mui/material/styles";
+import { createTheme, ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
+import merge from "lodash/merge";
+import { type ReactNode, useMemo } from "react";
 // components
 // locales
-import { useLocales } from 'src/locales';
+import { useLocales } from "src/locales";
 //
 // options
-import RTL from './options/right-to-left';
-import { componentsOverrides } from './overrides';
+import RTL from "./options/right-to-left";
+import { componentsOverrides } from "./overrides";
 // system
-import { palette } from './palette';
-import { shadows } from './shadows';
-import typography from './typography';
+import { palette } from "./palette";
+import { shadows } from "./shadows";
+import typography from "./typography";
 
 // ----------------------------------------------------------------------
 
@@ -30,8 +30,8 @@ export default function ThemeProvider({ children }: Props) {
 
   const baseOption = useMemo(
     () => ({
-      palette: palette('light'),
-      shadows: shadows('light'),
+      palette: palette("light"),
+      shadows: shadows("light"),
       typography,
       shape: { borderRadius: 8 },
       spacing: 8,
@@ -55,7 +55,7 @@ export default function ThemeProvider({ children }: Props) {
   const themeWithLocale = useMemo(() => createTheme(theme, currentLang.systemValue), [currentLang.systemValue, theme]);
 
   return (
-    <AppRouterCacheProvider options={{ key: 'css' }}>
+    <AppRouterCacheProvider options={{ key: "css" }}>
       <MuiThemeProvider theme={themeWithLocale}>
         <RTL themeDirection="ltr">
           <CssBaseline />

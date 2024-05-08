@@ -1,19 +1,19 @@
-import { inputBaseClasses } from '@mui/material';
-import type { Theme } from '@mui/material/styles';
+import { inputBaseClasses } from "@mui/material";
+import type { Theme } from "@mui/material/styles";
 
 // ----------------------------------------------------------------------
 
 export function textField(theme: Theme) {
   return {
-    MuiTextField: { defaultProps: { variant: 'outlined' } },
+    MuiTextField: { defaultProps: { variant: "outlined" } },
 
     // LABEL
     MuiFormLabel: {
       styleOverrides: {
         root: {
           marginBottom: `${theme.spacing(1)} !important`,
-          transform: 'none !important',
-          ...theme.typography['caption-semi-bold'],
+          transform: "none !important",
+          ...theme.typography["caption-semi-bold"],
           color: theme.palette.common.white,
         },
       },
@@ -29,16 +29,16 @@ export function textField(theme: Theme) {
 
           [`&.${inputBaseClasses.focused}`]: {
             backgroundColor: theme.palette.dark[1],
-            '& .MuiOutlinedInput-notchedOutline': {
+            "& .MuiOutlinedInput-notchedOutline": {
               borderColor: `${theme.palette.blue.dark} !important`,
             },
           },
         },
         input: {
-          ...theme.typography['p2-medium'],
+          ...theme.typography["p2-medium"],
           color: theme.palette.common.white,
           padding: `${theme.spacing(2)} !important`,
-          '&::placeholder': {
+          "&::placeholder": {
             opacity: 1,
             color: theme.palette.grey.dark,
           },
@@ -50,7 +50,7 @@ export function textField(theme: Theme) {
     MuiOutlinedInput: {
       styleOverrides: {
         notchedOutline: {
-          borderWidth: '2px',
+          borderWidth: "2px",
           borderColor: theme.palette.dark[3],
         },
       },
@@ -60,7 +60,7 @@ export function textField(theme: Theme) {
     MuiFormHelperText: {
       styleOverrides: {
         root: {
-          ...theme.typography['caption-medium'],
+          ...theme.typography["caption-medium"],
           color: theme.palette.common.white,
           marginTop: theme.spacing(1),
           marginLeft: 0,

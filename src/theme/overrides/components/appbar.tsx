@@ -3,7 +3,7 @@ export function appBar() {
     MuiAppBar: {
       styleOverrides: {
         root: {
-          boxShadow: 'none',
+          boxShadow: "none",
         },
       },
     },

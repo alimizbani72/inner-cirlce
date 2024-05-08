@@ -1,9 +1,9 @@
-import type { RefObject } from 'react';
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import type { RefObject } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 
 // ----------------------------------------------------------------------
 
-const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
+const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 // Window Event based useEventListener interface
 export function useEventListener<K extends keyof WindowEventMap>(

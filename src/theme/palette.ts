@@ -1,57 +1,57 @@
-export type ColorSchema = 'blue' | 'pink' | 'gradient' | 'dark' | 'grey' | 'success' | 'warning' | 'danger';
+export type ColorSchema = "blue" | "pink" | "gradient" | "dark" | "grey" | "success" | "warning" | "danger";
 
 // SETUP COLORS
 
 export const BLUE = {
-  light: '#779DFF',
-  dark: '#565CE4',
-  contrastText: '#FFFFFF',
+  light: "#779DFF",
+  dark: "#565CE4",
+  contrastText: "#FFFFFF",
 };
 
 export const PINK = {
-  light: '#FF409D',
-  dark: '#FF409D',
-  contrastText: '#FFFFFF',
+  light: "#FF409D",
+  dark: "#FF409D",
+  contrastText: "#FFFFFF",
 };
 
 export const GRADIENT = {
-  blue: 'radial-gradient(50% 50% at 50% 50%, #779DFF 0%, #565CE4 100%)',
-  pink: 'radial-gradient(50% 50% at 50% 50%, #FF7DBC 0%, #FF409D 100%)',
-  sky: 'radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, #CDDFF2 100%)',
-  orange: 'radial-gradient(50% 50% at 50% 50%, #FFD18B 0%, #E68F0D 100%)',
+  blue: "radial-gradient(50% 50% at 50% 50%, #779DFF 0%, #565CE4 100%)",
+  pink: "radial-gradient(50% 50% at 50% 50%, #FF7DBC 0%, #FF409D 100%)",
+  sky: "radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, #CDDFF2 100%)",
+  orange: "radial-gradient(50% 50% at 50% 50%, #FFD18B 0%, #E68F0D 100%)",
 };
 
 export const DARK = {
-  1: '#070720',
-  2: '#090A23',
-  3: '#14162E',
+  1: "#070720",
+  2: "#090A23",
+  3: "#14162E",
 };
 
 export const GREY = {
-  light: '#9799B4',
-  dark: '#626583',
-  contrastText: '#FFFFFF',
+  light: "#9799B4",
+  dark: "#626583",
+  contrastText: "#FFFFFF",
 };
 
 export const SUCCESS = {
-  main: '#03D489',
-  contrastText: '#FFFFFF',
+  main: "#03D489",
+  contrastText: "#FFFFFF",
 };
 
 export const WARNING = {
-  main: '#FFBE21',
-  contrastText: '#FFFFFF',
+  main: "#FFBE21",
+  contrastText: "#FFFFFF",
 };
 
 export const DANGER = {
-  main: '#FF5757',
-  contrastText: '#FFFFFF',
+  main: "#FF5757",
+  contrastText: "#FFFFFF",
 };
 
 const COMMON = {
   common: {
-    black: '#000000',
-    white: '#FFFFFF',
+    black: "#000000",
+    white: "#FFFFFF",
   },
   blue: BLUE,
   pink: PINK,
@@ -65,26 +65,26 @@ const COMMON = {
   divider: DARK[3],
 };
 
-export function palette(mode: 'light' | 'dark') {
+export function palette(mode: "light" | "dark") {
   const light = {
     ...COMMON,
-    mode: 'light',
+    mode: "light",
     text: {
-      primary: '#040911',
-      secondary: '#919EAB',
+      primary: "#040911",
+      secondary: "#919EAB",
       disabled: DARK[3],
     },
     background: {
-      paper: '#FFFFFF',
-      default: '#FFFFFF',
+      paper: "#FFFFFF",
+      default: "#FFFFFF",
     },
   };
 
   const dark = {
     ...COMMON,
-    mode: 'dark',
+    mode: "dark",
     text: {
-      primary: '#FFFFFF',
+      primary: "#FFFFFF",
       secondary: DARK[3],
       disabled: GREY.dark,
     },
@@ -94,5 +94,5 @@ export function palette(mode: 'light' | 'dark') {
     },
   };
 
-  return mode === 'light' ? light : dark;
+  return mode === "light" ? light : dark;
 }

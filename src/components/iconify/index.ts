@@ -1,2 +1,2 @@
-export { default } from './iconify';
-export * from './types';
+export { default } from "./iconify";
+export * from "./types";

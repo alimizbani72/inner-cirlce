@@ -1,7 +1,7 @@
-import { ratingClasses } from '@mui/material/Rating';
-import type { Theme } from '@mui/material/styles';
-import { alpha } from '@mui/material/styles';
-import { svgIconClasses } from '@mui/material/SvgIcon';
+import { ratingClasses } from "@mui/material/Rating";
+import type { Theme } from "@mui/material/styles";
+import { alpha } from "@mui/material/styles";
+import { svgIconClasses } from "@mui/material/SvgIcon";
 
 // ----------------------------------------------------------------------
 

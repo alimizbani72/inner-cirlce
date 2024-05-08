@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
-export { default as SnackbarProvider } from './snackbar-provider';
-export * from 'notistack';
+export { default as SnackbarProvider } from "./snackbar-provider";
+export * from "notistack";

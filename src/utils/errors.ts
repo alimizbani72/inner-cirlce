@@ -3,7 +3,7 @@ export function parseErrors(errors: any) {
     return {};
   }
   return Object.keys(errors).reduce((acc: any, val) => {
-    acc[val] = errors[val].join(', ');
+    acc[val] = errors[val].join(", ");
     return acc;
   }, {});
 }
@@ -11,7 +11,7 @@ export function parseErrors(errors: any) {
 export const setErrors = (errs: any, setError: any) => {
   Object.keys(parseErrors(errs)).forEach((field: string) => {
     setError(field, {
-      type: 'manual',
+      type: "manual",
       message: errs[field],
     });
   });

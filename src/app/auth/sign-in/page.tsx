@@ -1,4 +1,4 @@
-import LoginSection from 'src/sections/auth/login/Login';
+import LoginSection from "src/sections/auth/login/Login";
 
 const SignIn = () => {
   return <LoginSection />;

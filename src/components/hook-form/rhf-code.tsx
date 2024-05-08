@@ -1,8 +1,8 @@
 // @mui
-import FormHelperText from '@mui/material/FormHelperText';
-import type { MuiOtpInputProps } from 'mui-one-time-password-input';
-import { MuiOtpInput } from 'mui-one-time-password-input';
-import { Controller, useFormContext } from 'react-hook-form';
+import FormHelperText from "@mui/material/FormHelperText";
+import type { MuiOtpInputProps } from "mui-one-time-password-input";
+import { MuiOtpInput } from "mui-one-time-password-input";
+import { Controller, useFormContext } from "react-hook-form";
 
 // ----------------------------------------------------------------------
 
@@ -26,11 +26,11 @@ export default function RHFCode({ name, ...other }: RHFCodesProps) {
             length={6}
             TextFieldsProps={{
               error: !!error,
-              placeholder: '-',
-              sx: { width: '95px' },
+              placeholder: "-",
+              sx: { width: "95px" },
               inputProps: {
-                inputMode: 'numeric',
-                pattern: '[0-9]*',
+                inputMode: "numeric",
+                pattern: "[0-9]*",
               },
             }}
             {...other}

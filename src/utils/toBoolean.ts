@@ -1,1 +1,1 @@
-export const stringToBoolean = (stringValue: string) => stringValue.trim().toLowerCase() === 'true';
+export const stringToBoolean = (stringValue: string) => stringValue.trim().toLowerCase() === "true";

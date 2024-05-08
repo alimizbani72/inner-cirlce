@@ -1,8 +1,8 @@
 // @mui
-import { InputLabel } from '@mui/material';
-import type { TextFieldProps } from '@mui/material/TextField';
-import TextField from '@mui/material/TextField';
-import { Controller, useFormContext } from 'react-hook-form';
+import { InputLabel } from "@mui/material";
+import type { TextFieldProps } from "@mui/material/TextField";
+import TextField from "@mui/material/TextField";
+import { Controller, useFormContext } from "react-hook-form";
 
 // ----------------------------------------------------------------------
 
@@ -29,9 +29,9 @@ export default function RHFTextField({ name, id, label, helperText, type, ...oth
             id={id || name}
             fullWidth
             type={type}
-            value={type === 'number' && field.value === 0 ? '' : field.value}
+            value={type === "number" && field.value === 0 ? "" : field.value}
             onChange={(event) => {
-              if (type === 'number') {
+              if (type === "number") {
                 field.onChange(Number(event.target.value));
               } else {
                 field.onChange(event.target.value);

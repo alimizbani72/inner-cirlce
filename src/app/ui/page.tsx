@@ -1,12 +1,12 @@
-import {} from '@mui/material/styles';
-import { LoadingButton } from '@mui/lab';
-import { Button, IconButton, Stack, Typography } from '@mui/material';
-import Form from './form';
+import {} from "@mui/material/styles";
+import { LoadingButton } from "@mui/lab";
+import { Button, IconButton, Stack, Typography } from "@mui/material";
+import Form from "./form";
 
 // ----------------------------------------------------------------------
 
 export const metadata = {
-  title: 'Chainmind - UI',
+  title: "Chainmind - UI",
 };
 
 const ICON = () => (
@@ -32,7 +32,7 @@ export default async function UI() {
         The quick brown fox jumps over the lazy.
       </Typography>
 
-      <Stack direction={'row'} alignItems="center" gap={10}>
+      <Stack direction={"row"} alignItems="center" gap={10}>
         <Button color="primary" size="large">
           Button
         </Button>
@@ -48,7 +48,7 @@ export default async function UI() {
         </LoadingButton>
       </Stack>
 
-      <Stack direction={'row'} alignItems="center" gap={10}>
+      <Stack direction={"row"} alignItems="center" gap={10}>
         <LoadingButton color="secondary" size="large" loading>
           LoadingButton
         </LoadingButton>
@@ -72,7 +72,7 @@ export default async function UI() {
         </LoadingButton>
       </Stack>
 
-      <Stack direction={'row'} alignItems="center" gap={10}>
+      <Stack direction={"row"} alignItems="center" gap={10}>
         <IconButton color="primary" size="large">
           <ICON />
         </IconButton>
@@ -90,7 +90,7 @@ export default async function UI() {
         </IconButton>
       </Stack>
 
-      <Stack direction={'row'} alignItems="center" gap={10}>
+      <Stack direction={"row"} alignItems="center" gap={10}>
         <Form />
       </Stack>
     </Stack>

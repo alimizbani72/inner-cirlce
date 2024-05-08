@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { type Dispatch, type SetStateAction, useCallback, useEffect, useState } from 'react';
+import { type Dispatch, type SetStateAction, useCallback, useEffect, useState } from "react";
 
 // ----------------------------------------------------------------------
 
@@ -13,10 +13,10 @@ type ReturnDateType = {
 
 export function useCountdownDate(date: Date): ReturnDateType {
   const [countdown, setCountdown] = useState({
-    days: '00',
-    hours: '00',
-    minutes: '00',
-    seconds: '00',
+    days: "00",
+    hours: "00",
+    minutes: "00",
+    seconds: "00",
   });
 
   useEffect(() => {
@@ -41,10 +41,10 @@ export function useCountdownDate(date: Date): ReturnDateType {
     const getSeconds = `0${Math.floor((distanceToNow % (1000 * 60)) / 1000)}`.slice(-2);
 
     setCountdown({
-      days: getDays.toString() || '000',
-      hours: getHours || '000',
-      minutes: getMinutes || '000',
-      seconds: getSeconds || '000',
+      days: getDays.toString() || "000",
+      hours: getHours || "000",
+      minutes: getMinutes || "000",
+      seconds: getSeconds || "000",
     });
   };
 

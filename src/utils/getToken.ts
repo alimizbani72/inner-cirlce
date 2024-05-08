@@ -1,4 +1,4 @@
-import { getSession } from 'next-auth/react';
+import { getSession } from "next-auth/react";
 
 export const getToken = async () => {
   const session = await getSession();

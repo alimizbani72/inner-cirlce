@@ -1,13 +1,13 @@
-import FormControl from '@mui/material/FormControl';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormHelperText from '@mui/material/FormHelperText';
-import FormLabel from '@mui/material/FormLabel';
+import FormControl from "@mui/material/FormControl";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormHelperText from "@mui/material/FormHelperText";
+import FormLabel from "@mui/material/FormLabel";
 // @mui
-import Radio from '@mui/material/Radio';
-import type { RadioGroupProps } from '@mui/material/RadioGroup';
-import RadioGroup from '@mui/material/RadioGroup';
-import type { ReactNode } from 'react';
-import { Controller, useFormContext } from 'react-hook-form';
+import Radio from "@mui/material/Radio";
+import type { RadioGroupProps } from "@mui/material/RadioGroup";
+import RadioGroup from "@mui/material/RadioGroup";
+import type { ReactNode } from "react";
+import { Controller, useFormContext } from "react-hook-form";
 
 // ----------------------------------------------------------------------
 
@@ -22,7 +22,7 @@ type Props = RadioGroupProps & {
 export default function RHFRadioGroup({ row, name, label, options, spacing, helperText, ...other }: Props) {
   const { control } = useFormContext();
 
-  const labelledby = label ? `${name}-${label}` : '';
+  const labelledby = label ? `${name}-${label}` : "";
 
   return (
     <Controller
@@ -31,7 +31,7 @@ export default function RHFRadioGroup({ row, name, label, options, spacing, help
       render={({ field, fieldState: { error } }) => (
         <FormControl component="fieldset">
           {label && (
-            <FormLabel component="legend" id={labelledby} sx={{ typography: 'body2' }}>
+            <FormLabel component="legend" id={labelledby} sx={{ typography: "body2" }}>
               {label}
             </FormLabel>
           )}
@@ -44,12 +44,12 @@ export default function RHFRadioGroup({ row, name, label, options, spacing, help
                 control={<Radio />}
                 label={option.label}
                 sx={{
-                  '&:not(:last-of-type)': {
+                  "&:not(:last-of-type)": {
                     mb: spacing || 0,
                   },
                   ...(row && {
                     mr: 0,
-                    '&:not(:last-of-type)': {
+                    "&:not(:last-of-type)": {
                       mr: spacing || 2,
                     },
                   }),

@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
 // @mui
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3';
-import { LocalizationProvider as MuiLocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
+import { LocalizationProvider as MuiLocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 
 //
-import useLocales from './use-locales';
-import type { ReactNode } from 'react';
+import useLocales from "./use-locales";
+import type { ReactNode } from "react";
 
 // ----------------------------------------------------------------------
 

@@ -1,9 +1,9 @@
-import type { Theme } from '@mui/material/styles';
+import type { Theme } from "@mui/material/styles";
 
 // ----------------------------------------------------------------------
 
 export function tooltip(theme: Theme) {
-  const lightMode = theme.palette.mode === 'light';
+  const lightMode = theme.palette.mode === "light";
 
   return {
     MuiTooltip: {
