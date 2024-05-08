@@ -17,6 +17,7 @@
     "re-start": "rm -rf node_modules .next out dist build && bun install && bun run dev",
     "re-build": "rm -rf node_modules .next out dist build && bun install && bun run build",
     "codegen": "ts-node codegenScript.ts && bun run format && bun run lint:fix",
+    "icongen": "ts-node icongen.ts",
     "prepare": "husky || true"
   },
   "dependencies": {
@@ -41,6 +42,7 @@
     "framer-motion": "^11.1.7",
     "i18next": "^23.11.3",
     "i18next-browser-languagedetector": "^7.2.1",
+    "icomoon-react": "^3.0.0",
     "lodash": "^4.17.21",
     "mui-one-time-password-input": "^2.0.2",
     "mui-tel-input": "^5.1.2",

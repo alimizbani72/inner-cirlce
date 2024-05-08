@@ -1,0 +1,5684 @@
+{
+  "IcoMoonType": "selection",
+  "icons": [
+    {
+      "icon": {
+        "paths": [
+          "M768 640h-51.614c-14.033-0.009-27.904 2.492-40.67 7.33l-206.383 71.603",
+          "M768 370.56l-153.152-64.633c-27.546-11.622-59.345-9.174-84.604 6.513l-116.647 72.453c-17.53 10.892-28.791 28.969-30.48 48.93-1.689 19.959 6.385 39.543 21.853 53.001v0c20.080 17.434 49.1 21.636 73.655 10.667l69.538-31.147 48.883 42.534c14.289 12.429 22.839 29.794 23.77 48.265 0.934 18.475-5.824 36.548-18.79 50.244-1.51 1.596-3.098 3.119-4.757 4.574l-103.586 90.893c-34.044 29.875-86.216 29.986-120.402 0.265l-62.27-54.148c-15.33-13.043-34.601-21.060-55.011-22.878",
+          "M256 381.615l100.79-33.579c23.181-7.512 48.771-5.14 69.876 6.478",
+          "M938.667 341.333h-106.667c-35.345 0-64 32.747-64 73.143v195.047c0 40.397 28.655 73.143 64 73.143h106.667",
+          "M85.333 682.667h106.667c35.346 0 64-32.747 64-73.143v-195.047c0-40.396-28.654-73.143-64-73.143h-106.667"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Affiliate"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 25,
+        "id": 62,
+        "name": "Affiliate",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 0
+    },
+    {
+      "icon": {
+        "paths": [
+          "M682.667 426.667l-170.667 170.667-170.667-170.667"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Arrow down"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 87,
+        "id": 61,
+        "name": "Arrow-down",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 1
+    },
+    {
+      "icon": {
+        "paths": [
+          "M597.333 682.667l-170.667-170.667 170.667-170.667"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Arrow left"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 30,
+        "id": 60,
+        "name": "Arrow-left",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 2
+    },
+    {
+      "icon": {
+        "paths": [
+          "M426.667 341.333l170.667 170.667-170.667 170.667"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Arrow right"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 31,
+        "id": 59,
+        "name": "Arrow-right",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 3
+    },
+    {
+      "icon": {
+        "paths": [
+          "M682.667 597.333l-170.667-170.667-170.667 170.667"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Arrow up"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 32,
+        "id": 58,
+        "name": "Arrow-up",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 4
+    },
+    {
+      "icon": {
+        "paths": [
+          "M687.061 460.501l123.605-123.563-123.605-123.605",
+          "M213.333 337.068h597.333",
+          "M336.939 563.499l-123.605 123.563 123.605 123.605",
+          "M810.667 686.933h-597.333"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Arrow"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 33,
+        "id": 57,
+        "name": "Arrow",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 5
+    },
+    {
+      "icon": {
+        "paths": [
+          "M682.667 640.009l-128-128 128-128.001",
+          "M384.009 384.008v256.001"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Arrow-Left"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 34,
+        "id": 56,
+        "name": "Arrow-Left",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 6
+    },
+    {
+      "icon": {
+        "paths": [
+          "M362.667 640.009l128-128-128-128.001",
+          "M661.325 384.008v256.001"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Arrow-Right"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 35,
+        "id": 55,
+        "name": "Arrow-Right",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 7
+    },
+    {
+      "icon": {
+        "paths": [
+          "M601.273 792.771c32.732 0 59.296-26.244 59.402-58.685v0 0c-0.023-16.506-6.669-32.329-18.478-43.969l-39.361-39.041v-115.976c-0.007-45.585-18.3-89.299-50.843-121.512s-76.674-50.285-122.669-50.235v0c-95.677 0.050-173.216 76.926-173.233 171.748v115.884l-39.361 39.041c-11.817 11.637-18.476 27.456-18.508 43.969v0 0c0.103 32.441 26.668 58.685 59.401 58.685l343.65 0.092z",
+          "M396.417 875.352h66.065",
+          "M685.419 429.419c0 68.412-55.459 123.871-123.871 123.871s-123.871-55.459-123.871-123.871c0-68.412 55.459-123.871 123.871-123.871s123.871 55.459 123.871 123.871z",
+          "M660.645 429.419c0 54.73-44.367 99.097-99.097 99.097s-99.097-44.367-99.097-99.097c0-54.73 44.367-99.097 99.097-99.097s99.097 44.367 99.097 99.097z"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 49.54838709677419
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 49.54838709677419
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(7, 7, 32)",
+            "strokeLinejoin": "miter",
+            "strokeLinecap": "butt",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 49.54838709677419
+          },
+          {
+            "fill": "rgb(255, 64, 157)"
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": true,
+        "grid": 0,
+        "tags": [
+          "Bell"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 0
+            },
+            {
+              "f": 11
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 49.54838709677419
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 49.54838709677419
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(7, 7, 32)",
+          "strokeLinejoin": "miter",
+          "strokeLinecap": "butt",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 49.54838709677419
+        },
+        {
+          "fill": "rgb(255, 64, 157)"
+        }
+      ],
+      "properties": {
+        "order": 79,
+        "id": 54,
+        "name": "Bell",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 8
+    },
+    {
+      "icon": {
+        "paths": [
+          "M463.189 560.811c-49.919-49.92-87.551-105.813-112.554-162.518-5.291-11.989-2.176-26.027 7.083-35.285l34.944-34.901c28.629-28.629 28.629-69.12 3.627-94.123l-50.091-50.091c-33.323-33.323-87.339-33.323-120.661 0l-27.819 27.819c-31.616 31.616-44.8 77.227-36.267 122.453 21.077 111.488 85.845 233.558 190.336 338.048s226.559 169.259 338.047 190.336c45.227 8.533 90.837-4.651 122.453-36.267l27.776-27.776c33.323-33.323 33.323-87.339 0-120.661l-50.048-50.048c-25.003-25.003-65.536-25.003-90.496 0l-38.528 38.571c-9.259 9.259-23.296 12.373-35.285 7.083-56.704-25.045-112.597-62.72-162.517-112.64z"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Call"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 36,
+        "id": 53,
+        "name": "Call",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 9
+    },
+    {
+      "icon": {
+        "paths": [
+          "M634.846 433.826c66.436 66.432 66.436 174.14 0 240.572-66.432 66.436-174.14 66.436-240.573 0-66.433-66.432-66.433-174.14 0-240.572 66.434-66.434 174.141-66.434 240.573 0",
+          "M896 384v384c0 47.147-38.187 85.333-85.333 85.333h-597.333c-47.147 0-85.333-38.187-85.333-85.333v-384c0-47.147 38.187-85.333 85.333-85.333h85.333l62.379-106.837c7.637-13.099 21.675-21.163 36.864-21.163h226.304c14.976 0 28.843 7.851 36.565 20.651l64.555 107.349h85.333c47.147 0 85.333 38.187 85.333 85.333z"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Camera"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 37,
+        "id": 52,
+        "name": "Camera",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 10
+    },
+    {
+      "icon": {
+        "paths": [
+          "M852.996 513.365c-0.341 86.912-33.323 173.696-99.627 240-133.291 133.291-349.442 133.291-482.733 0-23.723-23.723-43.008-50.133-58.283-78.123",
+          "M170.839 506.453c1.365-85.504 34.56-170.581 99.797-235.819 133.291-133.291 349.439-133.291 482.729 0 23.723 23.723 43.008 50.133 58.283 78.123",
+          "M680.661 348.802h150.827v-150.869",
+          "M343.343 675.2h-150.827v150.869"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Change"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 38,
+        "id": 51,
+        "name": "Change",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 11
+    },
+    {
+      "icon": {
+        "paths": [
+          "M391.125 874.667h-201.515c-22.272 0-40.277-18.048-40.277-40.277v-161.195c0-22.272 18.048-40.277 40.277-40.277h201.472",
+          "M632.875 874.667h-241.791v-443.264c0-22.272 18.048-40.278 40.276-40.278h201.472",
+          "M632.875 189.611v685.056h201.472c22.272 0 40.277-18.048 40.277-40.277v-644.779c0-22.272-18.048-40.277-40.277-40.277h-161.195c-22.229 0-40.277 18.048-40.277 40.277v0z"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Chart"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 51,
+        "id": 50,
+        "name": "Chart",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 12
+    },
+    {
+      "icon": {
+        "paths": [
+          "M680.491 467.157l187.942 187.942",
+          "M514.133 466.995l-130.159 130.308",
+          "M383.974 597.308l-85.307-85.308",
+          "M298.669 512l-143.101 143.1",
+          "M597.333 137.583v225.081",
+          "M597.333 533.333v353.109",
+          "M682.667 448c0 47.128-38.205 85.333-85.333 85.333s-85.333-38.205-85.333-85.333c0-47.128 38.205-85.333 85.333-85.333s85.333 38.205 85.333 85.333z",
+          "M512 128h0.001c212.077 0 384 171.922 384 384v0.001c0 212.077-171.922 384-384 384h-0.001c-212.077 0-384-171.922-384-384v-0.001c0-212.077 171.922-384 384-384z"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "miter",
+            "strokeLinecap": "butt",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "miter",
+            "strokeLinecap": "butt",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Chart-1"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "miter",
+          "strokeLinecap": "butt",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "miter",
+          "strokeLinecap": "butt",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 52,
+        "id": 49,
+        "name": "Chart-1",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 13
+    },
+    {
+      "icon": {
+        "paths": [
+          "M896.16 512c0 212.166-171.994 384.16-384.16 384.16s-384.16-171.994-384.16-384.16c0-212.166 171.994-384.16 384.16-384.16s384.16 171.994 384.16 384.16z",
+          "M360.213 526.473l91.9 91.9 208.683-208.685"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Check circle"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 53,
+        "id": 48,
+        "name": "Check-circle",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 14
+    },
+    {
+      "icon": {
+        "paths": [
+          "M725.453 384.036l-266.466 256.002-160.2-153.536"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Check"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 54,
+        "id": 47,
+        "name": "Check",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 15
+    },
+    {
+      "icon": {
+        "paths": [
+          "M685.495 517.082h-198.481",
+          "M896.881 491.379c0 212.166-171.994 384.16-384.16 384.16s-384.16-171.994-384.16-384.16c0-212.166 171.994-384.16 384.16-384.16s384.16 171.994 384.16 384.16z",
+          "M487.010 517.082v-239.128"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Clock"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 55,
+        "id": 46,
+        "name": "Clock",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 16
+    },
+    {
+      "icon": {
+        "paths": [
+          "M725.372 298.662l-426.669 426.668",
+          "M298.703 298.662l426.669 426.668"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Close"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 56,
+        "id": 45,
+        "name": "Close",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 17
+    },
+    {
+      "icon": {
+        "paths": [
+          "M341.37 511.996l102.402 128 136.533-256.001 102.4 128.001",
+          "M853.372 511.996c0 188.513-152.82 341.333-341.333 341.333s-341.333-152.82-341.333-341.333c0-188.513 152.82-341.333 341.333-341.333s341.333 152.82 341.333 341.333z"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Coin reports"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 57,
+        "id": 44,
+        "name": "Coin-reports",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 18
+    },
+    {
+      "icon": {
+        "paths": [
+          "M637.329 422.761c-0.363-46.869-38.464-84.673-85.333-84.673h-341.48c-47.327 0-85.614 38.516-85.332 85.842l2.816 472.069 128-128h298.005c47.386 0 85.696-38.609 85.329-85.995l-2.005-259.244z",
+          "M384 213.333c0-47.128 38.205-85.333 85.333-85.333h341.333c47.13 0 85.333 38.205 85.333 85.333v469.333l-128-128h-298.667c-47.128 0-85.333-38.204-85.333-85.333v-256z"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Community"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 58,
+        "id": 43,
+        "name": "Community",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 19
+    },
+    {
+      "icon": {
+        "paths": [
+          "M426.667 341.333h341.333c47.128 0 85.333 38.205 85.333 85.333v341.333c0 47.128-38.205 85.333-85.333 85.333h-341.333c-47.128 0-85.333-38.205-85.333-85.333v-341.333c0-47.128 38.205-85.333 85.333-85.333z",
+          "M316.952 682.667h-73.143c-40.396 0-73.143-32.747-73.143-73.143v-365.713c0-40.396 32.747-73.143 73.143-73.143h365.713c40.397 0 73.143 32.747 73.143 73.143v73.143"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Copy"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 77,
+        "id": 42,
+        "name": "Copy",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 20
+    },
+    {
+      "icon": {
+        "paths": [
+          "M319.919 415.961l124.872 76.989c41.203 25.404 93.21 25.404 134.417 0l124.873-76.989",
+          "M255.839 213.208h512.32c70.692 0 128 57.308 128 128v341.581c0 70.692-57.308 128-128 128h-512.32c-70.692 0-128-57.308-128-128v-341.581c0-70.692 57.308-128 128-128z"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Email"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 75,
+        "id": 41,
+        "name": "Email",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 21
+    },
+    {
+      "icon": {
+        "paths": [
+          "M621.15 578.462c-27.29 46.012-80.29 70.225-132.932 60.732-52.646-9.498-93.849-50.701-103.344-103.343-9.495-52.646 14.718-105.647 60.728-132.934",
+          "M767.851 725.171c-73.591 55.817-163.486 85.901-255.851 85.619-153.052 2.726-294.464-81.387-365.125-217.178-25.382-51.447-25.382-111.778 0-163.226 35.339-70.372 91.671-128.026 161.207-164.986",
+          "M871.561 603.072c1.715-3.247 3.942-6.157 5.564-9.459 25.378-51.452 25.378-111.778 0-163.226-70.66-135.792-212.075-219.905-365.124-217.18-9.596 0-18.923 1.28-28.395 1.905",
+          "M896.162 853.474l-725.636-725.635"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Eye Off"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 72,
+        "id": 40,
+        "name": "Eye-Off",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 22
+    },
+    {
+      "icon": {
+        "paths": [
+          "M602.539 421.546c49.963 49.963 49.963 131.072 0 181.12-49.963 49.963-131.072 49.963-181.119 0-49.963-49.963-49.963-131.072 0-181.12 50.047-50.048 131.113-50.048 181.119 0",
+          "M128 512c0-28.117 6.485-55.936 19.029-81.579v0c64.64-132.139 207.488-217.088 364.971-217.088s300.331 84.949 364.971 217.088v0c12.544 25.643 19.029 53.461 19.029 81.579s-6.485 55.936-19.029 81.579v0c-64.64 132.139-207.488 217.088-364.971 217.088s-300.331-84.949-364.971-217.088v0c-12.544-25.643-19.029-53.461-19.029-81.579z"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Eye On"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 69,
+        "id": 39,
+        "name": "Eye-On",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 23
+    },
+    {
+      "icon": {
+        "paths": [
+          "M362.667 682.667c0 0 56.021-55.979 149.333-55.979 93.355 0 149.333 55.979 149.333 55.979",
+          "M783.526 240.471c149.965 149.961 149.965 393.095 0 543.055-149.961 149.965-393.095 149.965-543.055 0-149.961-149.961-149.961-393.095 0-543.055s393.095-149.961 543.055 0",
+          "M298.667 426.667c16.853-20.693 39.893-32.427 64-32.427s46.507 11.733 64 32.427",
+          "M597.333 426.667c16.853-20.693 39.893-32.427 64-32.427s46.507 11.733 64 32.427"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Face"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 68,
+        "id": 38,
+        "name": "Face",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 24
+    },
+    {
+      "icon": {
+        "paths": [
+          "M346.51 208.157c49.987 49.987 49.987 131.032 0 181.019s-131.032 49.987-181.019 0c-49.987-49.987-49.987-131.032 0-181.019s131.032-49.987 181.019 0",
+          "M853.333 298.667h-469.333",
+          "M858.509 634.825c49.988 49.984 49.988 131.029 0 181.018s-131.034 49.988-181.018 0c-49.988-49.988-49.988-131.034 0-181.018 49.984-49.988 131.029-49.988 181.018 0",
+          "M170.667 725.333h469.333"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Filter"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 26,
+        "id": 37,
+        "name": "Filter",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 25
+    },
+    {
+      "icon": {
+        "paths": [
+          "M960.043 521.967c0-36.838-3.046-63.718-9.651-91.593h-429.205v166.255h251.934c-5.077 41.318-32.503 103.539-93.457 145.353l-0.853 5.564 135.706 103.031 9.404 0.917c86.345-78.153 136.124-193.139 136.124-329.527z",
+          "M521.131 959.991c123.426 0 227.042-39.825 302.729-108.514l-144.256-109.517c-38.601 26.385-90.411 44.8-158.473 44.8-120.888 0-223.49-78.148-260.064-186.167l-5.361 0.448-141.11 107.021-1.845 5.030c75.174 146.347 229.586 246.899 408.381 246.899z",
+          "M261.14 600.606c-9.65-27.874-15.236-57.745-15.236-88.606s5.585-60.727 14.728-88.603l-0.256-5.937-142.878-108.742-4.675 2.179c-30.982 60.73-48.761 128.927-48.761 201.102 0 72.179 17.778 140.373 48.761 201.101l148.317-112.495z",
+          "M521.135 237.225c85.837 0 143.74 36.337 176.759 66.704l129.015-123.45c-79.236-72.177-182.349-116.48-305.775-116.48-178.798 0-333.211 100.55-408.385 246.896l147.809 112.499c37.082-108.017 139.685-186.17 260.576-186.17z"
+        ],
+        "attrs": [
+          {
+            "fill": "rgb(66, 133, 244)"
+          },
+          {
+            "fill": "rgb(52, 168, 83)"
+          },
+          {
+            "fill": "rgb(251, 188, 5)"
+          },
+          {
+            "fill": "rgb(235, 67, 53)"
+          }
+        ],
+        "isMulticolor": true,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Google"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "f": 10
+            },
+            {
+              "f": 3
+            },
+            {
+              "f": 6
+            },
+            {
+              "f": 7
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "rgb(66, 133, 244)"
+        },
+        {
+          "fill": "rgb(52, 168, 83)"
+        },
+        {
+          "fill": "rgb(251, 188, 5)"
+        },
+        {
+          "fill": "rgb(235, 67, 53)"
+        }
+      ],
+      "properties": {
+        "order": 16,
+        "id": 36,
+        "name": "Google",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 26
+    },
+    {
+      "icon": {
+        "paths": [
+          "M526.187 682.65l71.125-128.017h-170.666l71.125-127.982",
+          "M809.395 371.627l-227.558-176.998c-41.071-31.971-98.607-31.971-139.716 0l-227.556 176.998c-27.724 21.58-43.919 54.726-43.919 89.809v278.106c0 62.844 50.935 113.775 113.778 113.775h455.109c62.844 0 113.779-50.931 113.779-113.775v-278.106c0-35.082-16.192-68.229-43.917-89.809z"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "miter",
+            "strokeLinecap": "butt",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Home"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "miter",
+          "strokeLinecap": "butt",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 86,
+        "id": 35,
+        "name": "Home",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 27
+    },
+    {
+      "icon": {
+        "paths": [
+          "M332.039 128h359.882c125.786 0 204.079 88.797 204.079 214.459v339.081c0 125.662-78.293 214.46-204.122 214.46h-359.84c-125.786 0-204.039-88.798-204.039-214.46v-339.081c0-125.661 78.627-214.459 204.039-214.459z",
+          "M505.365 376.666c-82.529 0-149.449 66.922-149.449 149.448 0 82.53 66.92 149.449 149.449 149.449 82.53 0 149.449-66.918 149.449-149.449 0-82.526-66.918-149.448-149.449-149.448z",
+          "M719.62 314.186v2.944M731.652 314.827c0 6.699-5.419 12.117-12.117 12.117s-12.16-5.419-12.16-12.117c0-6.699 5.461-12.16 12.16-12.16s12.117 5.461 12.117 12.16z"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Instagram"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 85,
+        "id": 34,
+        "name": "Instagram",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 28
+    },
+    {
+      "icon": {
+        "paths": [
+          "M785.067 238.932c149.333 149.333 149.333 392.534 0 541.868s-392.533 149.333-541.866 0c-149.333-149.333-149.333-392.534 0-541.868s388.266-149.333 541.866 0",
+          "M704 640h-384c-12.8 0-21.333-8.533-21.333-21.333v-192c0-17.066 21.333-29.866 34.133-17.066l85.333 68.266 76.8-81.066c8.533-8.533 21.333-8.533 29.867 0l76.8 81.066 85.333-68.266c12.8-12.8 34.133 0 34.133 17.066v192c4.267 12.8-4.267 21.333-17.067 21.333v0z"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "King"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 84,
+        "id": 33,
+        "name": "King",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 29
+    },
+    {
+      "icon": {
+        "paths": [
+          "M508.407 170.664v93.417",
+          "M508.407 853.333v-93.419",
+          "M853.333 508.403h-93.419",
+          "M170.667 508.403h93.417",
+          "M752.721 267.674l-64.674 64.674",
+          "M267.677 752.721l64.674-64.674",
+          "M752.721 752.721l-64.674-64.674",
+          "M267.677 267.674l64.674 64.674"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "10",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "10",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "10",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "10",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "10",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "10",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "10",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "10",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Loading"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "10",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "10",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "10",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "10",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "10",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "10",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "10",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "10",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 83,
+        "id": 32,
+        "name": "Loading",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 30
+    },
+    {
+      "icon": {
+        "paths": [
+          "M228 768c70.101 78.080 170.752 128 283.991 128 212.096 0 384-171.947 384-384 0-212.096-171.904-384-384-384-113.239 0-213.89 49.92-283.991 128",
+          "M128 512.004h512",
+          "M256 384l-128 128 128 128"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Logout"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 82,
+        "id": 31,
+        "name": "Logout",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 31
+    },
+    {
+      "icon": {
+        "paths": [
+          "M433.22 747.703v157.538h157.538v-157.538",
+          "M275.688 511.394h39.384",
+          "M728.61 353.844h-433.233c-76.131 0-137.846 61.716-137.846 137.847v216.614c0 21.739 17.644 39.386 39.385 39.386h630.152c21.743 0 39.386-17.647 39.386-39.386v-216.614c0-76.131-61.713-137.847-137.843-137.847z",
+          "M590.754 235.688v275.694",
+          "M590.78 117.531h196.923v118.154h-196.923v-118.154z",
+          "M590.716 496.627c-8.154 0.038-14.729 6.656-14.729 14.81 0 8.149 6.613 14.767 14.767 14.729 8.154 0 14.771-6.618 14.771-14.771 0-8.149-6.618-14.767-14.81-14.767",
+          "M295.406 353.844c76.131 0 137.848 61.716 137.848 137.847v256"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 59.077119999999994
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 59.077119999999994
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 59.077119999999994
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 59.077119999999994
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 59.077119999999994
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 59.077119999999994
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 59.077119999999994
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Mailbox"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 59.077119999999994
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 59.077119999999994
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 59.077119999999994
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 59.077119999999994
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 59.077119999999994
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 59.077119999999994
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 59.077119999999994
+        }
+      ],
+      "properties": {
+        "order": 81,
+        "id": 30,
+        "name": "Mailbox",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 32
+    },
+    {
+      "icon": {
+        "paths": [
+          "M512 554.667v0c-70.699 0-128-57.301-128-128v0c0-70.699 57.301-128 128-128v0c70.699 0 128 57.301 128 128v0c0 70.699-57.301 128-128 128z",
+          "M512 896c0 0-298.667-245.333-298.667-469.333 0-164.949 133.717-298.667 298.667-298.667s298.667 133.717 298.667 298.667c0 224-298.667 469.333-298.667 469.333z"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Map"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 80,
+        "id": 29,
+        "name": "Map",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 33
+    },
+    {
+      "icon": {
+        "paths": [
+          "M608 512c0 159.058-128.942 288-288 288s-288-128.942-288-288c0-159.058 128.942-288 288-288s288 128.942 288 288z",
+          "M992 512c0 159.058-128.942 288-288 288s-288-128.942-288-288c0-159.058 128.942-288 288-288s288 128.942 288 288z",
+          "M512 726.665c58.923-52.736 96-129.37 96-214.665s-37.077-161.93-96-214.664c-58.923 52.734-96 129.369-96 214.664s37.077 161.929 96 214.665z"
+        ],
+        "attrs": [
+          {
+            "fill": "rgb(232, 11, 38)"
+          },
+          {
+            "fill": "rgb(245, 157, 49)"
+          },
+          {
+            "fill": "rgb(252, 96, 32)"
+          }
+        ],
+        "isMulticolor": true,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Mastercard"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "f": 5
+            },
+            {
+              "f": 9
+            },
+            {
+              "f": 8
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "rgb(232, 11, 38)"
+        },
+        {
+          "fill": "rgb(245, 157, 49)"
+        },
+        {
+          "fill": "rgb(252, 96, 32)"
+        }
+      ],
+      "properties": {
+        "order": 39,
+        "id": 28,
+        "name": "Mastercard",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 34
+    },
+    {
+      "icon": {
+        "paths": [
+          "M234.568 512h554.885",
+          "M234.568 682.739h554.885",
+          "M234.552 341.264h554.884"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Menu"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 40,
+        "id": 27,
+        "name": "Menu",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 35
+    },
+    {
+      "icon": {
+        "paths": [
+          "M753.361 512h-482.72"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Mines"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 41,
+        "id": 26,
+        "name": "Mines",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 36
+    },
+    {
+      "icon": {
+        "paths": [
+          "M896.158 426.63c0 58.933-114.662 106.711-256.107 106.711",
+          "M896.158 277.234v320.133c0 58.935-114.662 106.709-256.107 106.709",
+          "M405.29 320.346c-12.672-10.877-20.376-26.44-21.342-43.112 0-58.904 114.821-106.711 256.108-106.711s256.107 47.807 256.107 106.711c0 58.905-114.82 106.711-256.107 106.711-7.258 0-14.515 0-21.342-0.427",
+          "M640.052 426.63c0 58.935-114.663 106.711-256.107 106.711s-256.107-47.776-256.107-106.711c0-58.935 114.663-106.711 256.107-106.711s256.107 47.776 256.107 106.711z",
+          "M640.051 576.026c0 58.935-114.662 106.714-256.106 106.714s-256.107-47.778-256.107-106.714",
+          "M640.051 426.63v320.134c0 58.935-114.662 106.709-256.106 106.709s-256.107-47.774-256.107-106.709v-320.134"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Money"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 78,
+        "id": 25,
+        "name": "Money",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 37
+    },
+    {
+      "icon": {
+        "paths": [
+          "M512 789.47c-11.785 0-21.342-9.553-21.342-21.342 0-11.785 9.557-21.342 21.342-21.342 11.789 0 21.342 9.557 21.342 21.342 0 11.789-9.553 21.342-21.342 21.342",
+          "M512 533.303c-11.785 0-21.342-9.553-21.342-21.342 0-11.785 9.557-21.342 21.342-21.342 11.789 0 21.342 9.557 21.342 21.342 0 11.789-9.553 21.342-21.342 21.342",
+          "M512 277.221c-11.785 0-21.342-9.555-21.342-21.342s9.557-21.342 21.342-21.342c11.789 0 21.342 9.555 21.342 21.342s-9.553 21.342-21.342 21.342"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "More"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 59,
+        "id": 24,
+        "name": "More",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 38
+    },
+    {
+      "icon": {
+        "paths": [
+          "M896 384v-128c0-70.699-57.301-128-128-128h-512c-70.699 0-128 57.301-128 128v469.333c0 70.699 57.301 128 128 128h85.333",
+          "M798.976 541.231l128.725 228.779c31.659 56.363-9.003 125.995-73.685 125.995h-257.408c-64.64 0-105.344-69.589-73.643-125.952l128.725-228.779c32.256-57.515 114.944-57.515 147.285-0.043z",
+          "M725.333 702.502v-77.525",
+          "M725.291 788.011c-2.133 0-3.84 1.749-3.797 3.84 0 2.133 1.749 3.84 3.84 3.84s3.797-1.749 3.797-3.84c0-2.091-1.707-3.84-3.84-3.84",
+          "M298.667 320h426.667",
+          "M298.667 512h170.667"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "No Information"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 60,
+        "id": 23,
+        "name": "No-Information",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 39
+    },
+    {
+      "icon": {
+        "paths": [
+          "M432.38 506.236c2.33 2.33 3.025 5.828 1.766 8.866-1.259 3.042-4.228 5.026-7.517 5.026-3.291 0-6.257-1.984-7.517-5.026-1.26-3.038-0.563-6.537 1.763-8.866 3.181-3.17 8.326-3.17 11.504 0",
+          "M469.316 725.423h-298.791c-22.643 0.004-44.361-8.986-60.372-24.998-16.011-16.009-25.004-37.726-24.997-60.369v-256.108c-0.006-22.643 8.986-44.361 24.997-60.372s37.728-25.003 60.372-24.997h298.791",
+          "M261.647 506.236c2.327 2.33 3.023 5.828 1.764 8.866-1.26 3.042-4.226 5.026-7.517 5.026s-6.257-1.984-7.517-5.026c-1.26-3.038-0.563-6.537 1.764-8.866 3.18-3.17 8.326-3.17 11.506 0",
+          "M667.772 447.974h200.675c38.881 0 70.4 31.519 70.4 70.4v136.649c0 38.881-31.519 70.4-70.4 70.4h-200.675c-38.881 0-70.4-31.519-70.4-70.4v-136.649c0-38.881 31.519-70.4 70.4-70.4z",
+          "M662.652 447.974v-86.625c0-58.242 47.215-105.456 105.455-105.456v0c27.968 0 54.793 11.11 74.569 30.887s30.886 46.6 30.886 74.569v0 87.346"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Password"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 61,
+        "id": 22,
+        "name": "Password",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 40
+    },
+    {
+      "icon": {
+        "paths": [
+          "M451.639 700.416c-24.418-24.414-31.722-61.133-18.509-93.035 13.214-31.898 44.343-52.698 78.869-52.698 34.53 0 65.66 20.8 78.874 52.698 13.214 31.902 5.909 68.621-18.509 93.035-16.009 16.013-37.722 25.007-60.365 25.007-22.639 0-44.352-8.994-60.361-25.007",
+          "M746.765 725.419v-170.735",
+          "M277.233 725.419v-170.735",
+          "M512 341.261v-213.422",
+          "M597.367 213.207l-85.367-85.369-85.37 85.369",
+          "M682.735 383.945h128.055c22.643-0.006 44.361 8.986 60.369 24.997 16.013 16.011 24.998 37.731 24.998 60.374v341.474c0 22.643-8.986 44.361-24.998 60.369-16.009 16.013-37.726 25.007-60.369 24.998h-597.583c-22.643 0.009-44.361-8.986-60.372-24.998-16.012-16.009-24.997-37.726-24.997-60.369v-341.474c0-22.643 8.986-44.363 24.997-60.374s37.728-25.004 60.372-24.997h128.053"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Payout"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 62,
+        "id": 21,
+        "name": "Payout",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 41
+    },
+    {
+      "icon": {
+        "paths": [
+          "M795.153 307.752c9.971-65.026 0-108.377-34.91-148.393-38.229-45.018-108.045-63.359-197.803-63.359h-257.646c-18.284 0-33.245 13.339-36.569 31.679l-108.044 683.606c-1.662 13.342 8.311 25.011 21.609 25.011h159.574l-11.636 70.029c-1.662 11.669 6.649 21.675 19.947 21.675h134.639c16.623 0 29.922-11.669 31.582-26.679l28.258-176.734c1.664-15.006 16.623-26.679 31.586-26.679h19.947c129.651 0 232.708-53.355 262.63-206.75 11.635-63.356 6.647-118.38-26.598-155.061-9.971-11.671-21.606-20.008-36.565-28.344z",
+          "M795.153 307.752c9.971-65.026 0-108.377-34.91-148.393-38.229-45.018-108.045-63.359-197.803-63.359h-257.646c-18.284 0-33.245 13.339-36.569 31.679l-108.044 683.606c-1.662 13.342 8.311 25.011 21.609 25.011h159.573l38.231-246.767c3.325-18.338 18.284-31.68 36.569-31.68h76.461c149.602 0 265.958-60.023 299.2-236.759 1.664-3.335 1.664-8.337 3.328-13.338z",
+          "M424.475 309.419c1.662-11.671 16.621-26.677 31.58-26.677h202.795c23.27 0 46.541 1.667 66.487 5.002 18.283 3.334 51.529 11.671 68.151 21.675 9.975-65.026 0-108.377-34.906-148.393-36.57-46.685-106.385-65.026-196.143-65.026h-257.646c-18.284 0-33.245 13.339-36.569 31.679l-108.044 683.606c-1.662 13.342 8.311 25.011 21.609 25.011h159.573l83.112-526.878z"
+        ],
+        "attrs": [
+          {
+            "fill": "rgb(0, 156, 222)"
+          },
+          {
+            "fill": "rgb(1, 33, 105)"
+          },
+          {
+            "fill": "rgb(0, 48, 135)"
+          }
+        ],
+        "isMulticolor": true,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Paypal"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "f": 4
+            },
+            {
+              "f": 1
+            },
+            {
+              "f": 2
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "rgb(0, 156, 222)"
+        },
+        {
+          "fill": "rgb(1, 33, 105)"
+        },
+        {
+          "fill": "rgb(0, 48, 135)"
+        }
+      ],
+      "properties": {
+        "order": 63,
+        "id": 20,
+        "name": "Paypal",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 42
+    },
+    {
+      "icon": {
+        "paths": [
+          "M422.097 305.981l276.963 160.809c16.286 9.451 26.274 26.641 26.274 45.21s-9.988 35.759-26.274 45.21l-276.963 160.811c-16.548 9.604-37.072 9.758-53.769 0.405s-27.001-26.778-26.995-45.653v-321.546c-0.006-18.872 10.298-36.298 26.995-45.651s37.221-9.199 53.769 0.406v0z"
+        ],
+        "attrs": [
+          {
+            "fill": "rgb(255, 255, 255)",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Play"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "f": 12,
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "rgb(255, 255, 255)",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 64,
+        "id": 19,
+        "name": "Play",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 43
+    },
+    {
+      "icon": {
+        "paths": [
+          "M853.372 511.996c0 188.513-152.82 341.333-341.333 341.333s-341.333-152.82-341.333-341.333c0-188.513 152.82-341.333 341.333-341.333s341.333 152.82 341.333 341.333z",
+          "M512.038 383.995v256.001",
+          "M640.038 511.996h-256.002"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Plus"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 65,
+        "id": 18,
+        "name": "Plus",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 44
+    },
+    {
+      "icon": {
+        "paths": [
+          "M512 270.641v482.716",
+          "M753.361 512h-482.72"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Plus-1"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 74,
+        "id": 17,
+        "name": "Plus-1",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 45
+    },
+    {
+      "icon": {
+        "paths": [
+          "M512 170.667v339.917l-234.667 236.083",
+          "M213.333 384l298.667 128",
+          "M753.361 270.641c133.295 133.299 133.295 349.421 0 482.72-133.299 133.295-349.422 133.295-482.72 0-133.299-133.299-133.299-349.422 0-482.72s349.421-133.299 482.72 0"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Portfolio"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 76,
+        "id": 16,
+        "name": "Portfolio",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 46
+    },
+    {
+      "icon": {
+        "paths": [
+          "M384.036 378.192c13.586-60.955 66.921-103.219 126.978-100.624 67.217-3.876 124.838 49.444 129.024 119.387 0 89.773-123.29 119.388-123.29 179.083",
+          "M522.705 704.038c0 5.888-4.779 10.667-10.667 10.667-5.892 0-10.667-4.779-10.667-10.667 0-5.892 4.774-10.667 10.667-10.667"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Question"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 66,
+        "id": 15,
+        "name": "Question",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 47
+    },
+    {
+      "icon": {
+        "paths": [
+          "M729.502 517.269l-230.357 184.286c-16.981 13.585-41.468 12.228-56.845-3.149l-116.709-116.71c-15.379-15.377-16.735-39.863-3.148-56.845l184.284-230.358c84.271-105.336 211.853-166.654 346.748-166.654v0c23.573 0 42.684 19.11 42.684 42.684v0c0 134.896-61.316 262.476-166.656 346.746z",
+          "M682.739 554.684v187.042c0 16.166-9.135 30.946-23.595 38.178l-103.121 51.563c-11.068 5.534-23.991 5.99-35.426 1.254-11.43-4.732-20.245-14.195-24.158-25.937l-27.123-81.365",
+          "M298.576 554.684l-81.363-27.123c-11.739-3.913-21.202-12.727-25.937-24.158s-4.276-24.358 1.257-35.426l51.563-103.121c7.23-14.46 22.008-23.596 38.175-23.596h187.042",
+          "M245.225 878.524l-117.386 17.634 17.635-117.385c5.721-38.080 35.614-67.972 73.694-73.694v0c27.518-4.134 55.365 5.035 75.041 24.713 19.677 19.674 28.847 47.522 24.712 75.042v0c-5.722 38.080-35.616 67.972-73.696 73.69v0z"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Rocket"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 70,
+        "id": 14,
+        "name": "Rocket",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 48
+    },
+    {
+      "icon": {
+        "paths": [
+          "M768.038 469.329c0 164.949-133.718 298.667-298.667 298.667s-298.667-133.718-298.667-298.667c0-164.949 133.718-298.667 298.667-298.667s298.667 133.718 298.667 298.667z",
+          "M853.372 853.329l-170.667-170.667"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Search"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 67,
+        "id": 13,
+        "name": "Search",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 49
+    },
+    {
+      "icon": {
+        "paths": [
+          "M577.28 320.854l-173.228 129.706",
+          "M699.938 198.065c33.856 33.858 33.856 88.753 0 122.61-33.86 33.858-88.755 33.858-122.611 0-33.86-33.858-33.86-88.753 0-122.61 33.856-33.858 88.751-33.858 122.611 0",
+          "M577.28 703.142l-173.228-129.707",
+          "M699.938 703.326c33.856 33.856 33.856 88.751 0 122.611-33.86 33.856-88.755 33.856-122.611 0-33.86-33.86-33.86-88.755 0-122.611 33.856-33.856 88.751-33.856 122.611 0",
+          "M403.858 450.756c33.825 33.826 33.825 88.666 0 122.492-33.824 33.822-88.665 33.822-122.49 0-33.824-33.826-33.824-88.666 0-122.492 33.825-33.824 88.665-33.824 122.49 0"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Share"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 27,
+        "id": 12,
+        "name": "Share",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 50
+    },
+    {
+      "icon": {
+        "paths": [
+          "M512 725.423v0c6.775-0.004 12.506-5.022 13.402-11.738l6.319-47.211c9.357-70.182 64.572-125.397 134.754-134.754l47.211-6.319c6.716-0.896 11.733-6.626 11.738-13.402v0c-0.004-6.775-5.022-12.506-11.738-13.402l-47.211-6.319c-70.182-9.357-125.397-64.572-134.754-134.754l-6.319-47.209c-0.896-6.717-6.626-11.734-13.402-11.738v0c-6.775 0.005-12.506 5.021-13.402 11.738l-6.319 47.209c-9.357 70.182-64.572 125.397-134.754 134.754l-47.209 6.319c-6.717 0.896-11.734 6.626-11.738 13.402v0c0.005 6.775 5.021 12.506 11.738 13.402l47.209 6.319c70.182 9.357 125.397 64.572 134.754 134.754l6.319 47.211c0.896 6.716 6.626 11.733 13.402 11.738v0z",
+          "M511.999 127.839c212.166 0 384.16 171.994 384.16 384.16s-171.994 384.16-384.16 384.16c-212.166 0-384.16-171.994-384.16-384.16s171.994-384.16 384.16-384.16z"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Star"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 28,
+        "id": 11,
+        "name": "Star",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 51
+    },
+    {
+      "icon": {
+        "paths": [
+          "M813.943 814.037c-166.426 166.421-437.461 166.421-603.885 0-166.425-166.426-166.425-437.461 0-603.886s432.702-166.424 603.885 0c166.421 166.425 166.421 437.46 0 603.886zM295.722 657.178h427.947c14.268 0 23.778-9.51 19.021-23.778v-213.973c0-19.020-23.774-33.285-38.037-19.020l-95.1 76.078-85.589-90.343c-9.51-9.51-23.778-9.51-33.289 0l-85.588 90.343-95.1-76.078c-14.265-14.265-38.040 0-38.040 19.020v213.973c0 14.268 9.51 23.778 23.775 23.778z"
+        ],
+        "attrs": [
+          {
+            "fill": "rgb(255, 255, 255)"
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Subscription"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "f": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "properties": {
+        "order": 29,
+        "id": 10,
+        "name": "Subscription",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 52
+    },
+    {
+      "icon": {
+        "paths": [
+          "M853.372 511.996c0 188.514-152.823 341.333-341.333 341.333",
+          "M170.703 511.996c0-188.514 152.82-341.334 341.335-341.334",
+          "M170.703 517.85c0.005 34.313 6.158 68.348 18.171 100.527 5.495 14.942 20.985 23.842 36.788 21.137l32.361-5.662c26.156-4.574 43.936-28.907 40.18-54.985l-9.74-67.622c-1.886-13.090-9.045-24.866-19.84-32.627-10.796-7.757-24.303-10.846-37.433-8.546l-57.772 10.103",
+          "M853.372 511.996c0-188.514-152.823-341.334-341.333-341.334",
+          "M853.372 517.85c-0.009 34.313-6.161 68.348-18.172 100.527-5.495 14.942-20.988 23.842-36.791 21.137l-32.358-5.662c-26.155-4.574-43.934-28.907-40.179-54.985l9.741-67.622c1.886-13.090 9.045-24.866 19.84-32.627 10.795-7.757 24.303-10.846 37.431-8.546l57.775 10.103",
+          "M576.047 533.018c-0.132 0-0.247 0.077-0.294 0.196-0.051 0.119-0.026 0.256 0.068 0.35 0.090 0.090 0.226 0.119 0.346 0.068s0.196-0.166 0.196-0.294c0.009-0.085-0.026-0.171-0.085-0.23-0.060-0.064-0.145-0.094-0.23-0.090",
+          "M448.047 533.018c-0.132 0-0.247 0.077-0.299 0.196-0.047 0.119-0.021 0.256 0.073 0.35 0.090 0.090 0.226 0.119 0.346 0.068s0.196-0.166 0.196-0.294c0.009-0.085-0.026-0.171-0.085-0.23-0.060-0.064-0.145-0.094-0.23-0.090"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Support"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 42,
+        "id": 9,
+        "name": "Support",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 53
+    },
+    {
+      "icon": {
+        "paths": [
+          "M887.147 406.338c33.707 33.709 33.707 88.361 0 122.067-33.711 33.707-88.363 33.707-122.069 0s-33.707-88.358 0-122.067c33.707-33.708 88.358-33.708 122.069 0",
+          "M605.978 252.261c51.904 51.903 51.904 136.055 0 187.957-51.9 51.904-136.051 51.904-187.956 0-51.903-51.901-51.903-136.053 0-187.957 51.901-51.903 136.057-51.903 187.956 0",
+          "M258.921 406.338c33.708 33.709 33.708 88.361 0 122.067s-88.359 33.707-122.067 0c-33.708-33.707-33.708-88.358 0-122.067s88.359-33.708 122.067 0",
+          "M981.333 810.671v-46.763c0-58.923-47.744-106.667-106.667-106.667h-34.176",
+          "M42.667 810.671v-46.763c0-58.923 47.744-106.667 106.667-106.667h34.176",
+          "M739.797 810.667v-68.309c0-82.475-66.859-149.333-149.333-149.333h-156.971c-82.473 0-149.332 66.859-149.332 149.333v68.309"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Team"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 43,
+        "id": 8,
+        "name": "Team",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 54
+    },
+    {
+      "icon": {
+        "paths": [
+          "M426.291 398.502c-137.368 0-248.749 111.092-248.749 248.747 0 137.66 111.381 248.751 248.749 248.751 137.37 0 248.747-111.091 248.747-248.751v-276.644c0 0 88.674 64.22 171.409 42.095v-138.24c-118.729-11.209-165.76-108.060-178.547-146.46h-115.742v515.763c0 63.723-51.558 115.2-115.157 115.2-63.639 0-115.2-51.477-115.2-115.2 0-59.78 45.333-108.723 103.41-114.62 0-37.943 1.079-130.641 1.079-130.641z"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Tiktok"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 44,
+        "id": 7,
+        "name": "Tiktok",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 55
+    },
+    {
+      "icon": {
+        "paths": [
+          "M426.667 768h170.667",
+          "M724.437 128h-424.875c-23.552 0-42.667 19.115-42.667 42.667v101.461c0 17.963 5.675 35.499 16.213 50.048l137.387 189.824-137.387 189.824c-10.539 14.549-16.213 32.085-16.213 50.048v101.461c0 23.552 19.115 42.667 42.667 42.667h424.832c23.552 0 42.667-19.115 42.667-42.667v-99.925c0-18.944-6.315-37.333-17.92-52.309l-146.645-189.099 146.688-189.141c11.605-14.976 17.92-33.365 17.92-52.309v-99.883c0-23.552-19.115-42.667-42.667-42.667z"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Time"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 45,
+        "id": 6,
+        "name": "Time",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 56
+    },
+    {
+      "icon": {
+        "paths": [
+          "M663.164 896.162h-302.327c-50.185 0-91.908-38.639-95.757-88.674l-41.199-535.587h576.239l-41.199 535.587c-3.849 50.035-45.572 88.674-95.757 88.674v0z",
+          "M853.478 271.899h-682.953",
+          "M391.947 127.839h240.1c26.522 0 48.021 21.499 48.021 48.020v96.040h-336.141v-96.040c0-12.736 5.059-24.95 14.065-33.955s21.22-14.065 33.955-14.065z",
+          "M426.63 725.419h170.737"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Trash"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 46,
+        "id": 5,
+        "name": "Trash",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 57
+    },
+    {
+      "icon": {
+        "paths": [
+          "M640 589.653c27.337-13.611 55.351-22.272 85.333-27.307",
+          "M298.667 562.347c29.981 4.992 57.998 13.696 85.333 27.307",
+          "M725.333 391.68c-29.982 4.992-57.997 13.696-85.333 27.307",
+          "M384 418.987c-27.335-13.611-55.353-22.272-85.333-27.307",
+          "M512 292.907c-98.38-54.243-186.292-75.821-302.763-79.517-21.163-0.709-38.571 16.464-38.571 37.332v442.496c0 20.198 16.422 36.962 36.94 37.261 117.267 1.715 205.559 22.993 304.393 80.188 98.833-57.195 187.127-78.473 304.393-80.188 20.518-0.299 36.941-17.062 36.941-37.295v-442.499c0-20.869-17.408-38.004-38.571-37.332-116.471 3.733-204.382 25.311-302.763 79.555z",
+          "M512 298.667v512"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Tutorial"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 47,
+        "id": 4,
+        "name": "Tutorial",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 58
+    },
+    {
+      "icon": {
+        "paths": [
+          "M617.596 193.072c58.317 58.319 58.317 152.871 0 211.189-58.321 58.318-152.87 58.318-211.19 0-58.319-58.319-58.319-152.871 0-211.189 58.32-58.319 152.869-58.319 211.19 0",
+          "M170.667 789.338v42.667c0 23.552 19.115 42.667 42.667 42.667h597.333c23.552 0 42.667-19.115 42.667-42.667v-42.667c0-129.109-168.619-212.992-341.333-212.992s-341.333 83.883-341.333 212.992z"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "User"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 48,
+        "id": 3,
+        "name": "User",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 59
+    },
+    {
+      "icon": {
+        "paths": [
+          "M725.419 298.577v-42.684c0-47.148-38.221-85.369-85.367-85.369h-405.501c-58.935 0-106.711 47.776-106.711 106.711v512.214c0 58.935 47.776 106.709 106.711 106.709h554.899c58.935 0 106.709-47.774 106.709-106.709v-405.503c0-47.148-38.221-85.369-85.367-85.369h-682.952",
+          "M725.423 597.367h-85.372"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Wallet"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 49,
+        "id": 2,
+        "name": "Wallet",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 60
+    },
+    {
+      "icon": {
+        "paths": [
+          "M512 528.213v-128",
+          "M511.957 650.667c-5.888 0-10.667 4.779-10.624 10.667 0 5.888 4.779 10.667 10.667 10.667s10.667-4.779 10.667-10.667c0-5.888-4.779-10.667-10.709-10.667",
+          "M589.926 215.157l294.123 506.132c34.176 58.829-9.024 132.045-77.918 132.045h-588.241c-68.931 0-112.134-73.216-77.917-132.045l294.123-506.132c34.445-59.32 121.387-59.32 155.831 0z"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Warning"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 50,
+        "id": 1,
+        "name": "Warning",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 61
+    },
+    {
+      "icon": {
+        "paths": [
+          "M445.862 573.154l-246.654 280.179",
+          "M800.303 170.667l-231.97 263.492",
+          "M409.58 204.885c-7.728-11.395-20.602-18.219-34.371-18.219h-155.569c-13.329 0-21.23 14.907-13.748 25.937l412.335 607.927c7.727 11.396 20.599 18.219 34.368 18.219h155.571c13.329 0 21.231-14.908 13.747-25.937l-412.333-607.927z"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "X"
+        ],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 24,
+        "id": 0,
+        "name": "X",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 62
+    }
+  ],
+  "height": 1024,
+  "preferences": {
+    "showGlyphs": true,
+    "showQuickUse": true,
+    "showQuickUse2": true,
+    "showSVGs": true,
+    "fontPref": {
+      "prefix": "icon-",
+      "metadata": {
+        "fontFamily": "icomoon"
+      },
+      "metrics": {
+        "emSize": 1024,
+        "baseline": 6.25,
+        "whitespace": 50
+      },
+      "embed": false
+    },
+    "imagePref": {
+      "prefix": "icon-",
+      "png": true,
+      "useClassSelector": true,
+      "color": 0,
+      "bgColor": 16777215,
+      "classSelector": ".icon",
+      "name": "icomoon"
+    },
+    "historySize": 50,
+    "showCodes": true,
+    "gridSize": 16
+  }
+}
