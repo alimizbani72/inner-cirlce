@@ -1,14 +1,10 @@
-const fs =require("fs")
-const { promisify } =require("util")
+import fs from "fs";
+import { promisify } from "util";
 
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
 
-type Icon = {
-  properties: {
-    name: string;
-  };
-};
+type Icon = { properties: { name: string } };
 
 const camelize = (str: string): string => {
   return str

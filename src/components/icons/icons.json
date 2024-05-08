@@ -55,9 +55,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Affiliate"
-        ],
+        "tags": ["Affiliate"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -132,9 +130,7 @@
     },
     {
       "icon": {
-        "paths": [
-          "M682.667 426.667l-170.667 170.667-170.667-170.667"
-        ],
+        "paths": ["M682.667 426.667l-170.667 170.667-170.667-170.667"],
         "attrs": [
           {
             "fill": "none",
@@ -148,9 +144,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Arrow down"
-        ],
+        "tags": ["Arrow down"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -181,9 +175,7 @@
     },
     {
       "icon": {
-        "paths": [
-          "M597.333 682.667l-170.667-170.667 170.667-170.667"
-        ],
+        "paths": ["M597.333 682.667l-170.667-170.667 170.667-170.667"],
         "attrs": [
           {
             "fill": "none",
@@ -197,9 +189,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Arrow left"
-        ],
+        "tags": ["Arrow left"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -230,9 +220,7 @@
     },
     {
       "icon": {
-        "paths": [
-          "M426.667 341.333l170.667 170.667-170.667 170.667"
-        ],
+        "paths": ["M426.667 341.333l170.667 170.667-170.667 170.667"],
         "attrs": [
           {
             "fill": "none",
@@ -246,9 +234,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Arrow right"
-        ],
+        "tags": ["Arrow right"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -279,9 +265,7 @@
     },
     {
       "icon": {
-        "paths": [
-          "M682.667 597.333l-170.667-170.667-170.667 170.667"
-        ],
+        "paths": ["M682.667 597.333l-170.667-170.667-170.667 170.667"],
         "attrs": [
           {
             "fill": "none",
@@ -295,9 +279,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Arrow up"
-        ],
+        "tags": ["Arrow up"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -371,9 +353,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Arrow"
-        ],
+        "tags": ["Arrow"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -437,10 +417,7 @@
     },
     {
       "icon": {
-        "paths": [
-          "M682.667 640.009l-128-128 128-128.001",
-          "M384.009 384.008v256.001"
-        ],
+        "paths": ["M682.667 640.009l-128-128 128-128.001", "M384.009 384.008v256.001"],
         "attrs": [
           {
             "fill": "none",
@@ -462,9 +439,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Arrow-Left"
-        ],
+        "tags": ["Arrow-Left"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -506,10 +481,7 @@
     },
     {
       "icon": {
-        "paths": [
-          "M362.667 640.009l128-128-128-128.001",
-          "M661.325 384.008v256.001"
-        ],
+        "paths": ["M362.667 640.009l128-128-128-128.001", "M661.325 384.008v256.001"],
         "attrs": [
           {
             "fill": "none",
@@ -531,9 +503,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Arrow-Right"
-        ],
+        "tags": ["Arrow-Right"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -613,9 +583,7 @@
         "isMulticolor": false,
         "isMulticolor2": true,
         "grid": 0,
-        "tags": [
-          "Bell"
-        ],
+        "tags": ["Bell"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -690,9 +658,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Call"
-        ],
+        "tags": ["Call"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -748,9 +714,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Camera"
-        ],
+        "tags": ["Camera"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -835,9 +799,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Change"
-        ],
+        "tags": ["Change"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -935,9 +897,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Chart"
-        ],
+        "tags": ["Chart"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -1069,9 +1029,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Chart-1"
-        ],
+        "tags": ["Chart-1"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -1204,9 +1162,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Check circle"
-        ],
+        "tags": ["Check circle"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -1248,9 +1204,7 @@
     },
     {
       "icon": {
-        "paths": [
-          "M725.453 384.036l-266.466 256.002-160.2-153.536"
-        ],
+        "paths": ["M725.453 384.036l-266.466 256.002-160.2-153.536"],
         "attrs": [
           {
             "fill": "none",
@@ -1264,9 +1218,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Check"
-        ],
+        "tags": ["Check"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -1331,9 +1283,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Clock"
-        ],
+        "tags": ["Clock"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -1386,10 +1336,7 @@
     },
     {
       "icon": {
-        "paths": [
-          "M725.372 298.662l-426.669 426.668",
-          "M298.703 298.662l426.669 426.668"
-        ],
+        "paths": ["M725.372 298.662l-426.669 426.668", "M298.703 298.662l426.669 426.668"],
         "attrs": [
           {
             "fill": "none",
@@ -1411,9 +1358,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Close"
-        ],
+        "tags": ["Close"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -1480,9 +1425,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Coin reports"
-        ],
+        "tags": ["Coin reports"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -1549,9 +1492,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Community"
-        ],
+        "tags": ["Community"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -1618,9 +1559,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Copy"
-        ],
+        "tags": ["Copy"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -1687,9 +1626,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Email"
-        ],
+        "tags": ["Email"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -1774,9 +1711,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Eye Off"
-        ],
+        "tags": ["Eye Off"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -1865,9 +1800,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Eye On"
-        ],
+        "tags": ["Eye On"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -1952,9 +1885,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Face"
-        ],
+        "tags": ["Face"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -2061,9 +1992,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Filter"
-        ],
+        "tags": ["Filter"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -2150,9 +2079,7 @@
         "isMulticolor": true,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Google"
-        ],
+        "tags": ["Google"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -2221,9 +2148,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Home"
-        ],
+        "tags": ["Home"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -2299,9 +2224,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Instagram"
-        ],
+        "tags": ["Instagram"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -2379,9 +2302,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "King"
-        ],
+        "tags": ["King"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -2502,9 +2423,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Loading"
-        ],
+        "tags": ["Loading"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -2646,9 +2565,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Logout"
-        ],
+        "tags": ["Logout"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -2771,9 +2688,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Mailbox"
-        ],
+        "tags": ["Mailbox"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -2895,9 +2810,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Map"
-        ],
+        "tags": ["Map"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -2958,9 +2871,7 @@
         "isMulticolor": true,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Mastercard"
-        ],
+        "tags": ["Mastercard"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -2998,11 +2909,7 @@
     },
     {
       "icon": {
-        "paths": [
-          "M234.568 512h554.885",
-          "M234.568 682.739h554.885",
-          "M234.552 341.264h554.884"
-        ],
+        "paths": ["M234.568 512h554.885", "M234.568 682.739h554.885", "M234.552 341.264h554.884"],
         "attrs": [
           {
             "fill": "none",
@@ -3032,9 +2939,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Menu"
-        ],
+        "tags": ["Menu"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -3087,9 +2992,7 @@
     },
     {
       "icon": {
-        "paths": [
-          "M753.361 512h-482.72"
-        ],
+        "paths": ["M753.361 512h-482.72"],
         "attrs": [
           {
             "fill": "none",
@@ -3103,9 +3006,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Mines"
-        ],
+        "tags": ["Mines"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -3197,9 +3098,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Money"
-        ],
+        "tags": ["Money"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -3319,9 +3218,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "More"
-        ],
+        "tags": ["More"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -3435,9 +3332,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "No Information"
-        ],
+        "tags": ["No Information"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -3575,9 +3470,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Password"
-        ],
+        "tags": ["Password"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -3713,9 +3606,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Payout"
-        ],
+        "tags": ["Payout"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -3820,9 +3711,7 @@
         "isMulticolor": true,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Paypal"
-        ],
+        "tags": ["Paypal"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -3876,9 +3765,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Play"
-        ],
+        "tags": ["Play"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -3944,9 +3831,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Plus"
-        ],
+        "tags": ["Plus"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -3999,10 +3884,7 @@
     },
     {
       "icon": {
-        "paths": [
-          "M512 270.641v482.716",
-          "M753.361 512h-482.72"
-        ],
+        "paths": ["M512 270.641v482.716", "M753.361 512h-482.72"],
         "attrs": [
           {
             "fill": "none",
@@ -4024,9 +3906,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Plus-1"
-        ],
+        "tags": ["Plus-1"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -4102,9 +3982,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Portfolio"
-        ],
+        "tags": ["Portfolio"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -4182,9 +4060,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Question"
-        ],
+        "tags": ["Question"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -4269,9 +4145,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Rocket"
-        ],
+        "tags": ["Rocket"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -4360,9 +4234,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Search"
-        ],
+        "tags": ["Search"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -4456,9 +4328,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Share"
-        ],
+        "tags": ["Share"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -4558,9 +4428,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Star"
-        ],
+        "tags": ["Star"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -4613,9 +4481,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Subscription"
-        ],
+        "tags": ["Subscription"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -4711,9 +4577,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Support"
-        ],
+        "tags": ["Support"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -4871,9 +4735,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Team"
-        ],
+        "tags": ["Team"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -4975,9 +4837,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Tiktok"
-        ],
+        "tags": ["Tiktok"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -5033,9 +4893,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Time"
-        ],
+        "tags": ["Time"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -5120,9 +4978,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Trash"
-        ],
+        "tags": ["Trash"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -5247,9 +5103,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Tutorial"
-        ],
+        "tags": ["Tutorial"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -5360,9 +5214,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -5429,9 +5281,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Wallet"
-        ],
+        "tags": ["Wallet"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -5507,9 +5357,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "Warning"
-        ],
+        "tags": ["Warning"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {
@@ -5596,9 +5444,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": [
-          "X"
-        ],
+        "tags": ["X"],
         "colorPermutations": {
           "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
             {

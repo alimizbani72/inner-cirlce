@@ -77,6 +77,10 @@ export default async function UI() {
           <ICON />
         </IconButton>
 
+        <IconButton>
+          <ICON />
+        </IconButton>
+
         <IconButton color="secondary" size="medium">
           <ICON />
         </IconButton>
