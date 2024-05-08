@@ -1,73 +1,77 @@
-import { Roboto } from 'next/font/google';
+import { Montserrat } from 'next/font/google';
 import type { CSSProperties } from 'react';
+import { toNumber } from 'src/utils/toNumber';
 
 declare module '@mui/material/styles' {
   interface TypographyVariants {
-    fontWeightBlack: CSSProperties['fontWeight'];
-    'black-h1': CSSProperties;
-    'black-h2': CSSProperties;
-    'black-h3': CSSProperties;
-    'black-h4': CSSProperties;
-    'black-h5': CSSProperties;
-    'black-h6': CSSProperties;
     // bold
-    'bold-h1': CSSProperties;
-    'bold-h2': CSSProperties;
-    'bold-h3': CSSProperties;
-    'bold-h4': CSSProperties;
-    'bold-h5': CSSProperties;
-    'bold-h6': CSSProperties;
+    'h1-bold': CSSProperties;
+    'h2-bold': CSSProperties;
+    'h3-bold': CSSProperties;
+    'h4-bold': CSSProperties;
+    'p1-bold': CSSProperties;
+    'p2-bold': CSSProperties;
+    'caption-bold': CSSProperties;
+    // semi-bold
+    'h1-semi-bold': CSSProperties;
+    'h2-semi-bold': CSSProperties;
+    'h3-semi-bold': CSSProperties;
+    'h4-semi-bold': CSSProperties;
+    'p1-semi-bold': CSSProperties;
+    'p2-semi-bold': CSSProperties;
+    'caption-semi-bold': CSSProperties;
     // medium
-    'medium-h1': CSSProperties;
-    'medium-h2': CSSProperties;
-    'medium-h3': CSSProperties;
-    'medium-h4': CSSProperties;
-    'medium-h5': CSSProperties;
-    'medium-h6': CSSProperties;
+    'h1-medium': CSSProperties;
+    'h2-medium': CSSProperties;
+    'h3-medium': CSSProperties;
+    'h4-medium': CSSProperties;
+    'p1-medium': CSSProperties;
+    'p2-medium': CSSProperties;
+    'caption-medium': CSSProperties;
     // regular
-    'regular-h1': CSSProperties;
-    'regular-h2': CSSProperties;
-    'regular-h3': CSSProperties;
-    'regular-h4': CSSProperties;
-    'regular-h5': CSSProperties;
-    'regular-h6': CSSProperties;
-    // input
-    'input-title': CSSProperties;
-    'input-body': CSSProperties;
+    'h1-regular': CSSProperties;
+    'h2-regular': CSSProperties;
+    'h3-regular': CSSProperties;
+    'h4-regular': CSSProperties;
+    'p1-regular': CSSProperties;
+    'p2-regular': CSSProperties;
+    'caption-regular': CSSProperties;
   }
 
   // allow configuration using `createTheme`
   interface TypographyVariantsOptions {
-    'black-h1'?: CSSProperties;
-    'black-h2'?: CSSProperties;
-    'black-h3'?: CSSProperties;
-    'black-h4'?: CSSProperties;
-    'black-h5'?: CSSProperties;
-    'black-h6'?: CSSProperties;
     // bold
-    'bold-h1'?: CSSProperties;
-    'bold-h2'?: CSSProperties;
-    'bold-h3'?: CSSProperties;
-    'bold-h4'?: CSSProperties;
-    'bold-h5'?: CSSProperties;
-    'bold-h6'?: CSSProperties;
+    'h1-bold'?: CSSProperties;
+    'h2-bold'?: CSSProperties;
+    'h3-bold'?: CSSProperties;
+    'h4-bold'?: CSSProperties;
+    'p1-bold'?: CSSProperties;
+    'p2-bold'?: CSSProperties;
+    'caption-bold'?: CSSProperties;
+    // semi-bold
+    'h1-semi-bold'?: CSSProperties;
+    'h2-semi-bold'?: CSSProperties;
+    'h3-semi-bold'?: CSSProperties;
+    'h4-semi-bold'?: CSSProperties;
+    'p1-semi-bold'?: CSSProperties;
+    'p2-semi-bold'?: CSSProperties;
+    'caption-semi-bold'?: CSSProperties;
     // medium
-    'medium-h1'?: CSSProperties;
-    'medium-h2'?: CSSProperties;
-    'medium-h3'?: CSSProperties;
-    'medium-h4'?: CSSProperties;
-    'medium-h5'?: CSSProperties;
-    'medium-h6'?: CSSProperties;
+    'h1-medium'?: CSSProperties;
+    'h2-medium'?: CSSProperties;
+    'h3-medium'?: CSSProperties;
+    'h4-medium'?: CSSProperties;
+    'p1-medium'?: CSSProperties;
+    'p2-medium'?: CSSProperties;
+    'caption-medium'?: CSSProperties;
     // regular
-    'regular-h1'?: CSSProperties;
-    'regular-h2'?: CSSProperties;
-    'regular-h3'?: CSSProperties;
-    'regular-h4'?: CSSProperties;
-    'regular-h5'?: CSSProperties;
-    'regular-h6'?: CSSProperties;
-    // input
-    'input-title'?: CSSProperties;
-    'input-body'?: CSSProperties;
+    'h1-regular'?: CSSProperties;
+    'h2-regular'?: CSSProperties;
+    'h3-regular'?: CSSProperties;
+    'h4-regular'?: CSSProperties;
+    'p1-regular'?: CSSProperties;
+    'p2-regular'?: CSSProperties;
+    'caption-regular'?: CSSProperties;
   }
 }
 
@@ -84,88 +88,108 @@ declare module '@mui/material/Typography' {
     subtitle2: false;
     caption: false;
     overline: false;
+    body1: false;
+    body2: false;
+    button: false;
 
-    'black-h1': true;
-    'black-h2': true;
-    'black-h3': true;
-    'black-h4': true;
-    'black-h5': true;
-    'black-h6': true;
     // bold
-    'bold-h1': true;
-    'bold-h2': true;
-    'bold-h3': true;
-    'bold-h4': true;
-    'bold-h5': true;
-    'bold-h6': true;
+    'h1-bold': true;
+    'h2-bold': true;
+    'h3-bold': true;
+    'h4-bold': true;
+    'p1-bold': true;
+    'p2-bold': true;
+    'caption-bold': true;
+    // semi-bold
+    'h1-semi-bold': true;
+    'h2-semi-bold': true;
+    'h3-semi-bold': true;
+    'h4-semi-bold': true;
+    'p1-semi-bold': true;
+    'p2-semi-bold': true;
+    'caption-semi-bold': true;
     // medium
-    'medium-h1': true;
-    'medium-h2': true;
-    'medium-h3': true;
-    'medium-h4': true;
-    'medium-h5': true;
-    'medium-h6': true;
+    'h1-medium': true;
+    'h2-medium': true;
+    'h3-medium': true;
+    'h4-medium': true;
+    'p1-medium': true;
+    'p2-medium': true;
+    'caption-medium': true;
     // regular
-    'regular-h1': true;
-    'regular-h2': true;
-    'regular-h3': true;
-    'regular-h4': true;
-    'regular-h5': true;
-    'regular-h6': true;
-    // input
-    'input-title': true;
-    'input-body': true;
+    'h1-regular': true;
+    'h2-regular': true;
+    'h3-regular': true;
+    'h4-regular': true;
+    'p1-regular': true;
+    'p2-regular': true;
+    'caption-regular': true;
   }
 }
 
 export type Variant =
-  | 'black-h1'
-  | 'black-h2'
-  | 'black-h3'
-  | 'black-h4'
-  | 'black-h5'
-  | 'black-h6'
   // bold
-  | 'bold-h1'
-  | 'bold-h2'
-  | 'bold-h3'
-  | 'bold-h4'
-  | 'bold-h5'
-  | 'bold-h6'
+  | 'h1-bold'
+  | 'h2-bold'
+  | 'h3-bold'
+  | 'h4-bold'
+  | 'p1-bold'
+  | 'p2-bold'
+  | 'caption-bold'
+  // semi-bold
+  | 'h1-semi-bold'
+  | 'h2-semi-bold'
+  | 'h3-semi-bold'
+  | 'h4-semi-bold'
+  | 'p1-semi-bold'
+  | 'p2-semi-bold'
+  | 'caption-semi-bold'
   // medium
-  | 'medium-h1'
-  | 'medium-h2'
-  | 'medium-h3'
-  | 'medium-h4'
-  | 'medium-h5'
-  | 'medium-h6'
+  | 'h1-medium'
+  | 'h2-medium'
+  | 'h3-medium'
+  | 'h4-medium'
+  | 'p1-medium'
+  | 'p2-medium'
+  | 'caption-medium'
   // regular
-  | 'regular-h1'
-  | 'regular-h2'
-  | 'regular-h3'
-  | 'regular-h4'
-  | 'regular-h5'
-  | 'regular-h6'
-  // input
-  | 'input-title'
-  | 'input-body'
-  | 'body1'
-  | 'body2'
-  | 'button';
+  | 'h1-regular'
+  | 'h2-regular'
+  | 'h3-regular'
+  | 'h4-regular'
+  | 'p1-regular'
+  | 'p2-regular'
+  | 'caption-regular';
 
 const pxToRem = (value: number): string => `${value / 16}rem`;
 
-const mobileFontSize = (fontSize: number, lineHeight: number) => ({
-  '@media (max-width:900px)': {
-    fontSize: pxToRem(fontSize),
-    lineHeight,
-  },
-});
+type FontWeight = 400 | 500 | 600 | 700;
+const weights: Record<FontWeight, string> = {
+  400: 'regular',
+  500: 'medium',
+  600: 'semi-bold',
+  700: 'bold',
+};
 
-export const primaryFont = Roboto({
-  weight: ['400', '500', '700', '900'],
+interface Style {
+  fontWeight: FontWeight;
+  fontSize: string;
+  lineHeight: number;
+}
+
+const fontVariant = (name: string, fontSize: number, lineHeight: number): Record<string, Style> =>
+  Object.entries(weights).reduce<Record<string, Style>>((accumulator, [weight, label]) => {
+    accumulator[`${name}-${label}`] = {
+      fontWeight: toNumber(weight) as FontWeight,
+      fontSize: pxToRem(fontSize),
+      lineHeight,
+    };
+    return accumulator;
+  }, {});
+
+export const primaryFont = Montserrat({
+  weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
-  display: 'swap',
   fallback: ['Arial', 'Helvetica', 'sans-serif'],
 });
 
@@ -173,8 +197,8 @@ const typography = {
   fontFamily: primaryFont.style.fontFamily,
   fontWeightRegular: 400,
   fontWeightMedium: 500,
+  fontWeightSemiBold: 600,
   fontWeightBold: 700,
-  fontWeightBlack: 900,
 
   h1: undefined,
   h2: undefined,
@@ -186,181 +210,13 @@ const typography = {
   subtitle2: undefined,
   overline: undefined,
 
-  'black-h1': {
-    fontWeight: 900,
-    fontSize: pxToRem(46),
-    lineHeight: 1.17,
-    ...mobileFontSize(36, 1.22),
-  },
-  'black-h2': {
-    fontWeight: 900,
-    fontSize: pxToRem(36),
-    lineHeight: 1.16,
-    ...mobileFontSize(26, 1.23),
-  },
-  'black-h3': {
-    fontWeight: 900,
-    fontSize: pxToRem(26),
-    lineHeight: 1.23,
-    ...mobileFontSize(18, 1.33),
-  },
-  'black-h4': {
-    fontWeight: 900,
-    fontSize: pxToRem(20),
-    lineHeight: 1.2,
-    ...mobileFontSize(16, 1.25),
-  },
-  'black-h5': {
-    fontWeight: 900,
-    fontSize: pxToRem(18),
-    lineHeight: 1.22,
-    ...mobileFontSize(14, 1.28),
-  },
-  'black-h6': {
-    fontWeight: 900,
-    fontSize: pxToRem(16),
-    lineHeight: 1.5,
-    ...mobileFontSize(13, 1.23),
-  },
-  'bold-h1': {
-    fontWeight: 700,
-    fontSize: pxToRem(46),
-    lineHeight: 1.17,
-    ...mobileFontSize(36, 1.22),
-  },
-  'bold-h2': {
-    fontWeight: 700,
-    fontSize: pxToRem(36),
-    lineHeight: 1.16,
-    ...mobileFontSize(26, 1.23),
-  },
-  'bold-h3': {
-    fontWeight: 700,
-    fontSize: pxToRem(26),
-    lineHeight: 1.23,
-    ...mobileFontSize(18, 1.33),
-  },
-  'bold-h4': {
-    fontWeight: 700,
-    fontSize: pxToRem(20),
-    lineHeight: 1.2,
-    ...mobileFontSize(16, 1.25),
-  },
-  'bold-h5': {
-    fontWeight: 700,
-    fontSize: pxToRem(18),
-    lineHeight: 1.22,
-    ...mobileFontSize(14, 1.28),
-  },
-  'bold-h6': {
-    fontWeight: 700,
-    fontSize: pxToRem(16),
-    lineHeight: 1.5,
-    ...mobileFontSize(13, 1.23),
-  },
-  'medium-h1': {
-    fontWeight: 500,
-    fontSize: pxToRem(46),
-    lineHeight: 1.17,
-    ...mobileFontSize(36, 1.22),
-  },
-  'medium-h2': {
-    fontWeight: 500,
-    fontSize: pxToRem(36),
-    lineHeight: 1.16,
-    ...mobileFontSize(26, 1.23),
-  },
-  'medium-h3': {
-    fontWeight: 500,
-    fontSize: pxToRem(26),
-    lineHeight: 1.23,
-    ...mobileFontSize(18, 1.33),
-  },
-  'medium-h4': {
-    fontWeight: 500,
-    fontSize: pxToRem(20),
-    lineHeight: 1.2,
-    ...mobileFontSize(16, 1.25),
-  },
-  'medium-h5': {
-    fontWeight: 500,
-    fontSize: pxToRem(18),
-    lineHeight: 1.22,
-    ...mobileFontSize(14, 1.28),
-  },
-  'medium-h6': {
-    fontWeight: 500,
-    fontSize: pxToRem(16),
-    lineHeight: 1.5,
-    ...mobileFontSize(13, 1.23),
-  },
-  'regular-h1': {
-    fontWeight: 400,
-    fontSize: pxToRem(46),
-    lineHeight: 1.17,
-    ...mobileFontSize(36, 1.22),
-  },
-  'regular-h2': {
-    fontWeight: 400,
-    fontSize: pxToRem(36),
-    lineHeight: 1.16,
-    ...mobileFontSize(26, 1.23),
-  },
-  'regular-h3': {
-    fontWeight: 400,
-    fontSize: pxToRem(26),
-    lineHeight: 1.23,
-    ...mobileFontSize(18, 1.33),
-  },
-  'regular-h4': {
-    fontWeight: 400,
-    fontSize: pxToRem(20),
-    lineHeight: 1.2,
-    ...mobileFontSize(16, 1.25),
-  },
-  'regular-h5': {
-    fontWeight: 400,
-    fontSize: pxToRem(18),
-    lineHeight: 1.22,
-    ...mobileFontSize(14, 1.28),
-  },
-  'regular-h6': {
-    fontWeight: 400,
-    fontSize: pxToRem(16),
-    lineHeight: 1.5,
-    ...mobileFontSize(13, 1.23),
-  },
-  'input-title': {
-    fontWeight: 500,
-    lineHeight: 1.5,
-    fontSize: pxToRem(16),
-    ...mobileFontSize(14, 1.28),
-  },
-  'input-body': {
-    fontWeight: 400,
-    lineHeight: 1.22,
-    fontSize: pxToRem(18),
-    ...mobileFontSize(15, 1.33),
-  },
-  body1: {
-    fontWeight: 400,
-    lineHeight: 1.28,
-    fontSize: pxToRem(14),
-    ...mobileFontSize(12, 1.33),
-  },
-  body2: {
-    fontWeight: 400,
-    lineHeight: 1,
-    fontSize: pxToRem(12),
-    ...mobileFontSize(10, 1),
-  },
-  button: {
-    fontWeight: 500,
-    lineHeight: 1.73,
-    fontSize: pxToRem(15),
-    textTransform: 'unset',
-    ...mobileFontSize(13, 1.38),
-  },
+  ...fontVariant('h1', 48, 1.33),
+  ...fontVariant('h2', 32, 1.5),
+  ...fontVariant('h3', 24, 1.66),
+  ...fontVariant('h4', 18, 1.77),
+  ...fontVariant('p1', 16, 1.75),
+  ...fontVariant('p2', 14, 1.71),
+  ...fontVariant('caption', 12, 1.66),
 } as const;
 
 export default typography;

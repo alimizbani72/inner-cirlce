@@ -46,7 +46,7 @@ export function fab(theme: Theme) {
       // FILLED
       ...((circularVariant || extendedVariant) && {
         ...((defaultColor || inheritColor) && {
-          boxShadow: theme.customShadows.z8,
+          // boxShadow: theme.customShadows.z8,
         }),
         ...(inheritColor && {
           backgroundColor: theme.palette.text.primary,
@@ -98,7 +98,7 @@ export function fab(theme: Theme) {
       ...(ownerState.color === color && {
         // FILLED
         ...((circularVariant || extendedVariant) && {
-          boxShadow: theme.customShadows[color],
+          // boxShadow: theme.customShadows[color],
           '&:hover': {
             backgroundColor: theme.palette[color].dark,
           },

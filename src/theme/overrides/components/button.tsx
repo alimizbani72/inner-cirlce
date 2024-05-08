@@ -1,159 +1,96 @@
 import type { ButtonProps } from '@mui/material/Button';
-import { buttonClasses } from '@mui/material/Button';
 import type { Theme } from '@mui/material/styles';
-import { alpha } from '@mui/material/styles';
 
-// ----------------------------------------------------------------------
+export type ButtonPropsOverride = ButtonProps & { color: 'primary' | 'secondary' | 'info' };
 
-const COLORS = ['primary', 'secondary', 'info', 'success', 'warning', 'error'] as const;
-
-// NEW VARIANT
 declare module '@mui/material/Button' {
-  interface ButtonPropsVariantOverrides {
-    soft: true;
+  interface ButtonPropsColorOverrides {
+    warning: false;
+    error: false;
+    success: false;
   }
 }
 
 // ----------------------------------------------------------------------
 
+const COLORS = (theme: Theme) => ({
+  disabled: {
+    borderColor: theme.palette.grey.light,
+    background: theme.palette.grey.light,
+    color: theme.palette.grey.dark,
+    boxShadow: 'none',
+  },
+  primary: {
+    boxShadow: '0px 4px 8px 0px rgba(0, 0, 0, 0.24), 0px 0px 0px 2px rgba(255, 255, 255, 0.16) inset',
+    color: 'white',
+    normal: {
+      borderColor: 'rgba(0, 0, 0, 0.40)',
+      background: theme.palette.gradient.blue,
+      transition: theme.transitions.create('all', { duration: '0.2s', easing: 'ease-in-out' }),
+    },
+    hover: {
+      background: `radial-gradient(50% 50% at 50% 50%, ${theme.palette.blue.dark} 100%, ${theme.palette.blue.dark} 100%)`,
+    },
+  },
+  secondary: {
+    boxShadow: '0px 0px 0px 2px rgba(255, 255, 255, 0.40) inset, 0px 4px 8px 0px rgba(0, 0, 0, 0.24)',
+    color: theme.palette.dark[3],
+    normal: {
+      borderColor: 'rgba(0, 0, 0, 0.24)',
+      background: theme.palette.gradient.sky,
+    },
+    hover: {},
+  },
+  info: {
+    boxShadow: '0px 4px 8px 0px rgba(0, 0, 0, 0.24)',
+    color: 'white',
+    normal: {
+      borderColor: theme.palette.dark[3],
+      backgroundColor: theme.palette.dark[1],
+    },
+    hover: {
+      backgroundColor: theme.palette.dark[3],
+    },
+  },
+});
+
 export function button(theme: Theme) {
-  const lightMode = theme.palette.mode === 'light';
-
-  const rootStyles = (ownerState: ButtonProps) => {
-    const inheritColor = ownerState.color === 'inherit';
-
-    const containedVariant = ownerState.variant === 'contained';
-
-    const outlinedVariant = ownerState.variant === 'outlined';
-
-    const textVariant = ownerState.variant === 'text';
-
-    const softVariant = ownerState.variant === 'soft';
-
-    const smallSize = ownerState.size === 'small';
-
-    const mediumSize = ownerState.size === 'medium';
-
-    const largeSize = ownerState.size === 'large';
-
-    const defaultStyle = {
-      borderRadius: '26px',
-      textAlign: 'center',
-      ...(inheritColor && {
-        // CONTAINED
-        ...(containedVariant && {
-          color: lightMode ? theme.palette.common.white : theme.palette.grey[800],
-          backgroundColor: lightMode ? theme.palette.grey[800] : theme.palette.common.white,
-          '&:hover': {
-            backgroundColor: lightMode ? theme.palette.grey[700] : theme.palette.grey[400],
-          },
-        }),
-        // OUTLINED
-        ...(outlinedVariant && {
-          borderColor: theme.palette.primary.main,
-          color: theme.palette.primary.main,
-          '&:hover': {
-            backgroundColor: theme.palette.action.hover,
-          },
-        }),
-        // TEXT
-        ...(textVariant && {
-          '&:hover': {
-            backgroundColor: theme.palette.action.hover,
-          },
-        }),
-        // SOFT
-        ...(softVariant && {
-          color: theme.palette.text.primary,
-          backgroundColor: alpha(theme.palette.grey[500], 0.08),
-          '&:hover': {
-            backgroundColor: alpha(theme.palette.grey[500], 0.24),
-          },
-        }),
-      }),
-      ...(outlinedVariant && {
-        '&:hover': {
-          borderColor: 'currentColor',
-          boxShadow: '0 0 0 0.5px currentColor',
-        },
-      }),
-    };
-
-    const colorStyle = COLORS.map((color) => ({
-      ...(ownerState.color === color && {
-        // CONTAINED
-        ...(containedVariant && {
-          '&:hover': {
-            boxShadow: theme.customShadows[color],
-          },
-        }),
-        // SOFT
-        ...(softVariant && {
-          color: theme.palette[color][lightMode ? 'dark' : 'light'],
-          backgroundColor: alpha(theme.palette[color].main, 0.16),
-          '&:hover': {
-            backgroundColor: alpha(theme.palette[color].main, 0.32),
-          },
-        }),
-      }),
-    }));
-
-    const disabledState = {
-      [`&.${buttonClasses.disabled}`]: {
-        // SOFT
-        ...(softVariant && {
-          backgroundColor: theme.palette.action.disabledBackground,
-        }),
-      },
-    };
-
-    const size = {
-      ...(smallSize && {
-        height: 30,
-        fontSize: 13,
-        paddingLeft: 8,
-        paddingRight: 8,
-        ...(textVariant && {
-          paddingLeft: 4,
-          paddingRight: 4,
-        }),
-      }),
-      ...(mediumSize && {
-        height: 48,
-        paddingLeft: 16,
-        paddingRight: 16,
-        [theme.breakpoints.down('md')]: {
-          height: 44,
-        },
-        ...(textVariant && {
-          paddingLeft: 10,
-          paddingRight: 10,
-        }),
-      }),
-      ...(largeSize && {
-        height: 48,
-        fontSize: 15,
-        paddingLeft: 16,
-        paddingRight: 16,
-        ...(textVariant && {
-          paddingLeft: 10,
-          paddingRight: 10,
-        }),
-      }),
-    };
-
-    return [defaultStyle, ...colorStyle, disabledState, size];
-  };
-
   return {
     MuiButton: {
+      defaultProps: { variant: 'contained', color: 'primary' },
       styleOverrides: {
-        root: ({ ownerState }: { ownerState: ButtonProps }) => rootStyles(ownerState),
-      },
-    },
-    MuiButtonBase: {
-      defaultProps: {
-        disableRipple: true,
+        root: ({ ownerState }: { ownerState: ButtonPropsOverride }) => ({
+          borderRadius: '24px',
+          border: '1px solid transparent',
+          color: theme.palette.common.white,
+          textTransform: 'none',
+          ...theme.typography['p2-medium'],
+          lineHeight: '24px',
+          '&.Mui-disabled': {
+            ...COLORS(theme).disabled,
+            '.MuiButton-icon': { 'svg path, svg circle': { stroke: COLORS(theme).disabled.color } },
+          },
+
+          '.MuiButton-icon': {
+            color: COLORS(theme)[ownerState.color].color,
+            'svg path, svg circle': { stroke: COLORS(theme)[ownerState.color].color },
+          },
+        }),
+        startIcon: { marginLeft: 0 },
+        endIcon: { marginRight: 0 },
+        sizeLarge: { height: theme.spacing(6), padding: theme.spacing(1.5, 4) },
+        sizeMedium: { height: theme.spacing(5), padding: theme.spacing(1, 4) },
+        sizeSmall: { height: theme.spacing(4), padding: theme.spacing(0.5, 3) },
+        contained: ({ ownerState }: { ownerState: ButtonPropsOverride }) => ({
+          ...COLORS(theme)[ownerState.color].normal,
+          color: COLORS(theme)[ownerState.color].color,
+          boxShadow: COLORS(theme)[ownerState.color].boxShadow,
+          '&:hover': {
+            boxShadow: COLORS(theme)[ownerState.color].boxShadow,
+            ...COLORS(theme)[ownerState.color].normal,
+            ...COLORS(theme)[ownerState.color].hover,
+          },
+        }),
       },
     },
   };

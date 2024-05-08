@@ -16,7 +16,7 @@ export const StyledNotistack = styled(MaterialDesignContent)(({ theme }) => {
     },
     '&.notistack-MuiContent': {
       color: theme.palette.text.primary,
-      boxShadow: theme.customShadows.z8,
+      // boxShadow: theme.customShadows.z8,
       borderRadius: theme.shape.borderRadius,
       padding: theme.spacing(0.5, 2, 0.5, 0.5),
       backgroundColor: theme.palette.background.paper,
@@ -29,7 +29,7 @@ export const StyledNotistack = styled(MaterialDesignContent)(({ theme }) => {
     '&.notistack-MuiContent-success': {
       padding: '8px 16px',
       borderRadius: theme.spacing(4),
-      backgroundColor: theme.palette.success.lighter,
+      backgroundColor: theme.palette.success.light,
 
       '#notistack-snackbar': {
         color: theme.palette.success.dark,
@@ -39,7 +39,7 @@ export const StyledNotistack = styled(MaterialDesignContent)(({ theme }) => {
     '&.notistack-MuiContent-error': {
       padding: '8px 16px',
       borderRadius: theme.spacing(4),
-      backgroundColor: theme.palette.error.lighter,
+      backgroundColor: theme.palette.error.light,
 
       '#notistack-snackbar': {
         color: theme.palette.error.dark,

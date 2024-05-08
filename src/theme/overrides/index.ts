@@ -22,7 +22,7 @@ import { drawer } from './components/drawer';
 //
 import { fab } from './components/fab';
 import { list } from './components/list';
-import { loadingButton } from './components/loading-button';
+import { LoadingButton } from './components/loading-button';
 import { menu } from './components/menu';
 import { pagination } from './components/pagination';
 import { paper } from './components/paper';
@@ -44,6 +44,7 @@ import { toggleButton } from './components/toggle-button';
 import { tooltip } from './components/tooltip';
 import { treeView } from './components/tree-view';
 import { typography } from './components/typography';
+import { IconButton } from './components/icon-button';
 //
 import { defaultProps } from './default-props';
 
@@ -94,7 +95,8 @@ export function componentsOverrides(theme: Theme) {
     cssBaseline(),
     autocomplete(theme),
     toggleButton(theme),
-    loadingButton()
+    LoadingButton(theme),
+    IconButton(theme)
   );
 
   return components;

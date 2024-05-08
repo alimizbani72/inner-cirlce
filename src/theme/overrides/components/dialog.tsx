@@ -8,7 +8,7 @@ export function dialog(theme: Theme) {
     MuiDialog: {
       styleOverrides: {
         paper: ({ ownerState }: { ownerState: DialogProps }) => ({
-          boxShadow: theme.customShadows.dialog,
+          // boxShadow: theme.customShadows.dialog,
           borderRadius: theme.shape.borderRadius * 2,
           ...(!ownerState.fullScreen && {
             margin: theme.spacing(2),

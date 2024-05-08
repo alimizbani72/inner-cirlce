@@ -1,91 +1,50 @@
-import { alpha } from '@mui/material/styles';
-
-// ----------------------------------------------------------------------
-
-export type ColorSchema = 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error';
-
-declare module '@mui/material/styles/createPalette' {
-  interface TypeBackground {
-    neutral: string;
-    bg: string;
-    gradient: string;
-  }
-  interface SimplePaletteColorOptions {
-    lighter: string;
-    darker: string;
-  }
-  interface PaletteColor {
-    lighter: string;
-    darker: string;
-  }
-}
+export type ColorSchema = 'blue' | 'pink' | 'gradient' | 'dark' | 'grey' | 'success' | 'warning' | 'danger';
 
 // SETUP COLORS
 
-const GREY = {
-  0: '#FFFFFF',
-  100: '#F9FAFB',
-  200: '#F4F6F8',
-  300: '#DFE3E8',
-  400: '#C4CDD5',
-  500: '#919EAB',
-  600: '#637381',
-  700: '#454F5B',
-  800: '#212B36',
-  900: '#161C24',
-};
-
-export const PRIMARY = {
-  lighter: '#9FA4DB',
-  light: '#444DBB',
-  main: '#1722AB',
-  dark: '#101878',
-  darker: '#0E1467',
+export const BLUE = {
+  light: '#779DFF',
+  dark: '#565CE4',
   contrastText: '#FFFFFF',
 };
 
-export const SECONDARY = {
-  lighter: '#E2BDFF',
-  light: '#D49CFF',
-  main: '#B75AFF',
-  dark: '#9248CC',
-  darker: '#6E3699',
+export const PINK = {
+  light: '#FF409D',
+  dark: '#FF409D',
   contrastText: '#FFFFFF',
 };
 
-export const INFO = {
-  lighter: '#ABF9FE',
-  light: '#81F7FE',
-  main: '#2DF1FD',
-  dark: '#24C1CA',
-  darker: '#1B9198',
+export const GRADIENT = {
+  blue: 'radial-gradient(50% 50% at 50% 50%, #779DFF 0%, #565CE4 100%)',
+  pink: 'radial-gradient(50% 50% at 50% 50%, #FF7DBC 0%, #FF409D 100%)',
+  sky: 'radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, #CDDFF2 100%)',
+  orange: 'radial-gradient(50% 50% at 50% 50%, #FFD18B 0%, #E68F0D 100%)',
+};
+
+export const DARK = {
+  1: '#070720',
+  2: '#090A23',
+  3: '#14162E',
+};
+
+export const GREY = {
+  light: '#9799B4',
+  dark: '#626583',
   contrastText: '#FFFFFF',
 };
 
 export const SUCCESS = {
-  lighter: '#D3FCD2',
-  light: '#77ED8B',
-  main: '#22C55E',
-  dark: '#118D57',
-  darker: '#065E49',
-  contrastText: '#ffffff',
+  main: '#03D489',
+  contrastText: '#FFFFFF',
 };
 
 export const WARNING = {
-  lighter: '#FFF5CC',
-  light: '#FFD666',
-  main: '#FFAB00',
-  dark: '#B76E00',
-  darker: '#7A4100',
-  contrastText: GREY[800],
+  main: '#FFBE21',
+  contrastText: '#FFFFFF',
 };
 
-export const ERROR = {
-  lighter: '#FFE9D5',
-  light: '#FFAC82',
-  main: '#FF5630',
-  dark: '#B71D18',
-  darker: '#7A0916',
+export const DANGER = {
+  main: '#FF5757',
   contrastText: '#FFFFFF',
 };
 
@@ -94,23 +53,16 @@ const COMMON = {
     black: '#000000',
     white: '#FFFFFF',
   },
-  primary: PRIMARY,
-  secondary: SECONDARY,
-  info: INFO,
+  blue: BLUE,
+  pink: PINK,
+  gradient: GRADIENT,
+  dark: DARK,
+  grey: GREY,
   success: SUCCESS,
   warning: WARNING,
-  error: ERROR,
-  grey: GREY,
-  divider: alpha(GREY[500], 0.2),
-  action: {
-    hover: alpha(GREY[500], 0.08),
-    selected: alpha(GREY[500], 0.16),
-    disabled: alpha(GREY[500], 0.8),
-    disabledBackground: alpha(GREY[500], 0.24),
-    focus: alpha(GREY[500], 0.24),
-    hoverOpacity: 0.08,
-    disabledOpacity: 0.48,
-  },
+  danger: DANGER,
+  error: DANGER,
+  divider: DARK[3],
 };
 
 export function palette(mode: 'light' | 'dark') {
@@ -120,18 +72,11 @@ export function palette(mode: 'light' | 'dark') {
     text: {
       primary: '#040911',
       secondary: '#919EAB',
-      disabled: GREY[500],
+      disabled: DARK[3],
     },
     background: {
       paper: '#FFFFFF',
       default: '#FFFFFF',
-      neutral: GREY[200],
-      bg: '#0B0B39',
-      gradient: 'linear-gradient(91deg, #2DF1FD 0.41%, #72A6FE 43.93%, #B75AFF 99.4%)',
-    },
-    action: {
-      ...COMMON.action,
-      active: GREY[600],
     },
   };
 
@@ -140,19 +85,12 @@ export function palette(mode: 'light' | 'dark') {
     mode: 'dark',
     text: {
       primary: '#FFFFFF',
-      secondary: GREY[500],
-      disabled: GREY[600],
+      secondary: DARK[3],
+      disabled: GREY.dark,
     },
     background: {
-      paper: GREY[800],
-      default: GREY[900],
-      neutral: alpha(GREY[500], 0.12),
-      bg: alpha('#0B0B39', 0.12),
-      gradient: 'linear-gradient(91deg, #2DF1FD 0.41%, #72A6FE 43.93%, #B75AFF 99.4%)',
-    },
-    action: {
-      ...COMMON.action,
-      active: GREY[500],
+      paper: DARK[3],
+      default: DARK[3],
     },
   };
 

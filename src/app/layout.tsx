@@ -64,7 +64,7 @@ export default async function RootLayout({ children }: LayoutProps) {
       <head>
         <script src="https://www.google.com/recaptcha/api.js" async defer />
       </head>
-      <body style={{ backgroundColor: '#0B0B39' }}>
+      <body style={{ backgroundColor: '#070720' }}>
         <TanStackProvider session={session}>
           <LocalizationProvider>
             <ThemeProvider>

@@ -10,8 +10,6 @@ import { type ReactNode, useMemo } from 'react';
 // components
 // locales
 import { useLocales } from 'src/locales';
-
-import { customShadows } from './custom-shadows';
 //
 // options
 import RTL from './options/right-to-left';
@@ -34,10 +32,9 @@ export default function ThemeProvider({ children }: Props) {
     () => ({
       palette: palette('light'),
       shadows: shadows('light'),
-      customShadows: customShadows('light'),
       typography,
-      shape: { borderRadius: 5 },
-      spacing: 5,
+      shape: { borderRadius: 8 },
+      spacing: 8,
     }),
     []
   );

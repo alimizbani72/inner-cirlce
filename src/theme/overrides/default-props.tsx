@@ -14,13 +14,82 @@ const ArrowDownIcon = (props: SvgIconProps) => (
 
 const CheckboxIcon = (props: SvgIconProps) => (
   <SvgIcon {...props}>
-    <path d="M17.9 2.318A5 5 0 0 1 22.895 7.1l.005.217v10a5 5 0 0 1-4.783 4.995l-.217.005h-10a5 5 0 0 1-4.995-4.783l-.005-.217v-10a5 5 0 0 1 4.783-4.996l.217-.004h10Zm-.5 1.5h-9a4 4 0 0 0-4 4v9a4 4 0 0 0 4 4h9a4 4 0 0 0 4-4v-9a4 4 0 0 0-4-4Z" />
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0.75" y="0.75" width="22.5" height="22.5" rx="5.25" fill="#090A23" stroke="#14162E" strokeWidth="1.5" />
+    </svg>
   </SvgIcon>
 );
 
 const CheckboxCheckedIcon = (props: SvgIconProps) => (
   <SvgIcon {...props}>
-    <path d="M17 2a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm-1.625 7.255-4.13 4.13-1.75-1.75a.881.881 0 0 0-1.24 0c-.34.34-.34.89 0 1.24l2.38 2.37c.17.17.39.25.61.25.23 0 .45-.08.62-.25l4.75-4.75c.34-.34.34-.89 0-1.24a.881.881 0 0 0-1.24 0Z" />
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <g filter="url(#filter0_d_2279_8820)">
+        <rect x="0.75" y="0.75" width="22.5" height="22.5" rx="5.25" fill="url(#paint0_radial_2279_8820)" />
+        <rect
+          x="0.75"
+          y="0.75"
+          width="22.5"
+          height="22.5"
+          rx="5.25"
+          stroke="url(#paint1_radial_2279_8820)"
+          strokeWidth="1.5"
+        />
+      </g>
+      <defs>
+        <filter
+          id="filter0_d_2279_8820"
+          x="0"
+          y="0"
+          width="40"
+          height="40"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy="4" />
+          <feGaussianBlur stdDeviation="4" />
+          <feComposite in2="hardAlpha" operator="out" />
+          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.16 0" />
+          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2279_8820" />
+          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2279_8820" result="shape" />
+        </filter>
+        <radialGradient
+          id="paint0_radial_2279_8820"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(12 12) rotate(90) scale(10)"
+        >
+          <stop stopColor="#FF7DBC" />
+          <stop offset="1" stopColor="#FF409D" />
+        </radialGradient>
+        <radialGradient
+          id="paint1_radial_2279_8820"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(20 16) rotate(90) scale(12)"
+        >
+          <stop stopColor="#FF7DBC" />
+          <stop offset="1" stopColor="#FF409D" />
+        </radialGradient>
+      </defs>
+      <path
+        d="M17.0029 9.00085L10.7576 15.0009L7.00293 11.4024"
+        stroke="white"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   </SvgIcon>
 );
 
