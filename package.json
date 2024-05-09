@@ -33,6 +33,7 @@
     "@mui/system": "^5.15.15",
     "@mui/x-data-grid": "^7.3.2",
     "@mui/x-date-pickers": "^7.3.2",
+    "@rive-app/react-canvas": "^4.9.4",
     "@tanstack/react-query": "^5.34.2",
     "@tanstack/react-query-devtools": "^5.34.2",
     "clsx": "^2.1.1",

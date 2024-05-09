@@ -17,6 +17,16 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV !== "development",
   },
   webpack(config) {
+    config.experiments = {
+      ...config.experiments,
+      asyncWebAssembly: true,
+    };
+
+    // Rule for .wasm files
+    config.module.rules.push({
+      test: /\.wasm$/,
+      type: 'webassembly/async',
+    });
     config.module.rules.push({
       test: /\.svg$/,
       use: ["@svgr/webpack"],

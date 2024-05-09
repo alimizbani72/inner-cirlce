@@ -1,7 +1,7 @@
-import LoginSection from "src/sections/auth/login/Login";
+import Sample from "./_section";
 
 const SignIn = () => {
-  return <LoginSection />;
+  return <Sample />;
 };
 
 export default SignIn;

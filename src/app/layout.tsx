@@ -9,7 +9,6 @@ import { SnackbarProvider } from "src/components/snackbar";
 import { LocalizationProvider } from "src/locales";
 import ThemeProvider from "src/theme";
 import { primaryFont } from "src/theme/typography";
-
 import { TanStackProvider } from "./_providers";
 import type { ReactNode } from "react";
 // ----------------------------------------------------------------------
