@@ -33,6 +33,7 @@
     "@mui/system": "^5.15.15",
     "@mui/x-data-grid": "^7.3.2",
     "@mui/x-date-pickers": "^7.3.2",
+    "@reduxjs/toolkit": "^2.2.4",
     "@rive-app/react-canvas": "^4.9.4",
     "@tanstack/react-query": "^5.34.2",
     "@tanstack/react-query-devtools": "^5.34.2",
@@ -56,6 +57,7 @@
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.51.4",
     "react-i18next": "^14.1.1",
+    "react-redux": "^9.1.2",
     "stylis": "^4.3.2",
     "stylis-plugin-rtl": "^2.1.1",
     "yup": "^1.4.0"
