@@ -11,6 +11,7 @@ import ThemeProvider from "src/theme";
 import { primaryFont } from "src/theme/typography";
 import { TanStackProvider } from "./_providers";
 import type { ReactNode } from "react";
+import { StoreProvider } from "./_providers/StoreProvider";
 // ----------------------------------------------------------------------
 
 export const viewport: Viewport = {
@@ -59,22 +60,24 @@ export type LayoutProps = {
 export default async function RootLayout({ children }: LayoutProps) {
   const session = await getServerSession();
   return (
-    <html lang="en" className={primaryFont.className}>
-      <head>
-        <script src="https://www.google.com/recaptcha/api.js" async defer />
-      </head>
-      <body style={{ backgroundColor: "#070720" }}>
-        <TanStackProvider session={session}>
-          <LocalizationProvider>
-            <ThemeProvider>
-              <MotionLazy>
-                <ProgressBar />
-                <SnackbarProvider>{children}</SnackbarProvider>
-              </MotionLazy>
-            </ThemeProvider>
-          </LocalizationProvider>
-        </TanStackProvider>
-      </body>
-    </html>
+    <StoreProvider>
+      <html lang="en" className={primaryFont.className}>
+        <head>
+          <script src="https://www.google.com/recaptcha/api.js" async defer />
+        </head>
+        <body style={{ backgroundColor: "#070720" }}>
+          <TanStackProvider session={session}>
+            <LocalizationProvider>
+              <ThemeProvider>
+                <MotionLazy>
+                  <ProgressBar />
+                  <SnackbarProvider>{children}</SnackbarProvider>
+                </MotionLazy>
+              </ThemeProvider>
+            </LocalizationProvider>
+          </TanStackProvider>
+        </body>
+      </html>
+    </StoreProvider>
   );
 }
