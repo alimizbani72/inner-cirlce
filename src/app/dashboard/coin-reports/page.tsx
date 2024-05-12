@@ -4,9 +4,9 @@ import type { Metadata } from "next";
 // ----------------------------------------------------------------------
 
 export const metadata: Metadata = {
-  title: "Dashboard | Chainmind",
+  title: "Coin Reports",
 };
 
-export default async function Dashboard() {
+export default async function CoinReports() {
   return <Box sx={{ flex: 1 }}>{/* Main content */}</Box>;
 }

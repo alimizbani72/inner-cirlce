@@ -9,7 +9,11 @@ export function IconButton(theme: Theme) {
       styleOverrides: {
         root: ({ ownerState }: { ownerState: ButtonPropsOverride }) => {
           return (ownerState.color as any) === "default"
-            ? {}
+            ? {
+                padding: "0 !important",
+                height: "24px !important",
+                width: "24px !important",
+              }
             : {
                 border: "1px solid transparent",
                 ...button(theme).MuiButton.styleOverrides.contained({ ownerState }),

@@ -1,7 +1,10 @@
 import { IconButton, Stack } from "@mui/material";
 import type { FC } from "react";
-import LogoType from "../LogoType";
-import { Icon } from "../icons";
+import LogoType from "../../../components/LogoType";
+import { Icon } from "../../../components/icons";
+import Menu from "./Menu";
+import { sidebarCommunityItems, sidebarServicesItems } from "src/configs/sidebar";
+import SidebarUserInfo from "./UserInfo";
 
 const DesktopSidebar: FC = () => {
   return (
@@ -12,9 +15,6 @@ const DesktopSidebar: FC = () => {
         <IconButton
           sx={{
             bgcolor: "dark.3",
-            width: 24,
-            height: 24,
-            p: 0,
             position: "absolute",
             right: "-12px",
             top: "50%",
@@ -25,6 +25,15 @@ const DesktopSidebar: FC = () => {
         >
           <Icon name="Arrow-Left" color="grey.light" />
         </IconButton>
+      </Stack>
+
+      <Stack py={4} px={2} gap={4}>
+        <Menu name="Services" items={sidebarServicesItems} />
+        <Menu name="Community" items={sidebarCommunityItems} />
+      </Stack>
+
+      <Stack mt={"auto"}>
+        <SidebarUserInfo />
       </Stack>
     </Stack>
   );

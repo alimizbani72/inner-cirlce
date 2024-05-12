@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Stack } from "@mui/material";
 import DashboardHeader from "src/app/dashboard/_section/Header";
-import DesktopSidebar from "src/components/sidebar/Desktop";
+import DesktopSidebar from "src/app/_components/sidebar/Desktop";
 // ----------------------------------------------------------------------
 
 export const metadata: Metadata = {
