@@ -7,9 +7,6 @@ import { createTheme, ThemeProvider as MuiThemeProvider } from "@mui/material/st
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import merge from "lodash/merge";
 import { type ReactNode, useMemo } from "react";
-// components
-// locales
-import { useLocales } from "src/locales";
 //
 // options
 import RTL from "./options/right-to-left";
@@ -26,8 +23,6 @@ type Props = {
 };
 
 export default function ThemeProvider({ children }: Props) {
-  const { currentLang } = useLocales();
-
   const baseOption = useMemo(
     () => ({
       palette: palette("light"),
@@ -52,11 +47,9 @@ export default function ThemeProvider({ children }: Props) {
 
   theme.components = merge(componentsOverrides(theme));
 
-  const themeWithLocale = useMemo(() => createTheme(theme, currentLang.systemValue), [currentLang.systemValue, theme]);
-
   return (
     <AppRouterCacheProvider options={{ key: "css" }}>
-      <MuiThemeProvider theme={themeWithLocale}>
+      <MuiThemeProvider theme={theme}>
         <RTL themeDirection="ltr">
           <CssBaseline />
           {children}

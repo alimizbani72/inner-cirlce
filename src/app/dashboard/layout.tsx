@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Stack } from "@mui/material";
 import DashboardHeader from "src/app/dashboard/_section/Header";
 import DesktopSidebar from "src/app/_components/sidebar/Desktop";
+import Scrollbar from "@/components/Scrollbar";
 // ----------------------------------------------------------------------
 
 export const metadata: Metadata = {
@@ -16,15 +17,15 @@ export type LayoutProps = {
 export default async function DashboardLayout({ children }: LayoutProps) {
   return (
     <Stack direction={"row"} component="main">
-      <Stack sx={{ width: 248, height: "100vh", display: { md: "flex", xs: "none" } }}>
-        <DesktopSidebar />
-      </Stack>
+      <DesktopSidebar />
 
       <Stack sx={{ flex: 1 }}>
         <DashboardHeader />
 
         {/* Main content */}
-        {children}
+        <Scrollbar>
+          <Stack height={{ md: "calc(100vh - 104px)" }}>{children}</Stack>
+        </Scrollbar>
       </Stack>
     </Stack>
   );

@@ -33,7 +33,7 @@ export const StyledNotistack = styled(MaterialDesignContent)(({ theme }) => {
 
       "#notistack-snackbar": {
         color: theme.palette.success.dark,
-        ...theme.typography["medium-h6"],
+        ...theme.typography["p1-medium"],
       },
     },
     "&.notistack-MuiContent-error": {
@@ -43,7 +43,7 @@ export const StyledNotistack = styled(MaterialDesignContent)(({ theme }) => {
 
       "#notistack-snackbar": {
         color: theme.palette.error.dark,
-        ...theme.typography["medium-h6"],
+        ...theme.typography["p1-medium"],
       },
     },
     // '&.notistack-MuiContent-warning': {},

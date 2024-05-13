@@ -1,5 +1,7 @@
 "use client";
 
+import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
+import { useAppSelector } from "@/lib/hooks";
 import { Avatar, Box, IconButton, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 import { Icon } from "src/components/icons";
@@ -10,6 +12,8 @@ const userInfo = {
 };
 
 const SidebarUserInfo: FC = () => {
+  const isCollapsed = useAppSelector(isSidebarCollapsed);
+
   return (
     <Stack
       sx={{
@@ -36,7 +40,7 @@ const SidebarUserInfo: FC = () => {
           position: "absolute",
           width: 8,
           height: 8,
-          left: 52,
+          left: 46,
           top: "-4px",
           borderRadius: 0.5,
           display: "flex",
@@ -61,13 +65,18 @@ const SidebarUserInfo: FC = () => {
       >
         {userInfo?.name?.at(0)}
       </Avatar>
-      <Typography ml={1.5} mr={"auto"} variant="p2-medium">
-        {userInfo.name}
-      </Typography>
 
-      <IconButton>
-        <Icon name="More" />
-      </IconButton>
+      {!isCollapsed && (
+        <>
+          <Typography ml={1.5} mr={"auto"} variant="p2-medium">
+            {userInfo.name}
+          </Typography>
+
+          <IconButton>
+            <Icon name="More" />
+          </IconButton>
+        </>
+      )}
     </Stack>
   );
 };

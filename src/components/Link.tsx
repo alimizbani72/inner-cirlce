@@ -1,3 +1,5 @@
+"use client";
+
 import type { LinkProps as MuiLinkProps } from "@mui/material/Link";
 import MuiLink from "@mui/material/Link";
 import { styled } from "@mui/material/styles";

@@ -40,11 +40,11 @@ export function table(theme: Theme) {
           fontSize: 14,
           color: theme.palette.text.secondary,
           fontWeight: theme.typography.fontWeightBold,
-          backgroundColor: theme.palette.background.neutral,
+          backgroundColor: theme.palette.background.default,
         },
         stickyHeader: {
           backgroundColor: theme.palette.background.paper,
-          backgroundImage: `linear-gradient(to bottom, ${theme.palette.background.neutral} 0%, ${theme.palette.background.neutral} 100%)`,
+          backgroundImage: `linear-gradient(to bottom, ${theme.palette.background.default} 0%, ${theme.palette.background.default} 100%)`,
         },
         paddingCheckbox: {
           paddingLeft: theme.spacing(1),

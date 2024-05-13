@@ -1,5 +1,7 @@
 "use client";
 
+import { isMobileMenuOpened, mobileMenuToggle } from "@/lib/features/menu/menuSlice";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { Button, Drawer, IconButton, Stack, Typography } from "@mui/material";
 import { usePathname } from "next/navigation";
 import { useMemo, type FC } from "react";
@@ -12,13 +14,15 @@ import { useIsMobile } from "src/hooks/use-responsive";
 const DashboardHeader: FC = () => {
   const isMobile = useIsMobile();
   const pathname = usePathname();
+  const dispatch = useAppDispatch();
+  const isMenuOpened = useAppSelector(isMobileMenuOpened);
   const name = useMemo(() => (mapPathToName as any)?.[pathname.replace("/dashboard/", "")] || "Chainmind", [pathname]);
 
   return isMobile ? (
     <>
-      <Stack bgcolor={"dark.1"}>
+      <Stack bgcolor={"dark.1"} position={"sticky"} top={0} zIndex={1000}>
         <Stack px={3} pt={6} pb={2} direction={"row"} alignItems={"center"} justifyContent={"space-between"}>
-          <IconButton>
+          <IconButton onClick={() => dispatch(mobileMenuToggle(true))}>
             <Icon name="Menu" />
           </IconButton>
           <LogoType />
@@ -39,7 +43,11 @@ const DashboardHeader: FC = () => {
       </Stack>
 
       {/* Mobile menu drawer */}
-      <Drawer variant="persistent" PaperProps={{ sx: { "&.MuiDrawer-paper": { bgcolor: "dark.1" } } }}>
+      <Drawer
+        open={isMenuOpened}
+        variant="persistent"
+        PaperProps={{ sx: { "&.MuiDrawer-paper": { bgcolor: "dark.1" } } }}
+      >
         <MobileSidebar />
       </Drawer>
     </>

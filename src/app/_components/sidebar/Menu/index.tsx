@@ -3,6 +3,8 @@ import type { FC } from "react";
 import { mapPathToName, type sidebarServicesItems } from "src/configs/sidebar";
 import MenuItem from "./MenuItem";
 import type { iconsType } from "src/components/icons/iconsNames";
+import { useAppSelector } from "@/lib/hooks";
+import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
 
 type MenuProps = {
   name: string;
@@ -10,6 +12,8 @@ type MenuProps = {
 };
 
 const Menu: FC<MenuProps> = ({ name, items }) => {
+  const isCollapsed = useAppSelector(isSidebarCollapsed);
+
   return (
     <List
       component="nav"
@@ -21,12 +25,14 @@ const Menu: FC<MenuProps> = ({ name, items }) => {
           disableSticky
           component="p"
           sx={{
-            px: 2,
+            px: isCollapsed ? 1 : 2,
             lineHeight: 2.5,
             typography: "caption-semi-bold",
             textTransform: "uppercase",
             letterSpacing: "2.88px",
             color: "grey.dark",
+            textOverflow: "ellipsis",
+            overflow: "hidden",
           }}
         >
           {name}
@@ -39,6 +45,7 @@ const Menu: FC<MenuProps> = ({ name, items }) => {
           route={path}
           label={name ?? (mapPathToName as any)[path]}
           subItems={items}
+          isCollapsed={isCollapsed}
           icon={icon as iconsType}
         />
       ))}

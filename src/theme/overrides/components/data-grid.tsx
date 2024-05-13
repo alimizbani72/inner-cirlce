@@ -39,7 +39,7 @@ export function dataGrid(theme: Theme) {
         toolbarContainer: {
           padding: theme.spacing(2),
           borderBottom: `1px dashed ${theme.palette.divider}`,
-          backgroundColor: theme.palette.background.neutral,
+          backgroundColor: theme.palette.background.default,
         },
         paper: {
           ...paperStyles,
@@ -59,7 +59,7 @@ export function dataGrid(theme: Theme) {
         },
         columnHeaders: {
           borderRadius: 0,
-          backgroundColor: theme.palette.background.neutral,
+          backgroundColor: theme.palette.background.default,
         },
         panelHeader: {
           padding: theme.spacing(2),

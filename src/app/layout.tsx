@@ -1,16 +1,15 @@
-import "src/locales/i18n";
 import "./global.css";
 
 import type { Metadata, Viewport } from "next";
 import { getServerSession } from "next-auth";
 import { MotionLazy } from "src/components/animate/motion-lazy";
-import ProgressBar from "src/components/progress-bar";
 import { SnackbarProvider } from "src/components/snackbar";
 import ThemeProvider from "src/theme";
 import { primaryFont } from "src/theme/typography";
 import { TanStackProvider } from "./_providers";
 import type { ReactNode } from "react";
 import { StoreProvider } from "./_providers/StoreProvider";
+import ProgressBarProvider from "@/app/_providers/ProgressBarProvider";
 // ----------------------------------------------------------------------
 
 export const viewport: Viewport = {
@@ -68,8 +67,9 @@ export default async function RootLayout({ children }: LayoutProps) {
           <TanStackProvider session={session}>
             <ThemeProvider>
               <MotionLazy>
-                <ProgressBar />
-                <SnackbarProvider>{children}</SnackbarProvider>
+                <ProgressBarProvider>
+                  <SnackbarProvider>{children}</SnackbarProvider>
+                </ProgressBarProvider>
               </MotionLazy>
             </ThemeProvider>
           </TanStackProvider>

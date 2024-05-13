@@ -1,3 +1,5 @@
+"use client";
+
 import { IconButton, Stack } from "@mui/material";
 import type { FC } from "react";
 import LogoType from "src/components/LogoType";
@@ -5,8 +7,12 @@ import Menu from "./Menu";
 import SidebarUserInfo from "./UserInfo";
 import { sidebarCommunityItems, sidebarServicesItems } from "src/configs/sidebar";
 import { Icon } from "src/components/icons";
+import { useAppDispatch } from "@/lib/hooks";
+import { mobileMenuToggle } from "@/lib/features/menu/menuSlice";
 
 const MobileSidebar: FC = () => {
+  const dispatch = useAppDispatch();
+
   return (
     <Stack sx={{ height: "100vh", width: "100vw" }}>
       <Stack
@@ -19,7 +25,7 @@ const MobileSidebar: FC = () => {
         justifyContent={"center"}
         position={"relative"}
       >
-        <IconButton sx={{ position: "absolute", left: 24 }}>
+        <IconButton sx={{ position: "absolute", left: 24 }} onClick={() => dispatch(mobileMenuToggle(false))}>
           <Icon name="Close" />
         </IconButton>
 

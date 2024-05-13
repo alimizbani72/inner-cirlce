@@ -7,22 +7,22 @@ import { useEffect, useRef } from "react";
 import { Provider } from "react-redux";
 
 interface Props {
-	readonly children: ReactNode;
+  readonly children: ReactNode;
 }
 
 export const StoreProvider = ({ children }: Props) => {
-	const storeRef = useRef<AppStore | null>(null);
+  const storeRef = useRef<AppStore | null>(null);
 
-	if (!storeRef.current) {
-		storeRef.current = makeStore();
-	}
+  if (!storeRef.current) {
+    storeRef.current = makeStore();
+  }
 
-	useEffect(() => {
-		if (storeRef.current != null) {
-			const unsubscribe = setupListeners(storeRef.current.dispatch);
-			return unsubscribe;
-		}
-	}, []);
+  useEffect(() => {
+    if (storeRef.current != null) {
+      const unsubscribe = setupListeners(storeRef.current.dispatch);
+      return unsubscribe;
+    }
+  }, []);
 
-	return <Provider store={storeRef.current}>{children}</Provider>;
+  return <Provider store={storeRef.current}>{children}</Provider>;
 };
