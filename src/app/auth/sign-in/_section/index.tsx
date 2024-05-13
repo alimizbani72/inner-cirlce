@@ -2,7 +2,7 @@
 "use client";
 import RiveComp from "src/components/RiveComp";
 
-const Home = () => {
+const SignInSection = () => {
   return (
     <div>
       <RiveComp src="/assets/rive/whale_animation.riv" width={500} height={500} />
@@ -10,4 +10,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default SignInSection;

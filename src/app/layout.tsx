@@ -6,7 +6,6 @@ import { getServerSession } from "next-auth";
 import { MotionLazy } from "src/components/animate/motion-lazy";
 import ProgressBar from "src/components/progress-bar";
 import { SnackbarProvider } from "src/components/snackbar";
-import { LocalizationProvider } from "src/locales";
 import ThemeProvider from "src/theme";
 import { primaryFont } from "src/theme/typography";
 import { TanStackProvider } from "./_providers";
@@ -67,14 +66,12 @@ export default async function RootLayout({ children }: LayoutProps) {
         </head>
         <body style={{ backgroundColor: "#070720" }}>
           <TanStackProvider session={session}>
-            <LocalizationProvider>
-              <ThemeProvider>
-                <MotionLazy>
-                  <ProgressBar />
-                  <SnackbarProvider>{children}</SnackbarProvider>
-                </MotionLazy>
-              </ThemeProvider>
-            </LocalizationProvider>
+            <ThemeProvider>
+              <MotionLazy>
+                <ProgressBar />
+                <SnackbarProvider>{children}</SnackbarProvider>
+              </MotionLazy>
+            </ThemeProvider>
           </TanStackProvider>
         </body>
       </html>

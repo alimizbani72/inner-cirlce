@@ -5,7 +5,7 @@ import IcomoonReact from "icomoon-react";
 import type { FC } from "react";
 
 import type { iconsType } from "./iconsNames";
-import iconSet from "./Icons.json";
+import iconSet from "./icons.json";
 
 export interface IconProps {
   color?: string;
