@@ -33,6 +33,11 @@ spec:
         - containerPort: 3001
         resources:
           {{- toYaml .Values.resources | nindent 12 }}
+        env:
+        - name: NEXTAUTH_URL
+          value: {{ .Values.app.nextauth_url }}
+        - name: NEXTAUTH_SECRET
+          value: {{ .Values.app.nextauth_secret }}
       {{- if $.Values.securityContext }}
       securityContext:
         {{- $.Values.securityContext | nindent 8 }}

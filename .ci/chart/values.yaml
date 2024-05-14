@@ -8,6 +8,10 @@ service:
 
 domainName: "staging-front.chainmind.com"
 
+app:
+  nextauth_url: ""
+  nextauth_secret: ""
+
 tls:
   enabled: false
   clusterIssuer: cloudflare

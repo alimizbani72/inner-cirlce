@@ -128,6 +128,8 @@ jobs:
               --set resources.limits.memory="500Mi" \
               --set resources.requests.cpu="250m" \
               --set resources.requests.memory="256Mi" \
+              --set app.nextauth_url="https://${{ env.RELEASE_DOMAIN }}" \
+              --set app.nextauth_secret="${{ secrets.STAGING_NEXTAUTH_SECRET }}" \
               --create-namespace \
               --atomic \
               .ci/chart
@@ -153,6 +155,8 @@ jobs:
               --set resources.limits.memory="500Mi" \
               --set resources.requests.cpu="250m" \
               --set resources.requests.memory="256Mi" \
+              --set app.nextauth_url="https://${{ env.RELEASE_DOMAIN }}" \
+              --set app.nextauth_secret="${{ secrets.PROD_NEXTAUTH_SECRET }}" \
               --create-namespace \
               --atomic \
               .ci/chart
