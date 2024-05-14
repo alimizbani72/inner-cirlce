@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { Button, Drawer, IconButton, Stack, Typography } from "@mui/material";
 import { usePathname } from "next/navigation";
 import { useMemo, type FC } from "react";
-import MobileSidebar from "src/app/_components/sidebar/Mobile";
+import MobileSidebar from "@/app/[lang]/_components/sidebar/Mobile";
 import LogoType from "src/components/LogoType";
 import { Icon } from "src/components/icons";
 import { mapPathToName } from "src/configs/sidebar";

@@ -3,8 +3,8 @@
 import { Box, Collapse, List, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import type { FC } from "react";
 import { useBoolean } from "src/hooks/use-boolean";
-import { Icon } from "../../../../components/icons";
-import type { iconsType } from "../../../../components/icons/iconsNames";
+import { Icon } from "../../../../../components/icons";
+import type { iconsType } from "../../../../../components/icons/iconsNames";
 import { usePathname } from "next/navigation";
 import { mapPathToName } from "src/configs/sidebar";
 import { BulletIcon, BulletIconActive } from "./Bullets";

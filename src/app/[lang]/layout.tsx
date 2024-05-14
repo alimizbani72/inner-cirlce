@@ -1,6 +1,7 @@
 import "./global.css";
 
 import type { Metadata, Viewport } from "next";
+import { LocalizationProvider } from "src/locales";
 import { getServerSession } from "next-auth";
 import { MotionLazy } from "src/components/animate/motion-lazy";
 import { SnackbarProvider } from "src/components/snackbar";
@@ -9,7 +10,8 @@ import { primaryFont } from "src/theme/typography";
 import { TanStackProvider } from "./_providers";
 import type { ReactNode } from "react";
 import { StoreProvider } from "./_providers/StoreProvider";
-import ProgressBarProvider from "@/app/_providers/ProgressBarProvider";
+import ProgressBarProvider from "@/app/[lang]/_providers/ProgressBarProvider";
+import { getDictionary } from "@/locales/dictionary";
 // ----------------------------------------------------------------------
 
 export const viewport: Viewport = {
@@ -53,25 +55,29 @@ export const metadata: Metadata = {
 
 export type LayoutProps = {
   children: ReactNode;
+  params: { lang: string };
 };
 
-export default async function RootLayout({ children }: LayoutProps) {
+export default async function RootLayout({ children, params }: LayoutProps) {
   const session = await getServerSession();
+  const dict = await getDictionary(params.lang);
   return (
-    <StoreProvider>
+    <StoreProvider currentLang={params.lang} dict={dict}>
       <html lang="en" className={primaryFont.className}>
         <head>
           <script src="https://www.google.com/recaptcha/api.js" async defer />
         </head>
         <body style={{ backgroundColor: "#070720" }}>
           <TanStackProvider session={session}>
-            <ThemeProvider>
-              <MotionLazy>
-                <ProgressBarProvider>
-                  <SnackbarProvider>{children}</SnackbarProvider>
-                </ProgressBarProvider>
-              </MotionLazy>
-            </ThemeProvider>
+            <LocalizationProvider>
+              <ThemeProvider>
+                <MotionLazy>
+                  <ProgressBarProvider>
+                    <SnackbarProvider>{children}</SnackbarProvider>
+                  </ProgressBarProvider>
+                </MotionLazy>
+              </ThemeProvider>
+            </LocalizationProvider>
           </TanStackProvider>
         </body>
       </html>

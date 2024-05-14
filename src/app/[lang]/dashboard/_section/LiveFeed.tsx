@@ -1,4 +1,4 @@
-import ContentStack from "@/app/_components/ContentStack";
+import ContentStack from "@/app/[lang]/_components/ContentStack";
 import { Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 

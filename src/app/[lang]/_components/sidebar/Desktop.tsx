@@ -2,7 +2,7 @@
 
 import { Collapse, IconButton, Stack } from "@mui/material";
 import type { FC } from "react";
-import { Icon } from "../../../components/icons";
+import { Icon } from "../../../../components/icons";
 import Menu from "./Menu";
 import { sidebarCommunityItems, sidebarServicesItems } from "src/configs/sidebar";
 import SidebarUserInfo from "./UserInfo";
