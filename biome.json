@@ -18,7 +18,8 @@
       "**/node_modules/*",
       "**/package-lock.json",
       "**/yarn.lock",
-      "src/services/*"
+      "src/services/*",
+      "src/locales/types.ts"  
     ]
   },
   "organizeImports": { "enabled": true },
@@ -210,7 +211,7 @@
       "src/serviceWorkerRegistration.ts",
       "src/setupTests.ts",
       "src/services/*",
-      "**/service-worker.js"
+      "src/locales/types.ts"  
     ]
   },
   "javascript": {

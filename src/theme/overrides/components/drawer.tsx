@@ -4,7 +4,7 @@ import type { Theme } from "@mui/material/styles";
 import { alpha } from "@mui/material/styles";
 
 //
-import { paper } from "../../css";
+import { paper } from "@/theme/css";
 
 // ----------------------------------------------------------------------
 

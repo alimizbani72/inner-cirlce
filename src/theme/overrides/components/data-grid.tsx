@@ -7,7 +7,7 @@ import { alpha } from "@mui/material/styles";
 import { tablePaginationClasses } from "@mui/material/TablePagination";
 
 //
-import { paper } from "../../css";
+import { paper } from "@/theme/css";
 
 // ----------------------------------------------------------------------
 

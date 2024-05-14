@@ -2,15 +2,15 @@
 
 import { Box, Collapse, List, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import { useCallback, type FC } from "react";
-import { useBoolean } from "src/hooks/use-boolean";
-import { Icon } from "../../../../../components/icons";
-import type { iconsType } from "../../../../../components/icons/iconsNames";
+import { useBoolean } from "@/hooks/use-boolean";
 import { usePathname } from "next/navigation";
-import { mapPathToName } from "src/configs/sidebar";
+import { mapPathToName } from "@/configs/sidebar";
 import { BulletIcon, BulletIconActive } from "./Bullets";
 import { useAppRouter } from "@/routes/hooks/use-router";
 import { useAppDispatch } from "@/lib/hooks";
 import { mobileMenuToggle } from "@/lib/features/menu/menuSlice";
+import type { iconsType } from "@/components/icons/iconsNames";
+import { Icon } from "@/components/icons";
 
 type MenuItemProps = {
   icon: iconsType;

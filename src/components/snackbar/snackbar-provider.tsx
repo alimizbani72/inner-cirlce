@@ -4,7 +4,7 @@ import Collapse from "@mui/material/Collapse";
 import { SnackbarProvider as NotistackProvider } from "notistack";
 import { type ReactNode, useRef } from "react";
 
-import Iconify from "../iconify";
+import Iconify from "@/components/iconify";
 import { CustomIcon, StyledIcon, StyledNotistack } from "./styles";
 
 // ----------------------------------------------------------------------

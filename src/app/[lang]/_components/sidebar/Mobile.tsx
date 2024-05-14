@@ -2,11 +2,11 @@
 
 import { IconButton, Stack } from "@mui/material";
 import type { FC } from "react";
-import LogoType from "src/components/LogoType";
+import LogoType from "@/components/LogoType";
 import Menu from "./Menu";
 import SidebarUserInfo from "./UserInfo";
-import { sidebarCommunityItems, sidebarServicesItems } from "src/configs/sidebar";
-import { Icon } from "src/components/icons";
+import { sidebarCommunityItems, sidebarServicesItems } from "@/configs/sidebar";
+import { Icon } from "@/components/icons";
 import { useAppDispatch } from "@/lib/hooks";
 import { mobileMenuToggle } from "@/lib/features/menu/menuSlice";
 

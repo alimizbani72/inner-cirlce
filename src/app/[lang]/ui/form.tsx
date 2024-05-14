@@ -3,8 +3,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "@mui/material";
 import type { FunctionComponent } from "react";
 import { useForm } from "react-hook-form";
-import { RHFCheckbox, RHFTextField } from "src/components/hook-form";
-import FormProvider from "src/components/hook-form/form-provider";
+import { RHFCheckbox, RHFTextField } from "@/components/hook-form";
+import FormProvider from "@/components/hook-form/form-provider";
 
 import * as Yup from "yup";
 

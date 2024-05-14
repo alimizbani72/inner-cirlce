@@ -4,7 +4,7 @@ import { alpha } from "@mui/material/styles";
 import { svgIconClasses } from "@mui/material/SvgIcon";
 
 //
-import { menuItem, paper } from "../../css";
+import { menuItem, paper } from "@/theme/css";
 
 // ----------------------------------------------------------------------
 

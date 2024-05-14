@@ -1,6 +1,6 @@
 import { Montserrat } from "next/font/google";
 import type { CSSProperties } from "react";
-import { toNumber } from "src/utils/toNumber";
+import { toNumber } from "@/utils/toNumber";
 
 declare module "@mui/material/styles" {
   interface TypographyVariants {

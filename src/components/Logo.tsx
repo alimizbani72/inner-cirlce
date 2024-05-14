@@ -1,6 +1,6 @@
 import type { SvgIconProps } from "@mui/material";
 import type { FC } from "react";
-import SvgWrapper from "src/components/SVGWrapper";
+import SvgWrapper from "@/components/SVGWrapper";
 
 const Logo: FC<SvgIconProps> = ({ ...props }) => (
   <SvgWrapper {...props} width={40} height={40} viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">

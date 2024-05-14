@@ -2,14 +2,14 @@
 
 import { Collapse, IconButton, Stack } from "@mui/material";
 import type { FC } from "react";
-import { Icon } from "../../../../components/icons";
 import Menu from "./Menu";
-import { sidebarCommunityItems, sidebarServicesItems } from "src/configs/sidebar";
+import { sidebarCommunityItems, sidebarServicesItems } from "@/configs/sidebar";
 import SidebarUserInfo from "./UserInfo";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { isSidebarCollapsed, sidebarToggle } from "@/lib/features/menu/menuSlice";
 import LogoType from "@/components/LogoType";
 import Logo from "@/components/Logo";
+import { Icon } from "@/components/icons";
 
 const DesktopSidebar: FC = () => {
   const dispatch = useAppDispatch();

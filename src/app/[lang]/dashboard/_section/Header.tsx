@@ -6,11 +6,11 @@ import { Button, Drawer, IconButton, Stack, Typography } from "@mui/material";
 import { usePathname } from "next/navigation";
 import { useMemo, type FC } from "react";
 
-import LogoType from "src/components/LogoType";
-import { Icon } from "src/components/icons";
-import { mapPathToName } from "src/configs/sidebar";
-import { useIsMobile } from "src/hooks/use-responsive";
-import MobileSidebar from "../../_components/sidebar/Mobile";
+import LogoType from "@/components/LogoType";
+import { Icon } from "@/components/icons";
+import { mapPathToName } from "@/configs/sidebar";
+import { useIsMobile } from "@/hooks/use-responsive";
+import MobileSidebar from "@app/_components/sidebar/Mobile";
 
 const DashboardHeader: FC = () => {
   const isMobile = useIsMobile();

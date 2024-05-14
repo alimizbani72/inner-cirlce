@@ -4,7 +4,7 @@ import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
 import { useAppSelector } from "@/lib/hooks";
 import { Avatar, Box, IconButton, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
-import { Icon } from "src/components/icons";
+import { Icon } from "@/components/icons";
 
 const userInfo = {
   name: "Ellie Clark",

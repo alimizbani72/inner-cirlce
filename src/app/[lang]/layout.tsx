@@ -1,12 +1,12 @@
 import "./global.css";
 
 import type { Metadata, Viewport } from "next";
-import { LocalizationProvider } from "src/locales";
+import { LocalizationProvider } from "@/locales";
 import { getServerSession } from "next-auth";
-import { MotionLazy } from "src/components/animate/motion-lazy";
-import { SnackbarProvider } from "src/components/snackbar";
-import ThemeProvider from "src/theme";
-import { primaryFont } from "src/theme/typography";
+import { MotionLazy } from "@/components/animate/motion-lazy";
+import { SnackbarProvider } from "@/components/snackbar";
+import ThemeProvider from "@/theme";
+import { primaryFont } from "@/theme/typography";
 import { TanStackProvider } from "./_providers";
 import type { ReactNode } from "react";
 import { StoreProvider } from "./_providers/StoreProvider";

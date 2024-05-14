@@ -1,8 +1,8 @@
 import { List, ListSubheader } from "@mui/material";
 import type { FC } from "react";
-import { mapPathToName, type sidebarServicesItems } from "src/configs/sidebar";
+import { mapPathToName, type sidebarServicesItems } from "@/configs/sidebar";
 import MenuItem from "./MenuItem";
-import type { iconsType } from "src/components/icons/iconsNames";
+import type { iconsType } from "@/components/icons/iconsNames";
 import { useAppSelector } from "@/lib/hooks";
 import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
 

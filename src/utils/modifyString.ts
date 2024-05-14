@@ -1,4 +1,4 @@
-import { byteBaseBulkURL, byteBaseDownloadURL } from "src/consts";
+import { byteBaseBulkURL, byteBaseDownloadURL } from "@/consts";
 
 export const removeName = (originalKey: string) => {
   const parts = originalKey.split("-");

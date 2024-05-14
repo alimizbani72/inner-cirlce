@@ -1,7 +1,7 @@
 // sections
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
-import { authOptions } from "src/configs/authOptions";
+import { authOptions } from "@/configs/authOptions";
 import { Typography } from "@mui/material";
 // import { HomeView } from 'src/sections/home/view';
 

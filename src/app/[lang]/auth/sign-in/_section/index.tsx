@@ -2,7 +2,7 @@
 "use client";
 import { useTranslate } from "@/locales";
 import { Typography } from "@mui/material";
-import RiveComp from "src/components/RiveComp";
+import RiveComp from "@/components/RiveComp";
 
 const SignInSection = () => {
   const { t } = useTranslate();

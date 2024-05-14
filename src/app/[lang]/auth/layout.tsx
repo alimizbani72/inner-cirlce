@@ -1,7 +1,7 @@
 import { Grid, Stack, Typography } from "@mui/material";
 
-import type { LayoutProps } from "../layout";
-import TextureBox from "../_components/TextureBox";
+import type { LayoutProps } from "@app/layout";
+import TextureBox from "@app/_components/TextureBox";
 
 export default function AuthLayout({ children }: LayoutProps) {
   return (
