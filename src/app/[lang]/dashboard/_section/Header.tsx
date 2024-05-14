@@ -5,18 +5,22 @@ import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { Button, Drawer, IconButton, Stack, Typography } from "@mui/material";
 import { usePathname } from "next/navigation";
 import { useMemo, type FC } from "react";
-import MobileSidebar from "@/app/[lang]/_components/sidebar/Mobile";
+
 import LogoType from "src/components/LogoType";
 import { Icon } from "src/components/icons";
 import { mapPathToName } from "src/configs/sidebar";
 import { useIsMobile } from "src/hooks/use-responsive";
+import MobileSidebar from "../../_components/sidebar/Mobile";
 
 const DashboardHeader: FC = () => {
   const isMobile = useIsMobile();
   const pathname = usePathname();
   const dispatch = useAppDispatch();
   const isMenuOpened = useAppSelector(isMobileMenuOpened);
-  const name = useMemo(() => (mapPathToName as any)?.[pathname.replace("/dashboard/", "")] || "Chainmind", [pathname]);
+  const name = useMemo(
+    () => (mapPathToName as any)?.[pathname.replace(/^\/[a-zA-Z]{2}\/dashboard\/?/, "")] || "Chainmind",
+    [pathname]
+  );
 
   return isMobile ? (
     <>

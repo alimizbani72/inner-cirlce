@@ -1,7 +1,7 @@
 "use client";
 
 import { Box, Collapse, List, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
-import type { FC } from "react";
+import { useCallback, type FC } from "react";
 import { useBoolean } from "src/hooks/use-boolean";
 import { Icon } from "../../../../../components/icons";
 import type { iconsType } from "../../../../../components/icons/iconsNames";
@@ -27,11 +27,14 @@ const activeStyle = {
 };
 
 const MenuItem: FC<MenuItemProps> = ({ icon, label, subItems, route, isCollapsed }) => {
-  const open = useBoolean();
   const pathname = usePathname();
-  const dispatch = useAppDispatch();
   const { push } = useAppRouter();
-  const isActive = (path: string | undefined) => pathname.replace("/dashboard/", "") === path;
+  const dispatch = useAppDispatch();
+  const isActive = useCallback(
+    (path: string | undefined) => pathname.replace(/^\/[a-zA-Z]{2}\/dashboard\/?/, "") === path,
+    [pathname]
+  );
+  const open = useBoolean(!!subItems?.find((s) => isActive(s.path)));
 
   if (subItems && !subItems.length) {
     return null;
@@ -54,7 +57,10 @@ const MenuItem: FC<MenuItemProps> = ({ icon, label, subItems, route, isCollapsed
           Array.isArray(subItems)
             ? open.onToggle
             : () => {
-                push(`/dashboard/${route ?? ""}`);
+                if (!isActive(route)) {
+                  push(`/dashboard/${route ?? ""}`);
+                }
+
                 dispatch(mobileMenuToggle(false));
               }
         }
@@ -89,19 +95,23 @@ const MenuItem: FC<MenuItemProps> = ({ icon, label, subItems, route, isCollapsed
               <ListItemButton
                 key={subItem.path}
                 onClick={() => {
-                  push(`/dashboard/${subItem.path}`);
+                  if (!isActive(subItem.path)) {
+                    push(`/dashboard/${subItem.path}`);
+                  }
                   dispatch(mobileMenuToggle(false));
                 }}
-                sx={{ borderRadius: 3, ...(isActive(route) && activeStyle) }}
+                sx={{ borderRadius: 3, ...(isActive(subItem.path) && activeStyle) }}
               >
                 {!isCollapsed && (
-                  <ListItemIcon sx={{ mr: 0 }}>{isActive(route) ? <BulletIconActive /> : <BulletIcon />}</ListItemIcon>
+                  <ListItemIcon sx={{ mr: 0 }}>
+                    {isActive(subItem.path) ? <BulletIconActive /> : <BulletIcon />}
+                  </ListItemIcon>
                 )}
                 <ListItemText
                   sx={{ ml: 1 }}
                   primaryTypographyProps={{
                     variant: "p2-regular",
-                    color: isActive(route) ? "white" : "grey.light",
+                    color: isActive(subItem.path) ? "white" : "grey.light",
                     textOverflow: "ellipsis",
                     overflow: "hidden",
                   }}

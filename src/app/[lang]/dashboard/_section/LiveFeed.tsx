@@ -13,7 +13,7 @@ const GreenLight = () => (
 
 const LiveFeed: FC<LiveFeedProps> = () => {
   return (
-    <ContentStack sx={{ p: 1, pt: 3, gap: 1 }}>
+    <ContentStack sx={{ p: 1, pt: 3, gap: 1, height: "100%" }}>
       <Stack direction={"row"} justifyContent={"space-between"} px={2}>
         <Typography variant="p1-semi-bold">Live Feed</Typography>
 
@@ -25,7 +25,7 @@ const LiveFeed: FC<LiveFeedProps> = () => {
         </Stack>
       </Stack>
 
-      <Stack sx={{ p: 2, borderRadius: 1.5, bgcolor: "dark.3", gap: 1 }}>
+      <Stack sx={{ p: 2, borderRadius: 1.5, bgcolor: "dark.3", gap: 1, flex: 1 }}>
         <Typography variant="p1-semi-bold">Crypto will grow up! Let's invest right now...</Typography>
         <Typography variant="p2-regular" color={"grey.light"}>
           We’ve analyzed the best crypto you can buy to share some insight into the market in 2024, how to evaluate

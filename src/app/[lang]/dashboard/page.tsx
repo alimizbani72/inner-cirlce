@@ -4,6 +4,7 @@ import WelcomeBanner from "./_section/WelcomeBanner";
 import LiveFeed from "./_section/LiveFeed";
 import RoadMap from "./_section/RoadMap";
 import SocialMedia from "./_section/SocialMedia";
+import DropZone from "./_section/DropZone";
 
 // ----------------------------------------------------------------------
 
@@ -18,9 +19,13 @@ export default async function Dashboard() {
 
       <Stack p={{ md: 4, xs: 3 }} gap={3}>
         <Stack gap={3} direction={{ md: "row", xs: "column" }}>
-          {/* TODO: Drop zone table */}
+          <Stack flex={1} width={{ md: "calc(50% - 32px)", xs: "100vw" }}>
+            <DropZone />
+          </Stack>
 
-          <LiveFeed />
+          <Stack flex={1}>
+            <LiveFeed />
+          </Stack>
         </Stack>
 
         <RoadMap />

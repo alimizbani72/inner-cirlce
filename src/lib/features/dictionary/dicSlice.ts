@@ -24,11 +24,11 @@ export const dicSlice = createSlice({
     }),
   }),
   selectors: {
-    selecetDict: (state) => state.dict,
+    selectDict: (state) => state.dict,
     selectLang: (state) => state.currentLang,
   },
 });
 
 export const { initializeDic } = dicSlice.actions;
 
-export const { selecetDict, selectLang } = dicSlice.selectors;
+export const { selectDict, selectLang } = dicSlice.selectors;
