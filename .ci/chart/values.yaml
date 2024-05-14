@@ -1,0 +1,22 @@
+name: "sample"
+replicaCount: 1
+
+ingressController: nginx
+
+service:
+  type: ClusterIP
+
+domainName: "staging-front.chainmind.com"
+
+tls:
+  enabled: false
+  clusterIssuer: cloudflare
+  secretName: staging-front-chainmind-tls
+
+image:
+  repository: registry.chainmind.com/frontiers/front
+  pullPolicy: Always
+  tag: latest
+
+resources: {}
+tolerations: {}

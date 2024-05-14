@@ -1,0 +1,12 @@
+apiVersion: v2
+appVersion: 0.0.1
+name: chainmind-web
+version: 0.0.1
+description: A helm chart for chainmind web project
+home: https://github.com/ChainMind-AG/inner-circle
+maintainers:
+- name: Josh
+  url: https://github.com/mrjosh
+sources:
+- https://github.com/ChainMind-AG/inner-circle
+type: application
