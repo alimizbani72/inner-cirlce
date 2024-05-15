@@ -18,37 +18,12 @@ export default async function PortfolioStrategies() {
       alignItems={{ md: "flex-start", xs: undefined }}
       justifyContent={"flex-start"}
     >
-      <StrategiesItem
-        title="Whale"
-        subtitle="Strategy"
-        riveSource="/assets/rive/whale_animation.riv"
-        link="/portfolio-strategies/whale"
-      />
+      <StrategiesItem title="Whale" subtitle="Strategy" src="/assets/shark.svg" link="shark" />
 
-      <StrategiesItem
-        title="Whale"
-        subtitle="Strategy"
-        riveSource="/assets/rive/whale_animation.riv"
-        link="/portfolio-strategies/whale"
-      />
-      <StrategiesItem
-        title="Whale"
-        subtitle="Strategy"
-        riveSource="/assets/rive/whale_animation.riv"
-        link="/portfolio-strategies/whale"
-      />
-      <StrategiesItem
-        title="Whale"
-        subtitle="Strategy"
-        riveSource="/assets/rive/whale_animation.riv"
-        link="/portfolio-strategies/whale"
-      />
-      <StrategiesItem
-        title="Whale"
-        subtitle="Strategy"
-        riveSource="/assets/rive/whale_animation.riv"
-        link="/portfolio-strategies/whale"
-      />
+      <StrategiesItem title="Whale" subtitle="Strategy" src="/assets/shark.svg" link="shark" />
+      <StrategiesItem title="Whale" subtitle="Strategy" src="/assets/shark.svg" link="shark" />
+      <StrategiesItem title="Whale" subtitle="Strategy" src="/assets/shark.svg" link="shark" />
+      <StrategiesItem title="Whale" subtitle="Strategy" src="/assets/shark.svg" link="shark" />
     </Stack>
   );
 }

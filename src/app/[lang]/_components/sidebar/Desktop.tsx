@@ -39,6 +39,7 @@ const DesktopSidebar: FC = () => {
             width: isCollapsed ? 104 : 248,
             borderRight: "1.5px solid",
             borderColor: "dark.3",
+            backgroundColor: "dark.2",
             height: "100vh",
           }}
         >

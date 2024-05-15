@@ -1,67 +1,30 @@
 import type { Theme } from "@mui/material/styles";
-import { alpha } from "@mui/material/styles";
-import type { ToggleButtonProps } from "@mui/material/ToggleButton";
-import { toggleButtonClasses } from "@mui/material/ToggleButton";
+import { button } from "./button";
+import { toggleButtonClasses } from "@mui/material";
 
 // ----------------------------------------------------------------------
-
-const COLORS = ["primary", "secondary", "info", "success", "warning", "error"] as const;
 
 // ----------------------------------------------------------------------
 
 export function toggleButton(theme: Theme) {
-  const rootStyles = (ownerState: ToggleButtonProps) => {
-    const defaultStyle = {
-      [`&.${toggleButtonClasses.selected}`]: {
-        borderColor: "currentColor",
-        boxShadow: "0 0 0 0.5px currentColor",
-      },
-    };
-
-    const colorStyle = COLORS.map((color) => ({
-      ...(ownerState.color === color && {
-        "&:hover": {
-          borderColor: alpha(theme.palette[color].main, 0.48),
-          backgroundColor: alpha(theme.palette[color].main, theme.palette.action.hoverOpacity),
-        },
-      }),
-    }));
-
-    const disabledState = {
-      [`&.${toggleButtonClasses.disabled}`]: {
-        [`&.${toggleButtonClasses.selected}`]: {
-          color: theme.palette.action.disabled,
-          backgroundColor: theme.palette.action.selected,
-          borderColor: theme.palette.action.disabledBackground,
-        },
-      },
-    };
-
-    return [defaultStyle, ...colorStyle, disabledState];
-  };
-
   return {
-    MuiToggleButton: {
-      styleOverrides: {
-        root: ({ ownerState }: { ownerState: ToggleButtonProps }) => rootStyles(ownerState),
-      },
-    },
+    MuiToggleButton: { styleOverrides: button(theme).MuiButton.styleOverrides },
     MuiToggleButtonGroup: {
+      defaultProps: { color: "info", exclusive: true },
       styleOverrides: {
         root: {
-          borderRadius: theme.shape.borderRadius,
-          backgroundColor: theme.palette.background.paper,
-          border: `solid 1px ${alpha(theme.palette.grey[500], 0.08)}`,
+          borderRadius: theme.spacing(3),
+          border: `1px solid ${theme.palette.dark[3]}`,
         },
         grouped: {
-          margin: 4,
+          paddingLeft: theme.spacing(3),
+          paddingRight: theme.spacing(3),
           [`&.${toggleButtonClasses.selected}`]: {
-            boxShadow: "none",
+            boxShadow: "0px 4px 8px 0px rgba(0, 0, 0, 0.16)",
+            backgroundColor: theme.palette.dark[3],
+            color: theme.palette.common.white,
           },
-          "&:not(:first-of-type), &:not(:last-of-type)": {
-            borderRadius: theme.shape.borderRadius,
-            borderColor: "transparent",
-          },
+          "&:not(:last-of-type)": { borderRight: `1px solid ${theme.palette.dark[3]}` },
         },
       },
     },

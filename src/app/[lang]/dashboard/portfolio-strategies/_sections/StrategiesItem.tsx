@@ -2,21 +2,30 @@
 
 import type { FC } from "react";
 
-import { Button, Stack, Typography } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import ContentStack from "@/app/[lang]/_components/ContentStack";
-import RiveComp from "@/components/RiveComp";
+import Image from "@/components/Image";
 
 interface StrategiesItemProps {
   title: string;
-  riveSource: string;
+  src: string;
   subtitle: string;
   link: string;
 }
 
-const StrategiesItem: FC<StrategiesItemProps> = ({ riveSource, link, subtitle, title }) => {
+const StrategiesItem: FC<StrategiesItemProps> = ({ src, link, subtitle, title }) => {
   return (
-    <ContentStack p={2} gap={1} direction={"row"} justifyContent={"space-between"} height={160} minWidth={360}>
-      <RiveComp src={riveSource} width={128} height={128} />
+    <ContentStack
+      p={2}
+      gap={1}
+      direction={"row"}
+      justifyContent={"space-between"}
+      height={160}
+      minWidth={{ md: 360, xs: "calc(100% - 24px)" }}
+    >
+      <Box width={128} height={128}>
+        <Image src={src} width={"100%"} height={"100%"} />
+      </Box>
 
       <Stack p={1}>
         <Typography variant="h4-semi-bold" textTransform={"uppercase"}>
@@ -25,7 +34,7 @@ const StrategiesItem: FC<StrategiesItemProps> = ({ riveSource, link, subtitle, t
         <Typography variant="p2-medium" textTransform={"uppercase"} color={"grey.dark"} mb={2}>
           {subtitle}
         </Typography>
-        <Button href={link} color="info">
+        <Button href={link} color="info" sx={{ whiteSpace: "nowrap" }}>
           See Strategies
         </Button>
       </Stack>

@@ -9,9 +9,10 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import type { ReactNode } from "react";
 import Scrollbar from "./Scrollbar";
+import type React from "react";
 
 type PropType = {
-  title?: string;
+  title?: React.ReactNode;
   columns: { title: string; modify: (item: any) => ReactNode }[];
   data: any[];
   width?: any;
@@ -46,14 +47,14 @@ const CustomTable = ({ title, columns, data, width, minWidthCell }: PropType) =>
             bgcolor: "dark.3",
             typography: "caption-medium",
             textTransform: "uppercase",
-            color: "grey.dark",
+            color: "grey.light",
             p: 0,
             py: 1,
             "&:first-of-type": { pl: 3 },
             "&:last-of-type": { pr: 3 },
             "&:not(:last-of-type)": { pr: "14px" },
           },
-          ".MuiTableCell-root": {
+          ".MuiTableCell-root:not(.MuiTableCell-head)": {
             minWidth: minWidthCell ?? 150,
             typography: "p2-medium",
             color: "white",
@@ -68,7 +69,7 @@ const CustomTable = ({ title, columns, data, width, minWidthCell }: PropType) =>
             "&:not(:last-of-type)": { pr: "14px" },
           },
           ".MuiTableRow-head": { height: 40 },
-          ".MuiTableRow-root": { height: 56 },
+          ".MuiTableRow-root:not(.MuiTableRow-head)": { height: 56 },
         }}
       >
         <Scrollbar options={{ scrollbars: { autoHide: "leave" } }}>

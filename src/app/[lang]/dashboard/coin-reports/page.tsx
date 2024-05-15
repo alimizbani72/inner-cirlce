@@ -1,5 +1,7 @@
-import { Box } from "@mui/material";
+import { Stack } from "@mui/material";
 import type { Metadata } from "next";
+import Notice from "./_sections/Notice";
+import Table from "./_sections/Table";
 
 // ----------------------------------------------------------------------
 
@@ -8,5 +10,11 @@ export const metadata: Metadata = {
 };
 
 export default async function CoinReports() {
-  return <Box sx={{ flex: 1 }}>{/* Main content */}</Box>;
+  return (
+    <Stack gap={3}>
+      <Notice />
+
+      <Table />
+    </Stack>
+  );
 }

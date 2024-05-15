@@ -3,8 +3,9 @@ import { combineSlices, configureStore } from "@reduxjs/toolkit";
 import { counterSlice } from "./features/counter/counterSlice";
 import { menuSlice } from "./features/menu/menuSlice";
 import { dicSlice } from "./features/dictionary/dicSlice";
+import { pageSlice } from "./features/pageTitle/pageSlice";
 
-const rootReducer = combineSlices(counterSlice, menuSlice, dicSlice);
+const rootReducer = combineSlices(counterSlice, menuSlice, dicSlice, pageSlice);
 
 export type RootState = ReturnType<typeof rootReducer>;
 

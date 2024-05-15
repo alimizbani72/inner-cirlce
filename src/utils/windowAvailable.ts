@@ -1,8 +1,3 @@
-const windowAvailable = () => {
-  if (typeof window !== "undefined" && window.document && !!window.document.createElement) {
-    return true;
-  }
-  return false;
-};
+const windowAvailable = !!(typeof window !== "undefined" && window.document && !!window.document.createElement);
 
 export default windowAvailable;
