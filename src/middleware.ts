@@ -48,7 +48,7 @@ export async function middleware(req: NextRequest) {
   }
 
   if (!session?.accessToken && (pathname.includes("dashboard") || pathname.includes("/phone"))) {
-    return NextResponse.redirect(new URL("/auth/sign-in", req.url));
+    return NextResponse.redirect(new URL("/auth/register", req.url));
   }
 
   if (!!session?.accessToken && !!session.user?.phone && pathname.includes("auth")) {

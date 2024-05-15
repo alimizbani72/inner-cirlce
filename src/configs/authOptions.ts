@@ -182,5 +182,5 @@ export const authOptions: NextAuthOptions = {
     strategy: "jwt",
     maxAge: 1209600, // 14 days
   },
-  pages: { signIn: "/auth/sign-in", error: "/auth/error" },
+  pages: { signIn: "/auth/register", error: "/auth/error" },
 };

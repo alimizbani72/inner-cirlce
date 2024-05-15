@@ -1,6 +1,6 @@
 {
-  "global" :{
-    "authLayout" : "To simplify and enhance the cryptocurrency investment experience for users of all levels."
+  "global": {
+    "authLayout": "To simplify and enhance the cryptocurrency investment experience for users of all levels."
   },
   "createAccount": {
     "title": "Create your account",
@@ -21,14 +21,14 @@
     "alreadyHaveAccount": "Already have an account?",
     "login": "Login"
   },
-    "emailVerification": {
-      "title": "Email verification",
-      "subtitle": "Enter the 5 digits code that we sent to",
-      "placeholderEmail": "Ricknovak@example.com",
-      "verifyCodeLabel": "Verify code",
-      "backButton": "Back",
-      "resend": "Resend",
-      "resendWithTimer": "Resend",
-      "checkSpam": "Did not receive the email? Check your spam filter or try another email address"
-    }
+  "emailVerification": {
+    "title": "Email verification",
+    "subtitle": "Enter the 5 digits code that we sent to",
+    "placeholderEmail": "Ricknovak@example.com",
+    "verifyCodeLabel": "Verify code",
+    "backButton": "Back",
+    "resend": "Resend",
+    "resendWithTimer": "Resend",
+    "checkSpam": "Did not receive the email? Check your spam filter or try another email address"
+  }
 }

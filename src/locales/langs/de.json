@@ -1,6 +1,6 @@
 {
-  "global" :{
-    "authLayout" :"Um die Kryptowährungsanlageerfahrung für Benutzer aller Ebenen zu vereinfachen und zu verbessern."
+  "global": {
+    "authLayout": "Um die Kryptowährungsanlageerfahrung für Benutzer aller Ebenen zu vereinfachen und zu verbessern."
   },
   "createAccount": {
     "title": "Erstellen Sie Ihr Konto",
