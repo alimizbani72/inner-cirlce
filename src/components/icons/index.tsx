@@ -16,7 +16,6 @@ export interface IconProps {
 
 export const Icon: FC<IconProps> = ({ name, size = 24, className, color }) => {
   const theme = useTheme();
-
   return (
     <IcomoonReact
       className={className}

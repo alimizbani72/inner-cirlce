@@ -1,25 +1,25 @@
-import { Grid, Stack, Typography } from "@mui/material";
+import { Box, Container, Stack } from "@mui/material";
 
 import type { LayoutProps } from "@app/layout";
 import TextureBox from "@app/_components/TextureBox";
+import LayoutText from "./_section/LayoutText";
 
 export default function AuthLayout({ children }: LayoutProps) {
   return (
-    <Grid container>
-      <Grid item xs={6}>
-        {children}
-      </Grid>
-      <Grid item xs={6} display={{ sm: "none", md: "block" }}>
+    <Stack direction={"row"}>
+      <Box sx={{ flex: 1 }}>
+        <Container maxWidth={false} sx={{ height: "100dvh" }}>
+          {children}
+        </Container>
+      </Box>
+      <Box display={{ xs: "none", md: "block" }} sx={{ flex: 1 }}>
         <TextureBox>
           <Stack spacing={2} sx={{ px: 8, py: 11 }}>
             <img src="/logo/logo.svg" alt="chainmind logo" style={{ width: "180px", height: "48px" }} />
-            <Typography variant="p2-regular">
-              To simplify and enhance the cryptocurrency investment <br />
-              experience for users of all levels.
-            </Typography>
+            <LayoutText />
           </Stack>
         </TextureBox>
-      </Grid>
-    </Grid>
+      </Box>
+    </Stack>
   );
 }

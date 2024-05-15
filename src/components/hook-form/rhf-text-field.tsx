@@ -20,7 +20,11 @@ export default function RHFTextField({ name, id, label, helperText, type, ...oth
       render={({ field, fieldState: { error } }) => (
         <div>
           {label && (
-            <InputLabel shrink htmlFor={id || name}>
+            <InputLabel
+              sx={{ typography: "caption-semi-bold", textTransform: "uppercase" }}
+              shrink
+              htmlFor={id || name}
+            >
               {label}
             </InputLabel>
           )}

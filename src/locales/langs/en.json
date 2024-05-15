@@ -1,9 +1,34 @@
 {
-  
-  "demo": {
-    "title": "English"
+  "global" :{
+    "authLayout" : "To simplify and enhance the cryptocurrency investment experience for users of all levels."
   },
-  "general" : {
-    "app" : "speax"
-  }
+  "createAccount": {
+    "title": "Create your account",
+    "subtitle": "See your growth and get consulting support!",
+    "registerWithGoogle": "Register with Google",
+    "orContinueWithEmail": "Or Continue with Email",
+    "fullNameLabel": "Full name",
+    "fullNamePlaceholder": "Enter your full name",
+    "emailLabel": "Email address",
+    "emailPlaceholder": "Enter your email address",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "inviteCodeLabel": "Invite code",
+    "inviteCodePlaceholder": "Enter your invite code",
+    "agreeToTerms": "I agree to the",
+    "termsAndConditions": "Terms & Conditions",
+    "createAccountButton": "Create Account",
+    "alreadyHaveAccount": "Already have an account?",
+    "login": "Login"
+  },
+    "emailVerification": {
+      "title": "Email verification",
+      "subtitle": "Enter the 5 digits code that we sent to",
+      "placeholderEmail": "Ricknovak@example.com",
+      "verifyCodeLabel": "Verify code",
+      "backButton": "Back",
+      "resend": "Resend",
+      "resendWithTimer": "Resend",
+      "checkSpam": "Did not receive the email? Check your spam filter or try another email address"
+    }
 }

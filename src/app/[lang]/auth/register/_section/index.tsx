@@ -1,14 +1,15 @@
 "use client";
-import { Box, Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import type { FC } from "react";
+import EmailConfirm from "@app/_components/EmailConfirm";
 
 const RegisterSection: FC = () => {
   return (
-    <Box sx={{ px: 19, py: 8 }}>
-      <Stack>
-        <Typography variant="h3-semi-bold">Create your account</Typography>
+    <Stack sx={{ height: "100%", width: "100%" }} alignItems={"center"} justifyContent={"center"}>
+      <Stack sx={{ width: "100%", maxWidth: "456px" }} justifyContent={"center"} spacing={4}>
+        <EmailConfirm />
       </Stack>
-    </Box>
+    </Stack>
   );
 };
 export default RegisterSection;

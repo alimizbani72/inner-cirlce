@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": { "@/*": ["src/*"], "@app/*": ["src/app/[lang]/*"] },
+    "paths": { "@app/*": ["src/app/[lang]/*"],"@/*": ["src/*"]  },
     "target": "ES6",
     "lib": ["dom", "dom.iterable", "esnext", "WebWorker"],
     "strict": true,

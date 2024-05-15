@@ -1,18 +1,14 @@
 // pages/index.tsx
 "use client";
 import { useTranslate } from "@/locales";
-import { Typography } from "@mui/material";
-import RiveComp from "@/components/RiveComp";
+import { Stack, Typography } from "@mui/material";
 
 const SignInSection = () => {
   const { t } = useTranslate();
   return (
-    <div>
-      <Typography variant="h1-bold" color="white">
-        {t("demo.title")}
-      </Typography>
-      <RiveComp src="/assets/rive/whale_animation.riv" width={500} height={500} />
-    </div>
+    <Stack sx={{ bgcolor: "red", height: "100%" }}>
+      <Typography>{t("createAccount.login")}</Typography>
+    </Stack>
   );
 };
 
