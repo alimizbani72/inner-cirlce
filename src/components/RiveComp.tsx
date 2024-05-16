@@ -7,8 +7,8 @@ import type { FC } from "react";
 
 type RiveCompProps = {
   src: string;
-  height: number;
-  width: number;
+  height?: number;
+  width?: number;
 };
 
 const RiveComp: FC<RiveCompProps> = ({ src, height, width }) => {
@@ -18,7 +18,7 @@ const RiveComp: FC<RiveCompProps> = ({ src, height, width }) => {
     autoplay: true,
   });
 
-  return <RiveComponent style={{ width, height }} />;
+  return <RiveComponent style={{ width: width ?? "100%", height: height ?? "100%" }} />;
 };
 
 export default RiveComp;
