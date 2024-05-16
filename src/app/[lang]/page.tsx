@@ -15,7 +15,7 @@ export default async function HomePage() {
   const session = await getServerSession(authOptions);
 
   if (!session?.accessToken) {
-    return redirect("/auth/register");
+    return redirect("/login");
   }
 
   return (
