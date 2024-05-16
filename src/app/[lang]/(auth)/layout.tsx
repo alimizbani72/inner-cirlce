@@ -9,7 +9,11 @@ export default function AuthLayout({ children }: LayoutProps) {
     <Stack direction={"row"}>
       <Box sx={{ flex: 1 }}>
         <Container maxWidth={false} sx={{ height: "100dvh" }}>
-          {children}
+          <Stack sx={{ height: "100%", width: "100%" }} alignItems={"center"} justifyContent={"center"}>
+            <Stack sx={{ width: "100%", maxWidth: "456px" }} justifyContent={"center"} spacing={4}>
+              {children}
+            </Stack>
+          </Stack>
         </Container>
       </Box>
       <Box display={{ xs: "none", md: "block" }} sx={{ flex: 1 }}>
