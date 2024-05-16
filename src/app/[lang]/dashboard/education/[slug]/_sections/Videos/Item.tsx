@@ -1,0 +1,41 @@
+import Image from "@/components/Image";
+import Link from "@/components/Link";
+import { snipText } from "@/utils/string";
+import { Box, Stack, Typography } from "@mui/material";
+import type { FC } from "react";
+import { Icon } from "@/components/icons";
+
+type Props = { content: { [k: string]: any } };
+
+const VideoItem: FC<Props> = ({ content }) => {
+  return (
+    <Stack
+      borderRadius={2}
+      border="1.5px solid"
+      borderColor={"dark.3"}
+      overflow={"hidden"}
+      direction={{ md: "row", xs: "column" }}
+      component={Link}
+      href={content.link}
+    >
+      <Box height={"104px"} width={{ md: "182px", xs: "100%" }}>
+        <Image src={content.image} width={"100%"} height={"100%"} />
+      </Box>
+
+      <Stack gap={1} flex={1} p={{ md: 3, xs: 2 }} direction={"row"} alignItems={"center"}>
+        <Stack gap={1}>
+          <Typography variant="p1-medium">{content.title}</Typography>
+          <Typography variant="caption-medium" color={"grey.light"} sx={snipText(1)}>
+            {content.subtitle}
+          </Typography>
+        </Stack>
+
+        <Stack>
+          <Icon name="Arrow-right" />
+        </Stack>
+      </Stack>
+    </Stack>
+  );
+};
+
+export default VideoItem;

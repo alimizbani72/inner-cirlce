@@ -47,7 +47,7 @@ const WelcomeBanner: FC = () => {
           zIndex: 1,
           justifyContent: "space-between",
           alignItems: "center",
-          flexDirection: { md: "row", sx: "column" },
+          flexDirection: { md: "row", xs: "column" },
           gap: { md: undefined, xs: 6 },
         }}
       >

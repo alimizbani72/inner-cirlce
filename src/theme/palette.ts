@@ -9,7 +9,7 @@ export const BLUE = {
 };
 
 export const PINK = {
-  light: "#FF409D",
+  light: "#FF7DBC",
   dark: "#FF409D",
   contrastText: "#FFFFFF",
 };

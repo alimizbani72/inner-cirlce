@@ -12,7 +12,7 @@ const PortfolioStrategiesInnerSection: FC<Props> = ({ pageTitle }) => {
   usePageTitle({ title: pageTitle, hasBackButton: true });
 
   return (
-    <Stack gap={3} py={{ md: 4, sx: 3 }}>
+    <Stack gap={3} py={{ md: 4, xs: 3 }}>
       <Notice />
 
       <Table />

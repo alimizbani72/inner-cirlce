@@ -13,6 +13,7 @@ const RoadMapItem: FC<RoadMapItemProps> = ({ title, date, isOdd }) => {
     <Stack
       gap={2}
       p={2}
+      flex={1}
       direction={"row"}
       borderRadius={1.5}
       bgcolor={"dark.3"}

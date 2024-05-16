@@ -5,7 +5,7 @@ import { useAppDispatch } from "@/lib/hooks";
 
 // ----------------------------------------------------------------------
 
-type Props = { title: string; hasBackButton: boolean };
+type Props = { title: string; hasBackButton?: boolean };
 
 export function usePageTitle({ title, hasBackButton = false }: Props) {
   const dispatch = useAppDispatch();

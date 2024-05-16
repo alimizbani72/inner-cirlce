@@ -66,10 +66,8 @@ const MenuItem: FC<MenuItemProps> = ({ icon, label, subItems, route, isCollapsed
         }
       >
         <ListItemIcon sx={{ mr: 0 }}>
-          {/* FIXME: fix the color icon */}
           <Icon
-            name={icon as iconsType}
-            color={(Array.isArray(subItems) ? open.value : isActive(route)) ? undefined : "grey.light"}
+            name={((Array.isArray(subItems) ? open.value : isActive(route)) ? `${icon}--colorful` : icon) as iconsType}
           />
         </ListItemIcon>
 
