@@ -1,3 +1,5 @@
+"use client";
+
 import { type FC, useEffect, useRef } from "react";
 import Player from "@vimeo/player";
 import { Box, type BoxProps } from "@mui/material";
@@ -13,7 +15,7 @@ const VimeoPlayer: FC<VimeoPlayerProps> = ({ videoId, width = 640, height = 360,
   const vimeoRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (vimeoRef.current) {
+    if (vimeoRef?.current) {
       const player = new Player(vimeoRef.current, {
         id: videoId,
         width: width,

@@ -14,16 +14,16 @@ export const sidebarServicesItems = [
     icon: "Portfolio",
     items: [{ path: "my-portfolios/" }, { path: "portfolio-strategies/" }],
   },
+  {
+    path: "education/",
+    icon: "Tutorial",
+  },
 ];
 
 export const sidebarCommunityItems = [
   {
     path: "affiliate/",
     icon: "Affiliate",
-  },
-  {
-    path: "education/",
-    icon: "Tutorial",
   },
   {
     path: "help-center/",

@@ -4,7 +4,7 @@ import { isMobileMenuOpened, mobileMenuToggle } from "@/lib/features/menu/menuSl
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { Button, Drawer, IconButton, Stack, Typography } from "@mui/material";
 import { usePathname } from "next/navigation";
-import { useMemo, type FC } from "react";
+import { useEffect, useMemo, useState, type FC } from "react";
 import LogoType from "@/components/LogoType";
 import { Icon } from "@/components/icons";
 import { mapPathToName } from "@/configs/sidebar";
@@ -12,20 +12,24 @@ import { useIsMobile } from "@/hooks/use-responsive";
 import MobileSidebar from "@app/_components/sidebar/Mobile";
 import { pageHasBackButton, pageTitle } from "@/lib/features/pageTitle/pageSlice";
 import { useAppRouter } from "@/routes/hooks";
-import windowAvailable from "@/utils/windowAvailable";
 
 const DashboardHeader: FC = () => {
   const isMobile = useIsMobile();
   const pathname = usePathname();
   const dispatch = useAppDispatch();
-  const isMenuOpened = useAppSelector(isMobileMenuOpened);
+  const [isClient, setIsClient] = useState(false);
   const pageTitleSelector = useAppSelector(pageTitle);
+  const isMenuOpened = useAppSelector(isMobileMenuOpened);
   const hasBackButton = useAppSelector(pageHasBackButton);
   const { back } = useAppRouter();
   const name = useMemo(
     () => mapPathToName[pathname.slice(4) as keyof typeof mapPathToName] || pageTitleSelector || "Chainmind",
     [pathname, pageTitleSelector]
   );
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return isMobile ? (
     <>
@@ -48,13 +52,13 @@ const DashboardHeader: FC = () => {
           borderColor={"dark.3"}
           direction={"row"}
         >
-          {windowAvailable && hasBackButton && (
+          {isClient && hasBackButton && (
             <IconButton sx={{ mr: 1 }} onClick={() => back()}>
               <Icon name="Arrow-left" />
             </IconButton>
           )}
 
-          <Typography variant={"h4-medium"}>{name}</Typography>
+          {isClient && <Typography variant={"h4-medium"}>{name}</Typography>}
         </Stack>
       </Stack>
 
@@ -78,13 +82,13 @@ const DashboardHeader: FC = () => {
       direction={"row"}
     >
       <Stack gap={1} direction={"row"}>
-        {windowAvailable && hasBackButton && (
+        {isClient && hasBackButton && (
           <IconButton onClick={() => back()}>
             <Icon name="Arrow-left" />
           </IconButton>
         )}
 
-        <Typography variant={"p1-medium"}>{name}</Typography>
+        {isClient && <Typography variant={"p1-medium"}>{name}</Typography>}
       </Stack>
 
       <Button color="info" startIcon={<Icon name="Bell" />}>

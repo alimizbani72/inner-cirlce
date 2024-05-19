@@ -1,1 +1,1 @@
-# modify useTranslate function to support "resendWithTimer": "Resend ({minutes}:{seconds})",
+# modify useTranslate function to support "resendWithTimer": "Resend ({minutes}:{seconds})"

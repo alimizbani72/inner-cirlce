@@ -96,7 +96,11 @@ const MenuItem: FC<MenuItemProps> = ({ icon, label, subItems, route, isCollapsed
                   }
                   dispatch(mobileMenuToggle(false));
                 }}
-                sx={{ borderRadius: 3, ...(isActive(subItem.path) && activeStyle) }}
+                sx={{
+                  borderRadius: 3,
+                  ...(isActive(subItem.path) && activeStyle),
+                  ...(isCollapsed && { p: 1, whiteSpace: "nowrap" }),
+                }}
               >
                 {!isCollapsed && (
                   <ListItemIcon sx={{ mr: 0 }}>

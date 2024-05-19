@@ -4,8 +4,11 @@ import { Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 import { usePageTitle } from "@/hooks/use-page-title";
 import { useParams } from "next/navigation";
-import VimeoPlayer from "@/components/VimeoPlayer";
 import { BulletIcon } from "@app/_components/sidebar/Menu/Bullets";
+import VideoList from "./VideoList";
+import dynamic from "next/dynamic";
+
+const VimeoPlayer = dynamic(() => import("@/components/VimeoPlayer"), { ssr: false });
 
 const EducationSingleVideoSection: FC = () => {
   const { id, slug } = useParams();
@@ -15,7 +18,7 @@ const EducationSingleVideoSection: FC = () => {
     <Stack p={{ md: 4, xs: 3 }} height={"100%"} direction={{ md: "row", xs: "column" }} gap={{ md: 3, xs: 4 }}>
       <Stack sx={{ flex: 8 / 12 }} gap={3}>
         {/* Breadcrumb */}
-        <Stack direction={"row"} gap={1}>
+        <Stack direction={"row"} gap={1} flexWrap={"wrap"}>
           <Typography variant="caption-medium" color="grey.light">
             Education
           </Typography>
@@ -65,7 +68,9 @@ const EducationSingleVideoSection: FC = () => {
         </Stack>
       </Stack>
 
-      <Stack sx={{ flex: 4 / 12 }}>{/* TODO: Video list */}</Stack>
+      <Stack sx={{ flex: 4 / 12 }}>
+        <VideoList />
+      </Stack>
     </Stack>
   );
 };
