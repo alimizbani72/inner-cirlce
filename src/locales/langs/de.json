@@ -30,5 +30,31 @@
     "resend": "Erneut senden",
     "resendWithTimer": "Erneut senden",
     "checkSpam": "Haben Sie die E-Mail nicht erhalten? Überprüfen Sie Ihren Spam-Filter oder versuchen Sie eine andere E-Mail-Adresse"
+  },
+  "passwordRecovery": {
+    "title": "Passwort-Wiederherstellung",
+    "subtitle": "Wir helfen Ihnen, Ihr Passwort wiederherzustellen, wenn Sie es vergessen haben.",
+    "emailLabel": "E-Mail-Adresse",
+    "emailPlaceholder": "Geben Sie Ihre E-Mail-Adresse ein",
+    "backButton": "Zurück",
+    "continueButton": "Fortsetzen"
+  },
+  "resetPassword": {
+    "title": "Passwort zurücksetzen",
+    "subtitle": "Wählen Sie ein neues und starkes Passwort mit mindestens 8 Zeichen",
+    "newPasswordLabel": "Neues Passwort",
+    "newPasswordPlaceholder": "Geben Sie Ihr neues Passwort ein",
+    "confirmNewPasswordLabel": "Neues Passwort bestätigen",
+    "confirmNewPasswordPlaceholder": "Geben Sie Ihr neues Passwort erneut ein",
+    "resetPasswordButton": "Passwort zurücksetzen"
+  },
+  "login": {
+    "title": "Melden Sie sich bei Ihrem Konto an",
+    "loginWithGoogle": "Mit Google anmelden",
+    "rememberMe": "Erinnere dich an mich",
+    "forgotPassword": "Passwort vergessen?",
+    "loginButton": "Einloggen",
+    "noAccount": "Haben Sie kein Konto?",
+    "register": "Registrieren"
   }
 }

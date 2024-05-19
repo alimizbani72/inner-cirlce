@@ -10,6 +10,7 @@ import * as Yup from "yup";
 import { useTimer } from "react-timer-hook";
 import { toNumber } from "@/utils/toNumber";
 import { useTranslate } from "@/locales";
+import { Icon } from "@/components/icons";
 
 const UpdateUserSchema = Yup.object().shape({
   name: Yup.string()
@@ -44,7 +45,10 @@ const EmailConfirm: FC = () => {
   return (
     <>
       <Stack spacing={1}>
-        <Typography variant="h3-semi-bold">{t("emailVerification.title")}</Typography>
+        <Icon name="Mailbox--colorful" size={64} />
+        <Typography variant="h3-semi-bold" sx={{ mt: 1 }}>
+          {t("emailVerification.title")}
+        </Typography>
         <Typography variant="p2-regular" color="grey.light">
           {t("emailVerification.subtitle")}{" "}
           <Typography variant="p2-regular" component={"span"}>

@@ -39,23 +39,18 @@ const Login: FC = () => {
   return (
     <>
       <Stack spacing={1}>
-        <Typography variant="h3-semi-bold">{t("createAccount.title")}</Typography>
+        <Typography variant="h3-semi-bold">{t("login.title")}</Typography>
         <Typography variant="p2-regular" color="grey.light">
           {t("createAccount.subtitle")}
         </Typography>
       </Stack>
       <Button fullWidth color="info" startIcon={<Icon name="Google" />}>
-        {t("createAccount.registerWithGoogle")}
+        {t("login.loginWithGoogle")}
       </Button>
       <Divider>
         <Typography variant="p2-medium">{t("createAccount.orContinueWithEmail")}</Typography>
       </Divider>
       <FormProvider methods={methods} onSubmit={onSubmit} sx={{ gap: 3 }}>
-        <RHFTextField
-          name="name"
-          label={t("createAccount.fullNameLabel")}
-          placeholder={t("createAccount.fullNamePlaceholder")}
-        />
         <RHFTextField
           name="email"
           label={t("createAccount.emailLabel")}
@@ -67,30 +62,20 @@ const Login: FC = () => {
           placeholder={t("createAccount.passwordPlaceholder")}
           type="password"
         />
-        <RHFTextField
-          name="invite"
-          label={t("createAccount.inviteCodeLabel")}
-          placeholder={t("createAccount.inviteCodePlaceholder")}
-        />
-        <RHFCheckbox
-          label={
-            <Typography variant="p2-regular" color="grey.light">
-              {t("createAccount.agreeToTerms")}{" "}
-              <Typography variant="p2-regular" component={"span"}>
-                {t("createAccount.termsAndConditions")}
-              </Typography>
-            </Typography>
-          }
-          name="terms"
-        />
+        <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"}>
+          <RHFCheckbox label={<Typography variant="p2-regular">{t("login.rememberMe")}</Typography>} name="save" />
+          <Typography variant="p2-medium" color={"pink.light"} sx={{ cursor: "pointer" }}>
+            {t("login.forgotPassword")}
+          </Typography>
+        </Stack>
         <Button color="primary" size="large" type="submit">
-          {t("createAccount.createAccountButton")}
+          {t("login.loginButton")}
         </Button>
       </FormProvider>
       <Typography sx={{ textAlign: "center" }} variant="p2-medium" color="grey.light">
-        {t("createAccount.alreadyHaveAccount")}{" "}
+        {t("login.noAccount")}{" "}
         <Typography component={"span"} variant="p2-medium" color="blue.light">
-          {t("createAccount.login")}
+          {t("login.register")}
         </Typography>
       </Typography>
     </>

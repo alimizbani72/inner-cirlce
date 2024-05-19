@@ -30,5 +30,31 @@
     "resend": "Resend",
     "resendWithTimer": "Resend",
     "checkSpam": "Did not receive the email? Check your spam filter or try another email address"
+  },
+  "passwordRecovery": {
+    "title": "Password recovery",
+    "subtitle": "We help you to recover your password if you forgot.",
+    "emailLabel": "Email address",
+    "emailPlaceholder": "Enter your email address",
+    "backButton": "Back",
+    "continueButton": "Continue"
+  },
+  "resetPassword": {
+    "title": "Reset Password",
+    "subtitle": "Choose a new & strong password of minimum 8 characters",
+    "newPasswordLabel": "New Password",
+    "newPasswordPlaceholder": "Enter your new password",
+    "confirmNewPasswordLabel": "Confirm New Password",
+    "confirmNewPasswordPlaceholder": "Enter your new password again",
+    "resetPasswordButton": "Reset Password"
+  },
+  "login": {
+    "title": "Login to your account",
+    "loginWithGoogle": "Login with Google",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot Password?",
+    "loginButton": "Login",
+    "noAccount": "Don't have an account?",
+    "register": "Register"
   }
 }
