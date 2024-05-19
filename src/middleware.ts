@@ -1,12 +1,12 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-import { getToken } from "next-auth/jwt";
+// import { getToken } from "next-auth/jwt";
 import Negotiator from "negotiator";
 import cookie from "cookie";
 
 const LOCALES: string[] = ["en", "de"];
 const DEFAULT_LOCALE: string = "en";
-const AUTH_SECRET: string | undefined = process.env.NEXTAUTH_SECRET;
+// const AUTH_SECRET: string | undefined = process.env.NEXTAUTH_SECRET;
 
 interface ParsedCookies {
   [key: string]: string;
@@ -49,17 +49,17 @@ const handleLocaleRedirection = (req: NextRequest, pathname: string): NextRespon
   return null;
 };
 
-const handleAuthRedirection = (session: any, pathname: string, reqUrl: string): NextResponse | null => {
-  if (!session?.accessToken && pathname.includes("dashboard")) {
-    return NextResponse.redirect(new URL("/login", reqUrl));
-  }
+// const handleAuthRedirection = (session: any, pathname: string, reqUrl: string): NextResponse | null => {
+//   if (!session?.accessToken && pathname.includes("dashboard")) {
+//     return NextResponse.redirect(new URL("/login", reqUrl));
+//   }
 
-  if (session?.accessToken && !pathname.includes("dashboard")) {
-    return NextResponse.redirect(new URL("/dashboard", reqUrl));
-  }
+//   if (session?.accessToken && !pathname.includes("dashboard")) {
+//     return NextResponse.redirect(new URL("/dashboard", reqUrl));
+//   }
 
-  return null;
-};
+//   return null;
+// };
 
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
@@ -67,17 +67,17 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  const session = await getToken({ req, secret: AUTH_SECRET });
+  // const session = await getToken({ req, secret: AUTH_SECRET });
 
   const localeRedirection = handleLocaleRedirection(req, pathname);
   if (localeRedirection) {
     return localeRedirection;
   }
 
-  const authRedirection = handleAuthRedirection(session, pathname, req.url);
-  if (authRedirection) {
-    return authRedirection;
-  }
+  // const authRedirection = handleAuthRedirection(session, pathname, req.url);
+  // if (authRedirection) {
+  //   return authRedirection;
+  // }
 
   return NextResponse.next();
 }
