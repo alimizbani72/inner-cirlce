@@ -7,28 +7,28 @@ import CategoryItem from "./Item";
 const arr = [
   {
     id: 1,
-    image: "/assets/png/registerFrame.png",
+    image: "/assets/placeholder-image.webp",
     title: "Blockchain Academy",
     subtitle: "here just a small text as a description",
     link: "blockchain-academy",
   },
   {
     id: 2,
-    image: "/assets/png/registerFrame.png",
+    image: "/assets/placeholder-image.webp",
     title: "Blockchain Academy",
     subtitle: "here just a small text as a description",
     link: "blockchain-academy",
   },
   {
     id: 3,
-    image: "/assets/png/registerFrame.png",
+    image: "/assets/placeholder-image.webp",
     title: "Blockchain Academy",
     subtitle: "here just a small text as a description",
     link: "blockchain-academy",
   },
   {
     id: 4,
-    image: "/assets/png/registerFrame.png",
+    image: "/assets/placeholder-image.webp",
     title: "Blockchain Academy",
     subtitle: "here just a small text as a description",
     link: "blockchain-academy",

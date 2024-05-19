@@ -7,7 +7,7 @@ import VideoItem from "./Item";
 const arr = [
   {
     id: 1,
-    image: "/assets/png/registerFrame.png",
+    image: "/assets/placeholder-image.webp",
     title: "What is blockchain",
     subtitle:
       "With ChainMind, you can rest assured that With ChainMind you can rest assured that here just a small text as a description",
@@ -15,7 +15,7 @@ const arr = [
   },
   {
     id: 2,
-    image: "/assets/png/registerFrame.png",
+    image: "/assets/placeholder-image.webp",
     title: "What is blockchain",
     subtitle:
       "With ChainMind, you can rest assured that With ChainMind you can rest assured that here just a small text as a description",
@@ -23,7 +23,7 @@ const arr = [
   },
   {
     id: 3,
-    image: "/assets/png/registerFrame.png",
+    image: "/assets/placeholder-image.webp",
     title: "What is blockchain",
     subtitle:
       "With ChainMind, you can rest assured that With ChainMind you can rest assured that here just a small text as a description",
@@ -31,7 +31,7 @@ const arr = [
   },
   {
     id: 4,
-    image: "/assets/png/registerFrame.png",
+    image: "/assets/placeholder-image.webp",
     title: "What is blockchain",
     subtitle:
       "With ChainMind, you can rest assured that With ChainMind you can rest assured that here just a small text as a description",

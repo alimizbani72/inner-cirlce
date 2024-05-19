@@ -1,4 +1,6 @@
 const iconsNames = [
+  "Home--colorful",
+  "Tutorial--colorful",
   "Affiliate--colorful",
   "Bell--colorful",
   "Coin-reports--colorful",
