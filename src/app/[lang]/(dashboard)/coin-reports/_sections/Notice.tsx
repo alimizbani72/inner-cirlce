@@ -1,6 +1,6 @@
 "use client";
 
-import ContentStack from "@/app/[lang]/_components/ContentStack";
+import ContentStack from "@app/_components/ContentStack";
 import { Box, Collapse, Stack, Typography } from "@mui/material";
 import { useState, type FC } from "react";
 import { snipText } from "@/utils/string";

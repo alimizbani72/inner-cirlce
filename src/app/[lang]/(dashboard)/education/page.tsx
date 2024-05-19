@@ -1,6 +1,6 @@
 import { Stack } from "@mui/material";
 import type { Metadata } from "next";
-import RoadMap from "../_section/RoadMap";
+import RoadMap from "../dashboard/_section/RoadMap";
 import Categories from "./_section/Categories";
 
 // ----------------------------------------------------------------------

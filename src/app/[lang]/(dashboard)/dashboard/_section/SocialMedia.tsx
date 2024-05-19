@@ -1,4 +1,4 @@
-import ContentStack from "@/app/[lang]/_components/ContentStack";
+import ContentStack from "@app/_components/ContentStack";
 import Link from "@/components/Link";
 import { Icon } from "@/components/icons";
 import type { iconsType } from "@/components/icons/iconsNames";

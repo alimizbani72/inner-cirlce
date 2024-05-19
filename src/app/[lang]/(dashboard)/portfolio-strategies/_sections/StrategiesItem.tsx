@@ -3,7 +3,7 @@
 import type { FC } from "react";
 
 import { Box, Button, Stack, Typography } from "@mui/material";
-import ContentStack from "@/app/[lang]/_components/ContentStack";
+import ContentStack from "@app/_components/ContentStack";
 import Image from "@/components/Image";
 
 interface StrategiesItemProps {

@@ -30,10 +30,8 @@ const MenuItem: FC<MenuItemProps> = ({ icon, label, subItems, route, isCollapsed
   const pathname = usePathname();
   const { push } = useAppRouter();
   const dispatch = useAppDispatch();
-  const isActive = useCallback(
-    (path: string | undefined) => pathname.replace(/^\/[a-zA-Z]{2}\/dashboard\/?/, "") === path,
-    [pathname]
-  );
+  const isActive = useCallback((path: string | undefined) => pathname.slice(4) === path, [pathname]);
+
   const open = useBoolean(!!subItems?.find((s) => isActive(s.path)));
 
   if (subItems && !subItems.length) {
@@ -58,7 +56,7 @@ const MenuItem: FC<MenuItemProps> = ({ icon, label, subItems, route, isCollapsed
             ? open.onToggle
             : () => {
                 if (!isActive(route)) {
-                  push(`/dashboard/${route ?? ""}`);
+                  push(`/${route ?? ""}`);
                 }
 
                 dispatch(mobileMenuToggle(false));
@@ -94,7 +92,7 @@ const MenuItem: FC<MenuItemProps> = ({ icon, label, subItems, route, isCollapsed
                 key={subItem.path}
                 onClick={() => {
                   if (!isActive(subItem.path)) {
-                    push(`/dashboard/${subItem.path}`);
+                    push(`/${subItem.path}`);
                   }
                   dispatch(mobileMenuToggle(false));
                 }}

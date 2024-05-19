@@ -1,6 +1,6 @@
 export const sidebarServicesItems = [
   {
-    path: "",
+    path: "dashboard/",
     key: "dashboard",
     icon: "Home",
   },
@@ -32,7 +32,7 @@ export const sidebarCommunityItems = [
 ];
 
 export const mapPathToName = {
-  "": "Dashboard",
+  "dashboard/": "Dashboard",
   "coin-reports/": "Coin Reports",
   "my-portfolios/": "My Portfolios",
   "portfolio-strategies/": "Portfolio Strategies",

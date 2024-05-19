@@ -2,7 +2,7 @@
 
 import { useState, type FC } from "react";
 import { Stack, Typography } from "@mui/material";
-import Toggle from "@/app/[lang]/_components/Toggle";
+import Toggle from "@app/_components/Toggle";
 import Scrollbar from "@/components/Scrollbar";
 import CustomTable from "@/components/CustomTable";
 

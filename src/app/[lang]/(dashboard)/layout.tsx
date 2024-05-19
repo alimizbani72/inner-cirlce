@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Stack } from "@mui/material";
-import DashboardHeader from "@/app/[lang]/dashboard/_section/Header";
-import DesktopSidebar from "@/app/[lang]/_components/sidebar/Desktop";
+import DashboardHeader from "@app/(dashboard)/dashboard/_section/Header";
+import DesktopSidebar from "@app/_components/sidebar/Desktop";
 import Scrollbar from "@/components/Scrollbar";
 // ----------------------------------------------------------------------
 

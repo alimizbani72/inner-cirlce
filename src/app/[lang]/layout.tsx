@@ -10,7 +10,7 @@ import { primaryFont } from "@/theme/typography";
 import { TanStackProvider } from "./_providers";
 import type { ReactNode } from "react";
 import { StoreProvider } from "./_providers/StoreProvider";
-import ProgressBarProvider from "@/app/[lang]/_providers/ProgressBarProvider";
+import ProgressBarProvider from "./_providers/ProgressBarProvider";
 import { getDictionary } from "@/locales/dictionary";
 // ----------------------------------------------------------------------
 
