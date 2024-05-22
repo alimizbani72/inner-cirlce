@@ -19,7 +19,7 @@ export default function AuthLayout({ children }: LayoutProps) {
       <Box display={{ xs: "none", md: "block" }} sx={{ flex: 1 }}>
         <TextureBox>
           <Stack spacing={2} sx={{ px: 8 }}>
-            <img src="/logo/logo.svg" alt="chainmind logo" style={{ width: "180px", height: "48px" }} />
+            <img src="/logo/logo-type.svg" alt="chainmind logo" style={{ width: "180px", height: "48px" }} />
             <LayoutText />
           </Stack>
         </TextureBox>
