@@ -16,7 +16,7 @@ const arr = [
 
 const AFDashboardTab: FC = () => {
   return (
-    <Stack p={{ md: 4, xs: 3 }} gap={3}>
+    <Stack p={{ md: 4, xs: 3 }} pt={{ md: 3 }} gap={3}>
       <Stack direction={{ md: "row" }} gap={3}>
         <ContentStack direction="row" gap={2} flex={1} alignItems={{ md: "center" }}>
           <Stack p={2} bgcolor="dark.3" width={56} height={56} borderRadius="28px">
