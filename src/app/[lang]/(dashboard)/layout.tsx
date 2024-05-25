@@ -12,21 +12,25 @@ export const metadata: Metadata = {
 
 export type LayoutProps = {
   children: ReactNode;
+  modal: ReactNode;
 };
 
-export default async function DashboardLayout({ children }: LayoutProps) {
+export default async function DashboardLayout({ children, modal }: LayoutProps) {
   return (
-    <Stack direction={"row"} component="main">
-      <DesktopSidebar />
+    <>
+      {modal}
+      <Stack direction={"row"} component="main">
+        <DesktopSidebar />
 
-      <Stack sx={{ flex: 1 }}>
-        <DashboardHeader />
+        <Stack sx={{ flex: 1 }}>
+          <DashboardHeader />
 
-        {/* Main content */}
-        <Scrollbar>
-          <Stack height={{ md: "calc(100vh - 105px)" }}>{children}</Stack>
-        </Scrollbar>
+          {/* Main content */}
+          <Scrollbar>
+            <Stack height={{ md: "calc(100vh - 105px)" }}>{children}</Stack>
+          </Scrollbar>
+        </Stack>
       </Stack>
-    </Stack>
+    </>
   );
 }

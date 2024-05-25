@@ -1,3 +1,5 @@
+// version : 24.2
+
 import type { SvgIconProps } from "@mui/material";
 import { SvgIcon } from "@mui/material";
 import type { FC } from "react";
