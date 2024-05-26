@@ -39,8 +39,8 @@ const TextureBox: FC<PropsWithChildren> = ({ children }) => {
         />
         <Stack direction={"row"} justifyContent={"space-between"} sx={{ position: "relative", zIndex: 2, mx: "-20px" }}>
           <AnimalCard name="Plankton" src="/assets/rive/plankton.riv" />
-          <AnimalCard name="Shrimp" src="/assets/rive/fisher_man.riv" />
-          <AnimalCard name="Fish" src="/assets/rive/whale_animation.riv">
+          <AnimalCard name="Shrimp" src="/assets/rive/shrimp.riv" />
+          <AnimalCard name="Fish" src="/assets/rive/fish.riv">
             <img
               src="/assets/svg/Coin 2.svg"
               style={{ width: "50%", position: "absolute", top: "-15%", left: "-20%" }}

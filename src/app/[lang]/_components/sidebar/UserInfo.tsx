@@ -5,7 +5,7 @@ import { useAppSelector } from "@/lib/hooks";
 import { Avatar, Box, IconButton, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 import { Icon } from "@/components/icons";
-import { useAppRouter } from "@/routes/hooks";
+import useCustomRouter from "@/hooks/useCustomRouter";
 
 const userInfo = {
   name: "Ellie Clark",
@@ -14,7 +14,7 @@ const userInfo = {
 
 const SidebarUserInfo: FC = () => {
   const isCollapsed = useAppSelector(isSidebarCollapsed);
-  const { push } = useAppRouter();
+  const { push } = useCustomRouter();
   return (
     <Stack
       sx={{
@@ -73,7 +73,7 @@ const SidebarUserInfo: FC = () => {
             {userInfo.name}
           </Typography>
 
-          <IconButton onClick={() => push("/profile")}>
+          <IconButton onClick={() => push("/profile/", { backURL: true })}>
             <Icon name="More" />
           </IconButton>
         </>

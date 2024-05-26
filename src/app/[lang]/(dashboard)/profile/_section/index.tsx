@@ -1,48 +1,46 @@
 "use client";
 import CustomDialog from "@/components/CustomDialog";
 import { Icon } from "@/components/icons";
-import { useAppRouter } from "@/routes/hooks";
 import { Divider, IconButton, Stack, Typography } from "@mui/material";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import UserInfo from "./UserInfo";
+import useCustomRouter from "@/hooks/useCustomRouter";
 
 const menuItems = [
   {
     title: "Profile Settings",
-    path: "/profile-settings",
-    icon: "Settings", // Replace with the actual icon class or path
+    path: "/settings",
+    icon: "Settings",
   },
   {
     title: "Help & Support",
     path: "/help-support",
-    icon: "headphones-support", // Replace with the actual icon class or path
+    icon: "headphones-support",
   },
   {
     title: "Terms of Use | Privacy Policy",
     path: "/terms-privacy",
-    icon: "Warning-round", // Replace with the actual icon class or path
+    icon: "Warning-round",
   },
   {
     title: "Be a Partner",
     path: "/be-a-partner",
-    icon: "Hand", // Replace with the actual icon class or path
+    icon: "Hand",
   },
 ];
 
 const ProfileDialog = () => {
-  const { back } = useAppRouter();
-  const handleClose = () => {
-    back();
-  };
+  const { push, back } = useCustomRouter();
+
   return (
-    <CustomDialog fullWidth maxWidth="sm" onClose={handleClose} aria-labelledby="profile-dialog" open>
+    <CustomDialog fullWidth maxWidth="sm" onClose={back} aria-labelledby="profile-dialog" open>
       <DialogTitle sx={{ m: 0, p: 2 }} id="profile-dialog">
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Typography variant="h4-semi-bold" color={"common.white"}>
             Profile
           </Typography>
-          <IconButton onClick={handleClose}>
+          <IconButton onClick={back}>
             <Icon name="Close" />
           </IconButton>
         </Stack>
@@ -58,6 +56,7 @@ const ProfileDialog = () => {
               key={index}
               sx={{ borderBottom: "1px solid", borderColor: "dark.3", width: "100%", py: 2, cursor: "pointer" }}
               gap={2}
+              onClick={() => push(`/profile/${item.path}`)}
             >
               <Icon name={item.icon as any} />
               <Typography variant="p2-medium">{item.title}</Typography>

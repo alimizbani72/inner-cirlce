@@ -1,9 +1,24 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": { "@app/*": ["src/app/[lang]/*"],"@/*": ["src/*"]  },
+    "paths": {
+      "@dashboard/*": [
+        "src/app/[lang]/(dashboard)/*"
+      ],
+      "@app/*": [
+        "src/app/[lang]/*"
+      ],
+      "@/*": [
+        "src/*"
+      ],
+    },
     "target": "ES6",
-    "lib": ["dom", "dom.iterable", "esnext", "WebWorker"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext",
+      "WebWorker"
+    ],
     "strict": true,
     "noEmit": true,
     "allowJs": true,
@@ -28,6 +43,13 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
