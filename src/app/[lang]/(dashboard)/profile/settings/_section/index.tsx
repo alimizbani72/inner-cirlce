@@ -2,7 +2,7 @@
 import CustomDialog from "@/components/CustomDialog";
 import { Icon } from "@/components/icons";
 import useCustomRouter from "@/hooks/useCustomRouter";
-import { Divider, IconButton, Stack, Typography } from "@mui/material";
+import { Button, Divider, IconButton, Stack, Typography } from "@mui/material";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import UserProfile from "./UserProfile";
@@ -12,6 +12,7 @@ import { RHFTextField } from "@/components/hook-form";
 import FormProvider from "@/components/hook-form/form-provider";
 
 import * as Yup from "yup";
+import { useIsMobile } from "@/hooks/use-responsive";
 
 const UpdateUserSchema = Yup.object().shape({
   name: Yup.string()
@@ -27,6 +28,7 @@ const defaultValues = {
 
 const SettingsDialog = () => {
   const { push, back } = useCustomRouter();
+  const isMobile = useIsMobile();
   const methods = useForm({
     resolver: yupResolver(UpdateUserSchema),
     defaultValues,
@@ -64,8 +66,36 @@ const SettingsDialog = () => {
         <Stack justifyContent="center" alignItems="center">
           <UserProfile />
           <FormProvider methods={methods} onSubmit={onSubmit} sx={{ gap: 3, width: "100%", mt: 3 }}>
-            <RHFTextField name="name" label={"Full Name"} placeholder="Ellie Clark" />
-            <RHFTextField name="name" label={"Password"} placeholder="input hint" />
+            <RHFTextField
+              name="name"
+              label={"Full Name"}
+              placeholder="Ellie Clark"
+              disabled
+              InputProps={{
+                endAdornment: (
+                  <IconButton onClick={() => console.log("Aa")}>
+                    <Icon name="Pen" />
+                  </IconButton>
+                ),
+              }}
+            />
+            <RHFTextField
+              name="name"
+              label={"Password"}
+              InputProps={{
+                endAdornment: (
+                  <Button
+                    onClick={() => console.log("Aa")}
+                    startIcon={<Icon name="Arrow-Round" />}
+                    sx={{ whiteSpace: "pre" }}
+                    fullWidth
+                    color="secondary"
+                  >
+                    {isMobile ? "Change" : "Change Password"}
+                  </Button>
+                ),
+              }}
+            />
           </FormProvider>
         </Stack>
       </DialogContent>

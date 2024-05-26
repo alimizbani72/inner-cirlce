@@ -1,5 +1,7 @@
 const iconsNames = [
   "Hand",
+  "Pen",
+  "Arrow-Round",
   "headphones-support",
   "Settings",
   "LogOut",

@@ -1,7 +1,7 @@
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
-import { dubcraftEndpoint } from "@/consts";
+import { minecraftEndpoint } from "@/consts";
 
 type MyUser = {
   avatar_url?: string;
@@ -48,7 +48,7 @@ export const authOptions: NextAuthOptions = {
       credentials: {},
       async authorize(credentials: any) {
         try {
-          const response = await fetch(`${dubcraftEndpoint}/login`, {
+          const response = await fetch(`${minecraftEndpoint}/login`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -77,19 +77,17 @@ export const authOptions: NextAuthOptions = {
       name: "credentials",
       async authorize(credentials: any) {
         try {
-          const response = await fetch(`${dubcraftEndpoint}/register`, {
+          const response = await fetch(`${minecraftEndpoint}/auth/register`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              first_name: credentials?.first_name,
-              last_name: credentials?.last_name,
+              full_name: credentials?.full_name,
               password: credentials?.password,
               email: credentials?.email,
-              phone: credentials?.phone.replace(/\s/g, ""),
-              firebase_token: credentials?.firebaseToken,
               policy_approved: !!credentials.policy_approved,
+              session_code: credentials?.session_code,
             }),
           });
 
@@ -111,7 +109,7 @@ export const authOptions: NextAuthOptions = {
       name: "credentials",
       async authorize(credentials: any) {
         try {
-          const response = await fetch(`${dubcraftEndpoint}/resetPassword`, {
+          const response = await fetch(`${minecraftEndpoint}/resetPassword`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -143,7 +141,7 @@ export const authOptions: NextAuthOptions = {
 
       if (account?.id_token) {
         try {
-          const response = await fetch(`${dubcraftEndpoint}/googleLogin`, {
+          const response = await fetch(`${minecraftEndpoint}/googleLogin`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

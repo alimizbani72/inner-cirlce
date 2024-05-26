@@ -79,6 +79,148 @@
     {
       "icon": {
         "paths": [
+          "M225.835 666.411l440.576-440.576c16.64-16.64 43.648-16.64 60.288 0l71.509 71.509c16.64 16.64 16.64 43.648 0 60.288l-440.619 440.534c-7.979 8.021-18.816 12.501-30.123 12.501h-114.133v-114.133c0-11.307 4.48-22.144 12.501-30.123z",
+          "M586.667 305.5l131.84 131.842"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(151, 153, 180)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(151, 153, 180)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": ["Pen"]
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(151, 153, 180)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(151, 153, 180)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 11,
+        "id": 0,
+        "name": "Pen",
+        "prevSize": 32,
+        "code": 59648
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 0
+    },
+    {
+      "icon": {
+        "paths": [
+          "M852.975 513.374c-0.341 86.912-33.323 173.696-99.627 240-133.291 133.291-349.442 133.291-482.732 0-23.723-23.723-43.008-50.133-58.283-78.123",
+          "M170.833 506.453c1.365-85.504 34.56-170.581 99.797-235.819 133.291-133.291 349.44-133.291 482.73 0 23.723 23.723 43.008 50.133 58.283 78.123",
+          "M680.666 348.807h150.827v-150.869",
+          "M343.327 675.209h-150.827v150.869"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": ["Arrow-Round"]
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 12,
+        "id": 0,
+        "name": "Arrow-Round",
+        "prevSize": 32,
+        "code": 59648
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 0
+    },
+    {
+      "icon": {
+        "paths": [
           "M896.158 512c0 212.164-171.994 384.158-384.158 384.158",
           "M127.833 511.991c0-212.164 171.994-384.158 384.158-384.158",
           "M127.833 512.009c0.006 45.001 8.009 89.638 23.637 131.836 7.147 19.597 27.297 31.27 47.854 27.721l42.095-7.424c34.023-5.999 57.151-37.909 52.265-72.107l-12.669-88.687c-2.453-17.169-11.766-32.61-25.808-42.786-14.042-10.18-31.613-14.225-48.693-11.213l-75.15 13.252",

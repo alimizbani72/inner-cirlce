@@ -1,5 +1,3 @@
-import { byteBaseBulkURL, byteBaseDownloadURL } from "@/consts";
-
 export const removeName = (originalKey: string) => {
   const parts = originalKey.split("-");
   parts.pop();
@@ -15,11 +13,6 @@ export const splitString = (originalKey: string | undefined, splitKey: string, p
 };
 
 export const combinedNameID = (name: string | undefined, key: string | undefined) => `${key}-@${name}`;
-
-export const getDownloadLink = (name: string | undefined, key: string | undefined) =>
-  `${byteBaseDownloadURL}${key}-@${name}`;
-
-export const getImageLink = (key: string) => `${byteBaseBulkURL}${key}`;
 
 export const truncateString = (str: string, maxLength: number): string => {
   return str.length > maxLength ? `${str.substring(0, maxLength)}...` : str;
