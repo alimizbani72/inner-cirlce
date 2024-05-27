@@ -17,9 +17,10 @@ type PropType = {
   data: any[];
   width?: any;
   minWidthCell?: any;
+  action?: ReactNode;
 };
 
-const CustomTable = ({ title, columns, data, width, minWidthCell }: PropType) => {
+const CustomTable = ({ title, columns, data, width, minWidthCell, action }: PropType) => {
   return (
     <Stack
       sx={{
@@ -31,11 +32,11 @@ const CustomTable = ({ title, columns, data, width, minWidthCell }: PropType) =>
         overflow: "hidden",
       }}
     >
-      {title && (
-        <Typography variant="p1-semi-bold" p={3} pb={2}>
-          {title}
-        </Typography>
-      )}
+      <Stack direction="row" width={"100%"} justifyContent={"space-between"} p={3} pb={2}>
+        {title && <Typography variant="p1-semi-bold">{title}</Typography>}
+
+        {action && action}
+      </Stack>
 
       <TableContainer
         component={Paper}

@@ -4,7 +4,7 @@ import AFDashboardTab from "./Dashboard";
 import AffStatisticsTab from "./Statistics";
 import AffNetworkTab from "./Network";
 import AffCommissionsTab from "./Commissions";
-import { Typography } from "@mui/material";
+import AffPayoutsTab from "./Payouts";
 
 type Props = { value: number };
 
@@ -26,11 +26,7 @@ const TabContent: FC<Props> = ({ value }) => {
   }
 
   if (value === 5) {
-    return (
-      <Typography variant="h3-semi-bold" p={4} textAlign={"center"}>
-        Coming Soon
-      </Typography>
-    );
+    return <AffPayoutsTab />;
   }
 
   return <AFDashboardTab />;
