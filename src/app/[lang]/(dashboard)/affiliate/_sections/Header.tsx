@@ -1,12 +1,18 @@
 "use client";
-import { Button, Divider, IconButton, Stack, Typography } from "@mui/material";
+import { Box, Button, Divider, IconButton, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 import { useIsMobile } from "@/hooks/use-responsive";
 import { snipText } from "@/utils/string";
 import { Icon } from "@/components/icons";
-import QRCode from "react-qr-code";
 import ContentStack from "@app/_components/ContentStack";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
+
+import dynamic from "next/dynamic";
+
+const QRCodeWithIcon = dynamic(() => import("@/components/QRCodeWithIcon"), {
+  ssr: false,
+  loading: () => <Box sx={{ width: 140, height: 140 }} />,
+});
 
 const referralLink = "https://chain-mind.com/link/2024/";
 
@@ -58,8 +64,8 @@ const AffiliateHeader: FC = () => {
         <Divider flexItem sx={{ borderWidth: "1px" }} />
 
         <Stack p={3} gap={3} direction={{ md: "row" }} alignItems={"center"} justifyContent={"space-between"}>
-          <QRCode value={referralLink} size={isMobile ? 200 : 140} level="M" bgColor="#090A23" fgColor="#FFFFFF" />
-
+          {/* <QRCode value={referralLink} size={isMobile ? 200 : 140} level="M" bgColor="#090A23" fgColor="#FFFFFF" /> */}
+          <QRCodeWithIcon value={referralLink} iconSrc="/logo/logo.svg" size={isMobile ? 200 : 140} />
           <Icon name="Share" />
         </Stack>
       </ContentStack>
