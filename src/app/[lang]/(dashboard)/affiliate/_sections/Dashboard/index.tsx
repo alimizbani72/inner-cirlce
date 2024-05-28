@@ -3,8 +3,9 @@
 import { Icon } from "@/components/icons";
 import ContentStack from "@app/_components/ContentStack";
 import { Box, Button, Divider, Stack, Typography } from "@mui/material";
-import type { FC } from "react";
+import { useState, type FC } from "react";
 import Image from "@/components/Image";
+import WithdrawDialog from "@app/_components/WithdrawDialog";
 
 const arr = [
   { title: "planktons", image: "/assets/shark.svg", amount: 48 },
@@ -15,6 +16,8 @@ const arr = [
 ];
 
 const AFDashboardTab: FC = () => {
+  const [openWithdrawDialog, setOpenWithdrawDialog] = useState(false);
+
   return (
     <Stack p={{ md: 4, xs: 3 }} pt={{ md: 3 }} gap={3}>
       <Stack direction={{ md: "row" }} gap={3}>
@@ -42,7 +45,11 @@ const AFDashboardTab: FC = () => {
               </Typography>
             </Stack>
           </Stack>
-          <Button sx={{ ml: "auto", width: { md: "auto", xs: "100%" } }} color="secondary">
+          <Button
+            sx={{ ml: "auto", width: { md: "auto", xs: "100%" } }}
+            color="secondary"
+            onClick={() => setOpenWithdrawDialog(true)}
+          >
             Withdraw
           </Button>
         </ContentStack>
@@ -236,6 +243,8 @@ const AFDashboardTab: FC = () => {
           ))}
         </ContentStack>
       </Stack>
+
+      <WithdrawDialog open={openWithdrawDialog} close={() => setOpenWithdrawDialog(false)} />
     </Stack>
   );
 };

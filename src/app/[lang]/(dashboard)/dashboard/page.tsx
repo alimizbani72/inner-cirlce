@@ -5,6 +5,7 @@ import LiveFeed from "./_section/LiveFeed";
 import RoadMap from "./_section/RoadMap";
 import SocialMedia from "./_section/SocialMedia";
 import DropZone from "./_section/DropZone";
+import StaticAlert from "@app/_components/StaticAlert";
 
 // ----------------------------------------------------------------------
 
@@ -15,6 +16,11 @@ export const metadata: Metadata = {
 export default async function Dashboard() {
   return (
     <Box sx={{ flex: 1 }}>
+      <StaticAlert
+        title="Incomplete Payment Alert"
+        description="Your upgrade to the Whale Package is pending due to an incomplete payment.  Please complete your payment  to finalize upgrade."
+      />
+
       <WelcomeBanner />
 
       <Stack p={{ md: 4, xs: 3 }} gap={3}>

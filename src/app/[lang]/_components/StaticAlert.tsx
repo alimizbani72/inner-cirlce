@@ -1,0 +1,55 @@
+"use client";
+
+import { Icon } from "@/components/icons";
+import { Button, Stack, Typography } from "@mui/material";
+import type { FC } from "react";
+
+interface StaticAlertProps {
+  title: string;
+  description: string;
+  variant?: "danger" | "warning" | "blue" | "pink" | "white" | "success";
+  onContinue?: VoidFunction;
+}
+
+const COLOR = {
+  danger: { bgColor: "danger.main", textColor: "common.white" },
+  warning: { bgColor: "warning.main", textColor: "dark.1" },
+  blue: { bgColor: "blue.dark", textColor: "common.white" },
+  pink: { bgColor: "pink.park", textColor: "common.white" },
+  white: { bgColor: "common.white", textColor: "dark.1" },
+  success: { bgColor: "success.main", textColor: "common.white" },
+};
+
+const StaticAlert: FC<StaticAlertProps> = ({ title, description, variant = "danger", onContinue }) => {
+  return (
+    <Stack
+      gap={2}
+      direction={{ md: "row" }}
+      alignItems={{ md: "center" }}
+      bgcolor={COLOR[variant].bgColor}
+      px={{ md: 4, xs: 3 }}
+      py={2}
+    >
+      <Stack gap={0.5}>
+        <Stack direction={"row"} gap={2} alignItems={"center"}>
+          <Icon
+            name="No-Information"
+            color={["warning", "white"].includes(variant) ? COLOR[variant].textColor : undefined}
+          />
+          <Typography color={COLOR[variant].textColor} variant="p2-semi-bold">
+            {title}
+          </Typography>
+        </Stack>
+        <Typography color={COLOR[variant].textColor} variant="caption-regular">
+          {description}
+        </Typography>
+      </Stack>
+
+      <Button color="info" sx={{ width: { md: "152px", xs: "100%" } }} onClick={onContinue}>
+        Continue
+      </Button>
+    </Stack>
+  );
+};
+
+export default StaticAlert;

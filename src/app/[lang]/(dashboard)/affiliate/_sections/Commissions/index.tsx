@@ -1,11 +1,14 @@
 "use client";
 
-import type { FC } from "react";
+import { useState, type FC } from "react";
 import { Button, Divider, Stack, Typography } from "@mui/material";
 import AffCommissionsTabTable from "./Table";
 import ContentStack from "@app/_components/ContentStack";
+import WithdrawDialog from "@app/_components/WithdrawDialog";
 
 const AffCommissionsTab: FC = () => {
+  const [openWithdrawDialog, setOpenWithdrawDialog] = useState(false);
+
   return (
     <Stack px={{ md: 4, xs: 3 }} pt={3} flex={1} gap={3}>
       <ContentStack direction={{ md: "row" }} gap={3}>
@@ -32,12 +35,18 @@ const AffCommissionsTab: FC = () => {
           </Stack>
         </Stack>
 
-        <Button sx={{ ml: "auto", width: { md: "auto", xs: "100%" } }} color="secondary">
+        <Button
+          sx={{ ml: "auto", width: { md: "auto", xs: "100%" } }}
+          color="secondary"
+          onClick={() => setOpenWithdrawDialog(true)}
+        >
           Withdraw
         </Button>
       </ContentStack>
 
       <AffCommissionsTabTable />
+
+      <WithdrawDialog open={openWithdrawDialog} close={() => setOpenWithdrawDialog(false)} />
     </Stack>
   );
 };
