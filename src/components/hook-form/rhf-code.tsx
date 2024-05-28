@@ -1,12 +1,10 @@
-// @mui
 import { IconButton, InputLabel, Stack } from "@mui/material";
 import FormHelperText from "@mui/material/FormHelperText";
 import type { MuiOtpInputProps } from "mui-one-time-password-input";
 import { MuiOtpInput } from "mui-one-time-password-input";
 import { Controller, useFormContext } from "react-hook-form";
 import { Icon } from "../icons";
-
-// ----------------------------------------------------------------------
+import { useIsMobile } from "@/hooks/use-responsive";
 
 type RHFCodesProps = MuiOtpInputProps & {
   name: string;
@@ -16,6 +14,7 @@ type RHFCodesProps = MuiOtpInputProps & {
 
 export default function RHFCode({ name, label, loading, ...other }: RHFCodesProps) {
   const { control } = useFormContext();
+  const isMobile = useIsMobile();
 
   return (
     <Controller
@@ -28,12 +27,12 @@ export default function RHFCode({ name, label, loading, ...other }: RHFCodesProp
               {label}
             </InputLabel>
           )}
-          <Stack direction={"row"} alignItems={"center"} justifyContent={"space-between"}>
+          <Stack direction={isMobile ? "column" : "row"} alignItems={"center"} justifyContent={"space-between"} gap={4}>
             <MuiOtpInput
               {...field}
               autoFocus
               gap={1.5}
-              length={5}
+              length={6}
               TextFieldsProps={{
                 error: !!error,
                 placeholder: "-",

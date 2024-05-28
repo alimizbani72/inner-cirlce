@@ -1,6 +1,6 @@
 import { Icon } from "@/components/icons";
 import { Divider, Stack, Typography, Button } from "@mui/material";
-import type { FC } from "react";
+import { useMemo, type FC } from "react";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -9,32 +9,61 @@ import FormProvider from "@/components/hook-form/form-provider";
 
 import * as Yup from "yup";
 import { useTranslate } from "@/locales";
-
-const UpdateUserSchema = Yup.object().shape({
-  name: Yup.string()
-    .required("Name is required")
-    .test("invalid character", "Your name can't contain numbers", (val) => !/\d/.test(val)),
-  checkbox: Yup.boolean(),
-});
-
-const defaultValues = {
-  name: "",
-  checkbox: false,
-};
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { getRegisterInfo, setRegisterInfo, setRegisterStep } from "@/lib/features/auth/authSlice";
+import { useVerifyServiceVerificationsSendCreateMutation } from "@/services/queries";
+import { LoadingButton } from "@mui/lab";
+import { useSnackbar } from "notistack";
+import { useAppRouter } from "@/routes/hooks";
 
 const Register: FC = () => {
   const { t } = useTranslate();
+  const { push } = useAppRouter();
+  const dispatch = useAppDispatch();
+  const { enqueueSnackbar } = useSnackbar();
+  const { email, name, password } = useAppSelector(getRegisterInfo);
+  const FormSchema = useMemo(
+    () =>
+      Yup.object().shape({
+        name: Yup.string().required(t("formErrors.requiredName")),
+        password: Yup.string()
+          .required(t("formErrors.requiredPassword"))
+          .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/, t("formErrors.passwordPattern")),
+        email: Yup.string().email(t("formErrors.invalidEmail")).required(t("formErrors.requiredEmail")),
+        terms: Yup.boolean().required(t("formErrors.requiredTerms")).oneOf([true], t("formErrors.requiredTerms")),
+      }),
+    []
+  );
+  const defaultValues = useMemo(
+    () => ({
+      name,
+      password,
+      email,
+      terms: false,
+    }),
+    [email, name, password]
+  );
   const methods = useForm({
-    resolver: yupResolver(UpdateUserSchema),
+    resolver: yupResolver(FormSchema),
     defaultValues,
-    mode: "onSubmit",
+    mode: "onChange",
   });
 
   const { handleSubmit } = methods;
 
+  const { mutateAsync, isPending } = useVerifyServiceVerificationsSendCreateMutation();
+
   const onSubmit = handleSubmit((data) => {
-    // biome-ignore lint/suspicious/noConsoleLog: <explanation>
-    console.log("🚀 ~ data:", data);
+    mutateAsync({ requestBody: { email: data.email } })
+      .then(() => {
+        dispatch(setRegisterInfo({ name: data.name, email: data.email, password: data.password }));
+        dispatch(setRegisterStep(2));
+      })
+      .catch(() =>
+        enqueueSnackbar(t("formErrors.formError"), {
+          variant: "error",
+        })
+      );
   });
   return (
     <>
@@ -67,11 +96,7 @@ const Register: FC = () => {
           placeholder={t("createAccount.passwordPlaceholder")}
           type="password"
         />
-        <RHFTextField
-          name="invite"
-          label={t("createAccount.inviteCodeLabel")}
-          placeholder={t("createAccount.inviteCodePlaceholder")}
-        />
+        <RHFTextField name="invite" label={t("createAccount.inviteCodeLabel")} InputProps={{ readOnly: true }} />
         <RHFCheckbox
           label={
             <Typography variant="p2-regular" color="grey.light">
@@ -83,13 +108,19 @@ const Register: FC = () => {
           }
           name="terms"
         />
-        <Button color="primary" size="large" type="submit">
+        <LoadingButton color="primary" size="large" type="submit" loading={isPending}>
           {t("createAccount.createAccountButton")}
-        </Button>
+        </LoadingButton>
       </FormProvider>
       <Typography sx={{ textAlign: "center" }} variant="p2-medium" color="grey.light">
         {t("createAccount.alreadyHaveAccount")}{" "}
-        <Typography component={"span"} variant="p2-medium" color="blue.light">
+        <Typography
+          component={"span"}
+          variant="p2-medium"
+          color="blue.light"
+          sx={{ cursor: "pointer" }}
+          onClick={() => push("/login")}
+        >
           {t("createAccount.login")}
         </Typography>
       </Typography>

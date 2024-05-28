@@ -1,6 +1,6 @@
 import { Icon } from "@/components/icons";
 import { Divider, Stack, Typography, Button } from "@mui/material";
-import type { FC } from "react";
+import { useMemo, useState, type FC } from "react";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -9,32 +9,46 @@ import FormProvider from "@/components/hook-form/form-provider";
 
 import * as Yup from "yup";
 import { useTranslate } from "@/locales";
-
-const UpdateUserSchema = Yup.object().shape({
-  name: Yup.string()
-    .required("Name is required")
-    .test("invalid character", "Your name can't contain numbers", (val) => !/\d/.test(val)),
-  checkbox: Yup.boolean(),
-});
+import { useAppRouter } from "@/routes/hooks";
+import { LoadingButton } from "@mui/lab";
+import { signIn } from "next-auth/react";
 
 const defaultValues = {
-  name: "",
-  checkbox: false,
+  email: "",
+  password: "",
 };
 
 const Login: FC = () => {
   const { t } = useTranslate();
+  const { push } = useAppRouter();
+  const [loading, setLoading] = useState(false);
+  const FormSchema = useMemo(
+    () =>
+      Yup.object().shape({
+        password: Yup.string().required(t("formErrors.requiredPassword")),
+        email: Yup.string().email(t("formErrors.invalidEmail")).required(t("formErrors.requiredEmail")),
+      }),
+    []
+  );
+
   const methods = useForm({
-    resolver: yupResolver(UpdateUserSchema),
+    resolver: yupResolver(FormSchema),
     defaultValues,
-    mode: "onSubmit",
+    mode: "onBlur",
   });
 
-  const { handleSubmit } = methods;
+  const { handleSubmit, setError } = methods;
 
-  const onSubmit = handleSubmit((data) => {
-    // biome-ignore lint/suspicious/noConsoleLog: <explanation>
-    console.log("🚀 ~ data:", data);
+  const onSubmit = handleSubmit(async (data) => {
+    setLoading(true);
+    const res = await signIn("custom-login", { password: data.password, email: data.email, redirect: false });
+    if (res?.ok) {
+      push("/dashboard");
+      setLoading(false);
+    } else {
+      setLoading(false);
+      setError("email", { message: "Email or password is wrong" });
+    }
   });
   return (
     <>
@@ -64,17 +78,28 @@ const Login: FC = () => {
         />
         <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"}>
           <RHFCheckbox label={<Typography variant="p2-regular">{t("login.rememberMe")}</Typography>} name="save" />
-          <Typography variant="p2-medium" color={"pink.light"} sx={{ cursor: "pointer" }}>
+          <Typography
+            variant="p2-medium"
+            color={"pink.light"}
+            sx={{ cursor: "pointer" }}
+            onClick={() => push("/forgotpass")}
+          >
             {t("login.forgotPassword")}
           </Typography>
         </Stack>
-        <Button color="primary" size="large" type="submit">
+        <LoadingButton color="primary" size="large" type="submit" loading={loading}>
           {t("login.loginButton")}
-        </Button>
+        </LoadingButton>
       </FormProvider>
       <Typography sx={{ textAlign: "center" }} variant="p2-medium" color="grey.light">
         {t("login.noAccount")}{" "}
-        <Typography component={"span"} variant="p2-medium" color="blue.light">
+        <Typography
+          component={"span"}
+          variant="p2-medium"
+          color="blue.light"
+          sx={{ cursor: "pointer" }}
+          onClick={() => push("/register")}
+        >
           {t("login.register")}
         </Typography>
       </Typography>

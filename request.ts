@@ -337,13 +337,13 @@ const fetchWithAuth = async (url: string, options: RequestInit): Promise<Respons
   });
 
   if (response.status === 401) {
-    signOut(); // Log out on 401 Unauthorized response
+    await signOut({ redirect: false }); // Log out on 401 Unauthorized response
+    window.location.href = "/login";
   }
 
   return response;
 };
 
-// Improved request function with generic type T for the expected API result
 export function request<T>(
   config: OpenAPIConfig,
   options: ApiRequestOptions,
@@ -362,15 +362,21 @@ export function request<T>(
   return new CancelablePromise<T>((resolve, reject, _onCancelToken) => {
     fetchWithAuth(url, fetchOptions)
       .then(async (response) => {
+        const responseBody = await getResponseBody(response);
+
         if (!response.ok) {
-          const errorText = await response.text();
-          throw new ApiError(errorText, response);
+          const apiResult: ApiResult = {
+            url: response.url,
+            status: response.status,
+            statusText: response.statusText,
+            body: responseBody,
+          };
+          throw new ApiError(options, apiResult, responseBody?.message || response.statusText);
         }
-        return response.json() as Promise<T>;
+
+        resolve(responseBody as T);
       })
-      .then((data) => resolve(data))
       .catch((error) => {
-        signOut(); // Additional logout handling if needed
         reject(error);
       });
   }, onCancel);

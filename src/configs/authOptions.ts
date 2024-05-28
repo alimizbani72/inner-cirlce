@@ -48,7 +48,7 @@ export const authOptions: NextAuthOptions = {
       credentials: {},
       async authorize(credentials: any) {
         try {
-          const response = await fetch(`${minecraftEndpoint}/login`, {
+          const response = await fetch(`${minecraftEndpoint}/auth/login`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

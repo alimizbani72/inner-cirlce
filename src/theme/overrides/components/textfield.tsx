@@ -14,7 +14,6 @@ export function textField(theme: Theme) {
           marginBottom: `${theme.spacing(1)} !important`,
           transform: "none !important",
           ...theme.typography["caption-semi-bold"],
-          color: theme.palette.common.white,
         },
       },
     },

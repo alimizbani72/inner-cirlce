@@ -4,8 +4,9 @@ import { counterSlice } from "./features/counter/counterSlice";
 import { menuSlice } from "./features/menu/menuSlice";
 import { dicSlice } from "./features/dictionary/dicSlice";
 import { pageSlice } from "./features/pageTitle/pageSlice";
+import { authSlice } from "./features/auth/authSlice";
 
-const rootReducer = combineSlices(counterSlice, menuSlice, dicSlice, pageSlice);
+const rootReducer = combineSlices(counterSlice, menuSlice, dicSlice, pageSlice, authSlice);
 
 export type RootState = ReturnType<typeof rootReducer>;
 

@@ -13,8 +13,7 @@
     "emailPlaceholder": "Enter your email address",
     "passwordLabel": "Password",
     "passwordPlaceholder": "Enter your password",
-    "inviteCodeLabel": "Invite code",
-    "inviteCodePlaceholder": "Enter your invite code",
+    "inviteCodeLabel": "Your Sponsor",
     "agreeToTerms": "I agree to the",
     "termsAndConditions": "Terms & Conditions",
     "createAccountButton": "Create Account",
@@ -56,5 +55,15 @@
     "loginButton": "Login",
     "noAccount": "Don't have an account?",
     "register": "Register"
+  },
+  "formErrors": {
+    "requiredName": "Please enter your full name",
+    "requiredPassword": "Please enter your password",
+    "passwordPattern": "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character",
+    "invalidEmail": "Email address is incorrect",
+    "requiredEmail": "Please enter your email address",
+    "requiredTerms": "The terms and conditions must be accepted.",
+    "formError": "Something went wrong, please try again",
+    "requiredCode": "The value is wrong, try again."
   }
 }

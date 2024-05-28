@@ -6,6 +6,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import UserInfo from "./UserInfo";
 import useCustomRouter from "@/hooks/useCustomRouter";
+import { signOut } from "next-auth/react";
 
 const menuItems = [
   {
@@ -65,7 +66,12 @@ const ProfileDialog = () => {
               </IconButton>
             </Stack>
           ))}
-          <Stack direction={"row"} sx={{ width: "100%", py: 2, cursor: "pointer" }} gap={2}>
+          <Stack
+            direction={"row"}
+            sx={{ width: "100%", py: 2, cursor: "pointer" }}
+            gap={2}
+            onClick={() => signOut({ redirect: true, callbackUrl: "/login" })}
+          >
             <Icon name="LogOut" />
             <Typography variant="p2-medium">Logout</Typography>
           </Stack>
