@@ -64,12 +64,27 @@ jobs:
           password: ${{ secrets.REGISTRY_TOKEN }}
 
       - name: Build and push
+        if: env.BRANCH_NAME == 'main'
         uses: docker/build-push-action@v4
         with:
           context: .
           platforms: linux/amd64
           push: true
+          build-args: |
+            minecraft_endpoint=https://minecraft.chainmind.com/
           tags: ${{ env.IMG_NAME }}:${{ env.IMG_TAG }}
+
+      - name: Build and push
+        if: env.BRANCH_NAME == 'staging'
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          build-args: |
+            minecraft_endpoint=https://staging-minecraft.chainmind.com/
+          tags: ${{ env.IMG_NAME }}:${{ env.IMG_TAG }}
+
 
   helm:
     needs: [build]

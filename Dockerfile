@@ -17,15 +17,21 @@ FROM deps AS builder
 WORKDIR /app
 COPY . .
 
+ARG minecraft_endpoint
+ENV NEXT_PUBLIC_MINECRAFT_ENDPOINT $minecraft_endpoint
+
 RUN bun run build
 
 # Production image, copy all the files and run next
 FROM node:20-slim AS runner
 WORKDIR /app
 
+ARG minecraft_endpoint
 ARG CONFIG_FILE
+
 COPY $CONFIG_FILE /app/.env
 ENV NODE_ENV production
+ENV NEXT_PUBLIC_MINECRAFT_ENDPOINT $minecraft_endpoint
 
 # Uncomment the following line in case you want to disable telemetry during runtime.
 # ENV NEXT_TELEMETRY_DISABLED 1
