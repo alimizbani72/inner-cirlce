@@ -26,7 +26,7 @@ import { useAppRouter } from "@/routes/hooks";
 
 const getTimer = () => {
   const time = new Date();
-  time.setSeconds(time.getSeconds() + toNumber(10));
+  time.setSeconds(time.getSeconds() + toNumber(90));
   return time;
 };
 
