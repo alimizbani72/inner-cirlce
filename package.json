@@ -8,7 +8,7 @@
     "dev": "next dev -p 7500",
     "start": "next start -p 7500",
     "prebuild": "bun run lint && bun run format",
-    "build": "yarn codegen && next build",
+    "build": "bun run codegen && next build",
     "postbuild": "next-sitemap",
     "lint": "biome lint ./src",
     "lint:fix": "biome lint --apply ./src",

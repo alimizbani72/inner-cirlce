@@ -16,6 +16,7 @@ import {
   getRegisterInfo,
   getForgotPasswordInfo,
   getRegisterStep,
+  setForgotPasswordInfo,
 } from "@/lib/features/auth/authSlice";
 import {
   useVerifyServiceVerificationsExchangeCreateMutation,
@@ -69,19 +70,24 @@ const EmailConfirm: FC = () => {
     setLoading(true);
     try {
       const exchangeRes = await exchangeCode({ requestBody: { code: data.verifyCode } });
-      const signupRes = await signIn("custom-signup", {
-        full_name: registerInfo.name,
-        password: registerInfo.password,
-        email,
-        policy_approved: true,
-        session_code: exchangeRes.data?.session_code,
-        redirect: false,
-      });
-      setLoading(false);
-      if (signupRes?.ok) {
-        replace("/dashboard");
+      if (registerStep === 2) {
+        const signupRes = await signIn("custom-signup", {
+          full_name: registerInfo.name,
+          password: registerInfo.password,
+          email,
+          policy_approved: true,
+          session_code: exchangeRes.data?.session_code,
+          redirect: false,
+        });
+        setLoading(false);
+        if (signupRes?.ok) {
+          replace("/dashboard");
+        } else {
+          setError("verifyCode", { message: JSON.parse(signupRes?.error || "")?.errors.message });
+        }
       } else {
-        setError("verifyCode", { message: JSON.parse(signupRes?.error || "")?.errors.message });
+        dispatch(setForgotPasswordInfo({ email, session_code: exchangeRes.data?.session_code }));
+        dispatch(setForgotPasswordStep(3));
       }
     } catch (error) {
       setLoading(false);

@@ -109,15 +109,15 @@ export const authOptions: NextAuthOptions = {
       name: "credentials",
       async authorize(credentials: any) {
         try {
-          const response = await fetch(`${minecraftEndpoint}/resetPassword`, {
+          const response = await fetch(`${minecraftEndpoint}/auth/resetPassword`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              firebase_token: credentials?.token,
+              email: credentials?.email,
               password: credentials?.password,
-              phone: credentials?.phone,
+              session_code: credentials?.session_code,
             }),
           });
 

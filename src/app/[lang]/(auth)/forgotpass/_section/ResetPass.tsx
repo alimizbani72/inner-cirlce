@@ -1,5 +1,5 @@
-import { Stack, Typography, Button } from "@mui/material";
-import type { FC } from "react";
+import { Stack, Typography } from "@mui/material";
+import { useMemo, useState, type FC } from "react";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -9,33 +9,68 @@ import FormProvider from "@/components/hook-form/form-provider";
 import * as Yup from "yup";
 import { Icon } from "@/components/icons";
 import { useTranslate } from "@/locales";
-
-const UpdateUserSchema = Yup.object().shape({
-  name: Yup.string()
-    .required("Name is required")
-    .test("invalid character", "Your name can't contain numbers", (val) => !/\d/.test(val)),
-  checkbox: Yup.boolean(),
-});
+import { useAppSelector } from "@/lib/hooks";
+import { getForgotPasswordInfo } from "@/lib/features/auth/authSlice";
+import { useAppRouter } from "@/routes/hooks";
+import { LoadingButton } from "@mui/lab";
+import { useSnackbar } from "notistack";
+import { signIn } from "next-auth/react";
 
 const defaultValues = {
-  name: "",
-  checkbox: false,
+  password: "",
+  confirmPass: "",
 };
 
 const ResetPass: FC = () => {
   const { t } = useTranslate();
+  const { replace } = useAppRouter();
+  const { enqueueSnackbar } = useSnackbar();
+  const [loading, setLoading] = useState(false);
+  const { email, session_code } = useAppSelector(getForgotPasswordInfo);
+  const FormSchema = useMemo(
+    () =>
+      Yup.object().shape({
+        password: Yup.string()
+          .required(t("formErrors.requiredPassword"))
+          .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/, t("formErrors.passwordPattern")),
+        confirmPass: Yup.string().oneOf([Yup.ref("password")], t("formErrors.confirmPassword")),
+      }),
+    []
+  );
+
   const methods = useForm({
-    resolver: yupResolver(UpdateUserSchema),
+    resolver: yupResolver(FormSchema),
     defaultValues,
     mode: "onSubmit",
   });
 
   const { handleSubmit } = methods;
 
-  const onSubmit = handleSubmit((data) => {
-    // biome-ignore lint/suspicious/noConsoleLog: <explanation>
-    console.log("🚀 ~ data:", data);
+  const onSubmit = handleSubmit(async (data) => {
+    setLoading(true);
+    try {
+      const signupRes = await signIn("forgot-pass", {
+        email,
+        password: data.password,
+        session_code,
+        redirect: false,
+      });
+      setLoading(false);
+      if (signupRes?.ok) {
+        replace("/dashboard");
+      } else {
+        enqueueSnackbar(t("formErrors.formError"), {
+          variant: "error",
+        });
+      }
+    } catch (_error) {
+      setLoading(false);
+      enqueueSnackbar(t("formErrors.formError"), {
+        variant: "error",
+      });
+    }
   });
+
   return (
     <>
       <Stack spacing={1}>
@@ -61,9 +96,9 @@ const ResetPass: FC = () => {
           placeholder={t("resetPassword.confirmNewPasswordPlaceholder")}
           type="password"
         />
-        <Button color="primary" size="large" type="submit">
+        <LoadingButton loading={loading} color="primary" size="large" type="submit">
           {t("resetPassword.resetPasswordButton")}
-        </Button>
+        </LoadingButton>
       </FormProvider>
     </>
   );

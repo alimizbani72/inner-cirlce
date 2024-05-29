@@ -1,5 +1,5 @@
 import { Stack, Typography, Button } from "@mui/material";
-import type { FC } from "react";
+import { useMemo, type FC } from "react";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -9,32 +9,63 @@ import FormProvider from "@/components/hook-form/form-provider";
 import * as Yup from "yup";
 import { useTranslate } from "@/locales";
 import { Icon } from "@/components/icons";
-
-const UpdateUserSchema = Yup.object().shape({
-  name: Yup.string()
-    .required("Name is required")
-    .test("invalid character", "Your name can't contain numbers", (val) => !/\d/.test(val)),
-  checkbox: Yup.boolean(),
-});
-
-const defaultValues = {
-  name: "",
-  checkbox: false,
-};
+import { useAppRouter } from "@/routes/hooks";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { getForgotPasswordInfo, setForgotPasswordInfo, setForgotPasswordStep } from "@/lib/features/auth/authSlice";
+import {
+  useVerifyServiceVerificationsEmailCheckCreateMutation,
+  useVerifyServiceVerificationsSendCreateMutation,
+} from "@/services/queries";
+import { useSnackbar } from "notistack";
+import { LoadingButton } from "@mui/lab";
 
 const ForgotPass: FC = () => {
   const { t } = useTranslate();
+  const { push } = useAppRouter();
+  const dispatch = useAppDispatch();
+  const { enqueueSnackbar } = useSnackbar();
+  const { email } = useAppSelector(getForgotPasswordInfo);
+  const FormSchema = useMemo(
+    () =>
+      Yup.object().shape({
+        email: Yup.string().email(t("formErrors.invalidEmail")).required(t("formErrors.requiredEmail")),
+      }),
+    []
+  );
+  const defaultValues = useMemo(
+    () => ({
+      email,
+      terms: false,
+    }),
+    [email]
+  );
   const methods = useForm({
-    resolver: yupResolver(UpdateUserSchema),
+    resolver: yupResolver(FormSchema),
     defaultValues,
     mode: "onSubmit",
   });
 
-  const { handleSubmit } = methods;
+  const { handleSubmit, setError } = methods;
 
-  const onSubmit = handleSubmit((data) => {
-    // biome-ignore lint/suspicious/noConsoleLog: <explanation>
-    console.log("🚀 ~ data:", data);
+  const { mutateAsync: checkEmail, isPending: checkEmailLoading } =
+    useVerifyServiceVerificationsEmailCheckCreateMutation();
+  const { mutateAsync, isPending } = useVerifyServiceVerificationsSendCreateMutation();
+
+  const onSubmit = handleSubmit(async (data) => {
+    try {
+      const checkEmailResult = await checkEmail({ requestBody: { email: data.email } });
+      if (checkEmailResult.data) {
+        await mutateAsync({ requestBody: { email: data.email } });
+        dispatch(setForgotPasswordInfo({ email: data.email }));
+        dispatch(setForgotPasswordStep(2));
+      } else {
+        setError("email", { message: t("formErrors.userNotFound") });
+      }
+    } catch (_error) {
+      enqueueSnackbar(t("formErrors.formError"), {
+        variant: "error",
+      });
+    }
   });
   return (
     <>
@@ -55,12 +86,12 @@ const ForgotPass: FC = () => {
           placeholder={t("passwordRecovery.emailPlaceholder")}
         />
         <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"} gap={2}>
-          <Button fullWidth color="info" size="large" type="submit">
+          <Button fullWidth color="info" size="large" type="submit" onClick={() => push("/login")}>
             {t("passwordRecovery.backButton")}
           </Button>
-          <Button fullWidth color="primary" size="large" type="submit">
+          <LoadingButton loading={isPending || checkEmailLoading} fullWidth color="primary" size="large" type="submit">
             {t("passwordRecovery.continueButton")}
-          </Button>
+          </LoadingButton>
         </Stack>
       </FormProvider>
     </>

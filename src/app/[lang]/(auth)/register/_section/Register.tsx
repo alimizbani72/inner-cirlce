@@ -1,20 +1,24 @@
+"use client";
+
 import { Icon } from "@/components/icons";
 import { Divider, Stack, Typography, Button } from "@mui/material";
-import { useMemo, type FC } from "react";
-
+import { useMemo, type FC, useEffect, useCallback } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { RHFCheckbox, RHFTextField } from "@/components/hook-form";
 import FormProvider from "@/components/hook-form/form-provider";
-
 import * as Yup from "yup";
 import { useTranslate } from "@/locales";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { getRegisterInfo, setRegisterInfo, setRegisterStep } from "@/lib/features/auth/authSlice";
-import { useVerifyServiceVerificationsSendCreateMutation } from "@/services/queries";
+import {
+  useVerifyServiceVerificationsEmailCheckCreateMutation,
+  useVerifyServiceVerificationsSendCreateMutation,
+} from "@/services/queries";
 import { LoadingButton } from "@mui/lab";
 import { useSnackbar } from "notistack";
 import { useAppRouter } from "@/routes/hooks";
+import debounce from "lodash/debounce";
 
 const Register: FC = () => {
   const { t } = useTranslate();
@@ -22,6 +26,7 @@ const Register: FC = () => {
   const dispatch = useAppDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const { email, name, password } = useAppSelector(getRegisterInfo);
+
   const FormSchema = useMemo(
     () =>
       Yup.object().shape({
@@ -29,11 +34,15 @@ const Register: FC = () => {
         password: Yup.string()
           .required(t("formErrors.requiredPassword"))
           .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/, t("formErrors.passwordPattern")),
-        email: Yup.string().email(t("formErrors.invalidEmail")).required(t("formErrors.requiredEmail")),
+        email: Yup.string()
+          .email(t("formErrors.invalidEmail"))
+          .required(t("formErrors.requiredEmail"))
+          .matches(/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/, t("formErrors.invalidEmail")),
         terms: Yup.boolean().required(t("formErrors.requiredTerms")).oneOf([true], t("formErrors.requiredTerms")),
       }),
-    []
+    [t]
   );
+
   const defaultValues = useMemo(
     () => ({
       name,
@@ -43,14 +52,17 @@ const Register: FC = () => {
     }),
     [email, name, password]
   );
+
   const methods = useForm({
     resolver: yupResolver(FormSchema),
     defaultValues,
     mode: "onChange",
   });
 
-  const { handleSubmit } = methods;
+  const { handleSubmit, control, watch, setError, clearErrors, trigger, formState } = methods;
+  const { isValid } = formState;
 
+  const { mutateAsync: checkEmail } = useVerifyServiceVerificationsEmailCheckCreateMutation();
   const { mutateAsync, isPending } = useVerifyServiceVerificationsSendCreateMutation();
 
   const onSubmit = handleSubmit((data) => {
@@ -65,6 +77,42 @@ const Register: FC = () => {
         })
       );
   });
+
+  const debouncedCheckEmail = useCallback(
+    debounce(async (email) => {
+      try {
+        const response = await checkEmail({ requestBody: { email } });
+        if (response.data) {
+          setError("email", {
+            type: "manual",
+            message: t("formErrors.emailExists"),
+          });
+        } else {
+          clearErrors("email");
+        }
+      } catch (_error) {
+        setError("email", {
+          type: "manual",
+          message: t("formErrors.formError"),
+        });
+      }
+    }, 500),
+    [checkEmail, setError, clearErrors, t]
+  );
+
+  useEffect(() => {
+    const subscription = watch((value, { name }) => {
+      if (name === "email") {
+        trigger("email").then((isValid) => {
+          if (isValid) {
+            debouncedCheckEmail(value.email);
+          }
+        });
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, [watch, debouncedCheckEmail, trigger]);
+
   return (
     <>
       <Stack spacing={1}>
@@ -85,10 +133,18 @@ const Register: FC = () => {
           label={t("createAccount.fullNameLabel")}
           placeholder={t("createAccount.fullNamePlaceholder")}
         />
-        <RHFTextField
+        <Controller
           name="email"
-          label={t("createAccount.emailLabel")}
-          placeholder={t("createAccount.emailPlaceholder")}
+          control={control}
+          render={({ field, fieldState: { error } }) => (
+            <RHFTextField
+              {...field}
+              label={t("createAccount.emailLabel")}
+              placeholder={t("createAccount.emailPlaceholder")}
+              error={!!error}
+              helperText={error ? error.message : ""}
+            />
+          )}
         />
         <RHFTextField
           name="password"
@@ -108,7 +164,7 @@ const Register: FC = () => {
           }
           name="terms"
         />
-        <LoadingButton color="primary" size="large" type="submit" loading={isPending}>
+        <LoadingButton color="primary" size="large" type="submit" loading={isPending} disabled={!isValid}>
           {t("createAccount.createAccountButton")}
         </LoadingButton>
       </FormProvider>
@@ -127,4 +183,5 @@ const Register: FC = () => {
     </>
   );
 };
+
 export default Register;

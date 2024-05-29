@@ -9,6 +9,7 @@ type RegisterInfo = {
 
 type ForgotPasswordInfo = {
   email: string;
+  session_code?: string;
 };
 
 export interface authSliceState {
@@ -26,6 +27,7 @@ const initialState: authSliceState = {
   },
   forgotPassword: {
     email: "",
+    session_code: "",
   },
   registerStep: 1,
   forgotPasswordStep: 1,
