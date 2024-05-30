@@ -44,7 +44,7 @@ const ForgetPasswordDialog = () => {
   const { mutateAsync: resetPassword, isPending: isResetPasswordPending } =
     useAccountServiceAuthResetPasswordCreateMutation();
 
-  const { push, back } = useCustomRouter();
+  const { push, back, nativeBack } = useCustomRouter();
 
   const methods = useForm({
     resolver: yupResolver(
@@ -149,7 +149,7 @@ const ForgetPasswordDialog = () => {
                 />
               </FormProvider>
               <Stack direction={"row"} spacing={2} alignItems={"center"} mt={5} mb={3}>
-                <Button fullWidth color="info" onClick={back}>
+                <Button fullWidth color="info" onClick={nativeBack}>
                   {t("emailVerification.backButton")}
                 </Button>
                 {totalSeconds ? (

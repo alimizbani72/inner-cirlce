@@ -50,7 +50,8 @@ const useCustomRouter = () => {
     }
   }, [router, searchParams]);
 
-  return { push, back };
+  const nativeBack = () => router.back();
+  return { push, back, nativeBack };
 };
 
 export default useCustomRouter;

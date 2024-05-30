@@ -40,7 +40,7 @@ const defaultValues = {
 
 const ChangePasswordDialog = () => {
   const { enqueueSnackbar } = useSnackbar();
-  const { push, back } = useCustomRouter();
+  const { push, back, nativeBack } = useCustomRouter();
   const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
 
   const { mutateAsync, isPending } = useAccountServiceAuthChangePassword();
@@ -71,7 +71,7 @@ const ChangePasswordDialog = () => {
       <DialogTitle sx={{ m: 0, p: 2 }} id="change-password-dialog">
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack direction={"row"} alignItems="center" spacing={1}>
-            <IconButton onClick={() => push("/profile")}>
+            <IconButton onClick={nativeBack}>
               <Icon name="Arrow-left" />
             </IconButton>
             <Typography variant="h4-semi-bold" color={"common.white"}>
@@ -127,7 +127,7 @@ const ChangePasswordDialog = () => {
 
       <DialogActions>
         <Stack width={"100%"} direction={"row"} justifyContent={"space-between"}>
-          <Button color="info" onClick={back}>
+          <Button color="info" onClick={nativeBack}>
             Cancel
           </Button>
           <LoadingButton color="primary" onClick={onSubmit} loading={isPending}>
