@@ -341,61 +341,48 @@ const fetchSession = async (): Promise<Session | null> => {
  * @returns CancelablePromise<T>
  * @throws ApiError
  */
-// Function to perform authenticated fetch
-const fetchWithAuth = async (url: string, options: RequestInit): Promise<Response> => {
-  const session = await fetchSession(); // Use cached session if available
-  const headers = new Headers(options.headers);
-  if (session?.accessToken) {
-    headers.set("Authorization", `Bearer ${session.accessToken}`);
-  }
+export const request = <T>(config: OpenAPIConfig, options: ApiRequestOptions): CancelablePromise<T> => {
+  return new CancelablePromise(async (resolve, reject, onCancel) => {
+    try {
+      const url = getUrl(config, options);
+      const formData = getFormData(options);
+      const body = getRequestBody(options);
+      const headers = await getHeaders(config, options);
 
-  const response = await fetch(url, {
-    ...options,
-    headers,
-  });
+      const session = await fetchSession(); // Use cached session if available
+      if (session?.accessToken) {
+        headers.set("Authorization", `Bearer ${session.accessToken}`);
+      }
 
-  if (response.status === 401) {
-    await signOut({ redirect: false }); // Log out on 401 Unauthorized response
-    window.location.href = "/login";
-  }
+      if (!onCancel.isCancelled) {
+        let response = await sendRequest(config, options, url, body, formData, headers, onCancel);
 
-  return response;
-};
-
-export function request<T>(
-  config: OpenAPIConfig,
-  options: ApiRequestOptions,
-  onCancel?: OnCancel
-): CancelablePromise<T> {
-  const url = getUrl(config, options);
-  const fetchOptions: RequestInit = {
-    method: options.method,
-    headers: {
-      "Content-Type": "application/json",
-      ...(options.headers || {}),
-    },
-    body: JSON.stringify(options.body),
-  };
-
-  return new CancelablePromise<T>((resolve, reject, _onCancelToken) => {
-    fetchWithAuth(url, fetchOptions)
-      .then(async (response) => {
-        const responseBody = await getResponseBody(response);
-
-        if (!response.ok) {
-          const apiResult: ApiResult = {
-            url: response.url,
-            status: response.status,
-            statusText: response.statusText,
-            body: responseBody,
-          };
-          throw new ApiError(options, apiResult, responseBody?.message || response.statusText);
+        for (const fn of config.interceptors.response._fns) {
+          response = await fn(response);
         }
 
-        resolve(responseBody as T);
-      })
-      .catch((error) => {
-        reject(error);
-      });
-  }, onCancel);
-}
+        const responseBody = await getResponseBody(response);
+        const responseHeader = getResponseHeader(response, options.responseHeader);
+
+        const result: ApiResult = {
+          url,
+          ok: response.ok,
+          status: response.status,
+          statusText: response.statusText,
+          body: responseHeader ?? responseBody,
+        };
+
+        catchErrorCodes(options, result);
+
+        resolve(result.body);
+      }
+    } catch (error) {
+      if (error?.status === 401 || error?.status === 400) {
+        await signOut({ redirect: false });
+        window.location.href = "/login";
+      }
+
+      reject(error);
+    }
+  });
+};
