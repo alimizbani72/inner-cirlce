@@ -1,5 +1,6 @@
 // @ts-nocheck
 
+import type { Session } from "next-auth";
 import { ApiError } from "./ApiError";
 import type { ApiRequestOptions } from "./ApiRequestOptions";
 import type { ApiResult } from "./ApiResult";
@@ -316,6 +317,23 @@ export const catchErrorCodes = (options: ApiRequestOptions, result: ApiResult): 
   }
 };
 
+let cachedSession: Session | null = null;
+let sessionFetchPromise: Promise<Session | null> | null = null;
+
+const fetchSession = async (): Promise<Session | null> => {
+  if (cachedSession) {
+    return cachedSession;
+  }
+  if (!sessionFetchPromise) {
+    sessionFetchPromise = getSession().then((session) => {
+      cachedSession = session;
+      sessionFetchPromise = null; // Reset the promise after fetching
+      return session;
+    });
+  }
+  return sessionFetchPromise;
+};
+
 /**
  * Request method
  * @param config The OpenAPI configuration object
@@ -325,7 +343,7 @@ export const catchErrorCodes = (options: ApiRequestOptions, result: ApiResult): 
  */
 // Function to perform authenticated fetch
 const fetchWithAuth = async (url: string, options: RequestInit): Promise<Response> => {
-  const session = await getSession(); // Get session to access token
+  const session = await fetchSession(); // Use cached session if available
   const headers = new Headers(options.headers);
   if (session?.accessToken) {
     headers.set("Authorization", `Bearer ${session.accessToken}`);
