@@ -2,8 +2,11 @@ import { Avatar, Button, Divider, Stack, Typography } from "@mui/material";
 import LangSelector from "./LangSelector";
 import { Icon } from "@/components/icons";
 import { useIsMobile } from "@/hooks/use-responsive";
+import { useAccountServiceAuthUserinfoQuery } from "@/services/queries";
 
 const UserInfo = () => {
+  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+
   const isMobile = useIsMobile();
   return (
     <Stack sx={{ bgcolor: "dark.3", borderRadius: "12px", width: "100%", mb: 2 }}>
@@ -15,13 +18,15 @@ const UserInfo = () => {
         gap={2}
       >
         <Stack direction={"row"} spacing={2} alignItems={"center"}>
-          <Avatar sx={{ width: 64, height: 64 }} />
+          <Avatar sx={{ width: 64, height: 64 }} src={(userInfo as any)?.data?.avatar_url}>
+            {(userInfo as any)?.data?.full_name?.at(0)}
+          </Avatar>
           <Stack>
             <Typography variant="p2-semi-bold" color="common.white">
-              Ellie Clark
+              {(userInfo as any)?.data?.full_name}
             </Typography>
             <Typography variant="caption-medium" color="grey.light">
-              Ellieclark@example.com
+              {(userInfo as any)?.data?.email}
             </Typography>
           </Stack>
         </Stack>

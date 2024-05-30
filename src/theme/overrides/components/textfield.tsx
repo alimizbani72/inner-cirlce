@@ -60,7 +60,7 @@ export function textField(theme: Theme) {
       styleOverrides: {
         root: {
           ...theme.typography["caption-medium"],
-          color: theme.palette.common.white,
+          color: theme.palette.grey.light,
           marginTop: theme.spacing(1),
           marginLeft: 0,
         },

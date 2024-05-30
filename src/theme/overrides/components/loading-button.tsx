@@ -83,8 +83,8 @@ export function LoadingButton(theme: Theme) {
             svg: { animation: "spin 2s linear infinite" },
           },
           "&.Mui-disabled": {
-            ...button(theme).MuiButton.styleOverrides.contained({ ownerState }),
-            color: "transparent",
+            ...button(theme).MuiButton.styleOverrides.root({ ownerState })["&.Mui-disabled"],
+            "&.MuiLoadingButton-loading": { color: "transparent" },
           },
         }),
       },

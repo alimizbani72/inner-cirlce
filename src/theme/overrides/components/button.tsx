@@ -72,8 +72,8 @@ export function button(theme: Theme) {
           },
 
           ".MuiButton-icon": {
-            color: COLORS(theme)[ownerState.color].color,
-            "svg path, svg circle": { stroke: COLORS(theme)[ownerState.color].color },
+            color: COLORS(theme)[ownerState.color]?.color,
+            "svg path, svg circle": { stroke: COLORS(theme)[ownerState.color]?.color },
           },
         }),
         startIcon: { marginLeft: 0 },

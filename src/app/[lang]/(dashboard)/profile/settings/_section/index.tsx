@@ -13,6 +13,7 @@ import FormProvider from "@/components/hook-form/form-provider";
 
 import * as Yup from "yup";
 import { useIsMobile } from "@/hooks/use-responsive";
+import { useAccountServiceAuthUserinfoQuery } from "@/services/queries";
 
 const UpdateUserSchema = Yup.object().shape({
   name: Yup.string()
@@ -27,6 +28,7 @@ const defaultValues = {
 };
 
 const SettingsDialog = () => {
+  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
   const { push, back } = useCustomRouter();
   const isMobile = useIsMobile();
   const methods = useForm({
@@ -69,9 +71,9 @@ const SettingsDialog = () => {
             <RHFTextField
               name="name"
               label={"Full Name"}
-              placeholder="Ellie Clark"
-              disabled
+              placeholder={(userInfo as any)?.data?.full_name}
               InputProps={{
+                readOnly: true,
                 endAdornment: (
                   <IconButton onClick={() => console.log("Aa")}>
                     <Icon name="Pen" />
@@ -80,12 +82,14 @@ const SettingsDialog = () => {
               }}
             />
             <RHFTextField
-              name="name"
+              name="password"
               label={"Password"}
+              placeholder="........"
               InputProps={{
+                readOnly: true,
                 endAdornment: (
                   <Button
-                    onClick={() => console.log("Aa")}
+                    onClick={() => push("/profile/change-password")}
                     startIcon={<Icon name="Arrow-Round" />}
                     sx={{ whiteSpace: "pre" }}
                     fullWidth

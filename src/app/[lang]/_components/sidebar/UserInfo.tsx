@@ -6,13 +6,10 @@ import { Avatar, Box, IconButton, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 import { Icon } from "@/components/icons";
 import useCustomRouter from "@/hooks/useCustomRouter";
-
-const userInfo = {
-  name: "Ellie Clark",
-  avatar_url: "",
-};
+import { useAccountServiceAuthUserinfoQuery } from "@/services/queries";
 
 const SidebarUserInfo: FC = () => {
+  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
   const isCollapsed = useAppSelector(isSidebarCollapsed);
   const { push } = useCustomRouter();
   return (
@@ -62,15 +59,15 @@ const SidebarUserInfo: FC = () => {
       <Avatar
         sx={{ width: 40, height: 40, bgcolor: "pink.dark", fontWeight: 600 }}
         variant="circular"
-        src={userInfo?.avatar_url}
+        src={(userInfo as any)?.data?.avatar_url}
       >
-        {userInfo?.name?.at(0)}
+        {(userInfo as any)?.data?.full_name?.at(0)}
       </Avatar>
 
       {!isCollapsed && (
         <>
           <Typography ml={1.5} mr={"auto"} variant="p2-medium">
-            {userInfo.name}
+            {(userInfo as any)?.data?.full_name}
           </Typography>
 
           <IconButton onClick={() => push("/profile/", { backURL: true })}>
