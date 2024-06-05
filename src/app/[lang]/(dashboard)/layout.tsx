@@ -27,7 +27,7 @@ export default async function DashboardLayout({ children, modal }: LayoutProps) 
 
           {/* Main content */}
           <Scrollbar>
-            <Stack height={{ md: "calc(100vh - 105px)" }}>{children}</Stack>
+            <Stack height={{ md: "calc(100vh - 106px)" }}>{children}</Stack>
           </Scrollbar>
         </Stack>
       </Stack>

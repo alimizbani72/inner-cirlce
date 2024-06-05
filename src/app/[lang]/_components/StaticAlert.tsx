@@ -4,13 +4,6 @@ import { Icon } from "@/components/icons";
 import { Button, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 
-interface StaticAlertProps {
-  title: string;
-  description: string;
-  variant?: "danger" | "warning" | "blue" | "pink" | "white" | "success";
-  onContinue?: VoidFunction;
-}
-
 const COLOR = {
   danger: { bgColor: "danger.main", textColor: "common.white" },
   warning: { bgColor: "warning.main", textColor: "dark.1" },
@@ -20,12 +13,20 @@ const COLOR = {
   success: { bgColor: "success.main", textColor: "common.white" },
 };
 
+interface StaticAlertProps {
+  title: string;
+  description: string;
+  variant?: keyof typeof COLOR;
+  onContinue?: VoidFunction;
+}
+
 const StaticAlert: FC<StaticAlertProps> = ({ title, description, variant = "danger", onContinue }) => {
   return (
     <Stack
       gap={2}
       direction={{ md: "row" }}
       alignItems={{ md: "center" }}
+      justifyContent={{ md: "space-between" }}
       bgcolor={COLOR[variant].bgColor}
       px={{ md: 4, xs: 3 }}
       py={2}

@@ -32,11 +32,13 @@ const CustomTable = ({ title, columns, data, width, minWidthCell, action }: Prop
         overflow: "hidden",
       }}
     >
-      <Stack direction="row" width={"100%"} justifyContent={"space-between"} p={3} pb={2}>
-        {title && <Typography variant="p1-semi-bold">{title}</Typography>}
+      {(title || action) && (
+        <Stack direction="row" width={"100%"} justifyContent={"space-between"} p={3} pb={2}>
+          {title && <Typography variant="p1-semi-bold">{title}</Typography>}
 
-        {action && action}
-      </Stack>
+          {action && action}
+        </Stack>
+      )}
 
       <TableContainer
         component={Paper}

@@ -50,7 +50,7 @@ const UserInfo = () => {
           </Typography>
         </Stack>
 
-        <Button sx={{ ml: isMobile ? "none" : "auto" }} fullWidth={isMobile}>
+        <Button sx={{ ml: isMobile ? "none" : "auto" }} fullWidth={isMobile} href="/pricing">
           Upgrade
         </Button>
       </Stack>
