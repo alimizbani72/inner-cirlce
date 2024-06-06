@@ -1,5 +1,4 @@
 "use client";
-import CustomDialog from "@/components/CustomDialog";
 import { Icon } from "@/components/icons";
 import { Divider, IconButton, Stack, Typography } from "@mui/material";
 import DialogContent from "@mui/material/DialogContent";
@@ -35,7 +34,7 @@ const ProfileDialog = () => {
   const { push, back } = useCustomRouter();
 
   return (
-    <CustomDialog fullWidth maxWidth="sm" onClose={back} aria-labelledby="profile-dialog" open>
+    <>
       <DialogTitle sx={{ m: 0, p: 2 }} id="profile-dialog">
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Typography variant="h4-semi-bold" color={"common.white"}>
@@ -80,7 +79,7 @@ const ProfileDialog = () => {
           </Typography>
         </Stack>
       </DialogContent>
-    </CustomDialog>
+    </>
   );
 };
 

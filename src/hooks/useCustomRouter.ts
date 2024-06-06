@@ -37,16 +37,16 @@ const useCustomRouter = () => {
 
       const queryString = new URLSearchParams(newQueryParams).toString();
       const newPath = `${path}?${queryString}`;
-      router.push(newPath);
+      router.push(newPath, { scroll: false });
     },
     [router, pathName, searchParams]
   );
 
   const back = useCallback(() => {
     if (searchParams.has("backURL")) {
-      router.push(searchParams.get("backURL")!);
+      router.push(searchParams.get("backURL")!, { scroll: false });
     } else {
-      router.push("/dashboard");
+      router.push("/dashboard", { scroll: false });
     }
   }, [router, searchParams]);
 

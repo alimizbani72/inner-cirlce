@@ -1,6 +1,4 @@
 "use client";
-
-import CustomDialog from "@/components/CustomDialog";
 import { Icon } from "@/components/icons";
 import useCustomRouter from "@/hooks/useCustomRouter";
 import { DialogActions, Divider, IconButton, Stack, Typography } from "@mui/material";
@@ -67,7 +65,7 @@ const ChangePasswordDialog = () => {
   });
 
   return (
-    <CustomDialog fullWidth maxWidth="sm" onClose={back} aria-labelledby="change-password-dialog" open>
+    <>
       <DialogTitle sx={{ m: 0, p: 2 }} id="change-password-dialog">
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack direction={"row"} alignItems="center" spacing={1}>
@@ -135,7 +133,7 @@ const ChangePasswordDialog = () => {
           </LoadingButton>
         </Stack>
       </DialogActions>
-    </CustomDialog>
+    </>
   );
 };
 
