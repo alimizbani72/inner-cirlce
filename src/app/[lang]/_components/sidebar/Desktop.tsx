@@ -10,6 +10,7 @@ import { isSidebarCollapsed, sidebarToggle } from "@/lib/features/menu/menuSlice
 import LogoType from "@/components/LogoType";
 import Logo from "@/components/Logo";
 import { Icon } from "@/components/icons";
+import UpgradePlan from "../UpgradePlan";
 
 const DesktopSidebar: FC = () => {
   const dispatch = useAppDispatch();
@@ -52,7 +53,9 @@ const DesktopSidebar: FC = () => {
             <Menu name="Community" items={sidebarCommunityItems} />
           </Stack>
 
-          <Stack mt={"auto"}>
+          <Stack mt={"auto"} gap={3}>
+            {!isCollapsed && <UpgradePlan activePlan />}
+
             <SidebarUserInfo />
           </Stack>
         </Stack>

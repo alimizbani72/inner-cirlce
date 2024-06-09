@@ -1,0 +1,172 @@
+"use client";
+
+import { Icon } from "@/components/icons";
+import { Divider, IconButton, Stack, Typography } from "@mui/material";
+import type { FC } from "react";
+import { Box } from "@mui/system";
+import Image from "@/components/Image";
+
+import dynamic from "next/dynamic";
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
+import { useIsMobile } from "@/hooks/use-responsive";
+import ContentStack from "@app/_components/ContentStack";
+
+const QRCodeWithIcon = dynamic(() => import("@/components/QRCodeWithIcon"), {
+  ssr: false,
+  loading: () => <Box sx={{ width: 140, height: 140 }} />,
+});
+
+const walletAddress = "0xdA5B165C85d72E50B0834655b454e690f1FD1BE2";
+
+const CheckoutQRWalletSection: FC = () => {
+  const isMobile = useIsMobile();
+  const { copy } = useCopyToClipboard();
+
+  const handleCopy = () => {
+    copy(walletAddress);
+  };
+
+  return (
+    <Stack direction={{ md: "row" }} flex={1} minHeight={"100%"} position={"relative"}>
+      {/* Plan */}
+      <Stack
+        sx={{
+          position: "relative",
+          background: (theme) => theme.palette.gradient.blue,
+          flex: { md: 1 },
+          pt: { md: 8, xs: 3 },
+          pb: { md: 8, xs: 5 },
+        }}
+        alignItems={"center"}
+        overflow={"hidden"}
+      >
+        <Typography
+          sx={{ top: "50%", transform: "translateY(-50%)" }}
+          position={"absolute"}
+          fontSize={"88px"}
+          fontWeight={600}
+          lineHeight={"120px"}
+          whiteSpace={"nowrap"}
+          zIndex={1}
+          textTransform={"uppercase"}
+          color={"rgba(255, 255, 255, 0.08)"}
+        >
+          • Shark • Shark •
+        </Typography>
+        <Box sx={{ position: "absolute", inset: 0, zIndex: 1 }}>
+          <img src="/assets/svg/checkout-texture.svg" width="100%" height="100%" style={{ objectFit: "cover" }} />
+        </Box>
+
+        <Box sx={{ position: "absolute", inset: 0, zIndex: 2 }}>
+          <img src="/assets/svg/checkout-flares.svg" width="100%" height="100%" style={{ objectFit: "cover" }} />
+        </Box>
+        <Stack
+          position={"relative"}
+          zIndex={2}
+          gap={1}
+          direction="row"
+          alignItems="center"
+          width="100%"
+          maxWidth={{ md: "486px" }}
+          px={3}
+        >
+          <Icon name="Arrow-left" />
+          <Typography variant="h4-semi-bold">Checkout</Typography>
+        </Stack>
+        <Divider flexItem sx={{ mt: 3, mb: { md: 4, xs: 3 }, borderColor: "rgba(255, 255, 255, 0.08)" }} />
+        <Stack position={"relative"} zIndex={2} width="100%" maxWidth={{ md: "486px" }} px={3} flex={1}>
+          <Typography variant="p2-medium">Subscribe to “Shark” plan.</Typography>
+
+          <Stack flex={1} alignItems={"center"} justifyContent={"center"}>
+            <Box width={{ md: 248, xs: 144 }} height={{ md: 248, xs: 144 }} mb={10} mt={{ md: 0, xs: 3 }}>
+              <Image src="/assets/shark.svg" width="100%" height="100%" />
+            </Box>
+          </Stack>
+        </Stack>
+      </Stack>
+      {/* Form */}
+      <Stack sx={{ bgcolor: "dark.1", flex: 1, py: { md: 8, xs: 3 } }} alignItems={"center"}>
+        <Stack
+          position={"relative"}
+          zIndex={2}
+          direction="row"
+          alignItems="center"
+          width="100%"
+          maxWidth={{ md: "434px" }}
+          px={3}
+        >
+          <Typography variant="h4-semi-bold">Pay with QR Code or Wallet Address</Typography>
+        </Stack>
+        <Divider flexItem sx={{ my: 3, borderColor: "rgba(255, 255, 255, 0.08)" }} />
+        <Stack
+          position={"relative"}
+          zIndex={2}
+          width="100%"
+          maxWidth={{ md: "434px" }}
+          alignItems="center"
+          px={3}
+          flex={1}
+        >
+          <QRCodeWithIcon value={walletAddress} iconSrc="/assets/svg/coin-logo.svg" size={isMobile ? 200 : 140} />
+
+          <Typography variant="h4-semi-bold" mt={2}>
+            USDT -{" "}
+            <Typography variant="h4-semi-bold" color={"warning.main"}>
+              ERC20
+            </Typography>
+          </Typography>
+
+          <ContentStack direction="row" gap={2} mt={{ md: 4, xs: 3 }} mb={4} p={2} alignItems={"center"}>
+            <Stack gap={2} direction={"row"} alignItems={"center"}>
+              <Stack
+                width={48}
+                height={48}
+                alignItems={"center"}
+                justifyContent={"center"}
+                borderRadius={3}
+                bgcolor={"dark.3"}
+              >
+                <Icon name="Wallet" size={20} />
+              </Stack>
+              <Typography flex={1} variant="p2-regular" sx={{ wordBreak: "break-word" }}>
+                {walletAddress}
+              </Typography>
+            </Stack>
+
+            <IconButton onClick={handleCopy} color="primary">
+              <Icon name="Copy" />
+            </IconButton>
+          </ContentStack>
+
+          <Stack mt="auto" gap={2} width={"100%"}>
+            <Stack direction="row" justifyContent={"space-between"}>
+              <Typography variant="p2-medium" color="grey.light" textTransform={"uppercase"}>
+                Expire at
+              </Typography>
+              <Stack direction="row" gap={1}>
+                <Icon name="Time" />
+                <Typography variant="p1-medium">18:40</Typography>
+              </Stack>
+            </Stack>
+            <Divider flexItem sx={{ borderColor: "rgba(255, 255, 255, 0.08)" }} />
+            <Stack direction="row" justifyContent={"space-between"}>
+              <Typography variant="p2-medium" color="grey.light" textTransform={"uppercase"}>
+                Amount to send
+              </Typography>
+              <Typography variant="p1-medium">5,040.00 USDT</Typography>
+            </Stack>
+            <Divider flexItem sx={{ borderColor: "rgba(255, 255, 255, 0.08)" }} />
+            <Stack direction="row" justifyContent={"space-between"}>
+              <Typography variant="p2-medium" color="grey.light" textTransform={"uppercase"}>
+                Paid Amount
+              </Typography>
+              <Typography variant="p1-medium">$0.00</Typography>
+            </Stack>
+          </Stack>
+        </Stack>
+      </Stack>
+    </Stack>
+  );
+};
+
+export default CheckoutQRWalletSection;

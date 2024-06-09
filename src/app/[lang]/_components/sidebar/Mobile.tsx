@@ -9,6 +9,7 @@ import { sidebarCommunityItems, sidebarServicesItems } from "@/configs/sidebar";
 import { Icon } from "@/components/icons";
 import { useAppDispatch } from "@/lib/hooks";
 import { mobileMenuToggle } from "@/lib/features/menu/menuSlice";
+import UpgradePlan from "../UpgradePlan";
 
 const MobileSidebar: FC = () => {
   const dispatch = useAppDispatch();
@@ -37,7 +38,9 @@ const MobileSidebar: FC = () => {
         <Menu name="Community" items={sidebarCommunityItems} />
       </Stack>
 
-      <Stack mt={"auto"}>
+      <Stack mt={"auto"} gap={3}>
+        <UpgradePlan />
+
         <SidebarUserInfo />
       </Stack>
     </Stack>

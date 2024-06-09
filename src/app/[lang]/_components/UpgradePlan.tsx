@@ -1,0 +1,79 @@
+"use client";
+
+import Image from "@/components/Image";
+import { Icon } from "@/components/icons";
+import { useAppRouter } from "@/routes/hooks";
+import { Box, Divider, Stack, Typography } from "@mui/material";
+import { usePathname } from "next/navigation";
+import type { FC } from "react";
+
+interface UpgradePlanProps {
+  activePlan?: boolean;
+}
+
+const UpgradePlan: FC<UpgradePlanProps> = ({ activePlan }) => {
+  const { push } = useAppRouter();
+  const pathname = usePathname();
+
+  const handleUpgradeClick = () => {
+    if (!pathname.includes("/pricing")) {
+      push("/pricing");
+    }
+  };
+
+  return (
+    <Stack px={3}>
+      <Stack borderRadius={2} bgcolor={activePlan ? "dark.3" : "pink.dark"} position={"relative"} overflow={"hidden"}>
+        <Box sx={{ position: "absolute", zIndex: 1, inset: 0, opacity: activePlan ? 0.08 : 1 }}>
+          <img src="/assets/svg/upgrade-card.svg" width="100%" height="100%" style={{ objectFit: "cover" }} />
+        </Box>
+
+        {activePlan ? (
+          <Stack p={2} position={"relative"} direction={"row"} zIndex={2} gap={1.5} alignItems={"center"}>
+            <Box width={40} height={40}>
+              <Image src="/assets/shark.svg" width="100%" height="100%" />
+            </Box>
+
+            <Stack flex={1}>
+              <Typography variant="p2-semi-bold">Shark</Typography>
+              <Typography variant="caption-medium" color="grey.light">
+                Your Current Plan
+              </Typography>
+            </Stack>
+          </Stack>
+        ) : (
+          <Stack p={2} position={"relative"} zIndex={2} gap={1}>
+            <Icon name="Subscription" />
+
+            <Typography variant="p1-semi-bold">Upgrade your plan!</Typography>
+          </Stack>
+        )}
+
+        <Divider flexItem sx={{ borderWidth: "1.5px", borderColor: "dark.3" }} />
+
+        <Stack
+          p={2}
+          justifyContent={"space-between"}
+          position={"relative"}
+          direction={"row"}
+          zIndex={2}
+          gap={3}
+          sx={{ cursor: "pointer" }}
+          onClick={handleUpgradeClick}
+        >
+          {activePlan ? (
+            <Typography variant="p2-medium" textTransform={"uppercase"}>
+              Upgrade
+            </Typography>
+          ) : (
+            <Typography variant="p2-semi-bold">Buy Now</Typography>
+          )}
+
+          <Icon name={activePlan ? "Rocket" : "Arrow-right"} />
+        </Stack>
+      </Stack>
+    </Stack>
+  );
+};
+
+export default UpgradePlan;
