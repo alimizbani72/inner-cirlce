@@ -10,7 +10,7 @@ import StaticAlert from "@app/_components/StaticAlert";
 // ----------------------------------------------------------------------
 
 export const metadata: Metadata = {
-  title: "Dashboard | Chainmind",
+  title: "Dashboard",
 };
 
 export default async function Dashboard() {

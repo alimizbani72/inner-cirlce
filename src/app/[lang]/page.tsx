@@ -1,27 +1,15 @@
-// sections
-import { redirect } from "next/navigation";
-// import { getServerSession } from "next-auth";
-// import { authOptions } from "@/configs/authOptions";
-// import { Typography } from "@mui/material";
-// import { HomeView } from 'src/sections/home/view';
+import { getServerSession } from "next-auth";
+import HomePageSection from "./_sections";
+import { authOptions } from "@/configs/authOptions";
 
 // ----------------------------------------------------------------------
 
 export const metadata = {
-  title: "Chainmind",
+  title: "ChainMind - Unlock The Secret With Expert Crypto Guidance!",
 };
 
 export default async function HomePage() {
-  // const session = await getServerSession(authOptions);
+  const session = await getServerSession(authOptions);
 
-  // if (!session?.accessToken) {
-  //   return redirect("/login");
-  // }
-
-  // return (
-  //   <Typography color="white" variant="h1-medium">
-  //     The quick brown fox jumps over the lazy.
-  //   </Typography>
-  // );
-  redirect("/dashboard");
+  return <HomePageSection isLogin={!!session?.accessToken} />;
 }

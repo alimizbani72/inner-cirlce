@@ -7,7 +7,7 @@ import Scrollbar from "@/components/Scrollbar";
 // ----------------------------------------------------------------------
 
 export const metadata: Metadata = {
-  title: { default: "Dashboard", template: "%s | Chainmind" },
+  title: { default: "Dashboard", template: "%s | ChainMind" },
 };
 
 export type LayoutProps = {

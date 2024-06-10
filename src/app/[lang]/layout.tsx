@@ -23,7 +23,7 @@ export const viewport: Viewport = {
   // interactiveWidget: 'resizes-visual',
 };
 export const metadata: Metadata = {
-  title: "Chainmind",
+  title: "ChainMind",
   description: "description",
   keywords: "keywords",
 

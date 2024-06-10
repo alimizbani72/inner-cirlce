@@ -23,7 +23,7 @@ const DashboardHeader: FC = () => {
   const hasBackButton = useAppSelector(pageHasBackButton);
   const { back } = useAppRouter();
   const name = useMemo(
-    () => mapPathToName[pathname.slice(4) as keyof typeof mapPathToName] || pageTitleSelector || "Chainmind",
+    () => mapPathToName[pathname.slice(4) as keyof typeof mapPathToName] || pageTitleSelector || "ChainMind",
     [pathname, pageTitleSelector]
   );
 
