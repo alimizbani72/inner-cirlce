@@ -25,7 +25,7 @@ const menuItems = [
   },
   {
     title: "Be a Partner",
-    path: "/be-a-partner",
+    path: "/become-partner",
     icon: "Hand",
   },
 ];

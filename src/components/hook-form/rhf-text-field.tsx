@@ -1,5 +1,5 @@
 // @mui
-import { InputLabel } from "@mui/material";
+import { InputLabel, Stack } from "@mui/material";
 import type { TextFieldProps } from "@mui/material/TextField";
 import TextField from "@mui/material/TextField";
 import { Controller, useFormContext } from "react-hook-form";
@@ -18,7 +18,7 @@ export default function RHFTextField({ name, id, label, helperText, type, ...oth
       name={name}
       control={control}
       render={({ field, fieldState: { error } }) => (
-        <div>
+        <Stack sx={{ width: "100%" }}>
           {label && (
             <InputLabel
               sx={{ typography: "caption-semi-bold", textTransform: "uppercase", color: "white" }}
@@ -46,7 +46,7 @@ export default function RHFTextField({ name, id, label, helperText, type, ...oth
             {...other}
             autoComplete="nope"
           />
-        </div>
+        </Stack>
       )}
     />
   );

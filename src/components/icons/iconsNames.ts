@@ -1,4 +1,10 @@
 const iconsNames = [
+  "Danger",
+  "KYC",
+  "Success",
+  "remainStep",
+  "currentStep",
+  "fillStep",
   "Hand",
   "Pen",
   "Arrow-Round",

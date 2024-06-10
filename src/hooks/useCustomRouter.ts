@@ -36,8 +36,12 @@ const useCustomRouter = () => {
       });
 
       const queryString = new URLSearchParams(newQueryParams).toString();
-      const newPath = `${path}?${queryString}`;
-      router.push(newPath, { scroll: false });
+
+      // Handle relative path by concatenating with the current path
+      const newPath = path.startsWith("/") ? path : `${pathName}/${path}`;
+      const newUrl = `${newPath}?${queryString}`;
+
+      router.push(newUrl, { scroll: false });
     },
     [router, pathName, searchParams]
   );
@@ -51,6 +55,7 @@ const useCustomRouter = () => {
   }, [router, searchParams]);
 
   const nativeBack = () => router.back();
+
   return { push, back, nativeBack };
 };
 

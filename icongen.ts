@@ -35,7 +35,7 @@ export type ${camelize(file)}Type = typeof ${camelize(file)}Names[number];
   }
 };
 
-const files = ["Icons"];
+const files = ["icons"];
 
 files.forEach((file) => {
   generateIconTypes(file);

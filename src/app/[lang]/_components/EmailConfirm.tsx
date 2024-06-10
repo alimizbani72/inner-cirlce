@@ -96,7 +96,7 @@ const EmailConfirm: FC = () => {
   });
 
   useEffect(() => {
-    if (watch("verifyCode").length === 6) {
+    if (watch("verifyCode").length === 5) {
       onSubmit();
     }
   }, [watch("verifyCode")]);
