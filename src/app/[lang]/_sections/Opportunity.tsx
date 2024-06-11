@@ -1,4 +1,3 @@
-import {} from "@/configs/landingMenu";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 import LandingContainer from "./LandingContainer";
@@ -43,13 +42,13 @@ const Opportunity: FC<OpportunityProps> = () => {
 
   return (
     <Stack
-      width={"calc(100% - 32px)"}
-      mx={2}
-      sx={{ background: "linear-gradient(180deg, #CDDFF2 0%, #F6FAFF 100%)", borderRadius: 4 }}
+      width={{ md: "calc(100% - 32px)", xs: "calc(100% - 16px)" }}
+      mx={{ md: 2, xs: 1 }}
+      sx={{ background: "linear-gradient(180deg, #CDDFF2 0%, #F6FAFF 100%)", borderRadius: { md: 4, xs: 3 } }}
       py={{ md: 12, xs: 8 }}
       alignItems={"center"}
     >
-      <LandingContainer gap={{ md: 6, xs: 4 }} alignItems={"center"}>
+      <LandingContainer gap={{ md: 6, xs: 4 }} px={{ md: 3, xs: 2 }} alignItems={"center"}>
         <SectionTitle title="Opportunity" color="dark.1" firsLetterColor="pink.dark" />
 
         <Stack gap={{ md: 4, xs: 3 }} direction={{ md: "row" }}>

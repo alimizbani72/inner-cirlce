@@ -7,25 +7,40 @@ import Footer from "./Footer";
 import LandingHero from "./LandingHero";
 import Opportunity from "./Opportunity";
 import Problems from "./Problems";
+import Solution from "./Solution";
+import How from "./How";
+import Scrollbar from "@/components/Scrollbar";
+import Results from "./Results";
+import WhyChainMind from "./WhyChainMind";
 
 type Props = { isLogin: boolean };
 
 const HomePageSection: FC<Props> = ({ isLogin }) => {
   return (
-    <>
-      <Header isLogin={isLogin} />
+    <Scrollbar>
+      <Stack height={"100vh"} component={"main"}>
+        <Header isLogin={isLogin} />
 
-      {/* Main Content */}
-      <Stack alignItems={"center"}>
-        <LandingHero />
+        {/* Main Content */}
+        <Stack alignItems={"center"}>
+          <LandingHero />
 
-        <Opportunity />
+          <Opportunity />
 
-        <Problems />
+          <Problems />
+
+          <Solution />
+
+          <How />
+
+          <Results />
+
+          <WhyChainMind />
+        </Stack>
+
+        <Footer />
       </Stack>
-
-      <Footer />
-    </>
+    </Scrollbar>
   );
 };
 

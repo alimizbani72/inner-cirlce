@@ -41,10 +41,18 @@ const LandingHero: FC<LandingHeroProps> = () => {
           </Typography>
         </Stack>
 
-        <Typography variant="h1-semi-bold" mb={2} textAlign={{ md: "left", xs: "center" }}>
+        <Typography
+          variant={isMobile ? "h2-semi-bold" : "h1-semi-bold"}
+          mb={2}
+          textAlign={{ md: "left", xs: "center" }}
+        >
           From Zero to 100X without the Sweat!
         </Typography>
-        <Typography variant="p1-regular" color="grey.light" textAlign={{ md: "left", xs: "center" }}>
+        <Typography
+          variant={isMobile ? "p2-regular" : "p1-regular"}
+          color="grey.light"
+          textAlign={{ md: "left", xs: "center" }}
+        >
           Unlock the Secret with Expert Crypto Guidance Zero Guesswork!
         </Typography>
 

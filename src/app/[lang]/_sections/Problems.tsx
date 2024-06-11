@@ -89,10 +89,10 @@ const Problems: FC<ProblemsProps> = () => {
           Problem
         </Typography>
 
-        <Typography variant="h1-medium" textAlign={"center"} textTransform="capitalize">
+        <Typography variant={isMobile ? "h3-medium" : "h1-medium"} textAlign={"center"} textTransform="capitalize">
           Why will 95%+ of people still
-          <br />
-          <Typography variant="h1-medium" color="danger.main">
+          {isMobile ? " " : <br />}
+          <Typography variant={isMobile ? "h3-medium" : "h1-medium"} color="danger.main">
             lose money?
           </Typography>
         </Typography>

@@ -15,3 +15,5 @@ export const getProgress = (status: string | undefined, isReady: boolean | undef
 
   return adjustedProgress;
 };
+
+export const isOdd = (number: number): boolean => number % 2 === 0;
