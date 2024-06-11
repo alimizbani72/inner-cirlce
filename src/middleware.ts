@@ -50,7 +50,7 @@ const handleLocaleRedirection = (req: NextRequest, pathname: string): NextRespon
 };
 
 const handleAuthRedirection = (session: any, pathname: string, reqUrl: string, locale: string): NextResponse | null => {
-  const publicRoutes = [`/${locale}/login/`, `/${locale}/register/`, `/${locale}/forgotpass/`];
+  const publicRoutes = [`/${locale}/login/`, `/${locale}/register/`, `/${locale}/forgotpass/`, `/${locale}/`];
 
   const isPublicRoute = publicRoutes.includes(pathname);
 
