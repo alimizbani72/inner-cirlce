@@ -1,3 +1,7 @@
+@import url("react-lazy-load-image-component/src/effects/black-and-white.css");
+@import url("react-lazy-load-image-component/src/effects/blur.css");
+@import url("react-lazy-load-image-component/src/effects/opacity.css");
+
 * {
   -webkit-tap-highlight-color: transparent;
   margin: 0;
