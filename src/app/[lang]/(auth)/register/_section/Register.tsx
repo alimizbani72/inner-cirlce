@@ -1,7 +1,5 @@
 "use client";
-
-import { Icon } from "@/components/icons";
-import { Divider, Stack, Typography, Button } from "@mui/material";
+import { Divider, Stack, Typography } from "@mui/material";
 import { useMemo, type FC, useEffect, useCallback } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, Controller } from "react-hook-form";
@@ -19,6 +17,7 @@ import { LoadingButton } from "@mui/lab";
 import { useSnackbar } from "notistack";
 import { useAppRouter } from "@/routes/hooks";
 import debounce from "lodash/debounce";
+import GoogleSignIn from "@app/(auth)/login/_section/GoogleSignIn";
 
 const Register: FC = () => {
   const { t } = useTranslate();
@@ -121,9 +120,7 @@ const Register: FC = () => {
           {t("createAccount.subtitle")}
         </Typography>
       </Stack>
-      <Button fullWidth color="info" startIcon={<Icon name="Google" />}>
-        {t("createAccount.registerWithGoogle")}
-      </Button>
+      <GoogleSignIn />
       <Divider>
         <Typography variant="p2-medium">{t("createAccount.orContinueWithEmail")}</Typography>
       </Divider>

@@ -141,7 +141,7 @@ export const authOptions: NextAuthOptions = {
 
       if (account?.id_token) {
         try {
-          const response = await fetch(`${minecraftEndpoint}/googleLogin`, {
+          const response = await fetch(`${minecraftEndpoint}/auth/googleLogin`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -152,6 +152,7 @@ export const authOptions: NextAuthOptions = {
           });
 
           const data = await response.json();
+
           token.user = data.data.user;
           token.accessToken = data.data.access_token;
           token.refreshToken = data.data.refreshToken;
@@ -180,5 +181,5 @@ export const authOptions: NextAuthOptions = {
     strategy: "jwt",
     maxAge: 1209600, // 14 days
   },
-  pages: { signIn: "/auth/register", error: "/auth/error" },
+  pages: { signIn: "/login", error: "/error" },
 };

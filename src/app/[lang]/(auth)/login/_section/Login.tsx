@@ -1,5 +1,4 @@
-import { Icon } from "@/components/icons";
-import { Divider, Stack, Typography, Button } from "@mui/material";
+import { Divider, Stack, Typography } from "@mui/material";
 import { useMemo, useState, type FC } from "react";
 
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -12,6 +11,7 @@ import { useTranslate } from "@/locales";
 import { useAppRouter } from "@/routes/hooks";
 import { LoadingButton } from "@mui/lab";
 import { signIn } from "next-auth/react";
+import GoogleSignIn from "./GoogleSignIn";
 
 const defaultValues = {
   email: "",
@@ -58,9 +58,7 @@ const Login: FC = () => {
           {t("createAccount.subtitle")}
         </Typography>
       </Stack>
-      <Button fullWidth color="info" startIcon={<Icon name="Google" />}>
-        {t("login.loginWithGoogle")}
-      </Button>
+      <GoogleSignIn />
       <Divider>
         <Typography variant="p2-medium">{t("createAccount.orContinueWithEmail")}</Typography>
       </Divider>
