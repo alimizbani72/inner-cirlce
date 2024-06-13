@@ -7,75 +7,86 @@ import type { FC } from "react";
 import { Icon } from "@/components/icons";
 import useCustomRouter from "@/hooks/useCustomRouter";
 import { useAccountServiceAuthUserinfoQuery } from "@/services/queries";
+import dynamic from "next/dynamic";
+
+const IntercomMessenger = dynamic(() => import("../IntercomMessenger"), { ssr: false });
 
 const SidebarUserInfo: FC = () => {
   const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
   const isCollapsed = useAppSelector(isSidebarCollapsed);
   const { push } = useCustomRouter();
+
   return (
-    <Stack
-      sx={{
-        position: "relative",
-        p: 4,
-        borderTop: "1.5px solid",
-        borderColor: "dark.3",
-        "&:before": {
-          content: '""',
-          position: "absolute",
-          left: 0,
-          height: "1.5px",
-          top: "-1px",
-          display: "flex",
-          width: 52,
-          background: (theme) => theme.palette.gradient.pink,
-        },
-      }}
-      direction={"row"}
-      alignItems={"center"}
-    >
-      <Box
+    <>
+      <IntercomMessenger
+        user_id={userInfo?.user?.id?.toString()!}
+        name={userInfo?.user?.full_name!}
+        email={(userInfo?.user as any)?.email}
+      />
+      <Stack
         sx={{
-          position: "absolute",
-          width: 8,
-          height: 8,
-          left: 46,
-          top: "-4px",
-          borderRadius: 0.5,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          bgcolor: "dark.1",
-          "&:after": {
+          position: "relative",
+          p: 4,
+          borderTop: "1.5px solid",
+          borderColor: "dark.3",
+          "&:before": {
             content: '""',
+            position: "absolute",
+            left: 0,
+            height: "1.5px",
+            top: "-1px",
             display: "flex",
-            width: 4,
-            height: 4,
+            width: 52,
             background: (theme) => theme.palette.gradient.pink,
-            boxShadow: "0px 0px 8px 2px rgba(255, 125, 188, 0.24)",
-            borderRadius: 0.5,
           },
         }}
-      />
-      <Avatar
-        sx={{ width: 40, height: 40, bgcolor: "pink.dark", fontWeight: 600 }}
-        variant="circular"
-        src={(userInfo as any)?.data?.avatar_url}
+        direction={"row"}
+        alignItems={"center"}
       >
-        {(userInfo as any)?.data?.full_name?.at(0)}
-      </Avatar>
+        <Box
+          sx={{
+            position: "absolute",
+            width: 8,
+            height: 8,
+            left: 46,
+            top: "-4px",
+            borderRadius: 0.5,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            bgcolor: "dark.1",
+            "&:after": {
+              content: '""',
+              display: "flex",
+              width: 4,
+              height: 4,
+              background: (theme) => theme.palette.gradient.pink,
+              boxShadow: "0px 0px 8px 2px rgba(255, 125, 188, 0.24)",
+              borderRadius: 0.5,
+            },
+          }}
+        />
+        <Avatar
+          sx={{ width: 40, height: 40, bgcolor: "pink.dark", fontWeight: 600 }}
+          variant="circular"
+          src={(userInfo as any)?.data?.avatar_url}
+        >
+          {(userInfo as any)?.data?.full_name?.at(0)}
+        </Avatar>
 
-      {!isCollapsed && (
-        <>
-          <Typography ml={1.5} mr={"auto"} variant="p2-medium">
-            {(userInfo as any)?.data?.full_name}
-          </Typography>
+        {!isCollapsed && (
+          <>
+            <Typography ml={1.5} mr={"auto"} variant="p2-medium">
+              {(userInfo as any)?.data?.full_name}
+            </Typography>
 
-          <IconButton onClick={() => push("/profile/", { backURL: true })}>
-            <Icon name="More" />
-          </IconButton>
-        </>
-      )}
-    </Stack>
+            <IconButton onClick={() => push("/profile/", { backURL: true })}>
+              <Icon name="More" />
+            </IconButton>
+          </>
+        )}
+      </Stack>
+    </>
   );
 };
 
