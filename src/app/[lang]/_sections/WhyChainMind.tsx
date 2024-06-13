@@ -50,6 +50,7 @@ const WhyChainMind: FC<WhyChainMindProps> = () => {
       sx={{ background: "linear-gradient(180deg, #CDDFF2 0%, #F6FAFF 100%)", borderRadius: { md: 4, xs: 3 } }}
       py={{ md: 12, xs: 8 }}
       alignItems={"center"}
+      overflow={"hidden"}
     >
       <LandingContainer alignItems={"center"} gap={{ md: 6, xs: 4 }}>
         <SectionTitle

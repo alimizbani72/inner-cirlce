@@ -47,6 +47,7 @@ const Opportunity: FC<OpportunityProps> = () => {
       sx={{ background: "linear-gradient(180deg, #CDDFF2 0%, #F6FAFF 100%)", borderRadius: { md: 4, xs: 3 } }}
       py={{ md: 12, xs: 8 }}
       alignItems={"center"}
+      overflow={"hidden"}
     >
       <LandingContainer gap={{ md: 6, xs: 4 }} px={{ md: 3, xs: 2 }} alignItems={"center"}>
         <SectionTitle title="Opportunity" color="dark.1" firsLetterColor="pink.dark" />

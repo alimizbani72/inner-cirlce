@@ -22,6 +22,7 @@ const SectionTitle: FC<SectionTitleProps> = ({ title, color, firsLetterColor, bi
         lineHeight={1.36}
         color={bigTypoColor || "rgba(7, 7, 32, 0.03)"}
         textTransform="uppercase"
+        whiteSpace="nowrap"
         sx={{ "> *": { color: `${bigTypoColor} !important` } }}
         dangerouslySetInnerHTML={{ __html: title }}
       />

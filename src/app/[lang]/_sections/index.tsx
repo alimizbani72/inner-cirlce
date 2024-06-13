@@ -12,6 +12,9 @@ import How from "./How";
 import Scrollbar from "@/components/Scrollbar";
 import Results from "./Results";
 import WhyChainMind from "./WhyChainMind";
+import Pricing from "./Pricing";
+import VisionMission from "./VisionMission";
+import StayInTouch from "./StayInTouch";
 
 type Props = { isLogin: boolean };
 
@@ -35,7 +38,13 @@ const HomePageSection: FC<Props> = ({ isLogin }) => {
 
           <Results />
 
+          <Pricing />
+
           <WhyChainMind />
+
+          <VisionMission />
+
+          <StayInTouch />
         </Stack>
 
         <Footer />
