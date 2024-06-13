@@ -1,7 +1,7 @@
 "use client";
 
 import type { FC } from "react";
-import { Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import Scrollbar from "@/components/Scrollbar";
 import CustomTable from "@/components/CustomTable";
 
@@ -20,12 +20,7 @@ const columns = [
   },
   {
     title: "Money made?",
-    modify: (row: any) => (
-      <Stack direction={"row"} justifyContent={"space-between"}>
-        <Typography variant="p2-medium">{row.moneyMade}</Typography>
-        <Typography>02</Typography>
-      </Stack>
-    ),
+    modify: (row: any) => row.moneyMade,
   },
 ];
 
@@ -104,6 +99,29 @@ const data = [
         package: "SubFish",
         joinedDate: "16.02.2024",
         moneyMade: "$700.00",
+        children: [
+          {
+            id: 5.1,
+            username: "User4-3-1",
+            package: "SubFish",
+            joinedDate: "14.02.2024",
+            moneyMade: "$900.00",
+          },
+          {
+            id: 5.2,
+            username: "User4-3-2",
+            package: "SubFish",
+            joinedDate: "15.02.2024",
+            moneyMade: "$800.00",
+          },
+          {
+            id: 5.3,
+            username: "User4-3-3",
+            package: "SubFish",
+            joinedDate: "16.02.2024",
+            moneyMade: "$700.00",
+          },
+        ],
       },
     ],
   },

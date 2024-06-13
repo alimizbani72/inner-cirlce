@@ -1,5 +1,6 @@
 "use client";
 
+import { Fragment, useState } from "react";
 import { Paper, Stack, Typography } from "@mui/material";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -9,10 +10,16 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import type { ReactNode } from "react";
 import Scrollbar from "./Scrollbar";
-import type React from "react";
+import { Icon } from "./icons";
+
+const levelColorLine = {
+  0: "#090A23",
+  1: "#565CE4",
+  2: "#FF7DBC",
+};
 
 type PropType = {
-  title?: React.ReactNode;
+  title?: ReactNode;
   columns: { title: string; modify: (item: any) => ReactNode }[];
   data: any[];
   width?: any;
@@ -21,6 +28,59 @@ type PropType = {
 };
 
 const CustomTable = ({ title, columns, data, width, minWidthCell, action }: PropType) => {
+  const [expandedRows, setExpandedRows] = useState<{ [key: string]: boolean }>({});
+
+  const handleToggleExpand = (id: string) => {
+    setExpandedRows((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
+
+  const renderRows = (rows: any[], level: number = 0) => {
+    return rows.map((row) => (
+      <Fragment key={row.id}>
+        <TableRow
+          sx={(_theme) => ({
+            "&.MuiTableRow-root": {
+              borderLeft: `${level ? 2 : 1}px solid`,
+              // borderColor: level ? theme.palette.blue.dark : "default",
+              borderColor: levelColorLine[level as keyof typeof levelColorLine],
+            },
+          })}
+        >
+          {columns.map((item, index) => (
+            <TableCell align="left" key={index}>
+              {item.modify(row)}
+            </TableCell>
+          ))}
+          <TableCell align="right">
+            {row.children && row.children.length > 0 && (
+              <Stack
+                direction={"row"}
+                gap={0.5}
+                onClick={() => handleToggleExpand(row.id)}
+                justifyContent={"flex-end"}
+                alignItems={"center"}
+                sx={{
+                  path: {
+                    stroke: (theme) => (expandedRows[row.id] ? theme.palette.common.white : theme.palette.grey.light),
+                  },
+                }}
+              >
+                <Typography variant="caption-regular" color={expandedRows[row.id] ? "common.white" : "grey.light"}>
+                  {level}
+                </Typography>
+                <Icon name={expandedRows[row.id] ? "Arrow-up" : "Arrow-down"} />
+              </Stack>
+            )}
+          </TableCell>
+        </TableRow>
+        {expandedRows[row.id] && row.children && renderRows(row.children, level + 1)}
+      </Fragment>
+    ));
+  };
+
   return (
     <Stack
       sx={{
@@ -84,19 +144,10 @@ const CustomTable = ({ title, columns, data, width, minWidthCell, action }: Prop
                     {head.title}
                   </TableCell>
                 ))}
+                <TableCell />
               </TableRow>
             </TableHead>
-            <TableBody>
-              {data.map((rowItem) => (
-                <TableRow key={rowItem.id}>
-                  {columns.map((item, index) => (
-                    <TableCell align="left" key={index}>
-                      {item.modify(rowItem)}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))}
-            </TableBody>
+            <TableBody>{renderRows(data)}</TableBody>
           </Table>
         </Scrollbar>
       </TableContainer>
