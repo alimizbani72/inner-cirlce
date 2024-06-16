@@ -13,7 +13,7 @@ const PaymentReceipt: FC<PaymentReceiptProps> = () => {
 
       <Stack alignItems={"center"} direction={{ md: "column", xs: "row" }} gap={{ md: 0, xs: 2 }} mb={{ md: 4, xs: 3 }}>
         <Box width={{ md: 248, xs: 96 }} height={{ md: 248, xs: 96 }}>
-          <Image src="/assets/shark.svg" width="100%" height="100%" />
+          <Image src="/assets/animals/shark.svg" width="100%" height="100%" />
         </Box>
 
         <Stack flex={1} gap={{ md: 1 }} alignItems={{ md: "center" }}>

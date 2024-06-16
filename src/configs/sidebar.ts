@@ -9,10 +9,9 @@ export const sidebarServicesItems = [
     icon: "Coin-reports",
   },
   {
-    path: undefined,
-    name: "Portfolios",
+    path: "portfolio-strategies/",
+    name: "Portfolios Strategies",
     icon: "Portfolio",
-    items: [{ path: "my-portfolios/" }, { path: "portfolio-strategies/" }],
   },
   {
     path: "education/",

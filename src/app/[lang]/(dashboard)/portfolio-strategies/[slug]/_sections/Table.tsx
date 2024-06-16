@@ -11,7 +11,7 @@ interface TableProps {}
 
 const buttons = [
   { label: "Low Risk", value: 1 },
-  { label: "Middle Rick", value: 2 },
+  { label: "Middle Risk", value: 2 },
   { label: "High Risk", value: 3 },
 ];
 

@@ -18,9 +18,7 @@ const MobileSidebar: FC = () => {
     <Stack sx={{ height: "100vh", width: "100vw" }}>
       <Stack
         bgcolor={"dark.1"}
-        px={3}
-        pt={6}
-        pb={2}
+        p={3}
         direction={"row"}
         alignItems={"center"}
         justifyContent={"center"}

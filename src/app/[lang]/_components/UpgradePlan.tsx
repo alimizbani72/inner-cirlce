@@ -1,6 +1,6 @@
 "use client";
-
 import Image from "@/components/Image";
+import RiveComp from "@/components/RiveComp";
 import { Icon } from "@/components/icons";
 import { useAppRouter } from "@/routes/hooks";
 import { Box, Divider, Stack, Typography } from "@mui/material";
@@ -31,7 +31,7 @@ const UpgradePlan: FC<UpgradePlanProps> = ({ activePlan }) => {
         {activePlan ? (
           <Stack p={2} position={"relative"} direction={"row"} zIndex={2} gap={1.5} alignItems={"center"}>
             <Box width={40} height={40}>
-              <Image src="/assets/shark.svg" width="100%" height="100%" />
+              <Image src="/assets/animals/shark.svg" width="100%" height="100%" />
             </Box>
 
             <Stack flex={1}>
@@ -69,7 +69,13 @@ const UpgradePlan: FC<UpgradePlanProps> = ({ activePlan }) => {
             <Typography variant="p2-semi-bold">Buy Now</Typography>
           )}
 
-          <Icon name={activePlan ? "Rocket" : "Arrow-right"} />
+          {activePlan ? (
+            <Box sx={{ aspectRatio: 1, position: "absolute", right: 10, bottom: 10 }}>
+              <RiveComp src="/assets/rive/rocket.riv" width={35} height={35} />
+            </Box>
+          ) : (
+            <Icon name="Arrow-right" />
+          )}
         </Stack>
       </Stack>
     </Stack>

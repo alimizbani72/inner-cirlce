@@ -6,7 +6,7 @@ import ChartSVG from "./Chart";
 
 const AffStatisticsTab: FC = () => {
   return (
-    <Stack px={{ md: 4, xs: 3 }} pt={{ md: 3 }} flex={1}>
+    <Stack px={{ md: 4, xs: 3 }} pt={3} flex={1}>
       <Stack
         sx={{
           flex: 1,
@@ -69,7 +69,7 @@ const AffStatisticsTab: FC = () => {
         <Typography variant="h3-semi-bold" mt={3} mb={1}>
           COMING SOON
         </Typography>
-        <Typography variant="p2-regular" color="grey.light" maxWidth={504}>
+        <Typography variant="p2-regular" color="grey.light" textAlign="center" maxWidth={504}>
           By upgrading, subscribers can access additional benefits, enhanced functionalities, and premium content not
           available in their current plan.
         </Typography>

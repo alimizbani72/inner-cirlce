@@ -13,7 +13,7 @@ const plans = [
   {
     id: 111234121,
     title: "Shrimp",
-    image: "/assets/shark.svg",
+    image: "/assets/rive/shrimp.riv",
     description: "Dip your fins in. Crypto basics so simple, even shrimp get it.",
     cost: "497",
     onClick: () => ({}),
@@ -21,7 +21,7 @@ const plans = [
   {
     id: 11214311,
     title: "Fish",
-    image: "/assets/shark.svg",
+    image: "/assets/rive/fish.riv",
     description: "Dip your fins in. Crypto basics so simple, even shrimp get it.",
     cost: "1997",
     onClick: () => ({}),
@@ -29,7 +29,7 @@ const plans = [
   {
     id: 112456511,
     title: "Shark",
-    image: "/assets/shark.svg",
+    image: "/assets/rive/shark.riv",
     description: "Dip your fins in. Crypto basics so simple, even shrimp get it.",
     cost: "4997",
     onClick: () => ({}),
@@ -37,7 +37,7 @@ const plans = [
   {
     id: 1315411,
     title: "Whale",
-    image: "/assets/shark.svg",
+    image: "/assets/rive/whale_animation.riv",
     description: "Dip your fins in. Crypto basics so simple, even shrimp get it.",
     cost: "9997",
     onClick: () => ({}),
@@ -57,7 +57,15 @@ const PricingSection: FC = () => {
   const isCollapsed = useAppSelector(isSidebarCollapsed);
 
   return (
-    <Stack>
+    <Stack
+      sx={{
+        ".os-scrollbar-handle": {
+          cursor: "pointer",
+          backgroundColor: "grey.dark",
+          "&:hover": { backgroundColor: "grey.dark" },
+        },
+      }}
+    >
       <ActivePlan />
 
       <Stack
@@ -66,11 +74,12 @@ const PricingSection: FC = () => {
         overflow={"hidden"}
         gap={4}
       >
-        <Scrollbar>
+        <Scrollbar options={{ scrollbars: { autoHide: "never" } }}>
           <Stack
             direction={"row"}
             gap={3}
             px={{ md: 4, xs: 3 }}
+            pb={3}
             minWidth={{ md: "calc(1128px + 64px)", xs: "calc(1128px + 48px)" }}
           >
             {plans.map((plan) => (
@@ -83,8 +92,8 @@ const PricingSection: FC = () => {
           <Typography px={{ md: 4, xs: 3 }} variant="h4-semi-bold">
             Compare Plans
           </Typography>
-          <Scrollbar>
-            <Stack minWidth={{ md: "calc(1128px + 64px)", xs: "calc(1128px + 48px)" }} px={{ md: 4, xs: 3 }}>
+          <Scrollbar options={{ scrollbars: { autoHide: "never" } }}>
+            <Stack minWidth={{ md: "calc(1128px + 64px)", xs: "calc(1128px + 48px)" }} pb={3} px={{ md: 4, xs: 3 }}>
               <PricingTable plans={plansName} rows={rows} />
             </Stack>
           </Scrollbar>

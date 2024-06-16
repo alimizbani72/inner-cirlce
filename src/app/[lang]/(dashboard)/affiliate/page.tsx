@@ -8,5 +8,15 @@ export const metadata: Metadata = {
 };
 
 export default async function Affiliate() {
-  return <AffiliateSection />;
+  // const queryClient = getQueryClient();
+  // await Promise.all([
+  //   prefetchUseAffiliateServiceAffiliateReferralCodeQuery(queryClient),
+  //   // Add more prefetch queries here
+  // ]);
+
+  return (
+    // <HydrationBoundary state={dehydrate(queryClient)}>
+    <AffiliateSection />
+    // </HydrationBoundary>
+  );
 }

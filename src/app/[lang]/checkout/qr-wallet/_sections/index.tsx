@@ -79,7 +79,7 @@ const CheckoutQRWalletSection: FC = () => {
 
           <Stack flex={1} alignItems={"center"} justifyContent={"center"}>
             <Box width={{ md: 248, xs: 144 }} height={{ md: 248, xs: 144 }} mb={10} mt={{ md: 0, xs: 3 }}>
-              <Image src="/assets/shark.svg" width="100%" height="100%" />
+              <Image src="/assets/animals/shark.svg" width="100%" height="100%" />
             </Box>
           </Stack>
         </Stack>

@@ -18,12 +18,12 @@ export default async function PortfolioStrategies() {
       alignItems={{ md: "flex-start", xs: undefined }}
       justifyContent={"flex-start"}
     >
-      <StrategiesItem title="Whale" subtitle="Strategy" src="/assets/shark.svg" link="shark" />
+      <StrategiesItem title="Plankton" subtitle="Strategy" src="/assets/rive/plankton.riv" link="plankton" />
 
-      <StrategiesItem title="Whale" subtitle="Strategy" src="/assets/shark.svg" link="shark" />
-      <StrategiesItem title="Whale" subtitle="Strategy" src="/assets/shark.svg" link="shark" />
-      <StrategiesItem title="Whale" subtitle="Strategy" src="/assets/shark.svg" link="shark" />
-      <StrategiesItem title="Whale" subtitle="Strategy" src="/assets/shark.svg" link="shark" />
+      <StrategiesItem title="Shrimp" subtitle="Strategy" src="/assets/rive/shrimp.riv" link="shrimp" />
+      <StrategiesItem title="Fish" subtitle="Strategy" src="/assets/rive/fish.riv" link="fish" />
+      <StrategiesItem title="Shark" subtitle="Strategy" src="/assets/rive/shark.riv" link="shark" />
+      <StrategiesItem title="Whale" subtitle="Strategy" src="/assets/rive/whale_animation.riv" link="whale" upgrade />
     </Stack>
   );
 }

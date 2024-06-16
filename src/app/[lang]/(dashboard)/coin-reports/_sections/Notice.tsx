@@ -13,7 +13,7 @@ const Notice: FC<NoticeProps> = () => {
   const [expand, setExpand] = useState(isMobile ?? false);
 
   return (
-    <Stack p={{ md: 4, xs: 3 }} pb={"0 !important"}>
+    <Stack px={{ md: 4, xs: 3 }}>
       <ContentStack p={0}>
         <Collapse in={isMobile ? true : expand} collapsedSize={56}>
           <Box p={2} display="flex" flexDirection={expand ? "column" : "row"}>

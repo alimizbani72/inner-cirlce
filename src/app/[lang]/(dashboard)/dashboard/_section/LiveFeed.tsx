@@ -1,15 +1,11 @@
+"use client";
+
+import RiveComp from "@/components/RiveComp";
 import ContentStack from "@app/_components/ContentStack";
 import { Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 
 interface LiveFeedProps {}
-
-const GreenLight = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <circle cx="8" cy="8" r="8" fill="#00B171" fillOpacity="0.08" />
-    <circle cx="8" cy="8" r="3" fill="#00B171" />
-  </svg>
-);
 
 const LiveFeed: FC<LiveFeedProps> = () => {
   return (
@@ -18,7 +14,7 @@ const LiveFeed: FC<LiveFeedProps> = () => {
         <Typography variant="p1-semi-bold">Live Feed</Typography>
 
         <Stack direction={"row"} gap={1} alignItems={"center"}>
-          <GreenLight />
+          <RiveComp src="/assets/rive/Pulsing_point_1.riv" width={16} height={16} />
           <Typography variant="p2-medium" color={"success.main"}>
             Christin Brom ...
           </Typography>

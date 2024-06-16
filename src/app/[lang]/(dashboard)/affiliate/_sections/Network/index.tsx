@@ -37,7 +37,7 @@ const AffNetworkTab: FC = () => {
   };
 
   return (
-    <Stack px={{ md: 4, xs: 3 }} pt={{ md: 3 }} flex={1} gap={3}>
+    <Stack px={{ md: 4, xs: 3 }} pt={3} flex={1} gap={3}>
       <Stack alignItems={"flex-start"}>
         <Toggle setValue={handleChange} buttons={buttons} value={value} />
       </Stack>

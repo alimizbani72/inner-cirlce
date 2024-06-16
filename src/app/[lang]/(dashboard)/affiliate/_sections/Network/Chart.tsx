@@ -67,7 +67,7 @@ const AffNetworkTabChart: FC = () => {
       <Typography variant="h3-semi-bold" mt={3} mb={1}>
         COMING SOON
       </Typography>
-      <Typography variant="p2-regular" color="grey.light" maxWidth={504}>
+      <Typography variant="p2-regular" textAlign="center" color="grey.light" maxWidth={504}>
         By upgrading, subscribers can access additional benefits, enhanced functionalities, and premium content not
         available in their current plan.
       </Typography>

@@ -1,11 +1,21 @@
-import Image from "@/components/Image";
+"use client";
 import { Icon } from "@/components/icons";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 
-const ActivePlan: FC = () => {
+const LearningBanner: FC = () => {
   return (
-    <Stack sx={{ position: "relative", overflow: "hidden" }}>
+    <Stack
+      sx={{
+        position: "relative",
+        overflow: "hidden",
+        m: { md: 4, xs: 3 },
+        mb: "0 !important",
+        borderRadius: 2,
+        border: "1.5px solid",
+        borderColor: "dark.3",
+      }}
+    >
       <Box
         sx={{
           background: "radial-gradient(50% 50% at 50% 50%, rgba(119, 157, 255, 0.64) 0%, rgba(86, 92, 228, 0.64) 100%)",
@@ -40,28 +50,35 @@ const ActivePlan: FC = () => {
 
       <Stack
         sx={{
-          py: 3,
-          px: { md: 4, xs: 3 },
+          p: { md: 2, xs: 4 },
           position: "relative",
           zIndex: 1,
           justifyContent: "space-between",
-          alignItems: "center",
+          alignItems: { md: "center", xs: undefined },
           flexDirection: { md: "row", xs: "column" },
-          gap: { md: undefined, xs: 3 },
+          gap: { md: undefined, xs: 6 },
         }}
       >
-        <Stack gap={1} direction={"row"} alignItems={"center"}>
-          <Typography variant="p2-medium">Your Current Plan:</Typography>
-          <Image src="/assets/animals/plankton.svg" width="48px" height="48px" />
-          <Typography variant="p1-semi-bold">Plankton</Typography>
+        <Stack gap={2} direction="row">
+          <Box
+            sx={{
+              width: "2px",
+              bgcolor: "dark.1",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <Box sx={{ width: "100%", height: "30%", bgcolor: "blue.dark" }} />
+          </Box>
+          <Typography variant="p1-semi-bold">Watch how it works?</Typography>
         </Stack>
 
-        <Button color="secondary" size="large" startIcon={<Icon color="dark.1" name="Subscription" />}>
-          Upgrade
+        <Button color="info" size="large" startIcon={<Icon name="Play" />}>
+          Learning Video
         </Button>
       </Stack>
     </Stack>
   );
 };
 
-export default ActivePlan;
+export default LearningBanner;

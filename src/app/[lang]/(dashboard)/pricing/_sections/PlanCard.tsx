@@ -1,4 +1,4 @@
-import Image from "@/components/Image";
+import RiveComp from "@/components/RiveComp";
 import { fCurrency } from "@/utils/format-number";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
@@ -23,7 +23,7 @@ const PlanCard: FC<Props> = ({ title, image, description, cost, onClick }) => {
       borderRadius={2}
     >
       <Box width={264} height={264} p={4} borderBottom={"1px solid"} borderColor={"dark.3"}>
-        <Image src={image} height="100%" width="100%" />
+        <RiveComp src={image} width={200} height={200} />
       </Box>
       <Stack p={2} gap={2}>
         <Typography mb={-1} variant="p1-semi-bold" color="pink.light">

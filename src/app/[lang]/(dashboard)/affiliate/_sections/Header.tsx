@@ -1,4 +1,5 @@
 "use client";
+
 import { Box, Button, Divider, IconButton, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 import { useIsMobile } from "@/hooks/use-responsive";

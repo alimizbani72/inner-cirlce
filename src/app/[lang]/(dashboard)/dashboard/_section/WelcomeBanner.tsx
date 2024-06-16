@@ -78,7 +78,7 @@ const WelcomeBanner: FC = () => {
         >
           <Stack direction={"row"} gap={1}>
             <Box flex={1}>
-              <Image src="/assets/shark.svg" width="48px" height="48px" />
+              <Image src="/assets/animals/shark.svg" width="48px" height="48px" />
             </Box>
 
             <Stack>

@@ -6,12 +6,13 @@ import type { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import type { ReactNode } from "react";
 
-import { customQueryClient } from "./customQueryClient";
+import { getQueryClient } from "./customQueryClient";
 
 export default function TanStackProvider({ children, session }: { children: ReactNode; session: Session | null }) {
+  const queryClient = getQueryClient();
   return (
     <SessionProvider session={session}>
-      <QueryClientProvider client={customQueryClient}>
+      <QueryClientProvider client={queryClient}>
         {children}
         <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-left" />
       </QueryClientProvider>

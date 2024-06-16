@@ -34,7 +34,7 @@ const DashboardHeader: FC = () => {
   return isMobile ? (
     <>
       <Stack bgcolor={"dark.1"} position={"sticky"} top={0} zIndex={1000}>
-        <Stack px={3} pt={6} pb={2} direction={"row"} alignItems={"center"} justifyContent={"space-between"}>
+        <Stack p={3} direction={"row"} alignItems={"center"} justifyContent={"space-between"}>
           <IconButton onClick={() => dispatch(mobileMenuToggle(true))}>
             <Icon name="Menu" />
           </IconButton>

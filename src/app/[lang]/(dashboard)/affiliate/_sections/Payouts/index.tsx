@@ -12,7 +12,9 @@ const AffPayoutsTab: FC = () => {
       <ContentStack direction={{ md: "row" }} gap={3}>
         <Stack gap={2} direction={"row"} alignItems={"center"}>
           <Icon name="Wallet--colorful" size={32} />
-          <Typography variant="p1-medium">ERC-20 : 00kkjioo9090......1290ghyjhbbnjhhu</Typography>
+          <Typography variant="p1-medium" sx={{ wordBreak: "break-word" }}>
+            ERC-20 : 00kkjioo9090......1290ghyjhbbnjhhu
+          </Typography>
         </Stack>
 
         <Button sx={{ ml: "auto", width: { md: "auto", xs: "100%" } }} color="info" startIcon={<Icon name="Wallet" />}>

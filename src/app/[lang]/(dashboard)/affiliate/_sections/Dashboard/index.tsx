@@ -4,15 +4,15 @@ import { Icon } from "@/components/icons";
 import ContentStack from "@app/_components/ContentStack";
 import { Box, Button, Divider, Stack, Typography } from "@mui/material";
 import { useState, type FC } from "react";
-import Image from "@/components/Image";
 import WithdrawDialog from "@app/_components/WithdrawDialog";
+import RiveComp from "@/components/RiveComp";
 
 const arr = [
-  { title: "planktons", image: "/assets/shark.svg", amount: 48 },
-  { title: "Shrimps", image: "/assets/shark.svg", amount: 102 },
-  { title: "Fishes", image: "/assets/shark.svg", amount: 35 },
-  { title: "Sharks", image: "/assets/shark.svg", amount: 40 },
-  { title: "whales", image: "/assets/shark.svg", amount: 16 },
+  { title: "planktons", image: "/assets/rive/plankton.riv", amount: 48 },
+  { title: "Shrimps", image: "/assets/rive/shrimp.riv", amount: 102 },
+  { title: "Fishes", image: "/assets/rive/fish.riv", amount: 35 },
+  { title: "Sharks", image: "/assets/rive/shark.riv", amount: 40 },
+  { title: "whales", image: "/assets/rive/whale_animation.riv", amount: 16 },
 ];
 
 const AFDashboardTab: FC = () => {
@@ -78,8 +78,8 @@ const AFDashboardTab: FC = () => {
             <Divider flexItem sx={{ borderWidth: "1px" }} />
             <Stack alignItems="center" flex={1}>
               <Stack direction="row" alignItems="center" position={"relative"}>
-                <Box position="absolute" left="-16px">
-                  <Image src="/assets/svg/gold-coin.svg" />
+                <Box position="absolute" left="-16px" sx={{ aspectRatio: 1 }}>
+                  <RiveComp src="/assets/rive/coin_rotation_2.riv" width={60} height={60} />
                 </Box>
                 <Typography pl={4} variant="h4-semi-bold">
                   40
@@ -180,7 +180,7 @@ const AFDashboardTab: FC = () => {
             <Stack alignItems="center" flex={1}>
               <Stack direction="row" alignItems="center" position={"relative"}>
                 <Box position="absolute" left="-16px">
-                  <Image src="/assets/svg/gold-coin.svg" />
+                  <RiveComp src="/assets/rive/coin_rotation_2.riv" width={60} height={60} />
                 </Box>
                 <Typography pl={4} variant="h4-semi-bold" color="success.main">
                   +60
@@ -232,7 +232,9 @@ const AFDashboardTab: FC = () => {
               justifyContent={"center"}
               bgcolor={{ sm: !(index % 2) ? undefined : "dark.3" }}
             >
-              <Image width={"80px"} height={"80px"} src={item.image} alt={item.title} />
+              <Box sx={{ aspectRatio: 1 }}>
+                <RiveComp width={80} height={80} src={item.image} />
+              </Box>
               <Typography mt={1} variant="h4-semi-bold">
                 {item.amount}
               </Typography>

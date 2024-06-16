@@ -141,7 +141,7 @@ const AffNetworkTabTable: FC = () => {
       <Scrollbar>
         <Stack
           alignItems="flex-start"
-          maxWidth="100vw"
+          maxWidth={{ md: "calc(100vw - 64px)", xs: "calc(100vw - 48px)" }}
           sx={{ "> div": { borderBottomRightRadius: 0, borderBottomLeftRadius: 0 } }}
         >
           <CustomTable columns={columns} data={data} />
