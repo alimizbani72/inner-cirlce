@@ -71,7 +71,7 @@ jobs:
           platforms: linux/amd64
           push: true
           build-args: |
-            minecraft_endpoint=https://minecraft.chainmind.com/
+            minecraft_endpoint=https://minecraft.innercircle-chainmind.com/
             google_client_id=${{ secrets.PROD_GOOGLE_CLIENT_ID }}
             google_client_secret=${{ secrets.PROD_GOOGLE_CLIENT_SECRET }}
           tags: ${{ env.IMG_NAME }}:${{ env.IMG_TAG }}
@@ -84,7 +84,7 @@ jobs:
           platforms: linux/amd64
           push: true
           build-args: |
-            minecraft_endpoint=https://staging-minecraft.chainmind.com/
+            minecraft_endpoint=https://staging-minecraft.innercircle-chainmind.com/
             google_client_id=${{ secrets.STAGING_GOOGLE_CLIENT_ID }}
             google_client_secret=${{ secrets.STAGING_GOOGLE_CLIENT_SECRET }}
           tags: ${{ env.IMG_NAME }}:${{ env.IMG_TAG }}
