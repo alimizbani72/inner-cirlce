@@ -73,7 +73,7 @@ jobs:
           build-args: |
             minecraft_endpoint=https://minecraft.chainmind.com/
             google_client_id=${{ secrets.PROD_GOOGLE_CLIENT_ID }}
-            google_client_secret=${{ secrets.STAGING_GOOGLE_CLIENT_SECRET }}
+            google_client_secret=${{ secrets.PROD_GOOGLE_CLIENT_SECRET }}
           tags: ${{ env.IMG_NAME }}:${{ env.IMG_TAG }}
 
       - name: Build and push
