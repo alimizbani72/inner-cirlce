@@ -8,6 +8,11 @@ import { CancelablePromise } from "./CancelablePromise";
 import type { OnCancel } from "./CancelablePromise";
 import type { OpenAPIConfig } from "./OpenAPI";
 import { getSession, signOut } from "next-auth/react";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/configs/authOptions";
+
+// Check if code is running on the server
+const isServer = typeof window === "undefined";
 
 export const isString = (value: unknown): value is string => {
   return typeof value === "string";
@@ -321,6 +326,13 @@ let cachedSession: Session | null = null;
 let sessionFetchPromise: Promise<Session | null> | null = null;
 
 const fetchSession = async (): Promise<Session | null> => {
+  if (isServer) {
+    // Use server-side session fetching
+    const session = await getServerSession(authOptions);
+    return session;
+  }
+
+  // Use client-side session fetching
   if (cachedSession) {
     return cachedSession;
   }
@@ -379,7 +391,9 @@ export const request = <T>(config: OpenAPIConfig, options: ApiRequestOptions): C
     } catch (error) {
       if (error?.status === 401 || error?.status === 400) {
         await signOut({ redirect: false });
-        window.location.href = "/login";
+        if (!isServer) {
+          window.location.href = "/login"; // Client-side redirect
+        }
       }
 
       reject(error);

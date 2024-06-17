@@ -9,6 +9,7 @@ import ContentStack from "@app/_components/ContentStack";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 
 import dynamic from "next/dynamic";
+import { useAffiliateServiceAffiliateReferralCodeQuery } from "@/services/queries";
 
 const QRCodeWithIcon = dynamic(() => import("@/components/QRCodeWithIcon"), {
   ssr: false,
@@ -18,6 +19,8 @@ const QRCodeWithIcon = dynamic(() => import("@/components/QRCodeWithIcon"), {
 const referralLink = "https://chain-mind.com/link/2024/";
 
 const AffiliateHeader: FC = () => {
+  // biome-ignore lint/correctness/noUnusedVariables: <explanation>
+  const { data } = useAffiliateServiceAffiliateReferralCodeQuery();
   const { copy } = useCopyToClipboard();
   const isMobile = useIsMobile();
 
