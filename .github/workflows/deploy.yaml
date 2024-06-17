@@ -16,8 +16,8 @@ env:
   PROD_RELEASE_NAMESPACE: inner-circle-prod
 
   # Release domains
-  PROD_RELEASE_DOMAIN: app.chainmind.com
-  STAGING_RELEASE_DOMAIN: staging-app.chainmind.com
+  PROD_RELEASE_DOMAIN: innercircle-chainmind.com
+  STAGING_RELEASE_DOMAIN: staging.innercircle-chainmind.com
 
 jobs:
   lint:
@@ -72,6 +72,8 @@ jobs:
           push: true
           build-args: |
             minecraft_endpoint=https://minecraft.chainmind.com/
+            google_client_id=${{ secrets.PROD_GOOGLE_CLIENT_ID }}
+            google_client_secret=${{ secrets.STAGING_GOOGLE_CLIENT_SECRET }}
           tags: ${{ env.IMG_NAME }}:${{ env.IMG_TAG }}
 
       - name: Build and push
@@ -83,6 +85,8 @@ jobs:
           push: true
           build-args: |
             minecraft_endpoint=https://staging-minecraft.chainmind.com/
+            google_client_id=${{ secrets.STAGING_GOOGLE_CLIENT_ID }}
+            google_client_secret=${{ secrets.STAGING_GOOGLE_CLIENT_SECRET }}
           tags: ${{ env.IMG_NAME }}:${{ env.IMG_TAG }}
 
 
