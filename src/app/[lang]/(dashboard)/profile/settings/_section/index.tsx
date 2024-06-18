@@ -13,6 +13,7 @@ import FormProvider from "@/components/hook-form/form-provider";
 import * as Yup from "yup";
 import { useIsMobile } from "@/hooks/use-responsive";
 import { useAccountServiceAuthUserinfoQuery } from "@/services/queries";
+import InputEditor from "@app/_components/InputEditor";
 
 const UpdateUserSchema = Yup.object().shape({
   name: Yup.string()
@@ -67,19 +68,13 @@ const SettingsDialog = () => {
         <Stack justifyContent="center" alignItems="center">
           <UserProfile />
           <FormProvider methods={methods} onSubmit={onSubmit} sx={{ gap: 3, width: "100%", mt: 3 }}>
-            <RHFTextField
+            <InputEditor
               name="name"
               label={"Full Name"}
               placeholder={(userInfo as any)?.data?.full_name}
-              InputProps={{
-                readOnly: true,
-                endAdornment: (
-                  <IconButton onClick={() => console.log("Aa")}>
-                    <Icon name="Pen" />
-                  </IconButton>
-                ),
-              }}
+              onSave={() => console.log("Aa")}
             />
+
             <RHFTextField
               name="password"
               label={"Password"}

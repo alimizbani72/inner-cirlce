@@ -4,24 +4,29 @@ import useCustomRouter from "@/hooks/useCustomRouter";
 import { Button, DialogActions, Divider, IconButton, Stack, Typography } from "@mui/material";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import { useAccountServiceAuthResetPasswordCreateMutation } from "@/services/queries";
+import { useKycServiceKycVerificationCreateMutation } from "@/services/queries";
 import { LoadingButton } from "@mui/lab";
 import CustomizedSteppers from "@/components/CustomizedSteppers";
+import { kycCallback } from "@/consts";
+import { usePathname } from "next/navigation";
 
 const KYCInfoDialog = () => {
-  useAccountServiceAuthResetPasswordCreateMutation();
+  const { mutateAsync, isPending } = useKycServiceKycVerificationCreateMutation();
+
+  const pathname = usePathname();
 
   const { push, back, nativeBack } = useCustomRouter();
 
-  // const onSubmit = handleSubmit(async (data) => {
-  //   // biome-ignore lint/suspicious/noConsoleLog: <explanation>
-  //   console.log(data);
-
-  //   push("kyc-info");
-  // });
-
-  const onSubmit = () => push("/profile/become-partner/2fa");
-
+  const onSubmit = async () => {
+    try {
+      const res = await mutateAsync({ requestBody: { redirect_url: kycCallback(pathname) } });
+      if (res.data?.verification_url) {
+        window.location.href = res.data?.verification_url;
+      }
+    } catch (_error) {
+      // console.log(_error);
+    }
+  };
   return (
     <>
       <DialogTitle sx={{ m: 0, p: 2 }} id="change-password-dialog">
@@ -50,7 +55,7 @@ const KYCInfoDialog = () => {
               To complete your registration, you will need to complete the KYC process. You will need to provide
               identity documents and other necessary information.
             </Typography>
-            <LoadingButton color="primary" onClick={onSubmit} sx={{ mt: 2 }}>
+            <LoadingButton color="primary" onClick={onSubmit} sx={{ mt: 2 }} loading={isPending}>
               Do KYC Now
             </LoadingButton>
           </Stack>
@@ -61,7 +66,7 @@ const KYCInfoDialog = () => {
           <Button color="info" onClick={nativeBack}>
             Back
           </Button>
-          <LoadingButton color="primary" onClick={onSubmit}>
+          <LoadingButton color="primary" onClick={() => push("/profile/become-partner/2fa")}>
             Next Step
           </LoadingButton>
         </Stack>

@@ -1,10 +1,13 @@
 "use client";
 
-import { useState, type FC } from "react";
+import { useEffect, useState, type FC } from "react";
 import { Stack, Typography } from "@mui/material";
 import Toggle from "@app/_components/Toggle";
 import Scrollbar from "@/components/Scrollbar";
-import CustomTable from "@/components/CustomTable";
+import SortTable from "@/components/sortTable";
+import { useContentServiceContentCoinReportCreateMutation } from "@/services/queries";
+import { useAppSelector } from "@/lib/hooks";
+import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
 
 interface TableProps {}
 
@@ -87,6 +90,19 @@ const data = [
 
 const Table: FC<TableProps> = () => {
   const [value, setValue] = useState<any>(buttons[0].value);
+  const { mutateAsync, data, isSuccess } = useContentServiceContentCoinReportCreateMutation();
+  const isCollapsed = useAppSelector(isSidebarCollapsed);
+  const getCoins = async () => {
+    try {
+      await mutateAsync({ requestBody: { lang: "en" } });
+    } catch (_error) {
+      //
+    }
+  };
+
+  useEffect(() => {
+    getCoins();
+  }, []);
 
   const handleChange = (newValue: any) => {
     setValue(newValue);
@@ -102,15 +118,16 @@ const Table: FC<TableProps> = () => {
         </Stack>
       </Scrollbar>
 
-      <Scrollbar>
+      <Scrollbar options={{ scrollbars: { clickScroll: true } }}>
         <Stack
           pl={{ md: 4, xs: 3 }}
           pb={3}
           alignItems="flex-start"
-          maxWidth="100vw"
+          maxWidth={`calc(100vw - ${isCollapsed ? "104px" : "248px"})`}
           sx={{ "> div": { borderTopRightRadius: 0, borderBottomRightRadius: 0, borderBottomLeftRadius: 0 } }}
         >
-          <CustomTable title={buttons.find((i) => i.value === value)?.label} columns={columns} data={data} />
+          {isSuccess && <SortTable data={(data as any).data["coinreports-standard"]} />}
+          {/* <CustomTable title={buttons.find((i) => i.value === value)?.label} columns={columns} data={data} /> */}
         </Stack>
       </Scrollbar>
     </Stack>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Paper, Stack, Typography, TableSortLabel } from "@mui/material";
+import { Paper, Stack, Typography, TableSortLabel, Button, Dialog, DialogTitle, DialogContent } from "@mui/material";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -29,7 +29,13 @@ type PropType = {
   minWidthCell?: any;
 };
 
-const generateColumns = (data: any[]) => {
+type MoreInfoData = {
+  Name: string;
+  link: string;
+  video_url: string;
+};
+
+const generateColumns = (data: any[], handleOpenMoreInfo: (info: string) => void) => {
   if (data.length === 0) {
     return [];
   }
@@ -48,6 +54,13 @@ const generateColumns = (data: any[]) => {
         }
         if (column.suffix) {
           value += column.suffix;
+        }
+        if (key === "more_info") {
+          return (
+            <Button variant="outlined" onClick={() => handleOpenMoreInfo(value)}>
+              More Info
+            </Button>
+          );
         }
         return value;
       },
@@ -70,6 +83,8 @@ const generateColumns = (data: any[]) => {
 const SortTable = ({ title, data, action, width, minWidthCell }: PropType) => {
   const [sortConfig, setSortConfig] = useState<{ key: string; direction: "asc" | "desc" } | null>(null);
   const [sortedData, setSortedData] = useState(data);
+  const [open, setOpen] = useState(false);
+  const [moreInfo, setMoreInfo] = useState<MoreInfoData | null>(null);
 
   useEffect(() => {
     if (sortConfig) {
@@ -99,7 +114,18 @@ const SortTable = ({ title, data, action, width, minWidthCell }: PropType) => {
     setSortConfig({ key, direction });
   };
 
-  const columns = generateColumns(data);
+  const handleOpenMoreInfo = (info: string) => {
+    const parsedInfo = JSON.parse(info);
+    setMoreInfo(parsedInfo);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    setMoreInfo(null);
+  };
+
+  const columns = generateColumns(data, handleOpenMoreInfo);
 
   return (
     <Stack
@@ -192,6 +218,31 @@ const SortTable = ({ title, data, action, width, minWidthCell }: PropType) => {
           </Table>
         </Scrollbar>
       </TableContainer>
+
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>More Info</DialogTitle>
+        <DialogContent>
+          {moreInfo && (
+            <Stack spacing={2}>
+              <Typography>Name: {moreInfo.Name}</Typography>
+              <Typography>
+                Link:{" "}
+                <a href={moreInfo.link} target="_blank" rel="noopener noreferrer">
+                  {moreInfo.link}
+                </a>
+              </Typography>
+              {moreInfo.video_url && (
+                <Typography>
+                  Video URL:{" "}
+                  <a href={moreInfo.video_url} target="_blank" rel="noopener noreferrer">
+                    {moreInfo.video_url}
+                  </a>
+                </Typography>
+              )}
+            </Stack>
+          )}
+        </DialogContent>
+      </Dialog>
     </Stack>
   );
 };
