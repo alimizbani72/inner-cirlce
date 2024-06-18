@@ -10,22 +10,20 @@ import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 
 import dynamic from "next/dynamic";
 import { useAffiliateServiceAffiliateReferralCodeQuery } from "@/services/queries";
+import { referralLink } from "@/consts";
 
 const QRCodeWithIcon = dynamic(() => import("@/components/QRCodeWithIcon"), {
   ssr: false,
   loading: () => <Box sx={{ width: 140, height: 140 }} />,
 });
 
-const referralLink = "https://chain-mind.com/link/2024/";
-
 const AffiliateHeader: FC = () => {
-  // biome-ignore lint/correctness/noUnusedVariables: <explanation>
   const { data } = useAffiliateServiceAffiliateReferralCodeQuery();
   const { copy } = useCopyToClipboard();
   const isMobile = useIsMobile();
 
   const handleCopy = () => {
-    copy(referralLink);
+    copy(referralLink(data?.data!));
   };
 
   return (
@@ -50,7 +48,7 @@ const AffiliateHeader: FC = () => {
               pr={2}
               sx={{ textOverflow: "ellipsis", wordBreak: "break-all", ...snipText(1) }}
             >
-              {referralLink}
+              {referralLink(data?.data!)}
             </Typography>
 
             {isMobile ? (
@@ -68,8 +66,7 @@ const AffiliateHeader: FC = () => {
         <Divider flexItem sx={{ borderWidth: "1px" }} />
 
         <Stack p={3} gap={3} direction={{ md: "row" }} alignItems={"center"} justifyContent={"space-between"}>
-          {/* <QRCode value={referralLink} size={isMobile ? 200 : 140} level="M" bgColor="#090A23" fgColor="#FFFFFF" /> */}
-          <QRCodeWithIcon value={referralLink} iconSrc="/logo/logo.svg" size={isMobile ? 200 : 140} />
+          <QRCodeWithIcon value={referralLink(data?.data!)} iconSrc="/logo/logo.svg" size={isMobile ? 200 : 140} />
           <Icon name="Share" />
         </Stack>
       </ContentStack>

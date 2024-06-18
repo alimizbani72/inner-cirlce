@@ -3,20 +3,74 @@
 import { Icon } from "@/components/icons";
 import ContentStack from "@app/_components/ContentStack";
 import { Box, Button, Divider, Stack, Typography } from "@mui/material";
-import { useState, type FC } from "react";
+import { useMemo, useState, type FC } from "react";
 import WithdrawDialog from "@app/_components/WithdrawDialog";
 import RiveComp from "@/components/RiveComp";
+import {
+  useAffiliateServiceAffiliateBalanceQuery,
+  useAffiliateServiceAffiliateChildrenQuery,
+  useAffiliateServiceAffiliateMeQuery,
+  useAffiliateServiceAffiliateProgressQuery,
+  useAffiliateServiceAffiliateRanksQuery,
+} from "@/services/queries";
+import { formatCurrency, toNumber } from "@/utils/toNumber";
+import { toPascalCase } from "@/utils/change-case";
 
-const arr = [
-  { title: "planktons", image: "/assets/rive/plankton.riv", amount: 48 },
-  { title: "Shrimps", image: "/assets/rive/shrimp.riv", amount: 102 },
-  { title: "Fishes", image: "/assets/rive/fish.riv", amount: 35 },
-  { title: "Sharks", image: "/assets/rive/shark.riv", amount: 40 },
-  { title: "whales", image: "/assets/rive/whale_animation.riv", amount: 16 },
-];
+const rives: any = {
+  plankton: "/assets/rive/plankton.riv",
+  shrimps: "/assets/rive/shrimp.riv",
+  fishes: "/assets/rive/fish.riv",
+  sharks: "/assets/rive/shark.riv",
+  whales: "/assets/rive/whale_animation.riv",
+};
+
+const ProgressBar = ({ overall, percent }: { overall?: boolean; percent: number }) => (
+  <Stack
+    sx={{
+      flex: 9 / 10,
+      backdropFilter: "blur(12px)",
+      bgcolor: "rgba(255, 255, 255, 0.04)",
+      borderRadius: "2px",
+      width: "100%",
+      height: overall ? 8 : 4,
+    }}
+  >
+    <Stack
+      sx={{
+        position: "absolute",
+        background: overall
+          ? "linear-gradient(90deg, #00B171 0%, #FFF 100%)"
+          : "linear-gradient(90deg, #565CE4 0%, #FFF 100%)",
+        borderRadius: "2px",
+        height: overall ? 8 : 4,
+        width: `${percent}%`,
+      }}
+    />
+  </Stack>
+);
 
 const AFDashboardTab: FC = () => {
   const [openWithdrawDialog, setOpenWithdrawDialog] = useState(false);
+  const { data: me } = useAffiliateServiceAffiliateMeQuery();
+  const { data: ranks } = useAffiliateServiceAffiliateRanksQuery();
+  const { data: balance } = useAffiliateServiceAffiliateBalanceQuery();
+  const { data: progress } = useAffiliateServiceAffiliateProgressQuery();
+  const { data: children } = useAffiliateServiceAffiliateChildrenQuery();
+
+  const nextRank = useMemo(() => {
+    const findIndex = ranks?.data?.findIndex((item) => item.type === me?.data?.rank?.type) ?? -1;
+
+    if (findIndex > -1) {
+      return ranks?.data?.[findIndex + 1];
+    }
+
+    return me?.data?.rank;
+  }, [me, ranks]);
+
+  const overallProgressPercent = useMemo(
+    () => Object.values(progress?.data || {}).reduce((total, { percent }) => total + toNumber(percent), 0),
+    [progress?.data]
+  );
 
   return (
     <Stack p={{ md: 4, xs: 3 }} pt={{ md: 3 }} gap={3}>
@@ -26,7 +80,7 @@ const AFDashboardTab: FC = () => {
             <Icon name="Money--colorful" />
           </Stack>
           <Stack>
-            <Typography variant="h4-semi-bold">€ 100,000,000.00</Typography>
+            <Typography variant="h4-semi-bold">{formatCurrency(me?.data?.turnover)}</Typography>
             <Typography variant="p2-medium" color="grey.light">
               Total Turnover
             </Typography>
@@ -39,7 +93,7 @@ const AFDashboardTab: FC = () => {
               <Icon name="Money--colorful" />
             </Stack>
             <Stack>
-              <Typography variant="h4-semi-bold">€ 8,000.00</Typography>
+              <Typography variant="h4-semi-bold">{formatCurrency(balance?.data!)}</Typography>
               <Typography variant="p2-medium" color="grey.light">
                 Commission Wallet
               </Typography>
@@ -63,14 +117,14 @@ const AFDashboardTab: FC = () => {
         direction={{ md: "row" }}
         overflow="hidden"
       >
-        <Stack p={3} flex={4 / 12} gap={2}>
+        <Stack p={3} flex={4 / 12} gap={2} justifyContent={{ md: "center" }}>
           <Stack direction="row" justifyContent="space-between" bgcolor="blue.dark" borderRadius="10px" px={2} py={1}>
             <Typography variant="p1-regular">Current Rank</Typography>
-            <Typography variant="p1-semi-bold">#Ranky88</Typography>
+            <Typography variant="p1-semi-bold">#{toPascalCase(me?.data?.rank?.type)}</Typography>
           </Stack>
           <Stack direction="row" justifyContent="space-between" alignItems="center">
             <Stack alignItems="center" flex={1}>
-              <Typography variant="h4-semi-bold">1.5 %</Typography>
+              <Typography variant="h4-semi-bold">{(me?.data?.rank as any)?.percent} %</Typography>
               <Typography variant="p2-medium" color="grey.light">
                 Override Bonus
               </Typography>
@@ -82,7 +136,7 @@ const AFDashboardTab: FC = () => {
                   <RiveComp src="/assets/rive/coin_rotation_2.riv" width={60} height={60} />
                 </Box>
                 <Typography pl={4} variant="h4-semi-bold">
-                  40
+                  {toNumber(me?.data?.goldCoins)}
                 </Typography>
               </Stack>
               <Typography variant="p2-medium" color="grey.light">
@@ -94,7 +148,7 @@ const AFDashboardTab: FC = () => {
 
         <Divider flexItem sx={{ borderWidth: "1px" }} />
 
-        <Stack p={3} flex={4 / 12} alignItems={"center"} justifyContent={"center"} position={"relative"}>
+        <Stack p={3} flex={4 / 12} gap={1} position={"relative"}>
           <Box
             sx={{
               background:
@@ -127,50 +181,90 @@ const AFDashboardTab: FC = () => {
             }}
           />
 
-          <Stack direction={"row"} alignItems={"center"}>
-            <Typography variant="h1-bold">88</Typography>
-            <Typography variant="h3-bold">%</Typography>
+          <Stack height={24} direction="row" alignItems={"center"} justifyContent="space-between" width={"100%"}>
+            <Stack width={94} direction={"row"} alignItems="center">
+              <Typography variant="caption-medium" mr={1} color="grey.light">
+                First:
+              </Typography>
+              <Typography variant="p2-semi-bold">{toNumber(progress?.data?.first_line?.percent)}</Typography>
+              <Typography variant="caption-semi-bold" ml="2px">
+                %
+              </Typography>
+            </Stack>
+
+            <ProgressBar percent={toNumber(progress?.data?.first_line?.percent)} />
           </Stack>
 
-          <Typography variant="p2-medium" textTransform={"uppercase"} color="grey.light">
-            Progress
-          </Typography>
+          <Stack height={24} direction="row" alignItems={"center"} justifyContent="space-between" width={"100%"}>
+            <Stack width={94} direction={"row"} alignItems="center">
+              <Typography variant="caption-medium" mr={1} color="grey.light">
+                Second:
+              </Typography>
+              <Typography variant="p2-semi-bold">{toNumber(progress?.data?.second_line?.percent)}</Typography>
+              <Typography variant="caption-semi-bold" ml="2px">
+                %
+              </Typography>
+            </Stack>
 
-          <Stack
-            sx={{
-              mt: 3,
-              backdropFilter: "blur(12px)",
-              bgcolor: "rgba(255, 255, 255, 0.04)",
-              borderRadius: "2px",
-              width: "100%",
-              height: "4px",
-            }}
-          >
-            <Stack
-              sx={{
-                position: "absolute",
-                background: "linear-gradient(90deg, #00B171 0%, #FFF 100%)",
-                borderRadius: "2px",
-                height: "4px",
-                width: "88%",
-              }}
-            />
+            <ProgressBar percent={toNumber(progress?.data?.second_line?.percent)} />
+          </Stack>
+
+          <Stack height={24} direction="row" alignItems={"center"} justifyContent="space-between" width={"100%"}>
+            <Stack width={94} direction={"row"} alignItems="center">
+              <Typography variant="caption-medium" mr={1} color="grey.light">
+                Third:
+              </Typography>
+              <Typography variant="p2-semi-bold">{toNumber(progress?.data?.third_line?.percent)}</Typography>
+              <Typography variant="caption-semi-bold" ml="2px">
+                %
+              </Typography>
+            </Stack>
+
+            <ProgressBar percent={toNumber(progress?.data?.third_line?.percent)} />
+          </Stack>
+
+          <Stack height={24} direction="row" alignItems={"center"} justifyContent="space-between" width={"100%"}>
+            <Stack width={94} direction={"row"} alignItems="center">
+              <Typography variant="caption-medium" mr={1} color="grey.light">
+                Other:
+              </Typography>
+              <Typography variant="p2-semi-bold">{toNumber(progress?.data?.other_lines?.percent)}</Typography>
+              <Typography variant="caption-semi-bold" ml="2px">
+                %
+              </Typography>
+            </Stack>
+
+            <ProgressBar percent={toNumber(progress?.data?.other_lines?.percent)} />
+          </Stack>
+
+          <Stack height={24} direction="row" alignItems={"center"} justifyContent="space-between" width={"100%"}>
+            <Stack width={94} direction={"row"} alignItems="center">
+              <Typography variant="caption-medium" mr={1} color="grey.light">
+                Overall:
+              </Typography>
+              <Typography variant="h4-bold">{overallProgressPercent}</Typography>
+              <Typography variant="caption-semi-bold" ml="2px">
+                %
+              </Typography>
+            </Stack>
+
+            <ProgressBar overall percent={overallProgressPercent} />
           </Stack>
         </Stack>
 
         <Divider flexItem sx={{ borderWidth: "1px" }} />
 
-        <Stack p={3} flex={4 / 12} gap={2}>
+        <Stack p={3} flex={4 / 12} gap={2} justifyContent={{ md: "center" }}>
           <Stack direction="row" justifyContent="space-between" bgcolor="dark.3" borderRadius="10px" px={2} py={1}>
-            <Typography variant="p1-regular">Current Rank</Typography>
+            <Typography variant="p1-regular">Next Rank</Typography>
             <Typography variant="p1-semi-bold" color="pink.dark">
-              #Ranky88
+              #{toPascalCase(nextRank?.type)}
             </Typography>
           </Stack>
           <Stack direction="row" justifyContent="space-between" alignItems="center">
             <Stack alignItems="center" flex={1}>
               <Typography variant="h4-semi-bold" color="success.main">
-                +2.5 %
+                +{(nextRank as any)?.percent} %
               </Typography>
               <Typography variant="p2-medium" color="grey.light">
                 Override Bonus
@@ -183,7 +277,7 @@ const AFDashboardTab: FC = () => {
                   <RiveComp src="/assets/rive/coin_rotation_2.riv" width={60} height={60} />
                 </Box>
                 <Typography pl={4} variant="h4-semi-bold" color="success.main">
-                  +60
+                  +{toNumber(nextRank?.gold_coins)}
                 </Typography>
               </Stack>
               <Typography variant="p2-medium" color="grey.light">
@@ -201,7 +295,7 @@ const AFDashboardTab: FC = () => {
               <Icon name="User--colorful" />
             </Stack>
             <Stack>
-              <Typography variant="h4-semi-bold">404</Typography>
+              <Typography variant="h4-semi-bold">{children?.data?.total_count}</Typography>
               <Typography variant="p2-medium" color="grey.light">
                 Team Members
               </Typography>
@@ -213,7 +307,7 @@ const AFDashboardTab: FC = () => {
               <Icon name="Money--colorful" />
             </Stack>
             <Stack>
-              <Typography variant="h4-semi-bold">€ 77,400.00</Typography>
+              <Typography variant="h4-semi-bold">{formatCurrency(children?.data?.first_line_turnover)}</Typography>
               <Typography variant="p2-medium" color="grey.light">
                 First line Volume
               </Typography>
@@ -222,9 +316,9 @@ const AFDashboardTab: FC = () => {
         </ContentStack>
 
         <ContentStack flex={8 / 12} p={0} direction={"row"} flexWrap={{ md: "unset", xs: "wrap" }}>
-          {arr.map((item, index) => (
+          {children?.data?.distribution_of_plans?.map((item, index) => (
             <Stack
-              key={item.title}
+              key={item.plan_type}
               flex={1}
               py={3}
               px={{ md: 2, xs: 3 }}
@@ -233,13 +327,13 @@ const AFDashboardTab: FC = () => {
               bgcolor={{ sm: !(index % 2) ? undefined : "dark.3" }}
             >
               <Box sx={{ aspectRatio: 1 }}>
-                <RiveComp width={80} height={80} src={item.image} />
+                <RiveComp width={80} height={80} src={rives[item.plan_type!]} />
               </Box>
               <Typography mt={1} variant="h4-semi-bold">
-                {item.amount}
+                {item.count}
               </Typography>
               <Typography variant="p2-medium" textTransform={"capitalize"} color="grey.light">
-                {item.title}
+                {item.plan_type}
               </Typography>
             </Stack>
           ))}

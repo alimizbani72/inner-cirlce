@@ -110,7 +110,7 @@ const AffPayoutsTabTable: FC = () => {
           sx={{ "> div": { borderBottomRightRadius: 0, borderBottomLeftRadius: 0 } }}
         >
           <CustomTable
-            title="Commissions"
+            title="Payouts"
             columns={columns}
             data={data}
             action={

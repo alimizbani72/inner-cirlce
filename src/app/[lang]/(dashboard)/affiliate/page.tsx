@@ -2,7 +2,15 @@ import type { Metadata } from "next";
 import AffiliateSection from "./_sections";
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import { getQueryClient } from "@app/_providers/customQueryClient";
-import { prefetchUseAffiliateServiceAffiliateReferralCodeQuery } from "@/services/queries/prefetch";
+import {
+  prefetchUseAffiliateServiceAffiliateBalanceQuery,
+  prefetchUseAffiliateServiceAffiliateChildrenQuery,
+  prefetchUseAffiliateServiceAffiliateMeQuery,
+  prefetchUseAffiliateServiceAffiliateProgressQuery,
+  prefetchUseAffiliateServiceAffiliateRanksQuery,
+  prefetchUseAffiliateServiceAffiliateReferralCodeQuery,
+  prefetchUseFinancialServiceFinancialInfoQuery,
+} from "@/services/queries/prefetch";
 
 // ----------------------------------------------------------------------
 
@@ -13,6 +21,12 @@ export const metadata: Metadata = {
 export default async function Affiliate() {
   const queryClient = getQueryClient();
   await Promise.all([
+    prefetchUseAffiliateServiceAffiliateMeQuery(queryClient),
+    prefetchUseFinancialServiceFinancialInfoQuery(queryClient),
+    prefetchUseAffiliateServiceAffiliateRanksQuery(queryClient),
+    prefetchUseAffiliateServiceAffiliateBalanceQuery(queryClient),
+    prefetchUseAffiliateServiceAffiliateProgressQuery(queryClient),
+    prefetchUseAffiliateServiceAffiliateChildrenQuery(queryClient),
     prefetchUseAffiliateServiceAffiliateReferralCodeQuery(queryClient),
     // Add more prefetch queries here
   ]);

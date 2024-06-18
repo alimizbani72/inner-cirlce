@@ -6,3 +6,5 @@
 # cache ric files in service worker
 
 # serve fonts locally
+
+# Fix costumeTable Last row for expanding child

@@ -165,6 +165,9 @@ const SortTable = ({ title, data, action, width, minWidthCell }: PropType) => {
                         active={sortConfig?.key === column.key}
                         direction={sortConfig?.direction}
                         onClick={() => handleSort(column.key)}
+                        sx={{
+                          "&.Mui-active": { color: "pink.dark", ".MuiTableSortLabel-icon": { color: "pink.dark" } },
+                        }}
                       >
                         {column.title}
                       </TableSortLabel>

@@ -69,7 +69,7 @@ const CustomTable = ({ title, columns, data, width, minWidthCell, action }: Prop
                 }}
               >
                 <Typography variant="caption-regular" color={expandedRows[row.id] ? "common.white" : "grey.light"}>
-                  {level}
+                  {level + 1}
                 </Typography>
                 <Icon name={expandedRows[row.id] ? "Arrow-up" : "Arrow-down"} />
               </Stack>

@@ -1,3 +1,10 @@
+import type { MoneyResponse } from "@/services/requests";
+import numeral from "numeral";
+
+const CURRENCY_CODE: Record<string, string> = {
+  USD: "$",
+};
+
 export const toNumber = (input: any) => parseInt(input, 10) || 0;
 
 export const addIranCode = (input: string) => `+98${input}`;
@@ -17,3 +24,10 @@ export const getProgress = (status: string | undefined, isReady: boolean | undef
 };
 
 export const isOdd = (number: number): boolean => number % 2 === 0;
+
+export const formatCurrency = (props: undefined | MoneyResponse) =>
+  props?.value
+    ? numeral(props.value)
+        .format("$0,0.00")
+        .replace("$", CURRENCY_CODE[props.currency_code!] || "$")
+    : 0;

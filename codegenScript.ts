@@ -6,7 +6,7 @@ const envPath = require("path");
 dotenv.config({ path: envPath.resolve(__dirname, ".env") });
 
 // Define the endpoint from environment variables or use a default
-const endpoint = process.env.NEXT_PUBLIC_MINECRAFT_ENDPOINT || "https://staging-minecraft.chainmind.com/";
+const endpoint = process.env.NEXT_PUBLIC_MINECRAFT_ENDPOINT || "https://staging-minecraft.innercircle-chainmind.com/";
 
 // Prepare the command with new options from the updated package
 const openapiCommand = `bun run openapi-rq -i ${endpoint}apidocs/openapi.yaml -o src/services --request request.ts --format biome --lint biome --operationId --enums typescript`;

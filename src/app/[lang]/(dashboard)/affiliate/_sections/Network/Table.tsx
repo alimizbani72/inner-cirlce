@@ -4,6 +4,10 @@ import type { FC } from "react";
 import { Stack } from "@mui/material";
 import Scrollbar from "@/components/Scrollbar";
 import CustomTable from "@/components/CustomTable";
+import { useAffiliateServiceAffiliateChildrenQuery } from "@/services/queries";
+import { formatCurrency } from "@/utils/toNumber";
+import { fDate } from "@/utils/format-time";
+import { toPascalCase } from "@/utils/change-case";
 
 const columns = [
   {
@@ -12,130 +16,21 @@ const columns = [
   },
   {
     title: "Package",
-    modify: (row: any) => row.package,
+    modify: (row: any) => toPascalCase(row.plan_type),
   },
   {
     title: "Joined Date",
-    modify: (row: any) => row.joinedDate,
+    modify: (row: any) => fDate(row.created_at, "dd.MM.yyyy"),
   },
   {
     title: "Money made?",
-    modify: (row: any) => row.moneyMade,
-  },
-];
-
-const data = [
-  {
-    id: 1,
-    username: "User1",
-    package: "Fish",
-    joinedDate: "10.02.2024",
-    moneyMade: "$4,200.00",
-    children: [
-      {
-        id: 1.1,
-        username: "User1-1",
-        package: "SubFish",
-        joinedDate: "11.02.2024",
-        moneyMade: "$1,200.00",
-      },
-      {
-        id: 1.2,
-        username: "User1-2",
-        package: "SubFish",
-        joinedDate: "12.02.2024",
-        moneyMade: "$1,500.00",
-      },
-    ],
-  },
-  {
-    id: 2,
-    username: "User2",
-    package: "Shark",
-    joinedDate: "10.02.2024",
-    moneyMade: "$4,200.00",
-    children: [
-      {
-        id: 2.1,
-        username: "User2-1",
-        package: "SubShark",
-        joinedDate: "13.02.2024",
-        moneyMade: "$2,000.00",
-      },
-    ],
-  },
-  {
-    id: 3,
-    username: "User3",
-    package: "Whale",
-    joinedDate: "10.02.2024",
-    moneyMade: "$4,200.00",
-    children: [], // No children for this row
-  },
-  {
-    id: 4,
-    username: "User4",
-    package: "Fish",
-    joinedDate: "10.02.2024",
-    moneyMade: "$4,200.00",
-    children: [
-      {
-        id: 4.1,
-        username: "User4-1",
-        package: "SubFish",
-        joinedDate: "14.02.2024",
-        moneyMade: "$900.00",
-      },
-      {
-        id: 4.2,
-        username: "User4-2",
-        package: "SubFish",
-        joinedDate: "15.02.2024",
-        moneyMade: "$800.00",
-      },
-      {
-        id: 4.3,
-        username: "User4-3",
-        package: "SubFish",
-        joinedDate: "16.02.2024",
-        moneyMade: "$700.00",
-        children: [
-          {
-            id: 5.1,
-            username: "User4-3-1",
-            package: "SubFish",
-            joinedDate: "14.02.2024",
-            moneyMade: "$900.00",
-          },
-          {
-            id: 5.2,
-            username: "User4-3-2",
-            package: "SubFish",
-            joinedDate: "15.02.2024",
-            moneyMade: "$800.00",
-          },
-          {
-            id: 5.3,
-            username: "User4-3-3",
-            package: "SubFish",
-            joinedDate: "16.02.2024",
-            moneyMade: "$700.00",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: 5,
-    username: "User5",
-    package: "Shark",
-    joinedDate: "10.02.2024",
-    moneyMade: "$4,200.00",
-    children: [], // No children for this row
+    modify: (row: any) => formatCurrency(row.turnover),
   },
 ];
 
 const AffNetworkTabTable: FC = () => {
+  const { data } = useAffiliateServiceAffiliateChildrenQuery();
+
   return (
     <Stack>
       <Scrollbar>
@@ -144,7 +39,7 @@ const AffNetworkTabTable: FC = () => {
           maxWidth={{ md: "calc(100vw - 64px)", xs: "calc(100vw - 48px)" }}
           sx={{ "> div": { borderBottomRightRadius: 0, borderBottomLeftRadius: 0 } }}
         >
-          <CustomTable columns={columns} data={data} />
+          <CustomTable columns={columns} data={data?.data?.nested_users!} />
         </Stack>
       </Scrollbar>
     </Stack>
