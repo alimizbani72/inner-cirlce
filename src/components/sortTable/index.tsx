@@ -12,6 +12,7 @@ import Scrollbar from "../Scrollbar";
 import _ from "lodash";
 import type React from "react";
 import MoreInfoDialog from "./MoreInfoDialog";
+import { Icon } from "../icons";
 
 type ColumnType = {
   title: string;
@@ -214,9 +215,16 @@ const SortTable = ({ title, data, action, width, minWidthCell }: PropType) => {
                         active={sortConfig?.key === column.key}
                         direction={sortConfig?.direction}
                         onClick={() => handleSort(column.key)}
+                        IconComponent={({ className }) => <Icon name="Arrow-Sort" className={className} />}
                         sx={{
                           whiteSpace: "nowrap",
-                          "&.Mui-active": { color: "pink.dark", ".MuiTableSortLabel-icon": { color: "pink.dark" } },
+                          "&.Mui-active": {
+                            color: "pink.dark",
+                            ".MuiTableSortLabel-icon": {
+                              "path:nth-child(1)": { stroke: (theme) => theme.palette.pink.dark },
+                              "path:nth-child(2)": { stroke: (theme) => theme.palette.grey.light, opacity: 0.3 },
+                            },
+                          },
                         }}
                       >
                         {column.title.replaceAll("_", " ")}

@@ -3,6 +3,55 @@
   "icons": [
     {
       "icon": {
+        "paths": ["M665.6 409.6l-153.6-153.6-153.6 153.6", "M358.4 614.4l153.6 153.6 153.6-153.6"],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(151, 153, 180)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 76.80000000000001
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(151, 153, 180)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 76.80000000000001
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": ["Arrow Sort"]
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(151, 153, 180)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 76.80000000000001
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(151, 153, 180)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 76.80000000000001
+        }
+      ],
+      "properties": { "order": 2, "id": 0, "name": "Arrow-Sort", "prevSize": 24, "code": 59648 },
+      "setIdx": 0,
+      "setId": 0,
+      "iconIdx": 0
+    },
+    {
+      "icon": {
         "paths": [
           "M512.021 528.203v-128",
           "M511.978 650.667c-5.888 0-10.666 4.778-10.624 10.666 0 5.888 4.779 10.667 10.667 10.667s10.667-4.779 10.667-10.667c0-5.888-4.779-10.666-10.71-10.666",
