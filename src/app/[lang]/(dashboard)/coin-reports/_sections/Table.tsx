@@ -8,13 +8,15 @@ import SortTable from "@/components/sortTable";
 import { useContentServiceContentCoinReportCreateMutation } from "@/services/queries";
 import { useAppSelector } from "@/lib/hooks";
 import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
+import Empty from "@/components/Empty";
+import Iconify from "@/components/iconify";
 
 interface TableProps {}
 
 const buttons = [
   {
     label: "Standard Coin Reports",
-    value: 1,
+    value: "coinreports-standard",
   },
   {
     label: (
@@ -31,7 +33,7 @@ const buttons = [
         Coin Reports
       </Stack>
     ),
-    value: 2,
+    value: "coinreports-10x",
   },
   {
     label: (
@@ -48,49 +50,13 @@ const buttons = [
         Coin Reports
       </Stack>
     ),
-    value: 3,
+    value: "coinreports-100x",
   },
 ];
 
-// const columns = [
-//   {
-//     title: "Name",
-//     modify: (row: any) => row.title,
-//   },
-//   {
-//     title: "Evaluation",
-//     modify: (row: any) => row.evaluation,
-//   },
-//   {
-//     title: "Category",
-//     modify: (row: any) => row.category,
-//   },
-// ];
-
-// const data = [
-//   {
-//     id: 1,
-//     title: "Bitcoin",
-//     evaluation: "9,01",
-//     category: "Store of Value",
-//   },
-//   {
-//     id: 2,
-//     title: "Ethereum",
-//     evaluation: "8,65",
-//     category: "Layer 1",
-//   },
-//   {
-//     id: 3,
-//     title: "Solana",
-//     evaluation: "8,57",
-//     category: "Layer 1",
-//   },
-// ];
-
 const Table: FC<TableProps> = () => {
   const [value, setValue] = useState<any>(buttons[0].value);
-  const { mutateAsync, data: coinsData, isSuccess } = useContentServiceContentCoinReportCreateMutation();
+  const { mutateAsync, data: coinsData, isSuccess, isPending } = useContentServiceContentCoinReportCreateMutation();
   const isCollapsed = useAppSelector(isSidebarCollapsed);
   const getCoins = async () => {
     try {
@@ -108,25 +74,35 @@ const Table: FC<TableProps> = () => {
     setValue(newValue);
   };
 
+  if (isPending) {
+    return (
+      <Empty title="On Loading..." icon={<Iconify icon="svg-spinners:pulse-2" width={40} sx={{ color: "white" }} />} />
+    );
+  }
+
   if (!isSuccess) {
-    return null;
+    return <Empty />;
   }
 
   return (
-    <Stack>
+    <Stack
+      sx={{
+        ".os-scrollbar-handle": {
+          cursor: "pointer",
+          backgroundColor: "grey.dark",
+          "&:hover": { backgroundColor: "grey.dark" },
+        },
+      }}
+    >
       <Scrollbar>
         <Stack pl={{ md: 4, xs: 3 }} pb={3} alignItems="flex-start" maxWidth="100vw">
           <Stack pr={{ md: 4, xs: 3 }}>
-            <Toggle
-              setValue={handleChange}
-              buttons={Object.keys((coinsData as any)?.data).map((item, index) => ({ label: item, value: index }))}
-              value={value}
-            />
+            <Toggle setValue={handleChange} buttons={buttons} value={value} />
           </Stack>
         </Stack>
       </Scrollbar>
 
-      <Scrollbar options={{ scrollbars: { clickScroll: true } }}>
+      <Scrollbar options={{ scrollbars: { clickScroll: true, autoHide: "never" } }}>
         <Stack
           pl={{ md: 4, xs: 3 }}
           pb={3}
@@ -134,8 +110,7 @@ const Table: FC<TableProps> = () => {
           maxWidth={`calc(100vw - ${isCollapsed ? "104px" : "248px"})`}
           sx={{ "> div": { borderTopRightRadius: 0, borderBottomRightRadius: 0, borderBottomLeftRadius: 0 } }}
         >
-          {isSuccess && <SortTable data={(coinsData as any).data["coinreports-standard"]} />}
-          {/* <CustomTable title={buttons.find((i) => i.value === value)?.label} columns={columns} data={data} /> */}
+          {isSuccess && <SortTable data={(coinsData as any).data[value]} />}
         </Stack>
       </Scrollbar>
     </Stack>

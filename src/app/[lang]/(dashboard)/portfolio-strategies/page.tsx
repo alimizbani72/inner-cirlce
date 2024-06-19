@@ -1,12 +1,15 @@
 import { Stack } from "@mui/material";
 import type { Metadata } from "next";
 import StrategiesItem from "./_sections/StrategiesItem";
+import { plans } from "@/configs/plans";
 
 // ----------------------------------------------------------------------
 
 export const metadata: Metadata = {
   title: "Portfolio Strategies",
 };
+
+const myPlan = "plankton";
 
 export default async function PortfolioStrategies() {
   return (
@@ -16,14 +19,11 @@ export default async function PortfolioStrategies() {
       direction={{ md: "row", xs: "column" }}
       flexWrap={{ md: "wrap", xs: undefined }}
       alignItems={{ md: "flex-start", xs: undefined }}
-      justifyContent={"flex-start"}
+      justifyContent="flex-start"
     >
-      <StrategiesItem title="Plankton" subtitle="Strategy" src="/assets/rive/plankton.riv" link="plankton" />
-
-      <StrategiesItem title="Shrimp" subtitle="Strategy" src="/assets/rive/shrimp.riv" link="shrimp" />
-      <StrategiesItem title="Fish" subtitle="Strategy" src="/assets/rive/fish.riv" link="fish" />
-      <StrategiesItem title="Shark" subtitle="Strategy" src="/assets/rive/shark.riv" link="shark" />
-      <StrategiesItem title="Whale" subtitle="Strategy" src="/assets/rive/whale_animation.riv" link="whale" upgrade />
+      {Object.entries(plans).map(([key, value]) => (
+        <StrategiesItem subtitle="Strategy" src={value.rive} type={key} upgrade={myPlan !== key} />
+      ))}
     </Stack>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { Paper, Stack, Typography, TableSortLabel, Button, Dialog, DialogTitle, DialogContent } from "@mui/material";
+import { Paper, Stack, Typography, TableSortLabel, Button } from "@mui/material";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -11,6 +11,7 @@ import { useState, useEffect, type ReactNode } from "react";
 import Scrollbar from "../Scrollbar";
 import _ from "lodash";
 import type React from "react";
+import MoreInfoDialog from "./MoreInfoDialog";
 
 type ColumnType = {
   title: string;
@@ -57,9 +58,31 @@ const generateColumns = (data: any[], handleOpenMoreInfo: (info: string) => void
         }
         if (key === "more_info") {
           return (
-            <Button variant="outlined" onClick={() => handleOpenMoreInfo(value)}>
-              More Info
+            <Button color="info" size="small" sx={{ whiteSpace: "nowrap" }} onClick={() => handleOpenMoreInfo(value)}>
+              More Information
             </Button>
+          );
+        }
+
+        if (value.toLowerCase().includes("low risk")) {
+          return (
+            <Typography variant="p2-medium" color="success.main">
+              {value}
+            </Typography>
+          );
+        }
+        if (value.toLowerCase().includes("mid risk")) {
+          return (
+            <Typography variant="p2-medium" color="warning.main">
+              {value}
+            </Typography>
+          );
+        }
+        if (value.toLowerCase().includes("high risk")) {
+          return (
+            <Typography variant="p2-medium" color="danger.main">
+              {value}
+            </Typography>
           );
         }
         return value;
@@ -185,30 +208,31 @@ const SortTable = ({ title, data, action, width, minWidthCell }: PropType) => {
             <TableHead>
               <TableRow>
                 {columns.map((column) => (
-                  <TableCell align="left" key={column.key}>
+                  <TableCell align="left" key={column.key} sx={{ whiteSpace: "nowrap" }}>
                     {column.sortType ? (
                       <TableSortLabel
                         active={sortConfig?.key === column.key}
                         direction={sortConfig?.direction}
                         onClick={() => handleSort(column.key)}
                         sx={{
+                          whiteSpace: "nowrap",
                           "&.Mui-active": { color: "pink.dark", ".MuiTableSortLabel-icon": { color: "pink.dark" } },
                         }}
                       >
-                        {column.title}
+                        {column.title.replaceAll("_", " ")}
                       </TableSortLabel>
                     ) : (
-                      column.title
+                      column.title.replaceAll("_", " ")
                     )}
                   </TableCell>
                 ))}
               </TableRow>
             </TableHead>
             <TableBody>
-              {sortedData.map((rowItem) => (
-                <TableRow key={rowItem.id}>
+              {sortedData.map((rowItem, index) => (
+                <TableRow key={index}>
                   {columns.map((column, index) => (
-                    <TableCell align="left" key={index}>
+                    <TableCell align="left" key={index} sx={{ whiteSpace: "nowrap" }}>
                       {column.modify(rowItem)}
                     </TableCell>
                   ))}
@@ -219,30 +243,7 @@ const SortTable = ({ title, data, action, width, minWidthCell }: PropType) => {
         </Scrollbar>
       </TableContainer>
 
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>More Info</DialogTitle>
-        <DialogContent>
-          {moreInfo && (
-            <Stack spacing={2}>
-              <Typography>Name: {moreInfo.Name}</Typography>
-              <Typography>
-                Link:{" "}
-                <a href={moreInfo.link} target="_blank" rel="noopener noreferrer">
-                  {moreInfo.link}
-                </a>
-              </Typography>
-              {moreInfo.video_url && (
-                <Typography>
-                  Video URL:{" "}
-                  <a href={moreInfo.video_url} target="_blank" rel="noopener noreferrer">
-                    {moreInfo.video_url}
-                  </a>
-                </Typography>
-              )}
-            </Stack>
-          )}
-        </DialogContent>
-      </Dialog>
+      {moreInfo && <MoreInfoDialog open={open} close={handleClose} data={moreInfo} />}
     </Stack>
   );
 };

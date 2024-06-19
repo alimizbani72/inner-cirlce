@@ -91,7 +91,12 @@ const WelcomeBanner: FC = () => {
             </Stack>
           </Stack>
 
-          <Button color="secondary" size="large" startIcon={<Icon color="dark.1" name="Subscription" />}>
+          <Button
+            href="/pricing"
+            color="secondary"
+            size="large"
+            startIcon={<Icon color="dark.1" name="Subscription" />}
+          >
             Upgrade
           </Button>
         </Stack>

@@ -12,5 +12,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function PortfolioStrategiesInner({ params }: Props) {
-  return <PortfolioStrategiesInnerSection pageTitle={`${params.slug.toLocaleUpperCase()} Strategy`} />;
+  return (
+    <PortfolioStrategiesInnerSection pageTitle={`${params.slug.toLocaleUpperCase()} Strategy`} plan={params.slug} />
+  );
 }

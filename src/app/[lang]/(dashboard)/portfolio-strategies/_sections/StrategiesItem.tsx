@@ -8,14 +8,13 @@ import RiveComp from "@/components/RiveComp";
 import { Icon } from "@/components/icons";
 
 interface StrategiesItemProps {
-  title: string;
   src: string;
+  type: string;
   subtitle: string;
-  link: string;
   upgrade?: boolean;
 }
 
-const StrategiesItem: FC<StrategiesItemProps> = ({ src, link, subtitle, title, upgrade }) => {
+const StrategiesItem: FC<StrategiesItemProps> = ({ src, subtitle, type, upgrade }) => {
   return (
     <ContentStack
       p={2}
@@ -31,14 +30,14 @@ const StrategiesItem: FC<StrategiesItemProps> = ({ src, link, subtitle, title, u
 
       <Stack p={1} flex={1}>
         <Typography variant="h4-semi-bold" textTransform={"uppercase"}>
-          {title}
+          {type}
         </Typography>
         <Typography variant="p2-medium" textTransform={"uppercase"} color={"grey.dark"} mb={2}>
           {subtitle}
         </Typography>
         {upgrade ? (
           <Button
-            href={link}
+            href="/pricing"
             color="info"
             sx={{ "svg path": { fill: "#E68F0D !important" }, whiteSpace: "nowrap" }}
             startIcon={<Icon name="Subscription" />}
@@ -56,7 +55,7 @@ const StrategiesItem: FC<StrategiesItemProps> = ({ src, link, subtitle, title, u
             </Typography>
           </Button>
         ) : (
-          <Button href={link} color="info" sx={{ whiteSpace: "nowrap" }}>
+          <Button href={type} color="info" sx={{ whiteSpace: "nowrap" }}>
             See Strategies
           </Button>
         )}

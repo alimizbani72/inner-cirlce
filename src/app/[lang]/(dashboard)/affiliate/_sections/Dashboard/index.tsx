@@ -11,7 +11,6 @@ import {
   useAffiliateServiceAffiliateChildrenQuery,
   useAffiliateServiceAffiliateMeQuery,
   useAffiliateServiceAffiliateProgressQuery,
-  useAffiliateServiceAffiliateRanksQuery,
 } from "@/services/queries";
 import { formatCurrency, toNumber } from "@/utils/toNumber";
 import { toPascalCase } from "@/utils/change-case";
@@ -45,20 +44,9 @@ const ProgressBar = ({ overall, percent }: { overall?: boolean; percent: number 
 const AFDashboardTab: FC = () => {
   const [openWithdrawDialog, setOpenWithdrawDialog] = useState(false);
   const { data: me } = useAffiliateServiceAffiliateMeQuery();
-  const { data: ranks } = useAffiliateServiceAffiliateRanksQuery();
   const { data: balance } = useAffiliateServiceAffiliateBalanceQuery();
   const { data: progress } = useAffiliateServiceAffiliateProgressQuery();
   const { data: children } = useAffiliateServiceAffiliateChildrenQuery();
-
-  const nextRank = useMemo(() => {
-    const findIndex = ranks?.data?.findIndex((item) => item.type === me?.data?.rank?.type) ?? -1;
-
-    if (findIndex > -1) {
-      return ranks?.data?.[findIndex + 1];
-    }
-
-    return me?.data?.rank;
-  }, [me, ranks]);
 
   const overallProgressPercent = useMemo(
     () => Object.values(progress?.data || {}).reduce((total, { percent }) => total + toNumber(percent), 0),
@@ -117,7 +105,7 @@ const AFDashboardTab: FC = () => {
           </Stack>
           <Stack direction="row" justifyContent="space-between" alignItems="center">
             <Stack alignItems="center" flex={1}>
-              <Typography variant="h4-semi-bold">{(me?.data?.rank as any)?.percent} %</Typography>
+              <Typography variant="h4-semi-bold">{me?.data?.rank?.percent} %</Typography>
               <Typography variant="p2-medium" color="grey.light">
                 Override Bonus
               </Typography>
@@ -251,13 +239,13 @@ const AFDashboardTab: FC = () => {
           <Stack direction="row" justifyContent="space-between" bgcolor="dark.3" borderRadius="10px" px={2} py={1}>
             <Typography variant="p1-regular">Next Rank</Typography>
             <Typography variant="p1-semi-bold" color="pink.dark">
-              #{toPascalCase(nextRank?.type)}
+              #{toPascalCase(me?.data?.next_rank?.type)}
             </Typography>
           </Stack>
           <Stack direction="row" justifyContent="space-between" alignItems="center">
             <Stack alignItems="center" flex={1}>
               <Typography variant="h4-semi-bold" color="success.main">
-                +{(nextRank as any)?.percent} %
+                +{me?.data?.next_rank?.percent} %
               </Typography>
               <Typography variant="p2-medium" color="grey.light">
                 Override Bonus
@@ -270,7 +258,7 @@ const AFDashboardTab: FC = () => {
                   <RiveComp src="/assets/rive/coin_rotation_2.riv" width={60} height={60} />
                 </Box>
                 <Typography pl={4} variant="h4-semi-bold" color="success.main">
-                  +{toNumber(nextRank?.gold_coins)}
+                  +{toNumber(me?.data?.next_rank?.gold_coins)}
                 </Typography>
               </Stack>
               <Typography variant="p2-medium" color="grey.light">
@@ -319,9 +307,11 @@ const AFDashboardTab: FC = () => {
               justifyContent={"center"}
               bgcolor={{ sm: !(index % 2) ? undefined : "dark.3" }}
             >
-              <Box sx={{ aspectRatio: 1 }}>
-                <RiveComp width={80} height={80} src={(plans as any)[item.plan_type!]?.rive} />
-              </Box>
+              {(plans as any)[item.plan_type!]?.rive && (
+                <Box sx={{ aspectRatio: 1 }}>
+                  <RiveComp width={80} height={80} src={(plans as any)[item.plan_type!]?.rive} />
+                </Box>
+              )}
               <Typography mt={1} variant="h4-semi-bold">
                 {item.count}
               </Typography>
