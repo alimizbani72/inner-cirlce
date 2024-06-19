@@ -34,8 +34,6 @@ spec:
         resources:
           {{- toYaml .Values.resources | nindent 12 }}
         env:
-        - name: NEXT_PUBLIC_URL
-          value: "http://{{ .Values.domainName }}"
         - name: NEXTAUTH_URL
           value: {{ .Values.app.nextauth_url }}
         - name: NEXTAUTH_SECRET
