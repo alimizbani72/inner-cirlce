@@ -9,7 +9,7 @@ import { useContentServiceContentCoinReportCreateMutation } from "@/services/que
 import { useAppSelector } from "@/lib/hooks";
 import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
 import Empty from "@/components/Empty";
-import Iconify from "@/components/iconify";
+import Loading from "@/components/Loading";
 
 interface TableProps {}
 
@@ -75,9 +75,7 @@ const Table: FC<TableProps> = () => {
   };
 
   if (isPending) {
-    return (
-      <Empty title="On Loading..." icon={<Iconify icon="svg-spinners:pulse-2" width={40} sx={{ color: "white" }} />} />
-    );
+    return <Loading />;
   }
 
   if (!isSuccess) {

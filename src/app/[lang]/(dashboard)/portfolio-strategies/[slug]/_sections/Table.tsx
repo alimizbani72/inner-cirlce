@@ -9,8 +9,8 @@ import SortTable from "@/components/sortTable";
 import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
 import { useAppSelector } from "@/lib/hooks";
 import { useContentServiceContentPortfolioStrategyCreateMutation } from "@/services/queries";
-import Iconify from "@/components/iconify";
 import Empty from "@/components/Empty";
+import Loading from "@/components/Loading";
 
 interface TableProps {
   plan: string;
@@ -114,14 +114,7 @@ const Table: FC<TableProps> = ({ plan }) => {
             />
           ) : (
             <Stack width="100%" alignItems="center">
-              {isPending ? (
-                <Empty
-                  title="On Loading..."
-                  icon={<Iconify icon="svg-spinners:pulse-2" width={40} sx={{ color: "white" }} />}
-                />
-              ) : (
-                <Empty />
-              )}
+              {isPending ? <Loading /> : <Empty />}
             </Stack>
           )}
         </Stack>

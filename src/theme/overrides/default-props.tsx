@@ -1,8 +1,6 @@
 import type { Theme } from "@mui/material/styles";
 import type { SvgIconProps } from "@mui/material/SvgIcon";
 import SvgIcon from "@mui/material/SvgIcon";
-// components
-import Iconify from "@/components/iconify";
 
 // ----------------------------------------------------------------------
 
@@ -139,16 +137,6 @@ const TreeViewEndIcon = (props: SvgIconProps) => (
 
 export function defaultProps(theme: Theme) {
   return {
-    MuiAlert: {
-      defaultProps: {
-        iconMapping: {
-          error: <Iconify icon="solar:danger-bold" width={24} />,
-          info: <Iconify icon="eva:info-fill" width={24} />,
-          success: <Iconify icon="eva:checkmark-circle-2-fill" width={24} />,
-          warning: <Iconify icon="eva:alert-triangle-fill" width={24} />,
-        },
-      },
-    },
     MuiStack: {
       defaultProps: {
         useFlexGap: true,
@@ -182,11 +170,6 @@ export function defaultProps(theme: Theme) {
           variant: "body2",
           marginTop: theme.spacing(0.5),
         },
-      },
-    },
-    MuiChip: {
-      defaultProps: {
-        deleteIcon: <Iconify icon="solar:close-circle-bold" />,
       },
     },
     MuiDialogActions: {

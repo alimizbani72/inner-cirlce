@@ -3,9 +3,8 @@
 import Collapse from "@mui/material/Collapse";
 import { SnackbarProvider as NotistackProvider } from "notistack";
 import { type ReactNode, useRef } from "react";
-
-import Iconify from "@/components/iconify";
-import { CustomIcon, StyledIcon, StyledNotistack } from "./styles";
+import { StyledNotistack } from "./styles";
+import { Icon } from "../icons";
 
 // ----------------------------------------------------------------------
 
@@ -26,26 +25,8 @@ export default function SnackbarProvider({ children }: Props) {
       variant="success" // Set default variant
       anchorOrigin={{ vertical: "top", horizontal: "center" }}
       iconVariant={{
-        info: (
-          <StyledIcon color="info">
-            <Iconify icon="eva:info-fill" width={24} />
-          </StyledIcon>
-        ),
-        success: (
-          <CustomIcon color="success">
-            <Iconify icon="eva:checkmark-circle-2-fill" width={24} />
-          </CustomIcon>
-        ),
-        warning: (
-          <StyledIcon color="warning">
-            <Iconify icon="eva:alert-triangle-fill" width={24} />
-          </StyledIcon>
-        ),
-        error: (
-          <CustomIcon color="error">
-            <Iconify icon="clarity:error-line" width={24} />
-          </CustomIcon>
-        ),
+        success: <Icon name="Eye-On" />,
+        error: <Icon name="Eye-On" />,
       }}
       Components={{
         default: StyledNotistack,

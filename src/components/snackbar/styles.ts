@@ -6,45 +6,26 @@ import { MaterialDesignContent } from "notistack";
 // ----------------------------------------------------------------------
 
 export const StyledNotistack = styled(MaterialDesignContent)(({ theme }) => {
-  const lightMode = theme.palette.mode === "light";
-
   return {
     "& #notistack-snackbar": {
-      ...theme.typography.subtitle2,
       padding: 0,
       flexGrow: 1,
+      color: theme.palette.common.white,
+      ...theme.typography["p2-medium"],
+      svg: { marginRight: theme.spacing(2) },
     },
     "&.notistack-MuiContent": {
       color: theme.palette.text.primary,
-      // boxShadow: theme.customShadows.z8,
-      borderRadius: theme.shape.borderRadius,
-      padding: theme.spacing(0.5, 2, 0.5, 0.5),
+      borderRadius: theme.spacing(1.5),
+      padding: theme.spacing(2),
       backgroundColor: theme.palette.background.paper,
-    },
-    "&.notistack-MuiContent-default": {
-      padding: theme.spacing(1, 2, 1, 1),
-      color: lightMode ? theme.palette.common.white : theme.palette.grey[800],
-      backgroundColor: lightMode ? theme.palette.grey[800] : theme.palette.common.white,
+      boxSizing: "0px 4px 8px 0px rgba(0, 0, 0, 0.16)",
     },
     "&.notistack-MuiContent-success": {
-      padding: "8px 16px",
-      borderRadius: theme.spacing(4),
-      backgroundColor: theme.palette.success.light,
-
-      "#notistack-snackbar": {
-        color: theme.palette.success.dark,
-        ...theme.typography["p1-medium"],
-      },
+      backgroundColor: theme.palette.success.main,
     },
     "&.notistack-MuiContent-error": {
-      padding: "8px 16px",
-      borderRadius: theme.spacing(4),
-      backgroundColor: theme.palette.error.light,
-
-      "#notistack-snackbar": {
-        color: theme.palette.error.dark,
-        ...theme.typography["p1-medium"],
-      },
+      backgroundColor: theme.palette.error.main,
     },
     // '&.notistack-MuiContent-warning': {},
     // '&.notistack-MuiContent-info': {},

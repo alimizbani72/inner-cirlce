@@ -2,7 +2,7 @@ import type { BoxProps } from "@mui/material";
 import { Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 import type React from "react";
-import Iconify from "./iconify";
+import { Icon } from "./icons";
 
 type Props = {
   icon?: React.ReactNode;
@@ -15,7 +15,7 @@ const Empty: FC<Props> = ({ icon, title = "There is nothing to show!", subtitle,
   return (
     <Stack alignItems="center" justifyContent="center" sx={{ mt: { md: 6 }, p: 6, ...sx }}>
       <Stack alignItems="center" justifyContent="center" borderRadius="110px" mb={3}>
-        {icon || <Iconify icon="iconoir:db-error" width={40} sx={{ color: "white" }} />}
+        {icon || <Icon name="Danger" size={40} />}
       </Stack>
 
       <Typography variant="h4-medium" color="white" textAlign="center">
