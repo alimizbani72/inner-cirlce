@@ -16,11 +16,11 @@ const CategoryItem: FC<Props> = ({ content }) => {
         <Stack gap={1}>
           <Typography variant="p1-medium">{content.title}</Typography>
           <Typography variant="caption-medium" color={"grey.light"}>
-            {content.subtitle}
+            {content.description}
           </Typography>
         </Stack>
 
-        <Link href={content.link} display={"flex"}>
+        <Link href={encodeURIComponent(content.title)} display={"flex"}>
           <Typography variant="p2-medium" color={"pink.light"} sx={{ cursor: "pointer" }}>
             More Details
           </Typography>

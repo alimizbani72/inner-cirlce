@@ -4,53 +4,60 @@ import ContentStack from "@app/_components/ContentStack";
 import { Stack, TextField, Typography } from "@mui/material";
 import { useState, type FC } from "react";
 import VideoItem from "./VideoItem";
+import { useParams } from "next/navigation";
+import { useAppSelector } from "@/lib/hooks";
+import { selectVideos } from "@/lib/features/academy/educationSlice";
 
-const arr = [
-  {
-    id: "234214",
-    image: "/assets/placeholder-image.webp",
-    title: "How to make changes in my space?",
-    link: { slug: "blockchain-academy", id: "what-is-the-blockchain" },
-  },
-  {
-    id: "345345",
-    image: "/assets/placeholder-image.webp",
-    title: "Lorem ipsum..",
-    link: { slug: "blockchain-academy", id: "what-is-the-blockchain" },
-  },
-  {
-    id: "6456",
-    image: "/assets/placeholder-image.webp",
-    title: "Hiiii.....",
-    link: { slug: "blockchain-academy", id: "what-is-the-blockchain" },
-  },
-  {
-    id: "sf5423",
-    image: "/assets/placeholder-image.webp",
-    title: "Something without context...",
-    link: { slug: "blockchain-academy", id: "what-is-the-blockchain" },
-  },
-  {
-    id: "sf52d3",
-    image: "/assets/placeholder-image.webp",
-    title: "How to make changes in my space?",
-    link: { slug: "blockchain-academy", id: "what-is-the-blockchain" },
-  },
-  {
-    id: "sf5ewr23",
-    image: "/assets/placeholder-image.webp",
-    title: "How are you",
-    link: { slug: "blockchain-academy", id: "what-is-the-blockchain" },
-  },
-  {
-    id: "sf52w3",
-    image: "/assets/placeholder-image.webp",
-    title: "It's just for testing purposes",
-    link: { slug: "blockchain-academy", id: "what-is-the-blockchain" },
-  },
-];
+// const arr = [
+//   {
+//     id: "234214",
+//     image: "/assets/placeholder-image.webp",
+//     title: "How to make changes in my space?",
+//     link: { slug: "blockchain-academy", id: "what-is-the-blockchain" },
+//   },
+//   {
+//     id: "345345",
+//     image: "/assets/placeholder-image.webp",
+//     title: "Lorem ipsum..",
+//     link: { slug: "blockchain-academy", id: "what-is-the-blockchain" },
+//   },
+//   {
+//     id: "6456",
+//     image: "/assets/placeholder-image.webp",
+//     title: "Hiiii.....",
+//     link: { slug: "blockchain-academy", id: "what-is-the-blockchain" },
+//   },
+//   {
+//     id: "sf5423",
+//     image: "/assets/placeholder-image.webp",
+//     title: "Something without context...",
+//     link: { slug: "blockchain-academy", id: "what-is-the-blockchain" },
+//   },
+//   {
+//     id: "sf52d3",
+//     image: "/assets/placeholder-image.webp",
+//     title: "How to make changes in my space?",
+//     link: { slug: "blockchain-academy", id: "what-is-the-blockchain" },
+//   },
+//   {
+//     id: "sf5ewr23",
+//     image: "/assets/placeholder-image.webp",
+//     title: "How are you",
+//     link: { slug: "blockchain-academy", id: "what-is-the-blockchain" },
+//   },
+//   {
+//     id: "sf52w3",
+//     image: "/assets/placeholder-image.webp",
+//     title: "It's just for testing purposes",
+//     link: { slug: "blockchain-academy", id: "what-is-the-blockchain" },
+//   },
+// ];
 
 const VideoList: FC = () => {
+  const { id } = useParams();
+
+  const videoList = useAppSelector((state) => selectVideos(state)(decodeURIComponent(id as string)));
+
   const [searchValue, setSearchValue] = useState<string>("");
 
   return (
@@ -82,16 +89,11 @@ const VideoList: FC = () => {
       <Stack mx={"-24px"}>
         <Scrollbar>
           <Stack gap={2} maxHeight={{ md: "63vh" }} px={3}>
-            {arr
+            {videoList
               .filter((vid) => vid?.title?.toLowerCase()?.includes(searchValue?.toLowerCase()))
               .map((item, index) => (
-                <Stack key={item.id} gap={2}>
-                  <VideoItem
-                    {...item}
-                    watching={index === 2}
-                    completed={index < 2}
-                    hasDivider={index + 1 !== arr.length}
-                  />
+                <Stack key={index} gap={2}>
+                  <VideoItem {...item} watching={index === 0} completed={false} hasDivider={true} />
                 </Stack>
               ))}
           </Stack>

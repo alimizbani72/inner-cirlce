@@ -5,8 +5,9 @@ import { menuSlice } from "./features/menu/menuSlice";
 import { dicSlice } from "./features/dictionary/dicSlice";
 import { pageSlice } from "./features/pageTitle/pageSlice";
 import { authSlice } from "./features/auth/authSlice";
+import { educationSlice } from "./features/academy/educationSlice";
 
-const rootReducer = combineSlices(counterSlice, menuSlice, dicSlice, pageSlice, authSlice);
+const rootReducer = combineSlices(counterSlice, menuSlice, dicSlice, pageSlice, authSlice, educationSlice);
 
 export type RootState = ReturnType<typeof rootReducer>;
 

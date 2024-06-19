@@ -3,21 +3,27 @@ import Link from "@/components/Link";
 import { Icon } from "@/components/icons";
 import { snipText } from "@/utils/string";
 import { Box, Divider, Stack, Typography } from "@mui/material";
+import { useParams } from "next/navigation";
 import type { FC } from "react";
 
 interface VideoItemProps {
   title: string;
-  image: string;
-  link: { id: string; slug: string };
+  image?: string;
   completed?: boolean;
   watching?: boolean;
   hasDivider?: boolean;
 }
 
-const VideoItem: FC<VideoItemProps> = ({ image, title, link, completed, watching, hasDivider }) => {
+const VideoItem: FC<VideoItemProps> = ({ image, title, completed, watching, hasDivider }) => {
+  const { slug } = useParams();
   return (
     <>
-      <Stack direction={"row"} gap={2} component={Link} href={`/education/${link.slug}/${link.id}`}>
+      <Stack
+        direction={"row"}
+        gap={2}
+        component={Link}
+        href={`/education/${slug}/${encodeURIComponent(title as string)}`}
+      >
         <Box width={"98px"} height={"53px"}>
           <Image width={"100%"} height={"100%"} borderRadius={"8px"} src={image} />
         </Box>

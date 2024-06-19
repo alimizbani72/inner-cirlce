@@ -1,7 +1,5 @@
-import { Stack } from "@mui/material";
 import type { Metadata } from "next";
-import RoadMap from "../dashboard/_section/RoadMap";
-import Categories from "./_section/Categories";
+import EducationSection from "./_section";
 
 // ----------------------------------------------------------------------
 
@@ -10,10 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default async function EducationCategories() {
-  return (
-    <Stack p={{ md: 4, xs: 3 }} gap={{ md: 3, xs: 4 }}>
-      <Categories />
-      <RoadMap />
-    </Stack>
-  );
+  return <EducationSection />;
 }

@@ -16,7 +16,7 @@ const VideoItem: FC<Props> = ({ content }) => {
       overflow={"hidden"}
       direction={{ md: "row", xs: "column" }}
       component={Link}
-      href={content.link}
+      href={encodeURIComponent(content.title)}
     >
       <Box height={"104px"} width={{ md: "182px", xs: "100%" }}>
         <Image src={content.image} width={"100%"} height={"100%"} />
@@ -26,7 +26,7 @@ const VideoItem: FC<Props> = ({ content }) => {
         <Stack gap={1}>
           <Typography variant="p1-medium">{content.title}</Typography>
           <Typography variant="caption-medium" color={"grey.light"} sx={snipText(1)}>
-            {content.subtitle}
+            {content.description}
           </Typography>
         </Stack>
 
