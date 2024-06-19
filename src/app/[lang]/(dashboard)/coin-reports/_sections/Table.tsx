@@ -52,45 +52,45 @@ const buttons = [
   },
 ];
 
-const columns = [
-  {
-    title: "Name",
-    modify: (row: any) => row.title,
-  },
-  {
-    title: "Evaluation",
-    modify: (row: any) => row.evaluation,
-  },
-  {
-    title: "Category",
-    modify: (row: any) => row.category,
-  },
-];
+// const columns = [
+//   {
+//     title: "Name",
+//     modify: (row: any) => row.title,
+//   },
+//   {
+//     title: "Evaluation",
+//     modify: (row: any) => row.evaluation,
+//   },
+//   {
+//     title: "Category",
+//     modify: (row: any) => row.category,
+//   },
+// ];
 
-const data = [
-  {
-    id: 1,
-    title: "Bitcoin",
-    evaluation: "9,01",
-    category: "Store of Value",
-  },
-  {
-    id: 2,
-    title: "Ethereum",
-    evaluation: "8,65",
-    category: "Layer 1",
-  },
-  {
-    id: 3,
-    title: "Solana",
-    evaluation: "8,57",
-    category: "Layer 1",
-  },
-];
+// const data = [
+//   {
+//     id: 1,
+//     title: "Bitcoin",
+//     evaluation: "9,01",
+//     category: "Store of Value",
+//   },
+//   {
+//     id: 2,
+//     title: "Ethereum",
+//     evaluation: "8,65",
+//     category: "Layer 1",
+//   },
+//   {
+//     id: 3,
+//     title: "Solana",
+//     evaluation: "8,57",
+//     category: "Layer 1",
+//   },
+// ];
 
 const Table: FC<TableProps> = () => {
   const [value, setValue] = useState<any>(buttons[0].value);
-  const { mutateAsync, data, isSuccess } = useContentServiceContentCoinReportCreateMutation();
+  const { mutateAsync, data: coinsData, isSuccess } = useContentServiceContentCoinReportCreateMutation();
   const isCollapsed = useAppSelector(isSidebarCollapsed);
   const getCoins = async () => {
     try {
@@ -108,12 +108,20 @@ const Table: FC<TableProps> = () => {
     setValue(newValue);
   };
 
+  if (!isSuccess) {
+    return null;
+  }
+
   return (
     <Stack>
       <Scrollbar>
         <Stack pl={{ md: 4, xs: 3 }} pb={3} alignItems="flex-start" maxWidth="100vw">
           <Stack pr={{ md: 4, xs: 3 }}>
-            <Toggle setValue={handleChange} buttons={buttons} value={value} />
+            <Toggle
+              setValue={handleChange}
+              buttons={Object.keys((coinsData as any)?.data).map((item, index) => ({ label: item, value: index }))}
+              value={value}
+            />
           </Stack>
         </Stack>
       </Scrollbar>
@@ -126,7 +134,7 @@ const Table: FC<TableProps> = () => {
           maxWidth={`calc(100vw - ${isCollapsed ? "104px" : "248px"})`}
           sx={{ "> div": { borderTopRightRadius: 0, borderBottomRightRadius: 0, borderBottomLeftRadius: 0 } }}
         >
-          {isSuccess && <SortTable data={(data as any).data["coinreports-standard"]} />}
+          {isSuccess && <SortTable data={(coinsData as any).data["coinreports-standard"]} />}
           {/* <CustomTable title={buttons.find((i) => i.value === value)?.label} columns={columns} data={data} /> */}
         </Stack>
       </Scrollbar>
