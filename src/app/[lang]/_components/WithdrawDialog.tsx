@@ -4,15 +4,58 @@ import { Icon } from "@/components/icons";
 import DialogTitle from "@mui/material/DialogTitle";
 import CustomDialog from "@/components/CustomDialog";
 import DialogContent from "@mui/material/DialogContent";
-import { Button, DialogActions, Divider, IconButton, InputLabel, Stack, TextField, Typography } from "@mui/material";
+import { Button, DialogActions, Divider, IconButton, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
+import {
+  useAffiliateServiceAffiliateWithdrawCreateMutation,
+  useFinancialServiceFinancialInfoQuery,
+  useWalletServiceWalletDefaultQuery,
+} from "@/services/queries";
+import { formatCurrency, toNumber } from "@/utils/toNumber";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { RHFTextField } from "@/components/hook-form";
+import FormProvider from "@/components/hook-form/form-provider";
+import * as Yup from "yup";
+import { useSnackbar } from "notistack";
+import { useTranslate } from "@/locales";
+import { LoadingButton } from "@mui/lab";
 
 type Props = {
   close: VoidFunction;
   open: boolean;
 };
 
+const schema = Yup.object().shape({
+  amount: Yup.string().required("Amount is required"),
+  address: Yup.string().required("Wallet address is required"),
+});
+
 const WithdrawDialog: FC<Props> = ({ close, open }) => {
+  const { t } = useTranslate();
+  const { enqueueSnackbar } = useSnackbar();
+  const { data: walletDefault } = useWalletServiceWalletDefaultQuery();
+  const { data: financialInfo } = useFinancialServiceFinancialInfoQuery();
+  const { mutateAsync, isPending } = useAffiliateServiceAffiliateWithdrawCreateMutation();
+
+  const methods = useForm({
+    resolver: yupResolver(schema),
+    defaultValues: { amount: "", address: `ERC-20 : ${walletDefault?.data?.address}` },
+    mode: "onSubmit",
+  });
+  const { handleSubmit, reset, resetField } = methods;
+
+  const onSubmit = handleSubmit((data) => {
+    mutateAsync({ requestBody: { amount: toNumber(data.amount) as any } })
+      .then(() => {
+        enqueueSnackbar("Your request submitted successfully.");
+        close();
+        reset();
+        resetField("amount");
+      })
+      .catch(() => enqueueSnackbar(t("formErrors.formError"), { variant: "error" }));
+  });
+
   return (
     <CustomDialog fullWidth maxWidth="sm" onClose={close} aria-labelledby="withdraw-dialog" open={open}>
       <DialogTitle sx={{ m: 0, p: 2 }} id="withdraw-dialog">
@@ -28,41 +71,29 @@ const WithdrawDialog: FC<Props> = ({ close, open }) => {
       <Divider />
 
       <DialogContent dividers sx={{ p: 3 }}>
-        <Stack gap={3}>
+        <FormProvider methods={methods} onSubmit={onSubmit} sx={{ gap: 3 }}>
           <Stack gap={0.5}>
-            <Typography variant="p2-medium">$4,180.00</Typography>
+            <Typography variant="p2-medium">
+              {formatCurrency({ value: financialInfo?.data?.available_for_withdraw as string })}
+            </Typography>
             <Typography variant="caption-medium" color="grey.light">
               Available for withdraw
             </Typography>
           </Stack>
-          <Stack>
-            <InputLabel sx={{ typography: "caption-semi-bold", textTransform: "uppercase" }} htmlFor="amount">
-              Amount
-            </InputLabel>
-            <TextField
-              id="amount"
-              placeholder="Enter the amount"
-              inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
-            />
-          </Stack>
-          <Stack>
-            <InputLabel sx={{ typography: "caption-semi-bold", textTransform: "uppercase" }} htmlFor="address">
-              Address
-            </InputLabel>
-            <TextField
-              id="address"
-              placeholder="Enter the amount"
-              InputProps={{
-                readOnly: true,
-                endAdornment: (
-                  <Typography variant="p2-medium" color="pink.dark">
-                    Change
-                  </Typography>
-                ),
-              }}
-              value="ERC-20 : 0x7507......fad68a"
-            />
-          </Stack>
+
+          <RHFTextField name="amount" label="Amount" placeholder="Enter the amount" type="number" isMoney />
+          <RHFTextField
+            name="address"
+            label="Address"
+            InputProps={{
+              readOnly: true,
+              // endAdornment: (
+              //   <Typography variant="p2-medium" color="pink.dark">
+              //     Change
+              //   </Typography>
+              // ),
+            }}
+          />
           <Stack component={"ul"} pl={3}>
             <Typography component={"li"} variant="p2-regular" color="grey.light">
               There will be 3% fee for withdrawal.
@@ -71,14 +102,16 @@ const WithdrawDialog: FC<Props> = ({ close, open }) => {
               The minimum amount for withdrawal are 100 Euro.
             </Typography>
           </Stack>
-        </Stack>
+        </FormProvider>
       </DialogContent>
       <DialogActions>
         <Stack width={"100%"} direction={"row"} justifyContent={"space-between"}>
           <Button color="info" onClick={close}>
             Cancel
           </Button>
-          <Button>Withdraw</Button>
+          <LoadingButton loading={isPending} onClick={onSubmit}>
+            Withdraw
+          </LoadingButton>
         </Stack>
       </DialogActions>
     </CustomDialog>

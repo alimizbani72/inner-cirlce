@@ -10,6 +10,7 @@ import {
   prefetchUseAffiliateServiceAffiliateRanksQuery,
   prefetchUseAffiliateServiceAffiliateReferralCodeQuery,
   prefetchUseFinancialServiceFinancialInfoQuery,
+  prefetchUseWalletServiceWalletDefaultQuery,
 } from "@/services/queries/prefetch";
 
 // ----------------------------------------------------------------------
@@ -21,6 +22,7 @@ export const metadata: Metadata = {
 export default async function Affiliate() {
   const queryClient = getQueryClient();
   await Promise.all([
+    prefetchUseWalletServiceWalletDefaultQuery(queryClient),
     prefetchUseAffiliateServiceAffiliateMeQuery(queryClient),
     prefetchUseFinancialServiceFinancialInfoQuery(queryClient),
     prefetchUseAffiliateServiceAffiliateRanksQuery(queryClient),

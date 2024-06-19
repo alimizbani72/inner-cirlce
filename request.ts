@@ -389,7 +389,7 @@ export const request = <T>(config: OpenAPIConfig, options: ApiRequestOptions): C
         resolve(result.body);
       }
     } catch (error) {
-      if (error?.status === 401 || error?.status === 400) {
+      if (error?.status === 401) {
         await signOut({ redirect: false });
         if (!isServer) {
           window.location.href = "/login"; // Client-side redirect

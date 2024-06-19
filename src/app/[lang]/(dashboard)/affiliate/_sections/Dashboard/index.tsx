@@ -15,14 +15,7 @@ import {
 } from "@/services/queries";
 import { formatCurrency, toNumber } from "@/utils/toNumber";
 import { toPascalCase } from "@/utils/change-case";
-
-const rives: any = {
-  plankton: "/assets/rive/plankton.riv",
-  shrimps: "/assets/rive/shrimp.riv",
-  fishes: "/assets/rive/fish.riv",
-  sharks: "/assets/rive/shark.riv",
-  whales: "/assets/rive/whale_animation.riv",
-};
+import { plans } from "@/configs/plans";
 
 const ProgressBar = ({ overall, percent }: { overall?: boolean; percent: number }) => (
   <Stack
@@ -327,7 +320,7 @@ const AFDashboardTab: FC = () => {
               bgcolor={{ sm: !(index % 2) ? undefined : "dark.3" }}
             >
               <Box sx={{ aspectRatio: 1 }}>
-                <RiveComp width={80} height={80} src={rives[item.plan_type!]} />
+                <RiveComp width={80} height={80} src={(plans as any)[item.plan_type!]?.rive} />
               </Box>
               <Typography mt={1} variant="h4-semi-bold">
                 {item.count}

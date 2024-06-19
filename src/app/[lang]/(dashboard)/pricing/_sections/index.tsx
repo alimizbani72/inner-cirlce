@@ -12,39 +12,35 @@ import PricingTable from "./PricingTable";
 const plans = [
   {
     id: 111234121,
-    title: "Shrimp",
-    image: "/assets/rive/shrimp.riv",
+    title: "Shrimps",
+    plan_type: "shrimps",
     description: "Dip your fins in. Crypto basics so simple, even shrimp get it.",
     cost: "497",
-    onClick: () => ({}),
   },
   {
     id: 11214311,
-    title: "Fish",
-    image: "/assets/rive/fish.riv",
+    title: "Fishes",
+    plan_type: "fishes",
     description: "Dip your fins in. Crypto basics so simple, even shrimp get it.",
     cost: "1997",
-    onClick: () => ({}),
   },
   {
     id: 112456511,
-    title: "Shark",
-    image: "/assets/rive/shark.riv",
+    title: "Sharks",
+    plan_type: "sharks",
     description: "Dip your fins in. Crypto basics so simple, even shrimp get it.",
     cost: "4997",
-    onClick: () => ({}),
   },
   {
     id: 1315411,
-    title: "Whale",
-    image: "/assets/rive/whale_animation.riv",
+    title: "Whales",
+    plan_type: "whales",
     description: "Dip your fins in. Crypto basics so simple, even shrimp get it.",
     cost: "9997",
-    onClick: () => ({}),
   },
 ];
 
-const plansName = ["Shrimp", "Fish", "Shark", "Whale"];
+const plansName = ["Shrimps", "Fishes", "Sharks", "Whales"];
 const rows = {
   "Coinreports (10x)": ["3", "10", "15", "20+"],
   "Coinreports (100x)": [false, false, false, "10+"],
