@@ -5,6 +5,7 @@ import { getQueryClient } from "@app/_providers/customQueryClient";
 import {
   prefetchUseAffiliateServiceAffiliateBalanceQuery,
   prefetchUseAffiliateServiceAffiliateChildrenQuery,
+  prefetchUseAffiliateServiceAffiliateCommissionsQuery,
   prefetchUseAffiliateServiceAffiliateMeQuery,
   prefetchUseAffiliateServiceAffiliateProgressQuery,
   prefetchUseAffiliateServiceAffiliateReferralCodeQuery,
@@ -27,8 +28,8 @@ export default async function Affiliate() {
     prefetchUseAffiliateServiceAffiliateBalanceQuery(queryClient),
     prefetchUseAffiliateServiceAffiliateProgressQuery(queryClient),
     prefetchUseAffiliateServiceAffiliateChildrenQuery(queryClient),
+    prefetchUseAffiliateServiceAffiliateCommissionsQuery(queryClient),
     prefetchUseAffiliateServiceAffiliateReferralCodeQuery(queryClient),
-    // Add more prefetch queries here
   ]);
 
   return (

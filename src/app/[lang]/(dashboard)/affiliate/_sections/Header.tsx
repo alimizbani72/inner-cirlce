@@ -56,7 +56,7 @@ const AffiliateHeader: FC = () => {
                 <Icon name="Copy" />
               </IconButton>
             ) : (
-              <Button onClick={handleCopy} startIcon={<Icon name="Copy" />}>
+              <Button sx={{ whiteSpace: "nowrap" }} onClick={handleCopy} startIcon={<Icon name="Copy" />}>
                 Copy Code
               </Button>
             )}

@@ -4,44 +4,28 @@ import type { FC } from "react";
 import { Stack } from "@mui/material";
 import Scrollbar from "@/components/Scrollbar";
 import CustomTable from "@/components/CustomTable";
+import { useAffiliateServiceAffiliateCommissionsQuery } from "@/services/queries";
+import type { PayoutCommissionResponse } from "@/services/requests";
+import { formatCurrency, toNumber } from "@/utils/toNumber";
+import { fDate } from "@/utils/format-time";
 
 const columns = [
   {
-    title: "Name",
-    modify: (row: any) => row.title,
+    title: "User ID",
+    modify: (row: PayoutCommissionResponse) => row.user_id,
   },
   {
-    title: "Evaluation",
-    modify: (row: any) => row.evaluation,
+    title: "Amount",
+    modify: (row: PayoutCommissionResponse) => formatCurrency(row.amount),
   },
   {
-    title: "Category",
-    modify: (row: any) => row.category,
-  },
-];
-
-const data = [
-  {
-    id: 1,
-    title: "Bitcoin",
-    evaluation: "9,01",
-    category: "Store of Value",
-  },
-  {
-    id: 2,
-    title: "Ethereum",
-    evaluation: "8,65",
-    category: "Layer 1",
-  },
-  {
-    id: 3,
-    title: "Solana",
-    evaluation: "8,57",
-    category: "Layer 1",
+    title: "Commission Date",
+    modify: (row: PayoutCommissionResponse) => fDate(toNumber(row.created_at) * 1000, "dd.MM.yyyy"),
   },
 ];
 
 const AffCommissionsTabTable: FC = () => {
+  const { data: commissionList } = useAffiliateServiceAffiliateCommissionsQuery();
   return (
     <Stack>
       <Scrollbar>
@@ -50,7 +34,7 @@ const AffCommissionsTabTable: FC = () => {
           maxWidth={{ md: "calc(100vw - 64px)", xs: "calc(100vw - 48px)" }}
           sx={{ "> div": { borderBottomRightRadius: 0, borderBottomLeftRadius: 0 } }}
         >
-          <CustomTable title="Commissions" columns={columns} data={data} />
+          <CustomTable title="Commissions" columns={columns} data={commissionList?.data?.commissions || []} />
         </Stack>
       </Scrollbar>
     </Stack>

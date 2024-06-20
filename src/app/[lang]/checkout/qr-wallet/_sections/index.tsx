@@ -2,25 +2,57 @@
 
 import { Icon } from "@/components/icons";
 import { Divider, IconButton, Stack, Typography } from "@mui/material";
-import type { FC } from "react";
+import { useCallback, useMemo, type FC } from "react";
 import { Box } from "@mui/system";
-import Image from "@/components/Image";
 
 import dynamic from "next/dynamic";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { useIsMobile } from "@/hooks/use-responsive";
 import ContentStack from "@app/_components/ContentStack";
+import { useTimer } from "react-timer-hook";
+import { formatCurrency, toNumber } from "@/utils/toNumber";
+import { plans } from "@/configs/plans";
+import RiveComp from "@/components/RiveComp";
+import { toPascalCase } from "@/utils/change-case";
+import { useFinancialServiceFinancialPaymentsIdStatusQuery } from "@/services/queries";
+import { useAppRouter } from "@/routes/hooks";
+
+type Props = { planType: string; id: string };
 
 const QRCodeWithIcon = dynamic(() => import("@/components/QRCodeWithIcon"), {
   ssr: false,
   loading: () => <Box sx={{ width: 140, height: 140 }} />,
 });
 
-const walletAddress = "0xdA5B165C85d72E50B0834655b454e690f1FD1BE2";
-
-const CheckoutQRWalletSection: FC = () => {
+const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
   const isMobile = useIsMobile();
   const { copy } = useCopyToClipboard();
+  const { push, back } = useAppRouter();
+  const { data } = useFinancialServiceFinancialPaymentsIdStatusQuery({ id }, undefined, {
+    refetchInterval: (response) => {
+      if (response?.state?.data?.data?.status === "complete") {
+        push("/payment?success=1");
+        return false;
+      }
+
+      if (["expired", "fail"].includes(response?.state?.data?.data?.status as string)) {
+        push("/payment?success=0");
+        return false;
+      }
+
+      return 3000;
+    },
+  });
+
+  const getTimer = useCallback(() => {
+    const time = new Date();
+    time.setSeconds(time.getSeconds() + toNumber(data?.data?.duration));
+    return time;
+  }, [data?.data]);
+
+  const { minutes, seconds } = useTimer({ expiryTimestamp: getTimer() });
+
+  const walletAddress = useMemo(() => `${data?.data?.address}`, [data?.data]);
 
   const handleCopy = () => {
     copy(walletAddress);
@@ -51,7 +83,7 @@ const CheckoutQRWalletSection: FC = () => {
           textTransform={"uppercase"}
           color={"rgba(255, 255, 255, 0.08)"}
         >
-          • Shark • Shark •
+          • {planType} • {planType} •
         </Typography>
         <Box sx={{ position: "absolute", inset: 0, zIndex: 1 }}>
           <img src="/assets/svg/checkout-texture.svg" width="100%" height="100%" style={{ objectFit: "cover" }} />
@@ -69,18 +101,32 @@ const CheckoutQRWalletSection: FC = () => {
           width="100%"
           maxWidth={{ md: "486px" }}
           px={3}
+          sx={{ cursor: "pointer" }}
+          onClick={() => back()}
         >
           <Icon name="Arrow-left" />
           <Typography variant="h4-semi-bold">Checkout</Typography>
         </Stack>
         <Divider flexItem sx={{ mt: 3, mb: { md: 4, xs: 3 }, borderColor: "rgba(255, 255, 255, 0.08)" }} />
         <Stack position={"relative"} zIndex={2} width="100%" maxWidth={{ md: "486px" }} px={3} flex={1}>
-          <Typography variant="p2-medium">Subscribe to “Shark” plan.</Typography>
+          <Typography variant="p2-medium">Subscribe to “{toPascalCase(planType)}” plan.</Typography>
 
           <Stack flex={1} alignItems={"center"} justifyContent={"center"}>
-            <Box width={{ md: 248, xs: 144 }} height={{ md: 248, xs: 144 }} mb={10} mt={{ md: 0, xs: 3 }}>
-              <Image src="/assets/animals/shark.svg" width="100%" height="100%" />
-            </Box>
+            {plans[planType as keyof typeof plans]?.rive && (
+              <Box
+                width={{ md: 248, xs: 144 }}
+                height={{ md: 248, xs: 144 }}
+                sx={{ aspectRatio: 1 }}
+                mb={10}
+                mt={{ md: 0, xs: 3 }}
+              >
+                <RiveComp
+                  src={plans[planType as keyof typeof plans]?.rive}
+                  width={isMobile ? 144 : 248}
+                  height={isMobile ? 144 : 248}
+                />
+              </Box>
+            )}
           </Stack>
         </Stack>
       </Stack>
@@ -145,7 +191,9 @@ const CheckoutQRWalletSection: FC = () => {
               </Typography>
               <Stack direction="row" gap={1}>
                 <Icon name="Time" />
-                <Typography variant="p1-medium">18:40</Typography>
+                <Typography variant="p1-medium">{`${minutes?.toString()?.padStart(2, "0")}:${seconds
+                  ?.toString()
+                  ?.padStart(2, "0")}`}</Typography>
               </Stack>
             </Stack>
             <Divider flexItem sx={{ borderColor: "rgba(255, 255, 255, 0.08)" }} />
@@ -153,14 +201,14 @@ const CheckoutQRWalletSection: FC = () => {
               <Typography variant="p2-medium" color="grey.light" textTransform={"uppercase"}>
                 Amount to send
               </Typography>
-              <Typography variant="p1-medium">5,040.00 USDT</Typography>
+              <Typography variant="p1-medium">{formatCurrency(data?.data?.total_amount!)}</Typography>
             </Stack>
             <Divider flexItem sx={{ borderColor: "rgba(255, 255, 255, 0.08)" }} />
             <Stack direction="row" justifyContent={"space-between"}>
               <Typography variant="p2-medium" color="grey.light" textTransform={"uppercase"}>
                 Paid Amount
               </Typography>
-              <Typography variant="p1-medium">$0.00</Typography>
+              <Typography variant="p1-medium">{formatCurrency(data?.data?.paid_amount!)}</Typography>
             </Stack>
           </Stack>
         </Stack>
