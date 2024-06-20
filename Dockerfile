@@ -22,10 +22,10 @@ ARG minecraft_endpoint
 ARG google_client_id
 ARG google_client_secret
 
-ENV NEXT_PUBLIC_URL $url
-ENV NEXT_PUBLIC_MINECRAFT_ENDPOINT $minecraft_endpoint
-ENV GOOGLE_CLIENT_ID $google_client_id
-ENV GOOGLE_CLIENT_SECRET $google_client_secret
+ENV NEXT_PUBLIC_URL=$url
+ENV NEXT_PUBLIC_MINECRAFT_ENDPOINT=$minecraft_endpoint
+ENV GOOGLE_CLIENT_ID=$google_client_id
+ENV GOOGLE_CLIENT_SECRET=$google_client_secret
 
 RUN bun run build
 
@@ -40,11 +40,11 @@ ARG google_client_secret
 ARG CONFIG_FILE
 
 COPY $CONFIG_FILE /app/.env
-ENV NEXT_PUBLIC_URL $url
-ENV NODE_ENV production
-ENV NEXT_PUBLIC_MINECRAFT_ENDPOINT $minecraft_endpoint
-ENV GOOGLE_CLIENT_ID $google_client_id
-ENV GOOGLE_CLIENT_SECRET $google_client_secret
+ENV NEXT_PUBLIC_URL=$url
+ENV NODE_ENV=production
+ENV NEXT_PUBLIC_MINECRAFT_ENDPOINT=$minecraft_endpoint
+ENV GOOGLE_CLIENT_ID=$google_client_id
+ENV GOOGLE_CLIENT_SECRET=$google_client_secret
 
 # Uncomment the following line in case you want to disable telemetry during runtime.
 # ENV NEXT_TELEMETRY_DISABLED 1
@@ -55,6 +55,6 @@ COPY --from=builder /app/.next/static ./.next/static
 
 EXPOSE 3001
 
-ENV PORT 3001
+ENV PORT=3001
 
 CMD ["node", "server.js"]
