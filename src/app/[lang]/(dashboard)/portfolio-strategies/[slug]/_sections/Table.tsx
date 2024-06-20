@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type FC } from "react";
+import { useState, type FC } from "react";
 import { InputLabel, Stack, TextField, Typography } from "@mui/material";
 import Toggle from "@app/_components/Toggle";
 import Scrollbar from "@/components/Scrollbar";
@@ -8,7 +8,7 @@ import ContentStack from "@app/_components/ContentStack";
 import SortTable from "@/components/sortTable";
 import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
 import { useAppSelector } from "@/lib/hooks";
-import { useContentServiceContentPortfolioStrategyCreateMutation } from "@/services/queries";
+import { useContentServiceContentPortfolioStrategyPlanQuery } from "@/services/queries";
 import Empty from "@/components/Empty";
 import Loading from "@/components/Loading";
 
@@ -25,23 +25,7 @@ const buttons = [
 const Table: FC<TableProps> = ({ plan }) => {
   const [value, setValue] = useState<any>(buttons[0].value);
   const isCollapsed = useAppSelector(isSidebarCollapsed);
-  const {
-    mutateAsync,
-    data: content,
-    isSuccess,
-    isPending,
-  } = useContentServiceContentPortfolioStrategyCreateMutation();
-  const getPortfolioStrategy = async () => {
-    try {
-      await mutateAsync({ requestBody: { plan } });
-    } catch (_error) {
-      //
-    }
-  };
-
-  useEffect(() => {
-    getPortfolioStrategy();
-  }, []);
+  const { data: content, isSuccess, isPending } = useContentServiceContentPortfolioStrategyPlanQuery({ plan });
 
   const handleChange = (newValue: any) => {
     setValue(newValue);

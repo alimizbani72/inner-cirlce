@@ -17,27 +17,21 @@ const AffCommissionsTab: FC = () => {
       <ContentStack direction={{ md: "row" }} gap={3}>
         <Stack direction={{ md: "row" }} gap={{ md: 3, xs: 2 }}>
           <Stack gap={0.5}>
-            <Typography variant="p2-medium">
-              {formatCurrency({ value: data?.data?.total_turnover as string })}
-            </Typography>
+            <Typography variant="p2-medium">{formatCurrency(data?.data?.total_turnover)}</Typography>
             <Typography variant="caption-medium" color={"grey.light"}>
               Total Turnover
             </Typography>
           </Stack>
           <Divider flexItem orientation="horizontal" sx={{ borderWidth: "1.5px" }} />
           <Stack gap={0.5}>
-            <Typography variant="p2-medium">
-              {formatCurrency({ value: data?.data?.total_commissions as string })}
-            </Typography>
+            <Typography variant="p2-medium">{formatCurrency(data?.data?.total_commissions)}</Typography>
             <Typography variant="caption-medium" color={"grey.light"}>
               Total commission
             </Typography>
           </Stack>
           <Divider flexItem orientation="horizontal" sx={{ borderWidth: "1.5px" }} />
           <Stack gap={0.5}>
-            <Typography variant="p2-medium">
-              {formatCurrency({ value: data?.data?.available_for_withdraw as string })}
-            </Typography>
+            <Typography variant="p2-medium">{formatCurrency(data?.data?.available_for_withdraw)}</Typography>
             <Typography variant="caption-medium" color={"grey.light"}>
               Available for withdraw
             </Typography>

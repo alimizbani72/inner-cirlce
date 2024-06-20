@@ -1,15 +1,15 @@
 "use client";
 
-import { useEffect, useState, type FC } from "react";
+import { useState, type FC } from "react";
 import { Stack, Typography } from "@mui/material";
 import Toggle from "@app/_components/Toggle";
 import Scrollbar from "@/components/Scrollbar";
 import SortTable from "@/components/sortTable";
-import { useContentServiceContentCoinReportCreateMutation } from "@/services/queries";
 import { useAppSelector } from "@/lib/hooks";
 import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
 import Empty from "@/components/Empty";
 import Loading from "@/components/Loading";
+import { useContentServiceContentCoinReportLangQuery } from "@/services/queries";
 
 interface TableProps {}
 
@@ -56,19 +56,8 @@ const buttons = [
 
 const Table: FC<TableProps> = () => {
   const [value, setValue] = useState<any>(buttons[0].value);
-  const { mutateAsync, data: coinsData, isSuccess, isPending } = useContentServiceContentCoinReportCreateMutation();
+  const { data: coinsData, isSuccess, isPending } = useContentServiceContentCoinReportLangQuery({ lang: "en" });
   const isCollapsed = useAppSelector(isSidebarCollapsed);
-  const getCoins = async () => {
-    try {
-      await mutateAsync({ requestBody: { lang: "en" } });
-    } catch (_error) {
-      //
-    }
-  };
-
-  useEffect(() => {
-    getCoins();
-  }, []);
 
   const handleChange = (newValue: any) => {
     setValue(newValue);

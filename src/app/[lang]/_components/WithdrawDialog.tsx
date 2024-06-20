@@ -7,8 +7,8 @@ import DialogContent from "@mui/material/DialogContent";
 import { Button, DialogActions, Divider, IconButton, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 import {
-  useAffiliateServiceAffiliateWithdrawCreateMutation,
   useFinancialServiceFinancialInfoQuery,
+  useFinancialServiceFinancialWithdrawCreateMutation,
   useWalletServiceWalletDefaultQuery,
 } from "@/services/queries";
 import { formatCurrency, toNumber } from "@/utils/toNumber";
@@ -36,7 +36,7 @@ const WithdrawDialog: FC<Props> = ({ close, open }) => {
   const { enqueueSnackbar } = useSnackbar();
   const { data: walletDefault } = useWalletServiceWalletDefaultQuery();
   const { data: financialInfo } = useFinancialServiceFinancialInfoQuery();
-  const { mutateAsync, isPending } = useAffiliateServiceAffiliateWithdrawCreateMutation();
+  const { mutateAsync, isPending } = useFinancialServiceFinancialWithdrawCreateMutation();
 
   const methods = useForm({
     resolver: yupResolver(schema),
@@ -73,9 +73,7 @@ const WithdrawDialog: FC<Props> = ({ close, open }) => {
       <DialogContent dividers sx={{ p: 3 }}>
         <FormProvider methods={methods} onSubmit={onSubmit} sx={{ gap: 3 }}>
           <Stack gap={0.5}>
-            <Typography variant="p2-medium">
-              {formatCurrency({ value: financialInfo?.data?.available_for_withdraw as string })}
-            </Typography>
+            <Typography variant="p2-medium">{formatCurrency(financialInfo?.data?.available_for_withdraw)}</Typography>
             <Typography variant="caption-medium" color="grey.light">
               Available for withdraw
             </Typography>
