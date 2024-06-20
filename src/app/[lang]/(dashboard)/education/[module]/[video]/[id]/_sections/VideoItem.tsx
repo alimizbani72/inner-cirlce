@@ -15,14 +15,14 @@ interface VideoItemProps {
 }
 
 const VideoItem: FC<VideoItemProps> = ({ image, title, completed, watching, hasDivider }) => {
-  const { slug } = useParams();
+  const { module, video } = useParams();
   return (
     <>
       <Stack
         direction={"row"}
         gap={2}
         component={Link}
-        href={`/education/${slug}/${encodeURIComponent(title as string)}`}
+        href={`/education/${module}/${video}/${encodeURIComponent(title as string)}`}
       >
         <Box width={"98px"} height={"53px"}>
           <Image width={"100%"} height={"100%"} borderRadius={"8px"} src={image} />
@@ -36,19 +36,27 @@ const VideoItem: FC<VideoItemProps> = ({ image, title, completed, watching, hasD
             <Box
               ml={"auto"}
               width={24}
-              sx={{
-                ...(completed && { path: { stroke: (theme) => theme.palette.success.main } }),
-                ...(watching && {
-                  path: { stroke: (theme) => theme.palette.pink.dark, "&:nth-of-type(2)": { display: "none" } },
-                }),
-              }}
+              // sx={{
+              //   ...(completed && { path: { stroke: (theme) => theme.palette.success.main } }),
+              //   ...(watching && {
+              //     path: { stroke: (theme) => theme.palette.pink.dark, "&:nth-of-type(2)": { display: "none" } },
+              //   }),
+              // }}
             >
-              <Icon name="Check-circle" />
+              <Icon name="Play" />
             </Box>
           )}
         </Stack>
       </Stack>
-      {hasDivider && <Divider flexItem sx={{ borderWidth: "1.5px", ...(watching && { borderColor: "blue.dark" }) }} />}
+      {hasDivider && (
+        <Divider
+          flexItem
+          sx={{
+            borderWidth: "1.5px",
+            // ...(watching && { borderColor: "blue.dark" })
+          }}
+        />
+      )}
     </>
   );
 };

@@ -7,7 +7,7 @@ import { Icon } from "@/components/icons";
 
 type Props = { content: { [k: string]: any } };
 
-const VideoItem: FC<Props> = ({ content }) => {
+const ModuleItem: FC<Props> = ({ content }) => {
   return (
     <Stack
       borderRadius={2}
@@ -38,4 +38,4 @@ const VideoItem: FC<Props> = ({ content }) => {
   );
 };
 
-export default VideoItem;
+export default ModuleItem;

@@ -54,9 +54,9 @@ import { selectVideos } from "@/lib/features/academy/educationSlice";
 // ];
 
 const VideoList: FC = () => {
-  const { id } = useParams();
+  const { video, id } = useParams();
 
-  const videoList = useAppSelector((state) => selectVideos(state)(decodeURIComponent(id as string)));
+  const videoList = useAppSelector((state) => selectVideos(state)(decodeURIComponent(video as string)));
 
   const [searchValue, setSearchValue] = useState<string>("");
 
@@ -91,9 +91,14 @@ const VideoList: FC = () => {
           <Stack gap={2} maxHeight={{ md: "63vh" }} px={3}>
             {videoList
               .filter((vid) => vid?.title?.toLowerCase()?.includes(searchValue?.toLowerCase()))
-              .map((item, index) => (
+              .map((item, index, arr) => (
                 <Stack key={index} gap={2}>
-                  <VideoItem {...item} watching={index === 0} completed={false} hasDivider={true} />
+                  <VideoItem
+                    {...item}
+                    watching={item.title === decodeURIComponent(id as string)}
+                    completed={false}
+                    hasDivider={index !== arr.length - 1}
+                  />
                 </Stack>
               ))}
           </Stack>

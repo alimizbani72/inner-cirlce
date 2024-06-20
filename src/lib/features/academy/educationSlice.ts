@@ -1,3 +1,4 @@
+// features/academy/educationSlice.ts
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { AppThunk } from "@/lib/store";
 
@@ -50,12 +51,21 @@ export const educationSlice = createSlice({
     selectCategories: (state) => state.categories,
     selectPlaylists: (state) => (categoryTitle: string) => state.playlists[categoryTitle] || [],
     selectVideos: (state) => (moduleTitle: string) => state.videos[moduleTitle] || [],
+    selectVideoByTitle: (state) => (videoTitle: string) => {
+      for (const module in state.videos) {
+        const video = state.videos[module].find((video) => video.title === videoTitle);
+        if (video) {
+          return video;
+        }
+      }
+      return null;
+    },
   },
 });
 
 export const { setCategories, setPlaylists, setVideos } = educationSlice.actions;
 
-export const { selectCategories, selectPlaylists, selectVideos } = educationSlice.selectors;
+export const { selectCategories, selectPlaylists, selectVideos, selectVideoByTitle } = educationSlice.selectors;
 
 export const fetchEducationData =
   (data: any[]): AppThunk =>
