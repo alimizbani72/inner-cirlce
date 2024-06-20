@@ -1,10 +1,10 @@
 FROM imbios/bun-node:20-slim AS deps
 ARG DEBIAN_FRONTEND=noninteractive
 
-# I use Asia/Jakarta as my timezone, you can change it to your timezone
+# I use Asia/Tehran as my timezone, you can change it to your timezone
 RUN apt-get -y update && \
   apt-get install -yq openssl git ca-certificates tzdata && \
-  ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime && \
+  ln -fs /usr/share/zoneinfo/Asia/Tehran /etc/localtime && \
   dpkg-reconfigure -f noninteractive tzdata
 WORKDIR /app
 
@@ -22,6 +22,7 @@ ARG minecraft_endpoint
 ARG google_client_id
 ARG google_client_secret
 
+ENV NODE_ENV=production
 ENV NEXT_PUBLIC_URL=$url
 ENV NEXT_PUBLIC_MINECRAFT_ENDPOINT=$minecraft_endpoint
 ENV GOOGLE_CLIENT_ID=$google_client_id
@@ -37,11 +38,9 @@ ARG url
 ARG minecraft_endpoint
 ARG google_client_id
 ARG google_client_secret
-ARG CONFIG_FILE
 
-COPY $CONFIG_FILE /app/.env
-ENV NEXT_PUBLIC_URL=$url
 ENV NODE_ENV=production
+ENV NEXT_PUBLIC_URL=$url
 ENV NEXT_PUBLIC_MINECRAFT_ENDPOINT=$minecraft_endpoint
 ENV GOOGLE_CLIENT_ID=$google_client_id
 ENV GOOGLE_CLIENT_SECRET=$google_client_secret
