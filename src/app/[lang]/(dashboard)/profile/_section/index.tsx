@@ -6,32 +6,14 @@ import DialogTitle from "@mui/material/DialogTitle";
 import UserInfo from "./UserInfo";
 import useCustomRouter from "@/hooks/useCustomRouter";
 import { signOut } from "next-auth/react";
-
-const menuItems = [
-  {
-    title: "Profile Settings",
-    path: "/settings",
-    icon: "Settings",
-  },
-  {
-    title: "Help & Support",
-    path: "/help-support",
-    icon: "headphones-support",
-  },
-  {
-    title: "Terms of Use | Privacy Policy",
-    path: "/terms-privacy",
-    icon: "Warning-round",
-  },
-  {
-    title: "Be a Partner",
-    path: "/become-partner",
-    icon: "Hand",
-  },
-];
+import { profileMenuItems } from "@/configs/profile";
+import { useAccountServiceAuthUserinfoQuery } from "@/services/queries";
+import { getUserPlanType } from "@/consts";
 
 const ProfileDialog = () => {
   const { push, back } = useCustomRouter();
+  const { data: userInfoData } = useAccountServiceAuthUserinfoQuery();
+  const isFreePlan = getUserPlanType(userInfoData) === "plankton";
 
   return (
     <>
@@ -50,21 +32,23 @@ const ProfileDialog = () => {
       <DialogContent dividers sx={{ p: 3 }}>
         <Stack justifyContent="center" alignItems="center">
           <UserInfo />
-          {menuItems.map((item, index) => (
-            <Stack
-              direction={"row"}
-              key={index}
-              sx={{ borderBottom: "1px solid", borderColor: "dark.3", width: "100%", py: 2, cursor: "pointer" }}
-              gap={2}
-              onClick={() => push(`/profile/${item.path}`)}
-            >
-              <Icon name={item.icon as any} />
-              <Typography variant="p2-medium">{item.title}</Typography>
-              <IconButton sx={{ ml: "auto" }}>
-                <Icon name="Arrow-right" />
-              </IconButton>
-            </Stack>
-          ))}
+          {profileMenuItems
+            .filter((item) => (isFreePlan ? !item.path.includes("become-partner") : item))
+            .map((item, index) => (
+              <Stack
+                direction={"row"}
+                key={index}
+                sx={{ borderBottom: "1px solid", borderColor: "dark.3", width: "100%", py: 2, cursor: "pointer" }}
+                gap={2}
+                onClick={() => push(`/profile/${item.path}`)}
+              >
+                <Icon name={item.icon as any} />
+                <Typography variant="p2-medium">{item.title}</Typography>
+                <IconButton sx={{ ml: "auto" }}>
+                  <Icon name="Arrow-right" />
+                </IconButton>
+              </Stack>
+            ))}
           <Stack
             direction={"row"}
             sx={{ width: "100%", py: 2, cursor: "pointer" }}

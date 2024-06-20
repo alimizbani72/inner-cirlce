@@ -84,7 +84,10 @@ export function LoadingButton(theme: Theme) {
           },
           "&.Mui-disabled": {
             ...button(theme).MuiButton.styleOverrides.root({ ownerState })["&.Mui-disabled"],
-            "&.MuiLoadingButton-loading": { color: "transparent" },
+            "&.MuiLoadingButton-loading": {
+              color: "transparent",
+              ".MuiButton-icon": { display: "none" },
+            },
           },
         }),
       },

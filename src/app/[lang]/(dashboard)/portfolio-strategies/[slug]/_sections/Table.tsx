@@ -10,7 +10,6 @@ import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
 import { useAppSelector } from "@/lib/hooks";
 import { useContentServiceContentPortfolioStrategyPlanQuery } from "@/services/queries";
 import Empty from "@/components/Empty";
-import Loading from "@/components/Loading";
 
 interface TableProps {
   plan: string;
@@ -25,7 +24,7 @@ const buttons = [
 const Table: FC<TableProps> = ({ plan }) => {
   const [value, setValue] = useState<any>(buttons[0].value);
   const isCollapsed = useAppSelector(isSidebarCollapsed);
-  const { data: content, isSuccess, isPending } = useContentServiceContentPortfolioStrategyPlanQuery({ plan });
+  const { data: content } = useContentServiceContentPortfolioStrategyPlanQuery({ plan });
 
   const handleChange = (newValue: any) => {
     setValue(newValue);
@@ -91,14 +90,14 @@ const Table: FC<TableProps> = ({ plan }) => {
             },
           }}
         >
-          {isSuccess ? (
+          {(content as any)?.data?.[value]?.length ? (
             <SortTable
               title={`${buttons.find((i) => i.value === value)?.label} Strategy`}
-              data={(content as any).data[value]}
+              data={(content as any)?.data?.[value] || []}
             />
           ) : (
             <Stack width="100%" alignItems="center">
-              {isPending ? <Loading /> : <Empty />}
+              <Empty />
             </Stack>
           )}
         </Stack>

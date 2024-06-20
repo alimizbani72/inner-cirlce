@@ -11,7 +11,7 @@ import {
   useFinancialServiceFinancialWithdrawCreateMutation,
   useWalletServiceWalletDefaultQuery,
 } from "@/services/queries";
-import { formatCurrency, toNumber } from "@/utils/toNumber";
+import { formatCurrency } from "@/utils/toNumber";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { RHFTextField } from "@/components/hook-form";
@@ -46,14 +46,18 @@ const WithdrawDialog: FC<Props> = ({ close, open }) => {
   const { handleSubmit, reset, resetField } = methods;
 
   const onSubmit = handleSubmit((data) => {
-    mutateAsync({ requestBody: { amount: toNumber(data.amount) as any } })
+    mutateAsync({
+      requestBody: { amount: { value: data.amount, currency_code: "USD" }, wallet_id: `${walletDefault?.data?.id}` },
+    })
       .then(() => {
         enqueueSnackbar("Your request submitted successfully.");
         close();
         reset();
         resetField("amount");
       })
-      .catch(() => enqueueSnackbar(t("formErrors.formError"), { variant: "error" }));
+      .catch((error) => {
+        enqueueSnackbar(error.body.message || t("formErrors.formError"), { variant: "error" });
+      });
   });
 
   return (

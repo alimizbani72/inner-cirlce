@@ -11,6 +11,8 @@ import TableRow from "@mui/material/TableRow";
 import type { ReactNode } from "react";
 import Scrollbar from "./Scrollbar";
 import { Icon } from "./icons";
+import Empty from "./Empty";
+import Loading from "./Loading";
 
 const levelColorLine = {
   0: "#090A23",
@@ -25,9 +27,22 @@ type PropType = {
   width?: any;
   minWidthCell?: any;
   action?: ReactNode;
+  emptyTitle?: string;
+  emptySubtitle?: string;
+  isPending?: boolean;
 };
 
-const CustomTable = ({ title, columns, data, width, minWidthCell, action }: PropType) => {
+const CustomTable = ({
+  title,
+  columns,
+  data,
+  width,
+  minWidthCell,
+  action,
+  emptyTitle,
+  emptySubtitle,
+  isPending,
+}: PropType) => {
   const [expandedRows, setExpandedRows] = useState<{ [key: string]: boolean }>({});
 
   const handleToggleExpand = (id: string) => {
@@ -100,57 +115,63 @@ const CustomTable = ({ title, columns, data, width, minWidthCell, action }: Prop
         </Stack>
       )}
 
-      <TableContainer
-        component={Paper}
-        sx={{
-          bgcolor: "dark.2",
-          borderRadius: 0,
-          ".MuiTableCell-head": {
-            borderBottom: "none",
-            bgcolor: "dark.3",
-            typography: "caption-medium",
-            textTransform: "uppercase",
-            color: "grey.light",
-            p: 0,
-            py: 1,
-            "&:first-of-type": { pl: 3 },
-            "&:last-of-type": { pr: 3 },
-            "&:not(:last-of-type)": { pr: "14px" },
-          },
-          ".MuiTableCell-root:not(.MuiTableCell-head)": {
-            minWidth: minWidthCell ?? 150,
-            typography: "p2-medium",
-            color: "white",
-            textAlign: "start",
-            p: 0,
-            py: 2,
-            borderBottomStyle: "solid",
-            borderColor: "dark.3",
-            borderWidth: "1.5px",
-            "&:first-of-type": { pl: 3 },
-            "&:last-of-type": { pr: 3 },
-            "&:not(:last-of-type)": { pr: "14px" },
-          },
-          ".MuiTableRow-head": { height: 40 },
-          ".MuiTableRow-root:not(.MuiTableRow-head)": { height: 56 },
-        }}
-      >
-        <Scrollbar options={{ scrollbars: { autoHide: "leave" } }}>
-          <Table aria-label="customized table">
-            <TableHead>
-              <TableRow>
-                {columns.map((head) => (
-                  <TableCell align="left" key={head.title}>
-                    {head.title}
-                  </TableCell>
-                ))}
-                <TableCell />
-              </TableRow>
-            </TableHead>
-            <TableBody>{renderRows(data)}</TableBody>
-          </Table>
-        </Scrollbar>
-      </TableContainer>
+      {data?.length ? (
+        <TableContainer
+          component={Paper}
+          sx={{
+            bgcolor: "dark.2",
+            borderRadius: 0,
+            ".MuiTableCell-head": {
+              borderBottom: "none",
+              bgcolor: "dark.3",
+              typography: "caption-medium",
+              textTransform: "uppercase",
+              color: "grey.light",
+              p: 0,
+              py: 1,
+              "&:first-of-type": { pl: 3 },
+              "&:last-of-type": { pr: 3 },
+              "&:not(:last-of-type)": { pr: "14px" },
+            },
+            ".MuiTableCell-root:not(.MuiTableCell-head)": {
+              minWidth: minWidthCell ?? 150,
+              typography: "p2-medium",
+              color: "white",
+              textAlign: "start",
+              p: 0,
+              py: 2,
+              borderBottomStyle: "solid",
+              borderColor: "dark.3",
+              borderWidth: "1.5px",
+              "&:first-of-type": { pl: 3 },
+              "&:last-of-type": { pr: 3 },
+              "&:not(:last-of-type)": { pr: "14px" },
+            },
+            ".MuiTableRow-head": { height: 40 },
+            ".MuiTableRow-root:not(.MuiTableRow-head)": { height: 56 },
+          }}
+        >
+          <Scrollbar options={{ scrollbars: { autoHide: "leave" } }}>
+            <Table aria-label="customized table">
+              <TableHead>
+                <TableRow>
+                  {columns.map((head) => (
+                    <TableCell align="left" key={head.title}>
+                      {head.title}
+                    </TableCell>
+                  ))}
+                  <TableCell />
+                </TableRow>
+              </TableHead>
+              <TableBody>{renderRows(data)}</TableBody>
+            </Table>
+          </Scrollbar>
+        </TableContainer>
+      ) : isPending ? (
+        <Loading />
+      ) : (
+        <Empty title={emptyTitle} subtitle={emptySubtitle} />
+      )}
     </Stack>
   );
 };

@@ -6,7 +6,7 @@ import CustomDialog from "@/components/CustomDialog";
 import DialogContent from "@mui/material/DialogContent";
 import { Button, DialogActions, Divider, IconButton, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
-import { useWalletServiceWalletCreateMutation } from "@/services/queries";
+import { useWalletServiceWalletCreateMutation, useWalletServiceWalletDefaultQueryKey } from "@/services/queries";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { RHFTextField } from "@/components/hook-form";
@@ -49,7 +49,7 @@ const SetupWalletDialog: FC<Props> = ({ close, open }) => {
   const onSubmit = handleSubmit((data) => {
     mutateAsync({ requestBody: data })
       .then(() => {
-        queryClient.invalidateQueries({ queryKey: ["WalletServiceWalletDefaultQuery"] });
+        queryClient.invalidateQueries({ queryKey: [useWalletServiceWalletDefaultQueryKey] });
         enqueueSnackbar("Your wallet address has been updated successfully.");
         close();
         reset();

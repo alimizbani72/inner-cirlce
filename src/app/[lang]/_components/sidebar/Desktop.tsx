@@ -11,8 +11,11 @@ import LogoType from "@/components/LogoType";
 import Logo from "@/components/Logo";
 import { Icon } from "@/components/icons";
 import UpgradePlan from "../UpgradePlan";
+import { useAccountServiceAuthUserinfoQuery } from "@/services/queries";
 
 const DesktopSidebar: FC = () => {
+  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+
   const dispatch = useAppDispatch();
   const isCollapsed = useAppSelector(isSidebarCollapsed);
 
@@ -50,11 +53,16 @@ const DesktopSidebar: FC = () => {
 
           <Stack py={4} px={isCollapsed ? 3 : 2} gap={4}>
             <Menu name="Services" items={sidebarServicesItems} />
-            <Menu name="Community" items={sidebarCommunityItems} />
+            <Menu
+              name="Community"
+              items={sidebarCommunityItems.filter((item) =>
+                (userInfo as any)?.data?.kyc_status ? item : !item.path.includes("affiliate")
+              )}
+            />
           </Stack>
 
           <Stack mt={"auto"} gap={3}>
-            {!isCollapsed && <UpgradePlan activePlan />}
+            {!isCollapsed && <UpgradePlan />}
 
             <SidebarUserInfo />
           </Stack>

@@ -5,11 +5,35 @@ import Notice from "./Notice";
 import Table from "./Table";
 import type { FC } from "react";
 import { usePageTitle } from "@/hooks/use-page-title";
+import { useContentServiceContentPortfolioStrategyPlanQuery } from "@/services/queries";
+import Empty from "@/components/Empty";
+import Loading from "@/components/Loading";
 
 type Props = { pageTitle: string; plan: string };
 
 const PortfolioStrategiesInnerSection: FC<Props> = ({ pageTitle, plan }) => {
   usePageTitle({ title: pageTitle, hasBackButton: true });
+  const { error, isPending } = useContentServiceContentPortfolioStrategyPlanQuery({ plan });
+
+  if (isPending) {
+    return (
+      <Stack width="100%" height="100%" alignItems="center">
+        <Loading sx={{ mt: 0, width: "100%", height: "100%" }} />
+      </Stack>
+    );
+  }
+
+  if ((error as any)?.status === 403) {
+    return (
+      <Stack width="100%" height="100%" alignItems="center">
+        <Empty
+          sx={{ mt: 0, width: "100%", height: "100%" }}
+          icon="Warning--colorful"
+          title="You should upgrade your package to see this information"
+        />
+      </Stack>
+    );
+  }
 
   return (
     <Stack gap={3} py={{ md: 4, xs: 3 }}>

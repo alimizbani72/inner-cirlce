@@ -16,7 +16,7 @@ const Loading: FC<Props> = ({ title = "On loading...", size = 60, sx }) => {
         <RiveComp width={size} height={size} src="/assets/rive/chainmind_loading.riv" />
       </Box>
 
-      <Typography variant="h4-medium" color="white" textAlign="center">
+      <Typography variant="p1-semi-bold" color="white" textAlign="center">
         {title}
       </Typography>
     </Stack>

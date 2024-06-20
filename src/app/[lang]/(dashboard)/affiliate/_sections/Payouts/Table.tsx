@@ -10,6 +10,9 @@ import CustomPopover, { usePopover } from "@/components/custom-popover";
 import { Icon } from "@/components/icons";
 import { DatePicker } from "@mui/x-date-pickers";
 import { fDate } from "@/utils/format-time";
+import { useFinancialServiceFinancialPayoutsQuery } from "@/services/queries";
+import type { PayoutResponse } from "@/services/requests";
+import { formatCurrency } from "@/utils/toNumber";
 
 const datePickerStyle = {
   ".MuiIconButton-root": {
@@ -52,43 +55,41 @@ const slotProps = {
 
 const columns = [
   {
-    title: "Name",
-    modify: (row: any) => row.title,
+    title: "User ID",
+    modify: (row: PayoutResponse) => row.user_id,
   },
   {
-    title: "Evaluation",
-    modify: (row: any) => row.evaluation,
+    title: "Wallet ID",
+    modify: (row: PayoutResponse) => row.wallet_id,
   },
   {
-    title: "Category",
-    modify: (row: any) => row.category,
-  },
-];
-
-const data = [
-  {
-    id: 1,
-    title: "Bitcoin",
-    evaluation: "9,01",
-    category: "Store of Value",
+    title: "Amount",
+    modify: (row: PayoutResponse) => formatCurrency(row.amount),
   },
   {
-    id: 2,
-    title: "Ethereum",
-    evaluation: "8,65",
-    category: "Layer 1",
+    title: "Date",
+    modify: (row: PayoutResponse) => fDate((row as any).created_at, "dd.MM.yyyy"),
   },
   {
-    id: 3,
-    title: "Solana",
-    evaluation: "8,57",
-    category: "Layer 1",
+    title: "Status",
+    modify: (row: PayoutResponse) => (row as any).status,
   },
 ];
 
 const AffPayoutsTabTable: FC = () => {
   const filterPopover = usePopover();
   const [dates, setDates] = useState<any>([]);
+  const filter = {
+    filters: {
+      ...(dates?.[0] && { from_created_at: fDate(dates?.[0], "yyyy-MM-dd") }),
+      ...(dates?.[1] && { to_created_at: fDate(dates?.[1], "yyyy-MM-dd") }),
+    },
+    sorts: { created_at: false },
+    per_page: 10000,
+  };
+  const { data, isPending } = useFinancialServiceFinancialPayoutsQuery(
+    dates.length && { opts: JSON.stringify(filter) }
+  );
 
   const handleOpenFilter = useCallback(
     (event: React.MouseEvent<HTMLElement>) => {
@@ -112,7 +113,10 @@ const AffPayoutsTabTable: FC = () => {
           <CustomTable
             title="Payouts"
             columns={columns}
-            data={data}
+            data={data?.data || []}
+            isPending={isPending}
+            emptyTitle="You have not any payouts yet"
+            emptySubtitle="Track profits, losses and valuation all in one place."
             action={
               <Box>
                 <Stack direction="row" gap={0.5} onClick={handleOpenFilter} sx={{ cursor: "pointer" }}>

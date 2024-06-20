@@ -8,6 +8,7 @@ import { useAffiliateServiceAffiliateChildrenQuery } from "@/services/queries";
 import { formatCurrency } from "@/utils/toNumber";
 import { fDate } from "@/utils/format-time";
 import { toPascalCase } from "@/utils/change-case";
+import Empty from "@/components/Empty";
 
 const columns = [
   {
@@ -33,15 +34,19 @@ const AffNetworkTabTable: FC = () => {
 
   return (
     <Stack>
-      <Scrollbar>
-        <Stack
-          alignItems="flex-start"
-          maxWidth={{ md: "calc(100vw - 64px)", xs: "calc(100vw - 48px)" }}
-          sx={{ "> div": { borderBottomRightRadius: 0, borderBottomLeftRadius: 0 } }}
-        >
-          <CustomTable columns={columns} data={data?.data?.nested_users!} />
-        </Stack>
-      </Scrollbar>
+      {data?.data?.nested_users?.length ? (
+        <Scrollbar>
+          <Stack
+            alignItems="flex-start"
+            maxWidth={{ md: "calc(100vw - 64px)", xs: "calc(100vw - 48px)" }}
+            sx={{ "> div": { borderBottomRightRadius: 0, borderBottomLeftRadius: 0 } }}
+          >
+            <CustomTable columns={columns} data={data?.data?.nested_users!} />
+          </Stack>
+        </Scrollbar>
+      ) : (
+        <Empty />
+      )}
     </Stack>
   );
 };

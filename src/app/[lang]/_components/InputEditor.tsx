@@ -4,7 +4,7 @@ import { IconButton } from "@mui/material";
 import { type FC, useState } from "react";
 
 type InputEditorProps = {
-  placeholder: string;
+  placeholder?: string;
   name: string;
   onSave: VoidFunction;
   label: string;

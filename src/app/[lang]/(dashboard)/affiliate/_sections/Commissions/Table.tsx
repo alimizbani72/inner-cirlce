@@ -8,6 +8,7 @@ import { useAffiliateServiceAffiliateCommissionsQuery } from "@/services/queries
 import type { PayoutCommissionResponse } from "@/services/requests";
 import { formatCurrency, toNumber } from "@/utils/toNumber";
 import { fDate } from "@/utils/format-time";
+import Empty from "@/components/Empty";
 
 const columns = [
   {
@@ -28,15 +29,19 @@ const AffCommissionsTabTable: FC = () => {
   const { data: commissionList } = useAffiliateServiceAffiliateCommissionsQuery();
   return (
     <Stack>
-      <Scrollbar>
-        <Stack
-          alignItems="flex-start"
-          maxWidth={{ md: "calc(100vw - 64px)", xs: "calc(100vw - 48px)" }}
-          sx={{ "> div": { borderBottomRightRadius: 0, borderBottomLeftRadius: 0 } }}
-        >
-          <CustomTable title="Commissions" columns={columns} data={commissionList?.data?.commissions || []} />
-        </Stack>
-      </Scrollbar>
+      {commissionList?.data?.commissions?.length ? (
+        <Scrollbar>
+          <Stack
+            alignItems="flex-start"
+            maxWidth={{ md: "calc(100vw - 64px)", xs: "calc(100vw - 48px)" }}
+            sx={{ "> div": { borderBottomRightRadius: 0, borderBottomLeftRadius: 0 } }}
+          >
+            <CustomTable title="Commissions" columns={columns} data={commissionList?.data?.commissions || []} />
+          </Stack>
+        </Scrollbar>
+      ) : (
+        <Empty title="You have not any commission record yet" />
+      )}
     </Stack>
   );
 };

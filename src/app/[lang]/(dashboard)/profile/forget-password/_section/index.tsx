@@ -100,7 +100,7 @@ const ForgetPasswordDialog = () => {
   };
 
   useEffect(() => {
-    if (watch("verifyCode").length === 6) {
+    if (watch("verifyCode").length === 5) {
       submitExchangeCode();
     }
   }, [watch("verifyCode")]);

@@ -3,9 +3,11 @@ import LangSelector from "./LangSelector";
 import { Icon } from "@/components/icons";
 import { useIsMobile } from "@/hooks/use-responsive";
 import { useAccountServiceAuthUserinfoQuery } from "@/services/queries";
+import { getUserPlanType } from "@/consts";
 
 const UserInfo = () => {
   const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+  const isFreePlan = getUserPlanType(userInfo) === "plankton";
 
   const isMobile = useIsMobile();
   return (
@@ -41,9 +43,13 @@ const UserInfo = () => {
         gap={2}
       >
         <Stack spacing={1} direction={"row"} alignItems={"center"}>
-          <Icon name="Warning--colorful" size={32} />
+          <Icon
+            name={isFreePlan ? "Warning--colorful" : "Subscription--colorful"}
+            color={isFreePlan ? undefined : "warning.main"}
+            size={32}
+          />
           <Typography variant="p2-semi-bold">
-            You have not{" "}
+            {isFreePlan ? "You have not " : getUserPlanType(userInfo)}
             <Typography component={"span"} variant="p2-regular">
               Subscription!
             </Typography>

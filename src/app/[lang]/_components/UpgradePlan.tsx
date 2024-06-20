@@ -1,17 +1,20 @@
 "use client";
-import Image from "@/components/Image";
+
 import RiveComp from "@/components/RiveComp";
 import { Icon } from "@/components/icons";
+import { getUserPlanType } from "@/consts";
 import { useAppRouter } from "@/routes/hooks";
+import { useAccountServiceAuthUserinfoQuery } from "@/services/queries";
 import { Box, Divider, Stack, Typography } from "@mui/material";
 import { usePathname } from "next/navigation";
 import type { FC } from "react";
 
-interface UpgradePlanProps {
-  activePlan?: boolean;
-}
+interface UpgradePlanProps {}
 
-const UpgradePlan: FC<UpgradePlanProps> = ({ activePlan }) => {
+const UpgradePlan: FC<UpgradePlanProps> = () => {
+  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+  const isFreePlan = getUserPlanType(userInfo) === "plankton";
+
   const { push } = useAppRouter();
   const pathname = usePathname();
 
@@ -23,15 +26,15 @@ const UpgradePlan: FC<UpgradePlanProps> = ({ activePlan }) => {
 
   return (
     <Stack px={3}>
-      <Stack borderRadius={2} bgcolor={activePlan ? "dark.3" : "pink.dark"} position={"relative"} overflow={"hidden"}>
-        <Box sx={{ position: "absolute", zIndex: 1, inset: 0, opacity: activePlan ? 0.08 : 1 }}>
+      <Stack borderRadius={2} bgcolor={!isFreePlan ? "dark.3" : "pink.dark"} position={"relative"} overflow={"hidden"}>
+        <Box sx={{ position: "absolute", zIndex: 1, inset: 0, opacity: !isFreePlan ? 0.08 : 1 }}>
           <img src="/assets/svg/upgrade-card.svg" width="100%" height="100%" style={{ objectFit: "cover" }} />
         </Box>
 
-        {activePlan ? (
+        {!isFreePlan ? (
           <Stack p={2} position={"relative"} direction={"row"} zIndex={2} gap={1.5} alignItems={"center"}>
-            <Box width={40} height={40}>
-              <Image src="/assets/animals/shark.svg" width="100%" height="100%" />
+            <Box sx={{ aspectRatio: 1 }} width={40} height={40}>
+              <RiveComp src={`/assets/rive/${getUserPlanType(userInfo)}.riv`} width={40} height={40} />
             </Box>
 
             <Stack flex={1}>
@@ -61,7 +64,7 @@ const UpgradePlan: FC<UpgradePlanProps> = ({ activePlan }) => {
           sx={{ cursor: "pointer" }}
           onClick={handleUpgradeClick}
         >
-          {activePlan ? (
+          {!isFreePlan ? (
             <Typography variant="p2-medium" textTransform={"uppercase"}>
               Upgrade
             </Typography>
@@ -69,7 +72,7 @@ const UpgradePlan: FC<UpgradePlanProps> = ({ activePlan }) => {
             <Typography variant="p2-semi-bold">Buy Now</Typography>
           )}
 
-          {activePlan ? (
+          {!isFreePlan ? (
             <Box sx={{ aspectRatio: 1, position: "absolute", right: 10, bottom: 10 }}>
               <RiveComp src="/assets/rive/rocket.riv" width={35} height={35} />
             </Box>

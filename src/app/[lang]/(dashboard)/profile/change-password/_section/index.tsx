@@ -1,4 +1,5 @@
 "use client";
+
 import { Icon } from "@/components/icons";
 import useCustomRouter from "@/hooks/useCustomRouter";
 import { DialogActions, Divider, IconButton, Stack, Typography } from "@mui/material";
@@ -17,7 +18,7 @@ import {
   useAccountServiceAuthUserinfoQuery,
   useVerifyServiceVerificationsSendCreateMutation,
 } from "@/services/queries";
-import { useSnackbar } from "notistack";
+import { enqueueSnackbar } from "notistack";
 
 const UpdateUserSchema = Yup.object().shape({
   newPassword: Yup.string()
@@ -37,7 +38,6 @@ const defaultValues = {
 };
 
 const ChangePasswordDialog = () => {
-  const { enqueueSnackbar } = useSnackbar();
   const { push, back, nativeBack } = useCustomRouter();
   const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
 
@@ -60,7 +60,7 @@ const ChangePasswordDialog = () => {
       enqueueSnackbar("Password changed successfully!");
       push("/profile");
     } catch (error) {
-      enqueueSnackbar(error?.message || "Failed to update password!", { variant: "error" });
+      enqueueSnackbar(error?.body?.message || "Failed to update password!", { variant: "error" });
     }
   });
 

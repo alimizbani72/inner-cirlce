@@ -10,9 +10,11 @@ import { Icon } from "@/components/icons";
 import { useAppDispatch } from "@/lib/hooks";
 import { mobileMenuToggle } from "@/lib/features/menu/menuSlice";
 import UpgradePlan from "../UpgradePlan";
+import { useAccountServiceAuthUserinfoQuery } from "@/services/queries";
 
 const MobileSidebar: FC = () => {
   const dispatch = useAppDispatch();
+  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
 
   return (
     <Stack sx={{ height: "100vh", width: "100vw" }}>
@@ -33,7 +35,12 @@ const MobileSidebar: FC = () => {
 
       <Stack py={4} px={2} gap={4}>
         <Menu name="Services" items={sidebarServicesItems} />
-        <Menu name="Community" items={sidebarCommunityItems} />
+        <Menu
+          name="Community"
+          items={sidebarCommunityItems.filter((item) =>
+            (userInfo as any)?.data?.kyc_status ? item : !item.path.includes("affiliate")
+          )}
+        />
       </Stack>
 
       <Stack mt={"auto"} gap={3}>

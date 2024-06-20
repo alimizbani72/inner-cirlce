@@ -1,10 +1,14 @@
 "use client";
-import Image from "@/components/Image";
+import RiveComp from "@/components/RiveComp";
 import { Icon } from "@/components/icons";
+import { getUserPlanType } from "@/consts";
+import { useAccountServiceAuthUserinfoQuery } from "@/services/queries";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 
 const WelcomeBanner: FC = () => {
+  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+
   return (
     <Stack sx={{ position: "relative", overflow: "hidden" }}>
       <Box
@@ -54,7 +58,7 @@ const WelcomeBanner: FC = () => {
         <Stack gap={2} alignItems={"flex-start"}>
           <Stack gap={1}>
             <Box>
-              <Typography variant="h3-semi-bold">Hi Ellie</Typography>
+              <Typography variant="h3-semi-bold">Hi {(userInfo as any)?.data?.full_name}</Typography>
               <Typography variant="h3-regular">👋, Welcome back!</Typography>
             </Box>
 
@@ -77,13 +81,13 @@ const WelcomeBanner: FC = () => {
           direction={"row"}
         >
           <Stack direction={"row"} gap={1}>
-            <Box flex={1}>
-              <Image src="/assets/animals/shark.svg" width="48px" height="48px" />
+            <Box sx={{ aspectRatio: 1 }} width={48} height={48}>
+              <RiveComp src={`/assets/rive/${getUserPlanType(userInfo)}.riv`} width={48} height={48} />
             </Box>
 
             <Stack>
               <Typography textTransform={"uppercase"} variant="p1-semi-bold">
-                shark
+                {getUserPlanType(userInfo)}
               </Typography>
               <Typography variant="caption-medium" color={"grey.light"}>
                 You're a

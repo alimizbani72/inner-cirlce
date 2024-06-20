@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function PortfolioStrategiesInner({ params }: Props) {
   const queryClient = getQueryClient();
-  await Promise.all([prefetchUseContentServiceContentPortfolioStrategyPlanQuery(queryClient, { plan: params.slug })]);
+  await Promise.all([prefetchUseContentServiceContentPortfolioStrategyPlanQuery(queryClient, { plan: params?.slug })]);
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>

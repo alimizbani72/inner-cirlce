@@ -10,6 +10,7 @@ import {
   prefetchUseAffiliateServiceAffiliateProgressQuery,
   prefetchUseAffiliateServiceAffiliateReferralCodeQuery,
   prefetchUseFinancialServiceFinancialInfoQuery,
+  prefetchUseFinancialServiceFinancialPayoutsQuery,
   prefetchUseWalletServiceWalletDefaultQuery,
 } from "@/services/queries/prefetch";
 
@@ -25,6 +26,7 @@ export default async function Affiliate() {
     prefetchUseWalletServiceWalletDefaultQuery(queryClient),
     prefetchUseAffiliateServiceAffiliateMeQuery(queryClient),
     prefetchUseFinancialServiceFinancialInfoQuery(queryClient),
+    prefetchUseFinancialServiceFinancialPayoutsQuery(queryClient),
     prefetchUseAffiliateServiceAffiliateBalanceQuery(queryClient),
     prefetchUseAffiliateServiceAffiliateProgressQuery(queryClient),
     prefetchUseAffiliateServiceAffiliateChildrenQuery(queryClient),

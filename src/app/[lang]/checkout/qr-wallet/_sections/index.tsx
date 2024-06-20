@@ -30,12 +30,12 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
   const { push, back } = useAppRouter();
   const { data } = useFinancialServiceFinancialPaymentsIdStatusQuery({ id }, undefined, {
     refetchInterval: (response) => {
-      if (response?.state?.data?.data?.status === "complete") {
+      if (response?.state?.data?.data?.status === "completed") {
         push("/payment?success=1");
         return false;
       }
 
-      if (["expired", "fail"].includes(response?.state?.data?.data?.status as string)) {
+      if (["expired", "failed"].includes(response?.state?.data?.data?.status as string)) {
         push("/payment?success=0");
         return false;
       }

@@ -5,3 +5,4 @@ export const downloadURL = (fileKey: number | string | undefined) => `${minecraf
 export const referralLink = (inviteCode: string) => urlJoin(process.env.NEXT_PUBLIC_URL!, "/register/", inviteCode);
 
 export const kycCallback = (callback: string) => urlJoin(process.env.NEXT_PUBLIC_URL!, callback);
+export const getUserPlanType = (userInfo: any) => userInfo?.data?.plan_type || "plankton";

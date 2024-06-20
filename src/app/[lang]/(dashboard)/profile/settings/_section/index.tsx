@@ -12,37 +12,48 @@ import FormProvider from "@/components/hook-form/form-provider";
 
 import * as Yup from "yup";
 import { useIsMobile } from "@/hooks/use-responsive";
-import { useAccountServiceAuthUserinfoQuery } from "@/services/queries";
+import {
+  useAccountServiceAuthUserinfoQuery,
+  useAccountServiceAuthUserinfoQueryKey,
+  useUserServiceAccountsUpdateCreateMutation,
+} from "@/services/queries";
 import InputEditor from "@app/_components/InputEditor";
+import { enqueueSnackbar } from "notistack";
+import { getQueryClient } from "@app/_providers/customQueryClient";
 
 const UpdateUserSchema = Yup.object().shape({
   name: Yup.string()
     .required("Name is required")
     .test("invalid character", "Your name can't contain numbers", (val) => !/\d/.test(val)),
-  checkbox: Yup.boolean(),
 });
 
-const defaultValues = {
-  name: "",
-  checkbox: false,
-};
-
 const SettingsDialog = () => {
+  const queryClient = getQueryClient();
   const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+  const { mutateAsync } = useUserServiceAccountsUpdateCreateMutation();
   const { push, back } = useCustomRouter();
   const isMobile = useIsMobile();
   const methods = useForm({
     resolver: yupResolver(UpdateUserSchema),
-    defaultValues,
+    defaultValues: { name: (userInfo as any)?.data?.full_name },
     mode: "onSubmit",
   });
 
-  const { handleSubmit } = methods;
+  const { watch } = methods;
+  const { name } = watch();
 
-  const onSubmit = handleSubmit((data) => {
-    // biome-ignore lint/suspicious/noConsoleLog: <explanation>
-    console.log("🚀 ~ data:", data);
-  });
+  const onSave = async () => {
+    if (name !== (userInfo as any)?.data?.full_name) {
+      mutateAsync({ requestBody: { full_name: name, avatar_url: (userInfo as any)?.data?.avatar_url } })
+        .then(() => {
+          enqueueSnackbar("Your Name updated successfully!");
+          queryClient.invalidateQueries({ queryKey: [useAccountServiceAuthUserinfoQueryKey] });
+        })
+        .catch(() => {
+          enqueueSnackbar("Failed to update avatar!", { variant: "error" });
+        });
+    }
+  };
 
   return (
     <>
@@ -67,18 +78,14 @@ const SettingsDialog = () => {
       <DialogContent dividers sx={{ p: 3 }}>
         <Stack justifyContent="center" alignItems="center">
           <UserProfile />
-          <FormProvider methods={methods} onSubmit={onSubmit} sx={{ gap: 3, width: "100%", mt: 3 }}>
-            <InputEditor
-              name="name"
-              label={"Full Name"}
-              placeholder={(userInfo as any)?.data?.full_name}
-              onSave={() => console.log("Aa")}
-            />
+          <FormProvider methods={methods} sx={{ gap: 3, width: "100%", mt: 3 }}>
+            <InputEditor name="name" label="Full Name" onSave={onSave} />
 
             <RHFTextField
               name="password"
-              label={"Password"}
-              placeholder="........"
+              label="Password"
+              type="password"
+              value="password"
               InputProps={{
                 readOnly: true,
                 endAdornment: (
