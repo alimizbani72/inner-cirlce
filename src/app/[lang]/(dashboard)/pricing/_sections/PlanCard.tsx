@@ -21,7 +21,7 @@ const PlanCard: FC<Props> = ({ title, description, plan_type, cost }) => {
 
   const handlePay = () => {
     mutateAsync({ requestBody: { plan_type, symbol: "USDC" } })
-      .then((response) => {
+      .then((response: any) => {
         push(`/checkout/qr-wallet?plan_type=${plan_type}&id=${response?.data?.id}`);
       })
       .catch((error) => enqueueSnackbar({ message: error.message, variant: "error" }));
