@@ -30,7 +30,7 @@ const PricingTable: FC<Props> = ({ plans, rows }) => {
 
   const handlePay = (plan_type: string) => {
     mutateAsync({ requestBody: { plan_type, symbol: "USDC" } })
-      .then((response) => {
+      .then((response: any) => {
         push(`/checkout/qr-wallet?plan_type=${plan_type}&id=${response?.data?.id}`);
       })
       .catch((error) => enqueueSnackbar({ message: error?.body?.message, variant: "error" }));
