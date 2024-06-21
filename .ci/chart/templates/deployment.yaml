@@ -42,6 +42,8 @@ spec:
           value: {{ .Values.app.google_client_id }}
         - name: GOOGLE_CLIENT_SECRET
           value: {{ .Values.app.google_client_secret }}
+        - name: NEXT_PUBLIC_CMS_ENDPOINT
+          value: https://cms.innercircle-chainmind.com/
       {{- if $.Values.securityContext }}
       securityContext:
         {{- $.Values.securityContext | nindent 8 }}
