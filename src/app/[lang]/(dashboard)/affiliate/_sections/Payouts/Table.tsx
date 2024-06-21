@@ -11,7 +11,7 @@ import { Icon } from "@/components/icons";
 import { DatePicker } from "@mui/x-date-pickers";
 import { fDate } from "@/utils/format-time";
 import { useFinancialServiceFinancialPayoutsQuery } from "@minecraft/queries";
-import type { PayoutResponse } from "@/services/requests";
+import type { PayoutResponse } from "@minecraft/requests";
 import { formatCurrency } from "@/utils/toNumber";
 
 const datePickerStyle = {

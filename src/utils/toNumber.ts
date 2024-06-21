@@ -1,4 +1,4 @@
-import type { MoneyResponse } from "@/services/requests";
+import type { MoneyResponse } from "@minecraft/requests";
 import numeral from "numeral";
 
 const CURRENCY_CODE: Record<string, string> = {
