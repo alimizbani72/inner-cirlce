@@ -5,10 +5,10 @@ import { Stack } from "@mui/material";
 import Scrollbar from "@/components/Scrollbar";
 import CustomTable from "@/components/CustomTable";
 import { useAffiliateServiceAffiliateCommissionsQuery } from "@minecraft/queries";
-import type { PayoutCommissionResponse } from "@/services/requests";
 import { formatCurrency, toNumber } from "@/utils/toNumber";
 import { fDate } from "@/utils/format-time";
 import Empty from "@/components/Empty";
+import type { PayoutCommissionResponse } from "@minecraft/requests";
 
 const columns = [
   {
