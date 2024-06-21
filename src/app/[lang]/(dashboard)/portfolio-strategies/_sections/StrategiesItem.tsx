@@ -6,6 +6,7 @@ import { Box, Button, Stack, Typography } from "@mui/material";
 import ContentStack from "@app/_components/ContentStack";
 import RiveComp from "@/components/RiveComp";
 import { Icon } from "@/components/icons";
+import { flexItem } from "@/utils/grid";
 
 interface StrategiesItemProps {
   src: string;
@@ -23,6 +24,7 @@ const StrategiesItem: FC<StrategiesItemProps> = ({ src, subtitle, type, upgrade 
       justifyContent={"space-between"}
       height={160}
       minWidth={{ md: 360, xs: "calc(100% - 24px)" }}
+      sx={flexItem({ count: { lg: 3, md: 2 }, gap: 24 })}
     >
       <Box sx={{ aspectRatio: 1 }}>
         <RiveComp src={src} width={128} height={128} />

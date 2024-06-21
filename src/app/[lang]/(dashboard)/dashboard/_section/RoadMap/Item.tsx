@@ -1,4 +1,5 @@
 import { Icon } from "@/components/icons";
+import { fDate } from "@/utils/format-time";
 import type { roadmaps } from "@cms/requests";
 import { Box, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
@@ -32,7 +33,7 @@ const RoadMapItem: FC<RoadMapItemProps> = ({ title, dateOnly, isOdd }) => {
       <Stack gap={1} mr={{ md: undefined, xs: "auto" }}>
         <Typography variant="p2-medium">{title}</Typography>
         <Typography variant="caption-regular" color={"grey.light"}>
-          {dateOnly}
+          {fDate(dateOnly, "MMM, yyyy")}
         </Typography>
       </Stack>
 

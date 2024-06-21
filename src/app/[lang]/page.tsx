@@ -1,5 +1,5 @@
 import { getServerSession } from "next-auth";
-import HomePageSection from "./_sections";
+import HomePageSection from "./_sections/Landing";
 import { authOptions } from "@/configs/authOptions";
 
 // ----------------------------------------------------------------------

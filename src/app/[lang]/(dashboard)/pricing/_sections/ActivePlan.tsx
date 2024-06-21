@@ -1,9 +1,14 @@
-import Image from "@/components/Image";
+import RiveComp from "@/components/RiveComp";
 import { Icon } from "@/components/icons";
+import { plans } from "@/configs/plans";
+import { getUserPlanType } from "@/consts";
+import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 
 const ActivePlan: FC = () => {
+  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+
   return (
     <Stack sx={{ position: "relative", overflow: "hidden" }}>
       <Box
@@ -52,8 +57,12 @@ const ActivePlan: FC = () => {
       >
         <Stack gap={1} direction={"row"} alignItems={"center"}>
           <Typography variant="p2-medium">Your Current Plan:</Typography>
-          <Image src="/assets/animals/plankton.svg" width="48px" height="48px" />
-          <Typography variant="p1-semi-bold">Plankton</Typography>
+          <Box sx={{ aspectRatio: 1 }} width={48} height={48}>
+            <RiveComp src={plans[getUserPlanType(userInfo) as keyof typeof plans].rive} width={48} height={48} />
+          </Box>
+          <Typography variant="p1-semi-bold" textTransform="capitalize">
+            {getUserPlanType(userInfo)}
+          </Typography>
         </Stack>
 
         <Button color="secondary" size="large" startIcon={<Icon color="dark.1" name="Subscription" />}>

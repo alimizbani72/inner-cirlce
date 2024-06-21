@@ -2,6 +2,7 @@
 
 import RiveComp from "@/components/RiveComp";
 import { Icon } from "@/components/icons";
+import { plans } from "@/configs/plans";
 import { getUserPlanType } from "@/consts";
 import { useAppRouter } from "@/routes/hooks";
 import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
@@ -34,11 +35,13 @@ const UpgradePlan: FC<UpgradePlanProps> = () => {
         {!isFreePlan ? (
           <Stack p={2} position={"relative"} direction={"row"} zIndex={2} gap={1.5} alignItems={"center"}>
             <Box sx={{ aspectRatio: 1 }} width={40} height={40}>
-              <RiveComp src={`/assets/rive/${getUserPlanType(userInfo)}.riv`} width={40} height={40} />
+              <RiveComp src={plans[getUserPlanType(userInfo) as keyof typeof plans].rive} width={40} height={40} />
             </Box>
 
             <Stack flex={1}>
-              <Typography variant="p2-semi-bold">Shark</Typography>
+              <Typography variant="p2-semi-bold" textTransform="capitalize">
+                {getUserPlanType(userInfo)}
+              </Typography>
               <Typography variant="caption-medium" color="grey.light">
                 Your Current Plan
               </Typography>

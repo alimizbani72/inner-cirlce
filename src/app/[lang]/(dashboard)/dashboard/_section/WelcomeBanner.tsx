@@ -1,6 +1,7 @@
 "use client";
 import RiveComp from "@/components/RiveComp";
 import { Icon } from "@/components/icons";
+import { plans } from "@/configs/plans";
 import { getUserPlanType } from "@/consts";
 import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import { Box, Button, Stack, Typography } from "@mui/material";
@@ -82,7 +83,7 @@ const WelcomeBanner: FC = () => {
         >
           <Stack direction={"row"} gap={1}>
             <Box sx={{ aspectRatio: 1 }} width={48} height={48}>
-              <RiveComp src={`/assets/rive/${getUserPlanType(userInfo)}.riv`} width={48} height={48} />
+              <RiveComp src={plans[getUserPlanType(userInfo) as keyof typeof plans].rive} width={48} height={48} />
             </Box>
 
             <Stack>

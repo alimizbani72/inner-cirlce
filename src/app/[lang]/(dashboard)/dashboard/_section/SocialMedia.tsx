@@ -8,6 +8,7 @@ import { useGlobalSocialMediaServiceGetGlobalsSocialMedia } from "@cms/queries";
 import { useParams } from "next/navigation";
 import Image from "@/components/Image";
 import type { media } from "@cms/requests";
+import { CMSDownloadURL } from "@/consts";
 
 const SocialMedia: FC = () => {
   const { lang } = useParams();
@@ -29,6 +30,7 @@ const SocialMedia: FC = () => {
       >
         {data?.socialLinks?.map((i) => (
           <Stack
+            key={i.id}
             gap={2}
             p={2}
             direction={"row"}
@@ -41,7 +43,7 @@ const SocialMedia: FC = () => {
             sx={{ "&:hover": { textDecoration: "none" } }}
             component={Link}
           >
-            <Image src={(i?.icon as media)?.url!} width={24} height={24} />
+            <Image src={CMSDownloadURL((i?.icon as media)?.url!)} width={24} height={24} />
             <Typography variant="p2-medium">{i.name}</Typography>
           </Stack>
         ))}

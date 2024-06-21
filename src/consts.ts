@@ -1,8 +1,12 @@
-import urlJoin from "url-join";
-export const minecraftEndpoint = `${process.env.NEXT_PUBLIC_MINECRAFT_ENDPOINT}api/v1`;
+import { resolvePathJoin } from "./utils/path";
 
-export const downloadURL = (fileKey: number | string | undefined) => `${minecraftEndpoint}/files/download/${fileKey}`;
-export const referralLink = (inviteCode: string) => urlJoin(process.env.NEXT_PUBLIC_URL!, "/register/", inviteCode);
+export const minecraftEndpoint = resolvePathJoin(process.env.NEXT_PUBLIC_MINECRAFT_ENDPOINT || "", "api/v1");
 
-export const kycCallback = (callback: string) => urlJoin(process.env.NEXT_PUBLIC_URL!, callback);
+export const downloadURL = (fileKey: number | string | undefined) =>
+  resolvePathJoin(minecraftEndpoint, "/files/download/", fileKey?.toString() || "");
+export const referralLink = (inviteCode: string) =>
+  resolvePathJoin(process.env.NEXT_PUBLIC_URL || "", "/register/", inviteCode);
+
+export const kycCallback = (callback: string) => resolvePathJoin(process.env.NEXT_PUBLIC_URL || "", callback);
 export const getUserPlanType = (userInfo: any) => userInfo?.data?.plan_type || "plankton";
+export const CMSDownloadURL = (url: string) => resolvePathJoin(process.env.NEXT_PUBLIC_CMS_ENDPOINT || "", url || "");

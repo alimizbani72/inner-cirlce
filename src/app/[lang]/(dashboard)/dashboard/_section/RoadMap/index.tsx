@@ -28,7 +28,7 @@ const RoadMap: FC<RoadMapProps> = () => {
         }}
       >
         {data?.docs.map((i, index) => (
-          <RoadMapItem key={i.title} {...i} isOdd={!!(index % 2)} />
+          <RoadMapItem key={index} {...i} isOdd={!!(index % 2)} />
         ))}
       </Stack>
     </ContentStack>
