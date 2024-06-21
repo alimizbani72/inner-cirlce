@@ -4,7 +4,7 @@ import RiveComp from "@/components/RiveComp";
 import { Icon } from "@/components/icons";
 import { getUserPlanType } from "@/consts";
 import { useAppRouter } from "@/routes/hooks";
-import { useAccountServiceAuthUserinfoQuery } from "@/services/queries";
+import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import { Box, Divider, Stack, Typography } from "@mui/material";
 import { usePathname } from "next/navigation";
 import type { FC } from "react";

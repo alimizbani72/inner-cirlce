@@ -1,5 +1,9 @@
 import { Icon } from "@/components/icons";
-import { Box, Button, Divider, Stack, Typography } from "@mui/material";
+import { useAppRouter } from "@/routes/hooks";
+import { useFinancialServiceFinancialPayCreateMutation } from "@minecraft/queries";
+import { LoadingButton } from "@mui/lab";
+import { Box, Stack, Typography } from "@mui/material";
+import { enqueueSnackbar } from "notistack";
 import type { FC } from "react";
 import { useMemo } from "react";
 
@@ -9,6 +13,8 @@ type Props = {
 };
 
 const PricingTable: FC<Props> = ({ plans, rows }) => {
+  const { push } = useAppRouter();
+  const { mutateAsync, isPending } = useFinancialServiceFinancialPayCreateMutation();
   const tableCelSx = useMemo(
     () => ({
       py: 3,
@@ -22,6 +28,14 @@ const PricingTable: FC<Props> = ({ plans, rows }) => {
     []
   );
 
+  const handlePay = (plan_type: string) => {
+    mutateAsync({ requestBody: { plan_type, symbol: "USDC" } })
+      .then((response) => {
+        push(`/checkout/qr-wallet?plan_type=${plan_type}&id=${response?.data?.id}`);
+      })
+      .catch((error) => enqueueSnackbar({ message: error?.body?.message, variant: "error" }));
+  };
+
   return (
     <Stack>
       <Stack
@@ -33,16 +47,16 @@ const PricingTable: FC<Props> = ({ plans, rows }) => {
         }}
       >
         <Stack direction="row" bgcolor="dark.2" height={72}>
-          <Typography sx={{ ...tableCelSx }}>Plan</Typography>
-          {plans.map((plan) => (
-            <Typography key={plan} sx={{ ...tableCelSx, color: "pink.light" }}>
+          <Typography sx={{ ...tableCelSx, flex: "0 0 176px" }}>Plan</Typography>
+          {plans.map((plan, index) => (
+            <Typography key={`${plan}-${index}`} sx={{ ...tableCelSx, color: "pink.light" }}>
               {plan}
             </Typography>
           ))}
         </Stack>
         {Object.entries(rows)?.map(([key, values]) => (
           <Stack
-            key={key}
+            key={`row-${key}`}
             direction="row"
             sx={{
               height: "72px",
@@ -54,18 +68,14 @@ const PricingTable: FC<Props> = ({ plans, rows }) => {
               },
             }}
           >
-            <Typography sx={{ ...tableCelSx }}>{key}</Typography>
+            <Typography sx={{ ...tableCelSx, flex: "0 0 176px" }}>{key}</Typography>
             {values.map((val, index) => (
               <Typography key={index} sx={tableCelSx}>
                 {typeof val === "boolean" ? (
                   <Box
                     component={Icon}
                     name={val ? "Check" : "Close"}
-                    sx={{
-                      path: {
-                        stroke: (theme) => (val ? theme.palette.success.main : theme.palette.danger.main),
-                      },
-                    }}
+                    sx={{ path: { stroke: (theme) => (val ? theme.palette.success.main : theme.palette.danger.main) } }}
                   />
                 ) : (
                   val
@@ -75,16 +85,22 @@ const PricingTable: FC<Props> = ({ plans, rows }) => {
           </Stack>
         ))}
       </Stack>
-      <Stack justifyContent={"flex-end"} direction={"row"} gap={2}>
+      <Stack direction="row" height={72}>
+        <Box sx={{ flex: "0 0 176px" }} />
         {plans.map((plan, index) => (
-          <>
-            <Stack sx={{ py: 2, width: "calc(225px - 34px)", "&:last-child": { width: "calc(225px - 15px)" } }}>
-              <Button fullWidth key={plan}>
-                Choose Plan
-              </Button>
-            </Stack>
-            {index + 1 !== plans.length && <Divider flexItem orientation="horizontal" sx={{ borderWidth: "1px" }} />}
-          </>
+          <Stack
+            key={plan}
+            flex="1 1 225px"
+            sx={{
+              py: 2,
+              ...(index + 1 === plans.length ? { pl: 2 } : { px: 2 }),
+              "&:not(:last-child)": { borderRight: "1.5px solid", borderColor: "dark.3" },
+            }}
+          >
+            <LoadingButton loading={isPending} onClick={() => handlePay(plan?.toLowerCase())}>
+              Choose Plan
+            </LoadingButton>
+          </Stack>
         ))}
       </Stack>
     </Stack>

@@ -5,7 +5,7 @@ import { Button, Stack, Typography } from "@mui/material";
 import AffPayoutsTabTable from "./Table";
 import ContentStack from "@app/_components/ContentStack";
 import { Icon } from "@/components/icons";
-import { useWalletServiceWalletDefaultQuery } from "@/services/queries";
+import { useWalletServiceWalletDefaultQuery } from "@minecraft/queries";
 import SetupWalletDialog from "@app/_components/SetupWalletDialog";
 
 const AffPayoutsTab: FC = () => {

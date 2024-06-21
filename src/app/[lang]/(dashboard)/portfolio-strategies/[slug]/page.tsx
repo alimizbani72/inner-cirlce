@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import PortfolioStrategiesInnerSection from "./_sections";
 import { getQueryClient } from "@app/_providers/customQueryClient";
-import { prefetchUseContentServiceContentPortfolioStrategyPlanQuery } from "@/services/queries/prefetch";
+import { prefetchUseContentServiceContentPortfolioStrategyPlanQuery } from "@minecraft/queries/prefetch";
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 
 // ----------------------------------------------------------------------

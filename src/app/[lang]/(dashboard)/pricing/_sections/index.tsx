@@ -40,7 +40,7 @@ const plans = [
   },
 ];
 
-const plansName = ["Shrimps", "Fishes", "Sharks", "Whales"];
+const plansName = ["Shrimp", "Fish", "Shark", "Whale"];
 const rows = {
   "Coinreports (10x)": ["3", "10", "15", "20+"],
   "Coinreports (100x)": [false, false, false, "10+"],

@@ -21,7 +21,7 @@ import {
 import {
   useVerifyServiceVerificationsExchangeCreateMutation,
   useVerifyServiceVerificationsSendCreateMutation,
-} from "@/services/queries";
+} from "@minecraft/queries";
 import { signIn } from "next-auth/react";
 import { useAppRouter } from "@/routes/hooks";
 

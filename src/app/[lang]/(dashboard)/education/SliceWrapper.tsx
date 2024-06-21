@@ -3,7 +3,7 @@
 import { fetchEducationData } from "@/lib/features/academy/educationSlice";
 import { selectLang } from "@/lib/features/dictionary/dicSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { useContentServiceContentVideoAcademyLangQuery } from "@/services/queries";
+import { useContentServiceContentVideoAcademyLangQuery } from "@minecraft/queries";
 import { useCallback, type FC, type PropsWithChildren } from "react";
 
 const SliceWrapper: FC<PropsWithChildren> = () => {

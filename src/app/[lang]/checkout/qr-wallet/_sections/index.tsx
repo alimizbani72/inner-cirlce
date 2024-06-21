@@ -14,7 +14,7 @@ import { formatCurrency, toNumber } from "@/utils/toNumber";
 import { plans } from "@/configs/plans";
 import RiveComp from "@/components/RiveComp";
 import { toPascalCase } from "@/utils/change-case";
-import { useFinancialServiceFinancialPaymentsIdStatusQuery } from "@/services/queries";
+import { useFinancialServiceFinancialPaymentsIdStatusQuery } from "@minecraft/queries";
 import { useAppRouter } from "@/routes/hooks";
 
 type Props = { planType: string; id: string };

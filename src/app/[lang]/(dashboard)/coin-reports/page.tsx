@@ -5,7 +5,8 @@ import Table from "./_sections/Table";
 import LearningBanner from "./_sections/LearningBanner";
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import { getQueryClient } from "@app/_providers/customQueryClient";
-import { prefetchUseContentServiceContentCoinReportLangQuery } from "@/services/queries/prefetch";
+import { prefetchUseContentServiceContentCoinReportLangQuery } from "@minecraft/queries/prefetch";
+import type { RouteParamsType } from "@/routes/type";
 
 // ----------------------------------------------------------------------
 
@@ -13,9 +14,9 @@ export const metadata: Metadata = {
   title: "Coin Reports",
 };
 
-export default async function CoinReports() {
+export default async function CoinReports({ params }: RouteParamsType) {
   const queryClient = getQueryClient();
-  await Promise.all([prefetchUseContentServiceContentCoinReportLangQuery(queryClient, { lang: "en" })]);
+  await Promise.all([prefetchUseContentServiceContentCoinReportLangQuery(queryClient, { lang: params.lang })]);
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>

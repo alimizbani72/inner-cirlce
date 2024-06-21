@@ -11,7 +11,7 @@ import {
   useAffiliateServiceAffiliateChildrenQuery,
   useAffiliateServiceAffiliateMeQuery,
   useAffiliateServiceAffiliateProgressQuery,
-} from "@/services/queries";
+} from "@minecraft/queries";
 import { formatCurrency, toNumber } from "@/utils/toNumber";
 import { toPascalCase } from "@/utils/change-case";
 import { plans } from "@/configs/plans";

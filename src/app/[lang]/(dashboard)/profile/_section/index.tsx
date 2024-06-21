@@ -7,7 +7,7 @@ import UserInfo from "./UserInfo";
 import useCustomRouter from "@/hooks/useCustomRouter";
 import { signOut } from "next-auth/react";
 import { profileMenuItems } from "@/configs/profile";
-import { useAccountServiceAuthUserinfoQuery } from "@/services/queries";
+import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import { getUserPlanType } from "@/consts";
 
 const ProfileDialog = () => {

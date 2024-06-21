@@ -15,7 +15,7 @@ import { getForgotPasswordInfo, setForgotPasswordInfo, setForgotPasswordStep } f
 import {
   useVerifyServiceVerificationsEmailCheckCreateMutation,
   useVerifyServiceVerificationsSendCreateMutation,
-} from "@/services/queries";
+} from "@minecraft/queries";
 import { useSnackbar } from "notistack";
 import { LoadingButton } from "@mui/lab";
 

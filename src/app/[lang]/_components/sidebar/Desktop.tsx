@@ -11,7 +11,7 @@ import LogoType from "@/components/LogoType";
 import Logo from "@/components/Logo";
 import { Icon } from "@/components/icons";
 import UpgradePlan from "../UpgradePlan";
-import { useAccountServiceAuthUserinfoQuery } from "@/services/queries";
+import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 
 const DesktopSidebar: FC = () => {
   const { data: userInfo } = useAccountServiceAuthUserinfoQuery();

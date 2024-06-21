@@ -1,11 +1,11 @@
 import RiveComp from "@/components/RiveComp";
 import { plans } from "@/configs/plans";
 import { useAppRouter } from "@/routes/hooks";
-import { useFinancialServiceFinancialPayCreateMutation } from "@/services/queries";
+import { useFinancialServiceFinancialPayCreateMutation } from "@minecraft/queries";
 import { fCurrency } from "@/utils/format-number";
 import { LoadingButton } from "@mui/lab";
 import { Stack, Typography } from "@mui/material";
-import { useSnackbar } from "notistack";
+import { enqueueSnackbar } from "notistack";
 import type { FC } from "react";
 
 type Props = {
@@ -18,7 +18,6 @@ type Props = {
 const PlanCard: FC<Props> = ({ title, description, plan_type, cost }) => {
   const { push } = useAppRouter();
   const { mutateAsync, isPending } = useFinancialServiceFinancialPayCreateMutation();
-  const { enqueueSnackbar } = useSnackbar();
 
   const handlePay = () => {
     mutateAsync({ requestBody: { plan_type, symbol: "USDC" } })

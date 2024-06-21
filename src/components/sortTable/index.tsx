@@ -31,10 +31,12 @@ type PropType = {
   minWidthCell?: any;
 };
 
-type MoreInfoData = {
+export type MoreInfoData = {
   Name: string;
   link: string;
   video_url: string;
+  how_to_buy_link: string;
+  how_to_buy_video_url: string;
 };
 
 const generateColumns = (data: any[], handleOpenMoreInfo: (info: string) => void) => {
@@ -59,7 +61,13 @@ const generateColumns = (data: any[], handleOpenMoreInfo: (info: string) => void
         }
         if (key === "more_info") {
           return (
-            <Button color="info" size="small" sx={{ whiteSpace: "nowrap" }} onClick={() => handleOpenMoreInfo(value)}>
+            <Button
+              color="info"
+              size="small"
+              sx={{ whiteSpace: "nowrap" }}
+              onClick={() => handleOpenMoreInfo(value)}
+              disabled={!value}
+            >
               More Information
             </Button>
           );
@@ -139,7 +147,7 @@ const SortTable = ({ title, data, action, width, minWidthCell }: PropType) => {
   };
 
   const handleOpenMoreInfo = (info: string) => {
-    const parsedInfo = JSON.parse(info);
+    const parsedInfo = JSON.parse(info || "{}");
     setMoreInfo(parsedInfo);
     setOpen(true);
   };

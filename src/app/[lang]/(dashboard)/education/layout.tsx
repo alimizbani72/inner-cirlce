@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { getQueryClient } from "@app/_providers/customQueryClient";
-import { prefetchUseContentServiceContentVideoAcademyLangQuery } from "@/services/queries/prefetch";
+import { prefetchUseContentServiceContentVideoAcademyLangQuery } from "@minecraft/queries/prefetch";
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import SliceWrapper from "./SliceWrapper";
+import type { RouteParamsType } from "@/routes/type";
 // ----------------------------------------------------------------------
 
 export const metadata: Metadata = {
@@ -12,10 +13,9 @@ export const metadata: Metadata = {
 
 export type LayoutProps = {
   children: ReactNode;
-  params: { lang: string };
 };
 
-export default async function EducationLayout({ children, params }: LayoutProps) {
+export default async function EducationLayout({ children, params }: LayoutProps & RouteParamsType) {
   const queryClient = getQueryClient();
   await Promise.all([prefetchUseContentServiceContentVideoAcademyLangQuery(queryClient, { lang: params.lang })]);
 

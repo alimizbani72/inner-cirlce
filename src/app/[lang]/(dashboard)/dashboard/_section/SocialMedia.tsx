@@ -1,21 +1,25 @@
+"use client";
+
 import ContentStack from "@app/_components/ContentStack";
 import Link from "@/components/Link";
-import { Icon } from "@/components/icons";
-import type { iconsType } from "@/components/icons/iconsNames";
 import { Stack, Typography } from "@mui/material";
 import type { FC } from "react";
-
-const socials = [
-  { id: 1, title: "Twitter (X)", icon: "X", link: "http://twitter.com" },
-  { id: 2, title: "Instagram", icon: "Instagram", link: "http://www.instagram.com" },
-  { id: 3, title: "Tiktok", icon: "Tiktok", link: "https://tiktok.com" },
-  { id: 4, title: "Google", icon: "Google", link: "https://www.google.com" },
-];
+import { useGlobalSocialMediaServiceGetGlobalsSocialMedia } from "@cms/queries";
+import { useParams } from "next/navigation";
+import Image from "@/components/Image";
+import type { media } from "@cms/requests";
 
 const SocialMedia: FC = () => {
+  const { lang } = useParams();
+  const { data } = useGlobalSocialMediaServiceGetGlobalsSocialMedia({ locale: lang as string });
+
+  if (!data?.socialLinks?.length) {
+    return null;
+  }
+
   return (
     <ContentStack sx={{ gap: 3 }}>
-      <Typography variant="p1-semi-bold">Road Map</Typography>
+      <Typography variant="p1-semi-bold">Socials</Typography>
 
       <Stack
         sx={{
@@ -23,7 +27,7 @@ const SocialMedia: FC = () => {
           flexDirection: { md: "row", xs: "column" },
         }}
       >
-        {socials.map((i) => (
+        {data?.socialLinks?.map((i) => (
           <Stack
             gap={2}
             p={2}
@@ -33,12 +37,12 @@ const SocialMedia: FC = () => {
             alignItems={"center"}
             justifyContent="flex-start"
             flex={1}
-            href={i.link}
+            href={i.url}
             sx={{ "&:hover": { textDecoration: "none" } }}
             component={Link}
           >
-            <Icon name={i.icon as iconsType} />
-            <Typography variant="p2-medium">{i.title}</Typography>
+            <Image src={(i?.icon as media)?.url!} width={24} height={24} />
+            <Typography variant="p2-medium">{i.name}</Typography>
           </Stack>
         ))}
       </Stack>

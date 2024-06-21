@@ -12,7 +12,7 @@ import {
   prefetchUseFinancialServiceFinancialInfoQuery,
   prefetchUseFinancialServiceFinancialPayoutsQuery,
   prefetchUseWalletServiceWalletDefaultQuery,
-} from "@/services/queries/prefetch";
+} from "@minecraft/queries/prefetch";
 
 // ----------------------------------------------------------------------
 

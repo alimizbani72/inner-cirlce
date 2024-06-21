@@ -10,7 +10,7 @@ import { Icon } from "@/components/icons";
 import { useAppDispatch } from "@/lib/hooks";
 import { mobileMenuToggle } from "@/lib/features/menu/menuSlice";
 import UpgradePlan from "../UpgradePlan";
-import { useAccountServiceAuthUserinfoQuery } from "@/services/queries";
+import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 
 const MobileSidebar: FC = () => {
   const dispatch = useAppDispatch();

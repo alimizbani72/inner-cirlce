@@ -10,7 +10,7 @@ import {
   useFinancialServiceFinancialInfoQuery,
   useFinancialServiceFinancialWithdrawCreateMutation,
   useWalletServiceWalletDefaultQuery,
-} from "@/services/queries";
+} from "@minecraft/queries";
 import { formatCurrency } from "@/utils/toNumber";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -56,7 +56,7 @@ const WithdrawDialog: FC<Props> = ({ close, open }) => {
         resetField("amount");
       })
       .catch((error) => {
-        enqueueSnackbar(error.body.message || t("formErrors.formError"), { variant: "error" });
+        enqueueSnackbar(error?.body?.message || t("formErrors.formError"), { variant: "error" });
       });
   });
 

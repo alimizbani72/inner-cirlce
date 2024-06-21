@@ -12,7 +12,7 @@ import { getRegisterInfo, setRegisterInfo, setRegisterStep } from "@/lib/feature
 import {
   useVerifyServiceVerificationsEmailCheckCreateMutation,
   useVerifyServiceVerificationsSendCreateMutation,
-} from "@/services/queries";
+} from "@minecraft/queries";
 import { LoadingButton } from "@mui/lab";
 import { useSnackbar } from "notistack";
 import { useAppRouter } from "@/routes/hooks";

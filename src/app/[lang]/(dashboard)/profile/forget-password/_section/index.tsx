@@ -19,7 +19,7 @@ import {
   useAccountServiceAuthUserinfoQuery,
   useVerifyServiceVerificationsExchangeCreateMutation,
   useVerifyServiceVerificationsSendCreateMutation,
-} from "@/services/queries";
+} from "@minecraft/queries";
 import { useEffect, useState } from "react";
 import { useSnackbar } from "notistack";
 import { LoadingButton } from "@mui/lab";

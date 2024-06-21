@@ -10,7 +10,7 @@ import CustomPopover, { usePopover } from "@/components/custom-popover";
 import { Icon } from "@/components/icons";
 import { DatePicker } from "@mui/x-date-pickers";
 import { fDate } from "@/utils/format-time";
-import { useFinancialServiceFinancialPayoutsQuery } from "@/services/queries";
+import { useFinancialServiceFinancialPayoutsQuery } from "@minecraft/queries";
 import type { PayoutResponse } from "@/services/requests";
 import { formatCurrency } from "@/utils/toNumber";
 

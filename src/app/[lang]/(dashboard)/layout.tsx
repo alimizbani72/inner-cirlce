@@ -5,7 +5,7 @@ import DashboardHeader from "@app/(dashboard)/dashboard/_section/Header";
 import DesktopSidebar from "@app/_components/sidebar/Desktop";
 import Scrollbar from "@/components/Scrollbar";
 import { getQueryClient } from "@app/_providers/customQueryClient";
-import { prefetchUseAccountServiceAuthUserinfoQuery } from "@/services/queries/prefetch";
+import { prefetchUseAccountServiceAuthUserinfoQuery } from "@minecraft/queries/prefetch";
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 // ----------------------------------------------------------------------
 

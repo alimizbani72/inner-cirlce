@@ -2,7 +2,7 @@
 import useCustomRouter from "@/hooks/useCustomRouter";
 import { Button, IconButton, Stack, Typography } from "@mui/material";
 import DialogContent from "@mui/material/DialogContent";
-import { useAccountServiceAuthResetPasswordCreateMutation } from "@/services/queries";
+import { useAccountServiceAuthResetPasswordCreateMutation } from "@minecraft/queries";
 import { Icon } from "@/components/icons";
 
 const SuccessDialog = () => {

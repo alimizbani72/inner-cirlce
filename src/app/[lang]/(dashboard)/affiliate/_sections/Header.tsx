@@ -9,7 +9,7 @@ import ContentStack from "@app/_components/ContentStack";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 
 import dynamic from "next/dynamic";
-import { useAffiliateServiceAffiliateReferralCodeQuery } from "@/services/queries";
+import { useAffiliateServiceAffiliateReferralCodeQuery } from "@minecraft/queries";
 import { referralLink } from "@/consts";
 
 const QRCodeWithIcon = dynamic(() => import("@/components/QRCodeWithIcon"), {

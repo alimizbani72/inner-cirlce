@@ -13,13 +13,14 @@ const VideoItem: FC<Props> = ({ content }) => {
       border="1.5px solid"
       borderColor={"dark.3"}
       overflow={"hidden"}
-      direction={{ md: "row", xs: "column" }}
+      direction="row"
       component={Link}
       href={encodeURIComponent(content.title)}
       gap={1}
       flex={1}
       p={{ md: 3, xs: 2 }}
       alignItems={"center"}
+      justifyContent="space-between"
     >
       <Stack gap={1}>
         <Typography variant="p1-medium">{content.title}</Typography>

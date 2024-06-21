@@ -4,7 +4,7 @@ import { Stack } from "@mui/material";
 import type { FC } from "react";
 import StrategiesItem from "./StrategiesItem";
 import { plans } from "@/configs/plans";
-import { useAccountServiceAuthUserinfoQuery } from "@/services/queries";
+import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import { getUserPlanType } from "@/consts";
 
 type Props = {};

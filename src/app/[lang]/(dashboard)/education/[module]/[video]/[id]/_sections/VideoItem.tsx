@@ -1,10 +1,10 @@
 import Image from "@/components/Image";
-import Link from "@/components/Link";
 import { Icon } from "@/components/icons";
+import { useAppRouter } from "@/routes/hooks";
 import { snipText } from "@/utils/string";
 import { Box, Divider, Stack, Typography } from "@mui/material";
-import { useParams } from "next/navigation";
-import type { FC } from "react";
+import { useParams, usePathname } from "next/navigation";
+import { useMemo, type FC } from "react";
 
 interface VideoItemProps {
   title: string;
@@ -16,16 +16,35 @@ interface VideoItemProps {
 
 const VideoItem: FC<VideoItemProps> = ({ image, title, completed, watching, hasDivider }) => {
   const { module, video } = useParams();
+  const { push } = useAppRouter();
+  const pathname = usePathname();
+  const { lang } = useParams();
+
+  const destination = useMemo(
+    () => `/${lang}/education/${module}/${video}/${encodeURIComponent(title as string)}/`,
+    [pathname]
+  );
+
   return (
     <>
       <Stack
         direction={"row"}
         gap={2}
-        component={Link}
-        href={`/education/${module}/${video}/${encodeURIComponent(title as string)}`}
+        sx={{ cursor: pathname !== destination ? "pointer" : "default" }}
+        onClick={() => {
+          if (pathname !== destination) {
+            push(destination);
+          }
+        }}
       >
         <Box width={"98px"} height={"53px"}>
-          <Image width={"100%"} height={"100%"} borderRadius={"8px"} src={image} />
+          <Image
+            width={"100%"}
+            height={"100%"}
+            borderRadius={"8px"}
+            objectFit="contain"
+            src={image || "/logo/logo-type.svg"}
+          />
         </Box>
 
         <Stack direction={"row"} gap={1} flex={1}>

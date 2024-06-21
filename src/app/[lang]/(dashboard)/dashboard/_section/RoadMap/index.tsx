@@ -1,16 +1,22 @@
+"use client";
+
 import ContentStack from "@app/_components/ContentStack";
 import { Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 import RoadMapItem from "./Item";
+import { useRoadmapsServiceGetRoadmaps } from "@cms/queries";
+import { useParams } from "next/navigation";
 
 interface RoadMapProps {}
-const rm = [
-  { id: 1, title: "Lunch ChainMind Mobile App", date: "March, 2024" },
-  { id: 2, title: "Lunch ChainMind Mobile App", date: "March, 2024" },
-  { id: 3, title: "Lunch ChainMind Mobile App", date: "March, 2024" },
-];
 
 const RoadMap: FC<RoadMapProps> = () => {
+  const { lang } = useParams();
+  const { data } = useRoadmapsServiceGetRoadmaps({ locale: lang as string });
+
+  if (!data?.docs?.length) {
+    return null;
+  }
+
   return (
     <ContentStack sx={{ gap: 3 }}>
       <Typography variant="p1-semi-bold">Road Map</Typography>
@@ -21,8 +27,8 @@ const RoadMap: FC<RoadMapProps> = () => {
           flexDirection: { md: "row", xs: "column" },
         }}
       >
-        {rm.map((i, index) => (
-          <RoadMapItem key={i.id} {...i} isOdd={!!(index % 2)} />
+        {data?.docs.map((i, index) => (
+          <RoadMapItem key={i.title} {...i} isOdd={!!(index % 2)} />
         ))}
       </Stack>
     </ContentStack>

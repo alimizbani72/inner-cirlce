@@ -9,7 +9,8 @@ import { useAppSelector } from "@/lib/hooks";
 import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
 import Empty from "@/components/Empty";
 import Loading from "@/components/Loading";
-import { useContentServiceContentCoinReportLangQuery } from "@/services/queries";
+import { useContentServiceContentCoinReportLangQuery } from "@minecraft/queries";
+import { useParams } from "next/navigation";
 
 interface TableProps {}
 
@@ -55,8 +56,13 @@ const buttons = [
 ];
 
 const Table: FC<TableProps> = () => {
+  const { lang } = useParams();
   const [value, setValue] = useState<any>(buttons[0].value);
-  const { data: coinsData, isSuccess, isPending } = useContentServiceContentCoinReportLangQuery({ lang: "en" });
+  const {
+    data: coinsData,
+    isSuccess,
+    isPending,
+  } = useContentServiceContentCoinReportLangQuery({ lang: lang as string });
   const isCollapsed = useAppSelector(isSidebarCollapsed);
 
   const handleChange = (newValue: any) => {

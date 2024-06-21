@@ -1,14 +1,13 @@
 import { Icon } from "@/components/icons";
+import type { roadmaps } from "@cms/requests";
 import { Box, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 
-interface RoadMapItemProps {
-  title: string;
-  date: string;
+interface RoadMapItemProps extends roadmaps {
   isOdd?: boolean;
 }
 
-const RoadMapItem: FC<RoadMapItemProps> = ({ title, date, isOdd }) => {
+const RoadMapItem: FC<RoadMapItemProps> = ({ title, dateOnly, isOdd }) => {
   return (
     <Stack
       gap={2}
@@ -33,7 +32,7 @@ const RoadMapItem: FC<RoadMapItemProps> = ({ title, date, isOdd }) => {
       <Stack gap={1} mr={{ md: undefined, xs: "auto" }}>
         <Typography variant="p2-medium">{title}</Typography>
         <Typography variant="caption-regular" color={"grey.light"}>
-          {date}
+          {dateOnly}
         </Typography>
       </Stack>
 

@@ -4,7 +4,7 @@ import type { FC } from "react";
 import { Stack } from "@mui/material";
 import Scrollbar from "@/components/Scrollbar";
 import CustomTable from "@/components/CustomTable";
-import { useAffiliateServiceAffiliateChildrenQuery } from "@/services/queries";
+import { useAffiliateServiceAffiliateChildrenQuery } from "@minecraft/queries";
 import { formatCurrency } from "@/utils/toNumber";
 import { fDate } from "@/utils/format-time";
 import { toPascalCase } from "@/utils/change-case";

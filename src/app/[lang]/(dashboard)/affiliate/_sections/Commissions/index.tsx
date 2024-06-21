@@ -5,7 +5,7 @@ import { Button, Divider, Stack, Typography } from "@mui/material";
 import AffCommissionsTabTable from "./Table";
 import ContentStack from "@app/_components/ContentStack";
 import WithdrawDialog from "@app/_components/WithdrawDialog";
-import { useFinancialServiceFinancialInfoQuery } from "@/services/queries";
+import { useFinancialServiceFinancialInfoQuery } from "@minecraft/queries";
 import { formatCurrency } from "@/utils/toNumber";
 
 const AffCommissionsTab: FC = () => {

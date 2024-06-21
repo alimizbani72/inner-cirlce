@@ -5,7 +5,7 @@ import Notice from "./Notice";
 import Table from "./Table";
 import type { FC } from "react";
 import { usePageTitle } from "@/hooks/use-page-title";
-import { useContentServiceContentPortfolioStrategyPlanQuery } from "@/services/queries";
+import { useContentServiceContentPortfolioStrategyPlanQuery } from "@minecraft/queries";
 import Empty from "@/components/Empty";
 import Loading from "@/components/Loading";
 

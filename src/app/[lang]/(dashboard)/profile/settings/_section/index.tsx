@@ -16,7 +16,7 @@ import {
   useAccountServiceAuthUserinfoQuery,
   useAccountServiceAuthUserinfoQueryKey,
   useUserServiceAccountsUpdateCreateMutation,
-} from "@/services/queries";
+} from "@minecraft/queries";
 import InputEditor from "@app/_components/InputEditor";
 import { enqueueSnackbar } from "notistack";
 import { getQueryClient } from "@app/_providers/customQueryClient";

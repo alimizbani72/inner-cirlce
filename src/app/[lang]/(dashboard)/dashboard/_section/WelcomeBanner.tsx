@@ -2,7 +2,7 @@
 import RiveComp from "@/components/RiveComp";
 import { Icon } from "@/components/icons";
 import { getUserPlanType } from "@/consts";
-import { useAccountServiceAuthUserinfoQuery } from "@/services/queries";
+import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 

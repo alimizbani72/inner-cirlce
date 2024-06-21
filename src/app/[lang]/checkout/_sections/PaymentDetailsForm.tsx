@@ -9,7 +9,7 @@ import { Box, Stack, Typography } from "@mui/material";
 import { Icon } from "@/components/icons";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useAccountServiceAuthUserinfoQuery } from "@/services/queries";
+import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import RadioBox from "./RadioBox";
 import { useAppRouter } from "@/routes/hooks";
 

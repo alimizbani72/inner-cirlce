@@ -4,7 +4,7 @@ import useCustomRouter from "@/hooks/useCustomRouter";
 import { Button, DialogActions, Divider, IconButton, Stack, Typography } from "@mui/material";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import { useAccountServiceAuthResetPasswordCreateMutation } from "@/services/queries";
+import { useAccountServiceAuthResetPasswordCreateMutation } from "@minecraft/queries";
 import { LoadingButton } from "@mui/lab";
 import CustomizedSteppers from "@/components/CustomizedSteppers";
 import QRCodeWithIcon from "@/components/QRCodeWithIcon";

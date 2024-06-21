@@ -2,7 +2,7 @@ import { Avatar, Button, Divider, Stack, Typography } from "@mui/material";
 import LangSelector from "./LangSelector";
 import { Icon } from "@/components/icons";
 import { useIsMobile } from "@/hooks/use-responsive";
-import { useAccountServiceAuthUserinfoQuery } from "@/services/queries";
+import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import { getUserPlanType } from "@/consts";
 
 const UserInfo = () => {

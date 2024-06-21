@@ -6,7 +6,7 @@ import CustomDialog from "@/components/CustomDialog";
 import DialogContent from "@mui/material/DialogContent";
 import { Button, DialogActions, Divider, IconButton, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
-import { useWalletServiceWalletCreateMutation, useWalletServiceWalletDefaultQueryKey } from "@/services/queries";
+import { useWalletServiceWalletCreateMutation, useWalletServiceWalletDefaultQueryKey } from "@minecraft/queries";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { RHFTextField } from "@/components/hook-form";

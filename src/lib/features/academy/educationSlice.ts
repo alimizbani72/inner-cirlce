@@ -51,9 +51,9 @@ export const educationSlice = createSlice({
     selectCategories: (state) => state.categories,
     selectPlaylists: (state) => (categoryTitle: string) => state.playlists[categoryTitle] || [],
     selectVideos: (state) => (moduleTitle: string) => state.videos[moduleTitle] || [],
-    selectVideoByTitle: (state) => (videoTitle: string) => {
+    selectVideoByTitle: (state) => (videoTitle: string, moduleTitle: string) => {
       for (const module in state.videos) {
-        const video = state.videos[module].find((video) => video.title === videoTitle);
+        const video = state.videos[module].find((video) => video.title === videoTitle && moduleTitle === module);
         if (video) {
           return video;
         }

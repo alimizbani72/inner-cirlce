@@ -6,7 +6,7 @@ import { Avatar, Box, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 import { Icon } from "@/components/icons";
 import useCustomRouter from "@/hooks/useCustomRouter";
-import { useAccountServiceAuthUserinfoQuery } from "@/services/queries";
+import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 
 const SidebarUserInfo: FC = () => {
   const { data: userInfo } = useAccountServiceAuthUserinfoQuery();

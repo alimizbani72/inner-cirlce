@@ -5,15 +5,10 @@ import DialogTitle from "@mui/material/DialogTitle";
 import CustomDialog from "@/components/CustomDialog";
 import DialogContent from "@mui/material/DialogContent";
 import { Button, DialogActions, Divider, IconButton, Stack, Typography } from "@mui/material";
-import type { FC } from "react";
+import { useState, type FC } from "react";
 import VimeoPlayer from "../VimeoPlayer";
 import Link from "../Link";
-
-type MoreInfoData = {
-  Name: string;
-  link: string;
-  video_url: string;
-};
+import type { MoreInfoData } from ".";
 
 type Props = {
   close: VoidFunction;
@@ -22,6 +17,8 @@ type Props = {
 };
 
 const MoreInfoDialog: FC<Props> = ({ close, open, data }) => {
+  const [isBuyNow, setIsBuyNow] = useState<boolean>(false);
+
   return (
     <CustomDialog fullWidth maxWidth="sm" onClose={close} aria-labelledby="withdraw-dialog" open={open}>
       <DialogTitle sx={{ m: 0, p: 2 }} id="withdraw-dialog">
@@ -38,6 +35,7 @@ const MoreInfoDialog: FC<Props> = ({ close, open, data }) => {
 
       <DialogContent dividers sx={{ p: 3 }}>
         <VimeoPlayer
+          key={`${isBuyNow}`}
           sx={{
             iframe: {
               borderRadius: 2,
@@ -46,7 +44,7 @@ const MoreInfoDialog: FC<Props> = ({ close, open, data }) => {
               height: "auto !important",
             },
           }}
-          videoId={76979871}
+          videoUrl={isBuyNow ? data?.how_to_buy_video_url : data?.video_url}
         />
       </DialogContent>
       <DialogActions>
@@ -56,9 +54,17 @@ const MoreInfoDialog: FC<Props> = ({ close, open, data }) => {
               More Information
             </Link>
           </Button>
-          <Button size="large" endIcon={<Icon name="Arrow-right" />}>
-            Buy Now
-          </Button>
+          {isBuyNow ? (
+            <Button size="large" endIcon={<Icon name="Arrow-right" />}>
+              <Link href={data?.how_to_buy_link!} sx={{ color: "white" }} target="_blank">
+                Buy Now
+              </Link>
+            </Button>
+          ) : (
+            <Button size="large" endIcon={<Icon name="Arrow-right" />} onClick={() => setIsBuyNow(true)}>
+              How To Buy
+            </Button>
+          )}
         </Stack>
       </DialogActions>
     </CustomDialog>

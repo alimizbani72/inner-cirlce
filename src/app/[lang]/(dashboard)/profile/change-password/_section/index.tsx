@@ -17,7 +17,7 @@ import {
   useAccountServiceAuthChangePassword,
   useAccountServiceAuthUserinfoQuery,
   useVerifyServiceVerificationsSendCreateMutation,
-} from "@/services/queries";
+} from "@minecraft/queries";
 import { enqueueSnackbar } from "notistack";
 
 const UpdateUserSchema = Yup.object().shape({

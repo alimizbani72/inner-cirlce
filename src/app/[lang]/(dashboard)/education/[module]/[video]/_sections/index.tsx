@@ -1,6 +1,6 @@
 "use client";
 
-import { Pagination, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 import type { FC } from "react";
 import { usePageTitle } from "@/hooks/use-page-title";
 import Videos from "./Videos";
@@ -14,9 +14,9 @@ const EducationVideosSection: FC = () => {
       <BreadCrumb />
       <Videos />
 
-      <Stack mt={"auto"} justifyContent={"center"} alignItems={"center"}>
+      {/* <Stack mt={"auto"} justifyContent={"center"} alignItems={"center"}>
         <Pagination color="primary" siblingCount={1} boundaryCount={1} count={20} size="small" />
-      </Stack>
+      </Stack> */}
     </Stack>
   );
 };

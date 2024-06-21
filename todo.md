@@ -9,5 +9,6 @@
 
 # Fix costumeTable Last row for expanding child
 
+# QRCode with label multi request
 
-# QRCode with lable multi request
+# Global convention for site description

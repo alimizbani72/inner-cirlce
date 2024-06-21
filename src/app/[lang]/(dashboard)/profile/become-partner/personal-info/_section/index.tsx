@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 
 import * as Yup from "yup";
 import { useTranslate } from "@/locales";
-import { useAccountServiceAuthResetPasswordCreateMutation } from "@/services/queries";
+import { useAccountServiceAuthResetPasswordCreateMutation } from "@minecraft/queries";
 import FormProvider from "@/components/hook-form/form-provider";
 import { RHFTextField } from "@/components/hook-form";
 import { LoadingButton } from "@mui/lab";

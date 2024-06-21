@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import CheckoutQRWalletSection from "./_sections";
 import { getQueryClient } from "@app/_providers/customQueryClient";
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
-import { prefetchUseFinancialServiceFinancialPaymentsIdStatusQuery } from "@/services/queries/prefetch";
+import { prefetchUseFinancialServiceFinancialPaymentsIdStatusQuery } from "@minecraft/queries/prefetch";
 
 type Props = {
   searchParams: { id: string; plan_type: string };

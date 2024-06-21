@@ -5,7 +5,7 @@ import {
   useAccountServiceAuthUserinfoQuery,
   useAccountServiceAuthUserinfoQueryKey,
   useUserServiceAccountsAvatarUpdate,
-} from "@/services/queries";
+} from "@minecraft/queries";
 import { useCallback, useState } from "react";
 import { UploadAvatar } from "@/components/upload";
 import { useDefaultServicePostApiV1FilesUpload } from "@/manualServices/hooks";

@@ -1,5 +1,6 @@
 import Image from "@/components/Image";
 import Link from "@/components/Link";
+import { flexItem } from "@/utils/grid";
 import { Box, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 
@@ -7,9 +8,15 @@ type Props = { content: { [k: string]: any } };
 
 const CategoryItem: FC<Props> = ({ content }) => {
   return (
-    <Stack borderRadius={2} border="1.5px solid" borderColor={"dark.3"} overflow={"hidden"}>
+    <Stack
+      borderRadius={2}
+      border="1.5px solid"
+      borderColor={"dark.3"}
+      overflow={"hidden"}
+      sx={flexItem({ count: { lg: 4, md: 2 }, gap: 24 })}
+    >
       <Box height={"188px"} width={"100%"}>
-        <Image src={content.image} width={"100%"} height={"100%"} />
+        <Image src={content.image || "/logo/logo-type.svg"} objectFit="contain" width={"100%"} height={"100%"} />
       </Box>
 
       <Stack gap={3} p={2} bgcolor={"dark.3"} alignItems={"flex-start"}>
