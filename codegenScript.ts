@@ -13,7 +13,7 @@ const endpoints = [
   },
   {
     name: "cms",
-    url: `${process.env.NEXT_PUBLIC_CMS_ENDPOINT || "https://cms.innercircle-chainmind.com/"}"custom-api-docs/specs"`,
+    url: `${process.env.NEXT_PUBLIC_CMS_ENDPOINT || "https://cms.innercircle-chainmind.com/"}custom-api-docs/specs"`,
   },
 ];
 
