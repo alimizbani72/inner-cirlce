@@ -3,7 +3,13 @@ import { resolvePathJoin } from "./utils/path";
 export const minecraftEndpoint = resolvePathJoin(process.env.NEXT_PUBLIC_MINECRAFT_ENDPOINT || "", "api/v1");
 
 export const downloadURL = (fileKey: number | string | undefined) =>
-  resolvePathJoin(minecraftEndpoint, "/files/download/", fileKey?.toString() || "");
+  resolvePathJoin(
+    process.env.NEXT_PUBLIC_MINECRAFT_ENDPOINT || "",
+    "api/v1",
+    "/files/download/",
+    fileKey?.toString() || ""
+  );
+
 export const referralLink = (inviteCode: string) =>
   resolvePathJoin(process.env.NEXT_PUBLIC_URL || "", "/register/", inviteCode);
 
