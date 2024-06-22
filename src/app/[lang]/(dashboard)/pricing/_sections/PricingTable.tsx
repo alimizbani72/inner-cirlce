@@ -1,4 +1,5 @@
 import { Icon } from "@/components/icons";
+import type { Plan } from "@/lib/features/plans/plansSlice";
 import { useAppRouter } from "@/routes/hooks";
 import { useFinancialServiceFinancialPayCreateMutation } from "@minecraft/queries";
 import { LoadingButton } from "@mui/lab";
@@ -8,7 +9,7 @@ import type { FC } from "react";
 import { useMemo } from "react";
 
 type Props = {
-  plans: Array<string>;
+  plans: Plan[];
   rows: Record<string, Array<string | boolean>>;
 };
 
@@ -50,7 +51,7 @@ const PricingTable: FC<Props> = ({ plans, rows }) => {
           <Typography sx={{ ...tableCelSx, flex: "0 0 176px" }}>Plan</Typography>
           {plans.map((plan, index) => (
             <Typography key={`${plan}-${index}`} sx={{ ...tableCelSx, color: "pink.light" }}>
-              {plan}
+              {plan.title}
             </Typography>
           ))}
         </Stack>
@@ -89,7 +90,7 @@ const PricingTable: FC<Props> = ({ plans, rows }) => {
         <Box sx={{ flex: "0 0 176px" }} />
         {plans.map((plan, index) => (
           <Stack
-            key={plan}
+            key={plan.id}
             flex="1 1 225px"
             sx={{
               py: 2,
@@ -97,7 +98,7 @@ const PricingTable: FC<Props> = ({ plans, rows }) => {
               "&:not(:last-child)": { borderRight: "1.5px solid", borderColor: "dark.3" },
             }}
           >
-            <LoadingButton loading={isPending} onClick={() => handlePay(plan?.toLowerCase())}>
+            <LoadingButton loading={isPending} onClick={() => handlePay(plan?.title.toLowerCase())}>
               Choose Plan
             </LoadingButton>
           </Stack>

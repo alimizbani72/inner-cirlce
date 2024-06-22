@@ -1,4 +1,3 @@
-// features/academy/educationSlice.ts
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { AppThunk } from "@/lib/store";
 
@@ -113,5 +112,3 @@ export const fetchEducationData =
       console.error("Failed to process education data:", error);
     }
   };
-
-export default educationSlice.reducer;
