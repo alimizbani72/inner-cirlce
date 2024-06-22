@@ -49,8 +49,9 @@ const UserInfo = () => {
             size={32}
           />
           <Typography variant="p2-semi-bold">
-            {isFreePlan ? "You have not " : getUserPlanType(userInfo)}
+            {isFreePlan ? "You have not" : getUserPlanType(userInfo)}
             <Typography component={"span"} variant="p2-regular">
+              {" "}
               Subscription!
             </Typography>
           </Typography>
