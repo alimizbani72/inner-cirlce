@@ -3,6 +3,7 @@ import RiveComp from "@/components/RiveComp";
 import { Icon } from "@/components/icons";
 import { plans } from "@/configs/plans";
 import { getUserPlanType } from "@/consts";
+import { toTitleCase } from "@/utils/change-case";
 import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
@@ -59,7 +60,7 @@ const WelcomeBanner: FC = () => {
         <Stack gap={2} alignItems={"flex-start"}>
           <Stack gap={1}>
             <Box>
-              <Typography variant="h3-semi-bold">Hi {(userInfo as any)?.data?.full_name}</Typography>
+              <Typography variant="h3-semi-bold">Hi {toTitleCase((userInfo as any)?.data?.full_name)}</Typography>
               <Typography variant="h3-regular">👋, Welcome back!</Typography>
             </Box>
 
