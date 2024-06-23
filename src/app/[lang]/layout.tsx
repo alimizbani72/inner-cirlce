@@ -24,8 +24,23 @@ export const viewport: Viewport = {
 };
 export const metadata: Metadata = {
   title: "ChainMind",
-  description: "description",
+  description:
+    "Discover ChainMind! Join an elite group of crypto investors, benefit from exclusive insights, in-depth analysis, strategic investment tools & more!",
   keywords: "keywords",
+  openGraph: {
+    type: "website",
+    locale: "en-US",
+    description:
+      "Discover ChainMind! Join an elite group of crypto investors, benefit from exclusive insights, in-depth analysis, strategic investment tools & more!",
+    title: "ChainMind - Unlock The Secret With Expert Crypto Guidance!",
+    siteName: "ChainMind",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ChainMind - Unlock The Secret With Expert Crypto Guidance!",
+    description:
+      "Discover ChainMind! Join an elite group of crypto investors, benefit from exclusive insights, in-depth analysis, strategic investment tools & more!",
+  },
 
   manifest: "/manifest.json",
   icons: [
