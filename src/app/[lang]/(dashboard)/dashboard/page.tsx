@@ -5,7 +5,6 @@ import LiveFeed from "./_section/LiveFeed";
 import RoadMap from "./_section/RoadMap";
 import SocialMedia from "./_section/SocialMedia";
 import DropZone from "./_section/DropZone";
-import StaticAlert from "@app/_components/StaticAlert";
 import { getQueryClient } from "@app/_providers/customQueryClient";
 import {
   prefetchUseGlobalLiveFeedServiceGetGlobalsLiveFeed,
@@ -32,10 +31,10 @@ export default async function Dashboard({ params }: RouteParamsType) {
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <Box sx={{ flex: 1 }}>
-        <StaticAlert
+        {/* <StaticAlert
           title="Incomplete Payment Alert"
           description="Your upgrade to the Whale Package is pending due to an incomplete payment.  Please complete your payment  to finalize upgrade."
-        />
+        /> */}
 
         <WelcomeBanner />
 

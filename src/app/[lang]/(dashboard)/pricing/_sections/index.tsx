@@ -9,10 +9,15 @@ import { useAppSelector } from "@/lib/hooks";
 import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
 import PricingTable from "./PricingTable";
 import { selectPlans, selectRows } from "@/lib/features/plans/plansSlice";
+import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
+import { getUserPlanType } from "@/consts";
+import { plans } from "@/configs/plans";
 
 const PricingSection: FC = () => {
+  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+
   const isCollapsed = useAppSelector(isSidebarCollapsed);
-  const plans = useAppSelector(selectPlans);
+  const plansData = useAppSelector(selectPlans);
   const rows = useAppSelector(selectRows);
   return (
     <Stack
@@ -40,8 +45,15 @@ const PricingSection: FC = () => {
             pb={3}
             minWidth={{ md: "calc(1128px + 64px)", xs: "calc(1128px + 48px)" }}
           >
-            {plans.map((plan) => (
-              <PlanCard key={plan.id} {...plan} />
+            {plansData.map((plan) => (
+              <PlanCard
+                key={plan.id}
+                {...plan}
+                disabled={
+                  plans[getUserPlanType(userInfo) as keyof typeof plans].order >=
+                  plans[plan.plan_type as keyof typeof plans].order
+                }
+              />
             ))}
           </Stack>
         </Scrollbar>
@@ -52,7 +64,7 @@ const PricingSection: FC = () => {
           </Typography>
           <Scrollbar options={{ scrollbars: { autoHide: "never" } }}>
             <Stack minWidth={{ md: "calc(1128px + 64px)", xs: "calc(1128px + 48px)" }} pb={3} px={{ md: 4, xs: 3 }}>
-              <PricingTable plans={plans} rows={rows} />
+              <PricingTable plansData={plansData} rows={rows} userType={getUserPlanType(userInfo)} />
             </Stack>
           </Scrollbar>
         </Stack>

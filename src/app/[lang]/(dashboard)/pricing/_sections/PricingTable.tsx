@@ -1,4 +1,5 @@
 import { Icon } from "@/components/icons";
+import { plans } from "@/configs/plans";
 import type { Plan } from "@/lib/features/plans/plansSlice";
 import { useAppRouter } from "@/routes/hooks";
 import { useFinancialServiceFinancialPayCreateMutation } from "@minecraft/queries";
@@ -9,11 +10,12 @@ import type { FC } from "react";
 import { useMemo } from "react";
 
 type Props = {
-  plans: Plan[];
+  plansData: Plan[];
   rows: Record<string, Array<string | boolean>>;
+  userType: string;
 };
 
-const PricingTable: FC<Props> = ({ plans, rows }) => {
+const PricingTable: FC<Props> = ({ plansData, rows, userType }) => {
   const { push } = useAppRouter();
   const { mutateAsync, isPending } = useFinancialServiceFinancialPayCreateMutation();
   const tableCelSx = useMemo(
@@ -49,7 +51,7 @@ const PricingTable: FC<Props> = ({ plans, rows }) => {
       >
         <Stack direction="row" bgcolor="dark.2" height={72}>
           <Typography sx={{ ...tableCelSx, flex: "0 0 176px" }}>Plan</Typography>
-          {plans.map((plan, index) => (
+          {plansData.map((plan, index) => (
             <Typography key={`${plan}-${index}`} sx={{ ...tableCelSx, color: "pink.light" }}>
               {plan.title}
             </Typography>
@@ -88,17 +90,23 @@ const PricingTable: FC<Props> = ({ plans, rows }) => {
       </Stack>
       <Stack direction="row" height={72}>
         <Box sx={{ flex: "0 0 176px" }} />
-        {plans.map((plan, index) => (
+        {plansData.map((plan, index) => (
           <Stack
             key={plan.id}
             flex="1 1 225px"
             sx={{
               py: 2,
-              ...(index + 1 === plans.length ? { pl: 2 } : { px: 2 }),
+              ...(index + 1 === plansData.length ? { pl: 2 } : { px: 2 }),
               "&:not(:last-child)": { borderRight: "1.5px solid", borderColor: "dark.3" },
             }}
           >
-            <LoadingButton loading={isPending} onClick={() => handlePay(plan?.title.toLowerCase())}>
+            <LoadingButton
+              loading={isPending}
+              onClick={() => handlePay(plan?.title.toLowerCase())}
+              disabled={
+                plans[userType as keyof typeof plans].order >= plans[plan.plan_type as keyof typeof plans].order
+              }
+            >
               {plan.buttonText}
             </LoadingButton>
           </Stack>

@@ -57,32 +57,34 @@ const UpgradePlan: FC<UpgradePlanProps> = () => {
 
         <Divider flexItem sx={{ borderWidth: "1.5px", borderColor: "dark.3" }} />
 
-        <Stack
-          p={2}
-          justifyContent={"space-between"}
-          position={"relative"}
-          direction={"row"}
-          zIndex={2}
-          gap={3}
-          sx={{ cursor: "pointer" }}
-          onClick={handleUpgradeClick}
-        >
-          {!isFreePlan ? (
-            <Typography variant="p2-medium" textTransform={"uppercase"}>
-              Upgrade
-            </Typography>
-          ) : (
-            <Typography variant="p2-semi-bold">Buy Now</Typography>
-          )}
+        {getUserPlanType(userInfo) !== "whale" && (
+          <Stack
+            p={2}
+            justifyContent={"space-between"}
+            position={"relative"}
+            direction={"row"}
+            zIndex={2}
+            gap={3}
+            sx={{ cursor: "pointer" }}
+            onClick={handleUpgradeClick}
+          >
+            {!isFreePlan ? (
+              <Typography variant="p2-medium" textTransform={"uppercase"}>
+                Upgrade
+              </Typography>
+            ) : (
+              <Typography variant="p2-semi-bold">Buy Now</Typography>
+            )}
 
-          {!isFreePlan ? (
-            <Box sx={{ aspectRatio: 1, position: "absolute", right: 10, bottom: 10 }}>
-              <RiveComp src="/assets/rive/rocket.riv" width={35} height={35} />
-            </Box>
-          ) : (
-            <Icon name="Arrow-right" />
-          )}
-        </Stack>
+            {!isFreePlan ? (
+              <Box sx={{ aspectRatio: 1, position: "absolute", right: 10, bottom: 10 }}>
+                <RiveComp src="/assets/rive/rocket.riv" width={35} height={35} />
+              </Box>
+            ) : (
+              <Icon name="Arrow-right" />
+            )}
+          </Stack>
+        )}
       </Stack>
     </Stack>
   );

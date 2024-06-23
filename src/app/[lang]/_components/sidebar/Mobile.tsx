@@ -35,12 +35,14 @@ const MobileSidebar: FC = () => {
 
       <Stack py={4} px={2} gap={4}>
         <Menu name="Services" items={sidebarServicesItems} />
-        <Menu
-          name="Community"
-          items={sidebarCommunityItems.filter((item) =>
-            (userInfo as any)?.data?.kyc_status ? item : !item.path.includes("affiliate")
-          )}
-        />
+        {sidebarCommunityItems.length && (
+          <Menu
+            name="Community"
+            items={sidebarCommunityItems.filter((item) =>
+              (userInfo as any)?.data?.kyc_status ? item : !item.path.includes("affiliate")
+            )}
+          />
+        )}
       </Stack>
 
       <Stack mt={"auto"} gap={3}>

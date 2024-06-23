@@ -4,6 +4,7 @@ import { Icon } from "@/components/icons";
 import { useIsMobile } from "@/hooks/use-responsive";
 import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import { getUserPlanType } from "@/consts";
+import { toTitleCase } from "@/utils/change-case";
 
 const UserInfo = () => {
   const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
@@ -49,17 +50,19 @@ const UserInfo = () => {
             size={32}
           />
           <Typography variant="p2-semi-bold">
-            {isFreePlan ? "You have not" : getUserPlanType(userInfo)}
+            {isFreePlan ? "You do not have a" : toTitleCase(getUserPlanType(userInfo))}
             <Typography component={"span"} variant="p2-regular">
               {" "}
-              Subscription!
+              membership!!
             </Typography>
           </Typography>
         </Stack>
 
-        <Button sx={{ ml: isMobile ? "none" : "auto" }} fullWidth={isMobile} href="/pricing">
-          Upgrade
-        </Button>
+        {getUserPlanType(userInfo) !== "whale" && (
+          <Button sx={{ ml: isMobile ? "none" : "auto" }} fullWidth={isMobile} href="/pricing">
+            Please Upgrade
+          </Button>
+        )}
       </Stack>
     </Stack>
   );

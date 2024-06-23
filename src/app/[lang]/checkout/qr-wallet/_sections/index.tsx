@@ -153,12 +153,12 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
           px={3}
           flex={1}
         >
-          <QRCodeWithIcon value={walletAddress} iconSrc="/assets/svg/coin-logo.svg" size={isMobile ? 200 : 140} />
+          <QRCodeWithIcon value={walletAddress} iconSrc="/assets/svg/usdc-polygon.svg" size={isMobile ? 200 : 140} />
 
           <Typography variant="h4-semi-bold" mt={2}>
             USDT -{" "}
             <Typography variant="h4-semi-bold" color={"warning.main"}>
-              ERC20
+              Polygon Network
             </Typography>
           </Typography>
 

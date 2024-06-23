@@ -1,9 +1,8 @@
 import RiveComp from "@/components/RiveComp";
-import { Icon } from "@/components/icons";
 import { plans } from "@/configs/plans";
 import { getUserPlanType } from "@/consts";
 import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 
 const ActivePlan: FC = () => {
@@ -65,9 +64,9 @@ const ActivePlan: FC = () => {
           </Typography>
         </Stack>
 
-        <Button color="secondary" size="large" startIcon={<Icon color="dark.1" name="Subscription" />}>
+        {/* <Button color="secondary" size="large" startIcon={<Icon color="dark.1" name="Subscription" />}>
           Upgrade
-        </Button>
+        </Button> */}
       </Stack>
     </Stack>
   );

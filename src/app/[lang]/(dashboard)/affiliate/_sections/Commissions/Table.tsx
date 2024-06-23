@@ -9,6 +9,7 @@ import { formatCurrency, toNumber } from "@/utils/toNumber";
 import { fDate } from "@/utils/format-time";
 import Empty from "@/components/Empty";
 import type { PayoutCommissionResponse } from "@minecraft/requests";
+import { toTitleCase } from "@/utils/change-case";
 
 const columns = [
   {
@@ -18,6 +19,14 @@ const columns = [
   {
     title: "Amount",
     modify: (row: PayoutCommissionResponse) => formatCurrency(row.amount),
+  },
+  {
+    title: "Package Name",
+    modify: (row: PayoutCommissionResponse) => toTitleCase(row.plan_type!),
+  },
+  {
+    title: "Percentage",
+    modify: (row: PayoutCommissionResponse) => toNumber(row.percent),
   },
   {
     title: "Commission Date",

@@ -70,7 +70,7 @@ const LearningBanner: FC = () => {
           >
             <Box sx={{ width: "100%", height: "30%", bgcolor: "blue.dark" }} />
           </Box>
-          <Typography variant="p1-semi-bold">Watch how it works?</Typography>
+          <Typography variant="p1-semi-bold">Want to see how it works?</Typography>
         </Stack>
 
         <Button color="info" size="large" startIcon={<Icon name="Play" />}>

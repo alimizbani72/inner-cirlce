@@ -43,7 +43,7 @@ const Footer: FC<FooterProps> = () => {
 
       <LandingContainer direction={{ md: "row" }} width={"100%"} justifyContent={"space-between"} gap={4} px={3}>
         <Typography variant="p2-regular" color={"grey.light"}>
-          Copyright © 2024 ChainMind. All rights reserved.
+          Copyright © {new Date().getFullYear()} ChainMind. All rights reserved.
         </Typography>
 
         <Stack direction="row" gap={3} sx={{ path: { stroke: (theme) => theme.palette.grey.light } }}>

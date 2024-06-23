@@ -59,7 +59,7 @@ const ProfileDialog = () => {
             <Typography variant="p2-medium">Logout</Typography>
           </Stack>
           <Typography sx={{ textAlign: "left", width: "100%", mt: 3 }} variant="p2-regular" color="grey.light">
-            Copyright © 2023 ChainMind. All rights reserved.
+            Copyright © {new Date().getFullYear()} ChainMind. All rights reserved.
           </Typography>
         </Stack>
       </DialogContent>

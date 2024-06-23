@@ -24,10 +24,10 @@ export const sidebarCommunityItems = [
     path: "affiliate/",
     icon: "Affiliate",
   },
-  {
-    path: "help-center/",
-    icon: "Support",
-  },
+  // {
+  //   path: "help-center/",
+  //   icon: "Support",
+  // },
 ];
 
 export const mapPathToName = {

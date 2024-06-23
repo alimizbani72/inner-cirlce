@@ -4,11 +4,11 @@ export const profileMenuItems = [
     path: "/settings",
     icon: "Settings",
   },
-  {
-    title: "Help & Support",
-    path: "/help-support",
-    icon: "headphones-support",
-  },
+  // {
+  //   title: "Help & Support",
+  //   path: "/help-support",
+  //   icon: "headphones-support",
+  // },
   {
     title: "Terms of Use | Privacy Policy",
     path: "/terms-privacy",
