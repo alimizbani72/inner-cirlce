@@ -99,7 +99,7 @@ const PricingTable: FC<Props> = ({ plans, rows }) => {
             }}
           >
             <LoadingButton loading={isPending} onClick={() => handlePay(plan?.title.toLowerCase())}>
-              Choose Plan
+              {plan.buttonText}
             </LoadingButton>
           </Stack>
         ))}

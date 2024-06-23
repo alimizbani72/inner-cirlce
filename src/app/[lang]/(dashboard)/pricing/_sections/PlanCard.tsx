@@ -13,9 +13,10 @@ type Props = {
   plan_type: string;
   description: string;
   cost: string;
+  buttonText: string;
 };
 
-const PlanCard: FC<Props> = ({ title, description, plan_type, cost }) => {
+const PlanCard: FC<Props> = ({ title, description, plan_type, cost, buttonText }) => {
   const { push } = useAppRouter();
   const { mutateAsync, isPending } = useFinancialServiceFinancialPayCreateMutation();
 
@@ -49,7 +50,7 @@ const PlanCard: FC<Props> = ({ title, description, plan_type, cost }) => {
         <Typography variant="p2-medium">{description}</Typography>
         <Typography variant="h3-semi-bold">{fCurrency(cost, "$0,0[.]00")?.replace("$", "€")}</Typography>
         <LoadingButton loading={isPending} onClick={handlePay}>
-          Choose Plan
+          {buttonText}
         </LoadingButton>
       </Stack>
     </Stack>

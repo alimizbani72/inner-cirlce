@@ -7,6 +7,7 @@ export interface Plan {
   plan_type: string;
   description: string;
   cost: string;
+  buttonText: string;
 }
 
 interface Feature {
@@ -71,6 +72,7 @@ export const mapApiDataToPlans =
         plan_type: apiPlan.name.toLowerCase(),
         description: apiPlan.description,
         cost: apiPlan.price.toString(),
+        buttonText: apiPlan.buttonText,
       }));
 
       const rows = data.reduce(
