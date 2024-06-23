@@ -33,7 +33,7 @@ const RoadMapItem: FC<RoadMapItemProps> = ({ title, dateOnly, isOdd }) => {
       <Stack gap={1} mr={{ md: undefined, xs: "auto" }}>
         <Typography variant="p2-medium">{title}</Typography>
         <Typography variant="caption-regular" color={"grey.light"}>
-          {fDate(dateOnly, "MMM, yyyy")}
+          {fDate(dateOnly, "dd MMM, yyyy")}
         </Typography>
       </Stack>
 
