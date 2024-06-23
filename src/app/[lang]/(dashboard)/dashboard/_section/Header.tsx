@@ -2,7 +2,7 @@
 
 import { isMobileMenuOpened, mobileMenuToggle } from "@/lib/features/menu/menuSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { Button, Drawer, IconButton, Stack, Typography } from "@mui/material";
+import { Drawer, IconButton, Stack, Typography } from "@mui/material";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useState, type FC } from "react";
 import LogoType from "@/components/LogoType";
@@ -34,14 +34,14 @@ const DashboardHeader: FC = () => {
   return isMobile ? (
     <>
       <Stack bgcolor={"dark.1"} position={"sticky"} top={0} zIndex={1000}>
-        <Stack p={3} direction={"row"} alignItems={"center"} justifyContent={"space-between"}>
-          <IconButton onClick={() => dispatch(mobileMenuToggle(true))}>
+        <Stack p={3} direction={"row"} alignItems={"center"} justifyContent="center" position="relative">
+          <IconButton onClick={() => dispatch(mobileMenuToggle(true))} sx={{ position: "absolute", left: 24 }}>
             <Icon name="Menu" />
           </IconButton>
           <LogoType />
-          <IconButton>
+          {/* <IconButton>
             <Icon name="Bell" />
-          </IconButton>
+          </IconButton> */}
         </Stack>
         <Stack
           justifyContent={"flex-start"}
@@ -91,9 +91,9 @@ const DashboardHeader: FC = () => {
         {isClient && <Typography variant={"p1-medium"}>{name}</Typography>}
       </Stack>
 
-      <Button color="info" startIcon={<Icon name="Bell" />}>
+      {/* <Button color="info" startIcon={<Icon name="Bell" />}>
         Notification
-      </Button>
+      </Button> */}
     </Stack>
   );
 };
