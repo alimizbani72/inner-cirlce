@@ -15,6 +15,7 @@ import {
 import { formatCurrency, toNumber } from "@/utils/toNumber";
 import { toPascalCase } from "@/utils/change-case";
 import { plans } from "@/configs/plans";
+import { orderArrayPlan } from "@/utils/order-plans";
 
 const ProgressBar = ({ overall, percent }: { overall?: boolean; percent: number }) => (
   <Stack
@@ -301,7 +302,7 @@ const AFDashboardTab: FC = () => {
         </ContentStack>
 
         <ContentStack flex={8 / 12} p={0} direction={"row"} flexWrap={{ md: "unset", xs: "wrap" }}>
-          {children?.data?.distribution_of_plans?.map((item, index) => (
+          {orderArrayPlan(children?.data?.distribution_of_plans)?.map((item, index) => (
             <Stack
               key={item.plan_type}
               flex={1}
