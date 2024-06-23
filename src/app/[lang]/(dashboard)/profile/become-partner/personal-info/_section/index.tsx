@@ -15,6 +15,7 @@ import { RHFTextField } from "@/components/hook-form";
 import { LoadingButton } from "@mui/lab";
 import { useIsMobile } from "@/hooks/use-responsive";
 import CustomizedSteppers from "@/components/CustomizedSteppers";
+import CustomDialog from "@/components/CustomDialog";
 
 const PersonalInfoDialog = () => {
   const isMobile = useIsMobile();
@@ -61,7 +62,7 @@ const PersonalInfoDialog = () => {
   const onSubmit = () => push("/profile/become-partner/kyc-info");
 
   return (
-    <>
+    <CustomDialog fullWidth maxWidth="sm" aria-labelledby="personal-info" open={true} onClose={back}>
       <DialogTitle sx={{ m: 0, p: 2 }} id="change-password-dialog">
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack direction={"row"} alignItems="center" spacing={1}>
@@ -113,7 +114,7 @@ const PersonalInfoDialog = () => {
           </LoadingButton>
         </Stack>
       </DialogActions>
-    </>
+    </CustomDialog>
   );
 };
 

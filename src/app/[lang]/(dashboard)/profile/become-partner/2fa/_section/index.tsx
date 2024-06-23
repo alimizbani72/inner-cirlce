@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMemo } from "react";
 import * as Yup from "yup";
+import CustomDialog from "@/components/CustomDialog";
 
 const TwoFactorDialog = () => {
   useAccountServiceAuthResetPasswordCreateMutation();
@@ -49,7 +50,7 @@ const TwoFactorDialog = () => {
   const onSubmit = () => push("/profile/become-partner/success");
 
   return (
-    <>
+    <CustomDialog fullWidth maxWidth="sm" aria-labelledby="2fa" open={true} onClose={back}>
       <DialogTitle sx={{ m: 0, p: 2 }} id="change-password-dialog">
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack direction={"row"} alignItems="center" spacing={1}>
@@ -98,7 +99,7 @@ const TwoFactorDialog = () => {
           </LoadingButton>
         </Stack>
       </DialogActions>
-    </>
+    </CustomDialog>
   );
 };
 

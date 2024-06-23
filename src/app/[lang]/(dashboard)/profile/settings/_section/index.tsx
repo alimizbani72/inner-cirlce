@@ -20,6 +20,7 @@ import {
 import InputEditor from "@app/_components/InputEditor";
 import { enqueueSnackbar } from "notistack";
 import { getQueryClient } from "@app/_providers/customQueryClient";
+import CustomDialog from "@/components/CustomDialog";
 
 const UpdateUserSchema = Yup.object().shape({
   name: Yup.string()
@@ -56,7 +57,7 @@ const SettingsDialog = () => {
   };
 
   return (
-    <>
+    <CustomDialog fullWidth maxWidth="sm" aria-labelledby="setting" open={true} onClose={back}>
       <DialogTitle sx={{ m: 0, p: 2 }} id="profile-dialog">
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack direction={"row"} alignItems="center" spacing={1}>
@@ -104,7 +105,7 @@ const SettingsDialog = () => {
           </FormProvider>
         </Stack>
       </DialogContent>
-    </>
+    </CustomDialog>
   );
 };
 

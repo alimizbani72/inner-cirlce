@@ -23,6 +23,7 @@ import {
 import { useEffect, useState } from "react";
 import { useSnackbar } from "notistack";
 import { LoadingButton } from "@mui/lab";
+import CustomDialog from "@/components/CustomDialog";
 
 const getTimer = () => {
   const time = new Date();
@@ -106,7 +107,7 @@ const ForgetPasswordDialog = () => {
   }, [watch("verifyCode")]);
 
   return (
-    <>
+    <CustomDialog fullWidth maxWidth="sm" aria-labelledby="forgot-password" open={true} onClose={back}>
       <DialogTitle sx={{ m: 0, p: 2 }} id="change-password-dialog">
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack direction={"row"} alignItems="center" spacing={1}>
@@ -196,7 +197,7 @@ const ForgetPasswordDialog = () => {
           )}
         </Stack>
       </DialogContent>
-    </>
+    </CustomDialog>
   );
 };
 

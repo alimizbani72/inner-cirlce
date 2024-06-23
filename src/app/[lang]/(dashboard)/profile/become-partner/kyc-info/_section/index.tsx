@@ -9,6 +9,7 @@ import { LoadingButton } from "@mui/lab";
 import CustomizedSteppers from "@/components/CustomizedSteppers";
 import { kycCallback } from "@/consts";
 import { usePathname } from "next/navigation";
+import CustomDialog from "@/components/CustomDialog";
 
 const KYCInfoDialog = () => {
   const { mutateAsync, isPending } = useKycServiceKycVerificationCreateMutation();
@@ -28,7 +29,7 @@ const KYCInfoDialog = () => {
     }
   };
   return (
-    <>
+    <CustomDialog fullWidth maxWidth="sm" aria-labelledby="kyc-info" open={true} onClose={back}>
       <DialogTitle sx={{ m: 0, p: 2 }} id="change-password-dialog">
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack direction={"row"} alignItems="center" spacing={1}>
@@ -71,7 +72,7 @@ const KYCInfoDialog = () => {
           </LoadingButton>
         </Stack>
       </DialogActions>
-    </>
+    </CustomDialog>
   );
 };
 

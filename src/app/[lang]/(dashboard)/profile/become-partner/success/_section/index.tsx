@@ -4,6 +4,7 @@ import { Button, IconButton, Stack, Typography } from "@mui/material";
 import DialogContent from "@mui/material/DialogContent";
 import { useAccountServiceAuthResetPasswordCreateMutation } from "@minecraft/queries";
 import { Icon } from "@/components/icons";
+import CustomDialog from "@/components/CustomDialog";
 
 const SuccessDialog = () => {
   useAccountServiceAuthResetPasswordCreateMutation();
@@ -18,7 +19,7 @@ const SuccessDialog = () => {
   // });
 
   return (
-    <>
+    <CustomDialog fullWidth maxWidth="sm" aria-labelledby="success" open={true} onClose={back}>
       <DialogContent dividers sx={{ p: 3 }}>
         <Stack gap={3} alignItems={"center"}>
           <IconButton
@@ -44,7 +45,7 @@ const SuccessDialog = () => {
           </Button>
         </Stack>
       </DialogContent>
-    </>
+    </CustomDialog>
   );
 };
 

@@ -9,6 +9,7 @@ import { signOut } from "next-auth/react";
 import { profileMenuItems } from "@/configs/profile";
 import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import { getUserPlanType } from "@/consts";
+import CustomDialog from "@/components/CustomDialog";
 
 const ProfileDialog = () => {
   const { push, back } = useCustomRouter();
@@ -16,7 +17,7 @@ const ProfileDialog = () => {
   const isFreePlan = getUserPlanType(userInfoData) === "plankton";
 
   return (
-    <>
+    <CustomDialog fullWidth maxWidth="sm" aria-labelledby="profile-dialog" open={true} onClose={back}>
       <DialogTitle sx={{ m: 0, p: 2 }} id="profile-dialog">
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Typography variant="h4-semi-bold" color={"common.white"}>
@@ -63,7 +64,7 @@ const ProfileDialog = () => {
           </Typography>
         </Stack>
       </DialogContent>
-    </>
+    </CustomDialog>
   );
 };
 

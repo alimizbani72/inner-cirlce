@@ -5,12 +5,13 @@ import { Button, Divider, IconButton, Stack, Typography } from "@mui/material";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import Image from "@/components/Image";
+import CustomDialog from "@/components/CustomDialog";
 
 const BecomePartnerDialog = () => {
   const { push, back } = useCustomRouter();
 
   return (
-    <>
+    <CustomDialog fullWidth maxWidth="sm" aria-labelledby="become" open={true} onClose={back}>
       <DialogTitle sx={{ m: 0, p: 2 }} id="change-password-dialog">
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack direction={"row"} alignItems="center" spacing={1}>
@@ -38,7 +39,7 @@ const BecomePartnerDialog = () => {
           <Button onClick={() => push("personal-info")}>Start Doing Now!</Button>
         </Stack>
       </DialogContent>
-    </>
+    </CustomDialog>
   );
 };
 

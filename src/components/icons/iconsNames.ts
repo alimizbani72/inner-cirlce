@@ -1,5 +1,6 @@
 const iconsNames = [
   "Arrow-Sort",
+  "coin-usdc",
   "Danger",
   "KYC",
   "Success",

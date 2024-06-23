@@ -19,6 +19,7 @@ import {
   useVerifyServiceVerificationsSendCreateMutation,
 } from "@minecraft/queries";
 import { enqueueSnackbar } from "notistack";
+import CustomDialog from "@/components/CustomDialog";
 
 const UpdateUserSchema = Yup.object().shape({
   newPassword: Yup.string()
@@ -65,7 +66,7 @@ const ChangePasswordDialog = () => {
   });
 
   return (
-    <>
+    <CustomDialog fullWidth maxWidth="sm" aria-labelledby="change-password" open={true} onClose={back}>
       <DialogTitle sx={{ m: 0, p: 2 }} id="change-password-dialog">
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack direction={"row"} alignItems="center" spacing={1}>
@@ -133,7 +134,7 @@ const ChangePasswordDialog = () => {
           </LoadingButton>
         </Stack>
       </DialogActions>
-    </>
+    </CustomDialog>
   );
 };
 

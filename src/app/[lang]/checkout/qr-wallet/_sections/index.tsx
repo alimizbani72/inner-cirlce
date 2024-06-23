@@ -10,7 +10,7 @@ import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { useIsMobile } from "@/hooks/use-responsive";
 import ContentStack from "@app/_components/ContentStack";
 import { useTimer } from "react-timer-hook";
-import { formatCurrency, toNumber } from "@/utils/toNumber";
+import { formatCurrencyWithoutDollar, toNumber } from "@/utils/toNumber";
 import { plans } from "@/configs/plans";
 import RiveComp from "@/components/RiveComp";
 import { toPascalCase } from "@/utils/change-case";
@@ -156,7 +156,7 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
           <QRCodeWithIcon value={walletAddress} iconSrc="/assets/svg/usdc-polygon.svg" size={isMobile ? 200 : 140} />
 
           <Typography variant="h4-semi-bold" mt={2}>
-            USDT -{" "}
+            USDC -{" "}
             <Typography variant="h4-semi-bold" color={"warning.main"}>
               Polygon Network
             </Typography>
@@ -201,14 +201,20 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
               <Typography variant="p2-medium" color="grey.light" textTransform={"uppercase"}>
                 Amount to send
               </Typography>
-              <Typography variant="p1-medium">{formatCurrency(data?.data?.total_amount!)}</Typography>
+              <Stack direction={"row"} gap={1}>
+                <Icon name="coin-usdc" />
+                <Typography variant="p1-medium">{formatCurrencyWithoutDollar(data?.data?.total_amount!)}</Typography>
+              </Stack>
             </Stack>
             <Divider flexItem sx={{ borderColor: "rgba(255, 255, 255, 0.08)" }} />
             <Stack direction="row" justifyContent={"space-between"}>
               <Typography variant="p2-medium" color="grey.light" textTransform={"uppercase"}>
                 Paid Amount
               </Typography>
-              <Typography variant="p1-medium">{formatCurrency(data?.data?.paid_amount!)}</Typography>
+              <Stack direction={"row"} gap={1}>
+                <Icon name="coin-usdc" />
+                <Typography variant="p1-medium">{formatCurrencyWithoutDollar(data?.data?.paid_amount!)}</Typography>
+              </Stack>
             </Stack>
           </Stack>
         </Stack>
