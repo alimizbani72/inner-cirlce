@@ -64,7 +64,7 @@ const WelcomeBanner: FC = () => {
             </Box>
 
             <Typography variant="p2-medium" color={"grey.light"}>
-              With ChainMind, you can rest assured that your private data.
+              Knowledge is power in the marketplace; wisdom is knowing how to use it!
             </Typography>
           </Stack>
 
