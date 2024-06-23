@@ -80,6 +80,7 @@ const DashboardHeader: FC = () => {
       justifyContent={"space-between"}
       alignItems={"center"}
       direction={"row"}
+      height={105}
     >
       <Stack gap={1} direction={"row"}>
         {isClient && hasBackButton && (

@@ -49,7 +49,11 @@ const AFDashboardTab: FC = () => {
   const { data: children } = useAffiliateServiceAffiliateChildrenQuery();
 
   const overallProgressPercent = useMemo(
-    () => Object.values(progress?.data || {}).reduce((total, { percent }) => total + toNumber(percent), 0),
+    () =>
+      Object.values(progress?.data || {}).reduce(
+        (total, { percent }) => total + toNumber(percent) / Object.values(progress?.data || {}).length,
+        0
+      ),
     [progress?.data]
   );
 

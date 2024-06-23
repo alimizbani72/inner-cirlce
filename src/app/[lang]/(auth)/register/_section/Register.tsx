@@ -18,9 +18,11 @@ import { useSnackbar } from "notistack";
 import { useAppRouter } from "@/routes/hooks";
 import debounce from "lodash/debounce";
 import GoogleSignIn from "@app/(auth)/login/_section/GoogleSignIn";
+import { useSearchParams } from "next/navigation";
 
 const Register: FC = () => {
   const { t } = useTranslate();
+  const searchParams = useSearchParams();
   const { push } = useAppRouter();
   const dispatch = useAppDispatch();
   const { enqueueSnackbar } = useSnackbar();
@@ -48,6 +50,7 @@ const Register: FC = () => {
       password,
       email,
       terms: false,
+      invite: searchParams.get("sponsor") || "",
     }),
     [email, name, password]
   );
@@ -67,7 +70,14 @@ const Register: FC = () => {
   const onSubmit = handleSubmit((data) => {
     mutateAsync({ requestBody: { email: data.email } })
       .then(() => {
-        dispatch(setRegisterInfo({ name: data.name, email: data.email, password: data.password }));
+        dispatch(
+          setRegisterInfo({
+            name: data.name,
+            email: data.email,
+            password: data.password,
+            referral_code: searchParams.get("sponsor") || "",
+          })
+        );
         dispatch(setRegisterStep(2));
       })
       .catch(() =>

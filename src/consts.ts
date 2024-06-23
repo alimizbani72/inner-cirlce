@@ -12,7 +12,7 @@ export const downloadURL = (fileKey: number | string | undefined) =>
   );
 
 export const referralLink = (inviteCode: string) =>
-  resolvePathJoin(process.env.NEXT_PUBLIC_URL || "", "/register/", inviteCode);
+  resolvePathJoin(process.env.NEXT_PUBLIC_URL || "", `/register/?sponsor=${inviteCode}`);
 
 export const kycCallback = (callback: string) => resolvePathJoin(process.env.NEXT_PUBLIC_URL || "", callback);
 export const getUserPlanType = (userInfo: any): keyof typeof plans => userInfo?.data?.plan_type || "plankton";

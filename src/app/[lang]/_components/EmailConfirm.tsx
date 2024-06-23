@@ -74,6 +74,7 @@ const EmailConfirm: FC = () => {
         const signupRes = await signIn("custom-signup", {
           full_name: registerInfo.name,
           password: registerInfo.password,
+          referral_code: registerInfo.referral_code,
           email,
           policy_approved: true,
           session_code: exchangeRes.data?.session_code,
