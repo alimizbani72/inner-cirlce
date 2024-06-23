@@ -14,9 +14,10 @@ type Props = {
   description: string;
   cost: string;
   buttonText: string;
+  disabled?: boolean;
 };
 
-const PlanCard: FC<Props> = ({ title, description, plan_type, cost, buttonText }) => {
+const PlanCard: FC<Props> = ({ title, description, plan_type, cost, disabled, buttonText }) => {
   const { push } = useAppRouter();
   const { mutateAsync, isPending } = useFinancialServiceFinancialPayCreateMutation();
 
@@ -25,7 +26,7 @@ const PlanCard: FC<Props> = ({ title, description, plan_type, cost, buttonText }
       .then((response: any) => {
         push(`/checkout/qr-wallet?plan_type=${plan_type}&id=${response?.data?.id}`);
       })
-      .catch((error) => enqueueSnackbar({ message: error.message, variant: "error" }));
+      .catch((error) => enqueueSnackbar({ message: error?.body?.message, variant: "error" }));
   };
 
   return (
@@ -49,7 +50,7 @@ const PlanCard: FC<Props> = ({ title, description, plan_type, cost, buttonText }
         </Typography>
         <Typography variant="p2-medium">{description}</Typography>
         <Typography variant="h3-semi-bold">{fCurrency(cost, "$0,0[.]00")?.replace("$", "€")}</Typography>
-        <LoadingButton loading={isPending} onClick={handlePay}>
+        <LoadingButton loading={isPending} onClick={handlePay} disabled={disabled}>
           {buttonText}
         </LoadingButton>
       </Stack>

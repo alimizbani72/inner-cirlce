@@ -91,8 +91,8 @@ const CheckoutQRWalletSection: FC = () => {
           </Typography>
           <Typography textAlign={"center"} variant="p2-regular">
             {isSuccess
-              ? "Your payment has been successfully processed. Your subscription is now active. Thank you for your purchase!"
-              : "Your payment could not be processed. Your subscription has not been activated. Please try again or contact support for assistance."}
+              ? "Your payment has been successfully processed. Your membership is now active. Thank you for your purchase!"
+              : "Your payment could not be processed. Your membership has not been activated. Please try again or contact support for assistance."}
           </Typography>
         </Stack>
 

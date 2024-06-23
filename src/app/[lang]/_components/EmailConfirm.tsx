@@ -83,7 +83,8 @@ const EmailConfirm: FC = () => {
         if (signupRes?.ok) {
           replace("/dashboard");
         } else {
-          setError("verifyCode", { message: JSON.parse(signupRes?.error || "")?.errors.message });
+          setError("verifyCode", { message: "There was an error processing your request. Please try again." });
+          // JSON.parse(signupRes?.error || "")?.errors.message
         }
       } else {
         dispatch(setForgotPasswordInfo({ email, session_code: exchangeRes.data?.session_code }));

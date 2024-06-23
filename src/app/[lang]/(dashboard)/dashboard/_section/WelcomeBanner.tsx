@@ -75,7 +75,8 @@ const WelcomeBanner: FC = () => {
 
         <Stack
           p={1}
-          pl={2}
+          pl={getUserPlanType(userInfo) !== "whale" ? 2 : 3}
+          pr={getUserPlanType(userInfo) !== "whale" ? undefined : 4}
           gap={"28px"}
           bgcolor={"rgba(255, 255, 255, 0.08)"}
           sx={{ backdropFilter: "blur(20px)", borderRadius: "32px" }}
@@ -96,14 +97,16 @@ const WelcomeBanner: FC = () => {
             </Stack>
           </Stack>
 
-          <Button
-            href="/pricing"
-            color="secondary"
-            size="large"
-            startIcon={<Icon color="dark.1" name="Subscription" />}
-          >
-            Upgrade
-          </Button>
+          {getUserPlanType(userInfo) !== "whale" && (
+            <Button
+              href="/pricing"
+              color="secondary"
+              size="large"
+              startIcon={<Icon color="dark.1" name="Subscription" />}
+            >
+              Upgrade
+            </Button>
+          )}
         </Stack>
       </Stack>
     </Stack>

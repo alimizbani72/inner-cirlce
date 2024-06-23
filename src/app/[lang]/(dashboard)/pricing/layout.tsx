@@ -5,6 +5,7 @@ import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import SliceWrapper from "./SliceWrapper";
 import type { RouteParamsType } from "@/routes/type";
 import { prefetchUsePackagesServiceGetPackages } from "@cms/queries/prefetch";
+import { prefetchUseAccountServiceAuthUserinfoQuery } from "@minecraft/queries/prefetch";
 // ----------------------------------------------------------------------
 
 export const metadata: Metadata = {
@@ -17,7 +18,10 @@ export type LayoutProps = {
 
 export default async function PricingLayout({ children, params }: LayoutProps & RouteParamsType) {
   const queryClient = getQueryClient();
-  await Promise.all([prefetchUsePackagesServiceGetPackages(queryClient, { locale: params.lang })]);
+  await Promise.all([
+    prefetchUsePackagesServiceGetPackages(queryClient, { locale: params.lang }),
+    prefetchUseAccountServiceAuthUserinfoQuery(queryClient),
+  ]);
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
