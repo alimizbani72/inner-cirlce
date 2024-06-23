@@ -12,3 +12,5 @@
 # QRCode with label multi request
 
 # Global convention for site description
+
+# Need ReCheck /(dashboard)/affiliate/_sections/Commissions/Table.tsx change of service

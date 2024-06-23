@@ -1,7 +1,7 @@
 import type { AppThunk } from "@/lib/store";
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-interface Plan {
+export interface Plan {
   id: string;
   title: string;
   plan_type: string;

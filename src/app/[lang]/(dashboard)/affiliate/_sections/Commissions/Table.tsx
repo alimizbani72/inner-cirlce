@@ -4,7 +4,7 @@ import type { FC } from "react";
 import { Stack } from "@mui/material";
 import Scrollbar from "@/components/Scrollbar";
 import CustomTable from "@/components/CustomTable";
-import { useAffiliateServiceAffiliateCommissionsQuery } from "@minecraft/queries";
+import { useAffiliateServiceAffiliateCommissionListQuery } from "@minecraft/queries";
 import { formatCurrency, toNumber } from "@/utils/toNumber";
 import { fDate } from "@/utils/format-time";
 import Empty from "@/components/Empty";
@@ -26,17 +26,17 @@ const columns = [
 ];
 
 const AffCommissionsTabTable: FC = () => {
-  const { data: commissionList } = useAffiliateServiceAffiliateCommissionsQuery();
+  const { data: commissionList } = useAffiliateServiceAffiliateCommissionListQuery();
   return (
     <Stack>
-      {commissionList?.data?.commissions?.length ? (
+      {commissionList?.data?.length ? (
         <Scrollbar>
           <Stack
             alignItems="flex-start"
             maxWidth={{ md: "calc(100vw - 64px)", xs: "calc(100vw - 48px)" }}
             sx={{ "> div": { borderBottomRightRadius: 0, borderBottomLeftRadius: 0 } }}
           >
-            <CustomTable title="Commissions" columns={columns} data={commissionList?.data?.commissions || []} />
+            <CustomTable title="Commissions" columns={columns} data={commissionList?.data || []} />
           </Stack>
         </Scrollbar>
       ) : (
