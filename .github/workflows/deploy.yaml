@@ -76,6 +76,7 @@ jobs:
             google_client_id=${{ secrets.PROD_GOOGLE_CLIENT_ID }}
             google_client_secret=${{ secrets.PROD_GOOGLE_CLIENT_SECRET }}
             cms_endpoint=https://cms.innercircle-chainmind.com/
+            intercom_secret=${{ secrets.PROD_INTERCOM_SECRET }}
           tags: ${{ env.IMG_NAME }}:${{ env.IMG_TAG }}
 
       - name: Build and push
@@ -91,8 +92,8 @@ jobs:
             google_client_id=${{ secrets.STAGING_GOOGLE_CLIENT_ID }}
             google_client_secret=${{ secrets.STAGING_GOOGLE_CLIENT_SECRET }}
             cms_endpoint=https://cms.innercircle-chainmind.com/
+            intercom_secret=${{ secrets.STAGING_INTERCOM_SECRET }}
           tags: ${{ env.IMG_NAME }}:${{ env.IMG_TAG }}
-
 
   helm:
     needs: [build]
