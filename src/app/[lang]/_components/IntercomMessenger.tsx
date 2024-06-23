@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useState } from "react";
 import Intercom from "@intercom/messenger-js-sdk";
 import type { FC } from "react";
 
@@ -6,17 +7,35 @@ type IntercomMessengerProps = {
   user_id: string;
   name: string;
   email: string;
-  // created_at: number;
+  created_at: number;
 };
 
-const IntercomMessenger: FC<IntercomMessengerProps> = ({ user_id, name, email }) => {
-  Intercom({
-    app_id: "iq43qpg0",
-    user_id, // IMPORTANT: Replace "user.id" with the variable you use to capture the user's ID
-    name, // IMPORTANT: Replace "user.name" with the variable you use to capture the user's name
-    email, // IMPORTANT: Replace "user.email" with the variable you use to capture the user's email
-    // created_at, // IMPORTANT: Replace "user.createdAt" with the variable you use to capture the user's sign-up date in a Unix timestamp (in seconds) e.g. 1704067200
-  });
+const IntercomMessenger: FC<IntercomMessengerProps> = ({ email }) => {
+  const [userHash, setUserHash] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchUserHash = async () => {
+      try {
+        const response = await fetch(`/api/generate-hmac?email=${encodeURIComponent(email)}`);
+        const data = await response.json();
+        setUserHash(data.hash);
+      } catch (error) {
+        console.error("Error fetching user hash:", error);
+      }
+    };
+
+    fetchUserHash();
+  }, [email]);
+
+  useEffect(() => {
+    if (userHash) {
+      Intercom({
+        app_id: "iq43qpg0",
+        email,
+        user_hash: userHash,
+      });
+    }
+  }, [userHash]);
 
   return null;
 };

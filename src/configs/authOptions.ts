@@ -10,6 +10,7 @@ type MyUser = {
   last_name?: string;
   name?: string;
   phone?: string;
+  email?: string;
 };
 
 declare module "next-auth" {

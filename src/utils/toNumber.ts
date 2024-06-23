@@ -31,3 +31,8 @@ export const formatCurrency = (props: undefined | MoneyResponse) =>
         .format("$0,0.00")
         .replace("$", CURRENCY_CODE[props.currency_code!] || "$")
     : 0;
+
+export function isoToTimestamp(isoString: string) {
+  const date = new Date(isoString);
+  return Math.floor(date.getTime() / 1000);
+}

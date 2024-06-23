@@ -390,7 +390,7 @@ export const request = <T>(config: OpenAPIConfig, options: ApiRequestOptions): C
       }
     } catch (error) {
       if (error?.status === 401) {
-        await signOut({ redirect: false });
+        await signOut({ redirect: false, callbackUrl: "/login" });
         if (!isServer) {
           window.location.href = "/login"; // Client-side redirect
         }
