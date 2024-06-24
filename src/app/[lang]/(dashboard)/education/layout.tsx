@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import ComingSoon from "@app/_components/CommingSoon";
+import ComingSoon from "@app/_components/ComingSoon";
 // ----------------------------------------------------------------------
 
 export const metadata: Metadata = {
@@ -24,5 +24,5 @@ export type LayoutProps = {
 // }
 
 export default async function EducationLayout() {
-  return <ComingSoon />;
+  return <ComingSoon icon="Tutorial--colorful" />;
 }

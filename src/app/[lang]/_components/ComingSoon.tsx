@@ -3,8 +3,16 @@
 import type { FC } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import { Icon } from "@/components/icons";
+import type { iconsType } from "@/components/icons/iconsNames";
 
-const ComingSoon: FC = () => {
+type Props = {
+  title?: string;
+  subtitle?: string;
+  icon?: iconsType;
+  borderRadius?: number;
+};
+
+const ComingSoon: FC<Props> = ({ title = "COMING SOON", subtitle, icon, borderRadius }) => {
   return (
     <Stack
       sx={{
@@ -17,6 +25,7 @@ const ComingSoon: FC = () => {
         background: "linear-gradient(180deg, #090A23 0%, rgba(9, 10, 35, 0.00) 100%)",
         alignItems: "center",
         justifyContent: "center",
+        borderRadius,
       }}
     >
       <Box
@@ -60,10 +69,13 @@ const ComingSoon: FC = () => {
         }}
       />
 
-      <Icon name="Tutorial--colorful" size={60} />
+      {icon && <Icon name={icon} size={60} />}
 
       <Typography variant="h3-semi-bold" mt={3} mb={1}>
-        COMING SOON
+        {title}
+      </Typography>
+      <Typography variant="p2-regular" color="grey.light" textAlign="center" maxWidth={504}>
+        {subtitle}
       </Typography>
     </Stack>
   );
