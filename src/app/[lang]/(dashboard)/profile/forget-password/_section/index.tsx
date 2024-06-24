@@ -24,6 +24,7 @@ import { useEffect, useState } from "react";
 import { useSnackbar } from "notistack";
 import { LoadingButton } from "@mui/lab";
 import CustomDialog from "@/components/CustomDialog";
+import { useModalActivation } from "@/hooks/useModalActivation";
 
 const getTimer = () => {
   const time = new Date();
@@ -32,6 +33,8 @@ const getTimer = () => {
 };
 
 const ForgetPasswordDialog = () => {
+  const open = useModalActivation("/forget-password/");
+
   const { t } = useTranslate();
   const { enqueueSnackbar } = useSnackbar();
   const [loading, setLoading] = useState(false);
@@ -107,7 +110,7 @@ const ForgetPasswordDialog = () => {
   }, [watch("verifyCode")]);
 
   return (
-    <CustomDialog fullWidth maxWidth="sm" aria-labelledby="forgot-password" open={true} onClose={back}>
+    <CustomDialog fullWidth maxWidth="sm" aria-labelledby="forgot-password" open={open} onClose={back}>
       <DialogTitle sx={{ m: 0, p: 2 }} id="change-password-dialog">
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack direction={"row"} alignItems="center" spacing={1}>

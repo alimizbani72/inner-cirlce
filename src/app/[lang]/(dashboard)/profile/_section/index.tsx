@@ -10,14 +10,15 @@ import { profileMenuItems } from "@/configs/profile";
 import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import { getUserPlanType } from "@/consts";
 import CustomDialog from "@/components/CustomDialog";
+import { useModalActivation } from "@/hooks/useModalActivation";
 
 const ProfileDialog = () => {
   const { push, back } = useCustomRouter();
   const { data: userInfoData } = useAccountServiceAuthUserinfoQuery();
   const isFreePlan = getUserPlanType(userInfoData) === "plankton";
-
+  const open = useModalActivation("/profile/");
   return (
-    <CustomDialog fullWidth maxWidth="sm" aria-labelledby="profile-dialog" open={true} onClose={back}>
+    <CustomDialog fullWidth maxWidth="sm" aria-labelledby="profile-dialog" open={open} onClose={back}>
       <DialogTitle sx={{ m: 0, p: 2 }} id="profile-dialog">
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Typography variant="h4-semi-bold" color={"common.white"}>
@@ -34,7 +35,9 @@ const ProfileDialog = () => {
         <Stack justifyContent="center" alignItems="center">
           <UserInfo />
           {profileMenuItems
-            .filter((item) => (isFreePlan ? !item.path.includes("become-partner") : item))
+            .filter((item) =>
+              isFreePlan || (userInfoData as any)?.data?.kyc_status ? !item.path.includes("become-partner") : item
+            )
             .map((item, index) => (
               <Stack
                 direction={"row"}

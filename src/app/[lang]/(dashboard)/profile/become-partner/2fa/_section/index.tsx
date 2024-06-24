@@ -4,7 +4,6 @@ import useCustomRouter from "@/hooks/useCustomRouter";
 import { Button, DialogActions, Divider, IconButton, Stack, Typography } from "@mui/material";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import { useAccountServiceAuthResetPasswordCreateMutation } from "@minecraft/queries";
 import { LoadingButton } from "@mui/lab";
 import CustomizedSteppers from "@/components/CustomizedSteppers";
 import QRCodeWithIcon from "@/components/QRCodeWithIcon";
@@ -15,10 +14,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useMemo } from "react";
 import * as Yup from "yup";
 import CustomDialog from "@/components/CustomDialog";
+import { useModalActivation } from "@/hooks/useModalActivation";
 
 const TwoFactorDialog = () => {
-  useAccountServiceAuthResetPasswordCreateMutation();
-
+  const open = useModalActivation("/2fa/");
   const { push, back, nativeBack } = useCustomRouter();
 
   const FormSchema = useMemo(
@@ -50,7 +49,7 @@ const TwoFactorDialog = () => {
   const onSubmit = () => push("/profile/become-partner/success");
 
   return (
-    <CustomDialog fullWidth maxWidth="sm" aria-labelledby="2fa" open={true} onClose={back}>
+    <CustomDialog fullWidth maxWidth="sm" aria-labelledby="2fa" open={open} onClose={back}>
       <DialogTitle sx={{ m: 0, p: 2 }} id="change-password-dialog">
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack direction={"row"} alignItems="center" spacing={1}>

@@ -20,6 +20,7 @@ import {
 } from "@minecraft/queries";
 import { enqueueSnackbar } from "notistack";
 import CustomDialog from "@/components/CustomDialog";
+import { useModalActivation } from "@/hooks/useModalActivation";
 
 const UpdateUserSchema = Yup.object().shape({
   newPassword: Yup.string()
@@ -39,6 +40,7 @@ const defaultValues = {
 };
 
 const ChangePasswordDialog = () => {
+  const open = useModalActivation("/change-password/");
   const { push, back, nativeBack } = useCustomRouter();
   const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
 
@@ -66,7 +68,7 @@ const ChangePasswordDialog = () => {
   });
 
   return (
-    <CustomDialog fullWidth maxWidth="sm" aria-labelledby="change-password" open={true} onClose={back}>
+    <CustomDialog fullWidth maxWidth="sm" aria-labelledby="change-password" open={open} onClose={back}>
       <DialogTitle sx={{ m: 0, p: 2 }} id="change-password-dialog">
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack direction={"row"} alignItems="center" spacing={1}>

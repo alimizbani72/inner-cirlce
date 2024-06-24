@@ -27,7 +27,10 @@ const Register: FC = () => {
   const dispatch = useAppDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const { email, name, password } = useAppSelector(getRegisterInfo);
-
+  const referralCode = searchParams.get("sponsor") || "";
+  if (referralCode) {
+    sessionStorage.setItem("referral_code", referralCode);
+  }
   const FormSchema = useMemo(
     () =>
       Yup.object().shape({
@@ -40,6 +43,7 @@ const Register: FC = () => {
           .required(t("formErrors.requiredEmail"))
           .matches(/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/, t("formErrors.invalidEmail")),
         terms: Yup.boolean().required(t("formErrors.requiredTerms")).oneOf([true], t("formErrors.requiredTerms")),
+        invite: Yup.string().notRequired(),
       }),
     [t]
   );
@@ -50,7 +54,7 @@ const Register: FC = () => {
       password,
       email,
       terms: false,
-      invite: searchParams.get("sponsor") || "",
+      invite: referralCode,
     }),
     [email, name, password]
   );
@@ -75,7 +79,7 @@ const Register: FC = () => {
             name: data.name,
             email: data.email,
             password: data.password,
-            referral_code: searchParams.get("sponsor") || "",
+            referral_code: referralCode,
           })
         );
         dispatch(setRegisterStep(2));

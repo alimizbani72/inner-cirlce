@@ -4,17 +4,20 @@ import useCustomRouter from "@/hooks/useCustomRouter";
 import { Button, DialogActions, Divider, IconButton, Stack, Typography } from "@mui/material";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import { useKycServiceKycVerificationCreateMutation } from "@minecraft/queries";
+import { useAccountServiceAuthUserinfoQuery, useKycServiceKycVerificationCreateMutation } from "@minecraft/queries";
 import { LoadingButton } from "@mui/lab";
 import CustomizedSteppers from "@/components/CustomizedSteppers";
 import { kycCallback } from "@/consts";
 import { usePathname } from "next/navigation";
 import CustomDialog from "@/components/CustomDialog";
+import { useModalActivation } from "@/hooks/useModalActivation";
 
 const KYCInfoDialog = () => {
+  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
   const { mutateAsync, isPending } = useKycServiceKycVerificationCreateMutation();
 
   const pathname = usePathname();
+  const open = useModalActivation("/kyc-info/");
 
   const { push, back, nativeBack } = useCustomRouter();
 
@@ -29,7 +32,7 @@ const KYCInfoDialog = () => {
     }
   };
   return (
-    <CustomDialog fullWidth maxWidth="sm" aria-labelledby="kyc-info" open={true} onClose={back}>
+    <CustomDialog fullWidth maxWidth="sm" aria-labelledby="kyc-info" open={open} onClose={back}>
       <DialogTitle sx={{ m: 0, p: 2 }} id="change-password-dialog">
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack direction={"row"} alignItems="center" spacing={1}>
@@ -67,9 +70,13 @@ const KYCInfoDialog = () => {
           <Button color="info" onClick={nativeBack}>
             Back
           </Button>
-          <LoadingButton color="primary" onClick={() => push("/profile/become-partner/2fa")}>
+          <Button
+            color="primary"
+            onClick={() => push("/profile/become-partner/success")}
+            disabled={!(userInfo as any)?.data?.kyc_status}
+          >
             Next Step
-          </LoadingButton>
+          </Button>
         </Stack>
       </DialogActions>
     </CustomDialog>

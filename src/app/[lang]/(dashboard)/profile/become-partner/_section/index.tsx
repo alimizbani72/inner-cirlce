@@ -6,12 +6,13 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import Image from "@/components/Image";
 import CustomDialog from "@/components/CustomDialog";
+import { useModalActivation } from "@/hooks/useModalActivation";
 
 const BecomePartnerDialog = () => {
   const { push, back } = useCustomRouter();
-
+  const open = useModalActivation("/become-partner/");
   return (
-    <CustomDialog fullWidth maxWidth="sm" aria-labelledby="become" open={true} onClose={back}>
+    <CustomDialog fullWidth maxWidth="sm" aria-labelledby="become" open={open} onClose={back}>
       <DialogTitle sx={{ m: 0, p: 2 }} id="change-password-dialog">
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack direction={"row"} alignItems="center" spacing={1}>

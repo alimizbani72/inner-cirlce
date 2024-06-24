@@ -21,6 +21,7 @@ import InputEditor from "@app/_components/InputEditor";
 import { enqueueSnackbar } from "notistack";
 import { getQueryClient } from "@app/_providers/customQueryClient";
 import CustomDialog from "@/components/CustomDialog";
+import { useModalActivation } from "@/hooks/useModalActivation";
 
 const UpdateUserSchema = Yup.object().shape({
   name: Yup.string()
@@ -29,6 +30,7 @@ const UpdateUserSchema = Yup.object().shape({
 });
 
 const SettingsDialog = () => {
+  const open = useModalActivation("/settings/");
   const queryClient = getQueryClient();
   const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
   const { mutateAsync } = useUserServiceAccountsUpdateCreateMutation();
@@ -57,7 +59,7 @@ const SettingsDialog = () => {
   };
 
   return (
-    <CustomDialog fullWidth maxWidth="sm" aria-labelledby="setting" open={true} onClose={back}>
+    <CustomDialog fullWidth maxWidth="sm" aria-labelledby="setting" open={open} onClose={back}>
       <DialogTitle sx={{ m: 0, p: 2 }} id="profile-dialog">
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack direction={"row"} alignItems="center" spacing={1}>

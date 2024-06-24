@@ -2,12 +2,12 @@
 import useCustomRouter from "@/hooks/useCustomRouter";
 import { Button, IconButton, Stack, Typography } from "@mui/material";
 import DialogContent from "@mui/material/DialogContent";
-import { useAccountServiceAuthResetPasswordCreateMutation } from "@minecraft/queries";
 import { Icon } from "@/components/icons";
 import CustomDialog from "@/components/CustomDialog";
+import { useModalActivation } from "@/hooks/useModalActivation";
 
 const SuccessDialog = () => {
-  useAccountServiceAuthResetPasswordCreateMutation();
+  const open = useModalActivation("/success/");
 
   const { back } = useCustomRouter();
 
@@ -19,7 +19,7 @@ const SuccessDialog = () => {
   // });
 
   return (
-    <CustomDialog fullWidth maxWidth="sm" aria-labelledby="success" open={true} onClose={back}>
+    <CustomDialog fullWidth maxWidth="sm" aria-labelledby="success" open={open} onClose={back}>
       <DialogContent dividers sx={{ p: 3 }}>
         <Stack gap={3} alignItems={"center"}>
           <IconButton
