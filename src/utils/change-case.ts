@@ -24,6 +24,10 @@ export function toPascalCase(str: string | undefined): string {
 }
 
 export function toTitleCase(str: string): string {
+  if (!str) {
+    return "";
+  }
+
   // Convert camelCase and PascalCase to space-separated words
   let result = str.replace(/([a-z])([A-Z])/g, "$1 $2");
 
