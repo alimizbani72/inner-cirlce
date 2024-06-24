@@ -33,7 +33,7 @@ const DashboardSection = () => {
 
   return (
     <Box sx={{ flex: 1 }}>
-      {isSuccess && data.data?.id && (
+      {isSuccess && data?.data?.id && (
         <StaticAlert
           title="Incomplete Payment Alert"
           description={`Your upgrade to the ${toTitleCase(
