@@ -89,7 +89,7 @@ export const authOptions: NextAuthOptions = {
               email: credentials?.email,
               policy_approved: !!credentials.policy_approved,
               session_code: credentials?.session_code,
-              referral_code: credentials?.referral_code,
+              referral_code: sessionStorage.getItem("referral_code"),
             }),
           });
 

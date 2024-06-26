@@ -1,11 +1,11 @@
-# modify useTranslate function to support "resendWithTimer": "Resend ({minutes}:{seconds})"
+    
 
+# modify useTranslate function to support "resendWithTimer": "Resend ({minutes}:{seconds})"
 
 # Controller fix forward ref error in console
 
 # cache ric files in service worker
-
-# serve fonts locally
+``` serve fonts locally ```  done
 
 # Fix costumeTable Last row for expanding child
 
@@ -19,3 +19,5 @@
 
 ``` app-index.js:33 Warning: Prop `className` did not match. Server: "MuiListSubheader-root MuiListSubheader-gutters css-rciw28-MuiListSubheader-root" Client: "MuiListSubheader-root MuiListSubheader-gutters css-135ocgf-MuiListSubheader-root"
     at p
+
+# add sponsor code in session storage

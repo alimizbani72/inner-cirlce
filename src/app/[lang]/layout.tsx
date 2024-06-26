@@ -6,12 +6,12 @@ import { getServerSession } from "next-auth";
 import { MotionLazy } from "@/components/animate/motion-lazy";
 import { SnackbarProvider } from "@/components/snackbar";
 import ThemeProvider from "@/theme";
-import { primaryFont } from "@/theme/typography";
 import { TanStackProvider } from "./_providers";
 import type { ReactNode } from "react";
 import { StoreProvider } from "./_providers/StoreProvider";
 import ProgressBarProvider from "./_providers/ProgressBarProvider";
 import { getDictionary } from "@/locales/dictionary";
+import { primaryFont } from "@/theme/localFonts";
 // ----------------------------------------------------------------------
 
 export const viewport: Viewport = {

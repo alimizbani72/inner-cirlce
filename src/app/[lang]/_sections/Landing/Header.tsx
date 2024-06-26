@@ -1,11 +1,8 @@
-import Link from "@/components/Link";
 import LogoType from "@/components/LogoType";
 import { Icon } from "@/components/icons";
-import { headerMenu } from "@/configs/landingMenu";
 import { useIsMobile } from "@/hooks/use-responsive";
-import { mobileMenuToggle } from "@/lib/features/menu/menuSlice";
-import { useAppDispatch } from "@/lib/hooks";
-import { Button, IconButton, Stack, Typography } from "@mui/material";
+// import { useAppDispatch } from "@/lib/hooks";
+import { Button, Stack } from "@mui/material";
 import type { FC } from "react";
 import LandingContainer from "./LandingContainer";
 
@@ -15,7 +12,7 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({ isLogin }) => {
   const isMobile = useIsMobile();
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
 
   return (
     <Stack
@@ -26,14 +23,31 @@ const Header: FC<HeaderProps> = ({ isLogin }) => {
       alignItems={"center"}
     >
       {isMobile ? (
-        <Stack px={3} pt={6} pb={2} direction="row" alignItems="center" justifyContent="center">
-          <IconButton
+        <Stack
+          px={3}
+          pt={6}
+          pb={2}
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
+          sx={{ width: "100%" }}
+        >
+          {/* <IconButton
             sx={{ position: "absolute", bottom: 24, left: 24 }}
             onClick={() => dispatch(mobileMenuToggle(true))}
           >
             <Icon name="Menu" />
-          </IconButton>
+          </IconButton> */}
           <LogoType />
+          {isLogin ? (
+            <Button sx={{ ml: "auto" }} color="info" startIcon={<Icon name="User" />} href="/dashboard">
+              Dashboard
+            </Button>
+          ) : (
+            <Button sx={{ ml: "auto" }} color="info" href="/login">
+              Login
+            </Button>
+          )}
         </Stack>
       ) : (
         <LandingContainer direction={"row"} alignItems="center" gap={5} sx={{ px: 3, py: 4 }}>
@@ -43,22 +57,25 @@ const Header: FC<HeaderProps> = ({ isLogin }) => {
             <circle cx="4" cy="4" r="4" fill="#14162E" />
           </svg>
 
-          {headerMenu.map((menuItem) => (
+          {/* {headerMenu.map((menuItem) => (
             <Link href={menuItem.link} key={menuItem.link}>
               <Typography variant="p2-medium" color="grey.light">
                 {menuItem.title}
               </Typography>
             </Link>
-          ))}
+          ))} */}
 
           {isLogin ? (
             <Button sx={{ ml: "auto" }} color="info" startIcon={<Icon name="User" />} href="/dashboard">
               Dashboard
             </Button>
           ) : (
-            <Button sx={{ ml: "auto" }} href="/login">
-              Join ChainMind
-            </Button>
+            <Stack sx={{ ml: "auto" }} direction={"row"} gap={1}>
+              <Button color="info" href="/login">
+                Login
+              </Button>
+              <Button href="/register">Join ChainMind</Button>
+            </Stack>
           )}
         </LandingContainer>
       )}

@@ -5,7 +5,6 @@ type RegisterInfo = {
   name: string;
   email: string;
   password: string;
-  referral_code?: string;
 };
 
 type ForgotPasswordInfo = {
@@ -25,7 +24,6 @@ const initialState: authSliceState = {
     name: "",
     email: "",
     password: "",
-    referral_code: "",
   },
   forgotPassword: {
     email: "",

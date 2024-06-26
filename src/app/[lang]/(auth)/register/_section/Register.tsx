@@ -19,6 +19,7 @@ import { useAppRouter } from "@/routes/hooks";
 import debounce from "lodash/debounce";
 import GoogleSignIn from "@app/(auth)/login/_section/GoogleSignIn";
 import { useSearchParams } from "next/navigation";
+import windowAvailable from "@/utils/windowAvailable";
 
 const Register: FC = () => {
   const { t } = useTranslate();
@@ -28,7 +29,7 @@ const Register: FC = () => {
   const { enqueueSnackbar } = useSnackbar();
   const { email, name, password } = useAppSelector(getRegisterInfo);
   const referralCode = searchParams.get("sponsor") || "";
-  if (referralCode) {
+  if (referralCode && windowAvailable) {
     sessionStorage.setItem("referral_code", referralCode);
   }
   const FormSchema = useMemo(
@@ -54,7 +55,7 @@ const Register: FC = () => {
       password,
       email,
       terms: false,
-      invite: referralCode,
+      invite: "",
     }),
     [email, name, password]
   );
@@ -65,7 +66,12 @@ const Register: FC = () => {
     mode: "onChange",
   });
 
-  const { handleSubmit, control, watch, setError, clearErrors, trigger, formState } = methods;
+  const { handleSubmit, control, watch, setError, clearErrors, trigger, formState, setValue } = methods;
+
+  if (windowAvailable && !watch("invite") && !!sessionStorage.getItem("referral_code")) {
+    setValue("invite", sessionStorage.getItem("referral_code"));
+  }
+
   const { isValid } = formState;
 
   const { mutateAsync: checkEmail } = useVerifyServiceVerificationsEmailCheckCreateMutation();
@@ -79,7 +85,6 @@ const Register: FC = () => {
             name: data.name,
             email: data.email,
             password: data.password,
-            referral_code: referralCode,
           })
         );
         dispatch(setRegisterStep(2));

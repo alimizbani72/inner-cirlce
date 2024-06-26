@@ -1,6 +1,6 @@
-import { Montserrat } from "next/font/google";
 import type { CSSProperties } from "react";
 import { toNumber } from "@/utils/toNumber";
+import { primaryFont } from "./localFonts";
 
 declare module "@mui/material/styles" {
   interface TypographyVariants {
@@ -186,12 +186,6 @@ const fontVariant = (name: string, fontSize: number, lineHeight: number): Record
     };
     return accumulator;
   }, {});
-
-export const primaryFont = Montserrat({
-  weight: ["400", "500", "600", "700"],
-  subsets: ["latin"],
-  fallback: ["Arial", "Helvetica", "sans-serif"],
-});
 
 const typography = {
   fontFamily: primaryFont.style.fontFamily,
