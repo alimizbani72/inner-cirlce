@@ -7,9 +7,11 @@ import { toTitleCase } from "@/utils/change-case";
 import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
+import { useTranslate } from "@/locales";
 
 const WelcomeBanner: FC = () => {
   const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+  const { t } = useTranslate();
 
   return (
     <Stack sx={{ position: "relative", overflow: "hidden" }}>
@@ -60,17 +62,19 @@ const WelcomeBanner: FC = () => {
         <Stack gap={2} alignItems={"flex-start"}>
           <Stack gap={1}>
             <Box>
-              <Typography variant="h3-semi-bold">Hi {toTitleCase((userInfo as any)?.data?.full_name)}</Typography>
-              <Typography variant="h3-regular">👋, Welcome back!</Typography>
+              <Typography variant="h3-semi-bold">
+                {t("welcomeBanner.hi", { name: toTitleCase((userInfo as any)?.data?.full_name) })}
+              </Typography>
+              <Typography variant="h3-regular">{t("welcomeBanner.welcomeBack")}</Typography>
             </Box>
 
             <Typography variant="p2-medium" color={"grey.light"}>
-              Knowledge is power in the marketplace; wisdom is knowing how to use it!
+              {t("welcomeBanner.knowledgeMessage")}
             </Typography>
           </Stack>
 
           <Button color="info" size="large" startIcon={<Icon name="Play" />}>
-            Welcome Video
+            {t("welcomeBanner.welcomeVideo")}
           </Button>
         </Stack>
 
@@ -93,7 +97,7 @@ const WelcomeBanner: FC = () => {
                 {getUserPlanType(userInfo)}
               </Typography>
               <Typography variant="caption-medium" color={"grey.light"}>
-                You're a
+                {t("welcomeBanner.youAre")}
               </Typography>
             </Stack>
           </Stack>
@@ -105,7 +109,7 @@ const WelcomeBanner: FC = () => {
               size="large"
               startIcon={<Icon color="dark.1" name="Subscription" />}
             >
-              Upgrade
+              {t("button.upgrade")}
             </Button>
           )}
         </Stack>

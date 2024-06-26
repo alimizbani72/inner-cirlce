@@ -2,17 +2,19 @@
 
 import Image from "@/components/Image";
 import { Icon } from "@/components/icons";
+import { useTranslate } from "@/locales";
 import { toNumber } from "@/utils/toNumber";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import { useSearchParams } from "next/navigation";
 import type { FC } from "react";
 
 const CheckoutQRWalletSection: FC = () => {
+  const { t } = useTranslate();
   const searchParams = useSearchParams();
   const isSuccess = toNumber(searchParams.get("success"));
 
   return (
-    <Stack flex={1} height={"100vh"} position={"relative"} bgcolor={"dark.1"} overflow={"hidden"} p={3}>
+    <Stack flex={1} height="100vh" position="relative" bgcolor="dark.1" overflow="hidden" p={3}>
       <Box sx={{ position: "absolute", inset: 0, zIndex: 1, opacity: 0.16 }}>
         <img src="/assets/svg/checkout-texture.svg" width="100%" height="100%" style={{ objectFit: "cover" }} />
       </Box>
@@ -52,16 +54,16 @@ const CheckoutQRWalletSection: FC = () => {
 
       <Typography
         sx={{ top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
-        position={"absolute"}
-        fontSize={"88px"}
+        position="absolute"
+        fontSize="88px"
         fontWeight={600}
-        lineHeight={"120px"}
-        whiteSpace={"nowrap"}
+        lineHeight="120px"
+        whiteSpace="nowrap"
         zIndex={5}
-        textTransform={"uppercase"}
+        textTransform="uppercase"
         color={"rgba(255, 255, 255, 0.02)"}
       >
-        {isSuccess ? "Successful • Successful • Successful" : "Failed • Failed • Failed • Failed"}
+        {isSuccess ? t("payment.successTexture") : t("payment.failTexture")}
       </Typography>
 
       <Stack
@@ -86,18 +88,16 @@ const CheckoutQRWalletSection: FC = () => {
         <Image src={`/assets/svg/${isSuccess ? "success" : "failed"}-payment.svg`} width={144} height={144} />
 
         <Stack gap={1}>
-          <Typography textAlign={"center"} variant="h3-semi-bold">
-            {isSuccess ? "Successful Payment!" : "Payment Failed!"}
+          <Typography textAlign="center" variant="h3-semi-bold">
+            {isSuccess ? t("payment.successTitle") : t("payment.failTitle")}
           </Typography>
-          <Typography textAlign={"center"} variant="p2-regular">
-            {isSuccess
-              ? "Your payment has been successfully processed. Your membership is now active. Thank you for your purchase!"
-              : "Your payment could not be processed. Your membership has not been activated. Please try again or contact support for assistance."}
+          <Typography textAlign="center" variant="p2-regular">
+            {isSuccess ? t("payment.successSubtitle") : t("payment.failSubtitle")}
           </Typography>
         </Stack>
 
         <Button color="info" startIcon={<Icon name="Home" />} href="/dashboard">
-          Back To Home
+          {t("button.backHome")}
         </Button>
       </Stack>
 

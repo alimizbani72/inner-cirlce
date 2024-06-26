@@ -21,17 +21,7 @@ import {
 import { enqueueSnackbar } from "notistack";
 import CustomDialog from "@/components/CustomDialog";
 import { useModalActivation } from "@/hooks/useModalActivation";
-
-const UpdateUserSchema = Yup.object().shape({
-  newPassword: Yup.string()
-    .required("Please enter your new password")
-    .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
-    ),
-  confirmNewPassword: Yup.string().oneOf([Yup.ref("newPassword")], "Both password must match."),
-  currentPassword: Yup.string().required("Please enter your current password"),
-});
+import { useTranslate } from "@/locales";
 
 const defaultValues = {
   currentPassword: "",
@@ -43,10 +33,19 @@ const ChangePasswordDialog = () => {
   const open = useModalActivation("/change-password/");
   const { push, back, nativeBack } = useCustomRouter();
   const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+  const { t } = useTranslate();
 
   const { mutateAsync, isPending } = useAccountServiceAuthChangePassword();
   const { mutateAsync: sendVerification, isPending: isForgetPassPending } =
     useVerifyServiceVerificationsSendCreateMutation();
+
+  const UpdateUserSchema = Yup.object().shape({
+    newPassword: Yup.string()
+      .required(t("formErrors.requiredNewPassword"))
+      .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/, t("formErrors.newPasswordPattern")),
+    confirmNewPassword: Yup.string().oneOf([Yup.ref("newPassword")], t("formErrors.confirmPassword")),
+    currentPassword: Yup.string().required(t("formErrors.requiredCurrentPassword")),
+  });
 
   const methods = useForm({
     resolver: yupResolver(UpdateUserSchema),
@@ -60,10 +59,10 @@ const ChangePasswordDialog = () => {
     try {
       await mutateAsync({ requestBody: { old_password: data.currentPassword, new_password: data.newPassword } });
       reset();
-      enqueueSnackbar("Password changed successfully!");
+      enqueueSnackbar(t("changePassword.passwordChangedSuccess"));
       push("/profile");
     } catch (error) {
-      enqueueSnackbar(error?.body?.message || "Failed to update password!", { variant: "error" });
+      enqueueSnackbar(error?.body?.message || t("changePassword.passwordChangedFailed"), { variant: "error" });
     }
   });
 
@@ -76,7 +75,7 @@ const ChangePasswordDialog = () => {
               <Icon name="Arrow-left" />
             </IconButton>
             <Typography variant="h4-semi-bold" color={"common.white"}>
-              Change Password
+              {t("changePassword.title")}
             </Typography>
           </Stack>
 
@@ -90,7 +89,11 @@ const ChangePasswordDialog = () => {
       <DialogContent dividers sx={{ p: 3 }}>
         <Stack justifyContent="center" alignItems="center">
           <FormProvider methods={methods} onSubmit={onSubmit} sx={{ gap: 3, width: "100%", mt: 3 }}>
-            <RHFTextField name="currentPassword" label="Current Password" placeholder="Enter your current password" />
+            <RHFTextField
+              name="currentPassword"
+              label={t("changePassword.currentPassword")}
+              placeholder={t("changePassword.enterCurrentPassword")}
+            />
             <Typography
               mt="-16px"
               variant="p2-medium"
@@ -107,20 +110,20 @@ const ChangePasswordDialog = () => {
                 cursor: "pointer",
               }}
             >
-              Forgot Password?
+              {t("changePassword.forgotPassword")}
             </Typography>
 
             <RHFTextField
               name="newPassword"
-              label="New Password"
-              placeholder="Enter your new password"
-              helperText="Use 8 or more characters with a mix of letters, numbers, and symbols."
+              label={t("changePassword.newPassword")}
+              placeholder={t("changePassword.enterNewPassword")}
+              helperText={t("changePassword.passwordHelperText")}
             />
             <RHFTextField
               name="confirmNewPassword"
-              label="Confirm New Password"
-              placeholder="Confirm your new password"
-              helperText="Both password must match."
+              label={t("changePassword.confirmNewPassword")}
+              placeholder={t("changePassword.confirmNewPasswordPlaceholder")}
+              helperText={t("changePassword.confirmPasswordHelperText")}
             />
           </FormProvider>
         </Stack>
@@ -129,10 +132,10 @@ const ChangePasswordDialog = () => {
       <DialogActions>
         <Stack width={"100%"} direction={"row"} justifyContent={"space-between"}>
           <Button color="info" onClick={nativeBack}>
-            Cancel
+            {t("button.cancel")}
           </Button>
           <LoadingButton color="primary" onClick={onSubmit} loading={isPending}>
-            Save Change
+            {t("changePassword.saveChange")}
           </LoadingButton>
         </Stack>
       </DialogActions>

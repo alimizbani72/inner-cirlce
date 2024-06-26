@@ -1,3 +1,5 @@
+"use client";
+
 import { List, ListSubheader } from "@mui/material";
 import type { FC } from "react";
 import { mapPathToName, type sidebarServicesItems } from "@/configs/sidebar";
@@ -5,6 +7,7 @@ import MenuItem from "./MenuItem";
 import type { iconsType } from "@/components/icons/iconsNames";
 import { useAppSelector } from "@/lib/hooks";
 import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
+import { useTranslate } from "@/locales";
 
 type MenuProps = {
   name: string;
@@ -13,6 +16,7 @@ type MenuProps = {
 
 const Menu: FC<MenuProps> = ({ name, items }) => {
   const isCollapsed = useAppSelector(isSidebarCollapsed);
+  const { t } = useTranslate();
 
   return (
     <List
@@ -43,7 +47,7 @@ const Menu: FC<MenuProps> = ({ name, items }) => {
         <MenuItem
           key={path ?? icon}
           route={path}
-          label={name ?? (mapPathToName as any)[path]}
+          label={name ? t(`sidebar.${name}` as any) : t(`sidebar.${(mapPathToName as any)[path]}` as any)}
           subItems={items}
           isCollapsed={isCollapsed}
           icon={icon as iconsType}

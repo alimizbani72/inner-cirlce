@@ -15,10 +15,12 @@ import { useMemo } from "react";
 import * as Yup from "yup";
 import CustomDialog from "@/components/CustomDialog";
 import { useModalActivation } from "@/hooks/useModalActivation";
+import { useTranslate } from "@/locales";
 
 const TwoFactorDialog = () => {
   const open = useModalActivation("/2fa/");
   const { push, back, nativeBack } = useCustomRouter();
+  const { t } = useTranslate();
 
   const FormSchema = useMemo(
     () =>
@@ -39,13 +41,6 @@ const TwoFactorDialog = () => {
     mode: "onSubmit",
   });
 
-  // const onSubmit = handleSubmit(async (data) => {
-  //   // biome-ignore lint/suspicious/noConsoleLog: <explanation>
-  //   console.log(data);
-
-  //   push("kyc-info");
-  // });
-
   const onSubmit = () => push("/profile/become-partner/success");
 
   return (
@@ -54,7 +49,7 @@ const TwoFactorDialog = () => {
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack direction={"row"} alignItems="center" spacing={1}>
             <Typography variant="h4-semi-bold" color={"common.white"}>
-              Become a Partner
+              {t("twoFactorDialog.title")}
             </Typography>
           </Stack>
 
@@ -72,18 +67,18 @@ const TwoFactorDialog = () => {
           <Divider flexItem />
           <Stack gap={3} justifyContent={"center"}>
             <Stack gap={2}>
-              <Typography variant="p2-regular">
-                For added security, please set up Two-Factor Authentication (2FA).
-              </Typography>
-              <Typography variant="p2-regular">
-                Scan the QR code with authentication app and enter the code below.
-              </Typography>
+              <Typography variant="p2-regular">{t("twoFactorDialog.securityMessage")}</Typography>
+              <Typography variant="p2-regular">{t("twoFactorDialog.qrInstruction")}</Typography>
             </Stack>
             <Stack alignItems={"center"} sx={{ width: "100%" }}>
               <QRCodeWithIcon value={"https://google.com"} iconSrc="/logo/logo.svg" size={123} />
             </Stack>
             <FormProvider methods={methods} onSubmit={onSubmit} sx={{ gap: 5, alignItems: "flex-start" }}>
-              <RHFTextField name="authcode" label={"Authentication Code"} placeholder={"Enter Authentication Code"} />
+              <RHFTextField
+                name="authcode"
+                label={t("twoFactorDialog.authCodeLabel")}
+                placeholder={t("twoFactorDialog.authCodePlaceholder")}
+              />
             </FormProvider>
           </Stack>
         </Stack>
@@ -91,10 +86,10 @@ const TwoFactorDialog = () => {
       <DialogActions>
         <Stack width={"100%"} direction={"row"} justifyContent={"space-between"}>
           <Button color="info" onClick={nativeBack}>
-            Back
+            {t("twoFactorDialog.backButton")}
           </Button>
           <LoadingButton color="primary" onClick={onSubmit}>
-            Next Step
+            {t("twoFactorDialog.nextStepButton")}
           </LoadingButton>
         </Stack>
       </DialogActions>

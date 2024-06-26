@@ -13,6 +13,7 @@ import { selectVideoByTitle } from "@/lib/features/academy/educationSlice";
 import Empty from "@/components/Empty";
 import Image from "@/components/Image";
 import { formatTime } from "@/utils/format-time";
+import { useTranslate } from "@/locales";
 
 type VideoResponse = {
   title: string;
@@ -36,6 +37,7 @@ const EducationSingleVideoSection: FC = () => {
   const video = useAppSelector((state) =>
     selectVideoByTitle(state)(decodeURIComponent(id as string), decodeURIComponent(moduleName as string))
   );
+  const { t } = useTranslate();
 
   useEffect(() => {
     if (video?.URL) {
@@ -90,7 +92,7 @@ const EducationSingleVideoSection: FC = () => {
               </Typography>
               <Stack direction={"row"} alignItems={"center"} gap={1}>
                 <Typography variant="caption-medium" color="grey.dark">
-                  BY:{" "}
+                  {t("educationSingleVideoSection.by")}:{" "}
                   <Typography variant="caption-medium" color="grey.light">
                     {video?.author}
                   </Typography>
@@ -100,7 +102,7 @@ const EducationSingleVideoSection: FC = () => {
 
                 {videoContent && (
                   <Typography variant="caption-medium" color="grey.dark">
-                    DURATION:{" "}
+                    {t("educationSingleVideoSection.duration")}:{" "}
                     <Typography variant="caption-medium" color="grey.light">
                       {formatTime(videoContent?.duration)}
                     </Typography>
@@ -126,7 +128,7 @@ const EducationSingleVideoSection: FC = () => {
             <Empty
               sx={{ mt: 0, width: "100%", height: "100%" }}
               icon="Warning--colorful"
-              title="You should upgrade your package to see this information"
+              title={t("educationSingleVideoSection.upgradeMessage")}
             />
           </Stack>
         )}

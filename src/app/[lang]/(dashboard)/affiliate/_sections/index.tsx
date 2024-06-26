@@ -3,44 +3,49 @@
 import Scrollbar from "@/components/Scrollbar";
 import Toggle from "@app/_components/Toggle";
 import { Stack, Typography } from "@mui/material";
-import { useState, type FC } from "react";
+import { useMemo, useState, type FC } from "react";
 import TabContent from "./TabContent";
 import AffiliateHeader from "./Header";
-
-const buttons = [
-  { label: "Dashboard", value: 1 },
-  {
-    label: (
-      <Stack direction="row" gap={1} alignItems="center">
-        Statistics
-        <Stack
-          alignItems={"center"}
-          justifyContent={"center"}
-          sx={{ borderRadius: 1.5, backgroundColor: "dark.1" }}
-          px={1}
-          height={24}
-        >
-          <Typography
-            variant="caption-semi-bold"
-            sx={{
-              background: (theme) => theme.palette.gradient.pink,
-              WebkitTextFillColor: "transparent",
-              WebkitBackgroundClip: "text",
-            }}
-          >
-            Coming soon
-          </Typography>
-        </Stack>
-      </Stack>
-    ),
-    value: 2,
-  },
-  { label: "Network", value: 3 },
-  { label: "Commissions", value: 4 },
-  { label: "Payouts", value: 5 },
-];
+import { useTranslate } from "@/locales";
 
 const AffiliateSection: FC = () => {
+  const { t } = useTranslate();
+
+  const buttons = useMemo(
+    () => [
+      { label: t("affiliateSection.dashboard"), value: 1 },
+      {
+        label: (
+          <Stack direction="row" gap={1} alignItems="center">
+            {t("affiliateSection.statistics")}
+            <Stack
+              alignItems="center"
+              justifyContent="center"
+              sx={{ borderRadius: 1.5, backgroundColor: "dark.1" }}
+              px={1}
+              height={24}
+            >
+              <Typography
+                variant="caption-semi-bold"
+                sx={{
+                  background: (theme) => theme.palette.gradient.pink,
+                  WebkitTextFillColor: "transparent",
+                  WebkitBackgroundClip: "text",
+                }}
+              >
+                {t("affiliateSection.comingSoon")}
+              </Typography>
+            </Stack>
+          </Stack>
+        ),
+        value: 2,
+      },
+      { label: t("affiliateSection.network"), value: 3 },
+      { label: t("affiliateSection.commissions"), value: 4 },
+      { label: t("affiliateSection.payouts"), value: 5 },
+    ],
+    [t]
+  );
   const [value, setValue] = useState<any>(buttons[0].value);
 
   const handleChange = (newValue: any) => {

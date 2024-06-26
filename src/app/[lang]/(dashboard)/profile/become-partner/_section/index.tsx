@@ -7,17 +7,20 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Image from "@/components/Image";
 import CustomDialog from "@/components/CustomDialog";
 import { useModalActivation } from "@/hooks/useModalActivation";
+import { useTranslate } from "@/locales";
 
 const BecomePartnerDialog = () => {
   const { push, back } = useCustomRouter();
   const open = useModalActivation("/become-partner/");
+  const { t } = useTranslate();
+
   return (
     <CustomDialog fullWidth maxWidth="sm" aria-labelledby="become" open={open} onClose={back}>
       <DialogTitle sx={{ m: 0, p: 2 }} id="change-password-dialog">
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack direction={"row"} alignItems="center" spacing={1}>
             <Typography variant="h4-semi-bold" color={"common.white"}>
-              Become a Partner
+              {t("becomePartner.title")}
             </Typography>
           </Stack>
 
@@ -31,13 +34,8 @@ const BecomePartnerDialog = () => {
       <DialogContent dividers sx={{ p: 3 }}>
         <Stack gap={3} justifyContent={"center"} alignItems={"center"}>
           <Image src="/assets/png/partner.png" />
-          <Typography variant="p2-regular">
-            One of these tunnels directs traffic through the VPN server, while the other bypasses the VPN and goes
-            directly to the Internet service provider (ISP). Ultimately, this means that users can choose which apps or
-            websites go through the VPN and which ones don’t, providing more control over how their online activity is
-            shared.
-          </Typography>
-          <Button onClick={() => push("personal-info")}>Start Doing Now!</Button>
+          <Typography variant="p2-regular">{t("becomePartner.description")}</Typography>
+          <Button onClick={() => push("personal-info")}>{t("becomePartner.startNow")}</Button>
         </Stack>
       </DialogContent>
     </CustomDialog>

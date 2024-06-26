@@ -3,8 +3,11 @@
 import type { FC } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import ChartSVG from "./Chart";
+import { useTranslate } from "@/locales";
 
 const AffStatisticsTab: FC = () => {
+  const { t } = useTranslate();
+
   return (
     <Stack px={{ md: 4, xs: 3 }} pt={3} flex={1}>
       <Stack
@@ -67,11 +70,10 @@ const AffStatisticsTab: FC = () => {
         <ChartSVG />
 
         <Typography variant="h3-semi-bold" mt={3} mb={1}>
-          COMING SOON
+          {t("affStatisticsTab.comingSoon")}
         </Typography>
         <Typography variant="p2-regular" color="grey.light" textAlign="center" maxWidth={504}>
-          By upgrading, subscribers can access additional benefits, enhanced functionalities, and premium content not
-          available in their current plan.
+          {t("affStatisticsTab.upgradeMessage")}
         </Typography>
       </Stack>
     </Stack>

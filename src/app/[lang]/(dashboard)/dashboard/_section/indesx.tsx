@@ -10,6 +10,7 @@ import { useFinancialServiceFinancialPaymentsActiveQuery } from "@minecraft/quer
 import StaticAlert from "@app/_components/StaticAlert";
 import { toTitleCase } from "@/utils/change-case";
 import { useAppRouter } from "@/routes/hooks";
+import { useTranslate } from "@/locales";
 
 // ----------------------------------------------------------------------
 
@@ -26,6 +27,7 @@ const DashboardSection = () => {
       return false;
     },
   });
+  const { t } = useTranslate();
 
   const handleOnContinue = () => {
     push(`/checkout/qr-wallet?plan_type=${data?.data?.plan_type}&id=${data?.data?.id}`);
@@ -35,10 +37,10 @@ const DashboardSection = () => {
     <Box sx={{ flex: 1 }}>
       {isSuccess && data?.data?.id && (
         <StaticAlert
-          title="Incomplete Payment Alert"
-          description={`Your upgrade to the ${toTitleCase(
-            data?.data?.plan_type!
-          )} Package is pending due to an incomplete payment. Please complete your payment to finalize upgrade.`}
+          title={t("dashboardSection.incompletePaymentAlert")}
+          description={t("dashboardSection.incompletePaymentDescription", {
+            planType: toTitleCase(data?.data?.plan_type!),
+          })}
           onContinue={handleOnContinue}
         />
       )}

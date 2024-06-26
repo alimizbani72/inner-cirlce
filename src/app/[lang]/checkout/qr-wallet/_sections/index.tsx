@@ -13,9 +13,9 @@ import { useTimer } from "react-timer-hook";
 import { formatCurrencyWithoutDollar, toNumber } from "@/utils/toNumber";
 import { plans } from "@/configs/plans";
 import RiveComp from "@/components/RiveComp";
-import { toPascalCase } from "@/utils/change-case";
 import { useFinancialServiceFinancialPaymentsIdStatusQuery } from "@minecraft/queries";
 import { useAppRouter } from "@/routes/hooks";
+import { useTranslate } from "@/locales";
 
 type Props = { planType: string; id: string };
 
@@ -25,6 +25,7 @@ const QRCodeWithIcon = dynamic(() => import("@/components/QRCodeWithIcon"), {
 });
 
 const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
+  const { t } = useTranslate();
   const isMobile = useIsMobile();
   const { copy } = useCopyToClipboard();
   const { push, back } = useAppRouter();
@@ -59,7 +60,7 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
   };
 
   return (
-    <Stack direction={{ md: "row" }} flex={1} minHeight={"100%"} position={"relative"}>
+    <Stack direction={{ md: "row" }} flex={1} minHeight="100%" position="relative">
       {/* Plan */}
       <Stack
         sx={{
@@ -69,19 +70,19 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
           pt: { md: 8, xs: 3 },
           pb: { md: 8, xs: 5 },
         }}
-        alignItems={"center"}
-        overflow={"hidden"}
+        alignItems="center"
+        overflow="hidden"
       >
         <Typography
           sx={{ top: "50%", transform: "translateY(-50%)" }}
-          position={"absolute"}
-          fontSize={"88px"}
+          position="absolute"
+          fontSize="88px"
           fontWeight={600}
-          lineHeight={"120px"}
-          whiteSpace={"nowrap"}
+          lineHeight="120px"
+          whiteSpace="nowrap"
           zIndex={1}
-          textTransform={"uppercase"}
-          color={"rgba(255, 255, 255, 0.08)"}
+          textTransform="uppercase"
+          color="rgba(255, 255, 255, 0.08)"
         >
           • {planType} • {planType} •
         </Typography>
@@ -93,7 +94,7 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
           <img src="/assets/svg/checkout-flares.svg" width="100%" height="100%" style={{ objectFit: "cover" }} />
         </Box>
         <Stack
-          position={"relative"}
+          position="relative"
           zIndex={2}
           gap={1}
           direction="row"
@@ -105,13 +106,15 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
           onClick={() => back()}
         >
           <Icon name="Arrow-left" />
-          <Typography variant="h4-semi-bold">Checkout</Typography>
+          <Typography variant="h4-semi-bold">{t("checkout.title")}</Typography>
         </Stack>
         <Divider flexItem sx={{ mt: 3, mb: { md: 4, xs: 3 }, borderColor: "rgba(255, 255, 255, 0.08)" }} />
-        <Stack position={"relative"} zIndex={2} width="100%" maxWidth={{ md: "486px" }} px={3} flex={1}>
-          <Typography variant="p2-medium">Subscribe to “{toPascalCase(planType)}” plan.</Typography>
+        <Stack position="relative" zIndex={2} width="100%" maxWidth={{ md: "486px" }} px={3} flex={1}>
+          <Typography variant="p2-medium">{`${t("checkout.subscribeTo")} “{toPascalCase(planType)}” ${t(
+            "checkout.plan"
+          )}.`}</Typography>
 
-          <Stack flex={1} alignItems={"center"} justifyContent={"center"}>
+          <Stack flex={1} alignItems="center" justifyContent="center">
             {plans[planType as keyof typeof plans]?.rive && (
               <Box
                 width={{ md: 248, xs: 144 }}
@@ -131,9 +134,9 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
         </Stack>
       </Stack>
       {/* Form */}
-      <Stack sx={{ bgcolor: "dark.1", flex: 1, py: { md: 8, xs: 3 } }} alignItems={"center"}>
+      <Stack sx={{ bgcolor: "dark.1", flex: 1, py: { md: 8, xs: 3 } }} alignItems="center">
         <Stack
-          position={"relative"}
+          position="relative"
           zIndex={2}
           direction="row"
           alignItems="center"
@@ -141,11 +144,11 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
           maxWidth={{ md: "434px" }}
           px={3}
         >
-          <Typography variant="h4-semi-bold">Pay with QR Code or Wallet Address</Typography>
+          <Typography variant="h4-semi-bold">{t("checkout.payQr")}</Typography>
         </Stack>
         <Divider flexItem sx={{ my: 3, borderColor: "rgba(255, 255, 255, 0.08)" }} />
         <Stack
-          position={"relative"}
+          position="relative"
           zIndex={2}
           width="100%"
           maxWidth={{ md: "434px" }}
@@ -158,7 +161,7 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
           <Typography variant="h4-semi-bold" mt={2}>
             USDC -{" "}
             <Typography variant="h4-semi-bold" color={"warning.main"}>
-              Polygon Network
+              {t("checkout.polygonNetwork")}
             </Typography>
           </Typography>
 
@@ -187,7 +190,7 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
           <Stack mt="auto" gap={2} width={"100%"}>
             <Stack direction="row" justifyContent={"space-between"}>
               <Typography variant="p2-medium" color="grey.light" textTransform={"uppercase"}>
-                Expire at
+                {t("checkout.expiredAt")}
               </Typography>
               <Stack direction="row" gap={1}>
                 <Icon name="Time" />
@@ -199,7 +202,7 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
             <Divider flexItem sx={{ borderColor: "rgba(255, 255, 255, 0.08)" }} />
             <Stack direction="row" justifyContent={"space-between"}>
               <Typography variant="p2-medium" color="grey.light" textTransform={"uppercase"}>
-                Amount to send
+                {t("checkout.amountToSend")}
               </Typography>
               <Stack direction={"row"} gap={1}>
                 <Icon name="coin-usdc" />
@@ -209,7 +212,7 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
             <Divider flexItem sx={{ borderColor: "rgba(255, 255, 255, 0.08)" }} />
             <Stack direction="row" justifyContent={"space-between"}>
               <Typography variant="p2-medium" color="grey.light" textTransform={"uppercase"}>
-                Paid Amount
+                {t("checkout.paidAmount")}
               </Typography>
               <Stack direction={"row"} gap={1}>
                 <Icon name="coin-usdc" />

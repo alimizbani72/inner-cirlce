@@ -22,11 +22,6 @@ type Props = {
   open: boolean;
 };
 
-const schema = Yup.object().shape({
-  address: Yup.string().required("ERC-20 Wallet address is required"),
-  name: Yup.string().required("Name is required"),
-});
-
 const defaultValues = {
   address: "",
   name: "",
@@ -37,6 +32,11 @@ const SetupWalletDialog: FC<Props> = ({ close, open }) => {
   const queryClient = getQueryClient();
   const { enqueueSnackbar } = useSnackbar();
   const { mutateAsync, isPending } = useWalletServiceWalletCreateMutation();
+
+  const schema = Yup.object().shape({
+    address: Yup.string().required(t("wallet.requiredAddress")),
+    name: Yup.string().required(t("wallet.requiredName")),
+  });
 
   const methods = useForm({
     resolver: yupResolver(schema),
@@ -50,7 +50,7 @@ const SetupWalletDialog: FC<Props> = ({ close, open }) => {
     mutateAsync({ requestBody: data })
       .then(() => {
         queryClient.invalidateQueries({ queryKey: [useWalletServiceWalletDefaultQueryKey] });
-        enqueueSnackbar("Your wallet address has been updated successfully.");
+        enqueueSnackbar(t("wallet.successMessage"));
         close();
         reset();
         resetField("name");
@@ -63,8 +63,8 @@ const SetupWalletDialog: FC<Props> = ({ close, open }) => {
     <CustomDialog fullWidth maxWidth="sm" onClose={close} aria-labelledby="withdraw-dialog" open={open}>
       <DialogTitle sx={{ m: 0, p: 2 }} id="withdraw-dialog">
         <Stack direction="row" alignItems="center" justifyContent="space-between">
-          <Typography variant="h4-semi-bold" color={"common.white"}>
-            Setup Your Wallet
+          <Typography variant="h4-semi-bold" color="common.white">
+            {t("wallet.setupWallet")}
           </Typography>
           <IconButton onClick={close}>
             <Icon name="Close" />
@@ -75,17 +75,21 @@ const SetupWalletDialog: FC<Props> = ({ close, open }) => {
 
       <DialogContent dividers sx={{ p: 3 }}>
         <FormProvider methods={methods} onSubmit={onSubmit} sx={{ gap: 3 }}>
-          <RHFTextField name="address" label="ERC-20 Wallet address" placeholder="Enter ERC-20 wallet address" />
-          <RHFTextField name="name" label="Your individual pseudonym" placeholder="Enter your individual pseudonym" />
+          <RHFTextField
+            name="address"
+            label={t("wallet.addressInputLabel")}
+            placeholder={t("wallet.addressInputPlaceholder")}
+          />
+          <RHFTextField name="name" label={t("wallet.nameInputLabel")} placeholder={t("wallet.nameInputPlaceholder")} />
         </FormProvider>
       </DialogContent>
       <DialogActions>
         <Stack width={"100%"} direction={"row"} justifyContent={"space-between"}>
           <Button size="large" color="info" onClick={close}>
-            Cancel
+            {t("button.cancel")}
           </Button>
           <LoadingButton loading={isPending} size="large" onClick={onSubmit}>
-            Save Wallet
+            {t("wallet.saveButton")}
           </LoadingButton>
         </Stack>
       </DialogActions>

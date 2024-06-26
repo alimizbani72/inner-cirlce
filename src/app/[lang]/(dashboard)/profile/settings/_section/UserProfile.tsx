@@ -13,6 +13,7 @@ import { downloadURL } from "@/consts";
 import { enqueueSnackbar } from "notistack";
 import { getQueryClient } from "@app/_providers/customQueryClient";
 import { LoadingButton } from "@mui/lab";
+import { useTranslate } from "@/locales";
 
 const UserProfile = () => {
   const isMobile = useIsMobile();
@@ -26,6 +27,8 @@ const UserProfile = () => {
       : null
   );
 
+  const { t } = useTranslate();
+
   const handleDrop = useCallback((acceptedFiles: File[]) => {
     const file = acceptedFiles[0];
 
@@ -38,7 +41,7 @@ const UserProfile = () => {
 
   const onUpload = () => {
     if (!avatar) {
-      return enqueueSnackbar("Choose your pic!", { variant: "error" });
+      return enqueueSnackbar(t("userProfile.choosePicError"), { variant: "error" });
     }
 
     uploadFile(
@@ -49,12 +52,12 @@ const UserProfile = () => {
             { requestBody: { avatar_url: downloadURL(res?.data?.[0]) } },
             {
               onSuccess: () => {
-                enqueueSnackbar("Avatar updated successfully!");
+                enqueueSnackbar(t("userProfile.avatarUpdatedSuccess"));
                 setAvatar({ ...avatar, link: downloadURL(res.data?.[0]) });
                 queryClient.invalidateQueries({ queryKey: [useAccountServiceAuthUserinfoQueryKey] });
               },
               onError: () => {
-                enqueueSnackbar("Failed to update avatar!", { variant: "error" });
+                enqueueSnackbar(t("userProfile.avatarUpdateFailed"), { variant: "error" });
               },
             }
           );
@@ -71,12 +74,12 @@ const UserProfile = () => {
       { requestBody: { avatar_url: "" } },
       {
         onSuccess: () => {
-          enqueueSnackbar("Avatar removed successfully!");
+          enqueueSnackbar(t("userProfile.avatarRemovedSuccess"));
           setAvatar(null);
           queryClient.invalidateQueries({ queryKey: [useAccountServiceAuthUserinfoQueryKey] });
         },
         onError: () => {
-          enqueueSnackbar("Failed to remove avatar!", { variant: "error" });
+          enqueueSnackbar(t("userProfile.avatarRemoveFailed"), { variant: "error" });
         },
       }
     );
@@ -89,7 +92,7 @@ const UserProfile = () => {
           <UploadAvatar sx={{ width: 96, height: 96 }} file={avatar} maxSize={3145728} onDrop={handleDrop} />
           <Stack flex={1} sx={{ width: "100%" }} gap={2}>
             <Typography variant="p2-semi-bold" color="common.white">
-              User Profile
+              {t("userProfile.title")}
             </Typography>
             <Stack direction={isMobile ? "column" : "row"} gap={2} sx={{ width: "100%" }}>
               <LoadingButton
@@ -99,7 +102,7 @@ const UserProfile = () => {
                 sx={{ whiteSpace: "pre" }}
                 onClick={onUpload}
               >
-                Upload Picture
+                {t("userProfile.uploadPicture")}
               </LoadingButton>
               <LoadingButton
                 loading={isUploadAvatarPending || isUploadPending}
@@ -108,7 +111,7 @@ const UserProfile = () => {
                 fullWidth
                 onClick={onRemoveAvatar}
               >
-                Remove
+                {t("userProfile.remove")}
               </LoadingButton>
             </Stack>
           </Stack>

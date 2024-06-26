@@ -6,10 +6,12 @@ import StrategiesItem from "./StrategiesItem";
 import { plans } from "@/configs/plans";
 import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import { getUserPlanType } from "@/consts";
+import { useTranslate } from "@/locales";
 
 type Props = {};
 
 const PortfolioStrategiesSection: FC<Props> = () => {
+  const { t } = useTranslate();
   const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
 
   return (
@@ -24,7 +26,7 @@ const PortfolioStrategiesSection: FC<Props> = () => {
       {Object.entries(plans).map(([key, value]) => (
         <StrategiesItem
           key={key}
-          subtitle="Strategy"
+          subtitle={t("global.strategy")}
           src={value.rive}
           type={key}
           upgrade={plans[getUserPlanType(userInfo) as keyof typeof plans].order < value.order}

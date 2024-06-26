@@ -11,18 +11,21 @@ import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import { getUserPlanType } from "@/consts";
 import CustomDialog from "@/components/CustomDialog";
 import { useModalActivation } from "@/hooks/useModalActivation";
+import { useTranslate } from "@/locales";
 
 const ProfileDialog = () => {
   const { push, back } = useCustomRouter();
   const { data: userInfoData } = useAccountServiceAuthUserinfoQuery();
   const isFreePlan = getUserPlanType(userInfoData) === "plankton";
   const open = useModalActivation("/profile/");
+  const { t } = useTranslate();
+
   return (
     <CustomDialog fullWidth maxWidth="sm" aria-labelledby="profile-dialog" open={open} onClose={back}>
       <DialogTitle sx={{ m: 0, p: 2 }} id="profile-dialog">
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Typography variant="h4-semi-bold" color={"common.white"}>
-            Profile
+            {t("profileDialog.title")}
           </Typography>
           <IconButton onClick={back}>
             <Icon name="Close" />
@@ -47,7 +50,7 @@ const ProfileDialog = () => {
                 onClick={() => push(`/profile/${item.path}`)}
               >
                 <Icon name={item.icon as any} />
-                <Typography variant="p2-medium">{item.title}</Typography>
+                <Typography variant="p2-medium">{t(`profileDialog.${item.title}` as any)}</Typography>
                 <IconButton sx={{ ml: "auto" }}>
                   <Icon name="Arrow-right" />
                 </IconButton>
@@ -60,10 +63,10 @@ const ProfileDialog = () => {
             onClick={() => signOut({ redirect: true, callbackUrl: "/login" })}
           >
             <Icon name="LogOut" />
-            <Typography variant="p2-medium">Logout</Typography>
+            <Typography variant="p2-medium">{t("profileDialog.logout")}</Typography>
           </Stack>
           <Typography sx={{ textAlign: "left", width: "100%", mt: 3 }} variant="p2-regular" color="grey.light">
-            Copyright © {new Date().getFullYear()} ChainMind. All rights reserved.
+            {t("profileDialog.copyright", { year: new Date().getFullYear(), company: "ChainMind" })}
           </Typography>
         </Stack>
       </DialogContent>

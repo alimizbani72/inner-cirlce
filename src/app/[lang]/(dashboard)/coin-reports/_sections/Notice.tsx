@@ -5,12 +5,14 @@ import { Box, Collapse, Stack, Typography } from "@mui/material";
 import { useState, type FC } from "react";
 import { snipText } from "@/utils/string";
 import { useIsMobile } from "@/hooks/use-responsive";
+import { useTranslate } from "@/locales";
 
 interface NoticeProps {}
 
-const Notice: FC<NoticeProps> = () => {
+const CoinReportNotice: FC<NoticeProps> = () => {
   const isMobile = useIsMobile();
   const [expand, setExpand] = useState(isMobile ?? false);
+  const { t } = useTranslate();
 
   return (
     <Stack px={{ md: 4, xs: 3 }}>
@@ -23,13 +25,9 @@ const Notice: FC<NoticeProps> = () => {
               sx={{ ...(!isMobile && !expand && snipText(1)), position: "relative", flex: 1 }}
             >
               <Typography variant="p2-medium" textTransform="uppercase" color="warning.main">
-                IMPORTANT NOTICE:
+                {t("coinReportNotice.importantNotice")}
               </Typography>{" "}
-              The values and forecasts presented herein are based on our personal assessments of the market and do not
-              constitute buy recommendations or any form of guarantees. All investments carry risks, and it is crucial
-              to acknowledge the risk disclaimer confirmed during registration. Unauthorised distribution of the
-              information provided will be subject to criminal prosecution and will result in a permanent account
-              suspension.
+              {t("coinReportNotice.message")}
             </Typography>
             {!isMobile && (
               <Typography
@@ -39,7 +37,7 @@ const Notice: FC<NoticeProps> = () => {
                 sx={{ cursor: "pointer", width: "fit-content" }}
                 onClick={() => setExpand((state) => !state)}
               >
-                {expand ? "VIEW LESS..." : "VIEW MORE..."}
+                {expand ? t("coinReportNotice.viewLess") : t("coinReportNotice.viewMore")}
               </Typography>
             )}
           </Box>
@@ -49,4 +47,4 @@ const Notice: FC<NoticeProps> = () => {
   );
 };
 
-export default Notice;
+export default CoinReportNotice;

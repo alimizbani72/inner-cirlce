@@ -6,12 +6,14 @@ import type { FC } from "react";
 import RoadMapItem from "./Item";
 import { useRoadmapsServiceGetRoadmaps } from "@cms/queries";
 import { useParams } from "next/navigation";
+import { useTranslate } from "@/locales";
 
 interface RoadMapProps {}
 
 const RoadMap: FC<RoadMapProps> = () => {
   const { lang } = useParams();
   const { data } = useRoadmapsServiceGetRoadmaps({ locale: lang as string });
+  const { t } = useTranslate();
 
   if (!data?.docs?.length) {
     return null;
@@ -19,7 +21,7 @@ const RoadMap: FC<RoadMapProps> = () => {
 
   return (
     <ContentStack sx={{ gap: 3 }}>
-      <Typography variant="p1-semi-bold">Road Map</Typography>
+      <Typography variant="p1-semi-bold">{t("roadMap.title")}</Typography>
 
       <Stack
         sx={{

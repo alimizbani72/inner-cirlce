@@ -87,10 +87,10 @@ const ForgetPasswordDialog = () => {
           },
         });
         reset();
-        enqueueSnackbar("Password changed successfully!");
+        enqueueSnackbar(t("forgetPassword.passwordChanged"));
         push("/profile");
       } catch (error) {
-        enqueueSnackbar(error?.message || "Failed to verify code!", { variant: "error" });
+        enqueueSnackbar(error?.message || t("forgetPassword.failedToVerifyCode"), { variant: "error" });
       }
     }
   });
@@ -115,7 +115,7 @@ const ForgetPasswordDialog = () => {
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack direction={"row"} alignItems="center" spacing={1}>
             <Typography variant="h4-semi-bold" color={"common.white"}>
-              {formState === 1 ? "Forgot Password" : "Create New Password"}
+              {formState === 1 ? t("forgetPassword.forgotPassword") : t("forgetPassword.createNewPassword")}
             </Typography>
           </Stack>
 
@@ -177,24 +177,24 @@ const ForgetPasswordDialog = () => {
             </>
           ) : (
             <Stack gap={5}>
-              <Typography variant="h3-semi-bold">Create New Password</Typography>
+              <Typography variant="h3-semi-bold">{t("forgetPassword.createNewPassword")}</Typography>
               <FormProvider methods={methods} onSubmit={onSubmit} sx={{ gap: 3 }}>
                 <RHFTextField
                   name="password"
-                  label="New Password"
-                  placeholder="Enter your new password"
-                  helperText="Use 8 or more characters with a mix of letters, numbers, and symbols."
+                  label={t("forgetPassword.newPassword")}
+                  placeholder={t("forgetPassword.enterNewPassword")}
+                  helperText={t("forgetPassword.passwordHelperText")}
                 />
                 <RHFTextField
                   name="confirmPass"
-                  label="Confirm New Password"
-                  placeholder="Confirm your new password"
-                  helperText="Both password must match."
+                  label={t("forgetPassword.confirmNewPassword")}
+                  placeholder={t("forgetPassword.confirmNewPasswordPlaceholder")}
+                  helperText={t("forgetPassword.confirmPasswordHelperText")}
                 />
               </FormProvider>
 
               <LoadingButton loading={isResetPasswordPending} type="submit" onClick={onSubmit}>
-                Reset Password
+                {t("forgetPassword.resetPassword")}
               </LoadingButton>
             </Stack>
           )}

@@ -22,12 +22,7 @@ import { enqueueSnackbar } from "notistack";
 import { getQueryClient } from "@app/_providers/customQueryClient";
 import CustomDialog from "@/components/CustomDialog";
 import { useModalActivation } from "@/hooks/useModalActivation";
-
-const UpdateUserSchema = Yup.object().shape({
-  name: Yup.string()
-    .required("Name is required")
-    .test("invalid character", "Your name can't contain numbers", (val) => !/\d/.test(val)),
-});
+import { useTranslate } from "@/locales";
 
 const SettingsDialog = () => {
   const open = useModalActivation("/settings/");
@@ -36,6 +31,12 @@ const SettingsDialog = () => {
   const { mutateAsync } = useUserServiceAccountsUpdateCreateMutation();
   const { push, back } = useCustomRouter();
   const isMobile = useIsMobile();
+  const { t } = useTranslate();
+  const UpdateUserSchema = Yup.object().shape({
+    name: Yup.string()
+      .required(t("settingsDialog.nameRequired"))
+      .test("invalid character", t("settingsDialog.invalidCharacter"), (val) => !/\d/.test(val)),
+  });
   const methods = useForm({
     resolver: yupResolver(UpdateUserSchema),
     defaultValues: { name: (userInfo as any)?.data?.full_name },
@@ -49,11 +50,11 @@ const SettingsDialog = () => {
     if (name !== (userInfo as any)?.data?.full_name) {
       mutateAsync({ requestBody: { full_name: name, avatar_url: (userInfo as any)?.data?.avatar_url } })
         .then(() => {
-          enqueueSnackbar("Your Name updated successfully!");
+          enqueueSnackbar(t("settingsDialog.nameUpdateSuccess"));
           queryClient.invalidateQueries({ queryKey: [useAccountServiceAuthUserinfoQueryKey] });
         })
         .catch(() => {
-          enqueueSnackbar("Failed to update avatar!", { variant: "error" });
+          enqueueSnackbar(t("settingsDialog.nameUpdateFailed"), { variant: "error" });
         });
     }
   };
@@ -67,7 +68,7 @@ const SettingsDialog = () => {
               <Icon name="Arrow-left" />
             </IconButton>
             <Typography variant="h4-semi-bold" color={"common.white"}>
-              Profile Settings
+              {t("settingsDialog.profileSettings")}
             </Typography>
           </Stack>
 
@@ -82,11 +83,11 @@ const SettingsDialog = () => {
         <Stack justifyContent="center" alignItems="center">
           <UserProfile />
           <FormProvider methods={methods} sx={{ gap: 3, width: "100%", mt: 3 }}>
-            <InputEditor name="name" label="Full Name" onSave={onSave} />
+            <InputEditor name="name" label={t("settingsDialog.fullName")} onSave={onSave} />
 
             <RHFTextField
               name="password"
-              label="Password"
+              label={t("settingsDialog.password")}
               type="password"
               value="password"
               InputProps={{
@@ -99,7 +100,7 @@ const SettingsDialog = () => {
                     fullWidth
                     color="secondary"
                   >
-                    {isMobile ? "Change" : "Change Password"}
+                    {isMobile ? t("settingsDialog.change") : t("settingsDialog.changePassword")}
                   </Button>
                 ),
               }}

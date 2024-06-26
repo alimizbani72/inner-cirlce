@@ -16,6 +16,7 @@ import { formatCurrency, toNumber } from "@/utils/toNumber";
 import { toPascalCase } from "@/utils/change-case";
 import { plans } from "@/configs/plans";
 import { orderArrayPlan } from "@/utils/order-plans";
+import { useTranslate } from "@/locales";
 
 const ProgressBar = ({ overall, percent }: { overall?: boolean; percent: number }) => (
   <Stack
@@ -43,6 +44,7 @@ const ProgressBar = ({ overall, percent }: { overall?: boolean; percent: number 
 );
 
 const AFDashboardTab: FC = () => {
+  const { t } = useTranslate();
   const [openWithdrawDialog, setOpenWithdrawDialog] = useState(false);
   const { data: me } = useAffiliateServiceAffiliateMeQuery();
   const { data: balance } = useAffiliateServiceAffiliateBalanceQuery();
@@ -68,7 +70,7 @@ const AFDashboardTab: FC = () => {
           <Stack>
             <Typography variant="h4-semi-bold">{formatCurrency(me?.data?.turnover)}</Typography>
             <Typography variant="p2-medium" color="grey.light">
-              Total Turnover
+              {t("afDashboardTab.totalTurnover")}
             </Typography>
           </Stack>
         </ContentStack>
@@ -81,7 +83,7 @@ const AFDashboardTab: FC = () => {
             <Stack>
               <Typography variant="h4-semi-bold">{formatCurrency(balance?.data!)}</Typography>
               <Typography variant="p2-medium" color="grey.light">
-                Commission Wallet
+                {t("afDashboardTab.commissionWallet")}
               </Typography>
             </Stack>
           </Stack>
@@ -90,7 +92,7 @@ const AFDashboardTab: FC = () => {
             color="secondary"
             onClick={() => setOpenWithdrawDialog(true)}
           >
-            Withdraw
+            {t("afDashboardTab.withdraw")}
           </Button>
         </ContentStack>
       </Stack>
@@ -105,14 +107,14 @@ const AFDashboardTab: FC = () => {
       >
         <Stack p={3} flex={4 / 12} gap={2} justifyContent={{ md: "center" }}>
           <Stack direction="row" justifyContent="space-between" bgcolor="blue.dark" borderRadius="10px" px={2} py={1}>
-            <Typography variant="p1-regular">Current Rank</Typography>
+            <Typography variant="p1-regular">{t("afDashboardTab.currentRank")}</Typography>
             <Typography variant="p1-semi-bold">#{toPascalCase(me?.data?.rank?.type)}</Typography>
           </Stack>
           <Stack direction="row" justifyContent="space-between" alignItems="center">
             <Stack alignItems="center" flex={1}>
               <Typography variant="h4-semi-bold">{me?.data?.rank?.percent} %</Typography>
               <Typography variant="p2-medium" color="grey.light">
-                Override Bonus
+                {t("afDashboardTab.overrideBonus")}
               </Typography>
             </Stack>
             <Divider flexItem sx={{ borderWidth: "1px" }} />
@@ -126,7 +128,7 @@ const AFDashboardTab: FC = () => {
                 </Typography>
               </Stack>
               <Typography variant="p2-medium" color="grey.light">
-                Gold Coins
+                {t("afDashboardTab.goldCoins")}
               </Typography>
             </Stack>
           </Stack>
@@ -170,7 +172,7 @@ const AFDashboardTab: FC = () => {
           <Stack height={24} direction="row" alignItems={"center"} justifyContent="space-between" width={"100%"}>
             <Stack width={94} direction={"row"} alignItems="center">
               <Typography variant="caption-medium" mr={1} color="grey.light">
-                First:
+                {t("afDashboardTab.first")}:
               </Typography>
               <Typography variant="p2-semi-bold">{toNumber(progress?.data?.first_line?.percent)}</Typography>
               <Typography variant="caption-semi-bold" ml="2px">
@@ -184,7 +186,7 @@ const AFDashboardTab: FC = () => {
           <Stack height={24} direction="row" alignItems={"center"} justifyContent="space-between" width={"100%"}>
             <Stack width={94} direction={"row"} alignItems="center">
               <Typography variant="caption-medium" mr={1} color="grey.light">
-                Second:
+                {t("afDashboardTab.second")}:
               </Typography>
               <Typography variant="p2-semi-bold">{toNumber(progress?.data?.second_line?.percent)}</Typography>
               <Typography variant="caption-semi-bold" ml="2px">
@@ -198,7 +200,7 @@ const AFDashboardTab: FC = () => {
           <Stack height={24} direction="row" alignItems={"center"} justifyContent="space-between" width={"100%"}>
             <Stack width={94} direction={"row"} alignItems="center">
               <Typography variant="caption-medium" mr={1} color="grey.light">
-                Third:
+                {t("afDashboardTab.third")}:
               </Typography>
               <Typography variant="p2-semi-bold">{toNumber(progress?.data?.third_line?.percent)}</Typography>
               <Typography variant="caption-semi-bold" ml="2px">
@@ -212,7 +214,7 @@ const AFDashboardTab: FC = () => {
           <Stack height={24} direction="row" alignItems={"center"} justifyContent="space-between" width={"100%"}>
             <Stack width={94} direction={"row"} alignItems="center">
               <Typography variant="caption-medium" mr={1} color="grey.light">
-                Other:
+                {t("afDashboardTab.other")}:
               </Typography>
               <Typography variant="p2-semi-bold">{toNumber(progress?.data?.other_lines?.percent)}</Typography>
               <Typography variant="caption-semi-bold" ml="2px">
@@ -226,7 +228,7 @@ const AFDashboardTab: FC = () => {
           <Stack height={24} direction="row" alignItems={"center"} justifyContent="space-between" width={"100%"}>
             <Stack width={94} direction={"row"} alignItems="center">
               <Typography variant="caption-medium" mr={1} color="grey.light">
-                Overall:
+                {t("afDashboardTab.overall")}:
               </Typography>
               <Typography variant="h4-bold">{overallProgressPercent}</Typography>
               <Typography variant="caption-semi-bold" ml="2px">
@@ -242,7 +244,7 @@ const AFDashboardTab: FC = () => {
 
         <Stack p={3} flex={4 / 12} gap={2} justifyContent={{ md: "center" }}>
           <Stack direction="row" justifyContent="space-between" bgcolor="dark.3" borderRadius="10px" px={2} py={1}>
-            <Typography variant="p1-regular">Next Rank</Typography>
+            <Typography variant="p1-regular">{t("afDashboardTab.nextRank")}</Typography>
             <Typography variant="p1-semi-bold" color="pink.dark">
               #{toPascalCase(me?.data?.next_rank?.type)}
             </Typography>
@@ -253,7 +255,7 @@ const AFDashboardTab: FC = () => {
                 +{me?.data?.next_rank?.percent} %
               </Typography>
               <Typography variant="p2-medium" color="grey.light">
-                Override Bonus
+                {t("afDashboardTab.overrideBonus")}
               </Typography>
             </Stack>
             <Divider flexItem sx={{ borderWidth: "1px" }} />
@@ -267,7 +269,7 @@ const AFDashboardTab: FC = () => {
                 </Typography>
               </Stack>
               <Typography variant="p2-medium" color="grey.light">
-                Gold Coins
+                {t("afDashboardTab.goldCoins")}
               </Typography>
             </Stack>
           </Stack>
@@ -283,7 +285,7 @@ const AFDashboardTab: FC = () => {
             <Stack>
               <Typography variant="h4-semi-bold">{children?.data?.total_count}</Typography>
               <Typography variant="p2-medium" color="grey.light">
-                Team Members
+                {t("afDashboardTab.teamMembers")}
               </Typography>
             </Stack>
           </Stack>
@@ -295,7 +297,7 @@ const AFDashboardTab: FC = () => {
             <Stack>
               <Typography variant="h4-semi-bold">{formatCurrency(children?.data?.first_line_turnover)}</Typography>
               <Typography variant="p2-medium" color="grey.light">
-                First line Volume
+                {t("afDashboardTab.firstLineVolume")}
               </Typography>
             </Stack>
           </Stack>

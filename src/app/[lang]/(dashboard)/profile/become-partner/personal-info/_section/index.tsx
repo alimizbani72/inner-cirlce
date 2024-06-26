@@ -56,16 +56,16 @@ const PersonalInfoDialog = () => {
   const methods = useForm({
     resolver: yupResolver(
       Yup.object().shape({
-        fullname: Yup.string().required(t("formErrors.requiredCode")),
-        email: Yup.string().required(t("formErrors.requiredCode")),
-        country: Yup.string().required(t("formErrors.requiredCode")),
-        city: Yup.string().required(t("formErrors.requiredCode")),
-        building: Yup.string().required(t("formErrors.requiredCode")),
-        zipcode: Yup.string().required(t("formErrors.requiredCode")),
+        fullname: Yup.string().required(t("formErrors.required")),
+        email: Yup.string().required(t("formErrors.required")),
+        country: Yup.string().required(t("formErrors.required")),
+        city: Yup.string().required(t("formErrors.required")),
+        building: Yup.string().required(t("formErrors.required")),
+        zipcode: Yup.string().required(t("formErrors.required")),
         wallet: Yup.string()
-          .required(t("formErrors.requiredCode"))
-          .matches(/^(0x)?[0-9a-fA-F]{40}$/, "Invalid Polygon wallet address"),
-        street: Yup.string().required(t("formErrors.requiredCode")),
+          .required(t("formErrors.required"))
+          .matches(/^(0x)?[0-9a-fA-F]{40}$/, t("formErrors.invalidWallet")),
+        street: Yup.string().required(t("formErrors.required")),
       })
     ),
     defaultValues,
@@ -110,7 +110,7 @@ const PersonalInfoDialog = () => {
         }
       );
     } catch (_error) {
-      enqueueSnackbar("Failed to update profile! Please try again", { variant: "error" });
+      enqueueSnackbar(t("personalInfoDialog.updateFailed"), { variant: "error" });
     }
   });
 
@@ -120,7 +120,7 @@ const PersonalInfoDialog = () => {
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack direction={"row"} alignItems="center" spacing={1}>
             <Typography variant="h4-semi-bold" color={"common.white"}>
-              Become a Partner
+              {t("personalInfoDialog.title")}
             </Typography>
           </Stack>
 
@@ -139,30 +139,54 @@ const PersonalInfoDialog = () => {
 
           <FormProvider methods={methods} onSubmit={onSubmit} sx={{ gap: 3 }}>
             <Stack direction={direction} spacing={3}>
-              <RHFTextField name="fullname" label="FULL NAME" placeholder="Enter your full name" />
+              <RHFTextField
+                name="fullname"
+                label={t("personalInfoDialog.fullnameLabel")}
+                placeholder={t("personalInfoDialog.fullnamePlaceholder")}
+              />
               <RHFTextField
                 name="email"
-                label="EMAIL"
-                placeholder="Enter your email address"
+                label={t("personalInfoDialog.emailLabel")}
+                placeholder={t("personalInfoDialog.emailPlaceholder")}
                 InputProps={{
                   readOnly: true,
                 }}
               />
             </Stack>
             <Stack direction={direction} spacing={3}>
-              <RHFTextField name="country" label="Country" placeholder="Select a country" />
-              <RHFTextField name="city" label="City" placeholder="Select a city" />
+              <RHFTextField
+                name="country"
+                label={t("personalInfoDialog.countryLabel")}
+                placeholder={t("personalInfoDialog.countryPlaceholder")}
+              />
+              <RHFTextField
+                name="city"
+                label={t("personalInfoDialog.cityLabel")}
+                placeholder={t("personalInfoDialog.cityPlaceholder")}
+              />
             </Stack>
             <Stack direction={direction} spacing={3}>
-              <RHFTextField name="street" label="Street" placeholder="Enter street name" />
-              <RHFTextField name="building" label="Budling number" placeholder="Enter building number" />
+              <RHFTextField
+                name="street"
+                label={t("personalInfoDialog.streetLabel")}
+                placeholder={t("personalInfoDialog.streetPlaceholder")}
+              />
+              <RHFTextField
+                name="building"
+                label={t("personalInfoDialog.buildingLabel")}
+                placeholder={t("personalInfoDialog.buildingPlaceholder")}
+              />
             </Stack>
             <Stack direction={direction} spacing={3}>
-              <RHFTextField name="zipcode" label="Zip Code" placeholder="Enter zip code" />
+              <RHFTextField
+                name="zipcode"
+                label={t("personalInfoDialog.zipcodeLabel")}
+                placeholder={t("personalInfoDialog.zipcodePlaceholder")}
+              />
               <RHFTextField
                 name="wallet"
-                label="USDC Polygon wallet address"
-                placeholder="Enter wallet address"
+                label={t("personalInfoDialog.walletLabel")}
+                placeholder={t("personalInfoDialog.walletPlaceholder")}
                 InputProps={{
                   readOnly: !!defaultWallet?.data?.address,
                 }}
@@ -174,10 +198,10 @@ const PersonalInfoDialog = () => {
       <DialogActions>
         <Stack width={"100%"} direction={"row"} justifyContent={"space-between"}>
           <Button color="info" onClick={nativeBack}>
-            Back
+            {t("button.back")}
           </Button>
           <LoadingButton color="primary" onClick={onSubmit} loading={isPending} disabled={!formState.isValid}>
-            Next Step
+            {t("button.nextStep")}
           </LoadingButton>
         </Stack>
       </DialogActions>
