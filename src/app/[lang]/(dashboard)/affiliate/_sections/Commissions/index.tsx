@@ -7,8 +7,10 @@ import ContentStack from "@app/_components/ContentStack";
 import WithdrawDialog from "@app/_components/WithdrawDialog";
 import { useFinancialServiceFinancialInfoQuery } from "@minecraft/queries";
 import { formatCurrency } from "@/utils/toNumber";
+import { useTranslate } from "@/locales";
 
 const AffCommissionsTab: FC = () => {
+  const { t } = useTranslate();
   const [openWithdrawDialog, setOpenWithdrawDialog] = useState(false);
   const { data } = useFinancialServiceFinancialInfoQuery();
 
@@ -19,21 +21,21 @@ const AffCommissionsTab: FC = () => {
           <Stack gap={0.5}>
             <Typography variant="p2-medium">{formatCurrency(data?.data?.total_turnover)}</Typography>
             <Typography variant="caption-medium" color={"grey.light"}>
-              Total Turnover
+              {t("affCommissionsTab.totalTurnover")}
             </Typography>
           </Stack>
           <Divider flexItem orientation="horizontal" sx={{ borderWidth: "1.5px" }} />
           <Stack gap={0.5}>
             <Typography variant="p2-medium">{formatCurrency(data?.data?.total_commissions)}</Typography>
             <Typography variant="caption-medium" color={"grey.light"}>
-              Total commission
+              {t("affCommissionsTab.totalCommission")}
             </Typography>
           </Stack>
           <Divider flexItem orientation="horizontal" sx={{ borderWidth: "1.5px" }} />
           <Stack gap={0.5}>
             <Typography variant="p2-medium">{formatCurrency(data?.data?.available_for_withdraw)}</Typography>
             <Typography variant="caption-medium" color={"grey.light"}>
-              Available for withdraw
+              {t("affCommissionsTab.availableForWithdraw")}
             </Typography>
           </Stack>
         </Stack>
@@ -43,7 +45,7 @@ const AffCommissionsTab: FC = () => {
           color="secondary"
           onClick={() => setOpenWithdrawDialog(true)}
         >
-          Withdraw
+          {t("affCommissionsTab.withdraw")}
         </Button>
       </ContentStack>
 

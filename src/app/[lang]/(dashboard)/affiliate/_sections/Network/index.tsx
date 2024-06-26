@@ -1,35 +1,41 @@
 "use client";
 
-import { useState, type FC } from "react";
+import { useMemo, useState, type FC } from "react";
 import { Stack, Typography } from "@mui/material";
 import Toggle from "@app/_components/Toggle";
 import AffNetworkTabTable from "./Table";
 import AffNetworkTabChart from "./Chart";
-
-const buttons = [
-  { label: "Table", value: 1 },
-  {
-    label: (
-      <Stack direction="row" gap={1} alignItems="center">
-        Chart
-        <Stack
-          alignItems={"center"}
-          justifyContent={"center"}
-          sx={{ borderRadius: 1.5, backgroundColor: "rgba(98, 101, 131, 0.12)" }}
-          px={1}
-          height={24}
-        >
-          <Typography variant="caption-semi-bold" color={"pink.light"}>
-            Coming soon
-          </Typography>
-        </Stack>
-      </Stack>
-    ),
-    value: 2,
-  },
-];
+import { useTranslate } from "@/locales";
 
 const AffNetworkTab: FC = () => {
+  const { t } = useTranslate();
+
+  const buttons = useMemo(
+    () => [
+      { label: t("affNetworkTab.table"), value: 1 },
+      {
+        label: (
+          <Stack direction="row" gap={1} alignItems="center">
+            {t("affNetworkTab.chart")}
+            <Stack
+              alignItems={"center"}
+              justifyContent={"center"}
+              sx={{ borderRadius: 1.5, backgroundColor: "rgba(98, 101, 131, 0.12)" }}
+              px={1}
+              height={24}
+            >
+              <Typography variant="caption-semi-bold" color={"pink.light"}>
+                {t("affNetworkTab.comingSoon")}
+              </Typography>
+            </Stack>
+          </Stack>
+        ),
+        value: 2,
+      },
+    ],
+    [t]
+  );
+
   const [value, setValue] = useState<any>(buttons[0].value);
 
   const handleChange = (newValue: any) => {

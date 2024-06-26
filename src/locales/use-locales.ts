@@ -23,18 +23,27 @@ export function useLocales() {
 // ----------------------------------------------------------------------
 
 export function useTranslate() {
-  const dict = useAppSelector(selectDict);
+  const dict = useAppSelector(selectDict) as DictionaryJson;
+
   const getNestedValue = useCallback(
     <T extends object, K extends NestedKeyOf<T>>(obj: T, key: K): string =>
       key.split(".").reduce((acc, part) => acc && (acc as any)[part], obj as unknown) as string,
     []
   );
+
+  const replacePlaceholders = useCallback((str: string, values: Record<string, any>): string => {
+    return str.replace(/\{\{(\w+)\}\}/g, (_, key) => values[key] ?? `{{${key}}}`);
+  }, []);
+
   const t = useMemo(
     () =>
-      <K extends NestedKeyOf<DictionaryJson>>(input: K) =>
-        getNestedValue(dict, input),
-    []
+      <K extends NestedKeyOf<DictionaryJson>>(input: K, values?: Record<string, any>) => {
+        const translatedString = getNestedValue(dict, input);
+        return values ? replacePlaceholders(translatedString, values) : translatedString;
+      },
+    [dict, getNestedValue, replacePlaceholders]
   );
+
   return {
     t,
   };

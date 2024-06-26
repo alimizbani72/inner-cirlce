@@ -10,7 +10,6 @@ export const sidebarServicesItems = [
   },
   {
     path: "portfolio-strategies/",
-    name: "Portfolios Strategies",
     icon: "Portfolio",
   },
   {
@@ -31,11 +30,10 @@ export const sidebarCommunityItems = [
 ];
 
 export const mapPathToName = {
-  "dashboard/": "Dashboard",
-  "coin-reports/": "Coin Reports",
-  "my-portfolios/": "My Portfolios",
-  "portfolio-strategies/": "Portfolio Strategies",
-  "affiliate/": "Affiliate",
-  "education/": "Education",
-  "help-center/": "Help Center",
+  "dashboard/": "dashboard",
+  "coin-reports/": "coin-reports",
+  "portfolio-strategies/": "portfolio-strategies",
+  "affiliate/": "affiliate",
+  "education/": "education",
+  "help-center/": "help-center",
 };

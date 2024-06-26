@@ -1,12 +1,14 @@
 import RiveComp from "@/components/RiveComp";
 import { plans } from "@/configs/plans";
 import { getUserPlanType } from "@/consts";
+import { useTranslate } from "@/locales";
 import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import { Box, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 
 const ActivePlan: FC = () => {
   const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+  const { t } = useTranslate();
 
   return (
     <Stack sx={{ position: "relative", overflow: "hidden" }}>
@@ -55,7 +57,7 @@ const ActivePlan: FC = () => {
         }}
       >
         <Stack gap={1} direction={"row"} alignItems={"center"}>
-          <Typography variant="p2-medium">Your Current Plan:</Typography>
+          <Typography variant="p2-medium">{`${t("plan.currentPlan")}:`}</Typography>
           <Box sx={{ aspectRatio: 1 }} width={48} height={48}>
             <RiveComp src={plans[getUserPlanType(userInfo) as keyof typeof plans].rive} width={48} height={48} />
           </Box>

@@ -7,8 +7,10 @@ import ContentStack from "@app/_components/ContentStack";
 import { Icon } from "@/components/icons";
 import { useWalletServiceWalletDefaultQuery } from "@minecraft/queries";
 import SetupWalletDialog from "@app/_components/SetupWalletDialog";
+import { useTranslate } from "@/locales";
 
 const AffPayoutsTab: FC = () => {
+  const { t } = useTranslate();
   const { data } = useWalletServiceWalletDefaultQuery();
   const [openSetupWalletDialog, setOpenSetupWalletDialog] = useState(false);
 
@@ -18,7 +20,7 @@ const AffPayoutsTab: FC = () => {
         <Stack gap={2} direction={"row"} alignItems={"center"}>
           <Icon name="Wallet--colorful" size={32} />
           <Typography variant="p1-medium" sx={{ wordBreak: "break-word" }}>
-            {data?.data ? `ERC-20 : ${data?.data.address}` : "Setup your wallet to we can send the money for you."}
+            {data?.data ? `ERC-20 : ${data?.data.address}` : t("affPayoutsTab.setupWalletMessage")}
           </Typography>
         </Stack>
 
@@ -28,7 +30,7 @@ const AffPayoutsTab: FC = () => {
           startIcon={<Icon name="Wallet" />}
           onClick={() => setOpenSetupWalletDialog(true)}
         >
-          {data?.data ? "Change Wallet" : "Setup Wallet"}
+          {data?.data ? t("affPayoutsTab.changeWallet") : t("affPayoutsTab.setupWallet")}
         </Button>
       </ContentStack>
 

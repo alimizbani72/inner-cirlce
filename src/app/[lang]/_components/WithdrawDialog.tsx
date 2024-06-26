@@ -26,17 +26,17 @@ type Props = {
   open: boolean;
 };
 
-const schema = Yup.object().shape({
-  amount: Yup.string().required("Amount is required"),
-  address: Yup.string().required("Wallet address is required"),
-});
-
 const WithdrawDialog: FC<Props> = ({ close, open }) => {
   const { t } = useTranslate();
   const { enqueueSnackbar } = useSnackbar();
   const { data: walletDefault } = useWalletServiceWalletDefaultQuery();
   const { data: financialInfo } = useFinancialServiceFinancialInfoQuery();
   const { mutateAsync, isPending } = useFinancialServiceFinancialWithdrawCreateMutation();
+
+  const schema = Yup.object().shape({
+    amount: Yup.string().required(t("withdraw.requiredAmount")),
+    address: Yup.string().required(t("withdraw.requiredWallet")),
+  });
 
   const methods = useForm({
     resolver: yupResolver(schema),
@@ -50,7 +50,7 @@ const WithdrawDialog: FC<Props> = ({ close, open }) => {
       requestBody: { amount: { value: data.amount, currency_code: "USD" }, wallet_id: `${walletDefault?.data?.id}` },
     })
       .then(() => {
-        enqueueSnackbar("Your request submitted successfully.");
+        enqueueSnackbar(t("withdraw.submitRequest"));
         close();
         reset();
         resetField("amount");
@@ -65,7 +65,7 @@ const WithdrawDialog: FC<Props> = ({ close, open }) => {
       <DialogTitle sx={{ m: 0, p: 2 }} id="withdraw-dialog">
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Typography variant="h4-semi-bold" color={"common.white"}>
-            Withdraw
+            {t("withdraw.Withdraw")}
           </Typography>
           <IconButton onClick={close}>
             <Icon name="Close" />
@@ -79,14 +79,20 @@ const WithdrawDialog: FC<Props> = ({ close, open }) => {
           <Stack gap={0.5}>
             <Typography variant="p2-medium">{formatCurrency(financialInfo?.data?.available_for_withdraw)}</Typography>
             <Typography variant="caption-medium" color="grey.light">
-              Available for withdraw
+              {t("withdraw.availableWithdraw")}
             </Typography>
           </Stack>
 
-          <RHFTextField name="amount" label="Amount" placeholder="Enter the amount" type="number" isMoney />
+          <RHFTextField
+            name="amount"
+            label={t("withdraw.amount")}
+            placeholder={t("withdraw.enterAmount")}
+            type="number"
+            isMoney
+          />
           <RHFTextField
             name="address"
-            label="Address"
+            label={t("withdraw.address")}
             InputProps={{
               readOnly: true,
               // endAdornment: (
@@ -98,10 +104,10 @@ const WithdrawDialog: FC<Props> = ({ close, open }) => {
           />
           <Stack component={"ul"} pl={3}>
             <Typography component={"li"} variant="p2-regular" color="grey.light">
-              There will be 3% fee for withdrawal.
+              {t("withdraw.feeWithdrawal")}
             </Typography>
             <Typography component={"li"} variant="p2-regular" color="grey.light">
-              The minimum amount for withdrawal are 100 Euro.
+              {t("withdraw.minimumAmount")}
             </Typography>
           </Stack>
         </FormProvider>
@@ -109,10 +115,10 @@ const WithdrawDialog: FC<Props> = ({ close, open }) => {
       <DialogActions>
         <Stack width={"100%"} direction={"row"} justifyContent={"space-between"}>
           <Button color="info" onClick={close}>
-            Cancel
+            {t("button.cancel")}
           </Button>
           <LoadingButton loading={isPending} onClick={onSubmit}>
-            Withdraw
+            {t("withdraw.Withdraw")}
           </LoadingButton>
         </Stack>
       </DialogActions>

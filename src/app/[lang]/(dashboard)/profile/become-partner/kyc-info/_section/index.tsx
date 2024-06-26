@@ -11,6 +11,7 @@ import { kycCallback } from "@/consts";
 import { usePathname } from "next/navigation";
 import CustomDialog from "@/components/CustomDialog";
 import { useModalActivation } from "@/hooks/useModalActivation";
+import { useTranslate } from "@/locales";
 
 const KYCInfoDialog = () => {
   const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
@@ -20,6 +21,7 @@ const KYCInfoDialog = () => {
   const open = useModalActivation("/kyc-info/");
 
   const { push, back, nativeBack } = useCustomRouter();
+  const { t } = useTranslate();
 
   const onSubmit = async () => {
     try {
@@ -37,7 +39,7 @@ const KYCInfoDialog = () => {
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack direction={"row"} alignItems="center" spacing={1}>
             <Typography variant="h4-semi-bold" color={"common.white"}>
-              Become a Partner
+              {t("kycInfoDialog.title")}
             </Typography>
           </Stack>
 
@@ -55,12 +57,9 @@ const KYCInfoDialog = () => {
           <Divider flexItem />
           <Stack gap={1} justifyContent={"center"} alignItems={"center"} sx={{ textAlign: "center" }}>
             <Icon name="KYC" size={64} />
-            <Typography variant="p2-regular">
-              To complete your registration, you will need to complete the KYC process. You will need to provide
-              identity documents and other necessary information.
-            </Typography>
+            <Typography variant="p2-regular">{t("kycInfoDialog.description")}</Typography>
             <LoadingButton color="primary" onClick={onSubmit} sx={{ mt: 2 }} loading={isPending}>
-              Do KYC Now
+              {t("kycInfoDialog.doKycNow")}
             </LoadingButton>
           </Stack>
         </Stack>
@@ -68,14 +67,14 @@ const KYCInfoDialog = () => {
       <DialogActions>
         <Stack width={"100%"} direction={"row"} justifyContent={"space-between"}>
           <Button color="info" onClick={nativeBack}>
-            Back
+            {t("kycInfoDialog.backButton")}
           </Button>
           <Button
             color="primary"
             onClick={() => push("/profile/become-partner/success")}
             disabled={!(userInfo as any)?.data?.kyc_status}
           >
-            Next Step
+            {t("kycInfoDialog.nextStepButton")}
           </Button>
         </Stack>
       </DialogActions>

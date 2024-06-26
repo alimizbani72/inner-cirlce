@@ -4,6 +4,7 @@ import RiveComp from "@/components/RiveComp";
 import { Icon } from "@/components/icons";
 import { plans } from "@/configs/plans";
 import { getUserPlanType } from "@/consts";
+import { useTranslate } from "@/locales";
 import { useAppRouter } from "@/routes/hooks";
 import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import { Box, Divider, Stack, Typography } from "@mui/material";
@@ -13,6 +14,7 @@ import type { FC } from "react";
 interface UpgradePlanProps {}
 
 const UpgradePlan: FC<UpgradePlanProps> = () => {
+  const { t } = useTranslate();
   const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
   const isFreePlan = getUserPlanType(userInfo) === "plankton";
 
@@ -43,7 +45,7 @@ const UpgradePlan: FC<UpgradePlanProps> = () => {
                 {getUserPlanType(userInfo)}
               </Typography>
               <Typography variant="caption-medium" color="grey.light">
-                Your Current Plan
+                {t("plan.currentPlan")}
               </Typography>
             </Stack>
           </Stack>
@@ -51,7 +53,7 @@ const UpgradePlan: FC<UpgradePlanProps> = () => {
           <Stack p={2} position={"relative"} zIndex={2} gap={1}>
             <Icon name="Subscription" />
 
-            <Typography variant="p1-semi-bold">Upgrade your plan!</Typography>
+            <Typography variant="p1-semi-bold">{t("plan.upgradePlan")}</Typography>
           </Stack>
         )}
 
@@ -70,10 +72,10 @@ const UpgradePlan: FC<UpgradePlanProps> = () => {
           >
             {!isFreePlan ? (
               <Typography variant="p2-medium" textTransform={"uppercase"}>
-                Upgrade
+                {t("button.upgrade")}
               </Typography>
             ) : (
-              <Typography variant="p2-semi-bold">Buy Now</Typography>
+              <Typography variant="p2-semi-bold"> {t("button.buyNow")}</Typography>
             )}
 
             {!isFreePlan ? (

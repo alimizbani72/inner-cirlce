@@ -2,8 +2,11 @@
 import { Icon } from "@/components/icons";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
+import { useTranslate } from "@/locales";
 
 const LearningBanner: FC = () => {
+  const { t } = useTranslate();
+
   return (
     <Stack
       sx={{
@@ -70,11 +73,11 @@ const LearningBanner: FC = () => {
           >
             <Box sx={{ width: "100%", height: "30%", bgcolor: "blue.dark" }} />
           </Box>
-          <Typography variant="p1-semi-bold">Want to see how it works?</Typography>
+          <Typography variant="p1-semi-bold">{t("learningBanner.title")}</Typography>
         </Stack>
 
         <Button color="info" size="large" startIcon={<Icon name="Play" />}>
-          Learning Video
+          {t("learningBanner.buttonText")}
         </Button>
       </Stack>
     </Stack>

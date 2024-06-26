@@ -4,6 +4,7 @@ import type { FC } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import { Icon } from "@/components/icons";
 import type { iconsType } from "@/components/icons/iconsNames";
+import { useTranslate } from "@/locales";
 
 type Props = {
   title?: string;
@@ -12,7 +13,8 @@ type Props = {
   borderRadius?: number;
 };
 
-const ComingSoon: FC<Props> = ({ title = "COMING SOON", subtitle, icon, borderRadius }) => {
+const ComingSoon: FC<Props> = ({ title, subtitle, icon, borderRadius }) => {
+  const { t } = useTranslate();
   return (
     <Stack
       sx={{
@@ -72,7 +74,7 @@ const ComingSoon: FC<Props> = ({ title = "COMING SOON", subtitle, icon, borderRa
       {icon && <Icon name={icon} size={60} />}
 
       <Typography variant="h3-semi-bold" mt={3} mb={1}>
-        {title}
+        {title || t("global.comingSoon")}
       </Typography>
       <Typography variant="p2-regular" color="grey.light" textAlign="center" maxWidth={504}>
         {subtitle}

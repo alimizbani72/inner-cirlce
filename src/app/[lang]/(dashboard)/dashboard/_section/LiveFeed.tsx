@@ -6,17 +6,19 @@ import { useGlobalLiveFeedServiceGetGlobalsLiveFeed } from "@cms/queries";
 import { Stack, Typography } from "@mui/material";
 import { useParams } from "next/navigation";
 import type { FC } from "react";
+import { useTranslate } from "@/locales";
 
 interface LiveFeedProps {}
 
 const LiveFeed: FC<LiveFeedProps> = () => {
   const { lang } = useParams();
   const { data } = useGlobalLiveFeedServiceGetGlobalsLiveFeed({ locale: lang as string });
+  const { t } = useTranslate();
 
   return (
     <ContentStack sx={{ p: 1, pt: 3, gap: 1, height: "100%" }}>
       <Stack direction={"row"} justifyContent={"space-between"} px={2}>
-        <Typography variant="p1-semi-bold">Live Feed</Typography>
+        <Typography variant="p1-semi-bold">{t("liveFeed.title")}</Typography>
 
         <Stack direction={"row"} gap={1} alignItems={"center"}>
           <RiveComp src="/assets/rive/Pulsing_point_1.riv" width={16} height={16} />

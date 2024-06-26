@@ -10,15 +10,17 @@ import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
 import { useAppSelector } from "@/lib/hooks";
 import { useContentServiceContentPortfolioStrategyPlanQuery } from "@minecraft/queries";
 import Empty from "@/components/Empty";
+import { useTranslate } from "@/locales";
 
 interface TableProps {
   plan: string;
 }
 
-const Table: FC<TableProps> = ({ plan }) => {
+const PortfolioTable: FC<TableProps> = ({ plan }) => {
   const isCollapsed = useAppSelector(isSidebarCollapsed);
   const { data: content } = useContentServiceContentPortfolioStrategyPlanQuery({ plan });
   const [value, setValue] = useState<any>(Object.keys((content as any)?.data)?.[0]);
+  const { t } = useTranslate();
 
   const handleChange = (newValue: any) => {
     setValue(newValue);
@@ -50,7 +52,7 @@ const Table: FC<TableProps> = ({ plan }) => {
       {false && (
         <Stack px={{ md: 4, xs: 3 }}>
           <ContentStack gap={3}>
-            <Typography variant="p1-semi-bold">Strategy Plan</Typography>
+            <Typography variant="p1-semi-bold">{t("portfolioTable.strategyPlan")}</Typography>
 
             <Stack gap={3} direction={{ md: "row", xs: "column" }} alignItems={{ md: "flex-end", xs: undefined }}>
               <Stack flex={4 / 12}>
@@ -58,18 +60,17 @@ const Table: FC<TableProps> = ({ plan }) => {
                   sx={{ typography: "caption-semi-bold", color: "white", textTransform: "uppercase" }}
                   htmlFor="planned-investment"
                 >
-                  Planned Investment
+                  {t("portfolioTable.plannedInvestment")}
                 </InputLabel>
                 <TextField
                   id="planned-investment"
-                  placeholder="Enter Amount"
+                  placeholder={t("portfolioTable.enterAmount")}
                   inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
                 />
               </Stack>
 
               <Typography flex={8 / 12} variant="p2-regular" color={"grey.light"}>
-                By upgrading, subscribers can access additional benefits, enhanced functionalities, and premium content
-                not available in their current plan.
+                {t("portfolioTable.upgradeMessage")}
               </Typography>
             </Stack>
           </ContentStack>
@@ -91,7 +92,10 @@ const Table: FC<TableProps> = ({ plan }) => {
           }}
         >
           {(content as any)?.data?.[value]?.length ? (
-            <SortTable title={`${value} Strategy`} data={(content as any)?.data?.[value] || []} />
+            <SortTable
+              title={`${value} ${t("portfolioTable.strategy")}`}
+              data={(content as any)?.data?.[value] || []}
+            />
           ) : (
             <Stack width="100%" alignItems="center">
               <Empty />
@@ -103,4 +107,4 @@ const Table: FC<TableProps> = ({ plan }) => {
   );
 };
 
-export default Table;
+export default PortfolioTable;

@@ -2,10 +2,12 @@
 
 import Image from "@/components/Image";
 import { Icon } from "@/components/icons";
+import { useTranslate } from "@/locales";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 
 const NotFoundSection: FC = () => {
+  const { t } = useTranslate();
   return (
     <Stack flex={1} height={"100vh"} position={"relative"} bgcolor={"dark.1"} overflow={"hidden"} p={3}>
       <Box sx={{ position: "absolute", inset: 0, zIndex: 1, opacity: 0.16 }}>
@@ -85,15 +87,15 @@ const NotFoundSection: FC = () => {
             404
           </Typography>
           <Typography textAlign="center" variant="h4-semi-bold">
-            Lost in space.
+            {t("notFound.title")}
           </Typography>
           <Typography textAlign="center" variant="p2-regular">
-            You have reached the edge of the universe
+            {t("notFound.subtitle")}
           </Typography>
         </Stack>
 
         <Button color="info" startIcon={<Icon name="Home" />} href="/dashboard">
-          Back To Home
+          {t("button.backHome")}
         </Button>
       </Stack>
 

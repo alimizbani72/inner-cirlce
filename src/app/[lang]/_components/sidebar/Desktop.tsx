@@ -12,8 +12,10 @@ import Logo from "@/components/Logo";
 import { Icon } from "@/components/icons";
 import UpgradePlan from "../UpgradePlan";
 import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
+import { useTranslate } from "@/locales";
 
 const DesktopSidebar: FC = () => {
+  const { t } = useTranslate();
   const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
 
   const dispatch = useAppDispatch();
@@ -52,12 +54,12 @@ const DesktopSidebar: FC = () => {
           </Stack>
 
           <Stack py={4} px={isCollapsed ? 3 : 2} gap={4}>
-            <Menu name="Services" items={sidebarServicesItems} />
+            <Menu name={t("sidebar.services")} items={sidebarServicesItems} />
             {sidebarCommunityItems.filter((item) =>
               (userInfo as any)?.data?.kyc_status ? item : !item.path.includes("affiliate")
             ).length && (
               <Menu
-                name="Community"
+                name={t("sidebar.community")}
                 items={sidebarCommunityItems.filter((item) =>
                   (userInfo as any)?.data?.kyc_status ? item : !item.path.includes("affiliate")
                 )}

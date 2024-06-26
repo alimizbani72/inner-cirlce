@@ -3,10 +3,13 @@ import Link from "@/components/Link";
 import { flexItem } from "@/utils/grid";
 import { Box, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
+import { useTranslate } from "@/locales";
 
 type Props = { content: { [k: string]: any } };
 
 const CategoryItem: FC<Props> = ({ content }) => {
+  const { t } = useTranslate();
+
   return (
     <Stack
       borderRadius={2}
@@ -29,7 +32,7 @@ const CategoryItem: FC<Props> = ({ content }) => {
 
         <Link href={encodeURIComponent(content.title)} display={"flex"}>
           <Typography variant="p2-medium" color={"pink.light"} sx={{ cursor: "pointer" }}>
-            More Details
+            {t("categoryItem.moreDetails")}
           </Typography>
         </Link>
       </Stack>

@@ -9,10 +9,12 @@ import { useParams } from "next/navigation";
 import Image from "@/components/Image";
 import type { media } from "@cms/requests";
 import { CMSDownloadURL } from "@/consts";
+import { useTranslate } from "@/locales";
 
 const SocialMedia: FC = () => {
   const { lang } = useParams();
   const { data } = useGlobalSocialMediaServiceGetGlobalsSocialMedia({ locale: lang as string });
+  const { t } = useTranslate();
 
   if (!data?.socialLinks?.length) {
     return null;
@@ -20,7 +22,7 @@ const SocialMedia: FC = () => {
 
   return (
     <ContentStack sx={{ gap: 3 }}>
-      <Typography variant="p1-semi-bold">Socials</Typography>
+      <Typography variant="p1-semi-bold">{t("socialMedia.title")}</Typography>
 
       <Stack
         sx={{

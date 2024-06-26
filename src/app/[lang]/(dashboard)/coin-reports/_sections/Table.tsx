@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FC } from "react";
+import { useMemo, useState, type FC } from "react";
 import { Stack, Typography } from "@mui/material";
 import Toggle from "@app/_components/Toggle";
 import Scrollbar from "@/components/Scrollbar";
@@ -11,52 +11,56 @@ import Empty from "@/components/Empty";
 import Loading from "@/components/Loading";
 import { useContentServiceContentCoinReportLangQuery } from "@minecraft/queries";
 import { useParams } from "next/navigation";
+import { useTranslate } from "@/locales";
 
 interface TableProps {}
 
-const buttons = [
-  {
-    label: "Standard Coin Reports",
-    value: "coinreports-standard",
-  },
-  {
-    label: (
-      <Stack direction={"row"} gap={0.5} alignItems={"center"}>
-        <Stack
-          alignItems={"center"}
-          justifyContent={"center"}
-          sx={{ borderRadius: 1.5, background: (theme) => theme.palette.gradient.pink }}
-          px={1}
-          height={24}
-        >
-          <Typography variant="caption-semi-bold">10X</Typography>
-        </Stack>
-        Coin Reports
-      </Stack>
-    ),
-    value: "coinreports-10x",
-  },
-  {
-    label: (
-      <Stack direction={"row"} gap={0.5} alignItems={"center"}>
-        <Stack
-          alignItems={"center"}
-          justifyContent={"center"}
-          sx={{ borderRadius: 1.5, background: (theme) => theme.palette.gradient.blue }}
-          px={1}
-          height={24}
-        >
-          <Typography variant="caption-semi-bold">100X</Typography>
-        </Stack>
-        Coin Reports
-      </Stack>
-    ),
-    value: "coinreports-100x",
-  },
-];
-
-const Table: FC<TableProps> = () => {
+const CoinReportTable: FC<TableProps> = () => {
   const { lang } = useParams();
+  const { t } = useTranslate();
+  const buttons = useMemo(
+    () => [
+      {
+        label: t("coinReportTable.standardCoinReports"),
+        value: "coinreports-standard",
+      },
+      {
+        label: (
+          <Stack direction={"row"} gap={0.5} alignItems={"center"}>
+            <Stack
+              alignItems={"center"}
+              justifyContent={"center"}
+              sx={{ borderRadius: 1.5, background: (theme) => theme.palette.gradient.pink }}
+              px={1}
+              height={24}
+            >
+              <Typography variant="caption-semi-bold">10X</Typography>
+            </Stack>
+            {t("coinReportTable.coinReports")}
+          </Stack>
+        ),
+        value: "coinreports-10x",
+      },
+      {
+        label: (
+          <Stack direction={"row"} gap={0.5} alignItems={"center"}>
+            <Stack
+              alignItems={"center"}
+              justifyContent={"center"}
+              sx={{ borderRadius: 1.5, background: (theme) => theme.palette.gradient.blue }}
+              px={1}
+              height={24}
+            >
+              <Typography variant="caption-semi-bold">100X</Typography>
+            </Stack>
+            {t("coinReportTable.coinReports")}
+          </Stack>
+        ),
+        value: "coinreports-100x",
+      },
+    ],
+    [t]
+  );
   const [value, setValue] = useState<any>(buttons[0].value);
   const {
     data: coinsData,
@@ -110,4 +114,4 @@ const Table: FC<TableProps> = () => {
   );
 };
 
-export default Table;
+export default CoinReportTable;

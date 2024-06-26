@@ -3,20 +3,22 @@
 import ContentStack from "@app/_components/ContentStack";
 import { Box, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
+import { useTranslate } from "@/locales";
 
 interface NoticeProps {}
 
-const Notice: FC<NoticeProps> = () => {
+const PortfolioNotice: FC<NoticeProps> = () => {
+  const { t } = useTranslate();
+
   return (
     <Stack px={{ md: 4, xs: 3 }}>
       <ContentStack p={0}>
         <Box p={2}>
           <Typography variant="p2-regular">
             <Typography variant="p2-medium" textTransform="uppercase" color="warning.main">
-              NOTE:
+              {t("portfolioNotice.note")}
             </Typography>{" "}
-            By upgrading, subscribers can access additional benefits, enhanced functionalities, and premium content not
-            available in their current plan.
+            {t("portfolioNotice.message")}
           </Typography>
         </Box>
       </ContentStack>
@@ -24,4 +26,4 @@ const Notice: FC<NoticeProps> = () => {
   );
 };
 
-export default Notice;
+export default PortfolioNotice;

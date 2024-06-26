@@ -12,8 +12,10 @@ import { useIsMobile } from "@/hooks/use-responsive";
 import MobileSidebar from "@app/_components/sidebar/Mobile";
 import { pageHasBackButton, pageTitle } from "@/lib/features/pageTitle/pageSlice";
 import { useAppRouter } from "@/routes/hooks";
+import { useTranslate } from "@/locales";
 
 const DashboardHeader: FC = () => {
+  const { t } = useTranslate();
   const isMobile = useIsMobile();
   const pathname = usePathname();
   const dispatch = useAppDispatch();
@@ -23,7 +25,10 @@ const DashboardHeader: FC = () => {
   const hasBackButton = useAppSelector(pageHasBackButton);
   const { back } = useAppRouter();
   const name = useMemo(
-    () => mapPathToName[pathname.slice(4) as keyof typeof mapPathToName] || pageTitleSelector || "ChainMind",
+    () =>
+      mapPathToName[pathname.slice(4) as keyof typeof mapPathToName]
+        ? t(`sidebar.${mapPathToName[pathname.slice(4) as keyof typeof mapPathToName]}` as any)
+        : pageTitleSelector || "ChainMind",
     [pathname, pageTitleSelector]
   );
 

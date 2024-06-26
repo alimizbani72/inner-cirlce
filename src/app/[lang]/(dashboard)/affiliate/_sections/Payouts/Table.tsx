@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState, type FC } from "react";
+import { useCallback, useMemo, useState, type FC } from "react";
 import type React from "react";
 
 import { Box, Stack, Typography } from "@mui/material";
@@ -13,6 +13,7 @@ import { fDate } from "@/utils/format-time";
 import { useFinancialServiceFinancialPayoutsQuery } from "@minecraft/queries";
 import type { PayoutResponse } from "@minecraft/requests";
 import { formatCurrency } from "@/utils/toNumber";
+import { useTranslate } from "@/locales";
 
 const datePickerStyle = {
   ".MuiIconButton-root": {
@@ -53,30 +54,35 @@ const slotProps = {
   },
 };
 
-const columns = [
-  {
-    title: "User ID",
-    modify: (row: PayoutResponse) => row.user_id,
-  },
-  {
-    title: "Wallet ID",
-    modify: (row: PayoutResponse) => row.wallet_id,
-  },
-  {
-    title: "Amount",
-    modify: (row: PayoutResponse) => formatCurrency(row.amount),
-  },
-  {
-    title: "Date",
-    modify: (row: PayoutResponse) => fDate((row as any).created_at, "dd.MM.yyyy"),
-  },
-  {
-    title: "Status",
-    modify: (row: PayoutResponse) => (row as any).status,
-  },
-];
-
 const AffPayoutsTabTable: FC = () => {
+  const { t } = useTranslate();
+
+  const columns = useMemo(
+    () => [
+      {
+        title: t("affPayoutsTabTable.userId"),
+        modify: (row: PayoutResponse) => row.user_id,
+      },
+      {
+        title: t("affPayoutsTabTable.walletId"),
+        modify: (row: PayoutResponse) => row.wallet_id,
+      },
+      {
+        title: t("affPayoutsTabTable.amount"),
+        modify: (row: PayoutResponse) => formatCurrency(row.amount),
+      },
+      {
+        title: t("affPayoutsTabTable.date"),
+        modify: (row: PayoutResponse) => fDate((row as any).created_at, "dd.MM.yyyy"),
+      },
+      {
+        title: t("affPayoutsTabTable.status"),
+        modify: (row: PayoutResponse) => (row as any).status,
+      },
+    ],
+    [t]
+  );
+
   const filterPopover = usePopover();
   const [dates, setDates] = useState<any>([]);
   const filter = {
@@ -87,6 +93,7 @@ const AffPayoutsTabTable: FC = () => {
     sorts: { created_at: false },
     per_page: 10000,
   };
+
   const { data, isPending } = useFinancialServiceFinancialPayoutsQuery(
     dates.length && { opts: JSON.stringify(filter) }
   );
@@ -111,19 +118,21 @@ const AffPayoutsTabTable: FC = () => {
           sx={{ "> div": { borderBottomRightRadius: 0, borderBottomLeftRadius: 0 } }}
         >
           <CustomTable
-            title="Payouts"
+            title={t("affPayoutsTabTable.payouts")}
             columns={columns}
             data={data?.data || []}
             isPending={isPending}
-            emptyTitle="You have not any payouts yet"
-            emptySubtitle="Track profits, losses and valuation all in one place."
+            emptyTitle={t("affPayoutsTabTable.emptyTitle")}
+            emptySubtitle={t("affPayoutsTabTable.emptySubtitle")}
             action={
               <Box>
                 <Stack direction="row" gap={0.5} onClick={handleOpenFilter} sx={{ cursor: "pointer" }}>
                   <Typography variant="p2-semi-bold">
                     {dates.length
-                      ? `From ${fDate(dates?.[0], "dd.MM.yyyy") || "-"} To ${fDate(dates?.[1], "dd.MM.yyyy") || "-"}`
-                      : "Date & Time"}
+                      ? `${t("affPayoutsTabTable.from")} ${fDate(dates?.[0], "dd.MM.yyyy") || "-"} ${t(
+                          "affPayoutsTabTable.to"
+                        )} ${fDate(dates?.[1], "dd.MM.yyyy") || "-"}`
+                      : t("affPayoutsTabTable.dateAndTime")}
                   </Typography>
                   <Icon name={filterPopover.open ? "Arrow-up" : "Arrow-down"} />
                 </Stack>
@@ -148,7 +157,7 @@ const AffPayoutsTabTable: FC = () => {
                 >
                   <Stack gap={2}>
                     <Stack gap={2}>
-                      <Typography variant="caption-semi-bold">FROM</Typography>
+                      <Typography variant="caption-semi-bold">{t("affPayoutsTabTable.from")}</Typography>
 
                       <DatePicker
                         format="dd.MM.yyyy"
@@ -162,7 +171,7 @@ const AffPayoutsTabTable: FC = () => {
                     </Stack>
 
                     <Stack gap={2}>
-                      <Typography variant="caption-semi-bold">TO</Typography>
+                      <Typography variant="caption-semi-bold">{t("affPayoutsTabTable.to")}</Typography>
 
                       <DatePicker
                         format="dd.MM.yyyy"

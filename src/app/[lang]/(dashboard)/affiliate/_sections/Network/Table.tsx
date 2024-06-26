@@ -1,6 +1,6 @@
 "use client";
 
-import type { FC } from "react";
+import { useMemo, type FC } from "react";
 import { Stack } from "@mui/material";
 import Scrollbar from "@/components/Scrollbar";
 import CustomTable from "@/components/CustomTable";
@@ -9,28 +9,32 @@ import { formatCurrency } from "@/utils/toNumber";
 import { fDate } from "@/utils/format-time";
 import { toPascalCase } from "@/utils/change-case";
 import Empty from "@/components/Empty";
-
-const columns = [
-  {
-    title: "Username",
-    modify: (row: any) => row.username,
-  },
-  {
-    title: "Package",
-    modify: (row: any) => toPascalCase(row.plan_type),
-  },
-  {
-    title: "Joined Date",
-    modify: (row: any) => fDate(row.created_at, "dd.MM.yyyy"),
-  },
-  {
-    title: "Money made?",
-    modify: (row: any) => formatCurrency(row.turnover),
-  },
-];
+import { useTranslate } from "@/locales";
 
 const AffNetworkTabTable: FC = () => {
+  const { t } = useTranslate();
   const { data } = useAffiliateServiceAffiliateChildrenQuery();
+  const columns = useMemo(
+    () => [
+      {
+        title: t("affNetworkTabTable.username"),
+        modify: (row: any) => row.username,
+      },
+      {
+        title: t("affNetworkTabTable.package"),
+        modify: (row: any) => toPascalCase(row.plan_type),
+      },
+      {
+        title: t("affNetworkTabTable.joinedDate"),
+        modify: (row: any) => fDate(row.created_at, "dd.MM.yyyy"),
+      },
+      {
+        title: t("affNetworkTabTable.moneyMade"),
+        modify: (row: any) => formatCurrency(row.turnover),
+      },
+    ],
+    [t]
+  );
 
   return (
     <Stack>

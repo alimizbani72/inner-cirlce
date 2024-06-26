@@ -3,9 +3,12 @@
 import type { FC } from "react";
 import {} from "@mui/material";
 import ComingSoon from "@app/_components/ComingSoon";
+import { useTranslate } from "@/locales";
 
 const DropZone: FC = () => {
-  return <ComingSoon subtitle="We are currently working on this feature." borderRadius={2} />;
+  const { t } = useTranslate();
+
+  return <ComingSoon subtitle={t("dropZone.subtitle")} borderRadius={2} />;
 };
 
 export default DropZone;

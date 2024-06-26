@@ -1,6 +1,6 @@
 export const profileMenuItems = [
   {
-    title: "Profile Settings",
+    title: "profileSetting",
     path: "/settings",
     icon: "Settings",
   },
@@ -10,12 +10,12 @@ export const profileMenuItems = [
   //   icon: "headphones-support",
   // },
   {
-    title: "Terms of Use | Privacy Policy",
+    title: "termsOfService",
     path: "/terms-privacy",
     icon: "Warning-round",
   },
   {
-    title: "Become a Partner",
+    title: "becomePartner",
     path: "/become-partner",
     icon: "Hand",
   },

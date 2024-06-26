@@ -1,7 +1,10 @@
+"use client";
+
 import type { BoxProps } from "@mui/material";
 import { Box, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 import RiveComp from "./RiveComp";
+import { useTranslate } from "@/locales";
 
 type Props = {
   title?: string;
@@ -9,7 +12,9 @@ type Props = {
   size?: number;
 };
 
-const Loading: FC<Props> = ({ title = "On loading...", size = 60, sx }) => {
+const Loading: FC<Props> = ({ title, size = 60, sx }) => {
+  const { t } = useTranslate();
+
   return (
     <Stack alignItems="center" justifyContent="center" sx={{ mt: { md: 6 }, p: 6, gap: 2, ...sx }}>
       <Box sx={{ aspectRatio: 1 }}>
@@ -17,7 +22,7 @@ const Loading: FC<Props> = ({ title = "On loading...", size = 60, sx }) => {
       </Box>
 
       <Typography variant="p1-semi-bold" color="white" textAlign="center">
-        {title}
+        {title || t("loading.onLoading")}
       </Typography>
     </Stack>
   );

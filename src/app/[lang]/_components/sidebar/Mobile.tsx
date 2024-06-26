@@ -11,8 +11,10 @@ import { useAppDispatch } from "@/lib/hooks";
 import { mobileMenuToggle } from "@/lib/features/menu/menuSlice";
 import UpgradePlan from "../UpgradePlan";
 import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
+import { useTranslate } from "@/locales";
 
 const MobileSidebar: FC = () => {
+  const { t } = useTranslate();
   const dispatch = useAppDispatch();
   const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
 
@@ -34,12 +36,12 @@ const MobileSidebar: FC = () => {
       </Stack>
 
       <Stack py={4} px={2} gap={4}>
-        <Menu name="Services" items={sidebarServicesItems} />
+        <Menu name={t("sidebar.services")} items={sidebarServicesItems} />
         {sidebarCommunityItems.filter((item) =>
           (userInfo as any)?.data?.kyc_status ? item : !item.path.includes("affiliate")
         ).length && (
           <Menu
-            name="Community"
+            name={t("sidebar.community")}
             items={sidebarCommunityItems.filter((item) =>
               (userInfo as any)?.data?.kyc_status ? item : !item.path.includes("affiliate")
             )}

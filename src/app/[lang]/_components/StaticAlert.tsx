@@ -1,6 +1,7 @@
 "use client";
 
 import { Icon } from "@/components/icons";
+import { useTranslate } from "@/locales";
 import { Button, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 
@@ -21,6 +22,7 @@ interface StaticAlertProps {
 }
 
 const StaticAlert: FC<StaticAlertProps> = ({ title, description, variant = "danger", onContinue }) => {
+  const { t } = useTranslate();
   return (
     <Stack
       gap={2}
@@ -47,7 +49,7 @@ const StaticAlert: FC<StaticAlertProps> = ({ title, description, variant = "dang
       </Stack>
 
       <Button color="info" sx={{ width: { md: "152px", xs: "100%" } }} onClick={onContinue}>
-        Continue
+        {t("button.continue")}
       </Button>
     </Stack>
   );

@@ -7,9 +7,11 @@ import VideoItem from "./VideoItem";
 import { useParams } from "next/navigation";
 import { useAppSelector } from "@/lib/hooks";
 import { selectVideos } from "@/lib/features/academy/educationSlice";
+import { useTranslate } from "@/locales";
 
 const VideoList: FC = () => {
   const { video, id } = useParams();
+  const { t } = useTranslate();
 
   const videoList = useAppSelector((state) => selectVideos(state)(decodeURIComponent(video as string)));
 
@@ -24,11 +26,11 @@ const VideoList: FC = () => {
       p={{ md: 3 }}
     >
       <Typography variant="h4-semi-bold" mb={2}>
-        Education Videos
+        {t("videoList.educationVideos")}
       </Typography>
 
       <TextField
-        placeholder="Search"
+        placeholder={t("videoList.searchPlaceholder")}
         sx={{
           ".MuiInputBase-root": {
             borderRadius: "28px !important",

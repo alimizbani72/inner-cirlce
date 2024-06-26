@@ -5,10 +5,12 @@ import { useIsMobile } from "@/hooks/use-responsive";
 import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import { getUserPlanType } from "@/consts";
 import { toTitleCase } from "@/utils/change-case";
+import { useTranslate } from "@/locales";
 
 const UserInfo = () => {
   const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
   const isFreePlan = getUserPlanType(userInfo) === "plankton";
+  const { t } = useTranslate();
 
   const isMobile = useIsMobile();
   return (
@@ -50,17 +52,16 @@ const UserInfo = () => {
             size={32}
           />
           <Typography variant="p2-semi-bold">
-            {isFreePlan ? "You do not have a" : toTitleCase(getUserPlanType(userInfo))}
+            {isFreePlan ? t("userInfo.noMembership") : toTitleCase(getUserPlanType(userInfo))}
             <Typography component={"span"} variant="p2-regular">
-              {" "}
-              membership!!
+              {t("userInfo.membershipSuffix")}
             </Typography>
           </Typography>
         </Stack>
 
         {getUserPlanType(userInfo) !== "whale" && (
           <Button sx={{ ml: isMobile ? "none" : "auto" }} fullWidth={isMobile} href="/pricing">
-            Please Upgrade
+            {t("userInfo.upgradeButton")}
           </Button>
         )}
       </Stack>

@@ -1,8 +1,11 @@
+"use client";
+
 import type { BoxProps } from "@mui/material";
 import { Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 import { Icon } from "./icons";
 import type { iconsType } from "./icons/iconsNames";
+import { useTranslate } from "@/locales";
 
 type Props = {
   icon?: iconsType;
@@ -11,7 +14,9 @@ type Props = {
   sx?: BoxProps["sx"];
 };
 
-const Empty: FC<Props> = ({ icon, title = "There is nothing to show!", subtitle, sx }) => {
+const Empty: FC<Props> = ({ icon, title, subtitle, sx }) => {
+  const { t } = useTranslate();
+
   return (
     <Stack alignItems="center" justifyContent="center" sx={{ mt: { md: 6 }, p: 6, ...sx }}>
       <Stack alignItems="center" justifyContent="center" borderRadius="110px" mb={3}>
@@ -19,7 +24,7 @@ const Empty: FC<Props> = ({ icon, title = "There is nothing to show!", subtitle,
       </Stack>
 
       <Typography variant="p1-semi-bold" color="white" textAlign="center">
-        {title}
+        {title || t("empty.thereIsNothingToShow")}
       </Typography>
 
       {subtitle && (

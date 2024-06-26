@@ -12,8 +12,10 @@ import { selectPlans, selectRows } from "@/lib/features/plans/plansSlice";
 import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import { getUserPlanType } from "@/consts";
 import { plans } from "@/configs/plans";
+import { useTranslate } from "@/locales";
 
 const PricingSection: FC = () => {
+  const { t } = useTranslate();
   const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
 
   const isCollapsed = useAppSelector(isSidebarCollapsed);
@@ -60,7 +62,7 @@ const PricingSection: FC = () => {
 
         <Stack gap={2}>
           <Typography px={{ md: 4, xs: 3 }} variant="h4-semi-bold">
-            Compare Plans
+            {t("plan.compares")}
           </Typography>
           <Scrollbar options={{ scrollbars: { autoHide: "never" } }}>
             <Stack minWidth={{ md: "calc(1128px + 64px)", xs: "calc(1128px + 48px)" }} pb={3} px={{ md: 4, xs: 3 }}>

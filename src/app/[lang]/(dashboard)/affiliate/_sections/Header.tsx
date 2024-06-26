@@ -11,6 +11,7 @@ import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import dynamic from "next/dynamic";
 import { useAffiliateServiceAffiliateReferralCodeQuery } from "@minecraft/queries";
 import { referralLink } from "@/consts";
+import { useTranslate } from "@/locales";
 
 const QRCodeWithIcon = dynamic(() => import("@/components/QRCodeWithIcon"), {
   ssr: false,
@@ -21,6 +22,7 @@ const AffiliateHeader: FC = () => {
   const { data } = useAffiliateServiceAffiliateReferralCodeQuery();
   const { copy } = useCopyToClipboard();
   const isMobile = useIsMobile();
+  const { t } = useTranslate();
 
   const handleCopy = () => {
     copy(referralLink(data?.data!));
@@ -31,9 +33,9 @@ const AffiliateHeader: FC = () => {
       <ContentStack p={0} direction={{ md: "row" }}>
         <Stack p={3} gap={3} flex={1}>
           <Stack gap={0.5}>
-            <Typography variant="h4-semi-bold">Your referral link</Typography>
+            <Typography variant="h4-semi-bold">{t("affiliateHeader.yourReferralLink")}</Typography>
             <Typography variant="p2-regular" color="grey.light">
-              This is your referral URL. Share it with your audience to earn commissions.
+              {t("affiliateHeader.shareWithAudience")}
             </Typography>
           </Stack>
           <Stack
@@ -57,7 +59,7 @@ const AffiliateHeader: FC = () => {
               </IconButton>
             ) : (
               <Button sx={{ whiteSpace: "nowrap" }} onClick={handleCopy} startIcon={<Icon name="Copy" />}>
-                Copy Code
+                {t("affiliateHeader.copyCode")}
               </Button>
             )}
           </Stack>

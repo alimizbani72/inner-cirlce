@@ -7,6 +7,7 @@ import ContentStack from "@app/_components/ContentStack";
 import RiveComp from "@/components/RiveComp";
 import { Icon } from "@/components/icons";
 import { flexItem } from "@/utils/grid";
+import { useTranslate } from "@/locales";
 
 interface StrategiesItemProps {
   src: string;
@@ -16,6 +17,8 @@ interface StrategiesItemProps {
 }
 
 const StrategiesItem: FC<StrategiesItemProps> = ({ src, subtitle, type, upgrade }) => {
+  const { t } = useTranslate();
+
   return (
     <ContentStack
       p={2}
@@ -32,7 +35,7 @@ const StrategiesItem: FC<StrategiesItemProps> = ({ src, subtitle, type, upgrade 
 
       <Stack p={1} flex={1}>
         <Typography variant="h4-semi-bold" textTransform={"uppercase"}>
-          {type}
+          {t(`plans.${type}` as any)}
         </Typography>
         <Typography variant="p2-medium" textTransform={"uppercase"} color={"grey.dark"} mb={2}>
           {subtitle}
@@ -53,12 +56,12 @@ const StrategiesItem: FC<StrategiesItemProps> = ({ src, subtitle, type, upgrade 
                 WebkitBackgroundClip: "text",
               }}
             >
-              Upgrade
+              {t("button.upgrade")}
             </Typography>
           </Button>
         ) : (
           <Button href={type} color="info" sx={{ whiteSpace: "nowrap" }}>
-            See Strategies
+            {t("button.seeStrategies")}
           </Button>
         )}
       </Stack>
