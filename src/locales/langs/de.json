@@ -6,10 +6,10 @@
   },
   "plans": {
     "plankton": "Plankton",
-    "shrimp": "Garnele",
-    "fish": "Fisch",
-    "shark": "Hai",
-    "whale": "Wal"
+    "shrimp": "Shrimp",
+    "fish": "Fish",
+    "shark": "Shark",
+    "whale": "Whale"
   },
   "button": {
     "cancel": "Abbrechen",

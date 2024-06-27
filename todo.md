@@ -1,11 +1,12 @@
     
 
-# modify useTranslate function to support "resendWithTimer": "Resend ({minutes}:{seconds})"
+<!-- # modify useTranslate function to support "resendWithTimer": "Resend ({minutes}:{seconds})" -->
 
 # Controller fix forward ref error in console
 
-# cache ric files in service worker
-``` serve fonts locally ```  done
+# cache riv files in service worker
+
+<!-- serve fonts locally -->
 
 # Fix costumeTable Last row for expanding child
 

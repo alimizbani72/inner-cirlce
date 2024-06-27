@@ -16,6 +16,7 @@ import RiveComp from "@/components/RiveComp";
 import { useFinancialServiceFinancialPaymentsIdStatusQuery } from "@minecraft/queries";
 import { useAppRouter } from "@/routes/hooks";
 import { useTranslate } from "@/locales";
+import { toPascalCase } from "@/utils/change-case";
 
 type Props = { planType: string; id: string };
 
@@ -110,7 +111,7 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
         </Stack>
         <Divider flexItem sx={{ mt: 3, mb: { md: 4, xs: 3 }, borderColor: "rgba(255, 255, 255, 0.08)" }} />
         <Stack position="relative" zIndex={2} width="100%" maxWidth={{ md: "486px" }} px={3} flex={1}>
-          <Typography variant="p2-medium">{`${t("checkout.subscribeTo")} “{toPascalCase(planType)}” ${t(
+          <Typography variant="p2-medium">{`${t("checkout.subscribeTo")} “${toPascalCase(planType)}” ${t(
             "checkout.plan"
           )}.`}</Typography>
 
