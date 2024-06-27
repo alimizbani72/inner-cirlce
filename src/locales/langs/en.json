@@ -5,13 +5,6 @@
     "strategy": "Strategy",
     "suspended": "Your account is suspended, please contact your administrator"
   },
-  "plans": {
-    "plankton": "Plankton",
-    "shrimp": "Shrimp",
-    "fish": "Fish",
-    "shark": "Shark",
-    "whale": "Whale"
-  },
   "button": {
     "cancel": "Cancel",
     "continue": "Continue",

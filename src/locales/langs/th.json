@@ -1,0 +1,411 @@
+{
+  "global": {
+    "authLayout": "เพื่อทำให้ประสบการณ์การลงทุนในคริปโตเคอเรนซีของผู้ใช้ทุกระดับง่ายขึ้นและดียิ่งขึ้น",
+    "comingSoon": "เร็ว ๆ นี้",
+    "strategy": "กลยุทธ์",
+    "suspended": "บัญชีของคุณถูกระงับ กรุณาติดต่อผู้ดูแลระบบของคุณ"
+  },
+  "button": {
+    "cancel": "ยกเลิก",
+    "continue": "ดำเนินการต่อ",
+    "upgrade": "อัพเกรด",
+    "buyNow": "ซื้อเดี๋ยวนี้",
+    "backHome": "กลับไปที่หน้าแรก",
+    "back": "กลับ",
+    "nextStep": "ขั้นตอนต่อไป",
+    "seeStrategies": "ดูกลยุทธ์"
+  },
+  "createAccount": {
+    "title": "สร้างบัญชีของคุณ",
+    "subtitle": "ดูการเติบโตของคุณและรับการสนับสนุนจากผู้เชี่ยวชาญ!",
+    "registerWithGoogle": "สมัครด้วย Google",
+    "orContinueWithEmail": "หรือดำเนินการต่อด้วยอีเมล",
+    "fullNameLabel": "ชื่อเต็ม",
+    "fullNamePlaceholder": "กรอกชื่อเต็มของคุณ",
+    "emailLabel": "ที่อยู่อีเมล",
+    "emailPlaceholder": "กรอกที่อยู่อีเมลของคุณ",
+    "passwordLabel": "รหัสผ่าน",
+    "passwordPlaceholder": "กรอกรหัสผ่านของคุณ",
+    "inviteCodeLabel": "ผู้สนับสนุนของคุณ",
+    "agreeToTerms": "ฉันยอมรับ",
+    "termsAndConditions": "ข้อกำหนดและเงื่อนไข",
+    "createAccountButton": "สร้างบัญชี",
+    "alreadyHaveAccount": "มีบัญชีอยู่แล้ว?",
+    "login": "เข้าสู่ระบบ"
+  },
+  "emailVerification": {
+    "title": "ยืนยันอีเมล",
+    "subtitle": "กรอกโค้ด 5 หลักที่เราส่งไปที่",
+    "placeholderEmail": "Ricknovak@example.com",
+    "verifyCodeLabel": "ยืนยันโค้ด",
+    "backButton": "กลับ",
+    "resend": "ส่งใหม่",
+    "resendWithTimer": "ส่งใหม่",
+    "checkSpam": "ไม่ได้รับอีเมล? ตรวจสอบตัวกรองสแปมหรือทดลองใช้อีเมลอื่น"
+  },
+  "passwordRecovery": {
+    "title": "กู้คืนรหัสผ่าน",
+    "subtitle": "เราจะช่วยคุณกู้คืนรหัสผ่านหากคุณลืม",
+    "emailLabel": "ที่อยู่อีเมล",
+    "emailPlaceholder": "กรอกที่อยู่อีเมลของคุณ",
+    "backButton": "กลับ",
+    "continueButton": "ดำเนินการต่อ"
+  },
+  "resetPassword": {
+    "title": "รีเซ็ตรหัสผ่าน",
+    "subtitle": "เลือกตั้งรหัสผ่านใหม่และแข็งแรงที่มีอย่างน้อย 8 ตัวอักษร",
+    "newPasswordLabel": "รหัสผ่านใหม่",
+    "newPasswordPlaceholder": "กรอกรหัสผ่านใหม่ของคุณ",
+    "confirmNewPasswordLabel": "ยืนยันรหัสผ่านใหม่",
+    "confirmNewPasswordPlaceholder": "กรอกรหัสผ่านใหม่ของคุณอีกครั้ง",
+    "resetPasswordButton": "รีเซ็ตรหัสผ่าน"
+  },
+  "login": {
+    "title": "เข้าสู่บัญชีของคุณ",
+    "loginWithGoogle": "เข้าสู่ระบบด้วย Google",
+    "rememberMe": "จดจำฉัน",
+    "forgotPassword": "ลืมรหัสผ่าน?",
+    "loginButton": "เข้าสู่ระบบ",
+    "noAccount": "ไม่มีบัญชี?",
+    "register": "สมัครสมาชิก"
+  },
+  "formErrors": {
+    "requiredName": "กรุณากรอกชื่อเต็มของคุณ",
+    "requiredPassword": "กรุณากรอกรหัสผ่านของคุณ",
+    "confirmPassword": "รหัสผ่านทั้งสองต้องตรงกัน",
+    "passwordPattern": "ต้องประกอบด้วย 8 ตัวอักษร มีตัวพิมพ์ใหญ่หนึ่งตัว ตัวพิมพ์เล็กหนึ่งตัว ตัวเลขหนึ่งตัว และอักขระพิเศษหนึ่งตัว",
+    "invalidEmail": "ที่อยู่อีเมลไม่ถูกต้อง",
+    "requiredEmail": "กรุณากรอกที่อยู่อีเมลของคุณ",
+    "requiredTerms": "ต้องยอมรับข้อกำหนดและเงื่อนไข",
+    "formError": "เกิดข้อผิดพลาดบางอย่าง กรุณาลองใหม่",
+    "requiredCode": "ค่าที่กรอกไม่ถูกต้อง กรุณาลองใหม่",
+    "userNotFound": "อีเมลไม่พบในระบบ",
+    "emailExists": "อีเมลนี้มีอยู่ในระบบแล้ว",
+    "requiredNewPassword": "กรุณากรอกรหัสผ่านใหม่ของคุณ",
+    "newPasswordPattern": "ต้องประกอบด้วย 8 ตัวอักษร มีตัวพิมพ์ใหญ่หนึ่งตัว ตัวพิมพ์เล็กหนึ่งตัว ตัวเลขหนึ่งตัว และอักขระพิเศษหนึ่งตัว",
+    "requiredCurrentPassword": "กรุณากรอกรหัสผ่านปัจจุบันของคุณ",
+    "required": "ฟิลด์นี้จำเป็น",
+    "invalidWallet": "ที่อยู่ Polygon wallet ไม่ถูกต้อง"
+  },
+  "sidebar": {
+    "services": "บริการ",
+    "community": "ชุมชน",
+    "dashboard": "แดชบอร์ด",
+    "coin-reports": "รายงานเหรียญ",
+    "portfolio-strategies": "กลยุทธ์พอร์ตโฟลิโอ",
+    "affiliate": "พันธมิตร",
+    "education": "การศึกษา",
+    "help-center": "ศูนย์ช่วยเหลือ"
+  },
+  "wallet": {
+    "requiredAddress": "ที่อยู่กระเป๋าเงิน USDC Polygon (Matic) จำเป็น",
+    "requiredName": "ต้องระบุชื่อ",
+    "successMessage": "อัปเดตที่อยู่กระเป๋าเงินของคุณเรียบร้อยแล้ว",
+    "setupWallet": "ตั้งค่ากระเป๋าเงินของคุณ",
+    "addressInputLabel": "ที่อยู่กระเป๋าเงิน USDC Polygon (Matic)",
+    "addressInputPlaceholder": "กรอกที่อยู่กระเป๋าเงิน USDC Polygon (Matic)",
+    "nameInputLabel": "นามแฝงส่วนตัวของคุณ",
+    "nameInputPlaceholder": "กรอกนามแฝงส่วนตัวของคุณ",
+    "saveButton": "บันทึกกระเป๋าเงิน"
+  },
+  "plan": {
+    "currentPlan": "แผนปัจจุบันของคุณ",
+    "upgradePlan": "อัพเกรดแผนของคุณ!",
+    "compares": "เปรียบเทียบแผน"
+  },
+  "withdraw": {
+    "Withdraw": "ถอน",
+    "requiredAmount": "ต้องระบุจำนวนเงิน",
+    "requiredWallet": "ต้องระบุที่อยู่กระเป๋าเงิน",
+    "submitRequest": "คำขอของคุณถูกส่งเรียบร้อยแล้ว",
+    "availableWithdraw": "พร้อมสำหรับการถอน",
+    "amount": "จำนวนเงิน",
+    "enterAmount": "กรอกจำนวนเงิน",
+    "address": "ที่อยู่",
+    "feeWithdrawal": "จะมีค่าธรรมเนียม 3% สำหรับการถอน",
+    "minimumAmount": "จำนวนเงินขั้นต่ำสำหรับการถอนคือ 100 ยูโร"
+  },
+  "notFound": {
+    "title": "หลงทางในอวกาศ",
+    "subtitle": "คุณได้มาถึงขอบจักรวาล"
+  },
+  "payment": {
+    "successTitle": "การชำระเงินสำเร็จ!",
+    "successSubtitle": "การชำระเงินของคุณดำเนินการเรียบร้อยแล้ว การเป็นสมาชิกของคุณใช้งานได้แล้ว ขอบคุณที่ซื้อ!",
+    "successTexture": "สำเร็จ • สำเร็จ • สำเร็จ",
+    "failTitle": "การชำระเงินล้มเหลว!",
+    "failSubtitle": "ไม่สามารถดำเนินการชำระเงินของคุณได้ การเป็นสมาชิกของคุณยังไม่ได้เปิดใช้งาน กรุณาลองใหม่หรือติดต่อฝ่ายสนับสนุนเพื่อขอความช่วยเหลือ",
+    "failTexture": "ล้มเหลว • ล้มเหลว • ล้มเหลว • ล้มเหลว"
+  },
+  "checkout": {
+    "title": "ชำระเงิน",
+    "subscribeTo": "สมัครเป็นสมาชิก",
+    "plan": "แผน",
+    "payQr": "ชำระด้วยรหัส QR หรือที่อยู่กระเป๋าเงิน",
+    "polygonNetwork": "เครือข่าย Polygon",
+    "expiredAt": "หมดอายุเมื่อ",
+    "amountToSend": "จำนวนเงินที่จะส่ง",
+    "paidAmount": "จำนวนเงินที่ชำระแล้ว"
+  },
+  "userProfile": {
+    "title": "โปรไฟล์ผู้ใช้",
+    "choosePicError": "เลือกภาพของคุณ!",
+    "avatarUpdatedSuccess": "อวาตาร์อัปเดตเรียบร้อยแล้ว!",
+    "avatarUpdateFailed": "อัปเดตอวาตาร์ล้มเหลว!",
+    "avatarRemovedSuccess": "อวาตาร์ถูกลบเรียบร้อยแล้ว!",
+    "avatarRemoveFailed": "การลบอวาตาร์ล้มเหลว!",
+    "uploadPicture": "อัปโหลดรูปภาพ",
+    "remove": "ลบ"
+  },
+  "settingsDialog": {
+    "profileSettings": "การตั้งค่าโปรไฟล์",
+    "nameRequired": "ต้องระบุชื่อ",
+    "invalidCharacter": "ชื่อของคุณไม่สามารถมีตัวเลขได้",
+    "nameUpdateSuccess": "ชื่อของคุณอัปเดตเรียบร้อยแล้ว!",
+    "nameUpdateFailed": "การอัปเดตชื่อล้มเหลว!",
+    "fullName": "ชื่อเต็ม",
+    "password": "รหัสผ่าน",
+    "change": "เปลี่ยน",
+    "changePassword": "เปลี่ยนรหัสผ่าน"
+  },
+  "forgetPassword": {
+    "forgotPassword": "ลืมรหัสผ่าน",
+    "createNewPassword": "สร้างรหัสผ่านใหม่",
+    "passwordChanged": "รหัสผ่านเปลี่ยนเรียบร้อยแล้ว!",
+    "failedToVerifyCode": "การตรวจสอบรหัสล้มเหลว!",
+    "newPassword": "รหัสผ่านใหม่",
+    "enterNewPassword": "กรอกรหัสผ่านใหม่ของคุณ",
+    "passwordHelperText": "ใช้ 8 ตัวอักษรขึ้นไปที่มีการผสมกันของตัวอักษร, ตัวเลข, และสัญลักษณ์",
+    "confirmNewPassword": "ยืนยันรหัสผ่านใหม่",
+    "confirmNewPasswordPlaceholder": "ยืนยันรหัสผ่านใหม่ของคุณ",
+    "confirmPasswordHelperText": "รหัสผ่านทั้งสองต้องตรงกัน",
+    "resetPassword": "รีเซ็ตรหัสผ่าน"
+  },
+  "changePassword": {
+    "title": "เปลี่ยนรหัสผ่าน",
+    "currentPassword": "รหัสผ่านปัจจุบัน",
+    "enterCurrentPassword": "กรอกรหัสผ่านปัจจุบันของคุณ",
+    "forgotPassword": "ลืมรหัสผ่าน?",
+    "newPassword": "รหัสผ่านใหม่",
+    "enterNewPassword": "กรอกรหัสผ่านใหม่ของคุณ",
+    "passwordHelperText": "ใช้ 8 ตัวอักษรขึ้นไปที่มีการผสมกันของตัวอักษร, ตัวเลข, และสัญลักษณ์",
+    "confirmNewPassword": "ยืนยันรหัสผ่านใหม่",
+    "confirmNewPasswordPlaceholder": "ยืนยันรหัสผ่านใหม่ของคุณ",
+    "confirmPasswordHelperText": "รหัสผ่านทั้งสองต้องตรงกัน",
+    "passwordChangedSuccess": "รหัสผ่านเปลี่ยนเรียบร้อยแล้ว!",
+    "passwordChangedFailed": "การอัปเดตรหัสผ่านล้มเหลว!",
+    "saveChange": "บันทึกการเปลี่ยนแปลง"
+  },
+  "userInfo": {
+    "noMembership": "คุณไม่มี",
+    "membershipSuffix": " การเป็นสมาชิก!!",
+    "upgradeButton": "กรุณาอัพเกรด"
+  },
+  "profileDialog": {
+    "title": "โปรไฟล์",
+    "logout": "ออกจากระบบ",
+    "copyright": "ลิขสิทธิ์ © {{year}} {{company}}. สงวนลิขสิทธิ์.",
+    "profileSetting": "การตั้งค่าโปรไฟล์",
+    "termsOfService": "ข้อกำหนดในการให้บริการ | นโยบายความเป็นส่วนตัว",
+    "becomePartner": "เป็นพาร์ทเนอร์"
+  },
+  "becomePartner": {
+    "title": "เป็นพาร์ทเนอร์",
+    "description": "หนึ่งในอุโมงค์เหล่านี้จะส่งข้อมูลผ่านเซิร์ฟเวอร์ VPN ในขณะที่อีกอุโมงค์หนึ่งจะข้าม VPN และไปยังผู้ให้บริการอินเทอร์เน็ต (ISP) โดยตรง ท้ายที่สุดแล้ว นั่นหมายความว่าผู้ใช้สามารถเลือกได้ว่าแอปหรือเว็บไซต์ใดจะผ่าน VPN และแอปใดจะไม่ผ่าน ทำให้มีการควบคุมมากขึ้นเกี่ยวกับการแชร์กิจกรรมออนไลน์ของพวกเขา",
+    "startNow": "เริ่มต้นเดี๋ยวนี้!"
+  },
+  "twoFactorDialog": {
+    "title": "เป็นพาร์ทเนอร์",
+    "securityMessage": "เพื่อความปลอดภัยเพิ่มเติม กรุณาตั้งค่าการยืนยันตัวตนสองชั้น (2FA)",
+    "qrInstruction": "สแกน QR โค้ดด้วยแอปการยืนยันตัวตนและกรอกโค้ดด้านล่าง",
+    "authCodeLabel": "โค้ดยืนยันตัวตน",
+    "authCodePlaceholder": "กรอกโค้ดยืนยันตัวตน",
+    "backButton": "กลับ",
+    "nextStepButton": "ขั้นตอนต่อไป"
+  },
+  "kycInfoDialog": {
+    "title": "เป็นพาร์ทเนอร์",
+    "description": "เพื่อให้การลงทะเบียนของคุณเสร็จสมบูรณ์ คุณจะต้องดำเนินการ KYC คุณจะต้องให้เอกสารระบุตัวตนและข้อมูลอื่น ๆ ที่จำเป็น",
+    "doKycNow": "ทำ KYC ตอนนี้",
+    "backButton": "กลับ",
+    "nextStepButton": "ขั้นตอนต่อไป"
+  },
+  "personalInfoDialog": {
+    "title": "เป็นพาร์ทเนอร์",
+    "fullnameLabel": "ชื่อเต็ม",
+    "fullnamePlaceholder": "กรอกชื่อเต็มของคุณ",
+    "emailLabel": "อีเมล",
+    "emailPlaceholder": "กรอกที่อยู่อีเมลของคุณ",
+    "countryLabel": "ประเทศ",
+    "countryPlaceholder": "เลือกประเทศ",
+    "cityLabel": "เมือง",
+    "cityPlaceholder": "เลือกเมือง",
+    "streetLabel": "ชื่อถนน",
+    "streetPlaceholder": "กรอกชื่อถนน",
+    "buildingLabel": "เลขที่อาคาร",
+    "buildingPlaceholder": "กรอกเลขที่อาคาร",
+    "zipcodeLabel": "รหัสไปรษณีย์",
+    "zipcodePlaceholder": "กรอกรหัสไปรษณีย์",
+    "walletLabel": "ที่อยู่กระเป๋าเงิน USDC Polygon",
+    "walletPlaceholder": "กรอกที่อยู่กระเป๋าเงิน",
+    "updateFailed": "การอัปเดตโปรไฟล์ล้มเหลว! กรุณาลองใหม่"
+  },
+  "successDialog": {
+    "requestSent": "คำขอของคุณถูกส่งแล้ว!",
+    "reviewMessage": "ผู้ดูแลจะตรวจสอบและส่งผลลัพธ์ไปยังอีเมลของคุณภายใน 24 ชั่วโมงถัดไป",
+    "backToHome": "กลับไปที่หน้าแรก"
+  },
+  "portfolioTable": {
+    "strategyPlan": "แผนกลยุทธ์",
+    "plannedInvestment": "การลงทุนที่วางแผนไว้",
+    "enterAmount": "กรอกจำนวนเงิน",
+    "upgradeMessage": "โดยการอัพเกรด ผู้ใช้สามารถเข้าถึงสิทธิประโยชน์เพิ่มเติม ฟังก์ชันการทำงานที่เพิ่มขึ้น และเนื้อหาพรีเมียมที่ไม่สามารถใช้งานได้ในแผนปัจจุบันของพวกเขา",
+    "strategy": "กลยุทธ์"
+  },
+  "portfolioNotice": {
+    "note": "หมายเหตุ:",
+    "message": "โดยการอัพเกรด ผู้ใช้สามารถเข้าถึงสิทธิประโยชน์เพิ่มเติม ฟังก์ชันการทำงานที่เพิ่มขึ้น และเนื้อหาพรีเมียมที่ไม่สามารถใช้งานได้ในแผนปัจจุบันของพวกเขา"
+  },
+  "portfolioStrategiesInnerSection": {
+    "upgradeMessage": "คุณควรอัพเกรดแพ็คเกจของคุณเพื่อดูข้อมูลนี้"
+  },
+  "videoList": {
+    "educationVideos": "วิดีโอการศึกษา",
+    "searchPlaceholder": "ค้นหา"
+  },
+  "educationSingleVideoSection": {
+    "by": "โดย",
+    "duration": "ระยะเวลา",
+    "upgradeMessage": "คุณควรอัพเกรดแพ็คเกจของคุณเพื่อดูข้อมูลนี้"
+  },
+  "categoryItem": {
+    "moreDetails": "รายละเอียดเพิ่มเติม"
+  },
+  "categories": {
+    "title": "หมวดหมู่"
+  },
+  "welcomeBanner": {
+    "hi": "สวัสดี {{name}}",
+    "welcomeBack": "👋, ยินดีต้อนรับกลับ!",
+    "knowledgeMessage": "ความรู้คือพลังในตลาด; ปัญญาคือการรู้ว่าจะใช้อย่างไร!",
+    "welcomeVideo": "วิดีโอต้อนรับ",
+    "youAre": "คุณคือ"
+  },
+  "socialMedia": {
+    "title": "โซเชียล"
+  },
+  "liveFeed": {
+    "title": "ฟีดสด"
+  },
+  "dashboardSection": {
+    "incompletePaymentAlert": "การแจ้งเตือนการชำระเงินไม่สมบูรณ์",
+    "incompletePaymentDescription": "การอัพเกรดของคุณเป็นแพ็คเกจ {{planType}} กำลังรอเนื่องจากการชำระเงินไม่สมบูรณ์ กรุณาชำระเงินให้เสร็จสิ้นเพื่อสรุปการอัพเกรด"
+  },
+  "dropZone": {
+    "subtitle": "เรากำลังทำงานกับฟีเจอร์นี้"
+  },
+  "roadMap": {
+    "title": "แผนที่ทาง"
+  },
+  "coinReportTable": {
+    "standardCoinReports": "รายงานเหรียญมาตรฐาน",
+    "coinReports": "รายงานเหรียญ"
+  },
+  "coinReportNotice": {
+    "importantNotice": "ประกาศสำคัญ:",
+    "message": "ค่าต่าง ๆ และการคาดการณ์ที่นำเสนอในที่นี้อิงจากการประเมินส่วนบุคคลของเราตลาดและไม่ถือเป็นคำแนะนำการซื้อหรือการรับประกันใด ๆ การลงทุนทั้งหมดมีความเสี่ยง และสิ่งสำคัญคือต้องรับรู้คำปฏิเสธความเสี่ยงที่ได้รับการยืนยันในระหว่างการลงทะเบียน การกระจายข้อมูลที่ไม่ได้รับอนุญาตจะเป็นอาชญากรรมและจะนำไปสู่การระงับบัญชีถาวร",
+    "viewMore": "ดูเพิ่มเติม...",
+    "viewLess": "ดูน้อยลง..."
+  },
+  "learningBanner": {
+    "title": "อยากเห็นว่ามันทำงานอย่างไร?",
+    "buttonText": "วิดีโอการเรียนรู้"
+  },
+  "affiliateSection": {
+    "dashboard": "แดชบอร์ด",
+    "statistics": "สถิติ",
+    "comingSoon": "เร็ว ๆ นี้",
+    "network": "เครือข่าย",
+    "commissions": "ค่าคอมมิชชั่น",
+    "payouts": "การจ่ายเงิน"
+  },
+  "affiliateHeader": {
+    "yourReferralLink": "ลิงค์แนะนำของคุณ",
+    "shareWithAudience": "นี่คือลิงค์แนะนำของคุณ แบ่งปันกับผู้ชมของคุณเพื่อรับค่าคอมมิชชั่น",
+    "copyCode": "คัดลอกโค้ด"
+  },
+  "affStatisticsTab": {
+    "comingSoon": "เร็ว ๆ นี้",
+    "upgradeMessage": "โดยการอัพเกรด ผู้ใช้สามารถเข้าถึงสิทธิประโยชน์เพิ่มเติม ฟังก์ชันการทำงานที่เพิ่มขึ้น และเนื้อหาพรีเมียมที่ไม่สามารถใช้งานได้ในแผนปัจจุบันของพวกเขา"
+  },
+  "affPayoutsTab": {
+    "setupWalletMessage": "ตั้งค่ากระเป๋าเงินของคุณเพื่อให้เราสามารถส่งเงินให้คุณ",
+    "changeWallet": "เปลี่ยนกระเป๋าเงิน",
+    "setupWallet": "ตั้งค่ากระเป๋าเงิน"
+  },
+  "affPayoutsTabTable": {
+    "userId": "รหัสผู้ใช้",
+    "walletId": "รหัสกระเป๋าเงิน",
+    "amount": "จำนวนเงิน",
+    "date": "วันที่",
+    "status": "สถานะ",
+    "payouts": "การจ่ายเงิน",
+    "emptyTitle": "คุณยังไม่มีการจ่ายเงิน",
+    "emptySubtitle": "ติดตามผลกำไร, ขาดทุน และการประเมินมูลค่าทั้งหมดในที่เดียว",
+    "from": "จาก",
+    "to": "ถึง",
+    "dateAndTime": "วันที่และเวลา"
+  },
+  "affNetworkTabTable": {
+    "username": "ชื่อผู้ใช้",
+    "package": "แพ็คเกจ",
+    "joinedDate": "วันที่เข้าร่วม",
+    "moneyMade": "ทำเงินได้หรือไม่?"
+  },
+  "affNetworkTab": {
+    "table": "ตาราง",
+    "chart": "กราฟ",
+    "comingSoon": "เร็ว ๆ นี้"
+  },
+  "affNetworkTabChart": {
+    "comingSoon": "เร็ว ๆ นี้",
+    "upgradeMessage": "โดยการอัพเกรด ผู้ใช้สามารถเข้าถึงสิทธิประโยชน์เพิ่มเติม ฟังก์ชันการทำงานที่เพิ่มขึ้น และเนื้อหาพรีเมียมที่ไม่สามารถใช้งานได้ในแผนปัจจุบันของพวกเขา"
+  },
+  "afDashboardTab": {
+    "totalTurnover": "ยอดรวมการหมุนเวียน",
+    "commissionWallet": "กระเป๋าเงินค่าคอมมิชชั่น",
+    "withdraw": "ถอน",
+    "currentRank": "อันดับปัจจุบัน",
+    "overrideBonus": "โบนัสพิเศษ",
+    "goldCoins": "เหรียญทอง",
+    "first": "แรก",
+    "second": "ที่สอง",
+    "third": "ที่สาม",
+    "other": "อื่น ๆ",
+    "overall": "โดยรวม",
+    "nextRank": "อันดับถัดไป",
+    "teamMembers": "สมาชิกทีม",
+    "firstLineVolume": "ปริมาณเส้นแรก"
+  },
+  "affCommissionsTabTable": {
+    "userID": "รหัสผู้ใช้",
+    "amount": "จำนวนเงิน",
+    "packageName": "ชื่อแพ็คเกจ",
+    "percentage": "เปอร์เซ็นต์",
+    "commissionDate": "วันที่ค่าคอมมิชชั่น",
+    "commissionsTitle": "ค่าคอมมิชชั่น",
+    "noRecord": "คุณยังไม่มีบันทึกค่าคอมมิชชั่น"
+  },
+  "affCommissionsTab": {
+    "totalTurnover": "ยอดรวมการหมุนเวียน",
+    "totalCommission": "ค่าคอมมิชชั่นทั้งหมด",
+    "availableForWithdraw": "พร้อมสำหรับการถอน",
+    "withdraw": "ถอน"
+  },
+  "empty": {
+    "thereIsNothingToShow": "ไม่มีอะไรที่จะแสดง!"
+  },
+  "loading": {
+    "onLoading": "กำลังโหลด..."
+  }
+}

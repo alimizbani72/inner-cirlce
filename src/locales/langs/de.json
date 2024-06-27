@@ -5,13 +5,6 @@
     "strategy": "Strategie",
     "suspended": "Ihr Konto ist gesperrt, bitte kontaktieren Sie Ihren Administrator"
   },
-  "plans": {
-    "plankton": "Plankton",
-    "shrimp": "Shrimp",
-    "fish": "Fish",
-    "shark": "Shark",
-    "whale": "Whale"
-  },
   "button": {
     "cancel": "Abbrechen",
     "continue": "Fortsetzen",

@@ -1,0 +1,411 @@
+{
+  "global": {
+    "authLayout": "Simplificar e melhorar a experiência de investimento em criptomoedas para usuários de todos os níveis.",
+    "comingSoon": "EM BREVE",
+    "strategy": "Estratégia",
+    "suspended": "Sua conta está suspensa, por favor, entre em contato com o administrador"
+  },
+  "button": {
+    "cancel": "Cancelar",
+    "continue": "Continuar",
+    "upgrade": "Atualizar",
+    "buyNow": "Comprar agora",
+    "backHome": "Voltar para casa",
+    "back": "Voltar",
+    "nextStep": "Próximo passo",
+    "seeStrategies": "Ver estratégias"
+  },
+  "createAccount": {
+    "title": "Crie sua conta",
+    "subtitle": "Veja seu crescimento e obtenha suporte de consultoria!",
+    "registerWithGoogle": "Registrar com Google",
+    "orContinueWithEmail": "Ou continue com e-mail",
+    "fullNameLabel": "Nome completo",
+    "fullNamePlaceholder": "Digite seu nome completo",
+    "emailLabel": "Endereço de e-mail",
+    "emailPlaceholder": "Digite seu endereço de e-mail",
+    "passwordLabel": "Senha",
+    "passwordPlaceholder": "Digite sua senha",
+    "inviteCodeLabel": "Seu Patrocinador",
+    "agreeToTerms": "Eu concordo com os",
+    "termsAndConditions": "Termos e Condições",
+    "createAccountButton": "Criar conta",
+    "alreadyHaveAccount": "Já tem uma conta?",
+    "login": "Entrar"
+  },
+  "emailVerification": {
+    "title": "Verificação de e-mail",
+    "subtitle": "Digite o código de 5 dígitos que enviamos para",
+    "placeholderEmail": "Ricknovak@example.com",
+    "verifyCodeLabel": "Verificar código",
+    "backButton": "Voltar",
+    "resend": "Reenviar",
+    "resendWithTimer": "Reenviar",
+    "checkSpam": "Não recebeu o e-mail? Verifique seu filtro de spam ou tente outro endereço de e-mail"
+  },
+  "passwordRecovery": {
+    "title": "Recuperação de senha",
+    "subtitle": "Ajudamos você a recuperar sua senha se você a esqueceu.",
+    "emailLabel": "Endereço de e-mail",
+    "emailPlaceholder": "Digite seu endereço de e-mail",
+    "backButton": "Voltar",
+    "continueButton": "Continuar"
+  },
+  "resetPassword": {
+    "title": "Redefinir senha",
+    "subtitle": "Escolha uma nova senha forte com no mínimo 8 caracteres",
+    "newPasswordLabel": "Nova senha",
+    "newPasswordPlaceholder": "Digite sua nova senha",
+    "confirmNewPasswordLabel": "Confirmar nova senha",
+    "confirmNewPasswordPlaceholder": "Digite sua nova senha novamente",
+    "resetPasswordButton": "Redefinir senha"
+  },
+  "login": {
+    "title": "Entrar na sua conta",
+    "loginWithGoogle": "Entrar com Google",
+    "rememberMe": "Lembrar-me",
+    "forgotPassword": "Esqueceu a senha?",
+    "loginButton": "Entrar",
+    "noAccount": "Não tem uma conta?",
+    "register": "Registrar"
+  },
+  "formErrors": {
+    "requiredName": "Por favor, digite seu nome completo",
+    "requiredPassword": "Por favor, digite sua senha",
+    "confirmPassword": "Ambas as senhas devem coincidir.",
+    "passwordPattern": "Deve conter 8 caracteres, uma letra maiúscula, uma letra minúscula, um número e um caractere especial",
+    "invalidEmail": "Endereço de e-mail incorreto",
+    "requiredEmail": "Por favor, digite seu endereço de e-mail",
+    "requiredTerms": "Os termos e condições devem ser aceitos.",
+    "formError": "Algo deu errado, por favor, tente novamente",
+    "requiredCode": "O valor está errado, tente novamente.",
+    "userNotFound": "O e-mail não existe",
+    "emailExists": "O e-mail já existe",
+    "requiredNewPassword": "Por favor, digite sua nova senha",
+    "newPasswordPattern": "Deve conter 8 caracteres, uma letra maiúscula, uma letra minúscula, um número e um caractere especial",
+    "requiredCurrentPassword": "Por favor, digite sua senha atual",
+    "required": "Este campo é obrigatório",
+    "invalidWallet": "Endereço de carteira Polygon inválido"
+  },
+  "sidebar": {
+    "services": "Serviços",
+    "community": "Comunidade",
+    "dashboard": "Painel",
+    "coin-reports": "Relatórios de moedas",
+    "portfolio-strategies": "Estratégias de portfólio",
+    "affiliate": "Afiliado",
+    "education": "Educação",
+    "help-center": "Centro de ajuda"
+  },
+  "wallet": {
+    "requiredAddress": "Endereço de carteira USDC Polygon (Matic) é obrigatório",
+    "requiredName": "Nome é obrigatório",
+    "successMessage": "Seu endereço de carteira foi atualizado com sucesso.",
+    "setupWallet": "Configurar sua carteira",
+    "addressInputLabel": "Endereço de carteira USDC Polygon (Matic)",
+    "addressInputPlaceholder": "Digite o endereço da carteira USDC Polygon (Matic)",
+    "nameInputLabel": "Seu pseudônimo individual",
+    "nameInputPlaceholder": "Digite seu pseudônimo individual",
+    "saveButton": "Salvar carteira"
+  },
+  "plan": {
+    "currentPlan": "Seu plano atual",
+    "upgradePlan": "Atualize seu plano!",
+    "compares": "Comparar planos"
+  },
+  "withdraw": {
+    "Withdraw": "Retirar",
+    "requiredAmount": "A quantidade é obrigatória",
+    "requiredWallet": "O endereço da carteira é obrigatório",
+    "submitRequest": "Sua solicitação foi enviada com sucesso.",
+    "availableWithdraw": "Disponível para retirada",
+    "amount": "Quantidade",
+    "enterAmount": "Digite a quantidade",
+    "address": "Endereço",
+    "feeWithdrawal": "Haverá uma taxa de 3% para retirada.",
+    "minimumAmount": "O valor mínimo para retirada é de 100 euros."
+  },
+  "notFound": {
+    "title": "Perdido no espaço.",
+    "subtitle": "Você chegou ao limite do universo"
+  },
+  "payment": {
+    "successTitle": "Pagamento bem-sucedido!",
+    "successSubtitle": "Seu pagamento foi processado com sucesso. Sua assinatura está agora ativa. Obrigado pela sua compra!",
+    "successTexture": "Bem-sucedido • Bem-sucedido • Bem-sucedido",
+    "failTitle": "Pagamento falhou!",
+    "failSubtitle": "Não foi possível processar seu pagamento. Sua assinatura não foi ativada. Por favor, tente novamente ou entre em contato com o suporte para obter assistência.",
+    "failTexture": "Falhou • Falhou • Falhou • Falhou"
+  },
+  "checkout": {
+    "title": "Finalizar compra",
+    "subscribeTo": "Assine",
+    "plan": "plano",
+    "payQr": "Pagar com código QR ou endereço da carteira",
+    "polygonNetwork": "Rede Polygon",
+    "expiredAt": "Expira em",
+    "amountToSend": "Quantia a enviar",
+    "paidAmount": "Quantia paga"
+  },
+  "userProfile": {
+    "title": "Perfil do usuário",
+    "choosePicError": "Escolha sua foto!",
+    "avatarUpdatedSuccess": "Avatar atualizado com sucesso!",
+    "avatarUpdateFailed": "Falha ao atualizar avatar!",
+    "avatarRemovedSuccess": "Avatar removido com sucesso!",
+    "avatarRemoveFailed": "Falha ao remover avatar!",
+    "uploadPicture": "Enviar imagem",
+    "remove": "Remover"
+  },
+  "settingsDialog": {
+    "profileSettings": "Configurações de perfil",
+    "nameRequired": "Nome é obrigatório",
+    "invalidCharacter": "Seu nome não pode conter números",
+    "nameUpdateSuccess": "Seu nome foi atualizado com sucesso!",
+    "nameUpdateFailed": "Falha ao atualizar nome!",
+    "fullName": "Nome completo",
+    "password": "Senha",
+    "change": "Alterar",
+    "changePassword": "Alterar senha"
+  },
+  "forgetPassword": {
+    "forgotPassword": "Esqueceu a senha?",
+    "createNewPassword": "Criar nova senha",
+    "passwordChanged": "Senha alterada com sucesso!",
+    "failedToVerifyCode": "Falha ao verificar código!",
+    "newPassword": "Nova senha",
+    "enterNewPassword": "Digite sua nova senha",
+    "passwordHelperText": "Use 8 ou mais caracteres com uma mistura de letras, números e símbolos.",
+    "confirmNewPassword": "Confirmar nova senha",
+    "confirmNewPasswordPlaceholder": "Confirme sua nova senha",
+    "confirmPasswordHelperText": "Ambas as senhas devem coincidir.",
+    "resetPassword": "Redefinir senha"
+  },
+  "changePassword": {
+    "title": "Alterar senha",
+    "currentPassword": "Senha atual",
+    "enterCurrentPassword": "Digite sua senha atual",
+    "forgotPassword": "Esqueceu a senha?",
+    "newPassword": "Nova senha",
+    "enterNewPassword": "Digite sua nova senha",
+    "passwordHelperText": "Use 8 ou mais caracteres com uma mistura de letras, números e símbolos.",
+    "confirmNewPassword": "Confirmar nova senha",
+    "confirmNewPasswordPlaceholder": "Confirme sua nova senha",
+    "confirmPasswordHelperText": "Ambas as senhas devem coincidir.",
+    "passwordChangedSuccess": "Senha alterada com sucesso!",
+    "passwordChangedFailed": "Falha ao atualizar senha!",
+    "saveChange": "Salvar mudança"
+  },
+  "userInfo": {
+    "noMembership": "Você não tem uma",
+    "membershipSuffix": " assinatura!!",
+    "upgradeButton": "Por favor, atualize"
+  },
+  "profileDialog": {
+    "title": "Perfil",
+    "logout": "Sair",
+    "copyright": "Copyright © {{year}} {{company}}. Todos os direitos reservados.",
+    "profileSetting": "Configurações de perfil",
+    "termsOfService": "Termos de uso | Política de privacidade",
+    "becomePartner": "Torne-se um parceiro"
+  },
+  "becomePartner": {
+    "title": "Torne-se um parceiro",
+    "description": "Um desses túneis direciona o tráfego através do servidor VPN, enquanto o outro contorna o VPN e vai diretamente ao provedor de serviços de Internet (ISP). Em última análise, isso significa que os usuários podem escolher quais aplicativos ou sites passam pelo VPN e quais não, proporcionando mais controle sobre como sua atividade online é compartilhada.",
+    "startNow": "Comece agora!"
+  },
+  "twoFactorDialog": {
+    "title": "Torne-se um parceiro",
+    "securityMessage": "Para maior segurança, configure a autenticação de dois fatores (2FA).",
+    "qrInstruction": "Escaneie o código QR com um aplicativo de autenticação e digite o código abaixo.",
+    "authCodeLabel": "Código de autenticação",
+    "authCodePlaceholder": "Digite o código de autenticação",
+    "backButton": "Voltar",
+    "nextStepButton": "Próximo passo"
+  },
+  "kycInfoDialog": {
+    "title": "Torne-se um parceiro",
+    "description": "Para concluir seu registro, você precisará concluir o processo KYC. Será necessário fornecer documentos de identidade e outras informações necessárias.",
+    "doKycNow": "Fazer KYC agora",
+    "backButton": "Voltar",
+    "nextStepButton": "Próximo passo"
+  },
+  "personalInfoDialog": {
+    "title": "Torne-se um parceiro",
+    "fullnameLabel": "NOME COMPLETO",
+    "fullnamePlaceholder": "Digite seu nome completo",
+    "emailLabel": "EMAIL",
+    "emailPlaceholder": "Digite seu endereço de e-mail",
+    "countryLabel": "País",
+    "countryPlaceholder": "Selecione um país",
+    "cityLabel": "Cidade",
+    "cityPlaceholder": "Selecione uma cidade",
+    "streetLabel": "Rua",
+    "streetPlaceholder": "Digite o nome da rua",
+    "buildingLabel": "Número do prédio",
+    "buildingPlaceholder": "Digite o número do prédio",
+    "zipcodeLabel": "Código postal",
+    "zipcodePlaceholder": "Digite o código postal",
+    "walletLabel": "Endereço de carteira USDC Polygon",
+    "walletPlaceholder": "Digite o endereço da carteira",
+    "updateFailed": "Falha ao atualizar perfil! Por favor, tente novamente"
+  },
+  "successDialog": {
+    "requestSent": "Sua solicitação foi enviada!",
+    "reviewMessage": "Os administradores revisarão e enviarão o resultado para seu e-mail nas próximas 24 horas.",
+    "backToHome": "Voltar para casa"
+  },
+  "portfolioTable": {
+    "strategyPlan": "Plano de estratégia",
+    "plannedInvestment": "Investimento planejado",
+    "enterAmount": "Digite a quantidade",
+    "upgradeMessage": "Ao atualizar, os assinantes podem acessar benefícios adicionais, funcionalidades aprimoradas e conteúdo premium que não está disponível em seu plano atual.",
+    "strategy": "Estratégia"
+  },
+  "portfolioNotice": {
+    "note": "NOTA:",
+    "message": "Ao atualizar, os assinantes podem acessar benefícios adicionais, funcionalidades aprimoradas e conteúdo premium que não está disponível em seu plano atual."
+  },
+  "portfolioStrategiesInnerSection": {
+    "upgradeMessage": "Você deve atualizar seu pacote para ver essas informações"
+  },
+  "videoList": {
+    "educationVideos": "Vídeos educativos",
+    "searchPlaceholder": "Pesquisar"
+  },
+  "educationSingleVideoSection": {
+    "by": "POR",
+    "duration": "DURAÇÃO",
+    "upgradeMessage": "Você deve atualizar seu pacote para ver essas informações"
+  },
+  "categoryItem": {
+    "moreDetails": "Mais detalhes"
+  },
+  "categories": {
+    "title": "Categorias"
+  },
+  "welcomeBanner": {
+    "hi": "Olá {{name}}",
+    "welcomeBack": "👋, Bem-vindo de volta!",
+    "knowledgeMessage": "Conhecimento é poder no mercado; sabedoria é saber como usá-lo!",
+    "welcomeVideo": "Vídeo de boas-vindas",
+    "youAre": "Você é um"
+  },
+  "socialMedia": {
+    "title": "Redes sociais"
+  },
+  "liveFeed": {
+    "title": "Feed ao vivo"
+  },
+  "dashboardSection": {
+    "incompletePaymentAlert": "Alerta de pagamento incompleto",
+    "incompletePaymentDescription": "Seu upgrade para o pacote {{planType}} está pendente devido a um pagamento incompleto. Por favor, complete seu pagamento para finalizar o upgrade."
+  },
+  "dropZone": {
+    "subtitle": "Estamos trabalhando nesta funcionalidade."
+  },
+  "roadMap": {
+    "title": "Mapa rodoviário"
+  },
+  "coinReportTable": {
+    "standardCoinReports": "Relatórios de moedas padrão",
+    "coinReports": "Relatórios de moedas"
+  },
+  "coinReportNotice": {
+    "importantNotice": "AVISO IMPORTANTE:",
+    "message": "Os valores e previsões apresentados aqui são baseados em nossas avaliações pessoais do mercado e não constituem recomendações de compra ou garantias de qualquer tipo. Todos os investimentos têm riscos e é crucial reconhecer o aviso de risco confirmado durante o registro. A distribuição não autorizada das informações fornecidas será sujeita a processo criminal e resultará na suspensão permanente da conta.",
+    "viewMore": "VER MAIS...",
+    "viewLess": "VER MENOS..."
+  },
+  "learningBanner": {
+    "title": "Quer ver como funciona?",
+    "buttonText": "Vídeo educativo"
+  },
+  "affiliateSection": {
+    "dashboard": "Painel",
+    "statistics": "Estatísticas",
+    "comingSoon": "Em breve",
+    "network": "Rede",
+    "commissions": "Comissões",
+    "payouts": "Pagamentos"
+  },
+  "affiliateHeader": {
+    "yourReferralLink": "Seu link de referência",
+    "shareWithAudience": "Este é seu URL de referência. Compartilhe com seu público para ganhar comissões.",
+    "copyCode": "Copiar código"
+  },
+  "affStatisticsTab": {
+    "comingSoon": "EM BREVE",
+    "upgradeMessage": "Ao atualizar, os assinantes podem acessar benefícios adicionais, funcionalidades aprimoradas e conteúdo premium que não está disponível em seu plano atual."
+  },
+  "affPayoutsTab": {
+    "setupWalletMessage": "Configure sua carteira para que possamos enviar o dinheiro para você.",
+    "changeWallet": "Alterar carteira",
+    "setupWallet": "Configurar carteira"
+  },
+  "affPayoutsTabTable": {
+    "userId": "ID do usuário",
+    "walletId": "ID da carteira",
+    "amount": "Quantidade",
+    "date": "Data",
+    "status": "Status",
+    "payouts": "Pagamentos",
+    "emptyTitle": "Você ainda não tem pagamentos",
+    "emptySubtitle": "Acompanhe lucros, perdas e avaliação tudo em um só lugar.",
+    "from": "DE",
+    "to": "PARA",
+    "dateAndTime": "Data e hora"
+  },
+  "affNetworkTabTable": {
+    "username": "Nome de usuário",
+    "package": "Pacote",
+    "joinedDate": "Data de adesão",
+    "moneyMade": "Ganhou dinheiro?"
+  },
+  "affNetworkTab": {
+    "table": "Tabela",
+    "chart": "Gráfico",
+    "comingSoon": "Em breve"
+  },
+  "affNetworkTabChart": {
+    "comingSoon": "EM BREVE",
+    "upgradeMessage": "Ao atualizar, os assinantes podem acessar benefícios adicionais, funcionalidades aprimoradas e conteúdo premium que não está disponível em seu plano atual."
+  },
+  "afDashboardTab": {
+    "totalTurnover": "Volume total",
+    "commissionWallet": "Carteira de comissões",
+    "withdraw": "Retirar",
+    "currentRank": "Classificação atual",
+    "overrideBonus": "Bônus de anulação",
+    "goldCoins": "Moedas de ouro",
+    "first": "Primeiro",
+    "second": "Segundo",
+    "third": "Terceiro",
+    "other": "Outro",
+    "overall": "Geral",
+    "nextRank": "Próxima classificação",
+    "teamMembers": "Membros da equipe",
+    "firstLineVolume": "Volume da primeira linha"
+  },
+  "affCommissionsTabTable": {
+    "userID": "ID do usuário",
+    "amount": "Quantidade",
+    "packageName": "Nome do pacote",
+    "percentage": "Porcentagem",
+    "commissionDate": "Data da comissão",
+    "commissionsTitle": "Comissões",
+    "noRecord": "Você ainda não tem registros de comissões"
+  },
+  "affCommissionsTab": {
+    "totalTurnover": "Volume total",
+    "totalCommission": "Comissão total",
+    "availableForWithdraw": "Disponível para retirada",
+    "withdraw": "Retirar"
+  },
+  "empty": {
+    "thereIsNothingToShow": "Não há nada para mostrar!"
+  },
+  "loading": {
+    "onLoading": "Carregando..."
+  }
+}

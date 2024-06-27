@@ -1,9 +1,6 @@
 import { Select, MenuItem, Stack, Typography, Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import English from "@/assets/country-flags/English";
 import { Icon } from "@/components/icons";
-import Germany from "@/assets/country-flags/Germany";
-import Spain from "@/assets/country-flags/Spain";
 import { useState } from "react";
 import { useAppSelector } from "@/lib/hooks";
 import { selectLang } from "@/lib/features/dictionary/dicSlice";
@@ -11,6 +8,7 @@ import { useAppRouter } from "@/routes/hooks";
 import { handleLanguageChange } from "@/utils/handleLanguageChange";
 import { usePathname } from "next/navigation";
 import { useIsMobile } from "@/hooks/use-responsive";
+import { CircleFlagLanguage } from "react-circle-flags";
 
 const CustomSelect = styled(Select)(({ theme }) => ({
   backgroundColor: theme.palette.dark[2],
@@ -42,9 +40,22 @@ const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
 }));
 
 const languages = [
-  { code: "en", name: "English", flag: <English /> },
-  { code: "de", name: "Germany", flag: <Germany /> },
-  { code: "es", name: "Española", flag: <Spain /> },
+  { code: "en", name: "English" },
+  { code: "de", name: "Germany" },
+  { code: "es", name: "Española" },
+  { code: "pt", name: "Portuguese" },
+  { code: "sv", name: "Swedish" },
+  { code: "ru", name: "Russian" },
+  { code: "fr", name: "French" },
+  { code: "he", name: "Hebrew" },
+  { code: "hi", name: "Hindi" },
+  { code: "ko", name: "Korean" },
+  { code: "ja", name: "Japanese" },
+  { code: "th", name: "Thai" },
+  { code: "tr", name: "Turkish" },
+  { code: "bn", name: "Bengali" },
+  { code: "vi", name: "Vietnamese" },
+  { code: "mn", name: "Mongolian" },
 ];
 
 function LanguageSelect() {
@@ -66,7 +77,8 @@ function LanguageSelect() {
         const selectedLanguage = languages.find((lang) => lang.code === selected);
         return (
           <Stack direction={"row"} gap={1} alignItems={"center"}>
-            {selectedLanguage!.flag}
+            <CircleFlagLanguage languageCode={selectedLanguage!.code} height="24" title={selectedLanguage!.name} />
+
             <Typography variant="p2-medium">{selectedLanguage!.name}</Typography>
           </Stack>
         );
@@ -85,7 +97,7 @@ function LanguageSelect() {
       {languages.map((lang) => (
         <CustomMenuItem key={lang.code} value={lang.code}>
           <Stack direction={"row"} gap={1} alignItems={"center"} sx={{ width: "100%", p: 1 }}>
-            {lang.flag}
+            <CircleFlagLanguage languageCode={lang.code} height="24" title={lang.name} />
             <Typography variant="p2-medium">{lang.name}</Typography>
             {lang.code === language && (
               <Box sx={{ ml: "auto", path: { stroke: (theme) => theme.palette.pink.dark } }}>
