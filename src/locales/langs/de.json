@@ -2,7 +2,8 @@
   "global": {
     "authLayout": "Um die Investitionserfahrung in Kryptowährungen für Benutzer aller Ebenen zu vereinfachen und zu verbessern.",
     "comingSoon": "BALD VERFÜGBAR",
-    "strategy": "Strategie"
+    "strategy": "Strategie",
+    "suspended": "Ihr Konto ist gesperrt, bitte kontaktieren Sie Ihren Administrator"
   },
   "plans": {
     "plankton": "Plankton",
@@ -104,12 +105,12 @@
     "help-center": "Hilfezentrum"
   },
   "wallet": {
-    "requiredAddress": "ERC-20 Wallet-Adresse ist erforderlich",
+    "requiredAddress": "USDC Polygon (Matic) Wallet-Adresse ist erforderlich",
     "requiredName": "Name ist erforderlich",
     "successMessage": "Ihre Wallet-Adresse wurde erfolgreich aktualisiert.",
     "setupWallet": "Richten Sie Ihre Wallet ein",
-    "addressInputLabel": "ERC-20 Wallet-Adresse",
-    "addressInputPlaceholder": "Geben Sie die ERC-20 Wallet-Adresse ein",
+    "addressInputLabel": "USDC Polygon (Matic) Wallet-Adresse",
+    "addressInputPlaceholder": "Geben Sie die USDC Polygon (Matic) Wallet-Adresse ein",
     "nameInputLabel": "Ihr individuelles Pseudonym",
     "nameInputPlaceholder": "Geben Sie Ihr individuelles Pseudonym ein",
     "saveButton": "Wallet speichern"

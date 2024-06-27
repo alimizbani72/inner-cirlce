@@ -20,7 +20,7 @@ const AffPayoutsTab: FC = () => {
         <Stack gap={2} direction={"row"} alignItems={"center"}>
           <Icon name="Wallet--colorful" size={32} />
           <Typography variant="p1-medium" sx={{ wordBreak: "break-word" }}>
-            {data?.data ? `ERC-20 : ${data?.data.address}` : t("affPayoutsTab.setupWalletMessage")}
+            {data?.data ? `USDC Polygon (Matic) : ${data?.data.address}` : t("affPayoutsTab.setupWalletMessage")}
           </Typography>
         </Stack>
 

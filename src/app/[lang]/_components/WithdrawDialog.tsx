@@ -40,7 +40,7 @@ const WithdrawDialog: FC<Props> = ({ close, open }) => {
 
   const methods = useForm({
     resolver: yupResolver(schema),
-    defaultValues: { amount: "", address: `ERC-20 : ${walletDefault?.data?.address}` },
+    defaultValues: { amount: "", address: `USDC Polygon (Matic) : ${walletDefault?.data?.address}` },
     mode: "onSubmit",
   });
   const { handleSubmit, reset, resetField } = methods;

@@ -5,14 +5,25 @@ import { Button, Divider, Stack, Typography } from "@mui/material";
 import AffCommissionsTabTable from "./Table";
 import ContentStack from "@app/_components/ContentStack";
 import WithdrawDialog from "@app/_components/WithdrawDialog";
-import { useFinancialServiceFinancialInfoQuery } from "@minecraft/queries";
+import { useAccountServiceAuthUserinfoQuery, useFinancialServiceFinancialInfoQuery } from "@minecraft/queries";
 import { formatCurrency } from "@/utils/toNumber";
 import { useTranslate } from "@/locales";
+import { enqueueSnackbar } from "notistack";
+import { Icon } from "@/components/icons";
 
 const AffCommissionsTab: FC = () => {
   const { t } = useTranslate();
   const [openWithdrawDialog, setOpenWithdrawDialog] = useState(false);
   const { data } = useFinancialServiceFinancialInfoQuery();
+  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+
+  const handleWithdrawClick = () => {
+    if ((userInfo as any)?.data?.suspended_at) {
+      enqueueSnackbar({ message: t("global.suspended"), variant: "error" });
+    } else {
+      setOpenWithdrawDialog(true);
+    }
+  };
 
   return (
     <Stack px={{ md: 4, xs: 3 }} pt={3} flex={1} gap={3}>
@@ -41,9 +52,13 @@ const AffCommissionsTab: FC = () => {
         </Stack>
 
         <Button
-          sx={{ ml: "auto", width: { md: "auto", xs: "100%" } }}
+          sx={{
+            ml: "auto",
+            width: { md: "auto", xs: "100%" },
+          }}
           color="secondary"
-          onClick={() => setOpenWithdrawDialog(true)}
+          onClick={handleWithdrawClick}
+          startIcon={!!(userInfo as any)?.data?.suspended_at && <Icon name="Warning" />}
         >
           {t("affCommissionsTab.withdraw")}
         </Button>
