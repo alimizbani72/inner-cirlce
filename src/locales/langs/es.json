@@ -5,11 +5,11 @@
     "strategy": "Estrategia"
   },
   "plans": {
-    "plankton": "Plancton",
-    "shrimp": "Camarón",
-    "fish": "Pez",
-    "shark": "Tiburón",
-    "whale": "Ballena"
+    "plankton": "Plankton",
+    "shrimp": "Shrimp",
+    "fish": "Fish",
+    "shark": "Shark",
+    "whale": "Whale"
   },
   "button": {
     "cancel": "Cancelar",
