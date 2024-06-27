@@ -35,7 +35,7 @@ const StrategiesItem: FC<StrategiesItemProps> = ({ src, subtitle, type, upgrade 
 
       <Stack p={1} flex={1}>
         <Typography variant="h4-semi-bold" textTransform={"uppercase"}>
-          {t(`plans.${type}` as any)}
+          {type}
         </Typography>
         <Typography variant="p2-medium" textTransform={"uppercase"} color={"grey.dark"} mb={2}>
           {subtitle}

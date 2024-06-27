@@ -1,0 +1,411 @@
+{
+  "global": {
+    "authLayout": "Tüm seviyelerdeki kullanıcılar için kripto para yatırımı deneyimini basitleştirmek ve geliştirmek.",
+    "comingSoon": "YAKINDA",
+    "strategy": "Strateji",
+    "suspended": "Hesabınız askıya alındı, lütfen yöneticinizle iletişime geçin"
+  },
+  "button": {
+    "cancel": "İptal",
+    "continue": "Devam et",
+    "upgrade": "Yükselt",
+    "buyNow": "Şimdi Al",
+    "backHome": "Ana Sayfaya Dön",
+    "back": "Geri",
+    "nextStep": "Sonraki Adım",
+    "seeStrategies": "Stratejileri Gör"
+  },
+  "createAccount": {
+    "title": "Hesabınızı oluşturun",
+    "subtitle": "Büyümenizi görün ve danışmanlık desteği alın!",
+    "registerWithGoogle": "Google ile Kaydol",
+    "orContinueWithEmail": "Veya E-posta ile Devam Et",
+    "fullNameLabel": "Tam ad",
+    "fullNamePlaceholder": "Tam adınızı girin",
+    "emailLabel": "E-posta adresi",
+    "emailPlaceholder": "E-posta adresinizi girin",
+    "passwordLabel": "Şifre",
+    "passwordPlaceholder": "Şifrenizi girin",
+    "inviteCodeLabel": "Sponsorunuz",
+    "agreeToTerms": "Şartları kabul ediyorum",
+    "termsAndConditions": "Şartlar ve Koşullar",
+    "createAccountButton": "Hesap Oluştur",
+    "alreadyHaveAccount": "Zaten bir hesabınız var mı?",
+    "login": "Giriş Yap"
+  },
+  "emailVerification": {
+    "title": "E-posta doğrulama",
+    "subtitle": "Gönderdiğimiz 5 haneli kodu girin",
+    "placeholderEmail": "Ricknovak@example.com",
+    "verifyCodeLabel": "Kodu Doğrula",
+    "backButton": "Geri",
+    "resend": "Tekrar Gönder",
+    "resendWithTimer": "Tekrar Gönder",
+    "checkSpam": "E-postayı almadınız mı? Spam filtresini kontrol edin veya başka bir e-posta adresi deneyin"
+  },
+  "passwordRecovery": {
+    "title": "Şifre Kurtarma",
+    "subtitle": "Unuttuysanız şifrenizi kurtarmanıza yardımcı oluruz.",
+    "emailLabel": "E-posta adresi",
+    "emailPlaceholder": "E-posta adresinizi girin",
+    "backButton": "Geri",
+    "continueButton": "Devam et"
+  },
+  "resetPassword": {
+    "title": "Şifreyi Sıfırla",
+    "subtitle": "En az 8 karakter uzunluğunda yeni ve güçlü bir şifre seçin",
+    "newPasswordLabel": "Yeni Şifre",
+    "newPasswordPlaceholder": "Yeni şifrenizi girin",
+    "confirmNewPasswordLabel": "Yeni Şifreyi Onaylayın",
+    "confirmNewPasswordPlaceholder": "Yeni şifrenizi tekrar girin",
+    "resetPasswordButton": "Şifreyi Sıfırla"
+  },
+  "login": {
+    "title": "Hesabınıza giriş yapın",
+    "loginWithGoogle": "Google ile Giriş Yap",
+    "rememberMe": "Beni hatırla",
+    "forgotPassword": "Şifrenizi mi unuttunuz?",
+    "loginButton": "Giriş Yap",
+    "noAccount": "Hesabınız yok mu?",
+    "register": "Kaydol"
+  },
+  "formErrors": {
+    "requiredName": "Lütfen tam adınızı girin",
+    "requiredPassword": "Lütfen şifrenizi girin",
+    "confirmPassword": "Şifreler eşleşmelidir.",
+    "passwordPattern": "8 karakter, bir büyük harf, bir küçük harf, bir sayı ve bir özel karakter içermelidir",
+    "invalidEmail": "E-posta adresi geçersiz",
+    "requiredEmail": "Lütfen e-posta adresinizi girin",
+    "requiredTerms": "Şartlar ve koşullar kabul edilmelidir.",
+    "formError": "Bir hata oluştu, lütfen tekrar deneyin",
+    "requiredCode": "Değer yanlış, tekrar deneyin.",
+    "userNotFound": "E-posta mevcut değil",
+    "emailExists": "E-posta zaten mevcut",
+    "requiredNewPassword": "Lütfen yeni şifrenizi girin",
+    "newPasswordPattern": "8 karakter, bir büyük harf, bir küçük harf, bir sayı ve bir özel karakter içermelidir",
+    "requiredCurrentPassword": "Lütfen mevcut şifrenizi girin",
+    "required": "Bu alan gereklidir",
+    "invalidWallet": "Geçersiz Polygon cüzdan adresi"
+  },
+  "sidebar": {
+    "services": "Hizmetler",
+    "community": "Topluluk",
+    "dashboard": "Gösterge Paneli",
+    "coin-reports": "Madeni Para Raporları",
+    "portfolio-strategies": "Portföy Stratejileri",
+    "affiliate": "Bağlı Kuruluş",
+    "education": "Eğitim",
+    "help-center": "Yardım Merkezi"
+  },
+  "wallet": {
+    "requiredAddress": "USDC Polygon (Matic) Cüzdan adresi gereklidir",
+    "requiredName": "İsim gereklidir",
+    "successMessage": "Cüzdan adresiniz başarıyla güncellendi.",
+    "setupWallet": "Cüzdanınızı Ayarlayın",
+    "addressInputLabel": "USDC Polygon (Matic) Cüzdan adresi",
+    "addressInputPlaceholder": "USDC Polygon (Matic) cüzdan adresini girin",
+    "nameInputLabel": "Bireysel takma adınız",
+    "nameInputPlaceholder": "Bireysel takma adınızı girin",
+    "saveButton": "Cüzdanı Kaydet"
+  },
+  "plan": {
+    "currentPlan": "Mevcut Planınız",
+    "upgradePlan": "Planınızı Yükseltin!",
+    "compares": "Planları Karşılaştır"
+  },
+  "withdraw": {
+    "Withdraw": "Çek",
+    "requiredAmount": "Miktar gereklidir",
+    "requiredWallet": "Cüzdan adresi gereklidir",
+    "submitRequest": "İsteğiniz başarıyla gönderildi.",
+    "availableWithdraw": "Çekilebilir tutar",
+    "amount": "Miktar",
+    "enterAmount": "Miktarı girin",
+    "address": "Adres",
+    "feeWithdrawal": "Çekim için %3 ücret alınacaktır.",
+    "minimumAmount": "Çekim için minimum tutar 100 Euro."
+  },
+  "notFound": {
+    "title": "Uzayda kayboldu.",
+    "subtitle": "Evrenin kenarına ulaştınız"
+  },
+  "payment": {
+    "successTitle": "Başarılı Ödeme!",
+    "successSubtitle": "Ödemeniz başarıyla işlendi. Üyeliğiniz artık aktif. Satın alımınız için teşekkür ederiz!",
+    "successTexture": "Başarılı • Başarılı • Başarılı",
+    "failTitle": "Ödeme Başarısız!",
+    "failSubtitle": "Ödemeniz işlenemedi. Üyeliğiniz etkinleştirilmedi. Lütfen tekrar deneyin veya destek ile iletişime geçin.",
+    "failTexture": "Başarısız • Başarısız • Başarısız • Başarısız"
+  },
+  "checkout": {
+    "title": "Ödeme",
+    "subscribeTo": "Abone Ol",
+    "plan": "plan",
+    "payQr": "QR Kodu veya Cüzdan Adresi ile Öde",
+    "polygonNetwork": "Polygon Ağı",
+    "expiredAt": "Bitiş tarihi",
+    "amountToSend": "Gönderilecek tutar",
+    "paidAmount": "Ödenen Tutar"
+  },
+  "userProfile": {
+    "title": "Kullanıcı Profili",
+    "choosePicError": "Resminizi seçin!",
+    "avatarUpdatedSuccess": "Avatar başarıyla güncellendi!",
+    "avatarUpdateFailed": "Avatar güncellenemedi!",
+    "avatarRemovedSuccess": "Avatar başarıyla kaldırıldı!",
+    "avatarRemoveFailed": "Avatar kaldırılamadı!",
+    "uploadPicture": "Resim Yükle",
+    "remove": "Kaldır"
+  },
+  "settingsDialog": {
+    "profileSettings": "Profil Ayarları",
+    "nameRequired": "İsim gereklidir",
+    "invalidCharacter": "Adınızda rakam bulunamaz",
+    "nameUpdateSuccess": "Adınız başarıyla güncellendi!",
+    "nameUpdateFailed": "Ad güncellenemedi!",
+    "fullName": "Tam Ad",
+    "password": "Şifre",
+    "change": "Değiştir",
+    "changePassword": "Şifre Değiştir"
+  },
+  "forgetPassword": {
+    "forgotPassword": "Şifrenizi mi unuttunuz",
+    "createNewPassword": "Yeni Şifre Oluştur",
+    "passwordChanged": "Şifre başarıyla değiştirildi!",
+    "failedToVerifyCode": "Kod doğrulanamadı!",
+    "newPassword": "Yeni Şifre",
+    "enterNewPassword": "Yeni şifrenizi girin",
+    "passwordHelperText": "Harf, rakam ve sembol karışımı ile 8 veya daha fazla karakter kullanın.",
+    "confirmNewPassword": "Yeni Şifreyi Onaylayın",
+    "confirmNewPasswordPlaceholder": "Yeni şifrenizi onaylayın",
+    "confirmPasswordHelperText": "İki şifre eşleşmelidir.",
+    "resetPassword": "Şifreyi Sıfırla"
+  },
+  "changePassword": {
+    "title": "Şifre Değiştir",
+    "currentPassword": "Mevcut Şifre",
+    "enterCurrentPassword": "Mevcut şifrenizi girin",
+    "forgotPassword": "Şifrenizi mi unuttunuz?",
+    "newPassword": "Yeni Şifre",
+    "enterNewPassword": "Yeni şifrenizi girin",
+    "passwordHelperText": "Harf, rakam ve sembol karışımı ile 8 veya daha fazla karakter kullanın.",
+    "confirmNewPassword": "Yeni Şifreyi Onaylayın",
+    "confirmNewPasswordPlaceholder": "Yeni şifrenizi onaylayın",
+    "confirmPasswordHelperText": "İki şifre eşleşmelidir.",
+    "passwordChangedSuccess": "Şifre başarıyla değiştirildi!",
+    "passwordChangedFailed": "Şifre güncellenemedi!",
+    "saveChange": "Değişikliği Kaydet"
+  },
+  "userInfo": {
+    "noMembership": "Bir",
+    "membershipSuffix": " üyeliğiniz yok!!",
+    "upgradeButton": "Lütfen Yükseltin"
+  },
+  "profileDialog": {
+    "title": "Profil",
+    "logout": "Çıkış Yap",
+    "copyright": "Telif Hakkı © {{year}} {{company}}. Tüm hakları saklıdır.",
+    "profileSetting": "Profil Ayarları",
+    "termsOfService": "Kullanım Koşulları | Gizlilik Politikası",
+    "becomePartner": "Ortak Olun"
+  },
+  "becomePartner": {
+    "title": "Ortak Olun",
+    "description": "Bu tünellerden biri, trafiği VPN sunucusu üzerinden yönlendirirken, diğeri VPN'i atlayarak doğrudan İnternet servis sağlayıcısına (ISP) gider. Sonuç olarak, kullanıcılar hangi uygulamaların veya web sitelerinin VPN üzerinden gideceğini ve hangilerinin gitmeyeceğini seçebilir, böylece çevrimiçi etkinliklerinin nasıl paylaşıldığını daha fazla kontrol eder.",
+    "startNow": "Şimdi Başla!"
+  },
+  "twoFactorDialog": {
+    "title": "Ortak Olun",
+    "securityMessage": "Ek güvenlik için, lütfen İki Faktörlü Kimlik Doğrulama (2FA) kurun.",
+    "qrInstruction": "Bir kimlik doğrulama uygulamasıyla QR kodunu tarayın ve aşağıdaki kodu girin.",
+    "authCodeLabel": "Kimlik Doğrulama Kodu",
+    "authCodePlaceholder": "Kimlik Doğrulama Kodunu Girin",
+    "backButton": "Geri",
+    "nextStepButton": "Sonraki Adım"
+  },
+  "kycInfoDialog": {
+    "title": "Ortak Olun",
+    "description": "Kaydınızı tamamlamak için, KYC sürecini tamamlamanız gerekecektir. Kimlik belgeleri ve diğer gerekli bilgileri sağlamanız gerekecek.",
+    "doKycNow": "Şimdi KYC Yapın",
+    "backButton": "Geri",
+    "nextStepButton": "Sonraki Adım"
+  },
+  "personalInfoDialog": {
+    "title": "Ortak Olun",
+    "fullnameLabel": "TAM AD",
+    "fullnamePlaceholder": "Tam adınızı girin",
+    "emailLabel": "E-POSTA",
+    "emailPlaceholder": "E-posta adresinizi girin",
+    "countryLabel": "Ülke",
+    "countryPlaceholder": "Bir ülke seçin",
+    "cityLabel": "Şehir",
+    "cityPlaceholder": "Bir şehir seçin",
+    "streetLabel": "Sokak",
+    "streetPlaceholder": "Sokak adını girin",
+    "buildingLabel": "Bina numarası",
+    "buildingPlaceholder": "Bina numarasını girin",
+    "zipcodeLabel": "Posta Kodu",
+    "zipcodePlaceholder": "Posta kodunu girin",
+    "walletLabel": "USDC Polygon cüzdan adresi",
+    "walletPlaceholder": "Cüzdan adresini girin",
+    "updateFailed": "Profil güncellenemedi! Lütfen tekrar deneyin"
+  },
+  "successDialog": {
+    "requestSent": "İsteğiniz Gönderildi!",
+    "reviewMessage": "Yöneticiler bunu inceleyecek ve sonucu 24 saat içinde e-postanıza gönderecektir.",
+    "backToHome": "Ana Sayfaya Dön"
+  },
+  "portfolioTable": {
+    "strategyPlan": "Strateji Planı",
+    "plannedInvestment": "Planlanan Yatırım",
+    "enterAmount": "Miktarı Girin",
+    "upgradeMessage": "Yükseltme ile, aboneler ek avantajlar, geliştirilmiş işlevler ve mevcut planlarında bulunmayan premium içeriğe erişim elde edebilirler.",
+    "strategy": "Strateji"
+  },
+  "portfolioNotice": {
+    "note": "NOT:",
+    "message": "Yükseltme ile, aboneler ek avantajlar, geliştirilmiş işlevler ve mevcut planlarında bulunmayan premium içeriğe erişim elde edebilirler."
+  },
+  "portfolioStrategiesInnerSection": {
+    "upgradeMessage": "Bu bilgiyi görmek için paketinizi yükseltmelisiniz"
+  },
+  "videoList": {
+    "educationVideos": "Eğitim Videoları",
+    "searchPlaceholder": "Arama"
+  },
+  "educationSingleVideoSection": {
+    "by": "TARAFINDAN",
+    "duration": "SÜRE",
+    "upgradeMessage": "Bu bilgiyi görmek için paketinizi yükseltmelisiniz"
+  },
+  "categoryItem": {
+    "moreDetails": "Daha Fazla Detay"
+  },
+  "categories": {
+    "title": "Kategoriler"
+  },
+  "welcomeBanner": {
+    "hi": "Merhaba {{name}}",
+    "welcomeBack": "👋, Tekrar hoş geldiniz!",
+    "knowledgeMessage": "Pazarda bilgi güçtür; bilgelik onu nasıl kullanacağını bilmektir!",
+    "welcomeVideo": "Hoşgeldiniz Videosu",
+    "youAre": "Siz bir"
+  },
+  "socialMedia": {
+    "title": "Sosyal Medya"
+  },
+  "liveFeed": {
+    "title": "Canlı Yayın"
+  },
+  "dashboardSection": {
+    "incompletePaymentAlert": "Eksik Ödeme Uyarısı",
+    "incompletePaymentDescription": "{{planType}} Paketine yükseltmeniz, eksik bir ödeme nedeniyle beklemede. Yükseltmeyi tamamlamak için ödemenizi tamamlayın."
+  },
+  "dropZone": {
+    "subtitle": "Bu özellik üzerinde çalışıyoruz."
+  },
+  "roadMap": {
+    "title": "Yol Haritası"
+  },
+  "coinReportTable": {
+    "standardCoinReports": "Standart Madeni Para Raporları",
+    "coinReports": "Madeni Para Raporları"
+  },
+  "coinReportNotice": {
+    "importantNotice": "ÖNEMLİ BİLDİRİM:",
+    "message": "Burada sunulan değerler ve tahminler, pazarın kişisel değerlendirmelerimize dayanmaktadır ve satın alma önerisi veya herhangi bir garanti teşkil etmez. Tüm yatırımlar risk taşır ve kayıt sırasında onaylanan risk bildiriminin kabul edilmesi önemlidir. Sağlanan bilgilerin izinsiz dağıtımı cezai kovuşturmaya tabi olacak ve kalıcı hesap askıya alınmasına neden olacaktır.",
+    "viewMore": "DAHA FAZLA GÖR...",
+    "viewLess": "DAHA AZ GÖR..."
+  },
+  "learningBanner": {
+    "title": "Nasıl çalıştığını görmek ister misiniz?",
+    "buttonText": "Eğitim Videosu"
+  },
+  "affiliateSection": {
+    "dashboard": "Gösterge Paneli",
+    "statistics": "İstatistikler",
+    "comingSoon": "Yakında Gelecek",
+    "network": "Ağ",
+    "commissions": "Komisyonlar",
+    "payouts": "Ödemeler"
+  },
+  "affiliateHeader": {
+    "yourReferralLink": "Referans Linkiniz",
+    "shareWithAudience": "Bu, referans URL'nizdir. Komisyon kazanmak için bunu kitlenizle paylaşın.",
+    "copyCode": "Kodu Kopyala"
+  },
+  "affStatisticsTab": {
+    "comingSoon": "YAKINDA GELECEK",
+    "upgradeMessage": "Yükseltme ile, aboneler ek avantajlar, geliştirilmiş işlevler ve mevcut planlarında bulunmayan premium içeriğe erişim elde edebilirler."
+  },
+  "affPayoutsTab": {
+    "setupWalletMessage": "Parayı size gönderebilmemiz için cüzdanınızı ayarlayın.",
+    "changeWallet": "Cüzdanı Değiştir",
+    "setupWallet": "Cüzdanı Ayarla"
+  },
+  "affPayoutsTabTable": {
+    "userId": "Kullanıcı ID",
+    "walletId": "Cüzdan ID",
+    "amount": "Miktar",
+    "date": "Tarih",
+    "status": "Durum",
+    "payouts": "Ödemeler",
+    "emptyTitle": "Henüz ödeme yok",
+    "emptySubtitle": "Tüm kar, zarar ve değerlemeleri tek bir yerde takip edin.",
+    "from": "DAN",
+    "to": "A",
+    "dateAndTime": "Tarih ve Saat"
+  },
+  "affNetworkTabTable": {
+    "username": "Kullanıcı Adı",
+    "package": "Paket",
+    "joinedDate": "Katılma Tarihi",
+    "moneyMade": "Para Kazandı mı?"
+  },
+  "affNetworkTab": {
+    "table": "Tablo",
+    "chart": "Grafik",
+    "comingSoon": "Yakında Gelecek"
+  },
+  "affNetworkTabChart": {
+    "comingSoon": "YAKINDA GELECEK",
+    "upgradeMessage": "Yükseltme ile, aboneler ek avantajlar, geliştirilmiş işlevler ve mevcut planlarında bulunmayan premium içeriğe erişim elde edebilirler."
+  },
+  "afDashboardTab": {
+    "totalTurnover": "Toplam Ciro",
+    "commissionWallet": "Komisyon Cüzdanı",
+    "withdraw": "Çek",
+    "currentRank": "Mevcut Sıra",
+    "overrideBonus": "Fazla Bonus",
+    "goldCoins": "Altın Paralar",
+    "first": "Birinci",
+    "second": "İkinci",
+    "third": "Üçüncü",
+    "other": "Diğer",
+    "overall": "Genel",
+    "nextRank": "Sonraki Sıra",
+    "teamMembers": "Takım Üyeleri",
+    "firstLineVolume": "Birinci Hat Hacmi"
+  },
+  "affCommissionsTabTable": {
+    "userID": "Kullanıcı ID",
+    "amount": "Miktar",
+    "packageName": "Paket Adı",
+    "percentage": "Yüzde",
+    "commissionDate": "Komisyon Tarihi",
+    "commissionsTitle": "Komisyonlar",
+    "noRecord": "Henüz komisyon kaydı yok"
+  },
+  "affCommissionsTab": {
+    "totalTurnover": "Toplam Ciro",
+    "totalCommission": "Toplam Komisyon",
+    "availableForWithdraw": "Çekilebilir Tutar",
+    "withdraw": "Çek"
+  },
+  "empty": {
+    "thereIsNothingToShow": "Gösterilecek bir şey yok!"
+  },
+  "loading": {
+    "onLoading": "Yükleniyor..."
+  }
+}

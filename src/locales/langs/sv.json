@@ -1,0 +1,411 @@
+{
+  "global": {
+    "authLayout": "Förenkla och förbättra kryptovaluta-investeringar för användare på alla nivåer.",
+    "comingSoon": "KOMMER SNART",
+    "strategy": "Strategi",
+    "suspended": "Ditt konto är avstängt, vänligen kontakta din administratör"
+  },
+  "button": {
+    "cancel": "Avbryt",
+    "continue": "Fortsätt",
+    "upgrade": "Uppgradera",
+    "buyNow": "Köp nu",
+    "backHome": "Tillbaka till hem",
+    "back": "Tillbaka",
+    "nextStep": "Nästa steg",
+    "seeStrategies": "Se strategier"
+  },
+  "createAccount": {
+    "title": "Skapa ditt konto",
+    "subtitle": "Se din tillväxt och få konsultationsstöd!",
+    "registerWithGoogle": "Registrera med Google",
+    "orContinueWithEmail": "Eller fortsätt med e-post",
+    "fullNameLabel": "Fullständigt namn",
+    "fullNamePlaceholder": "Ange ditt fullständiga namn",
+    "emailLabel": "E-postadress",
+    "emailPlaceholder": "Ange din e-postadress",
+    "passwordLabel": "Lösenord",
+    "passwordPlaceholder": "Ange ditt lösenord",
+    "inviteCodeLabel": "Din sponsor",
+    "agreeToTerms": "Jag accepterar",
+    "termsAndConditions": "Villkor",
+    "createAccountButton": "Skapa konto",
+    "alreadyHaveAccount": "Har du redan ett konto?",
+    "login": "Logga in"
+  },
+  "emailVerification": {
+    "title": "E-postverifiering",
+    "subtitle": "Ange den 5-siffriga koden som vi skickade till",
+    "placeholderEmail": "Ricknovak@example.com",
+    "verifyCodeLabel": "Verifiera kod",
+    "backButton": "Tillbaka",
+    "resend": "Skicka igen",
+    "resendWithTimer": "Skicka igen",
+    "checkSpam": "Fick du inte e-posten? Kontrollera ditt skräppostfilter eller prova en annan e-postadress"
+  },
+  "passwordRecovery": {
+    "title": "Återställning av lösenord",
+    "subtitle": "Vi hjälper dig att återställa ditt lösenord om du har glömt det.",
+    "emailLabel": "E-postadress",
+    "emailPlaceholder": "Ange din e-postadress",
+    "backButton": "Tillbaka",
+    "continueButton": "Fortsätt"
+  },
+  "resetPassword": {
+    "title": "Återställ lösenord",
+    "subtitle": "Välj ett nytt och starkt lösenord med minst 8 tecken",
+    "newPasswordLabel": "Nytt lösenord",
+    "newPasswordPlaceholder": "Ange ditt nya lösenord",
+    "confirmNewPasswordLabel": "Bekräfta nytt lösenord",
+    "confirmNewPasswordPlaceholder": "Ange ditt nya lösenord igen",
+    "resetPasswordButton": "Återställ lösenord"
+  },
+  "login": {
+    "title": "Logga in på ditt konto",
+    "loginWithGoogle": "Logga in med Google",
+    "rememberMe": "Kom ihåg mig",
+    "forgotPassword": "Glömt lösenord?",
+    "loginButton": "Logga in",
+    "noAccount": "Har du inget konto?",
+    "register": "Registrera"
+  },
+  "formErrors": {
+    "requiredName": "Vänligen ange ditt fullständiga namn",
+    "requiredPassword": "Vänligen ange ditt lösenord",
+    "confirmPassword": "Båda lösenorden måste matcha.",
+    "passwordPattern": "Måste innehålla 8 tecken, en versal, en gemen, en siffra och ett specialtecken",
+    "invalidEmail": "E-postadressen är felaktig",
+    "requiredEmail": "Vänligen ange din e-postadress",
+    "requiredTerms": "Villkoren måste accepteras.",
+    "formError": "Något gick fel, vänligen försök igen",
+    "requiredCode": "Värdet är fel, försök igen.",
+    "userNotFound": "E-posten finns inte",
+    "emailExists": "E-posten finns redan",
+    "requiredNewPassword": "Vänligen ange ditt nya lösenord",
+    "newPasswordPattern": "Måste innehålla 8 tecken, en versal, en gemen, en siffra och ett specialtecken",
+    "requiredCurrentPassword": "Vänligen ange ditt nuvarande lösenord",
+    "required": "Detta fält är obligatoriskt",
+    "invalidWallet": "Ogiltig Polygon plånboksadress"
+  },
+  "sidebar": {
+    "services": "Tjänster",
+    "community": "Gemenskap",
+    "dashboard": "Instrumentpanel",
+    "coin-reports": "Myntrapporter",
+    "portfolio-strategies": "Portföljstrategier",
+    "affiliate": "Affiliate",
+    "education": "Utbildning",
+    "help-center": "Hjälpcenter"
+  },
+  "wallet": {
+    "requiredAddress": "USDC Polygon (Matic) plånboksadress är obligatorisk",
+    "requiredName": "Namn är obligatoriskt",
+    "successMessage": "Din plånboksadress har uppdaterats framgångsrikt.",
+    "setupWallet": "Ställ in din plånbok",
+    "addressInputLabel": "USDC Polygon (Matic) plånboksadress",
+    "addressInputPlaceholder": "Ange USDC Polygon (Matic) plånboksadress",
+    "nameInputLabel": "Ditt individuella pseudonym",
+    "nameInputPlaceholder": "Ange ditt individuella pseudonym",
+    "saveButton": "Spara plånbok"
+  },
+  "plan": {
+    "currentPlan": "Din nuvarande plan",
+    "upgradePlan": "Uppgradera din plan!",
+    "compares": "Jämför planer"
+  },
+  "withdraw": {
+    "Withdraw": "Ta ut",
+    "requiredAmount": "Belopp krävs",
+    "requiredWallet": "Plånboksadress krävs",
+    "submitRequest": "Din begäran har skickats framgångsrikt.",
+    "availableWithdraw": "Tillgängligt för uttag",
+    "amount": "Belopp",
+    "enterAmount": "Ange belopp",
+    "address": "Adress",
+    "feeWithdrawal": "Det kommer att vara en avgift på 3% för uttag.",
+    "minimumAmount": "Minsta belopp för uttag är 100 euro."
+  },
+  "notFound": {
+    "title": "Förlorad i rymden.",
+    "subtitle": "Du har nått universums kant"
+  },
+  "payment": {
+    "successTitle": "Betalning lyckades!",
+    "successSubtitle": "Din betalning har behandlats framgångsrikt. Ditt medlemskap är nu aktivt. Tack för ditt köp!",
+    "successTexture": "Lyckad • Lyckad • Lyckad",
+    "failTitle": "Betalning misslyckades!",
+    "failSubtitle": "Din betalning kunde inte behandlas. Ditt medlemskap har inte aktiverats. Försök igen eller kontakta support för hjälp.",
+    "failTexture": "Misslyckad • Misslyckad • Misslyckad • Misslyckad"
+  },
+  "checkout": {
+    "title": "Kassa",
+    "subscribeTo": "Prenumerera på",
+    "plan": "plan",
+    "payQr": "Betala med QR-kod eller plånboksadress",
+    "polygonNetwork": "Polygon nätverk",
+    "expiredAt": "Utgår vid",
+    "amountToSend": "Belopp att skicka",
+    "paidAmount": "Betalat belopp"
+  },
+  "userProfile": {
+    "title": "Användarprofil",
+    "choosePicError": "Välj din bild!",
+    "avatarUpdatedSuccess": "Avatar uppdaterad framgångsrikt!",
+    "avatarUpdateFailed": "Misslyckades med att uppdatera avatar!",
+    "avatarRemovedSuccess": "Avatar borttagen framgångsrikt!",
+    "avatarRemoveFailed": "Misslyckades med att ta bort avatar!",
+    "uploadPicture": "Ladda upp bild",
+    "remove": "Ta bort"
+  },
+  "settingsDialog": {
+    "profileSettings": "Profilinställningar",
+    "nameRequired": "Namn är obligatoriskt",
+    "invalidCharacter": "Ditt namn kan inte innehålla siffror",
+    "nameUpdateSuccess": "Ditt namn har uppdaterats framgångsrikt!",
+    "nameUpdateFailed": "Misslyckades med att uppdatera namn!",
+    "fullName": "Fullständigt namn",
+    "password": "Lösenord",
+    "change": "Ändra",
+    "changePassword": "Ändra lösenord"
+  },
+  "forgetPassword": {
+    "forgotPassword": "Glömt lösenord?",
+    "createNewPassword": "Skapa nytt lösenord",
+    "passwordChanged": "Lösenord ändrat framgångsrikt!",
+    "failedToVerifyCode": "Misslyckades med att verifiera kod!",
+    "newPassword": "Nytt lösenord",
+    "enterNewPassword": "Ange ditt nya lösenord",
+    "passwordHelperText": "Använd 8 eller fler tecken med en blandning av bokstäver, siffror och symboler.",
+    "confirmNewPassword": "Bekräfta nytt lösenord",
+    "confirmNewPasswordPlaceholder": "Bekräfta ditt nya lösenord",
+    "confirmPasswordHelperText": "Båda lösenorden måste matcha.",
+    "resetPassword": "Återställ lösenord"
+  },
+  "changePassword": {
+    "title": "Ändra lösenord",
+    "currentPassword": "Nuvarande lösenord",
+    "enterCurrentPassword": "Ange ditt nuvarande lösenord",
+    "forgotPassword": "Glömt lösenord?",
+    "newPassword": "Nytt lösenord",
+    "enterNewPassword": "Ange ditt nya lösenord",
+    "passwordHelperText": "Använd 8 eller fler tecken med en blandning av bokstäver, siffror och symboler.",
+    "confirmNewPassword": "Bekräfta nytt lösenord",
+    "confirmNewPasswordPlaceholder": "Bekräfta ditt nya lösenord",
+    "confirmPasswordHelperText": "Båda lösenorden måste matcha.",
+    "passwordChangedSuccess": "Lösenord ändrat framgångsrikt!",
+    "passwordChangedFailed": "Misslyckades med att uppdatera lösenord!",
+    "saveChange": "Spara ändring"
+  },
+  "userInfo": {
+    "noMembership": "Du har ingen",
+    "membershipSuffix": " medlemskap!!",
+    "upgradeButton": "Uppgradera"
+  },
+  "profileDialog": {
+    "title": "Profil",
+    "logout": "Logga ut",
+    "copyright": "Upphovsrätt © {{year}} {{company}}. Alla rättigheter förbehållna.",
+    "profileSetting": "Profilinställningar",
+    "termsOfService": "Användarvillkor | Sekretesspolicy",
+    "becomePartner": "Bli en partner"
+  },
+  "becomePartner": {
+    "title": "Bli en partner",
+    "description": "En av dessa tunnlar dirigerar trafik genom VPN-servern, medan den andra kringgår VPN och går direkt till Internetleverantören (ISP). I slutändan betyder det att användare kan välja vilka appar eller webbplatser som går genom VPN och vilka som inte gör det, vilket ger mer kontroll över hur deras onlineaktivitet delas.",
+    "startNow": "Börja nu!"
+  },
+  "twoFactorDialog": {
+    "title": "Bli en partner",
+    "securityMessage": "För ökad säkerhet, ställ in tvåfaktorsautentisering (2FA).",
+    "qrInstruction": "Skanna QR-koden med en autentiseringsapp och ange koden nedan.",
+    "authCodeLabel": "Autentiseringskod",
+    "authCodePlaceholder": "Ange autentiseringskod",
+    "backButton": "Tillbaka",
+    "nextStepButton": "Nästa steg"
+  },
+  "kycInfoDialog": {
+    "title": "Bli en partner",
+    "description": "För att slutföra din registrering måste du genomföra KYC-processen. Du måste tillhandahålla identitetsdokument och annan nödvändig information.",
+    "doKycNow": "Gör KYC nu",
+    "backButton": "Tillbaka",
+    "nextStepButton": "Nästa steg"
+  },
+  "personalInfoDialog": {
+    "title": "Bli en partner",
+    "fullnameLabel": "FULLSTÄNDIGT NAMN",
+    "fullnamePlaceholder": "Ange ditt fullständiga namn",
+    "emailLabel": "E-POST",
+    "emailPlaceholder": "Ange din e-postadress",
+    "countryLabel": "Land",
+    "countryPlaceholder": "Välj ett land",
+    "cityLabel": "Stad",
+    "cityPlaceholder": "Välj en stad",
+    "streetLabel": "Gata",
+    "streetPlaceholder": "Ange gatunamn",
+    "buildingLabel": "Byggnadsnummer",
+    "buildingPlaceholder": "Ange byggnadsnummer",
+    "zipcodeLabel": "Postnummer",
+    "zipcodePlaceholder": "Ange postnummer",
+    "walletLabel": "USDC Polygon plånboksadress",
+    "walletPlaceholder": "Ange plånboksadress",
+    "updateFailed": "Misslyckades med att uppdatera profil! Vänligen försök igen"
+  },
+  "successDialog": {
+    "requestSent": "Din förfrågan har skickats!",
+    "reviewMessage": "Administratörerna kommer att granska det och skicka resultatet till din e-post inom de närmaste 24 timmarna.",
+    "backToHome": "Tillbaka till hem"
+  },
+  "portfolioTable": {
+    "strategyPlan": "Strategiplan",
+    "plannedInvestment": "Planerad investering",
+    "enterAmount": "Ange belopp",
+    "upgradeMessage": "Genom att uppgradera kan prenumeranter få tillgång till ytterligare förmåner, förbättrade funktioner och premiuminnehåll som inte är tillgängligt i deras nuvarande plan.",
+    "strategy": "Strategi"
+  },
+  "portfolioNotice": {
+    "note": "NOTERA:",
+    "message": "Genom att uppgradera kan prenumeranter få tillgång till ytterligare förmåner, förbättrade funktioner och premiuminnehåll som inte är tillgängligt i deras nuvarande plan."
+  },
+  "portfolioStrategiesInnerSection": {
+    "upgradeMessage": "Du bör uppgradera ditt paket för att se denna information"
+  },
+  "videoList": {
+    "educationVideos": "Utbildningsvideor",
+    "searchPlaceholder": "Sök"
+  },
+  "educationSingleVideoSection": {
+    "by": "AV",
+    "duration": "VARAKTIGHET",
+    "upgradeMessage": "Du bör uppgradera ditt paket för att se denna information"
+  },
+  "categoryItem": {
+    "moreDetails": "Mer information"
+  },
+  "categories": {
+    "title": "Kategorier"
+  },
+  "welcomeBanner": {
+    "hi": "Hej {{name}}",
+    "welcomeBack": "👋, Välkommen tillbaka!",
+    "knowledgeMessage": "Kunskap är makt på marknaden; visdom är att veta hur man använder den!",
+    "welcomeVideo": "Välkomstvideo",
+    "youAre": "Du är en"
+  },
+  "socialMedia": {
+    "title": "Sociala medier"
+  },
+  "liveFeed": {
+    "title": "Direktflöde"
+  },
+  "dashboardSection": {
+    "incompletePaymentAlert": "Oavslutad betalningsvarning",
+    "incompletePaymentDescription": "Din uppgradering till {{planType}}-paketet är pågående på grund av en oavslutad betalning. Vänligen slutför din betalning för att slutföra uppgraderingen."
+  },
+  "dropZone": {
+    "subtitle": "Vi arbetar för närvarande på denna funktion."
+  },
+  "roadMap": {
+    "title": "Vägkarta"
+  },
+  "coinReportTable": {
+    "standardCoinReports": "Standardmynt-rapporter",
+    "coinReports": "Mynt-rapporter"
+  },
+  "coinReportNotice": {
+    "importantNotice": "VIKTIGT MEDDELANDE:",
+    "message": "Värdena och prognoserna som presenteras här är baserade på våra personliga bedömningar av marknaden och utgör inte köprekommendationer eller någon form av garantier. Alla investeringar medför risker, och det är viktigt att erkänna riskvarningen som bekräftades under registreringen. Otillåten spridning av den tillhandahållna informationen kommer att bli föremål för straffrättslig åtal och kommer att resultera i en permanent kontosuspension.",
+    "viewMore": "VISA MER...",
+    "viewLess": "VISA MINDRE..."
+  },
+  "learningBanner": {
+    "title": "Vill du se hur det fungerar?",
+    "buttonText": "Utbildningsvideo"
+  },
+  "affiliateSection": {
+    "dashboard": "Instrumentpanel",
+    "statistics": "Statistik",
+    "comingSoon": "Kommer snart",
+    "network": "Nätverk",
+    "commissions": "Provisioner",
+    "payouts": "Utbetalningar"
+  },
+  "affiliateHeader": {
+    "yourReferralLink": "Din hänvisningslänk",
+    "shareWithAudience": "Detta är din hänvisnings-URL. Dela den med din publik för att tjäna provisioner.",
+    "copyCode": "Kopiera kod"
+  },
+  "affStatisticsTab": {
+    "comingSoon": "KOMMER SNART",
+    "upgradeMessage": "Genom att uppgradera kan prenumeranter få tillgång till ytterligare förmåner, förbättrade funktioner och premiuminnehåll som inte är tillgängligt i deras nuvarande plan."
+  },
+  "affPayoutsTab": {
+    "setupWalletMessage": "Ställ in din plånbok så att vi kan skicka pengarna till dig.",
+    "changeWallet": "Ändra plånbok",
+    "setupWallet": "Ställ in plånbok"
+  },
+  "affPayoutsTabTable": {
+    "userId": "Användar-ID",
+    "walletId": "Plånboks-ID",
+    "amount": "Belopp",
+    "date": "Datum",
+    "status": "Status",
+    "payouts": "Utbetalningar",
+    "emptyTitle": "Du har inga utbetalningar ännu",
+    "emptySubtitle": "Spåra vinster, förluster och värderingar allt på ett ställe.",
+    "from": "FRÅN",
+    "to": "TILL",
+    "dateAndTime": "Datum och tid"
+  },
+  "affNetworkTabTable": {
+    "username": "Användarnamn",
+    "package": "Paket",
+    "joinedDate": "Gick med",
+    "moneyMade": "Tjänat pengar?"
+  },
+  "affNetworkTab": {
+    "table": "Tabell",
+    "chart": "Diagram",
+    "comingSoon": "Kommer snart"
+  },
+  "affNetworkTabChart": {
+    "comingSoon": "KOMMER SNART",
+    "upgradeMessage": "Genom att uppgradera kan prenumeranter få tillgång till ytterligare förmåner, förbättrade funktioner och premiuminnehåll som inte är tillgängligt i deras nuvarande plan."
+  },
+  "afDashboardTab": {
+    "totalTurnover": "Total omsättning",
+    "commissionWallet": "Provisionsplånbok",
+    "withdraw": "Ta ut",
+    "currentRank": "Nuvarande rang",
+    "overrideBonus": "Överdrivningsbonus",
+    "goldCoins": "Guldmynt",
+    "first": "Först",
+    "second": "Andra",
+    "third": "Tredje",
+    "other": "Annat",
+    "overall": "Totalt",
+    "nextRank": "Nästa rang",
+    "teamMembers": "Lagmedlemmar",
+    "firstLineVolume": "Första linjens volym"
+  },
+  "affCommissionsTabTable": {
+    "userID": "Användar-ID",
+    "amount": "Belopp",
+    "packageName": "Paketnamn",
+    "percentage": "Procent",
+    "commissionDate": "Provisionsdatum",
+    "commissionsTitle": "Provisioner",
+    "noRecord": "Du har inga provisionsuppgifter ännu"
+  },
+  "affCommissionsTab": {
+    "totalTurnover": "Total omsättning",
+    "totalCommission": "Total provision",
+    "availableForWithdraw": "Tillgängligt för uttag",
+    "withdraw": "Ta ut"
+  },
+  "empty": {
+    "thereIsNothingToShow": "Det finns inget att visa!"
+  },
+  "loading": {
+    "onLoading": "Laddar..."
+  }
+}

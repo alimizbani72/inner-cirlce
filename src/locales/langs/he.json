@@ -1,0 +1,411 @@
+{
+  "global": {
+    "authLayout": "לפשט ולשפר את חווית ההשקעה במטבעות קריפטו לכל הרמות.",
+    "comingSoon": "בקרוב",
+    "strategy": "אסטרטגיה",
+    "suspended": "החשבון שלך הושהה, אנא צור קשר עם המנהל שלך"
+  },
+  "button": {
+    "cancel": "בטל",
+    "continue": "המשך",
+    "upgrade": "שדרג",
+    "buyNow": "קנה עכשיו",
+    "backHome": "חזור לדף הבית",
+    "back": "חזור",
+    "nextStep": "שלב הבא",
+    "seeStrategies": "ראה אסטרטגיות"
+  },
+  "createAccount": {
+    "title": "צור חשבון",
+    "subtitle": "ראה את הצמיחה שלך וקבל תמיכה ייעוצית!",
+    "registerWithGoogle": "הירשם עם Google",
+    "orContinueWithEmail": "או המשך עם דואר אלקטרוני",
+    "fullNameLabel": "שם מלא",
+    "fullNamePlaceholder": "הכנס את שמך המלא",
+    "emailLabel": "כתובת דוא\"ל",
+    "emailPlaceholder": "הכנס את כתובת הדוא\"ל שלך",
+    "passwordLabel": "סיסמה",
+    "passwordPlaceholder": "הכנס את הסיסמה שלך",
+    "inviteCodeLabel": "הממליץ שלך",
+    "agreeToTerms": "אני מסכים ל",
+    "termsAndConditions": "תנאים והגבלות",
+    "createAccountButton": "צור חשבון",
+    "alreadyHaveAccount": "כבר יש לך חשבון?",
+    "login": "התחבר"
+  },
+  "emailVerification": {
+    "title": "אימות דוא\"ל",
+    "subtitle": "הזן את קוד בן 5 הספרות ששלחנו אל",
+    "placeholderEmail": "Ricknovak@example.com",
+    "verifyCodeLabel": "אמת קוד",
+    "backButton": "חזור",
+    "resend": "שלח שוב",
+    "resendWithTimer": "שלח שוב",
+    "checkSpam": "לא קיבלת את המייל? בדוק את מסנן הספאם או נסה כתובת דוא\"ל אחרת"
+  },
+  "passwordRecovery": {
+    "title": "שחזור סיסמה",
+    "subtitle": "אנחנו נעזור לך לשחזר את הסיסמה אם שכחת.",
+    "emailLabel": "כתובת דוא\"ל",
+    "emailPlaceholder": "הכנס את כתובת הדוא\"ל שלך",
+    "backButton": "חזור",
+    "continueButton": "המשך"
+  },
+  "resetPassword": {
+    "title": "איפוס סיסמה",
+    "subtitle": "בחר סיסמה חדשה וחזקה באורך מינימום 8 תווים",
+    "newPasswordLabel": "סיסמה חדשה",
+    "newPasswordPlaceholder": "הכנס את הסיסמה החדשה שלך",
+    "confirmNewPasswordLabel": "אשר סיסמה חדשה",
+    "confirmNewPasswordPlaceholder": "הכנס שוב את הסיסמה החדשה שלך",
+    "resetPasswordButton": "אפס סיסמה"
+  },
+  "login": {
+    "title": "התחבר לחשבונך",
+    "loginWithGoogle": "התחבר עם Google",
+    "rememberMe": "זכור אותי",
+    "forgotPassword": "שכחת סיסמה?",
+    "loginButton": "התחבר",
+    "noAccount": "אין לך חשבון?",
+    "register": "הרשם"
+  },
+  "formErrors": {
+    "requiredName": "אנא הכנס את שמך המלא",
+    "requiredPassword": "אנא הכנס את הסיסמה שלך",
+    "confirmPassword": "שתי הסיסמאות חייבות להיות זהות.",
+    "passwordPattern": "חייב להכיל 8 תווים, אות גדולה אחת, אות קטנה אחת, מספר אחד ותו מיוחד אחד",
+    "invalidEmail": "כתובת הדוא\"ל אינה נכונה",
+    "requiredEmail": "אנא הכנס את כתובת הדוא\"ל שלך",
+    "requiredTerms": "יש לקבל את התנאים וההגבלות.",
+    "formError": "משהו השתבש, אנא נסה שוב",
+    "requiredCode": "הערך שגוי, נסה שוב.",
+    "userNotFound": "כתובת הדוא\"ל אינה קיימת",
+    "emailExists": "כתובת הדוא\"ל כבר קיימת",
+    "requiredNewPassword": "אנא הכנס את הסיסמה החדשה שלך",
+    "newPasswordPattern": "חייב להכיל 8 תווים, אות גדולה אחת, אות קטנה אחת, מספר אחד ותו מיוחד אחד",
+    "requiredCurrentPassword": "אנא הכנס את הסיסמה הנוכחית שלך",
+    "required": "שדה זה חובה",
+    "invalidWallet": "כתובת ארנק Polygon לא חוקית"
+  },
+  "sidebar": {
+    "services": "שירותים",
+    "community": "קהילה",
+    "dashboard": "לוח מחוונים",
+    "coin-reports": "דוחות מטבעות",
+    "portfolio-strategies": "אסטרטגיות תיק השקעות",
+    "affiliate": "שותפים",
+    "education": "חינוך",
+    "help-center": "מרכז עזרה"
+  },
+  "wallet": {
+    "requiredAddress": "כתובת ארנק USDC Polygon (Matic) חובה",
+    "requiredName": "השם נדרש",
+    "successMessage": "כתובת הארנק שלך עודכנה בהצלחה.",
+    "setupWallet": "הגדר את הארנק שלך",
+    "addressInputLabel": "כתובת ארנק USDC Polygon (Matic)",
+    "addressInputPlaceholder": "הכנס כתובת ארנק USDC Polygon (Matic)",
+    "nameInputLabel": "הכינוי האישי שלך",
+    "nameInputPlaceholder": "הכנס את הכינוי האישי שלך",
+    "saveButton": "שמור ארנק"
+  },
+  "plan": {
+    "currentPlan": "התוכנית הנוכחית שלך",
+    "upgradePlan": "שדרג את התוכנית שלך!",
+    "compares": "השווה תוכניות"
+  },
+  "withdraw": {
+    "Withdraw": "משוך",
+    "requiredAmount": "הסכום נדרש",
+    "requiredWallet": "כתובת הארנק נדרשת",
+    "submitRequest": "הבקשה שלך נשלחה בהצלחה.",
+    "availableWithdraw": "זמין למשיכה",
+    "amount": "סכום",
+    "enterAmount": "הכנס את הסכום",
+    "address": "כתובת",
+    "feeWithdrawal": "יהיה תשלום של 3% על המשיכה.",
+    "minimumAmount": "הסכום המינימלי למשיכה הוא 100 יורו."
+  },
+  "notFound": {
+    "title": "אבוד בחלל.",
+    "subtitle": "הגעת לקצה היקום"
+  },
+  "payment": {
+    "successTitle": "תשלום מוצלח!",
+    "successSubtitle": "התשלום שלך עובר בהצלחה. המנוי שלך פעיל כעת. תודה על הרכישה שלך!",
+    "successTexture": "מוצלח • מוצלח • מוצלח",
+    "failTitle": "תשלום נכשל!",
+    "failSubtitle": "לא ניתן היה לעבד את התשלום שלך. המנוי שלך לא הופעל. אנא נסה שוב או צור קשר עם התמיכה לעזרה.",
+    "failTexture": "נכשל • נכשל • נכשל • נכשל"
+  },
+  "checkout": {
+    "title": "קופה",
+    "subscribeTo": "הירשם ל",
+    "plan": "תוכנית",
+    "payQr": "שלם עם קוד QR או כתובת ארנק",
+    "polygonNetwork": "רשת Polygon",
+    "expiredAt": "פג תוקף ב",
+    "amountToSend": "סכום לשליחה",
+    "paidAmount": "סכום ששולם"
+  },
+  "userProfile": {
+    "title": "פרופיל משתמש",
+    "choosePicError": "בחר את התמונה שלך!",
+    "avatarUpdatedSuccess": "הדמות עודכנה בהצלחה!",
+    "avatarUpdateFailed": "עדכון הדמות נכשל!",
+    "avatarRemovedSuccess": "הדמות הוסרה בהצלחה!",
+    "avatarRemoveFailed": "הסרת הדמות נכשלה!",
+    "uploadPicture": "העלה תמונה",
+    "remove": "הסר"
+  },
+  "settingsDialog": {
+    "profileSettings": "הגדרות פרופיל",
+    "nameRequired": "השם נדרש",
+    "invalidCharacter": "השם שלך לא יכול להכיל מספרים",
+    "nameUpdateSuccess": "שמך עודכן בהצלחה!",
+    "nameUpdateFailed": "עדכון השם נכשל!",
+    "fullName": "שם מלא",
+    "password": "סיסמה",
+    "change": "שנה",
+    "changePassword": "שנה סיסמה"
+  },
+  "forgetPassword": {
+    "forgotPassword": "שכחת סיסמה",
+    "createNewPassword": "צור סיסמה חדשה",
+    "passwordChanged": "הסיסמה שונתה בהצלחה!",
+    "failedToVerifyCode": "אימות הקוד נכשל!",
+    "newPassword": "סיסמה חדשה",
+    "enterNewPassword": "הכנס את הסיסמה החדשה שלך",
+    "passwordHelperText": "השתמש ב-8 תווים או יותר עם שילוב של אותיות, מספרים וסימנים.",
+    "confirmNewPassword": "אשר סיסמה חדשה",
+    "confirmNewPasswordPlaceholder": "אשר את הסיסמה החדשה שלך",
+    "confirmPasswordHelperText": "שתי הסיסמאות חייבות להיות זהות.",
+    "resetPassword": "אפס סיסמה"
+  },
+  "changePassword": {
+    "title": "שנה סיסמה",
+    "currentPassword": "סיסמה נוכחית",
+    "enterCurrentPassword": "הכנס את הסיסמה הנוכחית שלך",
+    "forgotPassword": "שכחת סיסמה?",
+    "newPassword": "סיסמה חדשה",
+    "enterNewPassword": "הכנס את הסיסמה החדשה שלך",
+    "passwordHelperText": "השתמש ב-8 תווים או יותר עם שילוב של אותיות, מספרים וסימנים.",
+    "confirmNewPassword": "אשר סיסמה חדשה",
+    "confirmNewPasswordPlaceholder": "אשר את הסיסמה החדשה שלך",
+    "confirmPasswordHelperText": "שתי הסיסמאות חייבות להיות זהות.",
+    "passwordChangedSuccess": "הסיסמה שונתה בהצלחה!",
+    "passwordChangedFailed": "עדכון הסיסמה נכשל!",
+    "saveChange": "שמור שינוי"
+  },
+  "userInfo": {
+    "noMembership": "אין לך",
+    "membershipSuffix": " חברות!!",
+    "upgradeButton": "אנא שדרג"
+  },
+  "profileDialog": {
+    "title": "פרופיל",
+    "logout": "התנתק",
+    "copyright": "זכויות יוצרים © {{year}} {{company}}. כל הזכויות שמורות.",
+    "profileSetting": "הגדרות פרופיל",
+    "termsOfService": "תנאי שימוש | מדיניות פרטיות",
+    "becomePartner": "הפוך לשותף"
+  },
+  "becomePartner": {
+    "title": "הפוך לשותף",
+    "description": "אחד מהמנהרות הללו מפנה תנועה דרך שרת ה-VPN, בעוד שהשני עוקף את ה-VPN והולך ישירות לספק שירותי האינטרנט (ISP). בסופו של דבר, המשמעות היא שמשתמשים יכולים לבחור אילו אפליקציות או אתרים עוברים דרך ה-VPN ואילו לא, ומספקים שליטה רבה יותר על איך פעילותם המקוונת משותפת.",
+    "startNow": "התחל עכשיו!"
+  },
+  "twoFactorDialog": {
+    "title": "הפוך לשותף",
+    "securityMessage": "למען אבטחה נוספת, אנא הגדר אימות דו-שלבי (2FA).",
+    "qrInstruction": "סרוק את קוד ה-QR עם אפליקציית אימות והכנס את הקוד למטה.",
+    "authCodeLabel": "קוד אימות",
+    "authCodePlaceholder": "הכנס את קוד האימות",
+    "backButton": "חזור",
+    "nextStepButton": "שלב הבא"
+  },
+  "kycInfoDialog": {
+    "title": "הפוך לשותף",
+    "description": "כדי להשלים את הרישום שלך, תצטרך להשלים את תהליך KYC. תצטרך לספק מסמכי זהות ומידע נוסף הדרוש.",
+    "doKycNow": "בצע KYC עכשיו",
+    "backButton": "חזור",
+    "nextStepButton": "שלב הבא"
+  },
+  "personalInfoDialog": {
+    "title": "הפוך לשותף",
+    "fullnameLabel": "שם מלא",
+    "fullnamePlaceholder": "הכנס את שמך המלא",
+    "emailLabel": "דוא\"ל",
+    "emailPlaceholder": "הכנס את כתובת הדוא\"ל שלך",
+    "countryLabel": "מדינה",
+    "countryPlaceholder": "בחר מדינה",
+    "cityLabel": "עיר",
+    "cityPlaceholder": "בחר עיר",
+    "streetLabel": "רחוב",
+    "streetPlaceholder": "הכנס שם רחוב",
+    "buildingLabel": "מספר בניין",
+    "buildingPlaceholder": "הכנס מספר בניין",
+    "zipcodeLabel": "מיקוד",
+    "zipcodePlaceholder": "הכנס מיקוד",
+    "walletLabel": "כתובת ארנק USDC Polygon",
+    "walletPlaceholder": "הכנס כתובת ארנק",
+    "updateFailed": "עדכון הפרופיל נכשל! אנא נסה שוב"
+  },
+  "successDialog": {
+    "requestSent": "הבקשה שלך נשלחה!",
+    "reviewMessage": "המנהלים יבדקו את זה וישלחו את התוצאה לאימייל שלך ב-24 השעות הקרובות.",
+    "backToHome": "חזור לדף הבית"
+  },
+  "portfolioTable": {
+    "strategyPlan": "תוכנית אסטרטגיה",
+    "plannedInvestment": "השקעה מתוכננת",
+    "enterAmount": "הכנס סכום",
+    "upgradeMessage": "על ידי שדרוג, מנויים יכולים לגשת להטבות נוספות, תכונות מתקדמות ותוכן פרימיום שאינם זמינים בתוכניתם הנוכחית.",
+    "strategy": "אסטרטגיה"
+  },
+  "portfolioNotice": {
+    "note": "הערה:",
+    "message": "על ידי שדרוג, מנויים יכולים לגשת להטבות נוספות, תכונות מתקדמות ותוכן פרימיום שאינם זמינים בתוכניתם הנוכחית."
+  },
+  "portfolioStrategiesInnerSection": {
+    "upgradeMessage": "עליך לשדרג את החבילה שלך כדי לראות מידע זה"
+  },
+  "videoList": {
+    "educationVideos": "סרטוני חינוך",
+    "searchPlaceholder": "חפש"
+  },
+  "educationSingleVideoSection": {
+    "by": "מאת",
+    "duration": "משך",
+    "upgradeMessage": "עליך לשדרג את החבילה שלך כדי לראות מידע זה"
+  },
+  "categoryItem": {
+    "moreDetails": "פרטים נוספים"
+  },
+  "categories": {
+    "title": "קטגוריות"
+  },
+  "welcomeBanner": {
+    "hi": "שלום {{name}}",
+    "welcomeBack": "👋, ברוך שובך!",
+    "knowledgeMessage": "ידע הוא כוח בשוק; חוכמה היא לדעת איך להשתמש בו!",
+    "welcomeVideo": "סרטון ברוכים הבאים",
+    "youAre": "אתה"
+  },
+  "socialMedia": {
+    "title": "רשתות חברתיות"
+  },
+  "liveFeed": {
+    "title": "פיד חי"
+  },
+  "dashboardSection": {
+    "incompletePaymentAlert": "התראה על תשלום לא שלם",
+    "incompletePaymentDescription": "השדרוג שלך לחבילת {{planType}} ממתין עקב תשלום לא שלם. אנא השלם את התשלום כדי לסיים את השדרוג."
+  },
+  "dropZone": {
+    "subtitle": "אנו עובדים כעת על תכונה זו."
+  },
+  "roadMap": {
+    "title": "מפת דרכים"
+  },
+  "coinReportTable": {
+    "standardCoinReports": "דוחות מטבעות סטנדרטיים",
+    "coinReports": "דוחות מטבעות"
+  },
+  "coinReportNotice": {
+    "importantNotice": "הודעה חשובה:",
+    "message": "הערכים והתחזיות המוצגות כאן מבוססים על ההערכות האישיות שלנו לגבי השוק ואינן מהוות המלצות קנייה או כל סוג של ערבויות. כל השקעות כרוכות בסיכונים, וחיוני להכיר באחריות הסיכונים המאושרת במהלך הרישום. הפצה בלתי מורשית של המידע המסופק תיחשב לעבירה פלילית ותגרום להשעיה קבועה של החשבון.",
+    "viewMore": "הצג עוד...",
+    "viewLess": "הצג פחות..."
+  },
+  "learningBanner": {
+    "title": "רוצה לראות איך זה עובד?",
+    "buttonText": "סרטון לימוד"
+  },
+  "affiliateSection": {
+    "dashboard": "לוח מחוונים",
+    "statistics": "סטטיסטיקות",
+    "comingSoon": "בקרוב",
+    "network": "רשת",
+    "commissions": "עמלות",
+    "payouts": "תשלומים"
+  },
+  "affiliateHeader": {
+    "yourReferralLink": "קישור ההפניה שלך",
+    "shareWithAudience": "זהו קישור ההפניה שלך. שתף אותו עם הקהל שלך כדי להרוויח עמלות.",
+    "copyCode": "העתק קוד"
+  },
+  "affStatisticsTab": {
+    "comingSoon": "בקרוב",
+    "upgradeMessage": "על ידי שדרוג, מנויים יכולים לגשת להטבות נוספות, תכונות מתקדמות ותוכן פרימיום שאינם זמינים בתוכניתם הנוכחית."
+  },
+  "affPayoutsTab": {
+    "setupWalletMessage": "הגדר את הארנק שלך כדי שנוכל לשלוח לך את הכסף.",
+    "changeWallet": "שנה ארנק",
+    "setupWallet": "הגדר ארנק"
+  },
+  "affPayoutsTabTable": {
+    "userId": "מזהה משתמש",
+    "walletId": "מזהה ארנק",
+    "amount": "סכום",
+    "date": "תאריך",
+    "status": "סטטוס",
+    "payouts": "תשלומים",
+    "emptyTitle": "אין לך תשלומים כרגע",
+    "emptySubtitle": "עקוב אחרי רווחים, הפסדים והערכות במקום אחד.",
+    "from": "מ",
+    "to": "אל",
+    "dateAndTime": "תאריך ושעה"
+  },
+  "affNetworkTabTable": {
+    "username": "שם משתמש",
+    "package": "חבילה",
+    "joinedDate": "תאריך הצטרפות",
+    "moneyMade": "האם הרווחת כסף?"
+  },
+  "affNetworkTab": {
+    "table": "טבלה",
+    "chart": "גרף",
+    "comingSoon": "בקרוב"
+  },
+  "affNetworkTabChart": {
+    "comingSoon": "בקרוב",
+    "upgradeMessage": "על ידי שדרוג, מנויים יכולים לגשת להטבות נוספות, תכונות מתקדמות ותוכן פרימיום שאינם זמינים בתוכניתם הנוכחית."
+  },
+  "afDashboardTab": {
+    "totalTurnover": "מחזור כולל",
+    "commissionWallet": "ארנק עמלות",
+    "withdraw": "משוך",
+    "currentRank": "דירוג נוכחי",
+    "overrideBonus": "בונוס גובר",
+    "goldCoins": "מטבעות זהב",
+    "first": "ראשון",
+    "second": "שני",
+    "third": "שלישי",
+    "other": "אחר",
+    "overall": "בסך הכל",
+    "nextRank": "דירוג הבא",
+    "teamMembers": "חברי צוות",
+    "firstLineVolume": "נפח קו ראשון"
+  },
+  "affCommissionsTabTable": {
+    "userID": "מזהה משתמש",
+    "amount": "סכום",
+    "packageName": "שם החבילה",
+    "percentage": "אחוז",
+    "commissionDate": "תאריך העמלה",
+    "commissionsTitle": "עמלות",
+    "noRecord": "אין לך רשומת עמלות כרגע"
+  },
+  "affCommissionsTab": {
+    "totalTurnover": "מחזור כולל",
+    "totalCommission": "סה\"כ עמלות",
+    "availableForWithdraw": "זמין למשיכה",
+    "withdraw": "משוך"
+  },
+  "empty": {
+    "thereIsNothingToShow": "אין מה להראות!"
+  },
+  "loading": {
+    "onLoading": "בטעינה..."
+  }
+}
