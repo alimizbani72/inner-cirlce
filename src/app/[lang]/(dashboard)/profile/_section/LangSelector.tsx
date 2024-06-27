@@ -4,7 +4,6 @@ import { Icon } from "@/components/icons";
 import { useState } from "react";
 import { useAppSelector } from "@/lib/hooks";
 import { selectLang } from "@/lib/features/dictionary/dicSlice";
-import { useAppRouter } from "@/routes/hooks";
 import { handleLanguageChange } from "@/utils/handleLanguageChange";
 import { usePathname } from "next/navigation";
 import { useIsMobile } from "@/hooks/use-responsive";
@@ -62,10 +61,9 @@ function LanguageSelect() {
   const isMobile = useIsMobile();
   const lang = useAppSelector(selectLang);
   const [language, setLanguage] = useState(lang);
-  const { replace } = useAppRouter();
   const pathName = usePathname();
   const handleChange = (event: any) => {
-    handleLanguageChange(pathName, event.target.value, replace);
+    handleLanguageChange(pathName, event.target.value);
     setLanguage(event.target.value);
   };
 
