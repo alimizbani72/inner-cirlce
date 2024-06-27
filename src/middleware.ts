@@ -4,7 +4,24 @@ import { getToken } from "next-auth/jwt";
 import Negotiator from "negotiator";
 import cookie from "cookie";
 
-const LOCALES: string[] = ["en", "de"];
+const LOCALES: string[] = [
+  "en",
+  "de",
+  "es",
+  "pt",
+  "sv",
+  "ru",
+  "fr",
+  "he",
+  "hi",
+  "ko",
+  "ja",
+  "th",
+  "tr",
+  "bn",
+  "vi",
+  "mn",
+];
 const DEFAULT_LOCALE: string = "en";
 const AUTH_SECRET: string | undefined = process.env.NEXTAUTH_SECRET;
 
