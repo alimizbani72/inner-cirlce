@@ -2,7 +2,8 @@
   "global": {
     "authLayout": "Para simplificar y mejorar la experiencia de inversión en criptomonedas para usuarios de todos los niveles.",
     "comingSoon": "PRÓXIMAMENTE",
-    "strategy": "Estrategia"
+    "strategy": "Estrategia",
+    "suspended": "Su cuenta está suspendida, por favor contacte a su administrador"
   },
   "plans": {
     "plankton": "Plankton",
@@ -104,12 +105,12 @@
     "help-center": "Centro de ayuda"
   },
   "wallet": {
-    "requiredAddress": "Se requiere la dirección de la billetera ERC-20",
+    "requiredAddress": "Se requiere la dirección de la billetera USDC Polygon (Matic)",
     "requiredName": "Se requiere nombre",
     "successMessage": "Su dirección de billetera se ha actualizado correctamente.",
     "setupWallet": "Configure su billetera",
-    "addressInputLabel": "Dirección de billetera ERC-20",
-    "addressInputPlaceholder": "Ingrese la dirección de la billetera ERC-20",
+    "addressInputLabel": "Dirección de billetera USDC Polygon (Matic)",
+    "addressInputPlaceholder": "Ingrese la dirección de la billetera USDC Polygon (Matic)",
     "nameInputLabel": "Su seudónimo individual",
     "nameInputPlaceholder": "Ingrese su seudónimo individual",
     "saveButton": "Guardar billetera"
