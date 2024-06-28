@@ -123,7 +123,7 @@
     "enterAmount": "Ingrese la cantidad",
     "address": "Dirección",
     "feeWithdrawal": "Habrá una tarifa del 3% por retiro.",
-    "minimumAmount": "La cantidad mínima para el retiro es de 100 euros."
+    "minimumAmount": "La cantidad mínima para el retiro es de 100 dollars."
   },
   "notFound": {
     "title": "Perdido en el espacio.",

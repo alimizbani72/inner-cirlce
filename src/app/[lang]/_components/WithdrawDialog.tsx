@@ -11,7 +11,7 @@ import {
   useFinancialServiceFinancialWithdrawCreateMutation,
   useWalletServiceWalletDefaultQuery,
 } from "@minecraft/queries";
-import { formatCurrency } from "@/utils/toNumber";
+import { formatCurrency, toNumber } from "@/utils/toNumber";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { RHFTextField } from "@/components/hook-form";
@@ -40,10 +40,10 @@ const WithdrawDialog: FC<Props> = ({ close, open }) => {
 
   const methods = useForm({
     resolver: yupResolver(schema),
-    defaultValues: { amount: "", address: `USDC Polygon (Matic) : ${walletDefault?.data?.address}` },
+    defaultValues: { amount: "", address: `${walletDefault?.data?.address || ""}` },
     mode: "onSubmit",
   });
-  const { handleSubmit, reset, resetField } = methods;
+  const { handleSubmit, reset, resetField, watch } = methods;
 
   const onSubmit = handleSubmit((data) => {
     mutateAsync({
@@ -117,7 +117,11 @@ const WithdrawDialog: FC<Props> = ({ close, open }) => {
           <Button color="info" onClick={close}>
             {t("button.cancel")}
           </Button>
-          <LoadingButton loading={isPending} onClick={onSubmit}>
+          <LoadingButton
+            loading={isPending}
+            onClick={onSubmit}
+            disabled={!(toNumber(watch("amount")) > 0 && walletDefault?.data?.address)}
+          >
             {t("withdraw.Withdraw")}
           </LoadingButton>
         </Stack>

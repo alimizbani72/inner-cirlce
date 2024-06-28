@@ -8,10 +8,10 @@ import WithdrawDialog from "@app/_components/WithdrawDialog";
 import RiveComp from "@/components/RiveComp";
 import {
   useAccountServiceAuthUserinfoQuery,
-  useAffiliateServiceAffiliateBalanceQuery,
   useAffiliateServiceAffiliateChildrenQuery,
   useAffiliateServiceAffiliateMeQuery,
   useAffiliateServiceAffiliateProgressQuery,
+  useFinancialServiceFinancialInfoQuery,
 } from "@minecraft/queries";
 import { formatCurrency, toNumber } from "@/utils/toNumber";
 import { toPascalCase } from "@/utils/change-case";
@@ -50,7 +50,8 @@ const AFDashboardTab: FC = () => {
   const [openWithdrawDialog, setOpenWithdrawDialog] = useState(false);
   const { data: me } = useAffiliateServiceAffiliateMeQuery();
   const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
-  const { data: balance } = useAffiliateServiceAffiliateBalanceQuery();
+  // const { data: balance } = useAffiliateServiceAffiliateBalanceQuery();
+  const { data: balance } = useFinancialServiceFinancialInfoQuery();
   const { data: progress } = useAffiliateServiceAffiliateProgressQuery();
   const { data: children } = useAffiliateServiceAffiliateChildrenQuery();
 
@@ -92,7 +93,7 @@ const AFDashboardTab: FC = () => {
               <Icon name="Money--colorful" />
             </Stack>
             <Stack>
-              <Typography variant="h4-semi-bold">{formatCurrency(balance?.data!)}</Typography>
+              <Typography variant="h4-semi-bold">{formatCurrency(balance?.data?.available_for_withdraw)}</Typography>
               <Typography variant="p2-medium" color="grey.light">
                 {t("afDashboardTab.commissionWallet")}
               </Typography>

@@ -19,7 +19,7 @@
     "title": "Create your account",
     "subtitle": "See your growth and get consulting support!",
     "registerWithGoogle": "Register with Google",
-    "orContinueWithEmail": "Or Continue with Email",
+    "orContinueWithEmail": "Continue with Email",
     "fullNameLabel": "Full name",
     "fullNamePlaceholder": "Enter your full name",
     "emailLabel": "Email address",
@@ -123,7 +123,7 @@
     "enterAmount": "Enter the amount",
     "address": "Address",
     "feeWithdrawal": "There will be 3% fee for withdrawal.",
-    "minimumAmount": "The minimum amount for withdrawal are 100 Euro."
+    "minimumAmount": "The minimum amount for withdrawal are 100 dollars."
   },
   "notFound": {
     "title": "Lost in space.",

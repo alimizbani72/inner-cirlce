@@ -17,7 +17,6 @@ import { LoadingButton } from "@mui/lab";
 import { useSnackbar } from "notistack";
 import { useAppRouter } from "@/routes/hooks";
 import debounce from "lodash/debounce";
-import GoogleSignIn from "@app/(auth)/login/_section/GoogleSignIn";
 import { useSearchParams } from "next/navigation";
 import windowAvailable from "@/utils/windowAvailable";
 
@@ -139,7 +138,7 @@ const Register: FC = () => {
           {t("createAccount.subtitle")}
         </Typography>
       </Stack>
-      <GoogleSignIn />
+      {/* <GoogleSignIn /> */}
       <Divider>
         <Typography variant="p2-medium">{t("createAccount.orContinueWithEmail")}</Typography>
       </Divider>
