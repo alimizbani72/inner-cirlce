@@ -77,6 +77,7 @@ const EmailConfirm: FC = () => {
           email,
           policy_approved: true,
           session_code: exchangeRes.data?.session_code,
+          referral_code: sessionStorage.getItem("referral_code") || "",
           redirect: false,
         });
         setLoading(false);

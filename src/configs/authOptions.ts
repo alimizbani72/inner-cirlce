@@ -89,7 +89,7 @@ export const authOptions: NextAuthOptions = {
               email: credentials?.email,
               policy_approved: !!credentials.policy_approved,
               session_code: credentials?.session_code,
-              referral_code: sessionStorage.getItem("referral_code"),
+              referral_code: credentials?.referral_code,
             }),
           });
 
@@ -143,7 +143,6 @@ export const authOptions: NextAuthOptions = {
 
       if (account?.id_token) {
         try {
-          const referralCode = sessionStorage.getItem("referral_code");
           const response = await fetch(`${minecraftEndpoint}/auth/googleLogin`, {
             method: "POST",
             headers: {
@@ -151,7 +150,7 @@ export const authOptions: NextAuthOptions = {
             },
             body: JSON.stringify({
               google_id_token: account.id_token,
-              referral_code: referralCode,
+              referral_code: undefined,
             }),
           });
 
