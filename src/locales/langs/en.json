@@ -28,7 +28,7 @@
     "passwordPlaceholder": "Enter your password",
     "inviteCodeLabel": "Your Sponsor",
     "agreeToTerms": "I agree to the",
-    "termsAndConditions": "Terms & Conditions",
+    "termsAndConditions": "TERMS & CONDITIONS",
     "createAccountButton": "Create Account",
     "alreadyHaveAccount": "Already have an account?",
     "login": "Login"
@@ -319,7 +319,7 @@
   },
   "learningBanner": {
     "title": "Want to see how it works?",
-    "buttonText": "Learning Video"
+    "buttonText": "Watch Video"
   },
   "affiliateSection": {
     "dashboard": "Dashboard",

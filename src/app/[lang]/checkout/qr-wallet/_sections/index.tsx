@@ -17,6 +17,8 @@ import { useFinancialServiceFinancialPaymentsIdStatusQuery } from "@minecraft/qu
 import { useAppRouter } from "@/routes/hooks";
 import { useTranslate } from "@/locales";
 import { toPascalCase } from "@/utils/change-case";
+import StaticAlert from "@app/_components/StaticAlert";
+import { useGlobalCheckoutPageWarningServiceGetGlobalsCheckoutPageWarning } from "@cms/queries";
 
 type Props = { planType: string; id: string };
 
@@ -30,6 +32,7 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
   const isMobile = useIsMobile();
   const { copy } = useCopyToClipboard();
   const { push, back } = useAppRouter();
+  const { data: warningData } = useGlobalCheckoutPageWarningServiceGetGlobalsCheckoutPageWarning();
   const { data } = useFinancialServiceFinancialPaymentsIdStatusQuery({ id }, undefined, {
     refetchInterval: (response) => {
       if (response?.state?.data?.data?.status === "completed") {
@@ -147,7 +150,8 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
         >
           <Typography variant="h4-semi-bold">{t("checkout.payQr")}</Typography>
         </Stack>
-        <Divider flexItem sx={{ my: 3, borderColor: "rgba(255, 255, 255, 0.08)" }} />
+        <Divider flexItem sx={{ mt: 3, borderColor: "rgba(255, 255, 255, 0.08)" }} />
+        {warningData?.text && <StaticAlert title={warningData?.title!} description={warningData?.text!} />}
         <Stack
           position="relative"
           zIndex={2}
@@ -155,6 +159,7 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
           maxWidth={{ md: "434px" }}
           alignItems="center"
           px={3}
+          mt={3}
           flex={1}
         >
           <QRCodeWithIcon value={walletAddress} iconSrc="/assets/svg/usdc-polygon.svg" size={isMobile ? 200 : 140} />

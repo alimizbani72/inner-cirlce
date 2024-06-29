@@ -7,6 +7,7 @@ import { useMemo, useState, type FC } from "react";
 import TabContent from "./TabContent";
 import AffiliateHeader from "./Header";
 import { useTranslate } from "@/locales";
+import LearningBanner from "@dashboard/coin-reports/_sections/LearningBanner";
 
 const AffiliateSection: FC = () => {
   const { t } = useTranslate();
@@ -53,9 +54,12 @@ const AffiliateSection: FC = () => {
   };
 
   return (
-    <Stack flex={1}>
+    <Stack flex={1} py={{ md: 4, xs: 3 }}>
       {/* Header */}
-      <AffiliateHeader />
+      <Stack gap={4}>
+        <LearningBanner />
+        <AffiliateHeader />
+      </Stack>
 
       {/* Tabs */}
       <Scrollbar>

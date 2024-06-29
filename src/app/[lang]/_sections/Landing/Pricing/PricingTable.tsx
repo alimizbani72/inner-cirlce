@@ -1,5 +1,6 @@
 import { Icon } from "@/components/icons";
 import { Box, Button, Divider, Stack, Typography } from "@mui/material";
+import { useRouter } from "next/navigation";
 import type { FC } from "react";
 import { useMemo } from "react";
 
@@ -9,6 +10,7 @@ type Props = {
 };
 
 const PricingTable: FC<Props> = ({ plans, rows }) => {
+  const { push } = useRouter();
   const tableCelSx = useMemo(
     () => ({
       py: 3,
@@ -94,7 +96,9 @@ const PricingTable: FC<Props> = ({ plans, rows }) => {
                 justifyContent: "center",
               }}
             >
-              <Button sx={{ width: 208 }}>Choose Plan</Button>
+              <Button sx={{ width: 208 }} onClick={() => push("/pricing")}>
+                Choose Plan
+              </Button>
             </Stack>
             {index + 1 !== plans.length && <Divider flexItem orientation="horizontal" sx={{ borderWidth: "1px" }} />}
           </Stack>

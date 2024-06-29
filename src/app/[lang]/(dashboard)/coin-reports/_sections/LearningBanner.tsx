@@ -20,7 +20,7 @@ const LearningBanner = () => {
     setOpen(false);
   };
 
-  const vid = (data as any)?.filter((item: any) => item.videoPage === convertRoute(pathName));
+  const vid = data?.videos?.filter((item: any) => item.videoPage === convertRoute(pathName));
 
   if (!vid?.length) {
     return null;
@@ -32,7 +32,7 @@ const LearningBanner = () => {
         sx={{
           position: "relative",
           overflow: "hidden",
-          m: { md: 4, xs: 3 },
+          mx: { md: 4, xs: 3 },
           mb: "0 !important",
           borderRadius: 2,
           border: "1.5px solid",

@@ -29,7 +29,7 @@ const AffiliateHeader: FC = () => {
   };
 
   return (
-    <Stack p={{ md: 4, xs: 3 }}>
+    <Stack p={{ md: 4, xs: 3 }} sx={{ pt: "0 !important" }}>
       <ContentStack p={0} direction={{ md: "row" }}>
         <Stack p={3} gap={3} flex={1}>
           <Stack gap={0.5}>

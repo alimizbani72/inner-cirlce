@@ -48,9 +48,11 @@ const StaticAlert: FC<StaticAlertProps> = ({ title, description, variant = "dang
         </Typography>
       </Stack>
 
-      <Button color="info" sx={{ width: { md: "152px", xs: "100%" } }} onClick={onContinue}>
-        {t("button.continue")}
-      </Button>
+      {!!onContinue && (
+        <Button color="info" sx={{ width: { md: "152px", xs: "100%" } }} onClick={onContinue}>
+          {t("button.continue")}
+        </Button>
+      )}
     </Stack>
   );
 };

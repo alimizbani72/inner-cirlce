@@ -3,7 +3,7 @@ import { useMemo, useState, type FC } from "react";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { RHFCheckbox, RHFTextField } from "@/components/hook-form";
+import { RHFTextField } from "@/components/hook-form";
 import FormProvider from "@/components/hook-form/form-provider";
 
 import * as Yup from "yup";
@@ -74,8 +74,8 @@ const Login: FC = () => {
           placeholder={t("createAccount.passwordPlaceholder")}
           type="password"
         />
-        <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"}>
-          <RHFCheckbox label={<Typography variant="p2-regular">{t("login.rememberMe")}</Typography>} name="save" />
+        <Stack direction={"row"} justifyContent={"flex-end"} alignItems={"center"}>
+          {/* <RHFCheckbox label={<Typography variant="p2-regular">{t("login.rememberMe")}</Typography>} name="save" /> */}
           <Typography
             variant="p2-medium"
             color={"pink.light"}

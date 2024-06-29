@@ -21,7 +21,7 @@ const plans = [
     title: "Shrimp",
     image: "/assets/rive/shrimp.riv",
     description: "Dip your fins in. Crypto basics so simple, even shrimp get it.",
-    cost: 500,
+    cost: 532,
     onClick: () => ({}),
   },
   {
@@ -29,7 +29,7 @@ const plans = [
     title: "Fish",
     image: "/assets/rive/fish.riv",
     description: "Swim into crypto. Tips and tricks for the ambitious fish.",
-    cost: 2000,
+    cost: 2138,
     onClick: () => ({}),
   },
   {
@@ -37,7 +37,7 @@ const plans = [
     title: "Shark",
     image: "/assets/rive/shark.riv",
     description: "Dive deep. Apex predator insights to rule the crypto sea.",
-    cost: 5000,
+    cost: 5349,
     onClick: () => ({}),
   },
   {
@@ -45,18 +45,27 @@ const plans = [
     title: "Whale",
     image: "/assets/rive/whale_animation.riv",
     description: "Make waves. Exclusive access for those ready to whale around.",
-    cost: 10000,
+    cost: 10702,
     onClick: () => ({}),
   },
 ];
 
 const plansName = ["Shrimp", "Fish", "Shark", "Whale"];
+
 const rows = {
+  "Standard Coinreport": ["20+", "20+", "20+", "20+"],
   "Coinreports (10x)": ["3", "10", "15", "20+"],
   "Coinreports (100x)": [false, false, false, "10+"],
-  "Secret Gems": [false, false, false, "Unlimited"],
+  "Portfolio Strategies": ["3+", "3+", "6+", "8+"],
   "In depth Analysis": [true, true, true, true],
-  Price: ["€497", "€1,997", "€4,997", "€9,997"],
+  "Telegram Channel": [true, true, true, true],
+  "Early Access CM": [true, true, true, true],
+  "Lifetime Subscriptions": [true, true, true, true],
+  "Secret Gems": [false, false, false, "Unlimited"],
+  Workshops: [false, false, false, "3"],
+  "Inner Circle Group": [false, false, false, true],
+  "BETA Tester Access": [false, false, false, true],
+  "Special Bonuses": [false, false, false, true],
 };
 
 const Pricing: FC = () => {

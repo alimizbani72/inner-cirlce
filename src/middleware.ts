@@ -72,7 +72,14 @@ const handleAuthRedirection = (session: any, pathname: string, reqUrl: string, l
     return null;
   }
 
-  const publicRoutes = [`/${locale}/login/`, `/${locale}/register/`, `/${locale}/forgotpass/`, `/${locale}/resetpass/`];
+  const publicRoutes = [
+    `/${locale}/login/`,
+    `/${locale}/register/`,
+    `/${locale}/forgotpass/`,
+    `/${locale}/resetpass/`,
+    `/${locale}/terms-and-condition/`,
+    `/${locale}/disclaimer/`,
+  ];
 
   const isPublicRoute = publicRoutes.includes(pathname);
 

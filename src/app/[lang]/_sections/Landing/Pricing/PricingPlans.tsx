@@ -8,12 +8,14 @@ import { isOdd } from "@/utils/toNumber";
 import { Box, Button, Typography, Stack } from "@mui/material";
 
 import BlurTexture from "./BlurTexture";
+import { useRouter } from "next/navigation";
 
 interface PricingPlansProps {
   plans: { id: string; title: string; image: string; description: string; cost: number; onClick: VoidFunction }[];
 }
 
 const PricingPlans: FC<PricingPlansProps> = ({ plans }) => {
+  const { push } = useRouter();
   return (
     <LandingContainer gap={{ md: 6, xs: 4 }} alignItems={"center"}>
       <SectionTitle
@@ -103,7 +105,7 @@ const PricingPlans: FC<PricingPlansProps> = ({ plans }) => {
                     <Typography variant="h3-semi-bold">
                       {plan.cost ? fCurrency(plan.cost, "$0,0[.]00")?.replace("$", "€") : "FREE"}
                     </Typography>
-                    <Button>Get Started</Button>
+                    <Button onClick={() => push("/pricing")}>Get Started</Button>
                   </Stack>
                 </Stack>
               ))}

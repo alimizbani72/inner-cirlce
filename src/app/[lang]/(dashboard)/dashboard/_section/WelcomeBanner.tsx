@@ -25,7 +25,7 @@ const WelcomeBanner: FC = () => {
   const pathName = usePathname();
   const lang = useAppSelector(selectLang);
   const { data } = useGlobalVideoGlobalServiceGetGlobalsVideoGlobal({ locale: lang });
-  const vid = (data as any)?.filter((item: any) => item.videoPage === convertRoute(pathName));
+  const vid = data?.videos?.filter((item: any) => item.videoPage === convertRoute(pathName));
   return (
     <>
       <Stack sx={{ position: "relative", overflow: "hidden" }}>
@@ -84,13 +84,15 @@ const WelcomeBanner: FC = () => {
               </Box>
 
               <Typography variant="p2-medium" color={"grey.light"}>
-                {vid?.[0].title}
+                {vid?.[0]?.title}
               </Typography>
             </Stack>
 
-            <Button color="info" size="large" startIcon={<Icon name="Play" />} onClick={() => setOpen(true)}>
-              {t("welcomeBanner.welcomeVideo")}
-            </Button>
+            {!!vid?.length && (
+              <Button color="info" size="large" startIcon={<Icon name="Play" />} onClick={() => setOpen(true)}>
+                {t("welcomeBanner.welcomeVideo")}
+              </Button>
+            )}
           </Stack>
 
           <Stack
@@ -130,8 +132,8 @@ const WelcomeBanner: FC = () => {
           </Stack>
         </Stack>
       </Stack>
-      {!!open && !!vid.lenght && (
-        <LearningDialog open={open} close={handleClose} videoLink={vid?.[0].videoLink} title={vid?.[0].title} />
+      {!!open && !!vid?.length && (
+        <LearningDialog open={open} close={handleClose} videoLink={vid?.[0]?.videoLink} title={vid?.[0]?.title} />
       )}
     </>
   );

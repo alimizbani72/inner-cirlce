@@ -172,11 +172,31 @@ const Register: FC = () => {
         />
         <RHFTextField name="invite" label={t("createAccount.inviteCodeLabel")} InputProps={{ readOnly: true }} />
         <RHFCheckbox
+          sx={{
+            "&.MuiFormControlLabel-root": {
+              alignItems: "flex-start",
+            },
+          }}
           label={
-            <Typography variant="p2-regular" color="grey.light">
-              {t("createAccount.agreeToTerms")}{" "}
-              <Typography variant="p2-regular" component={"span"}>
-                {t("createAccount.termsAndConditions")}
+            // <Typography variant="p2-regular" color="grey.light">
+            //   {t("createAccount.agreeToTerms")}{" "}
+            //   <Typography variant="p2-regular" component={"span"}>
+            //     {t("createAccount.termsAndConditions")}
+            //   </Typography>
+            // </Typography>
+            <Typography variant="caption-regular" color="grey.light">
+              I have read the{" "}
+              <Typography variant="caption-regular" component={"a"} href="/terms-and-condition">
+                {t("createAccount.termsAndConditions")}{" "}
+              </Typography>
+              and the{" "}
+              <Typography variant="caption-regular" component={"a"} href="/disclaimer">
+                DISCLAIMER
+              </Typography>{" "}
+              and expressly accept them as part of the contract. I also agree and understand that by purchasing and
+              immediately accessing digital content,{" "}
+              <Typography variant="caption-regular" component={"span"}>
+                I waive my 14-day right of refund.
               </Typography>
             </Typography>
           }
