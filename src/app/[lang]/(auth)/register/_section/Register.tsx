@@ -19,6 +19,8 @@ import { useAppRouter } from "@/routes/hooks";
 import debounce from "lodash/debounce";
 import { useSearchParams } from "next/navigation";
 import windowAvailable from "@/utils/windowAvailable";
+import { parse } from "cookie";
+import GoogleSignIn from "@app/(auth)/login/_section/GoogleSignIn";
 
 const Register: FC = () => {
   const { t } = useTranslate();
@@ -28,8 +30,9 @@ const Register: FC = () => {
   const { enqueueSnackbar } = useSnackbar();
   const { email, name, password } = useAppSelector(getRegisterInfo);
   const referralCode = searchParams.get("sponsor") || "";
+
   if (referralCode && windowAvailable) {
-    sessionStorage.setItem("referral_code", referralCode);
+    document.cookie = `referral_code=${referralCode}; path=/; max-age=${60 * 60 * 24 * 1}`;
   }
   const FormSchema = useMemo(
     () =>
@@ -67,9 +70,9 @@ const Register: FC = () => {
 
   const { handleSubmit, control, watch, setError, clearErrors, trigger, formState, setValue } = methods;
 
-  if (windowAvailable && !watch("invite") && !!sessionStorage.getItem("referral_code")) {
-    setValue("invite", sessionStorage.getItem("referral_code"));
-  }
+  useEffect(() => {
+    setValue("invite", searchParams.get("sponsor") || parse(document.cookie).referral_code || "");
+  }, []);
 
   const { isValid } = formState;
 
@@ -138,7 +141,7 @@ const Register: FC = () => {
           {t("createAccount.subtitle")}
         </Typography>
       </Stack>
-      {/* <GoogleSignIn /> */}
+      <GoogleSignIn />
       <Divider>
         <Typography variant="p2-medium">{t("createAccount.orContinueWithEmail")}</Typography>
       </Divider>
