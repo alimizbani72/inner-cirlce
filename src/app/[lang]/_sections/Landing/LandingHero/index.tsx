@@ -1,11 +1,12 @@
 import { Button, Typography } from "@mui/material";
 import { Stack } from "@mui/system";
 import type { FC } from "react";
-import Illustration from "./Illustration";
 import LandingContainer from "../LandingContainer";
 import HiddenGems from "./HiddenGems";
 import { useIsMobile } from "@/hooks/use-responsive";
 import { Icon } from "@/components/icons";
+import Lottie from "lottie-react";
+import animationData from "@/assets/animations/IllustrationAnim.json";
 
 interface LandingHeroProps {}
 
@@ -65,7 +66,7 @@ const LandingHero: FC<LandingHeroProps> = () => {
         </Button>
       </Stack>
       <Stack flex={1} width={"100%"}>
-        <Illustration />
+        <Lottie animationData={animationData} className="flex justify-center items-center" loop={true} />
       </Stack>
     </LandingContainer>
   );

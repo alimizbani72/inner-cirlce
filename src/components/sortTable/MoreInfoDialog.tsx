@@ -6,7 +6,6 @@ import CustomDialog from "@/components/CustomDialog";
 import DialogContent from "@mui/material/DialogContent";
 import { Button, DialogActions, Divider, IconButton, Stack, Typography } from "@mui/material";
 import { useState, type FC } from "react";
-import VimeoPlayer from "../VimeoPlayer";
 import Link from "../Link";
 import type { MoreInfoData } from ".";
 
@@ -34,7 +33,7 @@ const MoreInfoDialog: FC<Props> = ({ close, open, data }) => {
       <Divider />
 
       <DialogContent dividers sx={{ p: 3 }}>
-        <VimeoPlayer
+        {/* <VimeoPlayer
           key={`${isBuyNow}`}
           sx={{
             iframe: {
@@ -45,23 +44,24 @@ const MoreInfoDialog: FC<Props> = ({ close, open, data }) => {
             },
           }}
           videoUrl={isBuyNow ? data?.how_to_buy_video_url : data?.video_url}
-        />
+        /> */}
+        <Typography>Coming Soon</Typography>
       </DialogContent>
       <DialogActions>
         <Stack width={"100%"} direction={"row"} justifyContent={"space-between"}>
-          <Button size="large" color="info" endIcon={<Icon name="Arrow-right" />}>
+          <Button size="large" color="info" endIcon={<Icon name="Arrow-right" />} disabled>
             <Link href={data?.link!} target="_blank" sx={{ color: "white" }}>
               More Information
             </Link>
           </Button>
           {isBuyNow ? (
-            <Button size="large" endIcon={<Icon name="Arrow-right" />}>
+            <Button size="large" endIcon={<Icon name="Arrow-right" />} disabled>
               <Link href={data?.how_to_buy_link!} sx={{ color: "white" }} target="_blank">
                 Buy Now
               </Link>
             </Button>
           ) : (
-            <Button size="large" endIcon={<Icon name="Arrow-right" />} onClick={() => setIsBuyNow(true)}>
+            <Button size="large" endIcon={<Icon name="Arrow-right" />} onClick={() => setIsBuyNow(true)} disabled>
               How To Buy
             </Button>
           )}

@@ -9,6 +9,7 @@ import { useContentServiceContentPortfolioStrategyPlanQuery } from "@minecraft/q
 import Empty from "@/components/Empty";
 import Loading from "@/components/Loading";
 import { useTranslate } from "@/locales";
+import LearningBanner from "@dashboard/coin-reports/_sections/LearningBanner";
 
 type Props = { pageTitle: string; plan: string };
 
@@ -39,6 +40,7 @@ const PortfolioStrategiesInnerSection: FC<Props> = ({ pageTitle, plan }) => {
 
   return (
     <Stack gap={3} py={{ md: 4, xs: 3 }}>
+      <LearningBanner />
       <Notice />
 
       <Table plan={plan} />
