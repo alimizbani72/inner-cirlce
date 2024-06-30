@@ -4,7 +4,7 @@ import PrivacySection from "./_section";
 // ----------------------------------------------------------------------
 
 export const metadata: Metadata = {
-  title: "Disclaimer",
+  title: "Privacy Policy",
 };
 
 export default async function Privacy() {
