@@ -49,7 +49,7 @@ const PlanCard: FC<Props> = ({ title, description, plan_type, cost, disabled, bu
           {title}
         </Typography>
         <Typography variant="p2-medium">{description}</Typography>
-        <Typography variant="h3-semi-bold">{fCurrency(cost, "$0,0[.]00")?.replace("$", "€")}</Typography>
+        <Typography variant="h3-semi-bold">{fCurrency(cost, "$0,0[.]00")}</Typography>
         <LoadingButton loading={isPending} onClick={handlePay} disabled={disabled}>
           {buttonText}
         </LoadingButton>

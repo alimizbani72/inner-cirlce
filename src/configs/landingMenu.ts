@@ -23,24 +23,20 @@ export const headerMenu = [
 
 export const footerMenu = [
   {
-    title: "Services",
-    link: "/services",
+    title: "Imprint",
+    link: "/imprint",
   },
   {
-    title: "About Us",
-    link: "/about-us",
+    title: "Terms & Conditions",
+    link: "/terms-and-condition",
   },
   {
-    title: "Pricing",
-    link: "/pricing",
+    title: "Privacy Policy",
+    link: "/privacy-policy",
   },
   {
-    title: "Blog",
-    link: "/blog",
-  },
-  {
-    title: "Contact Us",
-    link: "/contact-us",
+    title: "Disclaimer",
+    link: "/disclaimer",
   },
 ];
 

@@ -5,6 +5,7 @@ import { useIsMobile } from "@/hooks/use-responsive";
 import { Button, Stack } from "@mui/material";
 import type { FC } from "react";
 import LandingContainer from "./LandingContainer";
+import Link from "@/components/Link";
 
 interface HeaderProps {
   isLogin: boolean;
@@ -38,7 +39,9 @@ const Header: FC<HeaderProps> = ({ isLogin }) => {
           >
             <Icon name="Menu" />
           </IconButton> */}
-          <LogoType />
+          <Link href="/">
+            <LogoType />
+          </Link>
           {isLogin ? (
             <Button sx={{ ml: "auto" }} color="info" startIcon={<Icon name="User" />} href="/dashboard">
               Dashboard
@@ -51,7 +54,9 @@ const Header: FC<HeaderProps> = ({ isLogin }) => {
         </Stack>
       ) : (
         <LandingContainer direction={"row"} alignItems="center" gap={5} sx={{ px: 3, py: 4 }}>
-          <LogoType />
+          <Link href="/">
+            <LogoType />
+          </Link>
 
           <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
             <circle cx="4" cy="4" r="4" fill="#14162E" />

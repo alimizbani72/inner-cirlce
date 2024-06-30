@@ -103,7 +103,7 @@ const PricingPlans: FC<PricingPlansProps> = ({ plans }) => {
                       </Typography>
                     </Stack>
                     <Typography variant="h3-semi-bold">
-                      {plan.cost ? fCurrency(plan.cost, "$0,0[.]00")?.replace("$", "€") : "FREE"}
+                      {plan.cost ? fCurrency(plan.cost, "$0,0[.]00") : "FREE"}
                     </Typography>
                     <Button onClick={() => push("/pricing")}>Get Started</Button>
                   </Stack>

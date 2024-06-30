@@ -21,6 +21,7 @@ import { useSearchParams } from "next/navigation";
 import windowAvailable from "@/utils/windowAvailable";
 import { parse } from "cookie";
 import GoogleSignIn from "@app/(auth)/login/_section/GoogleSignIn";
+import Link from "@/components/Link";
 
 const Register: FC = () => {
   const { t } = useTranslate();
@@ -186,11 +187,11 @@ const Register: FC = () => {
             // </Typography>
             <Typography variant="caption-regular" color="grey.light">
               I have read the{" "}
-              <Typography variant="caption-regular" component={"a"} href="/terms-and-condition">
+              <Typography variant="caption-regular" component={Link} href="/terms-and-condition">
                 {t("createAccount.termsAndConditions")}{" "}
               </Typography>
               and the{" "}
-              <Typography variant="caption-regular" component={"a"} href="/disclaimer">
+              <Typography variant="caption-regular" component={Link} href="/disclaimer">
                 DISCLAIMER
               </Typography>{" "}
               and expressly accept them as part of the contract. I also agree and understand that by purchasing and
