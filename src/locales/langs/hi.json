@@ -1,9 +1,10 @@
 {
   "global": {
-    "authLayout": "सभी स्तरों के उपयोगकर्ताओं के लिए क्रिप्टोकरेंसी निवेश के अनुभव को सरल और बेहतर बनाना।",
-    "comingSoon": "जल्द ही आ रहा है",
+    "authLayout": "सभी स्तरों के उपयोगकर्ताओं के लिए क्रिप्टोक्यूरेंसी निवेश अनुभव को सरल और उन्नत करने के लिए।",
+    "comingSoon": "जल्द आ रहा है",
     "strategy": "रणनीति",
-    "suspended": "आपका खाता निलंबित कर दिया गया है, कृपया अपने व्यवस्थापक से संपर्क करें"
+    "suspended": "आपका खाता निलंबित है, कृपया अपने व्यवस्थापक से संपर्क करें",
+    "joinChainMind": "ChainMind में शामिल हों"
   },
   "button": {
     "cancel": "रद्द करें",
@@ -16,9 +17,9 @@
     "seeStrategies": "रणनीतियाँ देखें"
   },
   "createAccount": {
-    "title": "अपना खाता बनाएं",
-    "subtitle": "अपनी वृद्धि देखें और परामर्श सहायता प्राप्त करें!",
-    "registerWithGoogle": "गूगल के साथ पंजीकरण करें",
+    "title": "अपना खाता बनाएँ",
+    "subtitle": "अपनी वृद्धि देखें और परामर्श समर्थन प्राप्त करें!",
+    "registerWithGoogle": "Google के साथ पंजीकरण करें",
     "orContinueWithEmail": "या ईमेल के साथ जारी रखें",
     "fullNameLabel": "पूरा नाम",
     "fullNamePlaceholder": "अपना पूरा नाम दर्ज करें",
@@ -26,11 +27,11 @@
     "emailPlaceholder": "अपना ईमेल पता दर्ज करें",
     "passwordLabel": "पासवर्ड",
     "passwordPlaceholder": "अपना पासवर्ड दर्ज करें",
-    "inviteCodeLabel": "आपके प्रायोजक",
-    "agreeToTerms": "मैं सहमत हूँ",
-    "termsAndConditions": "नियम और शर्तें",
-    "createAccountButton": "खाता बनाएं",
-    "alreadyHaveAccount": "पहले से ही एक खाता है?",
+    "inviteCodeLabel": "आपका प्रायोजक",
+    "agreeToTerms": "मैं सहमत हूं",
+    "termsAndConditions": "मैंने {termsAndConditions} और {disclaimer} पढ़ा है और उन्हें अनुबंध का हिस्सा मानकर स्पष्ट रूप से स्वीकार करता हूं। मैं यह भी समझता हूं और सहमत हूं कि डिजिटल सामग्री की खरीद और तुरंत एक्सेस करने से, {refundWaiver}.",
+    "createAccountButton": "खाता बनाएँ",
+    "alreadyHaveAccount": "पहले से ही खाता है?",
     "login": "लॉगिन"
   },
   "emailVerification": {
@@ -41,11 +42,11 @@
     "backButton": "वापस",
     "resend": "फिर से भेजें",
     "resendWithTimer": "फिर से भेजें",
-    "checkSpam": "ईमेल प्राप्त नहीं हुआ? अपना स्पैम फ़िल्टर जांचें या कोई अन्य ईमेल पता आज़माएं"
+    "checkSpam": "ईमेल प्राप्त नहीं हुआ? अपने स्पैम फिल्टर की जाँच करें या कोई अन्य ईमेल पता आज़माएं"
   },
   "passwordRecovery": {
-    "title": "पासवर्ड पुनर्प्राप्ति",
-    "subtitle": "हम आपको पासवर्ड पुनर्प्राप्त करने में मदद करेंगे अगर आप भूल गए हैं।",
+    "title": "पासवर्ड रिकवरी",
+    "subtitle": "यदि आप भूल गए हैं तो हम आपको अपना पासवर्ड पुनर्प्राप्त करने में मदद करते हैं।",
     "emailLabel": "ईमेल पता",
     "emailPlaceholder": "अपना ईमेल पता दर्ज करें",
     "backButton": "वापस",
@@ -53,97 +54,103 @@
   },
   "resetPassword": {
     "title": "पासवर्ड रीसेट करें",
-    "subtitle": "8 वर्णों के न्यूनतम के नए और मजबूत पासवर्ड का चयन करें",
+    "subtitle": "कम से कम 8 वर्णों का एक नया और मजबूत पासवर्ड चुनें",
     "newPasswordLabel": "नया पासवर्ड",
     "newPasswordPlaceholder": "अपना नया पासवर्ड दर्ज करें",
-    "confirmNewPasswordLabel": "नया पासवर्ड पुष्ट करें",
+    "confirmNewPasswordLabel": "नया पासवर्ड पुष्टि करें",
     "confirmNewPasswordPlaceholder": "अपना नया पासवर्ड फिर से दर्ज करें",
-    "resetPasswordButton": "पासवर्ड रीसेट करें"
+    "resetPasswordButton": "पासवर्ड रीसेट करें",
+    "successChange": "आपका पासवर्ड सफलतापूर्वक बदल दिया गया है"
+  },
+  "register": {
+    "termsAndConditions": "नियम और शर्तें",
+    "disclaimer": "अस्वीकरण",
+    "refundWaiver": "मैं अपनी 14-दिन की वापसी अधिकार को त्यागता हूं।"
   },
   "login": {
     "title": "अपने खाते में लॉगिन करें",
-    "loginWithGoogle": "गूगल के साथ लॉगिन करें",
+    "loginWithGoogle": "Google के साथ लॉगिन करें",
     "rememberMe": "मुझे याद रखें",
     "forgotPassword": "पासवर्ड भूल गए?",
     "loginButton": "लॉगिन",
     "noAccount": "खाता नहीं है?",
-    "register": "पंजीकरण"
+    "register": "पंजीकरण करें"
   },
   "formErrors": {
     "requiredName": "कृपया अपना पूरा नाम दर्ज करें",
     "requiredPassword": "कृपया अपना पासवर्ड दर्ज करें",
-    "confirmPassword": "दोनों पासवर्ड मेल खाना चाहिए।",
-    "passwordPattern": "8 वर्ण, एक अपरकेस, एक लोअरकेस, एक संख्या और एक विशेष वर्ण होना चाहिए",
+    "confirmPassword": "दोनों पासवर्ड मेल खाने चाहिए।",
+    "passwordPattern": "8 वर्ण, एक बड़ा अक्षर, एक छोटा अक्षर, एक संख्या और एक विशेष वर्ण होना चाहिए",
     "invalidEmail": "ईमेल पता गलत है",
     "requiredEmail": "कृपया अपना ईमेल पता दर्ज करें",
-    "requiredTerms": "नियम और शर्तें स्वीकार की जानी चाहिए।",
-    "formError": "कुछ गलत हो गया, कृपया पुन: प्रयास करें",
-    "requiredCode": "मान गलत है, पुनः प्रयास करें।",
+    "requiredTerms": "नियम और शर्तें स्वीकार करनी होंगी।",
+    "formError": "कुछ गलत हो गया, कृपया फिर से प्रयास करें",
+    "requiredCode": "मूल्य गलत है, फिर से प्रयास करें।",
     "userNotFound": "ईमेल मौजूद नहीं है",
     "emailExists": "ईमेल पहले से मौजूद है",
     "requiredNewPassword": "कृपया अपना नया पासवर्ड दर्ज करें",
-    "newPasswordPattern": "8 वर्ण, एक अपरकेस, एक लोअरकेस, एक संख्या और एक विशेष वर्ण होना चाहिए",
+    "newPasswordPattern": "8 वर्ण, एक बड़ा अक्षर, एक छोटा अक्षर, एक संख्या और एक विशेष वर्ण होना चाहिए",
     "requiredCurrentPassword": "कृपया अपना वर्तमान पासवर्ड दर्ज करें",
     "required": "यह फ़ील्ड आवश्यक है",
-    "invalidWallet": "अमान्य पॉलीगॉन वॉलेट पता"
+    "invalidWallet": "अमान्य Polygon वॉलेट पता"
   },
   "sidebar": {
-    "services": "सेवाएं",
+    "services": "सेवाएँ",
     "community": "समुदाय",
     "dashboard": "डैशबोर्ड",
     "coin-reports": "कॉइन रिपोर्ट्स",
     "portfolio-strategies": "पोर्टफोलियो रणनीतियाँ",
-    "affiliate": "सहयोगी",
+    "affiliate": "संबद्ध",
     "education": "शिक्षा",
     "help-center": "सहायता केंद्र"
   },
   "wallet": {
-    "requiredAddress": "USDC पॉलीगॉन (मैटिक) वॉलेट पता आवश्यक है",
+    "requiredAddress": "USDC Polygon (Matic) वॉलेट पता आवश्यक है",
     "requiredName": "नाम आवश्यक है",
-    "successMessage": "आपका वॉलेट पता सफलतापूर्वक अपडेट कर दिया गया है।",
-    "setupWallet": "अपना वॉलेट सेट करें",
-    "addressInputLabel": "USDC पॉलीगॉन (मैटिक) वॉलेट पता",
-    "addressInputPlaceholder": "USDC पॉलीगॉन (मैटिक) वॉलेट पता दर्ज करें",
+    "successMessage": "आपका वॉलेट पता सफलतापूर्वक अपडेट किया गया है।",
+    "setupWallet": "अपना वॉलेट सेटअप करें",
+    "addressInputLabel": "USDC Polygon (Matic) वॉलेट पता",
+    "addressInputPlaceholder": "USDC Polygon (Matic) वॉलेट पता दर्ज करें",
     "nameInputLabel": "आपका व्यक्तिगत उपनाम",
     "nameInputPlaceholder": "अपना व्यक्तिगत उपनाम दर्ज करें",
     "saveButton": "वॉलेट सहेजें"
   },
   "plan": {
     "currentPlan": "आपकी वर्तमान योजना",
-    "upgradePlan": "अपनी योजना अपग्रेड करें!",
+    "upgradePlan": "अपनी योजना को अपग्रेड करें!",
     "compares": "योजनाओं की तुलना करें"
   },
   "withdraw": {
-    "Withdraw": "निकालें",
+    "Withdraw": "निकासी",
     "requiredAmount": "राशि आवश्यक है",
     "requiredWallet": "वॉलेट पता आवश्यक है",
-    "submitRequest": "आपका अनुरोध सफलतापूर्वक सबमिट हो गया है।",
-    "availableWithdraw": "निकालने के लिए उपलब्ध",
+    "submitRequest": "आपका अनुरोध सफलतापूर्वक जमा किया गया है।",
+    "availableWithdraw": "निकासी के लिए उपलब्ध",
     "amount": "राशि",
     "enterAmount": "राशि दर्ज करें",
     "address": "पता",
     "feeWithdrawal": "निकासी के लिए 3% शुल्क होगा।",
-    "minimumAmount": "निकासी के लिए न्यूनतम राशि 100 यूरो है।"
+    "minimumAmount": "निकासी के लिए न्यूनतम राशि 100 डॉलर है।"
   },
   "notFound": {
     "title": "अंतरिक्ष में खो गया।",
-    "subtitle": "आप ब्रह्मांड के किनारे पर पहुँच गए हैं"
+    "subtitle": "आप ब्रह्मांड के किनारे तक पहुंच गए हैं"
   },
   "payment": {
     "successTitle": "सफल भुगतान!",
-    "successSubtitle": "आपका भुगतान सफलतापूर्वक संसाधित हो गया है। आपकी सदस्यता अब सक्रिय है। आपकी खरीदारी के लिए धन्यवाद!",
+    "successSubtitle": "आपका भुगतान सफलतापूर्वक संसाधित हो गया है। आपकी सदस्यता अब सक्रिय है। आपकी खरीद के लिए धन्यवाद!",
     "successTexture": "सफल • सफल • सफल",
-    "failTitle": "भुगतान असफल!",
-    "failSubtitle": "आपका भुगतान संसाधित नहीं हो सका। आपकी सदस्यता सक्रिय नहीं हुई है। कृपया पुनः प्रयास करें या सहायता के लिए संपर्क करें।",
-    "failTexture": "असफल • असफल • असफल • असफल"
+    "failTitle": "भुगतान विफल!",
+    "failSubtitle": "आपका भुगतान संसाधित नहीं हो सका। आपकी सदस्यता सक्रिय नहीं की गई है। कृपया फिर से प्रयास करें या सहायता के लिए संपर्क करें।",
+    "failTexture": "विफल • विफल • विफल • विफल"
   },
   "checkout": {
     "title": "चेकआउट",
-    "subscribeTo": "सदस्यता लें",
+    "subscribeTo": "की सदस्यता लें",
     "plan": "योजना",
-    "payQr": "QR कोड या वॉलेट पता से भुगतान करें",
-    "polygonNetwork": "पॉलीगॉन नेटवर्क",
-    "expiredAt": "समाप्ति पर",
+    "payQr": "QR कोड या वॉलेट पते के साथ भुगतान करें",
+    "polygonNetwork": "Polygon नेटवर्क",
+    "expiredAt": "समाप्ति तिथि",
     "amountToSend": "भेजने के लिए राशि",
     "paidAmount": "भुगतान की गई राशि"
   },
@@ -152,7 +159,7 @@
     "choosePicError": "अपनी तस्वीर चुनें!",
     "avatarUpdatedSuccess": "अवतार सफलतापूर्वक अपडेट किया गया!",
     "avatarUpdateFailed": "अवतार अपडेट करने में विफल!",
-    "avatarRemovedSuccess": "अवतार सफलतापूर्वक हटाया गया!",
+    "avatarRemovedSuccess": "अवतार सफलतापूर्वक हटा दिया गया!",
     "avatarRemoveFailed": "अवतार हटाने में विफल!",
     "uploadPicture": "तस्वीर अपलोड करें",
     "remove": "हटाएं"
@@ -160,25 +167,25 @@
   "settingsDialog": {
     "profileSettings": "प्रोफ़ाइल सेटिंग्स",
     "nameRequired": "नाम आवश्यक है",
-    "invalidCharacter": "आपके नाम में संख्याएँ नहीं हो सकतीं",
+    "invalidCharacter": "आपका नाम संख्याएँ नहीं हो सकता",
     "nameUpdateSuccess": "आपका नाम सफलतापूर्वक अपडेट किया गया!",
     "nameUpdateFailed": "नाम अपडेट करने में विफल!",
     "fullName": "पूरा नाम",
     "password": "पासवर्ड",
-    "change": "बदलें",
+    "change": "परिवर्तन",
     "changePassword": "पासवर्ड बदलें"
   },
   "forgetPassword": {
     "forgotPassword": "पासवर्ड भूल गए",
-    "createNewPassword": "नया पासवर्ड बनाएं",
+    "createNewPassword": "नया पासवर्ड बनाएँ",
     "passwordChanged": "पासवर्ड सफलतापूर्वक बदल दिया गया!",
     "failedToVerifyCode": "कोड सत्यापित करने में विफल!",
     "newPassword": "नया पासवर्ड",
     "enterNewPassword": "अपना नया पासवर्ड दर्ज करें",
     "passwordHelperText": "अक्षरों, संख्याओं और प्रतीकों के मिश्रण के साथ 8 या अधिक वर्णों का उपयोग करें।",
     "confirmNewPassword": "नया पासवर्ड पुष्टि करें",
-    "confirmNewPasswordPlaceholder": "अपना नया पासवर्ड फिर से दर्ज करें",
-    "confirmPasswordHelperText": "दोनों पासवर्ड मेल खाना चाहिए।",
+    "confirmNewPasswordPlaceholder": "अपना नया पासवर्ड पुष्टि करें",
+    "confirmPasswordHelperText": "दोनों पासवर्ड मेल खाने चाहिए।",
     "resetPassword": "पासवर्ड रीसेट करें"
   },
   "changePassword": {
@@ -190,8 +197,8 @@
     "enterNewPassword": "अपना नया पासवर्ड दर्ज करें",
     "passwordHelperText": "अक्षरों, संख्याओं और प्रतीकों के मिश्रण के साथ 8 या अधिक वर्णों का उपयोग करें।",
     "confirmNewPassword": "नया पासवर्ड पुष्टि करें",
-    "confirmNewPasswordPlaceholder": "अपना नया पासवर्ड फिर से दर्ज करें",
-    "confirmPasswordHelperText": "दोनों पासवर्ड मेल खाना चाहिए।",
+    "confirmNewPasswordPlaceholder": "अपना नया पासवर्ड पुष्टि करें",
+    "confirmPasswordHelperText": "दोनों पासवर्ड मेल खाने चाहिए।",
     "passwordChangedSuccess": "पासवर्ड सफलतापूर्वक बदल दिया गया!",
     "passwordChangedFailed": "पासवर्ड अपडेट करने में विफल!",
     "saveChange": "परिवर्तन सहेजें"
@@ -204,20 +211,20 @@
   "profileDialog": {
     "title": "प्रोफ़ाइल",
     "logout": "लॉगआउट",
-    "copyright": "कॉपीराइट © {{year}} {{company}}. सर्वाधिकार सुरक्षित।",
+    "copyright": "कॉपीराइट © {{year}} {{company}}। सर्वाधिकार सुरक्षित।",
     "profileSetting": "प्रोफ़ाइल सेटिंग्स",
     "termsOfService": "उपयोग की शर्तें | गोपनीयता नीति",
     "becomePartner": "साझेदार बनें"
   },
   "becomePartner": {
     "title": "साझेदार बनें",
-    "description": "इनमें से एक सुरंग ट्रैफ़िक को वीपीएन सर्वर के माध्यम से निर्देशित करती है, जबकि दूसरी वीपीएन को बायपास करती है और सीधे इंटरनेट सेवा प्रदाता (आईएसपी) के पास जाती है। अंततः, इसका मतलब है कि उपयोगकर्ता यह चुन सकते हैं कि कौन से ऐप या वेबसाइट वीपीएन के माध्यम से जाएं और कौन से नहीं, उनके ऑनलाइन गतिविधि को साझा करने के तरीके पर अधिक नियंत्रण प्रदान करते हैं।",
-    "startNow": "अब करना शुरू करें!"
+    "description": "इनमें से एक सुरंगें ट्रैफ़िक को VPN सर्वर के माध्यम से निर्देशित करती हैं, जबकि दूसरी VPN को बायपास करती है और सीधे इंटरनेट सेवा प्रदाता (ISP) के पास जाती है। अंततः, इसका मतलब है कि उपयोगकर्ता यह चुन सकते हैं कि कौन से ऐप्स या वेबसाइटें VPN के माध्यम से जाती हैं और कौन सी नहीं, जिससे उनके ऑनलाइन गतिविधि को कैसे साझा किया जाता है उस पर अधिक नियंत्रण मिलता है।",
+    "startNow": "अभी शुरू करें!"
   },
   "twoFactorDialog": {
     "title": "साझेदार बनें",
-    "securityMessage": "अतिरिक्त सुरक्षा के लिए, कृपया टू-फैक्टर ऑथेंटिकेशन (2FA) सेट करें।",
-    "qrInstruction": "प्रमाणीकरण ऐप से QR कोड स्कैन करें और नीचे कोड दर्ज करें।",
+    "securityMessage": "अतिरिक्त सुरक्षा के लिए, कृपया टू-फैक्टर ऑथेंटिकेशन (2FA) सेटअप करें।",
+    "qrInstruction": "किसी प्रमाणीकरण ऐप के साथ QR कोड को स्कैन करें और नीचे कोड दर्ज करें।",
     "authCodeLabel": "प्रमाणीकरण कोड",
     "authCodePlaceholder": "प्रमाणीकरण कोड दर्ज करें",
     "backButton": "वापस",
@@ -242,32 +249,32 @@
     "cityPlaceholder": "शहर चुनें",
     "streetLabel": "सड़क",
     "streetPlaceholder": "सड़क का नाम दर्ज करें",
-    "buildingLabel": "इमारत संख्या",
-    "buildingPlaceholder": "इमारत संख्या दर्ज करें",
-    "zipcodeLabel": "ज़िप कोड",
-    "zipcodePlaceholder": "ज़िप कोड दर्ज करें",
-    "walletLabel": "USDC पॉलीगॉन वॉलेट पता",
+    "buildingLabel": "भवन संख्या",
+    "buildingPlaceholder": "भवन संख्या दर्ज करें",
+    "zipcodeLabel": "पिन कोड",
+    "zipcodePlaceholder": "पिन कोड दर्ज करें",
+    "walletLabel": "USDC Polygon वॉलेट पता",
     "walletPlaceholder": "वॉलेट पता दर्ज करें",
-    "updateFailed": "प्रोफ़ाइल अपडेट करने में विफल! कृपया पुन: प्रयास करें"
+    "updateFailed": "प्रोफ़ाइल अपडेट करने में विफल! कृपया पुनः प्रयास करें"
   },
   "successDialog": {
     "requestSent": "आपका अनुरोध भेजा गया!",
-    "reviewMessage": "व्यवस्थापक इसे समीक्षा करेंगे और अगले 24 घंटों में परिणाम आपके ईमेल पर भेजेंगे।",
+    "reviewMessage": "प्रशासक इसे समीक्षा करेंगे और अगले 24 घंटों में परिणाम आपके ईमेल पर भेजेंगे।",
     "backToHome": "होम पर वापस जाएं"
   },
   "portfolioTable": {
     "strategyPlan": "रणनीति योजना",
-    "plannedInvestment": "योजनाबद्ध निवेश",
+    "plannedInvestment": "योजना बनाई गई निवेश",
     "enterAmount": "राशि दर्ज करें",
-    "upgradeMessage": "अपग्रेड करने पर, ग्राहक अपने वर्तमान योजना में उपलब्ध नहीं अतिरिक्त लाभ, उन्नत कार्यक्षमताएं और प्रीमियम सामग्री का उपयोग कर सकते हैं।",
+    "upgradeMessage": "अपग्रेड करने से, ग्राहक अतिरिक्त लाभ, उन्नत कार्यक्षमताएँ और उनकी वर्तमान योजना में उपलब्ध नहीं प्रीमियम सामग्री तक पहुंच सकते हैं।",
     "strategy": "रणनीति"
   },
   "portfolioNotice": {
     "note": "नोट:",
-    "message": "अपग्रेड करने पर, ग्राहक अपने वर्तमान योजना में उपलब्ध नहीं अतिरिक्त लाभ, उन्नत कार्यक्षमताएं और प्रीमियम सामग्री का उपयोग कर सकते हैं।"
+    "message": "अपग्रेड करने से, ग्राहक अतिरिक्त लाभ, उन्नत कार्यक्षमताएँ और उनकी वर्तमान योजना में उपलब्ध नहीं प्रीमियम सामग्री तक पहुंच सकते हैं।"
   },
   "portfolioStrategiesInnerSection": {
-    "upgradeMessage": "यह जानकारी देखने के लिए आपको अपनी पैकेज को अपग्रेड करना चाहिए"
+    "upgradeMessage": "आपको यह जानकारी देखने के लिए अपने पैकेज को अपग्रेड करना चाहिए"
   },
   "videoList": {
     "educationVideos": "शैक्षिक वीडियो",
@@ -276,7 +283,7 @@
   "educationSingleVideoSection": {
     "by": "द्वारा",
     "duration": "अवधि",
-    "upgradeMessage": "यह जानकारी देखने के लिए आपको अपनी पैकेज को अपग्रेड करना चाहिए"
+    "upgradeMessage": "आपको यह जानकारी देखने के लिए अपने पैकेज को अपग्रेड करना चाहिए"
   },
   "categoryItem": {
     "moreDetails": "अधिक विवरण"
@@ -287,97 +294,97 @@
   "welcomeBanner": {
     "hi": "नमस्ते {{name}}",
     "welcomeBack": "👋, वापस स्वागत है!",
-    "knowledgeMessage": "बाजार में ज्ञान शक्ति है; बुद्धिमत्ता यह जानने में है कि इसका उपयोग कैसे करना है!",
+    "knowledgeMessage": "बाजार में ज्ञान शक्ति है; बुद्धिमानी इसे उपयोग करने का ज्ञान है!",
     "welcomeVideo": "स्वागत वीडियो",
     "youAre": "आप एक हैं"
   },
   "socialMedia": {
-    "title": "सोशल मीडिया"
+    "title": "सोशल्स"
   },
   "liveFeed": {
     "title": "लाइव फीड"
   },
   "dashboardSection": {
-    "incompletePaymentAlert": "अधूरा भुगतान चेतावनी",
-    "incompletePaymentDescription": "{{planType}} पैकेज में आपका अपग्रेड एक अधूरे भुगतान के कारण लंबित है। कृपया अपग्रेड को अंतिम रूप देने के लिए अपना भुगतान पूरा करें।"
+    "incompletePaymentAlert": "अपूर्ण भुगतान अलर्ट",
+    "incompletePaymentDescription": "अधूरा भुगतान के कारण आपका {{planType}} पैकेज अपग्रेड लंबित है। अपग्रेड को अंतिम रूप देने के लिए कृपया अपना भुगतान पूरा करें।"
   },
   "dropZone": {
-    "subtitle": "हम इस फीचर पर काम कर रहे हैं।"
+    "subtitle": "हम वर्तमान में इस सुविधा पर काम कर रहे हैं।"
   },
   "roadMap": {
     "title": "रोड मैप"
   },
   "coinReportTable": {
-    "standardCoinReports": "मानक कॉइन रिपोर्ट्स",
-    "coinReports": "कॉइन रिपोर्ट्स"
+    "standardCoinReports": "मानक सिक्का रिपोर्ट्स",
+    "coinReports": "सिक्का रिपोर्ट्स"
   },
   "coinReportNotice": {
     "importantNotice": "महत्वपूर्ण सूचना:",
-    "message": "यहां प्रस्तुत मूल्य और पूर्वानुमान हमारे बाजार के व्यक्तिगत आकलनों पर आधारित हैं और यह खरीद अनुशंसाएँ या किसी भी प्रकार की गारंटी नहीं है। सभी निवेश जोखिमों के साथ आते हैं, और पंजीकरण के दौरान पुष्टि किए गए जोखिम अस्वीकरण को स्वीकार करना महत्वपूर्ण है। प्रदान की गई जानकारी का अनधिकृत वितरण आपराधिक अभियोजन के अधीन होगा और स्थायी खाता निलंबन का परिणाम होगा।",
-    "viewMore": "और देखें...",
+    "message": "यहां प्रस्तुत मूल्य और पूर्वानुमान हमारे व्यक्तिगत आकलनों पर आधारित हैं और खरीद सिफारिशें या किसी भी प्रकार की गारंटी नहीं हैं। सभी निवेशों में जोखिम होते हैं, और यह पंजीकरण के दौरान पुष्टि किए गए जोखिम अस्वीकरण को स्वीकार करना महत्वपूर्ण है। प्रदान की गई जानकारी का अनधिकृत वितरण आपराधिक अभियोजन के अधीन होगा और स्थायी खाता निलंबन का परिणाम होगा।",
+    "viewMore": "अधिक देखें...",
     "viewLess": "कम देखें..."
   },
   "learningBanner": {
     "title": "देखना चाहते हैं कि यह कैसे काम करता है?",
-    "buttonText": "शिक्षा वीडियो"
+    "buttonText": "वीडियो देखें"
   },
   "affiliateSection": {
     "dashboard": "डैशबोर्ड",
-    "statistics": "सांख्यिकी",
-    "comingSoon": "जल्द ही आ रहा है",
+    "statistics": "आँकड़े",
+    "comingSoon": "जल्द आ रहा है",
     "network": "नेटवर्क",
-    "commissions": "आयोग",
+    "commissions": "कमीशन",
     "payouts": "भुगतान"
   },
   "affiliateHeader": {
     "yourReferralLink": "आपका रेफरल लिंक",
-    "shareWithAudience": "यह आपका रेफरल URL है। कमीशन अर्जित करने के लिए इसे अपने दर्शकों के साथ साझा करें।",
+    "shareWithAudience": "यह आपका रेफरल URL है। अपने दर्शकों के साथ इसे साझा करें और कमीशन कमाएं।",
     "copyCode": "कोड कॉपी करें"
   },
   "affStatisticsTab": {
-    "comingSoon": "जल्द ही आ रहा है",
-    "upgradeMessage": "अपग्रेड करने पर, ग्राहक अपने वर्तमान योजना में उपलब्ध नहीं अतिरिक्त लाभ, उन्नत कार्यक्षमताएं और प्रीमियम सामग्री का उपयोग कर सकते हैं।"
+    "comingSoon": "जल्द आ रहा है",
+    "upgradeMessage": "अपग्रेड करने से, ग्राहक अतिरिक्त लाभ, उन्नत कार्यक्षमताएँ और उनकी वर्तमान योजना में उपलब्ध नहीं प्रीमियम सामग्री तक पहुंच सकते हैं।"
   },
   "affPayoutsTab": {
-    "setupWalletMessage": "अपना वॉलेट सेट करें ताकि हम पैसे आपको भेज सकें।",
+    "setupWalletMessage": "अपना वॉलेट सेटअप करें ताकि हम आपको पैसा भेज सकें।",
     "changeWallet": "वॉलेट बदलें",
-    "setupWallet": "वॉलेट सेट करें"
+    "setupWallet": "वॉलेट सेटअप करें"
   },
   "affPayoutsTabTable": {
-    "userId": "उपयोगकर्ता आईडी",
-    "walletId": "वॉलेट आईडी",
+    "userId": "उपयोगकर्ता ID",
+    "walletId": "वॉलेट ID",
     "amount": "राशि",
-    "date": "तारीख",
+    "date": "तिथि",
     "status": "स्थिति",
     "payouts": "भुगतान",
     "emptyTitle": "आपके पास अभी तक कोई भुगतान नहीं है",
-    "emptySubtitle": "सभी लाभ, हानि और मूल्यांकन को एक ही स्थान पर ट्रैक करें।",
+    "emptySubtitle": "एक ही जगह पर लाभ, हानि और मूल्यांकन ट्रैक करें।",
     "from": "से",
     "to": "तक",
-    "dateAndTime": "तारीख और समय"
+    "dateAndTime": "तिथि और समय"
   },
   "affNetworkTabTable": {
     "username": "उपयोगकर्ता नाम",
     "package": "पैकेज",
-    "joinedDate": "शामिल होने की तारीख",
-    "moneyMade": "पैसा कमाया?"
+    "joinedDate": "शामिल होने की तिथि",
+    "moneyMade": "टर्नओवर"
   },
   "affNetworkTab": {
     "table": "तालिका",
     "chart": "चार्ट",
-    "comingSoon": "जल्द ही आ रहा है"
+    "comingSoon": "जल्द आ रहा है"
   },
   "affNetworkTabChart": {
-    "comingSoon": "जल्द ही आ रहा है",
-    "upgradeMessage": "अपग्रेड करने पर, ग्राहक अपने वर्तमान योजना में उपलब्ध नहीं अतिरिक्त लाभ, उन्नत कार्यक्षमताएं और प्रीमियम सामग्री का उपयोग कर सकते हैं।"
+    "comingSoon": "जल्द आ रहा है",
+    "upgradeMessage": "अपग्रेड करने से, ग्राहक अतिरिक्त लाभ, उन्नत कार्यक्षमताएँ और उनकी वर्तमान योजना में उपलब्ध नहीं प्रीमियम सामग्री तक पहुंच सकते हैं।"
   },
   "afDashboardTab": {
-    "totalTurnover": "कुल कारोबार",
-    "commissionWallet": "आयोग वॉलेट",
-    "withdraw": "निकालें",
+    "totalTurnover": "कुल टर्नओवर",
+    "commissionWallet": "कमीशन वॉलेट",
+    "withdraw": "निकासी",
     "currentRank": "वर्तमान रैंक",
     "overrideBonus": "ओवरराइड बोनस",
-    "goldCoins": "स्वर्ण सिक्के",
+    "goldCoins": "गोल्ड कॉइन्स",
     "first": "पहला",
     "second": "दूसरा",
     "third": "तीसरा",
@@ -388,22 +395,22 @@
     "firstLineVolume": "पहली पंक्ति की मात्रा"
   },
   "affCommissionsTabTable": {
-    "userID": "उपयोगकर्ता आईडी",
+    "userID": "उपयोगकर्ता ID",
     "amount": "राशि",
     "packageName": "पैकेज का नाम",
     "percentage": "प्रतिशत",
-    "commissionDate": "आयोग की तारीख",
-    "commissionsTitle": "आयोग",
-    "noRecord": "आपके पास अभी तक कोई आयोग रिकॉर्ड नहीं है"
+    "commissionDate": "कमीशन तिथि",
+    "commissionsTitle": "कमीशन",
+    "noRecord": "आपके पास अभी तक कोई कमीशन रिकॉर्ड नहीं है"
   },
   "affCommissionsTab": {
-    "totalTurnover": "कुल कारोबार",
-    "totalCommission": "कुल आयोग",
-    "availableForWithdraw": "निकालने के लिए उपलब्ध",
-    "withdraw": "निकालें"
+    "totalTurnover": "कुल टर्नओवर",
+    "totalCommission": "कुल कमीशन",
+    "availableForWithdraw": "निकासी के लिए उपलब्ध",
+    "withdraw": "निकासी"
   },
   "empty": {
-    "thereIsNothingToShow": "दिखाने के लिए कुछ भी नहीं है!"
+    "thereIsNothingToShow": "दिखाने के लिए कुछ नहीं है!"
   },
   "loading": {
     "onLoading": "लोड हो रहा है..."

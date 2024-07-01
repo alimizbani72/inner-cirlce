@@ -83,7 +83,7 @@ const ResetPassSection: FC = () => {
 
       replace("/login");
 
-      enqueueSnackbar("Your password successfully changed", {
+      enqueueSnackbar(t("resetPassword.successChange"), {
         variant: "success",
       });
     } catch (_error) {

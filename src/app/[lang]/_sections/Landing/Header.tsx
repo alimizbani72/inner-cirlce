@@ -1,3 +1,4 @@
+"use client";
 import LogoType from "@/components/LogoType";
 import { Icon } from "@/components/icons";
 import { useIsMobile } from "@/hooks/use-responsive";
@@ -6,6 +7,7 @@ import { Button, Stack } from "@mui/material";
 import type { FC } from "react";
 import LandingContainer from "./LandingContainer";
 import Link from "@/components/Link";
+import { useTranslate } from "@/locales";
 
 interface HeaderProps {
   isLogin: boolean;
@@ -14,6 +16,7 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = ({ isLogin }) => {
   const isMobile = useIsMobile();
   // const dispatch = useAppDispatch();
+  const { t } = useTranslate();
 
   return (
     <Stack
@@ -44,11 +47,11 @@ const Header: FC<HeaderProps> = ({ isLogin }) => {
           </Link>
           {isLogin ? (
             <Button sx={{ ml: "auto" }} color="info" startIcon={<Icon name="User" />} href="/dashboard">
-              Dashboard
+              {t("sidebar.dashboard")}
             </Button>
           ) : (
             <Button sx={{ ml: "auto" }} color="info" href="/login">
-              Login
+              {t("login.loginButton")}
             </Button>
           )}
         </Stack>
@@ -72,14 +75,14 @@ const Header: FC<HeaderProps> = ({ isLogin }) => {
 
           {isLogin ? (
             <Button sx={{ ml: "auto" }} color="info" startIcon={<Icon name="User" />} href="/dashboard">
-              Dashboard
+              {t("sidebar.dashboard")}
             </Button>
           ) : (
             <Stack sx={{ ml: "auto" }} direction={"row"} gap={1}>
               <Button color="info" href="/login">
-                Login
+                {t("login.loginButton")}
               </Button>
-              <Button href="/register">Join ChainMind</Button>
+              <Button href="/register">{t("global.joinChainMind")}</Button>
             </Stack>
           )}
         </LandingContainer>

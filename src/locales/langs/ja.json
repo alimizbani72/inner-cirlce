@@ -1,9 +1,10 @@
 {
   "global": {
-    "authLayout": "ユーザーのレベルに関係なく、暗号通貨投資体験を簡素化し、向上させるため。",
+    "authLayout": "すべてのレベルのユーザーに対して暗号通貨投資体験を簡素化し向上させるために。",
     "comingSoon": "近日公開",
     "strategy": "戦略",
-    "suspended": "あなたのアカウントは停止されています。管理者に連絡してください。"
+    "suspended": "あなたのアカウントは停止されています。管理者に連絡してください",
+    "joinChainMind": "ChainMindに参加する"
   },
   "button": {
     "cancel": "キャンセル",
@@ -16,73 +17,79 @@
     "seeStrategies": "戦略を見る"
   },
   "createAccount": {
-    "title": "アカウントを作成する",
-    "subtitle": "成長を確認し、コンサルティングサポートを受ける！",
+    "title": "アカウントを作成",
+    "subtitle": "成長を見て、コンサルティングサポートを受ける！",
     "registerWithGoogle": "Googleで登録",
     "orContinueWithEmail": "またはメールで続行",
-    "fullNameLabel": "フルネーム",
-    "fullNamePlaceholder": "フルネームを入力してください",
+    "fullNameLabel": "氏名",
+    "fullNamePlaceholder": "氏名を入力",
     "emailLabel": "メールアドレス",
-    "emailPlaceholder": "メールアドレスを入力してください",
+    "emailPlaceholder": "メールアドレスを入力",
     "passwordLabel": "パスワード",
-    "passwordPlaceholder": "パスワードを入力してください",
+    "passwordPlaceholder": "パスワードを入力",
     "inviteCodeLabel": "紹介者",
-    "agreeToTerms": "私は同意します",
-    "termsAndConditions": "利用規約",
+    "agreeToTerms": "私は",
+    "termsAndConditions": "私は{termsAndConditions}と{disclaimer}を読み、契約の一部として明示的に受け入れます。また、デジタルコンテンツを購入し即座にアクセスすることにより、{refundWaiver}。",
     "createAccountButton": "アカウントを作成",
     "alreadyHaveAccount": "既にアカウントをお持ちですか？",
     "login": "ログイン"
   },
   "emailVerification": {
-    "title": "メール確認",
-    "subtitle": "送信された5桁のコードを入力してください",
+    "title": "メールの確認",
+    "subtitle": "送信した5桁のコードを入力してください",
     "placeholderEmail": "Ricknovak@example.com",
     "verifyCodeLabel": "コードを確認",
     "backButton": "戻る",
     "resend": "再送信",
     "resendWithTimer": "再送信",
-    "checkSpam": "メールが届かない場合は、スパムフィルターを確認するか、別のメールアドレスを試してください"
+    "checkSpam": "メールが届きませんか？スパムフィルターを確認するか、別のメールアドレスを試してください"
   },
   "passwordRecovery": {
     "title": "パスワードの回復",
-    "subtitle": "パスワードを忘れた場合は、回復をお手伝いします。",
+    "subtitle": "パスワードを忘れた場合は回復をお手伝いします。",
     "emailLabel": "メールアドレス",
-    "emailPlaceholder": "メールアドレスを入力してください",
+    "emailPlaceholder": "メールアドレスを入力",
     "backButton": "戻る",
     "continueButton": "続ける"
   },
   "resetPassword": {
     "title": "パスワードをリセット",
-    "subtitle": "8文字以上の新しい強力なパスワードを選択してください",
+    "subtitle": "8文字以上の新しく強力なパスワードを選択してください",
     "newPasswordLabel": "新しいパスワード",
-    "newPasswordPlaceholder": "新しいパスワードを入力してください",
-    "confirmNewPasswordLabel": "新しいパスワードを確認",
-    "confirmNewPasswordPlaceholder": "新しいパスワードをもう一度入力してください",
-    "resetPasswordButton": "パスワードをリセット"
+    "newPasswordPlaceholder": "新しいパスワードを入力",
+    "confirmNewPasswordLabel": "新しいパスワードの確認",
+    "confirmNewPasswordPlaceholder": "新しいパスワードを再入力",
+    "resetPasswordButton": "パスワードをリセット",
+    "successChange": "パスワードが正常に変更されました"
+  },
+  "register": {
+    "termsAndConditions": "利用規約",
+    "disclaimer": "免責事項",
+    "refundWaiver": "私は14日間の返金権利を放棄します。"
   },
   "login": {
     "title": "アカウントにログイン",
     "loginWithGoogle": "Googleでログイン",
-    "rememberMe": "ログイン状態を保持",
+    "rememberMe": "ログイン状態を保持する",
     "forgotPassword": "パスワードをお忘れですか？",
     "loginButton": "ログイン",
     "noAccount": "アカウントをお持ちでないですか？",
     "register": "登録"
   },
   "formErrors": {
-    "requiredName": "フルネームを入力してください",
+    "requiredName": "氏名を入力してください",
     "requiredPassword": "パスワードを入力してください",
     "confirmPassword": "両方のパスワードが一致する必要があります。",
-    "passwordPattern": "8文字、1つの大文字、1つの小文字、1つの数字、および1つの特殊文字を含める必要があります。",
-    "invalidEmail": "メールアドレスが間違っています",
+    "passwordPattern": "8文字、一つの大文字、一つの小文字、一つの数字および一つの特殊文字を含む必要があります",
+    "invalidEmail": "メールアドレスが正しくありません",
     "requiredEmail": "メールアドレスを入力してください",
-    "requiredTerms": "利用規約に同意する必要があります。",
-    "formError": "エラーが発生しました。もう一度お試しください。",
-    "requiredCode": "値が間違っています。もう一度試してください。",
-    "userNotFound": "このメールアドレスは存在しません",
-    "emailExists": "このメールアドレスは既に存在します",
+    "requiredTerms": "利用規約を受け入れる必要があります。",
+    "formError": "エラーが発生しました。もう一度お試しください",
+    "requiredCode": "値が間違っています。再試行してください。",
+    "userNotFound": "メールアドレスが存在しません",
+    "emailExists": "メールアドレスは既に存在します",
     "requiredNewPassword": "新しいパスワードを入力してください",
-    "newPasswordPattern": "8文字、1つの大文字、1つの小文字、1つの数字、および1つの特殊文字を含める必要があります。",
+    "newPasswordPattern": "8文字、一つの大文字、一つの小文字、一つの数字および一つの特殊文字を含む必要があります",
     "requiredCurrentPassword": "現在のパスワードを入力してください",
     "required": "このフィールドは必須です",
     "invalidWallet": "無効なPolygonウォレットアドレス"
@@ -98,14 +105,14 @@
     "help-center": "ヘルプセンター"
   },
   "wallet": {
-    "requiredAddress": "USDC Polygon (Matic) ウォレットアドレスは必須です",
+    "requiredAddress": "USDC Polygon (Matic)ウォレットアドレスは必須です",
     "requiredName": "名前は必須です",
     "successMessage": "ウォレットアドレスが正常に更新されました。",
-    "setupWallet": "ウォレットを設定する",
-    "addressInputLabel": "USDC Polygon (Matic) ウォレットアドレス",
-    "addressInputPlaceholder": "USDC Polygon (Matic) ウォレットアドレスを入力してください",
+    "setupWallet": "ウォレットを設定",
+    "addressInputLabel": "USDC Polygon (Matic)ウォレットアドレス",
+    "addressInputPlaceholder": "USDC Polygon (Matic)ウォレットアドレスを入力",
     "nameInputLabel": "あなたの個別の仮名",
-    "nameInputPlaceholder": "あなたの個別の仮名を入力してください",
+    "nameInputPlaceholder": "あなたの個別の仮名を入力",
     "saveButton": "ウォレットを保存"
   },
   "plan": {
@@ -120,36 +127,36 @@
     "submitRequest": "リクエストが正常に送信されました。",
     "availableWithdraw": "引き出し可能",
     "amount": "金額",
-    "enterAmount": "金額を入力してください",
-    "address": "アドレス",
+    "enterAmount": "金額を入力",
+    "address": "住所",
     "feeWithdrawal": "引き出しには3％の手数料がかかります。",
-    "minimumAmount": "引き出しの最低金額は100ユーロです。"
+    "minimumAmount": "引き出しの最低金額は100ドルです。"
   },
   "notFound": {
-    "title": "宇宙で迷子になりました。",
-    "subtitle": "あなたは宇宙の果てに到達しました"
+    "title": "宇宙で迷子。",
+    "subtitle": "あなたは宇宙の端に到達しました"
   },
   "payment": {
     "successTitle": "支払い成功！",
-    "successSubtitle": "お支払いが正常に処理されました。メンバーシップが有効になりました。ご購入いただきありがとうございます！",
+    "successSubtitle": "お支払いが正常に処理されました。会員資格が有効になりました。ご購入ありがとうございます！",
     "successTexture": "成功 • 成功 • 成功",
     "failTitle": "支払い失敗！",
-    "failSubtitle": "お支払いを処理できませんでした。メンバーシップが有効になっていません。もう一度お試しください。またはサポートに連絡してください。",
+    "failSubtitle": "お支払いを処理できませんでした。会員資格は有効化されていません。再試行するか、サポートに連絡してください。",
     "failTexture": "失敗 • 失敗 • 失敗 • 失敗"
   },
   "checkout": {
     "title": "チェックアウト",
-    "subscribeTo": "サブスクライブ",
+    "subscribeTo": "に登録",
     "plan": "プラン",
     "payQr": "QRコードまたはウォレットアドレスで支払う",
     "polygonNetwork": "Polygonネットワーク",
     "expiredAt": "有効期限",
-    "amountToSend": "送信金額",
-    "paidAmount": "支払金額"
+    "amountToSend": "送金額",
+    "paidAmount": "支払額"
   },
   "userProfile": {
     "title": "ユーザープロフィール",
-    "choosePicError": "写真を選択してください！",
+    "choosePicError": "写真を選んでください！",
     "avatarUpdatedSuccess": "アバターが正常に更新されました！",
     "avatarUpdateFailed": "アバターの更新に失敗しました！",
     "avatarRemovedSuccess": "アバターが正常に削除されました！",
@@ -160,58 +167,58 @@
   "settingsDialog": {
     "profileSettings": "プロフィール設定",
     "nameRequired": "名前は必須です",
-    "invalidCharacter": "名前には数字を含めることはできません",
+    "invalidCharacter": "名前に数字を含めることはできません",
     "nameUpdateSuccess": "名前が正常に更新されました！",
     "nameUpdateFailed": "名前の更新に失敗しました！",
-    "fullName": "フルネーム",
+    "fullName": "氏名",
     "password": "パスワード",
     "change": "変更",
     "changePassword": "パスワードを変更"
   },
   "forgetPassword": {
-    "forgotPassword": "パスワードをお忘れですか",
+    "forgotPassword": "パスワードを忘れました",
     "createNewPassword": "新しいパスワードを作成",
     "passwordChanged": "パスワードが正常に変更されました！",
     "failedToVerifyCode": "コードの確認に失敗しました！",
     "newPassword": "新しいパスワード",
-    "enterNewPassword": "新しいパスワードを入力してください",
-    "passwordHelperText": "文字、数字、記号を混ぜて8文字以上を使用してください。",
+    "enterNewPassword": "新しいパスワードを入力",
+    "passwordHelperText": "文字、数字、および記号の組み合わせで8文字以上を使用してください。",
     "confirmNewPassword": "新しいパスワードを確認",
-    "confirmNewPasswordPlaceholder": "新しいパスワードを確認してください",
+    "confirmNewPasswordPlaceholder": "新しいパスワードを確認",
     "confirmPasswordHelperText": "両方のパスワードが一致する必要があります。",
     "resetPassword": "パスワードをリセット"
   },
   "changePassword": {
     "title": "パスワードを変更",
     "currentPassword": "現在のパスワード",
-    "enterCurrentPassword": "現在のパスワードを入力してください",
-    "forgotPassword": "パスワードをお忘れですか？",
+    "enterCurrentPassword": "現在のパスワードを入力",
+    "forgotPassword": "パスワードを忘れましたか？",
     "newPassword": "新しいパスワード",
-    "enterNewPassword": "新しいパスワードを入力してください",
-    "passwordHelperText": "文字、数字、記号を混ぜて8文字以上を使用してください。",
+    "enterNewPassword": "新しいパスワードを入力",
+    "passwordHelperText": "文字、数字、および記号の組み合わせで8文字以上を使用してください。",
     "confirmNewPassword": "新しいパスワードを確認",
-    "confirmNewPasswordPlaceholder": "新しいパスワードを確認してください",
+    "confirmNewPasswordPlaceholder": "新しいパスワードを確認",
     "confirmPasswordHelperText": "両方のパスワードが一致する必要があります。",
     "passwordChangedSuccess": "パスワードが正常に変更されました！",
     "passwordChangedFailed": "パスワードの更新に失敗しました！",
     "saveChange": "変更を保存"
   },
   "userInfo": {
-    "noMembership": "あなたはメンバーシップを持っていません",
-    "membershipSuffix": " メンバーシップ!!",
+    "noMembership": "あなたはまだ",
+    "membershipSuffix": "会員ではありません!!",
     "upgradeButton": "アップグレードしてください"
   },
   "profileDialog": {
     "title": "プロフィール",
     "logout": "ログアウト",
-    "copyright": "著作権 © {{year}} {{company}}. 全著作権所有。",
+    "copyright": "著作権 © {{year}} {{company}}。全著作権所有。",
     "profileSetting": "プロフィール設定",
     "termsOfService": "利用規約 | プライバシーポリシー",
     "becomePartner": "パートナーになる"
   },
   "becomePartner": {
     "title": "パートナーになる",
-    "description": "これらのトンネルの1つはVPNサーバーを経由し、もう1つはVPNをバイパスしてインターネットサービスプロバイダー（ISP）に直接接続します。最終的には、ユーザーはどのアプリやウェブサイトがVPNを経由し、どれが経由しないかを選択できるようになり、オンライン活動の共有方法をよりコントロールできます。",
+    "description": "これらのトンネルのうちの1つはVPNサーバーを通じてトラフィックを導き、もう1つはVPNをバイパスして直接インターネットサービスプロバイダー（ISP）に接続します。最終的には、ユーザーはどのアプリやウェブサイトがVPNを通過するか、しないかを選択でき、オンライン活動の共有方法をより制御できることを意味します。",
     "startNow": "今すぐ始める！"
   },
   "twoFactorDialog": {
@@ -219,55 +226,55 @@
     "securityMessage": "追加のセキュリティのために、二要素認証（2FA）を設定してください。",
     "qrInstruction": "認証アプリでQRコードをスキャンし、以下にコードを入力してください。",
     "authCodeLabel": "認証コード",
-    "authCodePlaceholder": "認証コードを入力してください",
+    "authCodePlaceholder": "認証コードを入力",
     "backButton": "戻る",
     "nextStepButton": "次のステップ"
   },
   "kycInfoDialog": {
     "title": "パートナーになる",
-    "description": "登録を完了するには、KYCプロセスを完了する必要があります。身分証明書などの必要な情報を提供してください。",
+    "description": "登録を完了するには、KYCプロセスを完了する必要があります。身分証明書とその他の必要な情報を提供する必要があります。",
     "doKycNow": "今すぐKYCを行う",
     "backButton": "戻る",
     "nextStepButton": "次のステップ"
   },
   "personalInfoDialog": {
     "title": "パートナーになる",
-    "fullnameLabel": "フルネーム",
-    "fullnamePlaceholder": "フルネームを入力してください",
-    "emailLabel": "メールアドレス",
-    "emailPlaceholder": "メールアドレスを入力してください",
+    "fullnameLabel": "氏名",
+    "fullnamePlaceholder": "氏名を入力",
+    "emailLabel": "メール",
+    "emailPlaceholder": "メールアドレスを入力",
     "countryLabel": "国",
-    "countryPlaceholder": "国を選択してください",
+    "countryPlaceholder": "国を選択",
     "cityLabel": "市",
-    "cityPlaceholder": "市を選択してください",
+    "cityPlaceholder": "市を選択",
     "streetLabel": "通り",
-    "streetPlaceholder": "通りの名前を入力してください",
+    "streetPlaceholder": "通りの名前を入力",
     "buildingLabel": "建物番号",
-    "buildingPlaceholder": "建物番号を入力してください",
+    "buildingPlaceholder": "建物番号を入力",
     "zipcodeLabel": "郵便番号",
-    "zipcodePlaceholder": "郵便番号を入力してください",
+    "zipcodePlaceholder": "郵便番号を入力",
     "walletLabel": "USDC Polygonウォレットアドレス",
-    "walletPlaceholder": "ウォレットアドレスを入力してください",
-    "updateFailed": "プロフィールの更新に失敗しました！もう一度お試しください"
+    "walletPlaceholder": "ウォレットアドレスを入力",
+    "updateFailed": "プロフィールの更新に失敗しました！再試行してください"
   },
   "successDialog": {
     "requestSent": "リクエストが送信されました！",
-    "reviewMessage": "管理者がこれをレビューし、24時間以内に結果をメールでお知らせします。",
+    "reviewMessage": "管理者がレビューし、24時間以内に結果をメールで送信します。",
     "backToHome": "ホームに戻る"
   },
   "portfolioTable": {
-    "strategyPlan": "戦略プラン",
-    "plannedInvestment": "計画された投資",
+    "strategyPlan": "戦略計画",
+    "plannedInvestment": "計画投資",
     "enterAmount": "金額を入力",
-    "upgradeMessage": "アップグレードすることで、加入者は現在のプランでは利用できない追加の特典、拡張機能、およびプレミアムコンテンツにアクセスできます。",
+    "upgradeMessage": "アップグレードすることで、サブスクライバーは追加の利点、強化された機能、および現在のプランでは利用できないプレミアムコンテンツにアクセスできます。",
     "strategy": "戦略"
   },
   "portfolioNotice": {
-    "note": "注:",
-    "message": "アップグレードすることで、加入者は現在のプランでは利用できない追加の特典、拡張機能、およびプレミアムコンテンツにアクセスできます。"
+    "note": "注意:",
+    "message": "アップグレードすることで、サブスクライバーは追加の利点、強化された機能、および現在のプランでは利用できないプレミアムコンテンツにアクセスできます。"
   },
   "portfolioStrategiesInnerSection": {
-    "upgradeMessage": "この情報を見るには、パッケージをアップグレードする必要があります"
+    "upgradeMessage": "この情報を表示するにはパッケージをアップグレードする必要があります"
   },
   "videoList": {
     "educationVideos": "教育ビデオ",
@@ -276,33 +283,33 @@
   "educationSingleVideoSection": {
     "by": "提供者",
     "duration": "期間",
-    "upgradeMessage": "この情報を見るには、パッケージをアップグレードする必要があります"
+    "upgradeMessage": "この情報を表示するにはパッケージをアップグレードする必要があります"
   },
   "categoryItem": {
-    "moreDetails": "詳細"
+    "moreDetails": "詳細を見る"
   },
   "categories": {
     "title": "カテゴリー"
   },
   "welcomeBanner": {
-    "hi": "こんにちは {{name}}",
-    "welcomeBack": "👋, お帰りなさい！",
-    "knowledgeMessage": "市場における知識は力です。知恵はそれをどのように使用するかを知ることです！",
+    "hi": "こんにちは{{name}}",
+    "welcomeBack": "👋、お帰りなさい！",
+    "knowledgeMessage": "市場において知識は力です。知恵はそれをどう使うかを知ることです！",
     "welcomeVideo": "歓迎ビデオ",
     "youAre": "あなたは"
   },
   "socialMedia": {
-    "title": "ソーシャル"
+    "title": "ソーシャルメディア"
   },
   "liveFeed": {
     "title": "ライブフィード"
   },
   "dashboardSection": {
-    "incompletePaymentAlert": "未完了の支払いアラート",
-    "incompletePaymentDescription": "あなたの{{planType}}パッケージへのアップグレードは、未完了の支払いのため保留されています。アップグレードを完了するには、支払いを完了してください。"
+    "incompletePaymentAlert": "不完全な支払いアラート",
+    "incompletePaymentDescription": "{{planType}}パッケージへのアップグレードは不完全な支払いのため保留中です。アップグレードを完了するには支払いを完了してください。"
   },
   "dropZone": {
-    "subtitle": "現在、この機能を開発中です。"
+    "subtitle": "現在、この機能に取り組んでいます。"
   },
   "roadMap": {
     "title": "ロードマップ"
@@ -313,13 +320,13 @@
   },
   "coinReportNotice": {
     "importantNotice": "重要なお知らせ:",
-    "message": "ここに示された値および予測は、市場に関する私たちの個人的な評価に基づいており、購入の推奨やいかなる形の保証も意味しません。すべての投資にはリスクが伴い、登録時に確認されたリスク免責事項を認識することが重要です。提供された情報の無断配布は刑事訴追の対象となり、アカウントの永久停止を招きます。",
+    "message": "ここに示されている価値と予測は、私たちの市場に対する個人的な評価に基づいており、購入推奨や保証の形を成しません。すべての投資にはリスクが伴い、登録時に確認されたリスク免責事項を認識することが重要です。提供された情報の無許可の配布は、刑事訴追の対象となり、永久的なアカウント停止の結果となります。",
     "viewMore": "もっと見る...",
-    "viewLess": "少なく表示..."
+    "viewLess": "少なく見る..."
   },
   "learningBanner": {
-    "title": "どのように機能するか見たいですか？",
-    "buttonText": "学習ビデオ"
+    "title": "どのように機能するか見てみたいですか？",
+    "buttonText": "ビデオを見る"
   },
   "affiliateSection": {
     "dashboard": "ダッシュボード",
@@ -331,15 +338,15 @@
   },
   "affiliateHeader": {
     "yourReferralLink": "あなたの紹介リンク",
-    "shareWithAudience": "これはあなたの紹介URLです。これをオーディエンスと共有してコミッションを獲得してください。",
+    "shareWithAudience": "これはあなたの紹介URLです。あなたの観客と共有してコミッションを稼ぎましょう。",
     "copyCode": "コードをコピー"
   },
   "affStatisticsTab": {
     "comingSoon": "近日公開",
-    "upgradeMessage": "アップグレードすることで、加入者は現在のプランでは利用できない追加の特典、拡張機能、およびプレミアムコンテンツにアクセスできます。"
+    "upgradeMessage": "アップグレードすることで、サブスクライバーは追加の利点、強化された機能、および現在のプランでは利用できないプレミアムコンテンツにアクセスできます。"
   },
   "affPayoutsTab": {
-    "setupWalletMessage": "ウォレットを設定してください。そうすればお金を送金できます。",
+    "setupWalletMessage": "ウォレットを設定してお金を送金できるようにしてください。",
     "changeWallet": "ウォレットを変更",
     "setupWallet": "ウォレットを設定"
   },
@@ -350,17 +357,17 @@
     "date": "日付",
     "status": "ステータス",
     "payouts": "支払い",
-    "emptyTitle": "まだ支払いがありません",
-    "emptySubtitle": "利益、損失、および評価をすべて一つの場所で追跡します。",
+    "emptyTitle": "まだ支払いはありません",
+    "emptySubtitle": "利益、損失、評価を一か所で追跡。",
     "from": "から",
-    "to": "まで",
+    "to": "へ",
     "dateAndTime": "日付と時間"
   },
   "affNetworkTabTable": {
     "username": "ユーザー名",
     "package": "パッケージ",
     "joinedDate": "参加日",
-    "moneyMade": "収益"
+    "moneyMade": "売上高"
   },
   "affNetworkTab": {
     "table": "テーブル",
@@ -369,23 +376,23 @@
   },
   "affNetworkTabChart": {
     "comingSoon": "近日公開",
-    "upgradeMessage": "アップグレードすることで、加入者は現在のプランでは利用できない追加の特典、拡張機能、およびプレミアムコンテンツにアクセスできます。"
+    "upgradeMessage": "アップグレードすることで、サブスクライバーは追加の利点、強化された機能、および現在のプランでは利用できないプレミアムコンテンツにアクセスできます。"
   },
   "afDashboardTab": {
-    "totalTurnover": "総売上",
+    "totalTurnover": "総売上高",
     "commissionWallet": "コミッションウォレット",
     "withdraw": "引き出し",
     "currentRank": "現在のランク",
     "overrideBonus": "オーバーライドボーナス",
-    "goldCoins": "金貨",
-    "first": "第一",
+    "goldCoins": "ゴールドコイン",
+    "first": "最初",
     "second": "第二",
     "third": "第三",
     "other": "その他",
     "overall": "全体",
     "nextRank": "次のランク",
     "teamMembers": "チームメンバー",
-    "firstLineVolume": "第一ラインボリューム"
+    "firstLineVolume": "ファーストラインボリューム"
   },
   "affCommissionsTabTable": {
     "userID": "ユーザーID",
@@ -394,10 +401,10 @@
     "percentage": "パーセンテージ",
     "commissionDate": "コミッション日",
     "commissionsTitle": "コミッション",
-    "noRecord": "まだコミッションの記録がありません"
+    "noRecord": "まだコミッション記録がありません"
   },
   "affCommissionsTab": {
-    "totalTurnover": "総売上",
+    "totalTurnover": "総売上高",
     "totalCommission": "総コミッション",
     "availableForWithdraw": "引き出し可能",
     "withdraw": "引き出し"
@@ -406,6 +413,6 @@
     "thereIsNothingToShow": "表示するものがありません！"
   },
   "loading": {
-    "onLoading": "読み込み中..."
+    "onLoading": "ロード中..."
   }
 }

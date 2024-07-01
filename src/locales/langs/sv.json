@@ -1,35 +1,36 @@
 {
   "global": {
-    "authLayout": "Förenkla och förbättra kryptovaluta-investeringar för användare på alla nivåer.",
+    "authLayout": "För att förenkla och förbättra upplevelsen av kryptovalutainvesteringar för användare på alla nivåer.",
     "comingSoon": "KOMMER SNART",
     "strategy": "Strategi",
-    "suspended": "Ditt konto är avstängt, vänligen kontakta din administratör"
+    "suspended": "Ditt konto är avstängt, vänligen kontakta din administratör",
+    "joinChainMind": "Gå med i ChainMind"
   },
   "button": {
     "cancel": "Avbryt",
     "continue": "Fortsätt",
     "upgrade": "Uppgradera",
-    "buyNow": "Köp nu",
-    "backHome": "Tillbaka till hem",
+    "buyNow": "Köp Nu",
+    "backHome": "Tillbaka till Hem",
     "back": "Tillbaka",
-    "nextStep": "Nästa steg",
-    "seeStrategies": "Se strategier"
+    "nextStep": "Nästa Steg",
+    "seeStrategies": "Se Strategier"
   },
   "createAccount": {
     "title": "Skapa ditt konto",
-    "subtitle": "Se din tillväxt och få konsultationsstöd!",
+    "subtitle": "Se din tillväxt och få konsultstöd!",
     "registerWithGoogle": "Registrera med Google",
-    "orContinueWithEmail": "Eller fortsätt med e-post",
+    "orContinueWithEmail": "Eller Fortsätt med E-post",
     "fullNameLabel": "Fullständigt namn",
     "fullNamePlaceholder": "Ange ditt fullständiga namn",
     "emailLabel": "E-postadress",
     "emailPlaceholder": "Ange din e-postadress",
     "passwordLabel": "Lösenord",
     "passwordPlaceholder": "Ange ditt lösenord",
-    "inviteCodeLabel": "Din sponsor",
-    "agreeToTerms": "Jag accepterar",
-    "termsAndConditions": "Villkor",
-    "createAccountButton": "Skapa konto",
+    "inviteCodeLabel": "Din Sponsor",
+    "agreeToTerms": "Jag godkänner",
+    "termsAndConditions": "Jag har läst {termsAndConditions} och {disclaimer} och godkänner dem uttryckligen som en del av avtalet. Jag godkänner och förstår också att genom att köpa och omedelbart få tillgång till digitalt innehåll, {refundWaiver}.",
+    "createAccountButton": "Skapa Konto",
     "alreadyHaveAccount": "Har du redan ett konto?",
     "login": "Logga in"
   },
@@ -39,9 +40,9 @@
     "placeholderEmail": "Ricknovak@example.com",
     "verifyCodeLabel": "Verifiera kod",
     "backButton": "Tillbaka",
-    "resend": "Skicka igen",
-    "resendWithTimer": "Skicka igen",
-    "checkSpam": "Fick du inte e-posten? Kontrollera ditt skräppostfilter eller prova en annan e-postadress"
+    "resend": "Skicka om",
+    "resendWithTimer": "Skicka om",
+    "checkSpam": "Fick du inte e-postmeddelandet? Kontrollera ditt skräppostfilter eller prova en annan e-postadress"
   },
   "passwordRecovery": {
     "title": "Återställning av lösenord",
@@ -53,12 +54,18 @@
   },
   "resetPassword": {
     "title": "Återställ lösenord",
-    "subtitle": "Välj ett nytt och starkt lösenord med minst 8 tecken",
+    "subtitle": "Välj ett nytt och starkt lösenord på minst 8 tecken",
     "newPasswordLabel": "Nytt lösenord",
     "newPasswordPlaceholder": "Ange ditt nya lösenord",
     "confirmNewPasswordLabel": "Bekräfta nytt lösenord",
     "confirmNewPasswordPlaceholder": "Ange ditt nya lösenord igen",
-    "resetPasswordButton": "Återställ lösenord"
+    "resetPasswordButton": "Återställ lösenord",
+    "successChange": "Ditt lösenord har ändrats framgångsrikt"
+  },
+  "register": {
+    "termsAndConditions": "Villkor",
+    "disclaimer": "ANSVARSFRISKRIVNING",
+    "refundWaiver": "Jag avstår från min 14-dagars återbetalningsrätt."
   },
   "login": {
     "title": "Logga in på ditt konto",
@@ -72,15 +79,15 @@
   "formErrors": {
     "requiredName": "Vänligen ange ditt fullständiga namn",
     "requiredPassword": "Vänligen ange ditt lösenord",
-    "confirmPassword": "Båda lösenorden måste matcha.",
+    "confirmPassword": "Båda lösenorden måste stämma överens.",
     "passwordPattern": "Måste innehålla 8 tecken, en versal, en gemen, en siffra och ett specialtecken",
     "invalidEmail": "E-postadressen är felaktig",
     "requiredEmail": "Vänligen ange din e-postadress",
     "requiredTerms": "Villkoren måste accepteras.",
     "formError": "Något gick fel, vänligen försök igen",
-    "requiredCode": "Värdet är fel, försök igen.",
-    "userNotFound": "E-posten finns inte",
-    "emailExists": "E-posten finns redan",
+    "requiredCode": "Värdet är felaktigt, försök igen.",
+    "userNotFound": "E-postadressen existerar inte",
+    "emailExists": "E-postadressen finns redan",
     "requiredNewPassword": "Vänligen ange ditt nya lösenord",
     "newPasswordPattern": "Måste innehålla 8 tecken, en versal, en gemen, en siffra och ett specialtecken",
     "requiredCurrentPassword": "Vänligen ange ditt nuvarande lösenord",
@@ -115,18 +122,18 @@
   },
   "withdraw": {
     "Withdraw": "Ta ut",
-    "requiredAmount": "Belopp krävs",
-    "requiredWallet": "Plånboksadress krävs",
-    "submitRequest": "Din begäran har skickats framgångsrikt.",
+    "requiredAmount": "Belopp är obligatoriskt",
+    "requiredWallet": "Plånboksadress är obligatorisk",
+    "submitRequest": "Din förfrågan skickades framgångsrikt.",
     "availableWithdraw": "Tillgängligt för uttag",
     "amount": "Belopp",
     "enterAmount": "Ange belopp",
     "address": "Adress",
-    "feeWithdrawal": "Det kommer att vara en avgift på 3% för uttag.",
-    "minimumAmount": "Minsta belopp för uttag är 100 euro."
+    "feeWithdrawal": "En avgift på 3% kommer att tas ut för uttag.",
+    "minimumAmount": "Minsta belopp för uttag är 100 dollar."
   },
   "notFound": {
-    "title": "Förlorad i rymden.",
+    "title": "Vilse i rymden.",
     "subtitle": "Du har nått universums kant"
   },
   "payment": {
@@ -134,25 +141,25 @@
     "successSubtitle": "Din betalning har behandlats framgångsrikt. Ditt medlemskap är nu aktivt. Tack för ditt köp!",
     "successTexture": "Lyckad • Lyckad • Lyckad",
     "failTitle": "Betalning misslyckades!",
-    "failSubtitle": "Din betalning kunde inte behandlas. Ditt medlemskap har inte aktiverats. Försök igen eller kontakta support för hjälp.",
+    "failSubtitle": "Din betalning kunde inte behandlas. Ditt medlemskap har inte aktiverats. Försök igen eller kontakta supporten för hjälp.",
     "failTexture": "Misslyckad • Misslyckad • Misslyckad • Misslyckad"
   },
   "checkout": {
-    "title": "Kassa",
+    "title": "Kassan",
     "subscribeTo": "Prenumerera på",
     "plan": "plan",
     "payQr": "Betala med QR-kod eller plånboksadress",
-    "polygonNetwork": "Polygon nätverk",
-    "expiredAt": "Utgår vid",
+    "polygonNetwork": "Polygon Nätverk",
+    "expiredAt": "Går ut",
     "amountToSend": "Belopp att skicka",
     "paidAmount": "Betalat belopp"
   },
   "userProfile": {
     "title": "Användarprofil",
     "choosePicError": "Välj din bild!",
-    "avatarUpdatedSuccess": "Avatar uppdaterad framgångsrikt!",
+    "avatarUpdatedSuccess": "Avatar uppdaterades framgångsrikt!",
     "avatarUpdateFailed": "Misslyckades med att uppdatera avatar!",
-    "avatarRemovedSuccess": "Avatar borttagen framgångsrikt!",
+    "avatarRemovedSuccess": "Avatar togs bort framgångsrikt!",
     "avatarRemoveFailed": "Misslyckades med att ta bort avatar!",
     "uploadPicture": "Ladda upp bild",
     "remove": "Ta bort"
@@ -169,16 +176,16 @@
     "changePassword": "Ändra lösenord"
   },
   "forgetPassword": {
-    "forgotPassword": "Glömt lösenord?",
+    "forgotPassword": "Glömt lösenord",
     "createNewPassword": "Skapa nytt lösenord",
-    "passwordChanged": "Lösenord ändrat framgångsrikt!",
-    "failedToVerifyCode": "Misslyckades med att verifiera kod!",
+    "passwordChanged": "Lösenordet ändrades framgångsrikt!",
+    "failedToVerifyCode": "Misslyckades med att verifiera koden!",
     "newPassword": "Nytt lösenord",
     "enterNewPassword": "Ange ditt nya lösenord",
     "passwordHelperText": "Använd 8 eller fler tecken med en blandning av bokstäver, siffror och symboler.",
     "confirmNewPassword": "Bekräfta nytt lösenord",
     "confirmNewPasswordPlaceholder": "Bekräfta ditt nya lösenord",
-    "confirmPasswordHelperText": "Båda lösenorden måste matcha.",
+    "confirmPasswordHelperText": "Båda lösenorden måste stämma överens.",
     "resetPassword": "Återställ lösenord"
   },
   "changePassword": {
@@ -191,47 +198,47 @@
     "passwordHelperText": "Använd 8 eller fler tecken med en blandning av bokstäver, siffror och symboler.",
     "confirmNewPassword": "Bekräfta nytt lösenord",
     "confirmNewPasswordPlaceholder": "Bekräfta ditt nya lösenord",
-    "confirmPasswordHelperText": "Båda lösenorden måste matcha.",
-    "passwordChangedSuccess": "Lösenord ändrat framgångsrikt!",
+    "confirmPasswordHelperText": "Båda lösenorden måste stämma överens.",
+    "passwordChangedSuccess": "Lösenordet ändrades framgångsrikt!",
     "passwordChangedFailed": "Misslyckades med att uppdatera lösenord!",
     "saveChange": "Spara ändring"
   },
   "userInfo": {
-    "noMembership": "Du har ingen",
+    "noMembership": "Du har inget",
     "membershipSuffix": " medlemskap!!",
     "upgradeButton": "Uppgradera"
   },
   "profileDialog": {
     "title": "Profil",
     "logout": "Logga ut",
-    "copyright": "Upphovsrätt © {{year}} {{company}}. Alla rättigheter förbehållna.",
+    "copyright": "Copyright © {{year}} {{company}}. Alla rättigheter förbehållna.",
     "profileSetting": "Profilinställningar",
-    "termsOfService": "Användarvillkor | Sekretesspolicy",
-    "becomePartner": "Bli en partner"
+    "termsOfService": "Användarvillkor | Integritetspolicy",
+    "becomePartner": "Bli Partner"
   },
   "becomePartner": {
-    "title": "Bli en partner",
-    "description": "En av dessa tunnlar dirigerar trafik genom VPN-servern, medan den andra kringgår VPN och går direkt till Internetleverantören (ISP). I slutändan betyder det att användare kan välja vilka appar eller webbplatser som går genom VPN och vilka som inte gör det, vilket ger mer kontroll över hur deras onlineaktivitet delas.",
-    "startNow": "Börja nu!"
+    "title": "Bli Partner",
+    "description": "En av dessa tunnlar leder trafiken genom VPN-servern, medan den andra kringgår VPN och går direkt till internetleverantören (ISP). Detta innebär att användare kan välja vilka appar eller webbplatser som går genom VPN och vilka som inte gör det, vilket ger mer kontroll över hur deras online-aktivitet delas.",
+    "startNow": "Börja Nu!"
   },
   "twoFactorDialog": {
-    "title": "Bli en partner",
+    "title": "Bli Partner",
     "securityMessage": "För ökad säkerhet, ställ in tvåfaktorsautentisering (2FA).",
     "qrInstruction": "Skanna QR-koden med en autentiseringsapp och ange koden nedan.",
     "authCodeLabel": "Autentiseringskod",
     "authCodePlaceholder": "Ange autentiseringskod",
     "backButton": "Tillbaka",
-    "nextStepButton": "Nästa steg"
+    "nextStepButton": "Nästa Steg"
   },
   "kycInfoDialog": {
-    "title": "Bli en partner",
-    "description": "För att slutföra din registrering måste du genomföra KYC-processen. Du måste tillhandahålla identitetsdokument och annan nödvändig information.",
-    "doKycNow": "Gör KYC nu",
+    "title": "Bli Partner",
+    "description": "För att slutföra din registrering måste du genomgå KYC-processen. Du måste tillhandahålla identitetshandlingar och annan nödvändig information.",
+    "doKycNow": "Gör KYC Nu",
     "backButton": "Tillbaka",
-    "nextStepButton": "Nästa steg"
+    "nextStepButton": "Nästa Steg"
   },
   "personalInfoDialog": {
-    "title": "Bli en partner",
+    "title": "Bli Partner",
     "fullnameLabel": "FULLSTÄNDIGT NAMN",
     "fullnamePlaceholder": "Ange ditt fullständiga namn",
     "emailLabel": "E-POST",
@@ -251,20 +258,20 @@
     "updateFailed": "Misslyckades med att uppdatera profil! Vänligen försök igen"
   },
   "successDialog": {
-    "requestSent": "Din förfrågan har skickats!",
-    "reviewMessage": "Administratörerna kommer att granska det och skicka resultatet till din e-post inom de närmaste 24 timmarna.",
-    "backToHome": "Tillbaka till hem"
+    "requestSent": "Din begäran har skickats!",
+    "reviewMessage": "Administratörer kommer att granska det och skicka resultatet till din e-post inom 24 timmar.",
+    "backToHome": "Tillbaka till Hem"
   },
   "portfolioTable": {
     "strategyPlan": "Strategiplan",
     "plannedInvestment": "Planerad investering",
     "enterAmount": "Ange belopp",
-    "upgradeMessage": "Genom att uppgradera kan prenumeranter få tillgång till ytterligare förmåner, förbättrade funktioner och premiuminnehåll som inte är tillgängligt i deras nuvarande plan.",
+    "upgradeMessage": "Genom att uppgradera kan prenumeranter få tillgång till ytterligare förmåner, förbättrade funktioner och premiuminnehåll som inte är tillgängliga i deras nuvarande plan.",
     "strategy": "Strategi"
   },
   "portfolioNotice": {
-    "note": "NOTERA:",
-    "message": "Genom att uppgradera kan prenumeranter få tillgång till ytterligare förmåner, förbättrade funktioner och premiuminnehåll som inte är tillgängligt i deras nuvarande plan."
+    "note": "OBS:",
+    "message": "Genom att uppgradera kan prenumeranter få tillgång till ytterligare förmåner, förbättrade funktioner och premiuminnehåll som inte är tillgängliga i deras nuvarande plan."
   },
   "portfolioStrategiesInnerSection": {
     "upgradeMessage": "Du bör uppgradera ditt paket för att se denna information"
@@ -279,7 +286,7 @@
     "upgradeMessage": "Du bör uppgradera ditt paket för att se denna information"
   },
   "categoryItem": {
-    "moreDetails": "Mer information"
+    "moreDetails": "Mer Detaljer"
   },
   "categories": {
     "title": "Kategorier"
@@ -292,34 +299,34 @@
     "youAre": "Du är en"
   },
   "socialMedia": {
-    "title": "Sociala medier"
+    "title": "Sociala Medier"
   },
   "liveFeed": {
     "title": "Direktflöde"
   },
   "dashboardSection": {
-    "incompletePaymentAlert": "Oavslutad betalningsvarning",
-    "incompletePaymentDescription": "Din uppgradering till {{planType}}-paketet är pågående på grund av en oavslutad betalning. Vänligen slutför din betalning för att slutföra uppgraderingen."
+    "incompletePaymentAlert": "Avisering om ofullständig betalning",
+    "incompletePaymentDescription": "Din uppgradering till {{planType}} paketet väntar på grund av ofullständig betalning. Vänligen slutför din betalning för att slutföra uppgraderingen."
   },
   "dropZone": {
-    "subtitle": "Vi arbetar för närvarande på denna funktion."
+    "subtitle": "Vi arbetar för närvarande med denna funktion."
   },
   "roadMap": {
     "title": "Vägkarta"
   },
   "coinReportTable": {
-    "standardCoinReports": "Standardmynt-rapporter",
-    "coinReports": "Mynt-rapporter"
+    "standardCoinReports": "Standardmynt Rapporter",
+    "coinReports": "Mynt Rapporter"
   },
   "coinReportNotice": {
     "importantNotice": "VIKTIGT MEDDELANDE:",
-    "message": "Värdena och prognoserna som presenteras här är baserade på våra personliga bedömningar av marknaden och utgör inte köprekommendationer eller någon form av garantier. Alla investeringar medför risker, och det är viktigt att erkänna riskvarningen som bekräftades under registreringen. Otillåten spridning av den tillhandahållna informationen kommer att bli föremål för straffrättslig åtal och kommer att resultera i en permanent kontosuspension.",
+    "message": "De värden och prognoser som presenteras här är baserade på våra personliga bedömningar av marknaden och utgör inte köprekommendationer eller någon form av garanti. Alla investeringar innebär risker, och det är viktigt att erkänna riskfriskrivningen som bekräftades under registreringen. Obehörig distribution av den tillhandahållna informationen kommer att vara föremål för åtal och resultera i permanent kontosuspension.",
     "viewMore": "VISA MER...",
     "viewLess": "VISA MINDRE..."
   },
   "learningBanner": {
     "title": "Vill du se hur det fungerar?",
-    "buttonText": "Utbildningsvideo"
+    "buttonText": "Titta på Video"
   },
   "affiliateSection": {
     "dashboard": "Instrumentpanel",
@@ -330,37 +337,37 @@
     "payouts": "Utbetalningar"
   },
   "affiliateHeader": {
-    "yourReferralLink": "Din hänvisningslänk",
-    "shareWithAudience": "Detta är din hänvisnings-URL. Dela den med din publik för att tjäna provisioner.",
-    "copyCode": "Kopiera kod"
+    "yourReferralLink": "Din referenslänk",
+    "shareWithAudience": "Detta är din referens URL. Dela det med din publik för att tjäna provisioner.",
+    "copyCode": "Kopiera Kod"
   },
   "affStatisticsTab": {
     "comingSoon": "KOMMER SNART",
-    "upgradeMessage": "Genom att uppgradera kan prenumeranter få tillgång till ytterligare förmåner, förbättrade funktioner och premiuminnehåll som inte är tillgängligt i deras nuvarande plan."
+    "upgradeMessage": "Genom att uppgradera kan prenumeranter få tillgång till ytterligare förmåner, förbättrade funktioner och premiuminnehåll som inte är tillgängliga i deras nuvarande plan."
   },
   "affPayoutsTab": {
-    "setupWalletMessage": "Ställ in din plånbok så att vi kan skicka pengarna till dig.",
+    "setupWalletMessage": "Ställ in din plånbok så att vi kan skicka pengar till dig.",
     "changeWallet": "Ändra plånbok",
     "setupWallet": "Ställ in plånbok"
   },
   "affPayoutsTabTable": {
-    "userId": "Användar-ID",
-    "walletId": "Plånboks-ID",
+    "userId": "Användar ID",
+    "walletId": "Plånboks ID",
     "amount": "Belopp",
     "date": "Datum",
     "status": "Status",
     "payouts": "Utbetalningar",
-    "emptyTitle": "Du har inga utbetalningar ännu",
+    "emptyTitle": "Du har ännu inga utbetalningar",
     "emptySubtitle": "Spåra vinster, förluster och värderingar allt på ett ställe.",
     "from": "FRÅN",
     "to": "TILL",
-    "dateAndTime": "Datum och tid"
+    "dateAndTime": "Datum & Tid"
   },
   "affNetworkTabTable": {
     "username": "Användarnamn",
     "package": "Paket",
     "joinedDate": "Gick med",
-    "moneyMade": "Tjänat pengar?"
+    "moneyMade": "Omsättning"
   },
   "affNetworkTab": {
     "table": "Tabell",
@@ -369,32 +376,32 @@
   },
   "affNetworkTabChart": {
     "comingSoon": "KOMMER SNART",
-    "upgradeMessage": "Genom att uppgradera kan prenumeranter få tillgång till ytterligare förmåner, förbättrade funktioner och premiuminnehåll som inte är tillgängligt i deras nuvarande plan."
+    "upgradeMessage": "Genom att uppgradera kan prenumeranter få tillgång till ytterligare förmåner, förbättrade funktioner och premiuminnehåll som inte är tillgängliga i deras nuvarande plan."
   },
   "afDashboardTab": {
     "totalTurnover": "Total omsättning",
     "commissionWallet": "Provisionsplånbok",
     "withdraw": "Ta ut",
-    "currentRank": "Nuvarande rang",
-    "overrideBonus": "Överdrivningsbonus",
+    "currentRank": "Nuvarande rank",
+    "overrideBonus": "Bonus för kontroll",
     "goldCoins": "Guldmynt",
-    "first": "Först",
+    "first": "Första",
     "second": "Andra",
     "third": "Tredje",
-    "other": "Annat",
-    "overall": "Totalt",
-    "nextRank": "Nästa rang",
-    "teamMembers": "Lagmedlemmar",
+    "other": "Andra",
+    "overall": "Total",
+    "nextRank": "Nästa rank",
+    "teamMembers": "Teammedlemmar",
     "firstLineVolume": "Första linjens volym"
   },
   "affCommissionsTabTable": {
-    "userID": "Användar-ID",
+    "userID": "Användar ID",
     "amount": "Belopp",
     "packageName": "Paketnamn",
     "percentage": "Procent",
     "commissionDate": "Provisionsdatum",
     "commissionsTitle": "Provisioner",
-    "noRecord": "Du har inga provisionsuppgifter ännu"
+    "noRecord": "Du har ännu inga provisionsposter"
   },
   "affCommissionsTab": {
     "totalTurnover": "Total omsättning",

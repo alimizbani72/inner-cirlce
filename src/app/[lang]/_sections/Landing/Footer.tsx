@@ -5,6 +5,7 @@ import { footerMenu, footerSocials } from "@/configs/landingMenu";
 import { Divider, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 import LandingContainer from "./LandingContainer";
+import LanguageSelect from "@dashboard/profile/_section/LangSelector";
 
 interface FooterProps {}
 
@@ -15,7 +16,7 @@ const Footer: FC<FooterProps> = () => {
       zIndex={1000}
       position={"relative"}
       alignItems={"center"}
-      gap={3}
+      gap={4}
       pt={4}
       pb={{ md: 4, xs: 8 }}
     >
@@ -46,12 +47,15 @@ const Footer: FC<FooterProps> = () => {
           Copyright © {new Date().getFullYear()} ChainMind. All rights reserved.
         </Typography>
 
-        <Stack direction="row" gap={3} sx={{ path: { stroke: (theme) => theme.palette.grey.light } }}>
-          {footerSocials.map((social) => (
-            <Link href={social.link} key={social.link}>
-              <Icon name={social.icon as any} />
-            </Link>
-          ))}
+        <Stack direction="row" gap={4} alignItems="center">
+          <LanguageSelect />
+          <Stack direction="row" gap={3} sx={{ path: { stroke: (theme) => theme.palette.grey.light } }}>
+            {footerSocials.map((social) => (
+              <Link href={social.link} key={social.link}>
+                <Icon name={social.icon as any} />
+              </Link>
+            ))}
+          </Stack>
         </Stack>
       </LandingContainer>
     </Stack>

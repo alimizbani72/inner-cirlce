@@ -1,24 +1,25 @@
 {
   "global": {
-    "authLayout": "Криптовалютын хөрөнгө оруулалтын туршлагыг хэрэглэгчдийн бүх түвшинд хялбарчлан сайжруулах.",
-    "comingSoon": "УДАХГҮЙ",
+    "authLayout": "Бүх түвшний хэрэглэгчдийн криптовалютын хөрөнгө оруулалтын туршлагыг хялбарчлах, сайжруулах зорилготой.",
+    "comingSoon": "УДАХГҮЙ ГАРНА",
     "strategy": "Стратеги",
-    "suspended": "Таны данс түдгэлзсэн байна, администратортой холбоо барина уу"
+    "suspended": "Таны бүртгэл түдгэлзсэн байна, администратортой холбоо барина уу",
+    "joinChainMind": "ChainMind-д нэгдэх"
   },
   "button": {
     "cancel": "Цуцлах",
     "continue": "Үргэлжлүүлэх",
     "upgrade": "Шинэчлэх",
-    "buyNow": "Одоо худалдан авах",
+    "buyNow": "Одоо худалдаж авах",
     "backHome": "Нүүр хуудас руу буцах",
     "back": "Буцах",
     "nextStep": "Дараагийн алхам",
-    "seeStrategies": "Стратегиудыг үзэх"
+    "seeStrategies": "Стратегиудыг харах"
   },
   "createAccount": {
-    "title": "Өөрийн дансыг үүсгээрэй",
-    "subtitle": "Өсөлтийг үзэж, зөвлөгөө дэмжлэг авах!",
-    "registerWithGoogle": "Google-р бүртгүүлэх",
+    "title": "Бүртгэл үүсгэх",
+    "subtitle": "Өсөлтөө харж, зөвлөх дэмжлэг авах!",
+    "registerWithGoogle": "Google-ээр бүртгүүлэх",
     "orContinueWithEmail": "Эсвэл имэйлээр үргэлжлүүлэх",
     "fullNameLabel": "Бүтэн нэр",
     "fullNamePlaceholder": "Бүтэн нэрээ оруулна уу",
@@ -28,120 +29,126 @@
     "passwordPlaceholder": "Нууц үгээ оруулна уу",
     "inviteCodeLabel": "Таны ивээн тэтгэгч",
     "agreeToTerms": "Би зөвшөөрч байна",
-    "termsAndConditions": "Нөхцөл, болзол",
-    "createAccountButton": "Данс үүсгэх",
-    "alreadyHaveAccount": "Өмнө нь данстай юу?",
+    "termsAndConditions": "Би {termsAndConditions} болон {disclaimer}-ийг уншиж, тэдгээрийг гэрээний нэг хэсэг болгон илэрхийлж зөвшөөрч байна. Мөн би дижитал контентыг худалдаж авч, даруй хандах замаар {refundWaiver}-ийг хүлээн зөвшөөрч байна.",
+    "createAccountButton": "Бүртгэл үүсгэх",
+    "alreadyHaveAccount": "Та бүртгэлтэй юу?",
     "login": "Нэвтрэх"
   },
   "emailVerification": {
-    "title": "Имэйл баталгаажуулалт",
+    "title": "Имэйлийг баталгаажуулах",
     "subtitle": "Бидний илгээсэн 5 оронтой кодыг оруулна уу",
     "placeholderEmail": "Ricknovak@example.com",
-    "verifyCodeLabel": "Код баталгаажуулах",
+    "verifyCodeLabel": "Кодыг баталгаажуулах",
     "backButton": "Буцах",
     "resend": "Дахин илгээх",
     "resendWithTimer": "Дахин илгээх",
-    "checkSpam": "Имэйл ирсэнгүй юу? Спам шүүлтүүрээ шалгаарай эсвэл өөр имэйл хаягийг оролдоорой"
+    "checkSpam": "Имэйлээ хүлээж аваагүй юу? Спам шүүлтүүрээ шалгах эсвэл өөр имэйл хаяг туршиж үзээрэй"
   },
   "passwordRecovery": {
     "title": "Нууц үг сэргээх",
-    "subtitle": "Нууц үгээ мартсан тохиолдолд бид таныг сэргээхэд тусална.",
+    "subtitle": "Хэрэв та нууц үгээ мартсан бол бид танд нууц үгээ сэргээхэд туслах болно.",
     "emailLabel": "Имэйл хаяг",
     "emailPlaceholder": "Имэйл хаягаа оруулна уу",
     "backButton": "Буцах",
     "continueButton": "Үргэлжлүүлэх"
   },
   "resetPassword": {
-    "title": "Нууц үг солих",
-    "subtitle": "Шинэ, хүчтэй нууц үгийг хамгийн багадаа 8 тэмдэгттэй сонгоно уу",
+    "title": "Нууц үг сэргээх",
+    "subtitle": "8-аас доошгүй тэмдэгт бүхий шинэ бөгөөд хүчтэй нууц үг сонгоорой",
     "newPasswordLabel": "Шинэ нууц үг",
     "newPasswordPlaceholder": "Шинэ нууц үгээ оруулна уу",
-    "confirmNewPasswordLabel": "Шинэ нууц үгийг баталгаажуулах",
+    "confirmNewPasswordLabel": "Шинэ нууц үгээ баталгаажуулах",
     "confirmNewPasswordPlaceholder": "Шинэ нууц үгээ дахин оруулна уу",
-    "resetPasswordButton": "Нууц үг солих"
+    "resetPasswordButton": "Нууц үг сэргээх",
+    "successChange": "Таны нууц үг амжилттай өөрчлөгдсөн"
+  },
+  "register": {
+    "termsAndConditions": "Үйлчилгээний нөхцөл",
+    "disclaimer": "ХАРИУЦЛАГЫН ТАЙЛБАР",
+    "refundWaiver": "Би 14 хоногийн буцаалтын эрхээ татгалзаж байна."
   },
   "login": {
-    "title": "Өөрийн дансанд нэвтрэх",
+    "title": "Өөрийн бүртгэлд нэвтрэх",
     "loginWithGoogle": "Google-ээр нэвтрэх",
-    "rememberMe": "Намайг сана",
+    "rememberMe": "Намайг санах",
     "forgotPassword": "Нууц үгээ мартсан уу?",
     "loginButton": "Нэвтрэх",
-    "noAccount": "Данс байхгүй юу?",
+    "noAccount": "Та бүртгэлгүй юу?",
     "register": "Бүртгүүлэх"
   },
   "formErrors": {
     "requiredName": "Бүтэн нэрээ оруулна уу",
     "requiredPassword": "Нууц үгээ оруулна уу",
-    "confirmPassword": "Нууц үг хоорондоо таарах ёстой.",
-    "passwordPattern": "8 тэмдэгт, нэг том үсэг, нэг жижиг үсэг, нэг тоо, нэг тусгай тэмдэгт оруулах шаардлагатай",
+    "confirmPassword": "Хоёр нууц үг таарч байх ёстой.",
+    "passwordPattern": "8 тэмдэгт, нэг том үсэг, нэг жижиг үсэг, нэг тоо болон нэг тусгай тэмдэгт агуулсан байх ёстой",
     "invalidEmail": "Имэйл хаяг буруу байна",
     "requiredEmail": "Имэйл хаягаа оруулна уу",
-    "requiredTerms": "Нөхцөл, болзлыг хүлээн зөвшөөрөх шаардлагатай.",
-    "formError": "Алдаа гарлаа, дахин оролдоно уу",
-    "requiredCode": "Утга буруу байна, дахин оролдоно уу.",
+    "requiredTerms": "Үйлчилгээний нөхцөлийг хүлээн зөвшөөрөх шаардлагатай.",
+    "formError": "Юм буруу байна, дахин оролдоно уу",
+    "requiredCode": "Зөв утга оруулна уу.",
     "userNotFound": "Имэйл хаяг олдсонгүй",
-    "emailExists": "Имэйл хаяг аль хэдийн бүртгэлтэй байна",
+    "emailExists": "Имэйл хаяг аль хэдийнэ бүртгэгдсэн байна",
     "requiredNewPassword": "Шинэ нууц үгээ оруулна уу",
-    "newPasswordPattern": "8 тэмдэгт, нэг том үсэг, нэг жижиг үсэг, нэг тоо, нэг тусгай тэмдэгт оруулах шаардлагатай",
+    "newPasswordPattern": "8 тэмдэгт, нэг том үсэг, нэг жижиг үсэг, нэг тоо болон нэг тусгай тэмдэгт агуулсан байх ёстой",
     "requiredCurrentPassword": "Одоогийн нууц үгээ оруулна уу",
     "required": "Энэ талбар шаардлагатай",
-    "invalidWallet": "Буруу Polygon түрийвчний хаяг"
+    "invalidWallet": "Буруу Polygon хэтэвчийн хаяг"
   },
   "sidebar": {
     "services": "Үйлчилгээ",
-    "community": "Олон нийт",
-    "dashboard": "Удирдлагын самбар",
+    "community": "Нийгэмлэг",
+    "dashboard": "Хяналтын самбар",
     "coin-reports": "Зоосны тайлан",
-    "portfolio-strategies": "Портфелийн стратегиуд",
-    "affiliate": "Түнш",
+    "portfolio-strategies": "Портфолио стратегиуд",
+    "affiliate": "Хамтрагч",
     "education": "Боловсрол",
     "help-center": "Тусламжийн төв"
   },
   "wallet": {
-    "requiredAddress": "USDC Polygon (Matic) Түрийвчний хаяг шаардлагатай",
+    "requiredAddress": "USDC Polygon (Matic) хэтэвчийн хаяг шаардлагатай",
     "requiredName": "Нэр шаардлагатай",
-    "successMessage": "Таны түрийвчний хаяг амжилттай шинэчлэгдлээ.",
-    "setupWallet": "Түрийвчээ тохируулах",
-    "addressInputLabel": "USDC Polygon (Matic) Түрийвчний хаяг",
-    "addressInputPlaceholder": "USDC Polygon (Matic) түрийвчний хаяг оруулна уу",
+    "successMessage": "Таны хэтэвчийн хаяг амжилттай шинэчлэгдсэн байна.",
+    "setupWallet": "Хэтэвчээ тохируулна уу",
+    "addressInputLabel": "USDC Polygon (Matic) хэтэвчийн хаяг",
+    "addressInputPlaceholder": "USDC Polygon (Matic) хэтэвчийн хаяг оруулна уу",
     "nameInputLabel": "Таны хувийн нууц нэр",
-    "nameInputPlaceholder": "Таны хувийн нууц нэрийг оруулна уу",
-    "saveButton": "Түрийвч хадгалах"
+    "nameInputPlaceholder": "Хувийн нууц нэрээ оруулна уу",
+    "saveButton": "Хэтэвчийг хадгалах"
   },
   "plan": {
     "currentPlan": "Таны одоогийн төлөвлөгөө",
-    "upgradePlan": "Төлөвлөгөөгөө шинэчилнэ үү!",
+    "upgradePlan": "Төлөвлөгөөгөө шинэчлэх!",
     "compares": "Төлөвлөгөөг харьцуулах"
   },
   "withdraw": {
-    "Withdraw": "Мөнгө авах",
+    "Withdraw": "Гаргах",
     "requiredAmount": "Дүн шаардлагатай",
-    "requiredWallet": "Түрийвчний хаяг шаардлагатай",
-    "submitRequest": "Таны хүсэлт амжилттай илгээгдлээ.",
-    "availableWithdraw": "Боломжтой мөнгө авах",
+    "requiredWallet": "Хэтэвчийн хаяг шаардлагатай",
+    "submitRequest": "Таны хүсэлт амжилттай илгээгдсэн.",
+    "availableWithdraw": "Гаргах боломжтой",
     "amount": "Дүн",
-    "enterAmount": "Дүнг оруулна уу",
+    "enterAmount": "Дүн оруулна уу",
     "address": "Хаяг",
-    "feeWithdrawal": "Мөнгө авахад 3%-ийн шимтгэлтэй.",
-    "minimumAmount": "Мөнгө авах доод дүн 100 Евро."
+    "feeWithdrawal": "Гаргахдаа 3% төлбөр байх болно.",
+    "minimumAmount": "Гаргах доод дүн нь 100 доллар байна."
   },
   "notFound": {
     "title": "Огторгуйд төөрсөн.",
-    "subtitle": "Та орчлонгийн хязгаарт хүрлээ"
+    "subtitle": "Та орчлон ертөнцийн захад хүрсэн байна"
   },
   "payment": {
-    "successTitle": "Төлбөр амжилттай!",
-    "successSubtitle": "Таны төлбөр амжилттай хийгдсэн. Таны гишүүнчлэл одоо идэвхжсэн. Таны худалдан авалтад баярлалаа!",
+    "successTitle": "Амжилттай төлбөр!",
+    "successSubtitle": "Таны төлбөр амжилттай боловсруулагдсан. Таны гишүүнчлэл одоо идэвхтэй байна. Худалдаж авсанд баярлалаа!",
     "successTexture": "Амжилттай • Амжилттай • Амжилттай",
-    "failTitle": "Төлбөр амжилтгүй!",
-    "failSubtitle": "Таны төлбөр хийгдсэнгүй. Таны гишүүнчлэл идэвхжсэнгүй. Дахин оролдох эсвэл тусламж авахыг оролдоно уу.",
+    "failTitle": "Төлбөр амжилтгүй боллоо!",
+    "failSubtitle": "Таны төлбөрийг боловсруулж чадаагүй байна. Таны гишүүнчлэл идэвхжээгүй байна. Дахин оролдоно уу эсвэл тусламжийн төвтэй холбоо барина уу.",
     "failTexture": "Амжилтгүй • Амжилтгүй • Амжилтгүй • Амжилтгүй"
   },
   "checkout": {
-    "title": "Тооцоо хийх",
+    "title": "Тооцоо",
     "subscribeTo": "Бүртгүүлэх",
     "plan": "төлөвлөгөө",
-    "payQr": "QR код эсвэл Түрийвчний хаягаар төлөх",
+    "payQr": "QR код эсвэл хэтэвчийн хаягаар төлөх",
     "polygonNetwork": "Polygon Сүлжээ",
     "expiredAt": "Дуусах хугацаа",
     "amountToSend": "Илгээх дүн",
@@ -149,75 +156,75 @@
   },
   "userProfile": {
     "title": "Хэрэглэгчийн профайл",
-    "choosePicError": "Зураг сонгоорой!",
-    "avatarUpdatedSuccess": "Аватар амжилттай шинэчлэгдлээ!",
-    "avatarUpdateFailed": "Аватар шинэчлэх амжилтгүй!",
-    "avatarRemovedSuccess": "Аватар амжилттай устгагдлаа!",
-    "avatarRemoveFailed": "Аватар устгах амжилтгүй!",
+    "choosePicError": "Зураг сонгоно уу!",
+    "avatarUpdatedSuccess": "Аватар амжилттай шинэчлэгдсэн!",
+    "avatarUpdateFailed": "Аватар шинэчлэхэд алдаа гарлаа!",
+    "avatarRemovedSuccess": "Аватар амжилттай устгагдсан!",
+    "avatarRemoveFailed": "Аватар устгахад алдаа гарлаа!",
     "uploadPicture": "Зураг оруулах",
     "remove": "Устгах"
   },
   "settingsDialog": {
     "profileSettings": "Профайл тохиргоо",
     "nameRequired": "Нэр шаардлагатай",
-    "invalidCharacter": "Таны нэр тоо агуулах ёсгүй",
-    "nameUpdateSuccess": "Таны нэр амжилттай шинэчлэгдлээ!",
-    "nameUpdateFailed": "Нэр шинэчлэх амжилтгүй!",
+    "invalidCharacter": "Таны нэрэнд тоо орж болохгүй",
+    "nameUpdateSuccess": "Таны нэр амжилттай шинэчлэгдсэн!",
+    "nameUpdateFailed": "Нэр шинэчлэхэд алдаа гарлаа!",
     "fullName": "Бүтэн нэр",
     "password": "Нууц үг",
     "change": "Өөрчлөх",
-    "changePassword": "Нууц үг солих"
+    "changePassword": "Нууц үг өөрчлөх"
   },
   "forgetPassword": {
-    "forgotPassword": "Нууц үг мартсан",
+    "forgotPassword": "Нууц үгээ мартсан",
     "createNewPassword": "Шинэ нууц үг үүсгэх",
-    "passwordChanged": "Нууц үг амжилттай өөрчлөгдлөө!",
-    "failedToVerifyCode": "Код баталгаажуулах амжилтгүй!",
+    "passwordChanged": "Нууц үг амжилттай өөрчлөгдсөн!",
+    "failedToVerifyCode": "Кодыг шалгахад алдаа гарлаа!",
     "newPassword": "Шинэ нууц үг",
     "enterNewPassword": "Шинэ нууц үгээ оруулна уу",
-    "passwordHelperText": "Тэмдэгтүүд, тоо, тэмдэгтүүдийн холимог бүхий 8 ба түүнээс дээш тэмдэгт ашиглаарай.",
-    "confirmNewPassword": "Шинэ нууц үгийг баталгаажуулах",
-    "confirmNewPasswordPlaceholder": "Шинэ нууц үгээ баталгаажуулна уу",
-    "confirmPasswordHelperText": "Хоёр нууц үг таарах ёстой.",
-    "resetPassword": "Нууц үг солих"
+    "passwordHelperText": "Үсэг, тоо, тэмдгийн хольц бүхий 8 буюу түүнээс дээш тэмдэгт ашиглана уу.",
+    "confirmNewPassword": "Шинэ нууц үгээ баталгаажуулах",
+    "confirmNewPasswordPlaceholder": "Шинэ нууц үгээ дахин оруулна уу",
+    "confirmPasswordHelperText": "Хоёр нууц үг таарч байх ёстой.",
+    "resetPassword": "Нууц үг сэргээх"
   },
   "changePassword": {
-    "title": "Нууц үг солих",
+    "title": "Нууц үг өөрчлөх",
     "currentPassword": "Одоогийн нууц үг",
     "enterCurrentPassword": "Одоогийн нууц үгээ оруулна уу",
     "forgotPassword": "Нууц үгээ мартсан уу?",
     "newPassword": "Шинэ нууц үг",
     "enterNewPassword": "Шинэ нууц үгээ оруулна уу",
-    "passwordHelperText": "Тэмдэгтүүд, тоо, тэмдэгтүүдийн холимог бүхий 8 ба түүнээс дээш тэмдэгт ашиглаарай.",
-    "confirmNewPassword": "Шинэ нууц үгийг баталгаажуулах",
-    "confirmNewPasswordPlaceholder": "Шинэ нууц үгээ баталгаажуулна уу",
-    "confirmPasswordHelperText": "Хоёр нууц үг таарах ёстой.",
-    "passwordChangedSuccess": "Нууц үг амжилттай өөрчлөгдлөө!",
-    "passwordChangedFailed": "Нууц үг шинэчлэх амжилтгүй!",
+    "passwordHelperText": "Үсэг, тоо, тэмдгийн хольц бүхий 8 буюу түүнээс дээш тэмдэгт ашиглана уу。",
+    "confirmNewPassword": "Шинэ нууц үгээ баталгаажуулах",
+    "confirmNewPasswordPlaceholder": "Шинэ нууц үгээ дахин оруулна уу",
+    "confirmPasswordHelperText": "Хоёр нууц үг таарч байх ёстой。",
+    "passwordChangedSuccess": "Нууц үг амжилттай өөрчлөгдсөн!",
+    "passwordChangedFailed": "Нууц үг өөрчлөхөд алдаа гарлаа!",
     "saveChange": "Өөрчлөлтийг хадгалах"
   },
   "userInfo": {
     "noMembership": "Танд",
-    "membershipSuffix": " гишүүнчлэл байхгүй!!",
-    "upgradeButton": "Шинэчлэх"
+    "membershipSuffix": " гишүүнчлэл байхгүй байна!!",
+    "upgradeButton": "Шинэчлэн сайжруулна уу"
   },
   "profileDialog": {
     "title": "Профайл",
     "logout": "Гарах",
-    "copyright": "Зохиогчийн эрх © {{year}} {{company}}. Бүх эрх хуулиар хамгаалагдсан.",
+    "copyright": "著作権 © {{year}} {{company}}. Бүх эрх хуулиар хамгаалагдсан。",
     "profileSetting": "Профайл тохиргоо",
-    "termsOfService": "Хэрэглэх нөхцөл | Нууцлалын бодлого",
-    "becomePartner": "Түнш болох"
+    "termsOfService": "Үйлчилгээний нөхцөл | プライバシーポリシー",
+    "becomePartner": "パートナーになる"
   },
   "becomePartner": {
     "title": "Түнш болох",
-    "description": "Эдгээр туннелүүдийн нэг нь VPN серверээр дамждаг бол нөгөө нь VPN-ээс зугтаж, Интернет үйлчилгээ үзүүлэгч (ISP) рүү шууд ордог. Эцэст нь, энэ нь хэрэглэгчид аль апп эсвэл вэбсайтууд VPN-ээр дамжуулж, аль нь дамжуулагдахгүйг сонгох боломжтой болно, ингэснээр тэдний онлайн үйл ажиллагааг хэрхэн хуваалцах талаар илүү хяналт тавих боломжтой болно.",
-    "startNow": "Одоо эхлээрэй!"
+    "description": "Эдгээр туннелиудын нэг нь VPN серверээр дамжин трафикийг чиглүүлдэг бол нөгөө нь VPN-ийг тойрон Интернэтийн үйлчилгээ үзүүлэгч (ISP) руу шууд явдаг. Эцэст нь хэрэглэгчид аль апп эсвэл вэбсайт нь VPN-ээр дамжин өнгөрөхийг сонгож, тэдний онлайн үйл ажиллагааг хэрхэн хуваалцах талаар илүү их хяналт тавих боломжтой болно.",
+    "startNow": "Одоо эхлэх"
   },
   "twoFactorDialog": {
     "title": "Түнш болох",
-    "securityMessage": "Нэмэлт аюулгүй байдлын үүднээс хоёр шатлалт баталгаажуулалтыг (2FA) тохируулна уу.",
-    "qrInstruction": "Баталгаажуулах апп ашиглан QR кодыг сканнердаж, доорх кодыг оруулна уу.",
+    "securityMessage": "Нэмэлт аюулгүй байдлын үүднээс хоёр алхамт баталгаажуулалтыг (2FA) тохируулна уу。",
+    "qrInstruction": "Баталгаажуулах апп-аар QR кодыг сканнердаж, доор кодыг оруулна уу。",
     "authCodeLabel": "Баталгаажуулах код",
     "authCodePlaceholder": "Баталгаажуулах кодыг оруулна уу",
     "backButton": "Буцах",
@@ -225,58 +232,58 @@
   },
   "kycInfoDialog": {
     "title": "Түнш болох",
-    "description": "Бүртгэлээ дуусгахын тулд та KYC үйл явцыг дуусгах шаардлагатай. Та өөрийн баримт бичиг болон бусад шаардлагатай мэдээллийг өгөх шаардлагатай.",
-    "doKycNow": "KYC-г одоо хийх",
+    "description": "登録を完了するには、KYCプロセスを完了する必要があります。身分証明書とその他の必要な情報を提供する必要があります。",
+    "doKycNow": "今すぐKYCを行う",
     "backButton": "Буцах",
-    "nextStepButton": "Дараагийн алхам"
+    "nextStepButton": "次のステップ"
   },
   "personalInfoDialog": {
     "title": "Түнш болох",
-    "fullnameLabel": "БҮТЭН НЭР",
-    "fullnamePlaceholder": "Бүтэн нэрээ оруулна уу",
-    "emailLabel": "ИМЭЙЛ",
-    "emailPlaceholder": "Имэйл хаягаа оруулна уу",
-    "countryLabel": "Улс",
-    "countryPlaceholder": "Улс сонгох",
-    "cityLabel": "Хот",
-    "cityPlaceholder": "Хот сонгох",
-    "streetLabel": "Гудамж",
-    "streetPlaceholder": "Гудамжны нэр оруулах",
-    "buildingLabel": "Барилгын дугаар",
-    "buildingPlaceholder": "Барилгын дугаар оруулах",
-    "zipcodeLabel": "Шуудангийн код",
-    "zipcodePlaceholder": "Шуудангийн код оруулах",
-    "walletLabel": "USDC Polygon түрийвчний хаяг",
-    "walletPlaceholder": "Түрийвчний хаяг оруулах",
-    "updateFailed": "Профайлыг шинэчлэх амжилтгүй боллоо! Дахин оролдоно уу"
+    "fullnameLabel": "氏名",
+    "fullnamePlaceholder": "氏名を入力",
+    "emailLabel": "メール",
+    "emailPlaceholder": "メールアドレスを入力",
+    "countryLabel": "国",
+    "countryPlaceholder": "国を選択",
+    "cityLabel": "市",
+    "cityPlaceholder": "市を選択",
+    "streetLabel": "通り",
+    "streetPlaceholder": "通りの名前を入力",
+    "buildingLabel": "建物番号",
+    "buildingPlaceholder": "建物番号を入力",
+    "zipcodeLabel": "郵便番号",
+    "zipcodePlaceholder": "郵便番号を入力",
+    "walletLabel": "USDC Polygonウォレットアドレス",
+    "walletPlaceholder": "ウォレットアドレスを入力",
+    "updateFailed": "Профайл шинэчлэхэд алдаа гарлаа! Дахин оролдоно уу"
   },
   "successDialog": {
     "requestSent": "Таны хүсэлт илгээгдсэн!",
-    "reviewMessage": "Админ нар үүнийг хянаж, дараагийн 24 цагийн дотор үр дүнг танай имэйл рүү илгээх болно.",
+    "reviewMessage": "Админ үүнийг шалгаж, 24 цагийн дотор таны имэйл хаяг руу илгээнэ.",
     "backToHome": "Нүүр хуудас руу буцах"
   },
   "portfolioTable": {
     "strategyPlan": "Стратегийн төлөвлөгөө",
     "plannedInvestment": "Төлөвлөсөн хөрөнгө оруулалт",
-    "enterAmount": "Дүн оруулах",
-    "upgradeMessage": "Шинэчлэгдсэний дараа захиалагчид нэмэлт давуу тал, сайжруулсан үйл ажиллагаа, одоогийн төлөвлөгөөнд байхгүй дээд зэрэглэлийн контент авах боломжтой.",
+    "enterAmount": "Дүн оруулна уу",
+    "upgradeMessage": "Шинэчилснээр хэрэглэгчид нэмэлт ашиг тус, сайжруулсан функцууд болон одоогийн төлөвлөгөөнд ороогүй дээд зэрэглэлийн контентуудыг ашиглах боломжтой.",
     "strategy": "Стратеги"
   },
   "portfolioNotice": {
-    "note": "ТЭМДЭГЛЭЛ:",
-    "message": "Шинэчлэгдсэний дараа захиалагчид нэмэлт давуу тал, сайжруулсан үйл ажиллагаа, одоогийн төлөвлөгөөнд байхгүй дээд зэрэглэлийн контент авах боломжтой."
+    "note": "АНХААР:",
+    "message": "Шинэчилснээр хэрэглэгчид нэмэлт ашиг тус, сайжруулсан функцууд болон одоогийн төлөвлөгөөнд ороогүй дээд зэрэглэлийн контентуудыг ашиглах боломжтой."
   },
   "portfolioStrategiesInnerSection": {
-    "upgradeMessage": "Энэ мэдээллийг үзэхийн тулд багцаа шинэчлэх шаардлагатай"
+    "upgradeMessage": "Энэ мэдээллийг үзэхийн тулд таны багцыг шинэчлэх хэрэгтэй"
   },
   "videoList": {
-    "educationVideos": "Боловсролын видеонууд",
-    "searchPlaceholder": "Хайлт"
+    "educationVideos": "Боловсролын видео",
+    "searchPlaceholder": "Хайх"
   },
   "educationSingleVideoSection": {
-    "by": "ЗОХИОГЧ",
+    "by": "БАТАЛГААЖСАН",
     "duration": "ҮРГЭЛЖЛЭХ ХУГАЦАА",
-    "upgradeMessage": "Энэ мэдээллийг үзэхийн тулд багцаа шинэчлэх шаардлагатай"
+    "upgradeMessage": "Энэ мэдээллийг үзэхийн тулд таны багцыг шинэчлэх хэрэгтэй"
   },
   "categoryItem": {
     "moreDetails": "Дэлгэрэнгүй мэдээлэл"
@@ -287,7 +294,7 @@
   "welcomeBanner": {
     "hi": "Сайн уу {{name}}",
     "welcomeBack": "👋, Дахин тавтай морил!",
-    "knowledgeMessage": "Зах зээлд мэдлэг бол хүч; мэргэн ухаан нь үүнийг хэрхэн ашиглахаа мэдэх явдал юм!",
+    "knowledgeMessage": "Зах зээлд мэдлэг бол хүч; Мэргэн ухаан бол үүнийг хэрхэн ашиглахыг мэдэх явдал юм!",
     "welcomeVideo": "Тавтай морилны видео",
     "youAre": "Та бол"
   },
@@ -298,69 +305,69 @@
     "title": "Шууд дамжуулалт"
   },
   "dashboardSection": {
-    "incompletePaymentAlert": "Дуусгаагүй төлбөрийн анхааруулга",
-    "incompletePaymentDescription": "Таны {{planType}} багц руу шинэчлэгдэх нь төлбөр дуусаагүй тул хүлээгдэж байна. Шинэчлэлтийг дуусгахын тулд төлбөрөө гүйцэтгэнэ үү."
+    "incompletePaymentAlert": "Дутуу төлбөрийн анхааруулга",
+    "incompletePaymentDescription": "Таны {{planType}} багцыг шинэчлэх нь дутуу төлбөрийн улмаас хүлээгдэж байна. Шинэчлэлтийг дуусгахад төлбөрөө бүрэн хийж гүйцэтгэнэ үү."
   },
   "dropZone": {
-    "subtitle": "Бид энэ функцийг одоогоор ажиллуулж байна."
+    "subtitle": "Бид энэ функц дээр одоогоор ажиллаж байна."
   },
   "roadMap": {
-    "title": "Замын зураглал"
+    "title": "Замын зураг"
   },
   "coinReportTable": {
     "standardCoinReports": "Стандарт зоосны тайлан",
     "coinReports": "Зоосны тайлан"
   },
   "coinReportNotice": {
-    "importantNotice": "ЧУХАЛ ТЭМДЭГЛЭЛ:",
-    "message": "Энд дурдсан үнэ цэнэ, таамаглал нь манай зах зээлийн хувийн үнэлгээ дээр суурилсан бөгөөд худалдаж авах зөвлөмж эсвэл аливаа баталгаагүй болно. Бүх хөрөнгө оруулалт эрсдэлтэй бөгөөд бүртгүүлсэн үедээ баталсан эрсдлийн хариуцлагыг хүлээн зөвшөөрөх нь чухал юм. Өгөгдсөн мэдээллийг зөвшөөрөлгүй тараах нь эрүүгийн хариуцлагад татагдах бөгөөд дансыг байнга хаахад хүргэнэ.",
-    "viewMore": "ИЛҮҮ ҮЗЭХ...",
-    "viewLess": "БАГА ҮЗЭХ..."
+    "importantNotice": "ЧУХАЛ АНХААРУУЛГА:",
+    "message": "Энд танилцуулсан утгууд болон таамаглал нь манай зах зээлийн хувийн үнэлгээнд суурилсан бөгөөд худалдан авах зөвлөмж эсвэл ямар нэг баталгаа үүсгэхгүй. Бүх хөрөнгө оруулалт нь эрсдэлтэй бөгөөд бүртгэлийн явцад баталгаажсан эрсдлийн хариуцлагыг хүлээн зөвшөөрөх нь чухал юм. Өгөгдсөн мэдээллийг хууль бусаар тараах нь эрүүгийн хариуцлага хүлээлгэх бөгөөд бүртгэлийг байнгын түдгэлзүүлэх болно.",
+    "viewMore": "Илүү ихийг үзэх...",
+    "viewLess": "Бага үзэх..."
   },
   "learningBanner": {
-    "title": "Энэ хэрхэн ажилладагийг үзэхийг хүсч байна уу?",
-    "buttonText": "Суралцах видео"
+    "title": "Үйл ажиллагааг хэрхэн ажилладагийг үзэхийг хүсэж байна уу?",
+    "buttonText": "Видеог үзэх"
   },
   "affiliateSection": {
-    "dashboard": "Удирдлагын самбар",
+    "dashboard": "Хяналтын самбар",
     "statistics": "Статистик",
     "comingSoon": "Удахгүй",
     "network": "Сүлжээ",
-    "commissions": "Хороолол",
-    "payouts": "Төлбөрүүд"
+    "commissions": "Комисс",
+    "payouts": "Төлбөр"
   },
   "affiliateHeader": {
-    "yourReferralLink": "Таны лавлах холбоос",
-    "shareWithAudience": "Энэ бол таны лавлах URL. Үүнийг таны үзэгчидтэй хуваалцаж, шимтгэл олох боломжтой.",
-    "copyCode": "Кодыг хуулбарлах"
+    "yourReferralLink": "Таны лавлагааны холбоос",
+    "shareWithAudience": "Энэ бол таны лавлагааны URL юм. Үзэгчидтэйгээ хуваалцаж, комисс олох боломжтой.",
+    "copyCode": "Кодыг хуулах"
   },
   "affStatisticsTab": {
-    "comingSoon": "УДАХГҮЙ",
-    "upgradeMessage": "Шинэчлэгдсэний дараа захиалагчид нэмэлт давуу тал, сайжруулсан үйл ажиллагаа, одоогийн төлөвлөгөөнд байхгүй дээд зэрэглэлийн контент авах боломжтой."
+    "comingSoon": "УДАХГҮЙ ГАРНА",
+    "upgradeMessage": "Шинэчилснээр хэрэглэгчид нэмэлт ашиг тус, сайжруулсан функцууд болон одоогийн төлөвлөгөөнд ороогүй дээд зэрэглэлийн контентуудыг ашиглах боломжтой."
   },
   "affPayoutsTab": {
-    "setupWalletMessage": "Мөнгийг танд шилжүүлэхийн тулд түрийвчээ тохируулах.",
-    "changeWallet": "Түрийвч солих",
-    "setupWallet": "Түрийвч тохируулах"
+    "setupWalletMessage": "Мөнгө илгээхийн тулд хэтэвчээ тохируулна уу.",
+    "changeWallet": "Хэтэвчийг өөрчлөх",
+    "setupWallet": "Хэтэвчийг тохируулах"
   },
   "affPayoutsTabTable": {
     "userId": "Хэрэглэгчийн ID",
-    "walletId": "Түрийвчний ID",
+    "walletId": "Хэтэвчний ID",
     "amount": "Дүн",
     "date": "Огноо",
     "status": "Төлөв",
-    "payouts": "Төлбөрүүд",
-    "emptyTitle": "Та одоогоор төлбөр авсангүй",
-    "emptySubtitle": "Ашиг, алдагдал, үнэлгээг нэг дор хянах.",
-    "from": "ЭХЛЭЛ",
-    "to": "ТӨГСГӨЛ",
+    "payouts": "Төлбөр",
+    "emptyTitle": "Танд одоохондоо төлбөр байхгүй байна",
+    "emptySubtitle": "Нэг дор ашиг, алдагдал, үнэлгээг хянах.",
+    "from": "Эхлэх",
+    "to": "Дуусах",
     "dateAndTime": "Огноо ба цаг"
   },
   "affNetworkTabTable": {
     "username": "Хэрэглэгчийн нэр",
     "package": "Багц",
     "joinedDate": "Нэгдсэн огноо",
-    "moneyMade": "Орлого олох уу?"
+    "moneyMade": "Эргэлтийн хэмжээ"
   },
   "affNetworkTab": {
     "table": "Хүснэгт",
@@ -368,22 +375,22 @@
     "comingSoon": "Удахгүй"
   },
   "affNetworkTabChart": {
-    "comingSoon": "УДАХГҮЙ",
-    "upgradeMessage": "Шинэчлэгдсэний дараа захиалагчид нэмэлт давуу тал, сайжруулсан үйл ажиллагаа, одоогийн төлөвлөгөөнд байхгүй дээд зэрэглэлийн контент авах боломжтой."
+    "comingSoon": "УДАХГҮЙ ГАРНА",
+    "upgradeMessage": "Шинэчилснээр хэрэглэгчид нэмэлт ашиг тус, сайжруулсан функцууд болон одоогийн төлөвлөгөөнд ороогүй дээд зэрэглэлийн контентуудыг ашиглах боломжтой."
   },
   "afDashboardTab": {
-    "totalTurnover": "Нийт орлого",
-    "commissionWallet": "Шимтгэлийн түрийвч",
-    "withdraw": "Мөнгө авах",
-    "currentRank": "Одоогийн зэрэг",
-    "overrideBonus": "Шимтгэлийн бонус",
-    "goldCoins": "Алтан зоос",
-    "first": "Эхний",
+    "totalTurnover": "Нийт эргэлтийн хэмжээ",
+    "commissionWallet": "Комиссын хэтэвч",
+    "withdraw": "Гаргах",
+    "currentRank": "Одоогийн зэрэглэл",
+    "overrideBonus": "Давуу талын бонус",
+    "goldCoins": "Алт зоос",
+    "first": "Нэгдүгээр",
     "second": "Хоёрдугаар",
     "third": "Гуравдугаар",
     "other": "Бусад",
-    "overall": "Нийт",
-    "nextRank": "Дараагийн зэрэг",
+    "overall": "Ерөнхий",
+    "nextRank": "Дараагийн зэрэглэл",
     "teamMembers": "Багийн гишүүд",
     "firstLineVolume": "Эхний шугамын хэмжээ"
   },
@@ -392,15 +399,15 @@
     "amount": "Дүн",
     "packageName": "Багцын нэр",
     "percentage": "Хувь",
-    "commissionDate": "Шимтгэлийн огноо",
-    "commissionsTitle": "Шимтгэлүүд",
-    "noRecord": "Та одоогоор шимтгэлийн бичлэг байхгүй байна"
+    "commissionDate": "Комиссын огноо",
+    "commissionsTitle": "Комисс",
+    "noRecord": "Танд одоохондоо комиссын бүртгэл байхгүй байна"
   },
   "affCommissionsTab": {
-    "totalTurnover": "Нийт орлого",
-    "totalCommission": "Нийт шимтгэл",
-    "availableForWithdraw": "Боломжтой мөнгө авах",
-    "withdraw": "Мөнгө авах"
+    "totalTurnover": "Нийт эргэлтийн хэмжээ",
+    "totalCommission": "Нийт комисс",
+    "availableForWithdraw": "Гаргах боломжтой",
+    "withdraw": "Гаргах"
   },
   "empty": {
     "thereIsNothingToShow": "Үзүүлэх зүйл алга!"

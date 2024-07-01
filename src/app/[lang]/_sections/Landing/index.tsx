@@ -11,15 +11,25 @@ import WhyChainMind from "./WhyChainMind";
 import Pricing from "./Pricing";
 import VisionMission from "./VisionMission";
 import StayInTouch from "./StayInTouch";
+import { usePagesServiceGetPages } from "@cms/queries";
+import type { pages } from "@cms/requests";
+import { useAppSelector } from "@/lib/hooks";
+import { selectLang } from "@/lib/features/dictionary/dicSlice";
 
 const HomePageSection = () => {
+  const lang = useAppSelector(selectLang);
+
+  const { data } = usePagesServiceGetPages({ locale: lang });
+  const findContent = (type: pages["layout"][number]["blockType"]) =>
+    data?.docs?.[0]?.layout.find((item) => item.blockType === type);
+
   return (
     <Stack alignItems={"center"}>
-      <LandingHero />
+      <LandingHero {...(findContent("Hero") as any)} />
 
-      <Opportunity />
+      <Opportunity {...(findContent("Opportunity") as any)} />
 
-      <Problems />
+      <Problems {...(findContent("Problem") as any)} />
 
       <Solution />
 

@@ -8,9 +8,18 @@ import { Icon } from "@/components/icons";
 import Lottie from "lottie-react";
 import animationData from "@/assets/animations/IllustrationAnim.json";
 
-interface LandingHeroProps {}
+interface LandingHeroProps {
+  highlightText: string;
+  title: string;
+  description: string;
+  buttonText: string;
+  buttonLink: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: "Hero";
+}
 
-const LandingHero: FC<LandingHeroProps> = () => {
+const LandingHero: FC<LandingHeroProps> = ({ buttonLink, buttonText, description, highlightText, title }) => {
   const isMobile = useIsMobile();
 
   return (
@@ -38,7 +47,7 @@ const LandingHero: FC<LandingHeroProps> = () => {
               WebkitBackgroundClip: "text",
             }}
           >
-            Bullrun 2024-2025
+            {highlightText}
           </Typography>
         </Stack>
 
@@ -47,22 +56,22 @@ const LandingHero: FC<LandingHeroProps> = () => {
           mb={2}
           textAlign={{ md: "left", xs: "center" }}
         >
-          From Zero to 100X without the Sweat!
+          {title}
         </Typography>
         <Typography
           variant={isMobile ? "p2-regular" : "p1-regular"}
           color="grey.light"
           textAlign={{ md: "left", xs: "center" }}
         >
-          Unlock the Secret with Expert Crypto Guidance Zero Guesswork!
+          {description}
         </Typography>
 
         <Stack py={{ md: 5, xs: 3 }} maxWidth={"100%"}>
           <HiddenGems />
         </Stack>
 
-        <Button href="/login" fullWidth={isMobile} size="large" endIcon={<Icon name="Arrow-right" />}>
-          Join To ChainMind
+        <Button href={buttonLink} fullWidth={isMobile} size="large" endIcon={<Icon name="Arrow-right" />}>
+          {buttonText}
         </Button>
       </Stack>
       <Stack flex={1} width={"100%"}>

@@ -71,6 +71,7 @@ const rows = {
 const Pricing: FC = () => {
   return (
     <Stack
+      id="pricing"
       pt={{ md: 20, xs: 14 }}
       pb={{ md: 9, xs: 14 }}
       width={"100%"}

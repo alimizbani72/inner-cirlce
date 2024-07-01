@@ -1,14 +1,17 @@
-import type { FC } from "react";
+import { useState, type FC } from "react";
 import LandingContainer from "../LandingContainer";
 import { useIsMobile } from "@/hooks/use-responsive";
 import { Stack, Typography } from "@mui/material";
 import { TextField } from "@mui/material";
 import Starts from "./Stars";
+import { Icon } from "@/components/icons";
+import { IconButton } from "@mui/material";
 
 interface StayInTouchProps {}
 
 const StayInTouch: FC<StayInTouchProps> = () => {
   const isMobile = useIsMobile();
+  const [value, setValue] = useState("");
 
   return (
     <LandingContainer alignItems="center" mb={4}>
@@ -71,6 +74,8 @@ const StayInTouch: FC<StayInTouchProps> = () => {
 
         <Stack borderTop="1.5px solid" borderColor="dark.3">
           <TextField
+            value={value}
+            onChange={(event) => setValue(event.target.value)}
             sx={{
               fieldset: { display: "none" },
               input: {
@@ -78,6 +83,16 @@ const StayInTouch: FC<StayInTouchProps> = () => {
                 typography: "h4-medium",
                 "&::placeholder": { textTransform: "uppercase", typography: "h4-medium" },
               },
+            }}
+            InputProps={{
+              endAdornment: (
+                <IconButton
+                  disabled={!value}
+                  sx={{ path: { stroke: (theme) => (value ? theme.palette.blue.dark : undefined) } }}
+                >
+                  <Icon name="Send" size={32} />
+                </IconButton>
+              ),
             }}
             type="email"
             placeholder="Enter your email..."

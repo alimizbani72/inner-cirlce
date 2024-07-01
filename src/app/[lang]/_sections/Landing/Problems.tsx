@@ -4,38 +4,34 @@ import { Box, Button, Typography } from "@mui/material";
 import { useIsMobile } from "@/hooks/use-responsive";
 import { Icon } from "@/components/icons";
 import { Stack } from "@mui/system";
+import type { media } from "@cms/requests";
+import Image from "@/components/Image";
+import { CMSDownloadURL } from "@/consts";
 
-const data = [
-  {
-    id: "operating-on-emotions",
-    title: "Operating on emotions (greed & fear).",
-    icon: "Face",
-  },
-  {
-    id: "playing-against-giants",
-    title: "Playing the game against giants in the industry without financial experience.",
-    icon: "King",
-  },
-  {
-    id: "lack-of-insider-info",
-    title: "Do not have insider information to find the 100x projects early enough.",
-    icon: "No-Information",
-  },
-  {
-    id: "entry-exit-timing",
-    title: "Enter or exit too late and get pulled into the many traps.",
-    icon: "Arrow",
-  },
-  {
-    id: "lack-of-time-or-knowledge",
-    title: "Don't have the time or knowledge to analyze the market well enough to make good decisions.",
-    icon: "Chart",
-  },
-];
+interface ProblemsProps {
+  highlightText: string;
+  coloredTitle: string;
+  buttonText: string;
+  buttonLink: string;
+  gridSections: Array<{
+    icon: media;
+    title: string;
+    description: string;
+    id?: string | null;
+  }>;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: "Problem";
+}
 
-interface ProblemsProps {}
-
-const Problems: FC<ProblemsProps> = () => {
+const Problems: FC<ProblemsProps> = ({
+  blockType,
+  buttonLink,
+  buttonText,
+  coloredTitle,
+  gridSections,
+  highlightText,
+}) => {
   const isMobile = useIsMobile();
 
   return (
@@ -86,14 +82,14 @@ const Problems: FC<ProblemsProps> = () => {
             WebkitBackgroundClip: "text",
           }}
         >
-          Problem
+          {blockType}
         </Typography>
 
         <Typography variant={isMobile ? "h3-medium" : "h1-medium"} textAlign={"center"} textTransform="capitalize">
-          Why will 95%+ of people still
+          {highlightText}
           {isMobile ? " " : <br />}
           <Typography variant={isMobile ? "h3-medium" : "h1-medium"} color="danger.main">
-            lose money?
+            {coloredTitle}
           </Typography>
         </Typography>
       </Stack>
@@ -105,7 +101,7 @@ const Problems: FC<ProblemsProps> = () => {
         zIndex={4}
         gap={{ md: 4, xs: 2 }}
       >
-        {data.map((item) => (
+        {gridSections.map((item) => (
           <Stack
             key={item.id}
             direction={{ md: "row" }}
@@ -126,7 +122,7 @@ const Problems: FC<ProblemsProps> = () => {
               bgcolor={"dark.3"}
               borderRadius={1.5}
             >
-              <Icon name={item.icon as any} size={isMobile ? 32 : 40} />
+              <Image src={CMSDownloadURL(item?.icon?.url!)} width={isMobile ? 32 : 40} height={isMobile ? 32 : 40} />
             </Stack>
             <Typography flex={1} variant="h4-regular">
               {item.title}
@@ -136,13 +132,13 @@ const Problems: FC<ProblemsProps> = () => {
       </Stack>
 
       <Button
-        href="/login"
+        href={buttonLink}
         fullWidth={isMobile}
         size="large"
         endIcon={<Icon name="Arrow-right" />}
         sx={{ position: "relative", zIndex: 4 }}
       >
-        Join To ChainMind
+        {buttonText}
       </Button>
     </LandingContainer>
   );

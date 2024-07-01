@@ -5,39 +5,25 @@ import SectionTitle from "./SectionTitle";
 import { Icon } from "@/components/icons";
 import { useIsMobile } from "@/hooks/use-responsive";
 import Image from "@/components/Image";
+import type { media } from "@cms/requests";
+import { CMSDownloadURL } from "@/consts";
 
-const data = [
-  {
-    id: "Getting involved in crypto",
-    title: "Getting involved in crypto",
-    subtitle:
-      "The timing of getting involved in crypto is now (but time is short as the rocket has already started to take off).",
-    description:
-      "Getting started in cryptocurrency investment is crucial now, as the market is already on an upward trend.",
-    image: "/assets/landing/opportunity/rocket.svg",
-  },
-  {
-    id: "This time it’s different!",
-    title: "This time it’s different!",
-    subtitle:
-      "Trillions of dollars ready to flood into the crypto industry due to the ETF’s unlocking the biggest transfer of wealth in history.",
-    description:
-      "The introduction of ETFs is set to inject massive amounts of capital into the cryptocurrency market, promising unprecedented growth.",
-    image: "/assets/landing/opportunity/bitcoin.svg",
-  },
-  {
-    id: "Last chance",
-    title: "Last chance",
-    subtitle: "This could be the last chance to get positioned before crypto is reaching the masses.",
-    description:
-      "This may be the final opportunity to secure a strong position in cryptocurrency before it becomes widely adopted.",
-    image: "/assets/landing/opportunity/hourglass.svg",
-  },
-];
+interface OpportunityProps {
+  blockTitle: string;
+  cards: Array<{
+    image: media;
+    title: string;
+    description: string;
+    id?: string | null;
+  }>;
+  buttonText: string;
+  buttonLink: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: "Opportunity";
+}
 
-interface OpportunityProps {}
-
-const Opportunity: FC<OpportunityProps> = () => {
+const Opportunity: FC<OpportunityProps> = ({ buttonLink, blockTitle, buttonText, cards }) => {
   const isMobile = useIsMobile();
 
   return (
@@ -50,10 +36,10 @@ const Opportunity: FC<OpportunityProps> = () => {
       overflow={"hidden"}
     >
       <LandingContainer gap={{ md: 6, xs: 4 }} px={{ md: 3, xs: 2 }} alignItems={"center"}>
-        <SectionTitle title="Opportunity" color="dark.1" firsLetterColor="pink.dark" />
+        <SectionTitle title={blockTitle} color="dark.1" firsLetterColor="pink.dark" />
 
         <Stack gap={{ md: 4, xs: 3 }} direction={{ md: "row" }}>
-          {data.map((item) => (
+          {cards.map((item) => (
             <Stack
               flex={1}
               key={item.id}
@@ -66,22 +52,22 @@ const Opportunity: FC<OpportunityProps> = () => {
               }}
             >
               <Box flex={1}>
-                <Image src={item.image} sx={{ aspectRatio: "1/1" }} width={"100%"} />
+                <Image src={CMSDownloadURL(item?.image?.url!)} sx={{ aspectRatio: "1/1" }} width={"100%"} />
               </Box>
               <Stack gap={1.5} py={4} px={3}>
                 <Typography variant="h4-semi-bold" color="dark.1">
                   {item.title}
                 </Typography>
                 <Typography variant="p2-medium" color="dark.1">
-                  {item.subtitle}
+                  {item.description}
                 </Typography>
               </Stack>
             </Stack>
           ))}
         </Stack>
 
-        <Button href="/login" fullWidth={isMobile} size="large" endIcon={<Icon name="Arrow-right" />}>
-          Join To ChainMind
+        <Button href={buttonLink} fullWidth={isMobile} size="large" endIcon={<Icon name="Arrow-right" />}>
+          {buttonText}
         </Button>
       </LandingContainer>
     </Stack>

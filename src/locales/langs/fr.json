@@ -1,9 +1,10 @@
 {
   "global": {
-    "authLayout": "Simplifier et améliorer l'expérience d'investissement en cryptomonnaie pour les utilisateurs de tous niveaux.",
+    "authLayout": "Pour simplifier et améliorer l'expérience d'investissement en cryptomonnaies pour les utilisateurs de tous niveaux.",
     "comingSoon": "À VENIR",
     "strategy": "Stratégie",
-    "suspended": "Votre compte est suspendu, veuillez contacter votre administrateur"
+    "suspended": "Votre compte est suspendu, veuillez contacter votre administrateur",
+    "joinChainMind": "Rejoindre ChainMind"
   },
   "button": {
     "cancel": "Annuler",
@@ -17,9 +18,9 @@
   },
   "createAccount": {
     "title": "Créez votre compte",
-    "subtitle": "Voyez votre croissance et obtenez un soutien consultatif!",
+    "subtitle": "Voyez votre croissance et obtenez un soutien en conseil !",
     "registerWithGoogle": "S'inscrire avec Google",
-    "orContinueWithEmail": "Ou continuer avec l'e-mail",
+    "orContinueWithEmail": "Ou continuer avec l'email",
     "fullNameLabel": "Nom complet",
     "fullNamePlaceholder": "Entrez votre nom complet",
     "emailLabel": "Adresse e-mail",
@@ -28,9 +29,9 @@
     "passwordPlaceholder": "Entrez votre mot de passe",
     "inviteCodeLabel": "Votre sponsor",
     "agreeToTerms": "J'accepte les",
-    "termsAndConditions": "Termes et conditions",
+    "termsAndConditions": "J'ai lu les {termsAndConditions} et la {disclaimer} et les accepte expressément dans le cadre du contrat. J'accepte également et comprends qu'en achetant et en accédant immédiatement au contenu numérique, {refundWaiver}.",
     "createAccountButton": "Créer un compte",
-    "alreadyHaveAccount": "Vous avez déjà un compte?",
+    "alreadyHaveAccount": "Vous avez déjà un compte ?",
     "login": "Connexion"
   },
   "emailVerification": {
@@ -41,10 +42,10 @@
     "backButton": "Retour",
     "resend": "Renvoyer",
     "resendWithTimer": "Renvoyer",
-    "checkSpam": "Vous n'avez pas reçu l'e-mail? Vérifiez votre filtre anti-spam ou essayez une autre adresse e-mail"
+    "checkSpam": "Vous n'avez pas reçu l'e-mail ? Vérifiez votre filtre anti-spam ou essayez une autre adresse e-mail"
   },
   "passwordRecovery": {
-    "title": "Récupération du mot de passe",
+    "title": "Récupération de mot de passe",
     "subtitle": "Nous vous aidons à récupérer votre mot de passe si vous l'avez oublié.",
     "emailLabel": "Adresse e-mail",
     "emailPlaceholder": "Entrez votre adresse e-mail",
@@ -58,16 +59,22 @@
     "newPasswordPlaceholder": "Entrez votre nouveau mot de passe",
     "confirmNewPasswordLabel": "Confirmer le nouveau mot de passe",
     "confirmNewPasswordPlaceholder": "Entrez à nouveau votre nouveau mot de passe",
-    "resetPasswordButton": "Réinitialiser le mot de passe"
+    "resetPasswordButton": "Réinitialiser le mot de passe",
+    "successChange": "Votre mot de passe a été changé avec succès"
+  },
+  "register": {
+    "termsAndConditions": "Conditions Générales",
+    "disclaimer": "AVERTISSEMENT",
+    "refundWaiver": "Je renonce à mon droit de remboursement de 14 jours."
   },
   "login": {
-    "title": "Connexion à votre compte",
+    "title": "Connectez-vous à votre compte",
     "loginWithGoogle": "Connexion avec Google",
     "rememberMe": "Se souvenir de moi",
-    "forgotPassword": "Mot de passe oublié?",
+    "forgotPassword": "Mot de passe oublié ?",
     "loginButton": "Connexion",
-    "noAccount": "Vous n'avez pas de compte?",
-    "register": "Inscription"
+    "noAccount": "Vous n'avez pas de compte ?",
+    "register": "S'inscrire"
   },
   "formErrors": {
     "requiredName": "Veuillez entrer votre nom complet",
@@ -76,11 +83,11 @@
     "passwordPattern": "Doit contenir 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial",
     "invalidEmail": "Adresse e-mail incorrecte",
     "requiredEmail": "Veuillez entrer votre adresse e-mail",
-    "requiredTerms": "Les termes et conditions doivent être acceptés.",
-    "formError": "Une erreur s'est produite, veuillez réessayer",
-    "requiredCode": "La valeur est incorrecte, essayez à nouveau.",
-    "userNotFound": "L'email n'existe pas",
-    "emailExists": "L'email existe déjà",
+    "requiredTerms": "Les conditions générales doivent être acceptées.",
+    "formError": "Quelque chose s'est mal passé, veuillez réessayer",
+    "requiredCode": "La valeur est incorrecte, réessayez.",
+    "userNotFound": "L'e-mail n'existe pas",
+    "emailExists": "L'e-mail existe déjà",
     "requiredNewPassword": "Veuillez entrer votre nouveau mot de passe",
     "newPasswordPattern": "Doit contenir 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial",
     "requiredCurrentPassword": "Veuillez entrer votre mot de passe actuel",
@@ -98,50 +105,50 @@
     "help-center": "Centre d'aide"
   },
   "wallet": {
-    "requiredAddress": "L'adresse du portefeuille USDC Polygon (Matic) est requise",
-    "requiredName": "Le nom est requis",
+    "requiredAddress": "Adresse de portefeuille USDC Polygon (Matic) requise",
+    "requiredName": "Nom requis",
     "successMessage": "Votre adresse de portefeuille a été mise à jour avec succès.",
     "setupWallet": "Configurer votre portefeuille",
-    "addressInputLabel": "Adresse du portefeuille USDC Polygon (Matic)",
-    "addressInputPlaceholder": "Entrez l'adresse du portefeuille USDC Polygon (Matic)",
+    "addressInputLabel": "Adresse de portefeuille USDC Polygon (Matic)",
+    "addressInputPlaceholder": "Entrez l'adresse de portefeuille USDC Polygon (Matic)",
     "nameInputLabel": "Votre pseudonyme individuel",
     "nameInputPlaceholder": "Entrez votre pseudonyme individuel",
     "saveButton": "Enregistrer le portefeuille"
   },
   "plan": {
     "currentPlan": "Votre plan actuel",
-    "upgradePlan": "Améliorez votre plan!",
+    "upgradePlan": "Mettez à niveau votre plan !",
     "compares": "Comparer les plans"
   },
   "withdraw": {
     "Withdraw": "Retirer",
-    "requiredAmount": "Le montant est requis",
-    "requiredWallet": "L'adresse du portefeuille est requise",
+    "requiredAmount": "Montant requis",
+    "requiredWallet": "Adresse de portefeuille requise",
     "submitRequest": "Votre demande a été soumise avec succès.",
-    "availableWithdraw": "Disponible pour retrait",
+    "availableWithdraw": "Disponible pour le retrait",
     "amount": "Montant",
     "enterAmount": "Entrez le montant",
     "address": "Adresse",
     "feeWithdrawal": "Il y aura des frais de 3% pour le retrait.",
-    "minimumAmount": "Le montant minimum pour le retrait est de 100 euros."
+    "minimumAmount": "Le montant minimum pour le retrait est de 100 dollars."
   },
   "notFound": {
     "title": "Perdu dans l'espace.",
     "subtitle": "Vous avez atteint le bord de l'univers"
   },
   "payment": {
-    "successTitle": "Paiement réussi!",
-    "successSubtitle": "Votre paiement a été traité avec succès. Votre adhésion est maintenant active. Merci pour votre achat!",
+    "successTitle": "Paiement réussi !",
+    "successSubtitle": "Votre paiement a été traité avec succès. Votre adhésion est maintenant active. Merci pour votre achat !",
     "successTexture": "Réussi • Réussi • Réussi",
-    "failTitle": "Échec du paiement!",
-    "failSubtitle": "Votre paiement n'a pas pu être traité. Votre adhésion n'a pas été activée. Veuillez réessayer ou contacter le support pour obtenir de l'aide.",
+    "failTitle": "Échec du paiement !",
+    "failSubtitle": "Votre paiement n'a pas pu être traité. Votre adhésion n'a pas été activée. Veuillez réessayer ou contacter le support pour assistance.",
     "failTexture": "Échoué • Échoué • Échoué • Échoué"
   },
   "checkout": {
-    "title": "Caisse",
+    "title": "Paiement",
     "subscribeTo": "S'abonner à",
     "plan": "plan",
-    "payQr": "Payer avec un code QR ou une adresse de portefeuille",
+    "payQr": "Payer avec QR Code ou adresse de portefeuille",
     "polygonNetwork": "Réseau Polygon",
     "expiredAt": "Expire à",
     "amountToSend": "Montant à envoyer",
@@ -149,20 +156,20 @@
   },
   "userProfile": {
     "title": "Profil de l'utilisateur",
-    "choosePicError": "Choisissez votre photo!",
-    "avatarUpdatedSuccess": "Avatar mis à jour avec succès!",
-    "avatarUpdateFailed": "Échec de la mise à jour de l'avatar!",
-    "avatarRemovedSuccess": "Avatar supprimé avec succès!",
-    "avatarRemoveFailed": "Échec de la suppression de l'avatar!",
+    "choosePicError": "Choisissez votre photo !",
+    "avatarUpdatedSuccess": "Avatar mis à jour avec succès !",
+    "avatarUpdateFailed": "Échec de la mise à jour de l'avatar !",
+    "avatarRemovedSuccess": "Avatar supprimé avec succès !",
+    "avatarRemoveFailed": "Échec de la suppression de l'avatar !",
     "uploadPicture": "Télécharger une photo",
-    "remove": "Retirer"
+    "remove": "Supprimer"
   },
   "settingsDialog": {
     "profileSettings": "Paramètres du profil",
-    "nameRequired": "Le nom est requis",
+    "nameRequired": "Nom requis",
     "invalidCharacter": "Votre nom ne peut pas contenir de chiffres",
-    "nameUpdateSuccess": "Votre nom a été mis à jour avec succès!",
-    "nameUpdateFailed": "Échec de la mise à jour du nom!",
+    "nameUpdateSuccess": "Votre nom a été mis à jour avec succès !",
+    "nameUpdateFailed": "Échec de la mise à jour du nom !",
     "fullName": "Nom complet",
     "password": "Mot de passe",
     "change": "Changer",
@@ -171,8 +178,8 @@
   "forgetPassword": {
     "forgotPassword": "Mot de passe oublié",
     "createNewPassword": "Créer un nouveau mot de passe",
-    "passwordChanged": "Mot de passe changé avec succès!",
-    "failedToVerifyCode": "Échec de la vérification du code!",
+    "passwordChanged": "Mot de passe changé avec succès !",
+    "failedToVerifyCode": "Échec de la vérification du code !",
     "newPassword": "Nouveau mot de passe",
     "enterNewPassword": "Entrez votre nouveau mot de passe",
     "passwordHelperText": "Utilisez 8 caractères ou plus avec un mélange de lettres, de chiffres et de symboles.",
@@ -185,34 +192,34 @@
     "title": "Changer le mot de passe",
     "currentPassword": "Mot de passe actuel",
     "enterCurrentPassword": "Entrez votre mot de passe actuel",
-    "forgotPassword": "Mot de passe oublié?",
+    "forgotPassword": "Mot de passe oublié ?",
     "newPassword": "Nouveau mot de passe",
     "enterNewPassword": "Entrez votre nouveau mot de passe",
     "passwordHelperText": "Utilisez 8 caractères ou plus avec un mélange de lettres, de chiffres et de symboles.",
     "confirmNewPassword": "Confirmer le nouveau mot de passe",
     "confirmNewPasswordPlaceholder": "Confirmez votre nouveau mot de passe",
     "confirmPasswordHelperText": "Les deux mots de passe doivent correspondre.",
-    "passwordChangedSuccess": "Mot de passe changé avec succès!",
-    "passwordChangedFailed": "Échec de la mise à jour du mot de passe!",
+    "passwordChangedSuccess": "Mot de passe changé avec succès !",
+    "passwordChangedFailed": "Échec de la mise à jour du mot de passe !",
     "saveChange": "Enregistrer le changement"
   },
   "userInfo": {
-    "noMembership": "Vous n'avez pas de",
-    "membershipSuffix": " abonnement!!",
+    "noMembership": "Vous n'avez pas d'",
+    "membershipSuffix": " adhésion !!",
     "upgradeButton": "Veuillez mettre à niveau"
   },
   "profileDialog": {
     "title": "Profil",
-    "logout": "Se déconnecter",
-    "copyright": "Droits d'auteur © {{year}} {{company}}. Tous les droits sont réservés.",
+    "logout": "Déconnexion",
+    "copyright": "Copyright © {{year}} {{company}}. Tous droits réservés.",
     "profileSetting": "Paramètres du profil",
     "termsOfService": "Conditions d'utilisation | Politique de confidentialité",
     "becomePartner": "Devenir partenaire"
   },
   "becomePartner": {
     "title": "Devenir partenaire",
-    "description": "L'un de ces tunnels dirige le trafic via le serveur VPN, tandis que l'autre contourne le VPN et va directement au fournisseur de services Internet (ISP). En fin de compte, cela signifie que les utilisateurs peuvent choisir quelles applications ou sites passent par le VPN et lesquels ne le font pas, offrant ainsi plus de contrôle sur la manière dont leur activité en ligne est partagée.",
-    "startNow": "Commencez maintenant!"
+    "description": "L'un de ces tunnels dirige le trafic à travers le serveur VPN, tandis que l'autre contourne le VPN et va directement au fournisseur de services Internet (ISP). En fin de compte, cela signifie que les utilisateurs peuvent choisir quelles applications ou sites web passent par le VPN et lesquels ne le font pas, offrant plus de contrôle sur la manière dont leur activité en ligne est partagée.",
+    "startNow": "Commencez maintenant !"
   },
   "twoFactorDialog": {
     "title": "Devenir partenaire",
@@ -225,8 +232,8 @@
   },
   "kycInfoDialog": {
     "title": "Devenir partenaire",
-    "description": "Pour compléter votre inscription, vous devrez compléter le processus KYC. Vous devrez fournir des documents d'identité et d'autres informations nécessaires.",
-    "doKycNow": "Faire le KYC maintenant",
+    "description": "Pour compléter votre inscription, vous devrez terminer le processus KYC. Vous devrez fournir des documents d'identité et d'autres informations nécessaires.",
+    "doKycNow": "Effectuer le KYC maintenant",
     "backButton": "Retour",
     "nextStepButton": "Étape suivante"
   },
@@ -234,7 +241,7 @@
     "title": "Devenir partenaire",
     "fullnameLabel": "NOM COMPLET",
     "fullnamePlaceholder": "Entrez votre nom complet",
-    "emailLabel": "EMAIL",
+    "emailLabel": "E-MAIL",
     "emailPlaceholder": "Entrez votre adresse e-mail",
     "countryLabel": "Pays",
     "countryPlaceholder": "Sélectionnez un pays",
@@ -246,13 +253,13 @@
     "buildingPlaceholder": "Entrez le numéro de bâtiment",
     "zipcodeLabel": "Code postal",
     "zipcodePlaceholder": "Entrez le code postal",
-    "walletLabel": "Adresse du portefeuille USDC Polygon",
-    "walletPlaceholder": "Entrez l'adresse du portefeuille",
-    "updateFailed": "Échec de la mise à jour du profil! Veuillez réessayer"
+    "walletLabel": "Adresse de portefeuille USDC Polygon",
+    "walletPlaceholder": "Entrez l'adresse de portefeuille",
+    "updateFailed": "Échec de la mise à jour du profil ! Veuillez réessayer"
   },
   "successDialog": {
-    "requestSent": "Votre demande a été envoyée!",
-    "reviewMessage": "Les administrateurs examineront et enverront le résultat à votre adresse e-mail dans les 24 heures.",
+    "requestSent": "Votre demande a été envoyée !",
+    "reviewMessage": "Les administrateurs l'examineront et enverront le résultat à votre e-mail dans les prochaines 24 heures.",
     "backToHome": "Retour à l'accueil"
   },
   "portfolioTable": {
@@ -263,7 +270,7 @@
     "strategy": "Stratégie"
   },
   "portfolioNotice": {
-    "note": "REMARQUE:",
+    "note": "REMARQUE :",
     "message": "En mettant à niveau, les abonnés peuvent accéder à des avantages supplémentaires, des fonctionnalités améliorées et du contenu premium non disponible dans leur plan actuel."
   },
   "portfolioStrategiesInnerSection": {
@@ -286,8 +293,8 @@
   },
   "welcomeBanner": {
     "hi": "Bonjour {{name}}",
-    "welcomeBack": "👋, Bon retour!",
-    "knowledgeMessage": "La connaissance est le pouvoir sur le marché; la sagesse est de savoir comment l'utiliser!",
+    "welcomeBack": "👋, Bon retour !",
+    "knowledgeMessage": "Le savoir est le pouvoir sur le marché ; la sagesse consiste à savoir comment l'utiliser !",
     "welcomeVideo": "Vidéo de bienvenue",
     "youAre": "Vous êtes un(e)"
   },
@@ -295,7 +302,7 @@
     "title": "Réseaux sociaux"
   },
   "liveFeed": {
-    "title": "Fil d'actualité en direct"
+    "title": "Fil en direct"
   },
   "dashboardSection": {
     "incompletePaymentAlert": "Alerte de paiement incomplet",
@@ -308,18 +315,18 @@
     "title": "Feuille de route"
   },
   "coinReportTable": {
-    "standardCoinReports": "Rapports de pièces standard",
-    "coinReports": "Rapports de pièces"
+    "standardCoinReports": "Rapports standards des pièces",
+    "coinReports": "Rapports des pièces"
   },
   "coinReportNotice": {
-    "importantNotice": "AVIS IMPORTANT:",
-    "message": "Les valeurs et prévisions présentées ici sont basées sur nos évaluations personnelles du marché et ne constituent pas des recommandations d'achat ni aucune forme de garantie. Tous les investissements comportent des risques, et il est crucial de reconnaître l'avertissement de risque confirmé lors de l'inscription. La distribution non autorisée des informations fournies sera soumise à des poursuites pénales et entraînera une suspension permanente du compte.",
+    "importantNotice": "AVIS IMPORTANT :",
+    "message": "Les valeurs et prévisions présentées ici sont basées sur nos évaluations personnelles du marché et ne constituent pas des recommandations d'achat ou des garanties. Tous les investissements comportent des risques, et il est essentiel de reconnaître la clause de non-responsabilité des risques confirmée lors de l'inscription. La distribution non autorisée des informations fournies fera l'objet de poursuites pénales et entraînera une suspension permanente du compte.",
     "viewMore": "VOIR PLUS...",
     "viewLess": "VOIR MOINS..."
   },
   "learningBanner": {
-    "title": "Vous voulez voir comment ça fonctionne?",
-    "buttonText": "Vidéo éducative"
+    "title": "Vous voulez voir comment ça marche ?",
+    "buttonText": "Regarder la vidéo"
   },
   "affiliateSection": {
     "dashboard": "Tableau de bord",
@@ -331,7 +338,7 @@
   },
   "affiliateHeader": {
     "yourReferralLink": "Votre lien de parrainage",
-    "shareWithAudience": "Ceci est votre URL de parrainage. Partagez-le avec votre audience pour gagner des commissions.",
+    "shareWithAudience": "Ceci est votre URL de parrainage. Partagez-la avec votre audience pour gagner des commissions.",
     "copyCode": "Copier le code"
   },
   "affStatisticsTab": {
@@ -351,7 +358,7 @@
     "status": "Statut",
     "payouts": "Paiements",
     "emptyTitle": "Vous n'avez pas encore de paiements",
-    "emptySubtitle": "Suivez les bénéfices, les pertes et les évaluations tout en un seul endroit.",
+    "emptySubtitle": "Suivez les bénéfices, les pertes et les évaluations en un seul endroit.",
     "from": "DE",
     "to": "À",
     "dateAndTime": "Date et heure"
@@ -359,8 +366,8 @@
   "affNetworkTabTable": {
     "username": "Nom d'utilisateur",
     "package": "Forfait",
-    "joinedDate": "Date d'inscription",
-    "moneyMade": "Gains?"
+    "joinedDate": "Date d'adhésion",
+    "moneyMade": "Chiffre d'affaires"
   },
   "affNetworkTab": {
     "table": "Tableau",
@@ -382,30 +389,30 @@
     "second": "Deuxième",
     "third": "Troisième",
     "other": "Autre",
-    "overall": "Global",
-    "nextRank": "Rang suivant",
+    "overall": "En général",
+    "nextRank": "Prochain rang",
     "teamMembers": "Membres de l'équipe",
-    "firstLineVolume": "Volume de première ligne"
+    "firstLineVolume": "Volume de la première ligne"
   },
   "affCommissionsTabTable": {
     "userID": "ID utilisateur",
     "amount": "Montant",
     "packageName": "Nom du forfait",
     "percentage": "Pourcentage",
-    "commissionDate": "Date de commission",
+    "commissionDate": "Date de la commission",
     "commissionsTitle": "Commissions",
-    "noRecord": "Vous n'avez pas encore d'enregistrement de commission"
+    "noRecord": "Vous n'avez pas encore d'enregistrements de commissions"
   },
   "affCommissionsTab": {
     "totalTurnover": "Chiffre d'affaires total",
     "totalCommission": "Commission totale",
-    "availableForWithdraw": "Disponible pour retrait",
+    "availableForWithdraw": "Disponible pour le retrait",
     "withdraw": "Retirer"
   },
   "empty": {
-    "thereIsNothingToShow": "Il n'y a rien à montrer!"
+    "thereIsNothingToShow": "Il n'y a rien à montrer !"
   },
   "loading": {
-    "onLoading": "Chargement..."
+    "onLoading": "Chargement en cours..."
   }
 }

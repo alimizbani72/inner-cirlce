@@ -57,7 +57,7 @@ const languages = [
   { code: "mn", name: "Mongolian" },
 ];
 
-function LanguageSelect() {
+const LanguageSelect = () => {
   const isMobile = useIsMobile();
   const lang = useAppSelector(selectLang);
   const [language, setLanguage] = useState(lang);
@@ -107,6 +107,6 @@ function LanguageSelect() {
       ))}
     </CustomSelect>
   );
-}
+};
 
 export default LanguageSelect;

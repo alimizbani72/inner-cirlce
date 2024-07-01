@@ -3,7 +3,8 @@
     "authLayout": "To simplify and enhance the cryptocurrency investment experience for users of all levels.",
     "comingSoon": "COMING SOON",
     "strategy": "Strategy",
-    "suspended": "Your account is suspended, please contact your administrator"
+    "suspended": "Your account is suspended, please contact your administrator",
+    "joinChainMind": "Join ChainMind"
   },
   "button": {
     "cancel": "Cancel",
@@ -28,7 +29,7 @@
     "passwordPlaceholder": "Enter your password",
     "inviteCodeLabel": "Your Sponsor",
     "agreeToTerms": "I agree to the",
-    "termsAndConditions": "TERMS & CONDITIONS",
+    "termsAndConditions": "I have read the {termsAndConditions} and the {disclaimer} and expressly accept them as part of the contract. I also agree and understand that by purchasing and immediately accessing digital content, {refundWaiver}.",
     "createAccountButton": "Create Account",
     "alreadyHaveAccount": "Already have an account?",
     "login": "Login"
@@ -58,7 +59,13 @@
     "newPasswordPlaceholder": "Enter your new password",
     "confirmNewPasswordLabel": "Confirm New Password",
     "confirmNewPasswordPlaceholder": "Enter your new password again",
-    "resetPasswordButton": "Reset Password"
+    "resetPasswordButton": "Reset Password",
+    "successChange": "Your password successfully changed"
+  },
+  "register": {
+    "termsAndConditions": "Terms and Conditions",
+    "disclaimer": "DISCLAIMER",
+    "refundWaiver": "I waive my 14-day right of refund."
   },
   "login": {
     "title": "Login to your account",

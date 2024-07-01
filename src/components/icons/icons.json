@@ -3,6 +3,73 @@
   "icons": [
     {
       "icon": {
+        "paths": [
+          "M281.404 805.344l504.82-254.97c32.579-16.438 32.579-60.682 0-77.165l-504.085-254.575c-38.044-19.236-80.683 17.051-64.556 54.911l100.579 236.083-101.406 240.893c-15.898 37.904 26.695 73.971 64.648 54.822z",
+          "M318.117 509.798l492.555 2.186"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(98, 101, 131)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(98, 101, 131)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": ["Send"],
+        "colorPermutations": {
+          "1511531801981011311": [
+            {
+              "s": 0
+            },
+            {
+              "s": 0
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(98, 101, 131)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(98, 101, 131)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 4,
+        "id": 1,
+        "name": "Send",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 0,
+      "iconIdx": 0
+    },
+    {
+      "icon": {
         "paths": ["M665.6 409.6l-153.6-153.6-153.6 153.6", "M358.4 614.4l153.6 153.6 153.6-153.6"],
         "attrs": [
           {

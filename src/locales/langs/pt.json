@@ -1,69 +1,76 @@
 {
   "global": {
-    "authLayout": "Simplificar e melhorar a experiência de investimento em criptomoedas para usuários de todos os níveis.",
+    "authLayout": "Para simplificar e melhorar a experiência de investimento em criptomoedas para usuários de todos os níveis.",
     "comingSoon": "EM BREVE",
     "strategy": "Estratégia",
-    "suspended": "Sua conta está suspensa, por favor, entre em contato com o administrador"
+    "suspended": "Sua conta está suspensa, por favor, contate seu administrador",
+    "joinChainMind": "Juntar-se ao ChainMind"
   },
   "button": {
     "cancel": "Cancelar",
     "continue": "Continuar",
     "upgrade": "Atualizar",
-    "buyNow": "Comprar agora",
-    "backHome": "Voltar para casa",
+    "buyNow": "Comprar Agora",
+    "backHome": "Voltar para Casa",
     "back": "Voltar",
-    "nextStep": "Próximo passo",
-    "seeStrategies": "Ver estratégias"
+    "nextStep": "Próximo Passo",
+    "seeStrategies": "Ver Estratégias"
   },
   "createAccount": {
     "title": "Crie sua conta",
     "subtitle": "Veja seu crescimento e obtenha suporte de consultoria!",
-    "registerWithGoogle": "Registrar com Google",
-    "orContinueWithEmail": "Ou continue com e-mail",
+    "registerWithGoogle": "Registrar com o Google",
+    "orContinueWithEmail": "Ou Continuar com Email",
     "fullNameLabel": "Nome completo",
     "fullNamePlaceholder": "Digite seu nome completo",
-    "emailLabel": "Endereço de e-mail",
-    "emailPlaceholder": "Digite seu endereço de e-mail",
+    "emailLabel": "Endereço de email",
+    "emailPlaceholder": "Digite seu endereço de email",
     "passwordLabel": "Senha",
     "passwordPlaceholder": "Digite sua senha",
     "inviteCodeLabel": "Seu Patrocinador",
-    "agreeToTerms": "Eu concordo com os",
-    "termsAndConditions": "Termos e Condições",
-    "createAccountButton": "Criar conta",
+    "agreeToTerms": "Eu concordo com",
+    "termsAndConditions": "Eu li os {termsAndConditions} e o {disclaimer} e os aceito expressamente como parte do contrato. Também concordo e entendo que, ao comprar e acessar imediatamente o conteúdo digital, {refundWaiver}.",
+    "createAccountButton": "Criar Conta",
     "alreadyHaveAccount": "Já tem uma conta?",
     "login": "Entrar"
   },
   "emailVerification": {
-    "title": "Verificação de e-mail",
+    "title": "Verificação de email",
     "subtitle": "Digite o código de 5 dígitos que enviamos para",
     "placeholderEmail": "Ricknovak@example.com",
     "verifyCodeLabel": "Verificar código",
     "backButton": "Voltar",
     "resend": "Reenviar",
     "resendWithTimer": "Reenviar",
-    "checkSpam": "Não recebeu o e-mail? Verifique seu filtro de spam ou tente outro endereço de e-mail"
+    "checkSpam": "Não recebeu o email? Verifique seu filtro de spam ou tente outro endereço de email"
   },
   "passwordRecovery": {
     "title": "Recuperação de senha",
-    "subtitle": "Ajudamos você a recuperar sua senha se você a esqueceu.",
-    "emailLabel": "Endereço de e-mail",
-    "emailPlaceholder": "Digite seu endereço de e-mail",
+    "subtitle": "Ajudamos você a recuperar sua senha se você esqueceu.",
+    "emailLabel": "Endereço de email",
+    "emailPlaceholder": "Digite seu endereço de email",
     "backButton": "Voltar",
     "continueButton": "Continuar"
   },
   "resetPassword": {
-    "title": "Redefinir senha",
-    "subtitle": "Escolha uma nova senha forte com no mínimo 8 caracteres",
-    "newPasswordLabel": "Nova senha",
+    "title": "Redefinir Senha",
+    "subtitle": "Escolha uma nova senha forte de no mínimo 8 caracteres",
+    "newPasswordLabel": "Nova Senha",
     "newPasswordPlaceholder": "Digite sua nova senha",
-    "confirmNewPasswordLabel": "Confirmar nova senha",
+    "confirmNewPasswordLabel": "Confirmar Nova Senha",
     "confirmNewPasswordPlaceholder": "Digite sua nova senha novamente",
-    "resetPasswordButton": "Redefinir senha"
+    "resetPasswordButton": "Redefinir Senha",
+    "successChange": "Sua senha foi alterada com sucesso"
+  },
+  "register": {
+    "termsAndConditions": "Termos e Condições",
+    "disclaimer": "ISENÇÃO DE RESPONSABILIDADE",
+    "refundWaiver": "Eu renuncio ao meu direito de reembolso de 14 dias."
   },
   "login": {
     "title": "Entrar na sua conta",
-    "loginWithGoogle": "Entrar com Google",
-    "rememberMe": "Lembrar-me",
+    "loginWithGoogle": "Entrar com o Google",
+    "rememberMe": "Lembrar de mim",
     "forgotPassword": "Esqueceu a senha?",
     "loginButton": "Entrar",
     "noAccount": "Não tem uma conta?",
@@ -74,13 +81,13 @@
     "requiredPassword": "Por favor, digite sua senha",
     "confirmPassword": "Ambas as senhas devem coincidir.",
     "passwordPattern": "Deve conter 8 caracteres, uma letra maiúscula, uma letra minúscula, um número e um caractere especial",
-    "invalidEmail": "Endereço de e-mail incorreto",
-    "requiredEmail": "Por favor, digite seu endereço de e-mail",
+    "invalidEmail": "Endereço de email incorreto",
+    "requiredEmail": "Por favor, digite seu endereço de email",
     "requiredTerms": "Os termos e condições devem ser aceitos.",
     "formError": "Algo deu errado, por favor, tente novamente",
     "requiredCode": "O valor está errado, tente novamente.",
-    "userNotFound": "O e-mail não existe",
-    "emailExists": "O e-mail já existe",
+    "userNotFound": "O email não existe",
+    "emailExists": "O email já existe",
     "requiredNewPassword": "Por favor, digite sua nova senha",
     "newPasswordPattern": "Deve conter 8 caracteres, uma letra maiúscula, uma letra minúscula, um número e um caractere especial",
     "requiredCurrentPassword": "Por favor, digite sua senha atual",
@@ -90,239 +97,239 @@
   "sidebar": {
     "services": "Serviços",
     "community": "Comunidade",
-    "dashboard": "Painel",
-    "coin-reports": "Relatórios de moedas",
-    "portfolio-strategies": "Estratégias de portfólio",
+    "dashboard": "Painel de Controle",
+    "coin-reports": "Relatórios de Moedas",
+    "portfolio-strategies": "Estratégias de Portfólio",
     "affiliate": "Afiliado",
     "education": "Educação",
-    "help-center": "Centro de ajuda"
+    "help-center": "Centro de Ajuda"
   },
   "wallet": {
-    "requiredAddress": "Endereço de carteira USDC Polygon (Matic) é obrigatório",
+    "requiredAddress": "Endereço da carteira USDC Polygon (Matic) é obrigatório",
     "requiredName": "Nome é obrigatório",
     "successMessage": "Seu endereço de carteira foi atualizado com sucesso.",
-    "setupWallet": "Configurar sua carteira",
-    "addressInputLabel": "Endereço de carteira USDC Polygon (Matic)",
+    "setupWallet": "Configurar Sua Carteira",
+    "addressInputLabel": "Endereço da carteira USDC Polygon (Matic)",
     "addressInputPlaceholder": "Digite o endereço da carteira USDC Polygon (Matic)",
     "nameInputLabel": "Seu pseudônimo individual",
     "nameInputPlaceholder": "Digite seu pseudônimo individual",
-    "saveButton": "Salvar carteira"
+    "saveButton": "Salvar Carteira"
   },
   "plan": {
-    "currentPlan": "Seu plano atual",
+    "currentPlan": "Seu Plano Atual",
     "upgradePlan": "Atualize seu plano!",
-    "compares": "Comparar planos"
+    "compares": "Compare Planos"
   },
   "withdraw": {
     "Withdraw": "Retirar",
-    "requiredAmount": "A quantidade é obrigatória",
+    "requiredAmount": "O valor é obrigatório",
     "requiredWallet": "O endereço da carteira é obrigatório",
-    "submitRequest": "Sua solicitação foi enviada com sucesso.",
+    "submitRequest": "Seu pedido foi enviado com sucesso.",
     "availableWithdraw": "Disponível para retirada",
-    "amount": "Quantidade",
-    "enterAmount": "Digite a quantidade",
+    "amount": "Quantia",
+    "enterAmount": "Digite a quantia",
     "address": "Endereço",
-    "feeWithdrawal": "Haverá uma taxa de 3% para retirada.",
-    "minimumAmount": "O valor mínimo para retirada é de 100 euros."
+    "feeWithdrawal": "Haverá uma taxa de 3% para a retirada.",
+    "minimumAmount": "O valor mínimo para retirada é de 100 dólares."
   },
   "notFound": {
     "title": "Perdido no espaço.",
     "subtitle": "Você chegou ao limite do universo"
   },
   "payment": {
-    "successTitle": "Pagamento bem-sucedido!",
-    "successSubtitle": "Seu pagamento foi processado com sucesso. Sua assinatura está agora ativa. Obrigado pela sua compra!",
-    "successTexture": "Bem-sucedido • Bem-sucedido • Bem-sucedido",
-    "failTitle": "Pagamento falhou!",
-    "failSubtitle": "Não foi possível processar seu pagamento. Sua assinatura não foi ativada. Por favor, tente novamente ou entre em contato com o suporte para obter assistência.",
+    "successTitle": "Pagamento Bem Sucedido!",
+    "successSubtitle": "Seu pagamento foi processado com sucesso. Sua associação agora está ativa. Obrigado pela sua compra!",
+    "successTexture": "Bem Sucedido • Bem Sucedido • Bem Sucedido",
+    "failTitle": "Falha no Pagamento!",
+    "failSubtitle": "Seu pagamento não pôde ser processado. Sua associação não foi ativada. Por favor, tente novamente ou entre em contato com o suporte para obter assistência.",
     "failTexture": "Falhou • Falhou • Falhou • Falhou"
   },
   "checkout": {
-    "title": "Finalizar compra",
+    "title": "Checkout",
     "subscribeTo": "Assine",
     "plan": "plano",
-    "payQr": "Pagar com código QR ou endereço da carteira",
+    "payQr": "Pague com Código QR ou Endereço de Carteira",
     "polygonNetwork": "Rede Polygon",
     "expiredAt": "Expira em",
     "amountToSend": "Quantia a enviar",
-    "paidAmount": "Quantia paga"
+    "paidAmount": "Quantia Paga"
   },
   "userProfile": {
-    "title": "Perfil do usuário",
+    "title": "Perfil do Usuário",
     "choosePicError": "Escolha sua foto!",
     "avatarUpdatedSuccess": "Avatar atualizado com sucesso!",
-    "avatarUpdateFailed": "Falha ao atualizar avatar!",
+    "avatarUpdateFailed": "Falha ao atualizar o avatar!",
     "avatarRemovedSuccess": "Avatar removido com sucesso!",
-    "avatarRemoveFailed": "Falha ao remover avatar!",
-    "uploadPicture": "Enviar imagem",
+    "avatarRemoveFailed": "Falha ao remover o avatar!",
+    "uploadPicture": "Carregar Foto",
     "remove": "Remover"
   },
   "settingsDialog": {
-    "profileSettings": "Configurações de perfil",
+    "profileSettings": "Configurações do Perfil",
     "nameRequired": "Nome é obrigatório",
     "invalidCharacter": "Seu nome não pode conter números",
     "nameUpdateSuccess": "Seu nome foi atualizado com sucesso!",
-    "nameUpdateFailed": "Falha ao atualizar nome!",
-    "fullName": "Nome completo",
+    "nameUpdateFailed": "Falha ao atualizar o nome!",
+    "fullName": "Nome Completo",
     "password": "Senha",
     "change": "Alterar",
-    "changePassword": "Alterar senha"
+    "changePassword": "Alterar Senha"
   },
   "forgetPassword": {
-    "forgotPassword": "Esqueceu a senha?",
-    "createNewPassword": "Criar nova senha",
+    "forgotPassword": "Esqueceu a Senha",
+    "createNewPassword": "Criar Nova Senha",
     "passwordChanged": "Senha alterada com sucesso!",
-    "failedToVerifyCode": "Falha ao verificar código!",
-    "newPassword": "Nova senha",
+    "failedToVerifyCode": "Falha ao verificar o código!",
+    "newPassword": "Nova Senha",
     "enterNewPassword": "Digite sua nova senha",
     "passwordHelperText": "Use 8 ou mais caracteres com uma mistura de letras, números e símbolos.",
-    "confirmNewPassword": "Confirmar nova senha",
+    "confirmNewPassword": "Confirmar Nova Senha",
     "confirmNewPasswordPlaceholder": "Confirme sua nova senha",
-    "confirmPasswordHelperText": "Ambas as senhas devem coincidir.",
-    "resetPassword": "Redefinir senha"
+    "confirmPasswordHelperText": "As duas senhas devem coincidir.",
+    "resetPassword": "Redefinir Senha"
   },
   "changePassword": {
-    "title": "Alterar senha",
-    "currentPassword": "Senha atual",
+    "title": "Alterar Senha",
+    "currentPassword": "Senha Atual",
     "enterCurrentPassword": "Digite sua senha atual",
-    "forgotPassword": "Esqueceu a senha?",
-    "newPassword": "Nova senha",
+    "forgotPassword": "Esqueceu a Senha?",
+    "newPassword": "Nova Senha",
     "enterNewPassword": "Digite sua nova senha",
     "passwordHelperText": "Use 8 ou mais caracteres com uma mistura de letras, números e símbolos.",
-    "confirmNewPassword": "Confirmar nova senha",
+    "confirmNewPassword": "Confirmar Nova Senha",
     "confirmNewPasswordPlaceholder": "Confirme sua nova senha",
-    "confirmPasswordHelperText": "Ambas as senhas devem coincidir.",
+    "confirmPasswordHelperText": "As duas senhas devem coincidir.",
     "passwordChangedSuccess": "Senha alterada com sucesso!",
-    "passwordChangedFailed": "Falha ao atualizar senha!",
-    "saveChange": "Salvar mudança"
+    "passwordChangedFailed": "Falha ao atualizar a senha!",
+    "saveChange": "Salvar Alteração"
   },
   "userInfo": {
     "noMembership": "Você não tem uma",
-    "membershipSuffix": " assinatura!!",
-    "upgradeButton": "Por favor, atualize"
+    "membershipSuffix": " associação!!",
+    "upgradeButton": "Por favor, Atualize"
   },
   "profileDialog": {
     "title": "Perfil",
     "logout": "Sair",
     "copyright": "Copyright © {{year}} {{company}}. Todos os direitos reservados.",
-    "profileSetting": "Configurações de perfil",
-    "termsOfService": "Termos de uso | Política de privacidade",
-    "becomePartner": "Torne-se um parceiro"
+    "profileSetting": "Configurações do Perfil",
+    "termsOfService": "Termos de Uso | Política de Privacidade",
+    "becomePartner": "Torne-se um Parceiro"
   },
   "becomePartner": {
-    "title": "Torne-se um parceiro",
-    "description": "Um desses túneis direciona o tráfego através do servidor VPN, enquanto o outro contorna o VPN e vai diretamente ao provedor de serviços de Internet (ISP). Em última análise, isso significa que os usuários podem escolher quais aplicativos ou sites passam pelo VPN e quais não, proporcionando mais controle sobre como sua atividade online é compartilhada.",
-    "startNow": "Comece agora!"
+    "title": "Torne-se um Parceiro",
+    "description": "Um desses túneis direciona o tráfego através do servidor VPN, enquanto o outro contorna o VPN e vai diretamente para o provedor de serviços de Internet (ISP). Em última análise, isso significa que os usuários podem escolher quais aplicativos ou sites passam pelo VPN e quais não, proporcionando mais controle sobre como sua atividade online é compartilhada.",
+    "startNow": "Comece Agora!"
   },
   "twoFactorDialog": {
-    "title": "Torne-se um parceiro",
-    "securityMessage": "Para maior segurança, configure a autenticação de dois fatores (2FA).",
-    "qrInstruction": "Escaneie o código QR com um aplicativo de autenticação e digite o código abaixo.",
-    "authCodeLabel": "Código de autenticação",
-    "authCodePlaceholder": "Digite o código de autenticação",
+    "title": "Torne-se um Parceiro",
+    "securityMessage": "Para maior segurança, configure a Autenticação de Dois Fatores (2FA).",
+    "qrInstruction": "Escaneie o código QR com um aplicativo de autenticação e insira o código abaixo.",
+    "authCodeLabel": "Código de Autenticação",
+    "authCodePlaceholder": "Digite o Código de Autenticação",
     "backButton": "Voltar",
-    "nextStepButton": "Próximo passo"
+    "nextStepButton": "Próximo Passo"
   },
   "kycInfoDialog": {
-    "title": "Torne-se um parceiro",
-    "description": "Para concluir seu registro, você precisará concluir o processo KYC. Será necessário fornecer documentos de identidade e outras informações necessárias.",
-    "doKycNow": "Fazer KYC agora",
+    "title": "Torne-se um Parceiro",
+    "description": "Para completar seu registro, você precisará concluir o processo de KYC. Você precisará fornecer documentos de identidade e outras informações necessárias.",
+    "doKycNow": "Fazer KYC Agora",
     "backButton": "Voltar",
-    "nextStepButton": "Próximo passo"
+    "nextStepButton": "Próximo Passo"
   },
   "personalInfoDialog": {
-    "title": "Torne-se um parceiro",
+    "title": "Torne-se um Parceiro",
     "fullnameLabel": "NOME COMPLETO",
     "fullnamePlaceholder": "Digite seu nome completo",
     "emailLabel": "EMAIL",
-    "emailPlaceholder": "Digite seu endereço de e-mail",
+    "emailPlaceholder": "Digite seu endereço de email",
     "countryLabel": "País",
     "countryPlaceholder": "Selecione um país",
     "cityLabel": "Cidade",
     "cityPlaceholder": "Selecione uma cidade",
     "streetLabel": "Rua",
     "streetPlaceholder": "Digite o nome da rua",
-    "buildingLabel": "Número do prédio",
-    "buildingPlaceholder": "Digite o número do prédio",
-    "zipcodeLabel": "Código postal",
+    "buildingLabel": "Número do edifício",
+    "buildingPlaceholder": "Digite o número do edifício",
+    "zipcodeLabel": "Código Postal",
     "zipcodePlaceholder": "Digite o código postal",
-    "walletLabel": "Endereço de carteira USDC Polygon",
+    "walletLabel": "Endereço da carteira USDC Polygon",
     "walletPlaceholder": "Digite o endereço da carteira",
-    "updateFailed": "Falha ao atualizar perfil! Por favor, tente novamente"
+    "updateFailed": "Falha ao atualizar o perfil! Por favor, tente novamente"
   },
   "successDialog": {
-    "requestSent": "Sua solicitação foi enviada!",
-    "reviewMessage": "Os administradores revisarão e enviarão o resultado para seu e-mail nas próximas 24 horas.",
-    "backToHome": "Voltar para casa"
+    "requestSent": "Seu Pedido Foi Enviado!",
+    "reviewMessage": "Os administradores irão revisar e enviar o resultado para o seu email nas próximas 24 horas.",
+    "backToHome": "Voltar para Casa"
   },
   "portfolioTable": {
-    "strategyPlan": "Plano de estratégia",
-    "plannedInvestment": "Investimento planejado",
-    "enterAmount": "Digite a quantidade",
-    "upgradeMessage": "Ao atualizar, os assinantes podem acessar benefícios adicionais, funcionalidades aprimoradas e conteúdo premium que não está disponível em seu plano atual.",
+    "strategyPlan": "Plano de Estratégia",
+    "plannedInvestment": "Investimento Planejado",
+    "enterAmount": "Digite o Valor",
+    "upgradeMessage": "Ao atualizar, os assinantes podem acessar benefícios adicionais, funcionalidades aprimoradas e conteúdo premium não disponível em seu plano atual.",
     "strategy": "Estratégia"
   },
   "portfolioNotice": {
     "note": "NOTA:",
-    "message": "Ao atualizar, os assinantes podem acessar benefícios adicionais, funcionalidades aprimoradas e conteúdo premium que não está disponível em seu plano atual."
+    "message": "Ao atualizar, os assinantes podem acessar benefícios adicionais, funcionalidades aprimoradas e conteúdo premium não disponível em seu plano atual."
   },
   "portfolioStrategiesInnerSection": {
-    "upgradeMessage": "Você deve atualizar seu pacote para ver essas informações"
+    "upgradeMessage": "Você deve atualizar seu pacote para ver estas informações"
   },
   "videoList": {
-    "educationVideos": "Vídeos educativos",
-    "searchPlaceholder": "Pesquisar"
+    "educationVideos": "Vídeos Educacionais",
+    "searchPlaceholder": "Buscar"
   },
   "educationSingleVideoSection": {
     "by": "POR",
     "duration": "DURAÇÃO",
-    "upgradeMessage": "Você deve atualizar seu pacote para ver essas informações"
+    "upgradeMessage": "Você deve atualizar seu pacote para ver estas informações"
   },
   "categoryItem": {
-    "moreDetails": "Mais detalhes"
+    "moreDetails": "Mais Detalhes"
   },
   "categories": {
     "title": "Categorias"
   },
   "welcomeBanner": {
-    "hi": "Olá {{name}}",
+    "hi": "Oi {{name}}",
     "welcomeBack": "👋, Bem-vindo de volta!",
     "knowledgeMessage": "Conhecimento é poder no mercado; sabedoria é saber como usá-lo!",
-    "welcomeVideo": "Vídeo de boas-vindas",
+    "welcomeVideo": "Vídeo de Boas-vindas",
     "youAre": "Você é um"
   },
   "socialMedia": {
-    "title": "Redes sociais"
+    "title": "Redes Sociais"
   },
   "liveFeed": {
-    "title": "Feed ao vivo"
+    "title": "Feed Ao Vivo"
   },
   "dashboardSection": {
-    "incompletePaymentAlert": "Alerta de pagamento incompleto",
-    "incompletePaymentDescription": "Seu upgrade para o pacote {{planType}} está pendente devido a um pagamento incompleto. Por favor, complete seu pagamento para finalizar o upgrade."
+    "incompletePaymentAlert": "Alerta de Pagamento Incompleto",
+    "incompletePaymentDescription": "Sua atualização para o Pacote {{planType}} está pendente devido a um pagamento incompleto. Por favor, complete seu pagamento para finalizar a atualização."
   },
   "dropZone": {
-    "subtitle": "Estamos trabalhando nesta funcionalidade."
+    "subtitle": "Atualmente, estamos trabalhando neste recurso."
   },
   "roadMap": {
-    "title": "Mapa rodoviário"
+    "title": "Mapa do Caminho"
   },
   "coinReportTable": {
-    "standardCoinReports": "Relatórios de moedas padrão",
-    "coinReports": "Relatórios de moedas"
+    "standardCoinReports": "Relatórios de Moedas Padrão",
+    "coinReports": "Relatórios de Moedas"
   },
   "coinReportNotice": {
     "importantNotice": "AVISO IMPORTANTE:",
-    "message": "Os valores e previsões apresentados aqui são baseados em nossas avaliações pessoais do mercado e não constituem recomendações de compra ou garantias de qualquer tipo. Todos os investimentos têm riscos e é crucial reconhecer o aviso de risco confirmado durante o registro. A distribuição não autorizada das informações fornecidas será sujeita a processo criminal e resultará na suspensão permanente da conta.",
+    "message": "Os valores e previsões apresentados aqui são baseados em nossas avaliações pessoais do mercado e não constituem recomendações de compra ou qualquer tipo de garantia. Todos os investimentos acarretam riscos, e é crucial reconhecer a isenção de responsabilidade confirmada durante o registro. A distribuição não autorizada das informações fornecidas estará sujeita a processo criminal e resultará na suspensão permanente da conta.",
     "viewMore": "VER MAIS...",
     "viewLess": "VER MENOS..."
   },
   "learningBanner": {
     "title": "Quer ver como funciona?",
-    "buttonText": "Vídeo educativo"
+    "buttonText": "Assistir Vídeo"
   },
   "affiliateSection": {
-    "dashboard": "Painel",
+    "dashboard": "Painel de Controle",
     "statistics": "Estatísticas",
     "comingSoon": "Em breve",
     "network": "Rede",
@@ -330,37 +337,37 @@
     "payouts": "Pagamentos"
   },
   "affiliateHeader": {
-    "yourReferralLink": "Seu link de referência",
-    "shareWithAudience": "Este é seu URL de referência. Compartilhe com seu público para ganhar comissões.",
-    "copyCode": "Copiar código"
+    "yourReferralLink": "Seu link de indicação",
+    "shareWithAudience": "Este é o seu URL de referência. Compartilhe-o com seu público para ganhar comissões.",
+    "copyCode": "Copiar Código"
   },
   "affStatisticsTab": {
     "comingSoon": "EM BREVE",
-    "upgradeMessage": "Ao atualizar, os assinantes podem acessar benefícios adicionais, funcionalidades aprimoradas e conteúdo premium que não está disponível em seu plano atual."
+    "upgradeMessage": "Ao atualizar, os assinantes podem acessar benefícios adicionais, funcionalidades aprimoradas e conteúdo premium não disponível em seu plano atual."
   },
   "affPayoutsTab": {
     "setupWalletMessage": "Configure sua carteira para que possamos enviar o dinheiro para você.",
-    "changeWallet": "Alterar carteira",
-    "setupWallet": "Configurar carteira"
+    "changeWallet": "Alterar Carteira",
+    "setupWallet": "Configurar Carteira"
   },
   "affPayoutsTabTable": {
-    "userId": "ID do usuário",
-    "walletId": "ID da carteira",
-    "amount": "Quantidade",
+    "userId": "ID do Usuário",
+    "walletId": "ID da Carteira",
+    "amount": "Quantia",
     "date": "Data",
     "status": "Status",
     "payouts": "Pagamentos",
     "emptyTitle": "Você ainda não tem pagamentos",
-    "emptySubtitle": "Acompanhe lucros, perdas e avaliação tudo em um só lugar.",
+    "emptySubtitle": "Acompanhe lucros, perdas e avaliações tudo em um só lugar.",
     "from": "DE",
     "to": "PARA",
-    "dateAndTime": "Data e hora"
+    "dateAndTime": "Data & Hora"
   },
   "affNetworkTabTable": {
-    "username": "Nome de usuário",
+    "username": "Nome de Usuário",
     "package": "Pacote",
-    "joinedDate": "Data de adesão",
-    "moneyMade": "Ganhou dinheiro?"
+    "joinedDate": "Data de Adesão",
+    "moneyMade": "Faturamento"
   },
   "affNetworkTab": {
     "table": "Tabela",
@@ -369,37 +376,37 @@
   },
   "affNetworkTabChart": {
     "comingSoon": "EM BREVE",
-    "upgradeMessage": "Ao atualizar, os assinantes podem acessar benefícios adicionais, funcionalidades aprimoradas e conteúdo premium que não está disponível em seu plano atual."
+    "upgradeMessage": "Ao atualizar, os assinantes podem acessar benefícios adicionais, funcionalidades aprimoradas e conteúdo premium não disponível em seu plano atual."
   },
   "afDashboardTab": {
-    "totalTurnover": "Volume total",
-    "commissionWallet": "Carteira de comissões",
+    "totalTurnover": "Faturamento Total",
+    "commissionWallet": "Carteira de Comissão",
     "withdraw": "Retirar",
-    "currentRank": "Classificação atual",
-    "overrideBonus": "Bônus de anulação",
-    "goldCoins": "Moedas de ouro",
+    "currentRank": "Classificação Atual",
+    "overrideBonus": "Bônus de Substituição",
+    "goldCoins": "Moedas de Ouro",
     "first": "Primeiro",
     "second": "Segundo",
     "third": "Terceiro",
-    "other": "Outro",
-    "overall": "Geral",
-    "nextRank": "Próxima classificação",
-    "teamMembers": "Membros da equipe",
-    "firstLineVolume": "Volume da primeira linha"
+    "other": "Outros",
+    "overall": "Total",
+    "nextRank": "Próxima Classificação",
+    "teamMembers": "Membros da Equipe",
+    "firstLineVolume": "Volume da Primeira Linha"
   },
   "affCommissionsTabTable": {
-    "userID": "ID do usuário",
-    "amount": "Quantidade",
-    "packageName": "Nome do pacote",
+    "userID": "ID do Usuário",
+    "amount": "Quantia",
+    "packageName": "Nome do Pacote",
     "percentage": "Porcentagem",
-    "commissionDate": "Data da comissão",
+    "commissionDate": "Data da Comissão",
     "commissionsTitle": "Comissões",
-    "noRecord": "Você ainda não tem registros de comissões"
+    "noRecord": "Você ainda não tem registros de comissão"
   },
   "affCommissionsTab": {
-    "totalTurnover": "Volume total",
-    "totalCommission": "Comissão total",
-    "availableForWithdraw": "Disponível para retirada",
+    "totalTurnover": "Faturamento Total",
+    "totalCommission": "Comissão Total",
+    "availableForWithdraw": "Disponível para Retirada",
     "withdraw": "Retirar"
   },
   "empty": {

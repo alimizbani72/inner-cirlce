@@ -186,19 +186,23 @@ const Register: FC = () => {
             //   </Typography>
             // </Typography>
             <Typography variant="caption-regular" color="grey.light">
-              I have read the{" "}
-              <Typography variant="caption-regular" component={Link} href="/terms-and-condition">
-                {t("createAccount.termsAndConditions")}{" "}
-              </Typography>
-              and the{" "}
-              <Typography variant="caption-regular" component={Link} href="/disclaimer">
-                DISCLAIMER
-              </Typography>{" "}
-              and expressly accept them as part of the contract. I also agree and understand that by purchasing and
-              immediately accessing digital content,{" "}
-              <Typography variant="caption-regular" component={"span"}>
-                I waive my 14-day right of refund.
-              </Typography>
+              {t("createAccount.termsAndConditions", {
+                termsAndConditions: (
+                  <Typography variant="caption-regular" component={Link} href="/terms-and-condition">
+                    {t("register.termsAndConditions")}
+                  </Typography>
+                ),
+                disclaimer: (
+                  <Typography variant="caption-regular" component={Link} href="/disclaimer">
+                    {t("register.disclaimer")}
+                  </Typography>
+                ),
+                refundWaiver: (
+                  <Typography variant="caption-regular" component={"span"}>
+                    {t("register.refundWaiver")}
+                  </Typography>
+                ),
+              })}
             </Typography>
           }
           name="terms"
