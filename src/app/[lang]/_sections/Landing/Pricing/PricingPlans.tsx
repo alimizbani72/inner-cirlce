@@ -74,7 +74,7 @@ const PricingPlans: FC<PricingPlansProps> = ({ plans }) => {
                   >
                     <RiveComp width={175} height={175} src={plan.image} />
                   </Stack>
-                  <Stack gap={3} p={3} position={"relative"} zIndex={5}>
+                  <Stack gap={3} p={3} position={"relative"} zIndex={5} flex={1}>
                     <Stack gap={2}>
                       <Stack direction="row" justifyContent="space-between">
                         <Typography variant="p1-semi-bold" color="pink.light" textTransform={"capitalize"}>
@@ -102,7 +102,7 @@ const PricingPlans: FC<PricingPlansProps> = ({ plans }) => {
                         {plan.description}
                       </Typography>
                     </Stack>
-                    <Typography variant="h3-semi-bold">
+                    <Typography mt="auto" variant="h3-semi-bold">
                       {plan.cost ? fCurrency(plan.cost, "$0,0[.]00") : "FREE"}
                     </Typography>
                     <Button onClick={() => push("/pricing")}>Get Started</Button>
