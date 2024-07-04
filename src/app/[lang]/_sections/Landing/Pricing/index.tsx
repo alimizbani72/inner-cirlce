@@ -12,7 +12,7 @@ const plans = [
     id: "Plankton",
     title: "Plankton",
     image: "/assets/rive/plankton.riv",
-    description: "22 coin reports +3 strategies with low/medium/high risk",
+    description: "22 coin reports +1 portfolio strategy",
     cost: 0,
     onClick: () => ({}),
   },
