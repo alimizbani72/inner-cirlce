@@ -18,11 +18,24 @@ const CategoryItem: FC<Props> = ({ content }) => {
       overflow={"hidden"}
       sx={flexItem({ count: { lg: 4, md: 2 }, gap: 24 })}
     >
-      <Box height={"188px"} width={"100%"}>
-        <Image src={content.image || "/logo/logo-type.svg"} objectFit="contain" width={"100%"} height={"100%"} />
+      <Box sx={{ flexBasis: 1 }}>
+        <Image
+          src={content.image || "/logo/logo-type.svg"}
+          objectFit="contain"
+          width={"100%"}
+          height={"100%"}
+          ratio="16/9"
+        />
       </Box>
 
-      <Stack gap={3} p={2} bgcolor={"dark.3"} alignItems={"flex-start"}>
+      <Stack
+        gap={3}
+        p={2}
+        bgcolor={"dark.3"}
+        alignItems={"flex-start"}
+        sx={{ height: "100%" }}
+        justifyContent={"space-between"}
+      >
         <Stack gap={1}>
           <Typography variant="p1-medium">{content.title}</Typography>
           <Typography variant="caption-medium" color={"grey.light"}>
