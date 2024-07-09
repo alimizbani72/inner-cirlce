@@ -41,7 +41,11 @@ const Login: FC = () => {
 
   const onSubmit = handleSubmit(async (data) => {
     setLoading(true);
-    const res = await signIn("custom-login", { password: data.password, email: data.email, redirect: false });
+    const res = await signIn("custom-login", {
+      password: data.password,
+      email: data.email?.toLowerCase(),
+      redirect: false,
+    });
     if (res?.ok) {
       push("/dashboard");
       setLoading(false);
