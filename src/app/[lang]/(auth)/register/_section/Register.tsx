@@ -86,7 +86,7 @@ const Register: FC = () => {
         dispatch(
           setRegisterInfo({
             name: data.name,
-            email: data.email,
+            email: data.email?.toLowerCase(),
             password: data.password,
           })
         );

@@ -56,7 +56,7 @@ const ForgotPass: FC = () => {
       const checkEmailResult = await checkEmail({ requestBody: { email: data.email } });
       if (checkEmailResult.data) {
         await mutateAsync({ requestBody: { email: data.email } });
-        dispatch(setForgotPasswordInfo({ email: data.email }));
+        dispatch(setForgotPasswordInfo({ email: data.email?.toLowerCase() }));
         dispatch(setForgotPasswordStep(2));
       } else {
         setError("email", { message: t("formErrors.userNotFound") });
