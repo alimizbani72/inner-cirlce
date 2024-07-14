@@ -1,11 +1,8 @@
 import RiveComp from "@/components/RiveComp";
 import { plans } from "@/configs/plans";
-import { useAppRouter } from "@/routes/hooks";
-import { useFinancialServiceFinancialPayCreateMutation } from "@minecraft/queries";
 import { fCurrency } from "@/utils/format-number";
 import { LoadingButton } from "@mui/lab";
 import { Stack, Typography } from "@mui/material";
-import { enqueueSnackbar } from "notistack";
 import type { FC } from "react";
 
 type Props = {
@@ -15,20 +12,20 @@ type Props = {
   cost: string;
   buttonText: string;
   disabled?: boolean;
+  handlePayment: (plan_type: string) => Promise<void>;
+  isPending: boolean;
 };
 
-const PlanCard: FC<Props> = ({ title, description, plan_type, cost, disabled, buttonText }) => {
-  const { push } = useAppRouter();
-  const { mutateAsync, isPending } = useFinancialServiceFinancialPayCreateMutation();
-
-  const handlePay = () => {
-    mutateAsync({ requestBody: { plan_type, symbol: "USDC" } })
-      .then((response: any) => {
-        push(`/checkout/qr-wallet?plan_type=${plan_type}&id=${response?.data?.id}`);
-      })
-      .catch((error) => enqueueSnackbar({ message: error?.body?.message, variant: "error" }));
-  };
-
+const PlanCard: FC<Props> = ({
+  title,
+  description,
+  plan_type,
+  cost,
+  disabled,
+  buttonText,
+  handlePayment,
+  isPending,
+}) => {
   return (
     <Stack
       height={500}
@@ -50,7 +47,7 @@ const PlanCard: FC<Props> = ({ title, description, plan_type, cost, disabled, bu
         </Typography>
         <Typography variant="p2-medium">{description}</Typography>
         <Typography variant="h3-semi-bold">{fCurrency(cost, "$0,0[.]00")}</Typography>
-        <LoadingButton loading={isPending} onClick={handlePay} disabled={disabled}>
+        <LoadingButton loading={isPending} onClick={() => handlePayment(plan_type)} disabled={disabled}>
           {buttonText}
         </LoadingButton>
       </Stack>

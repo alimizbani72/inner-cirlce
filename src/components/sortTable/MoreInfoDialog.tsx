@@ -8,6 +8,7 @@ import { Button, DialogActions, Divider, IconButton, Stack, Typography } from "@
 import { useState, type FC } from "react";
 import Link from "../Link";
 import type { MoreInfoData } from ".";
+import { useIsMobile } from "@/hooks/use-responsive";
 
 type Props = {
   close: VoidFunction;
@@ -17,6 +18,7 @@ type Props = {
 
 const MoreInfoDialog: FC<Props> = ({ close, open, data }) => {
   const [isBuyNow, setIsBuyNow] = useState<boolean>(false);
+  const isMobile = useIsMobile();
 
   return (
     <CustomDialog fullWidth maxWidth="sm" onClose={close} aria-labelledby="withdraw-dialog" open={open}>
@@ -48,7 +50,7 @@ const MoreInfoDialog: FC<Props> = ({ close, open, data }) => {
         <Typography>Coming Soon</Typography>
       </DialogContent>
       <DialogActions>
-        <Stack width={"100%"} direction={"row"} justifyContent={"space-between"}>
+        <Stack width={"100%"} direction={isMobile ? "column" : "row"} justifyContent={"space-between"} gap={2}>
           <Button size="large" color="info" endIcon={<Icon name="Arrow-right" />} disabled>
             <Link href={data?.link!} target="_blank" sx={{ color: "white" }}>
               More Information

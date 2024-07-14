@@ -1,11 +1,8 @@
 import { Icon } from "@/components/icons";
 import { plans } from "@/configs/plans";
 import type { Plan } from "@/lib/features/plans/plansSlice";
-import { useAppRouter } from "@/routes/hooks";
-import { useFinancialServiceFinancialPayCreateMutation } from "@minecraft/queries";
 import { LoadingButton } from "@mui/lab";
 import { Box, Stack, Typography } from "@mui/material";
-import { enqueueSnackbar } from "notistack";
 import type { FC } from "react";
 import { useMemo } from "react";
 
@@ -13,11 +10,11 @@ type Props = {
   plansData: Plan[];
   rows: Record<string, Array<string | boolean>>;
   userType: string;
+  handlePayment: (plan_type: string) => Promise<void>;
+  isPending: boolean;
 };
 
-const PricingTable: FC<Props> = ({ plansData, rows, userType }) => {
-  const { push } = useAppRouter();
-  const { mutateAsync, isPending } = useFinancialServiceFinancialPayCreateMutation();
+const PricingTable: FC<Props> = ({ plansData, rows, userType, handlePayment, isPending }) => {
   const tableCelSx = useMemo(
     () => ({
       py: 3,
@@ -30,14 +27,6 @@ const PricingTable: FC<Props> = ({ plansData, rows, userType }) => {
     }),
     []
   );
-
-  const handlePay = (plan_type: string) => {
-    mutateAsync({ requestBody: { plan_type, symbol: "USDC" } })
-      .then((response: any) => {
-        push(`/checkout/qr-wallet?plan_type=${plan_type}&id=${response?.data?.id}`);
-      })
-      .catch((error) => enqueueSnackbar({ message: error?.body?.message, variant: "error" }));
-  };
 
   return (
     <Stack>
@@ -102,7 +91,7 @@ const PricingTable: FC<Props> = ({ plansData, rows, userType }) => {
           >
             <LoadingButton
               loading={isPending}
-              onClick={() => handlePay(plan?.title.toLowerCase())}
+              onClick={() => handlePayment(plan?.title.toLowerCase())}
               disabled={
                 plans[userType as keyof typeof plans].order >= plans[plan.plan_type as keyof typeof plans].order
               }

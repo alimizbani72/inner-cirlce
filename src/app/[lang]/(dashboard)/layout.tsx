@@ -7,6 +7,7 @@ import Scrollbar from "@/components/Scrollbar";
 import { getQueryClient } from "@app/_providers/customQueryClient";
 import { prefetchUseAccountServiceAuthUserinfoQuery } from "@minecraft/queries/prefetch";
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
+import PaymentNotice from "./_section/PaymentNotice";
 // ----------------------------------------------------------------------
 
 export const metadata: Metadata = {
@@ -36,7 +37,12 @@ export default async function DashboardLayout({ children, modal }: LayoutProps) 
 
           {/* Main content */}
           <Scrollbar>
-            <Stack height={{ md: "calc(100vh - 106px)" }}>{children}</Stack>
+            <Stack height={{ md: "calc(100vh - 106px)" }}>
+              <>
+                <PaymentNotice />
+                {children}
+              </>
+            </Stack>
           </Scrollbar>
         </Stack>
       </Stack>
