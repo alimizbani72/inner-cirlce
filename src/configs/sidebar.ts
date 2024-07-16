@@ -23,6 +23,11 @@ export const sidebarCommunityItems = [
     path: "affiliate/",
     icon: "Affiliate",
   },
+  {
+    path: "secret-hunts/",
+    icon: "treasure-map",
+  },
+
   // {
   //   path: "help-center/",
   //   icon: "Support",
@@ -36,4 +41,5 @@ export const mapPathToName = {
   "affiliate/": "affiliate",
   "education/": "education",
   "help-center/": "help-center",
+  "secret-hunts/": "secret-hunts",
 };
