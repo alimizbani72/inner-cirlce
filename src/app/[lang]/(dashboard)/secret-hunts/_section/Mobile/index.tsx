@@ -5,7 +5,7 @@ import CustomInput from "./CustomInput";
 import IconGrid from "./IconGrid";
 const SecretHuntsMobile = () => {
   return (
-    <Stack sx={{ position: "relative", height: "80dvh" }}>
+    <Stack sx={{ position: "relative", height: "100vh" }}>
       <Head />
 
       <Stack
