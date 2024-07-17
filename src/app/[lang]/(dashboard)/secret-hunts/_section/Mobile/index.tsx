@@ -14,7 +14,7 @@ const SecretHuntsMobile = () => {
         gap={6}
         sx={{ position: "relative", zIndex: 1, height: "100%", pb: 6, overflow: "hidden" }}
       >
-        <Box sx={{ height: "100%", width: "100%" }}>
+        <Box sx={{ width: "100%", height: "460px" }}>
           <Box sx={{ position: "absolute", width: "200%", height: "50%", translate: "-25%" }}>
             <RiveComp src="/assets/rive/Ballon_Hunting.riv" />
           </Box>
