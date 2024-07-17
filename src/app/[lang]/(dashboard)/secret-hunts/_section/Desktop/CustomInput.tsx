@@ -81,6 +81,41 @@ const CustomInput: FC<CustomInputProps> = () => {
       justifyContent={"center"}
       sx={{ position: "relative", width: "100%" }}
     >
+      <Box
+        sx={{
+          background:
+            "radial-gradient(50% 50% at 50% 50%, rgba(255, 125, 188, 0.64) 0%, rgba(255, 64, 157, 0.64) 100%)",
+          width: 150,
+          height: 150,
+          borderRadius: "150px",
+          position: "absolute",
+
+          filter: "blur(100px)",
+        }}
+      />
+      <Box
+        sx={{
+          background: "radial-gradient(50% 50% at 50% 50%, rgba(119, 157, 255, 0.40) 0%, rgba(86, 92, 228, 0.40) 100%)",
+          width: 150,
+          height: 150,
+          borderRadius: "150px",
+          position: "absolute",
+          right: 0,
+          filter: "blur(100px)",
+        }}
+      />
+
+      <Box
+        sx={{
+          background: "rgba(0, 177, 113, 0.24)",
+          width: 150,
+          height: 150,
+          borderRadius: "150px",
+          position: "absolute",
+          left: 0,
+          filter: "blur(100px)",
+        }}
+      />
       <Image
         src="/assets/svg/Lable.svg"
         sx={{ position: "absolute", zIndex: 3, width: "102px", height: "24px", top: "-24px" }}

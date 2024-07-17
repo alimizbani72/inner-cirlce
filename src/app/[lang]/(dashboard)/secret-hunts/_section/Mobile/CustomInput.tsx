@@ -76,6 +76,42 @@ const CustomInput: FC<CustomInputProps> = () => {
   };
   return (
     <Stack sx={{ px: 3, width: "100%" }} alignItems={"center"} justifyContent={"center"}>
+      <Box
+        sx={{
+          background:
+            "radial-gradient(50% 50% at 50% 50%, rgba(255, 125, 188, 0.64) 0%, rgba(255, 64, 157, 0.64) 100%)",
+          width: 150,
+          height: 150,
+          borderRadius: "150px",
+          position: "absolute",
+
+          filter: "blur(100px)",
+        }}
+      />
+      <Box
+        sx={{
+          background: "radial-gradient(50% 50% at 50% 50%, rgba(119, 157, 255, 0.40) 0%, rgba(86, 92, 228, 0.40) 100%)",
+          width: 150,
+          height: 150,
+          borderRadius: "150px",
+          position: "absolute",
+          right: 0,
+          filter: "blur(100px)",
+        }}
+      />
+
+      <Box
+        sx={{
+          background: "rgba(0, 177, 113, 0.24)",
+          width: 150,
+          height: 150,
+          borderRadius: "150px",
+          position: "absolute",
+          left: 0,
+          filter: "blur(100px)",
+        }}
+      />
+
       <Stack
         direction={"row"}
         alignItems={"center"}

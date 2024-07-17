@@ -5,7 +5,7 @@ import CustomInput from "./CustomInput";
 import IconGrid from "./IconGrid";
 const SecretHuntsMobile = () => {
   return (
-    <Stack sx={{ position: "relative", height: "100vh" }}>
+    <Stack sx={{ position: "relative", height: "100lvh" }}>
       <Head />
 
       <Stack
@@ -14,7 +14,7 @@ const SecretHuntsMobile = () => {
         gap={6}
         sx={{ position: "relative", zIndex: 1, height: "100%", pb: 6, overflow: "hidden" }}
       >
-        <Box sx={{ width: "100%", height: "460px" }}>
+        <Box sx={{ height: "100%", width: "100%" }}>
           <Box sx={{ position: "absolute", width: "200%", height: "50%", translate: "-25%" }}>
             <RiveComp src="/assets/rive/Ballon_Hunting.riv" />
           </Box>

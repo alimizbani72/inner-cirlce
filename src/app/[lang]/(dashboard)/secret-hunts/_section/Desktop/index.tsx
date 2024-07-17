@@ -30,9 +30,9 @@ const SecretHuntsDesktop = () => {
         </Stack>
 
         <Stack direction={"row"} alignItems={"center"} sx={{ position: "relative", width: "100%", mb: 7 }}>
-          <Image src="/assets/svg/Left Words.svg" sx={{ width: "100%" }} />
+          <Image src="/assets/svg/Left Words.svg" sx={{ width: "100%", zIndex: -1 }} />
           <CustomInput />
-          <Image src="/assets/svg/Right Words.svg" sx={{ width: "100%" }} />
+          <Image src="/assets/svg/Right Words.svg" sx={{ width: "100%", zIndex: -1 }} />
         </Stack>
         <IconGrid activeNumber={1} />
       </Stack>
