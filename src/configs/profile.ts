@@ -13,7 +13,7 @@ export const profileMenuItems = [
   // },
   {
     title: "termsOfService",
-    path: resolvePathJoin(process.env.NEXT_PUBLIC_URL!, "terms-and-condition") ,
+    path: resolvePathJoin(process.env.NEXT_PUBLIC_URL!, "terms-and-condition"),
     icon: "Warning-round",
   },
   {

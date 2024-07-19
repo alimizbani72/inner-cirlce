@@ -29,7 +29,7 @@
     "passwordPlaceholder": "Нууц үгээ оруулна уу",
     "inviteCodeLabel": "Таны ивээн тэтгэгч",
     "agreeToTerms": "Би зөвшөөрч байна",
-    "termsAndConditions": "Би {termsAndConditions} болон {disclaimer}-ийг уншиж, тэдгээрийг гэрээний нэг хэсэг болгон илэрхийлж зөвшөөрч байна. Мөн би дижитал контентыг худалдаж авч, даруй хандах замаар {refundWaiver}-ийг хүлээн зөвшөөрч байна.",
+    "termsAndConditions": "Би {{termsAndConditions}} болон {{disclaimer}}-ийг уншиж, тэдгээрийг гэрээний нэг хэсэг болгон илэрхийлж зөвшөөрч байна. Мөн би дижитал контентыг худалдаж авч, даруй хандах замаар {{refundWaiver}}-ийг хүлээн зөвшөөрч байна.",
     "createAccountButton": "Бүртгэл үүсгэх",
     "alreadyHaveAccount": "Та бүртгэлтэй юу?",
     "login": "Нэвтрэх"

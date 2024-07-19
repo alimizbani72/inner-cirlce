@@ -29,7 +29,7 @@
     "passwordPlaceholder": "Ange ditt lösenord",
     "inviteCodeLabel": "Din Sponsor",
     "agreeToTerms": "Jag godkänner",
-    "termsAndConditions": "Jag har läst {termsAndConditions} och {disclaimer} och godkänner dem uttryckligen som en del av avtalet. Jag godkänner och förstår också att genom att köpa och omedelbart få tillgång till digitalt innehåll, {refundWaiver}.",
+    "termsAndConditions": "Jag har läst {{termsAndConditions}} och {{disclaimer}} och godkänner dem uttryckligen som en del av avtalet. Jag godkänner och förstår också att genom att köpa och omedelbart få tillgång till digitalt innehåll, {{refundWaiver}}.",
     "createAccountButton": "Skapa Konto",
     "alreadyHaveAccount": "Har du redan ett konto?",
     "login": "Logga in"

@@ -29,7 +29,7 @@
     "passwordPlaceholder": "Entrez votre mot de passe",
     "inviteCodeLabel": "Votre sponsor",
     "agreeToTerms": "J'accepte les",
-    "termsAndConditions": "J'ai lu les {termsAndConditions} et la {disclaimer} et les accepte expressément dans le cadre du contrat. J'accepte également et comprends qu'en achetant et en accédant immédiatement au contenu numérique, {refundWaiver}.",
+    "termsAndConditions": "J'ai lu les {{termsAndConditions}} et la {{disclaimer}} et les accepte expressément dans le cadre du contrat. J'accepte également et comprends qu'en achetant et en accédant immédiatement au contenu numérique, {{refundWaiver}}.",
     "createAccountButton": "Créer un compte",
     "alreadyHaveAccount": "Vous avez déjà un compte ?",
     "login": "Connexion"

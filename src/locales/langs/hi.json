@@ -29,7 +29,7 @@
     "passwordPlaceholder": "अपना पासवर्ड दर्ज करें",
     "inviteCodeLabel": "आपका प्रायोजक",
     "agreeToTerms": "मैं सहमत हूं",
-    "termsAndConditions": "मैंने {termsAndConditions} और {disclaimer} पढ़ा है और उन्हें अनुबंध का हिस्सा मानकर स्पष्ट रूप से स्वीकार करता हूं। मैं यह भी समझता हूं और सहमत हूं कि डिजिटल सामग्री की खरीद और तुरंत एक्सेस करने से, {refundWaiver}.",
+    "termsAndConditions": "मैंने {{termsAndConditions}} और {{disclaimer}} पढ़ा है और उन्हें अनुबंध का हिस्सा मानकर स्पष्ट रूप से स्वीकार करता हूं। मैं यह भी समझता हूं और सहमत हूं कि डिजिटल सामग्री की खरीद और तुरंत एक्सेस करने से, {{refundWaiver}}.",
     "createAccountButton": "खाता बनाएँ",
     "alreadyHaveAccount": "पहले से ही खाता है?",
     "login": "लॉगिन"

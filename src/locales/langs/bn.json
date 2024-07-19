@@ -29,7 +29,7 @@
     "passwordPlaceholder": "আপনার পাসওয়ার্ড লিখুন",
     "inviteCodeLabel": "আপনার স্পনসর",
     "agreeToTerms": "আমি সম্মত",
-    "termsAndConditions": "আমি {termsAndConditions} এবং {disclaimer} পড়েছি এবং চুক্তির অংশ হিসেবে সেগুলোকে স্পষ্টভাবে গ্রহণ করছি। আমি এটাও সম্মত এবং বুঝেছি যে ডিজিটাল কন্টেন্ট কেনার সঙ্গে সঙ্গে প্রবেশ করলে, {refundWaiver}।",
+    "termsAndConditions": "আমি {{termsAndConditions}} এবং {{disclaimer}} পড়েছি এবং চুক্তির অংশ হিসেবে সেগুলোকে স্পষ্টভাবে গ্রহণ করছি। আমি এটাও সম্মত এবং বুঝেছি যে ডিজিটাল কন্টেন্ট কেনার সঙ্গে সঙ্গে প্রবেশ করলে, {{refundWaiver}}।",
     "createAccountButton": "অ্যাকাউন্ট তৈরি করুন",
     "alreadyHaveAccount": "ইতিমধ্যে একটি অ্যাকাউন্ট আছে?",
     "login": "লগইন করুন"

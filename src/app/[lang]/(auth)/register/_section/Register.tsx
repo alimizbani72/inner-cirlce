@@ -21,7 +21,6 @@ import { useSearchParams } from "next/navigation";
 import windowAvailable from "@/utils/windowAvailable";
 import { parse } from "cookie";
 import GoogleSignIn from "@app/(auth)/login/_section/GoogleSignIn";
-import Link from "@/components/Link";
 
 const Register: FC = () => {
   const { t } = useTranslate();
@@ -185,23 +184,31 @@ const Register: FC = () => {
             //     {t("createAccount.termsAndConditions")}
             //   </Typography>
             // </Typography>
+            // <Typography variant="caption-regular" color="grey.light">
+            //   {t("createAccount.termsAndConditions", {
+            //     termsAndConditions: (
+            //       <Typography variant="caption-regular" component={Link} href="/terms-and-condition">
+            //         {t("register.termsAndConditions")}
+            //       </Typography>
+            //     ),
+            //     disclaimer: (
+            //       <Typography variant="caption-regular" component={Link} href="/disclaimer">
+            //         {t("register.disclaimer")}
+            //       </Typography>
+            //     ),
+            //     refundWaiver: (
+            //       <Typography variant="caption-regular" component={"span"}>
+            //         {t("register.refundWaiver")}
+            //       </Typography>
+            //     ),
+            //   })}
+            // </Typography>
+
             <Typography variant="caption-regular" color="grey.light">
               {t("createAccount.termsAndConditions", {
-                termsAndConditions: (
-                  <Typography variant="caption-regular" component={Link} href="/terms-and-condition">
-                    {t("register.termsAndConditions")}
-                  </Typography>
-                ),
-                disclaimer: (
-                  <Typography variant="caption-regular" component={Link} href="/disclaimer">
-                    {t("register.disclaimer")}
-                  </Typography>
-                ),
-                refundWaiver: (
-                  <Typography variant="caption-regular" component={"span"}>
-                    {t("register.refundWaiver")}
-                  </Typography>
-                ),
+                termsAndConditions: t("register.termsAndConditions"),
+                disclaimer: t("register.disclaimer"),
+                refundWaiver: t("register.refundWaiver"),
               })}
             </Typography>
           }

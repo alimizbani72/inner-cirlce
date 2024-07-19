@@ -29,7 +29,7 @@
     "passwordPlaceholder": "Ingrese su contraseña",
     "inviteCodeLabel": "Su patrocinador",
     "agreeToTerms": "Estoy de acuerdo con los",
-    "termsAndConditions": "He leído los {termsAndConditions} y el {disclaimer} y los acepto expresamente como parte del contrato. También acepto y entiendo que al comprar y acceder inmediatamente al contenido digital, {refundWaiver}.",
+    "termsAndConditions": "He leído los {{termsAndConditions}} y el {{disclaimer}} y los acepto expresamente como parte del contrato. También acepto y entiendo que al comprar y acceder inmediatamente al contenido digital, {{refundWaiver}}.",
     "createAccountButton": "Crear cuenta",
     "alreadyHaveAccount": "¿Ya tienes una cuenta?",
     "login": "Iniciar sesión"

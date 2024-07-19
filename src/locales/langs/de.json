@@ -29,7 +29,7 @@
     "passwordPlaceholder": "Geben Sie Ihr Passwort ein",
     "inviteCodeLabel": "Ihr Sponsor",
     "agreeToTerms": "Ich stimme den",
-    "termsAndConditions": "Ich habe die {termsAndConditions} und den {disclaimer} gelesen und akzeptiere diese ausdrücklich als Teil des Vertrags. Ich stimme auch zu und verstehe, dass ich durch den Kauf und den sofortigen Zugriff auf digitale Inhalte, {refundWaiver}.",
+    "termsAndConditions": "Ich habe die {{termsAndConditions}} und den {{disclaimer}} gelesen und akzeptiere diese ausdrücklich als Teil des Vertrags. Ich stimme auch zu und verstehe, dass ich durch den Kauf und den sofortigen Zugriff auf digitale Inhalte, {{refundWaiver}}.",
     "createAccountButton": "Konto erstellen",
     "alreadyHaveAccount": "Bereits ein Konto?",
     "login": "Anmelden"

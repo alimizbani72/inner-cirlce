@@ -29,7 +29,7 @@
     "passwordPlaceholder": "Введите ваш пароль",
     "inviteCodeLabel": "Ваш спонсор",
     "agreeToTerms": "Я согласен с",
-    "termsAndConditions": "Я прочитал {termsAndConditions} и {disclaimer} и явно принимаю их как часть контракта. Я также согласен и понимаю, что, покупая и немедленно получая доступ к цифровому контенту, {refundWaiver}.",
+    "termsAndConditions": "Я прочитал {{termsAndConditions}} и {{disclaimer}} и явно принимаю их как часть контракта. Я также согласен и понимаю, что, покупая и немедленно получая доступ к цифровому контенту, {{refundWaiver}}.",
     "createAccountButton": "Создать аккаунт",
     "alreadyHaveAccount": "Уже есть аккаунт?",
     "login": "Войти"

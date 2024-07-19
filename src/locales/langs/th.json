@@ -29,7 +29,7 @@
     "passwordPlaceholder": "กรอกรหัสผ่านของคุณ",
     "inviteCodeLabel": "ผู้สนับสนุนของคุณ",
     "agreeToTerms": "ฉันยอมรับ",
-    "termsAndConditions": "ฉันได้อ่าน {termsAndConditions} และ {disclaimer} และยอมรับเงื่อนไขเหล่านี้เป็นส่วนหนึ่งของสัญญา ฉันยังยอมรับและเข้าใจว่าการซื้อและเข้าถึงเนื้อหาดิจิทัลทันที {refundWaiver}.",
+    "termsAndConditions": "ฉันได้อ่าน {{termsAndConditions}} และ {{disclaimer}} และยอมรับเงื่อนไขเหล่านี้เป็นส่วนหนึ่งของสัญญา ฉันยังยอมรับและเข้าใจว่าการซื้อและเข้าถึงเนื้อหาดิจิทัลทันที {{refundWaiver}}.",
     "createAccountButton": "สร้างบัญชี",
     "alreadyHaveAccount": "มีบัญชีอยู่แล้ว?",
     "login": "เข้าสู่ระบบ"

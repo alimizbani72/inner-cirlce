@@ -29,7 +29,7 @@
     "passwordPlaceholder": "Digite sua senha",
     "inviteCodeLabel": "Seu Patrocinador",
     "agreeToTerms": "Eu concordo com",
-    "termsAndConditions": "Eu li os {termsAndConditions} e o {disclaimer} e os aceito expressamente como parte do contrato. Também concordo e entendo que, ao comprar e acessar imediatamente o conteúdo digital, {refundWaiver}.",
+    "termsAndConditions": "Eu li os {{termsAndConditions}} e o {{disclaimer}} e os aceito expressamente como parte do contrato. Também concordo e entendo que, ao comprar e acessar imediatamente o conteúdo digital, {{refundWaiver}}.",
     "createAccountButton": "Criar Conta",
     "alreadyHaveAccount": "Já tem uma conta?",
     "login": "Entrar"

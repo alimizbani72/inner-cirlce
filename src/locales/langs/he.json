@@ -29,7 +29,7 @@
     "passwordPlaceholder": "הכנס את הסיסמה שלך",
     "inviteCodeLabel": "הספונסר שלך",
     "agreeToTerms": "אני מסכים ל",
-    "termsAndConditions": "קראתי את {termsAndConditions} ואת {disclaimer} ומקבל אותם כחלק מההסכם. אני גם מסכים ומבין שברכישת גישה מיידית לתוכן דיגיטלי, {refundWaiver}.",
+    "termsAndConditions": "קראתי את {{termsAndConditions}} ואת {{disclaimer}} ומקבל אותם כחלק מההסכם. אני גם מסכים ומבין שברכישת גישה מיידית לתוכן דיגיטלי, {{refundWaiver}}.",
     "createAccountButton": "צור חשבון",
     "alreadyHaveAccount": "כבר יש לך חשבון?",
     "login": "התחבר"

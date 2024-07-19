@@ -29,7 +29,7 @@
     "passwordPlaceholder": "Nhập mật khẩu của bạn",
     "inviteCodeLabel": "Người bảo trợ của bạn",
     "agreeToTerms": "Tôi đồng ý với",
-    "termsAndConditions": "Tôi đã đọc {termsAndConditions} và {disclaimer} và đồng ý chấp nhận chúng là một phần của hợp đồng. Tôi cũng đồng ý và hiểu rằng việc mua và truy cập ngay lập tức vào nội dung kỹ thuật số {refundWaiver}.",
+    "termsAndConditions": "Tôi đã đọc {{termsAndConditions}} và {{disclaimer}} và đồng ý chấp nhận chúng là một phần của hợp đồng. Tôi cũng đồng ý và hiểu rằng việc mua và truy cập ngay lập tức vào nội dung kỹ thuật số {{refundWaiver}}.",
     "createAccountButton": "Tạo tài khoản",
     "alreadyHaveAccount": "Đã có tài khoản?",
     "login": "Đăng nhập"

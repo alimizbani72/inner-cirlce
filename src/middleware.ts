@@ -72,13 +72,7 @@ const handleAuthRedirection = (session: any, pathname: string, reqUrl: string, l
     return null;
   }
 
-  const authRoutes= [
-    `/${locale}/login/`,
-    `/${locale}/register/`,
-    `/${locale}/forgotpass/`,
-    `/${locale}/resetpass/`,
-
-  ]
+  const authRoutes = [`/${locale}/login/`, `/${locale}/register/`, `/${locale}/forgotpass/`, `/${locale}/resetpass/`];
 
   const publicRoutes = [
     `/${locale}/terms-and-condition/`,

@@ -29,7 +29,7 @@
     "passwordPlaceholder": "Şifrenizi girin",
     "inviteCodeLabel": "Sponsorunuz",
     "agreeToTerms": "Katılıyorum",
-    "termsAndConditions": "{termsAndConditions} ve {disclaimer} okudum ve bunları sözleşmenin bir parçası olarak açıkça kabul ediyorum. Ayrıca, dijital içeriği hemen satın alıp erişerek {refundWaiver} kabul ediyorum ve anlıyorum.",
+    "termsAndConditions": "{{termsAndConditions}} ve {{disclaimer}} okudum ve bunları sözleşmenin bir parçası olarak açıkça kabul ediyorum. Ayrıca, dijital içeriği hemen satın alıp erişerek {{refundWaiver}} kabul ediyorum ve anlıyorum.",
     "createAccountButton": "Hesap Oluştur",
     "alreadyHaveAccount": "Zaten bir hesabınız var mı?",
     "login": "Giriş Yap"

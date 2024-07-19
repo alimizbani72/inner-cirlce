@@ -29,7 +29,7 @@
     "passwordPlaceholder": "Enter your password",
     "inviteCodeLabel": "Your Sponsor",
     "agreeToTerms": "I agree to the",
-    "termsAndConditions": "I have read the {termsAndConditions} and the {disclaimer} and expressly accept them as part of the contract. I also agree and understand that by purchasing and immediately accessing digital content, {refundWaiver}.",
+    "termsAndConditions": "I have read the {{termsAndConditions}} and the {{disclaimer}} and expressly accept them as part of the contract. I also agree and understand that by purchasing and immediately accessing digital content, {{refundWaiver}}.",
     "createAccountButton": "Create Account",
     "alreadyHaveAccount": "Already have an account?",
     "login": "Login"

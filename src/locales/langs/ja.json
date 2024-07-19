@@ -29,7 +29,7 @@
     "passwordPlaceholder": "パスワードを入力",
     "inviteCodeLabel": "紹介者",
     "agreeToTerms": "私は",
-    "termsAndConditions": "私は{termsAndConditions}と{disclaimer}を読み、契約の一部として明示的に受け入れます。また、デジタルコンテンツを購入し即座にアクセスすることにより、{refundWaiver}。",
+    "termsAndConditions": "私は{{termsAndConditions}}と{{disclaimer}}を読み、契約の一部として明示的に受け入れます。また、デジタルコンテンツを購入し即座にアクセスすることにより、{{refundWaiver}}。",
     "createAccountButton": "アカウントを作成",
     "alreadyHaveAccount": "既にアカウントをお持ちですか？",
     "login": "ログイン"
