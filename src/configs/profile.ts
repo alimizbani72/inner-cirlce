@@ -1,3 +1,5 @@
+import { resolvePathJoin } from "@/utils/path";
+
 export const profileMenuItems = [
   {
     title: "profileSetting",
@@ -11,7 +13,7 @@ export const profileMenuItems = [
   // },
   {
     title: "termsOfService",
-    path: "/terms-privacy",
+    path: resolvePathJoin(process.env.NEXT_PUBLIC_URL!, "terms-and-condition") ,
     icon: "Warning-round",
   },
   {

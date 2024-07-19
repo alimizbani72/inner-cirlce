@@ -12,8 +12,10 @@ import { getUserPlanType } from "@/consts";
 import CustomDialog from "@/components/CustomDialog";
 import { useModalActivation } from "@/hooks/useModalActivation";
 import { useTranslate } from "@/locales";
+import { useAppRouter } from "@/routes/hooks";
 
 const ProfileDialog = () => {
+  const { push: nativePush } = useAppRouter();
   const { push, back } = useCustomRouter();
   const { data: userInfoData } = useAccountServiceAuthUserinfoQuery();
   const isFreePlan = getUserPlanType(userInfoData) === "plankton";
@@ -47,7 +49,9 @@ const ProfileDialog = () => {
                 key={index}
                 sx={{ borderBottom: "1px solid", borderColor: "dark.3", width: "100%", py: 2, cursor: "pointer" }}
                 gap={2}
-                onClick={() => push(`/profile/${item.path}`)}
+                onClick={() =>
+                  item.title === "termsOfService" ? nativePush(item.path) : push(`/profile/${item.path}`)
+                }
               >
                 <Icon name={item.icon as any} />
                 <Typography variant="p2-medium">{t(`profileDialog.${item.title}` as any)}</Typography>

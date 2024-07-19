@@ -72,28 +72,33 @@ const handleAuthRedirection = (session: any, pathname: string, reqUrl: string, l
     return null;
   }
 
-  const publicRoutes = [
+  const authRoutes= [
     `/${locale}/login/`,
     `/${locale}/register/`,
     `/${locale}/forgotpass/`,
     `/${locale}/resetpass/`,
+
+  ]
+
+  const publicRoutes = [
     `/${locale}/terms-and-condition/`,
     `/${locale}/disclaimer/`,
     `/${locale}/privacy-policy/`,
     `/${locale}/imprint/`,
   ];
 
+  const isAuthRoute = authRoutes.includes(pathname);
   const isPublicRoute = publicRoutes.includes(pathname);
 
   if (!session?.accessToken && isPublicRoute) {
     return null;
   }
 
-  if (!session?.accessToken && !isPublicRoute) {
+  if (!session?.accessToken && !isAuthRoute) {
     return NextResponse.redirect(new URL(`/${locale}/login`, reqUrl));
   }
 
-  if (session?.accessToken && isPublicRoute) {
+  if (session?.accessToken && isAuthRoute) {
     return NextResponse.redirect(new URL(`/${locale}/dashboard`, reqUrl));
   }
 
