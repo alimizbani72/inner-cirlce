@@ -12,10 +12,12 @@ import Loading from "@/components/Loading";
 import { useContentServiceContentCoinReportLangQuery } from "@minecraft/queries";
 import { useParams } from "next/navigation";
 import { useTranslate } from "@/locales";
+import { useIsMobile } from "@/hooks/use-responsive";
 
 interface TableProps {}
 
 const CoinReportTable: FC<TableProps> = () => {
+  const isMobile = useIsMobile();
   const { lang } = useParams();
   const { t } = useTranslate();
   const buttons = useMemo(
@@ -121,7 +123,7 @@ const CoinReportTable: FC<TableProps> = () => {
           pl={{ md: 4, xs: 3 }}
           pb={3}
           alignItems="flex-start"
-          maxWidth={`calc(100vw - ${isCollapsed ? "104px" : "248px"})`}
+          maxWidth={isMobile ? "100vw" : `calc(100vw - ${isCollapsed ? "104px" : "248px"})`}
           sx={{ "> div": { borderTopRightRadius: 0, borderBottomRightRadius: 0, borderBottomLeftRadius: 0 } }}
         >
           {isSuccess && <SortTable data={(coinsData as any).data[value]} />}

@@ -11,12 +11,14 @@ import { useAppSelector } from "@/lib/hooks";
 import { useContentServiceContentPortfolioStrategyPlanQuery } from "@minecraft/queries";
 import Empty from "@/components/Empty";
 import { useTranslate } from "@/locales";
+import { useIsMobile } from "@/hooks/use-responsive";
 
 interface TableProps {
   plan: string;
 }
 
 const PortfolioTable: FC<TableProps> = ({ plan }) => {
+  const isMobile = useIsMobile();
   const isCollapsed = useAppSelector(isSidebarCollapsed);
   const { data: content } = useContentServiceContentPortfolioStrategyPlanQuery({ plan });
   const [value, setValue] = useState<any>(Object.keys((content as any)?.data)?.[0]);
@@ -83,7 +85,7 @@ const PortfolioTable: FC<TableProps> = ({ plan }) => {
           pr={{ md: 4, xs: 0 }}
           pb={3}
           alignItems="flex-start"
-          maxWidth={`calc(100vw - ${isCollapsed ? "104px" : "248px"})`}
+          maxWidth={isMobile ? "100vw" : `calc(100vw - ${isCollapsed ? "104px" : "248px"})`}
           sx={{
             "> div": {
               md: { borderTopRightRadius: 16, borderBottomRightRadius: 16, borderBottomLeftRadius: 16 },
