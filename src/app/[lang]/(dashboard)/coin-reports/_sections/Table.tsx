@@ -58,6 +58,23 @@ const CoinReportTable: FC<TableProps> = () => {
         ),
         value: "coinreports-100x",
       },
+      {
+        label: (
+          <Stack direction={"row"} gap={0.5} alignItems={"center"}>
+            <Stack
+              alignItems={"center"}
+              justifyContent={"center"}
+              sx={{ borderRadius: 1.5, background: (theme) => theme.palette.gradient.orange }}
+              px={1}
+              height={24}
+            >
+              <Typography variant="caption-semi-bold">Presales</Typography>
+            </Stack>
+            {t("coinReportTable.coinReports")}
+          </Stack>
+        ),
+        value: "coinreports-presales",
+      },
     ],
     [t]
   );

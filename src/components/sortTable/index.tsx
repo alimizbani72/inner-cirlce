@@ -73,21 +73,21 @@ const generateColumns = (data: any[], handleOpenMoreInfo: (info: string) => void
           );
         }
 
-        if (value.toLowerCase().includes("low risk")) {
+        if (value?.toLowerCase().includes("low risk")) {
           return (
             <Typography variant="p2-medium" color="success.main">
               {value}
             </Typography>
           );
         }
-        if (value.toLowerCase().includes("mid risk")) {
+        if (value?.toLowerCase().includes("mid risk")) {
           return (
             <Typography variant="p2-medium" color="warning.main">
               {value}
             </Typography>
           );
         }
-        if (value.toLowerCase().includes("high risk")) {
+        if (value?.toLowerCase().includes("high risk")) {
           return (
             <Typography variant="p2-medium" color="danger.main">
               {value}
