@@ -23,10 +23,10 @@ export const sidebarCommunityItems = [
     path: "affiliate/",
     icon: "Affiliate",
   },
-  {
-    path: "secret-hunts/",
-    icon: "treasure-map",
-  },
+  // {
+  //   path: "secret-hunts/",
+  //   icon: "treasure-map",
+  // },
 
   // {
   //   path: "help-center/",

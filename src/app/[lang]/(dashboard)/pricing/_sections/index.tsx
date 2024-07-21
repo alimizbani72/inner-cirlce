@@ -49,7 +49,7 @@ const PricingSection: FC = () => {
   const handlePay = async (plan_type: string) => {
     try {
       const response = await mutateAsync({ requestBody: { plan_type, symbol: "USDC" } });
-      push(`/checkout/qr-wallet?plan_type=${plan_type}&id=${response?.data?.id}`);
+      push(`/checkout/qr-wallet?plan_type=${plan_type}&id=${(response as any)?.data?.id}`);
       setOpen("");
     } catch (error) {
       enqueueSnackbar({ message: error?.body?.message, variant: "error" });
