@@ -3,7 +3,6 @@ import AffiliateSection from "./_sections";
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import { getQueryClient } from "@app/_providers/customQueryClient";
 import {
-  prefetchUseAffiliateServiceAffiliateBalanceQuery,
   prefetchUseAffiliateServiceAffiliateChildrenQuery,
   prefetchUseAffiliateServiceAffiliateCommissionListQuery,
   prefetchUseAffiliateServiceAffiliateMeQuery,
@@ -27,7 +26,6 @@ export default async function Affiliate() {
     prefetchUseAffiliateServiceAffiliateMeQuery(queryClient),
     prefetchUseFinancialServiceFinancialInfoQuery(queryClient),
     prefetchUseFinancialServiceFinancialPayoutsQuery(queryClient),
-    prefetchUseAffiliateServiceAffiliateBalanceQuery(queryClient),
     prefetchUseAffiliateServiceAffiliateProgressQuery(queryClient),
     prefetchUseAffiliateServiceAffiliateChildrenQuery(queryClient),
     prefetchUseAffiliateServiceAffiliateCommissionListQuery(queryClient),
