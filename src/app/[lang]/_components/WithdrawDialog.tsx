@@ -8,6 +8,7 @@ import { Button, DialogActions, Divider, IconButton, Stack, Typography } from "@
 import type { FC } from "react";
 import {
   useFinancialServiceFinancialInfoQuery,
+  useFinancialServiceFinancialInfoQueryKey,
   useFinancialServiceFinancialWithdrawCreateMutation,
   useWalletServiceWalletDefaultQuery,
 } from "@minecraft/queries";
@@ -20,6 +21,7 @@ import * as Yup from "yup";
 import { useSnackbar } from "notistack";
 import { useTranslate } from "@/locales";
 import { LoadingButton } from "@mui/lab";
+import { getQueryClient } from "@app/_providers/customQueryClient";
 
 type Props = {
   close: VoidFunction;
@@ -32,7 +34,7 @@ const WithdrawDialog: FC<Props> = ({ close, open }) => {
   const { data: walletDefault } = useWalletServiceWalletDefaultQuery();
   const { data: financialInfo } = useFinancialServiceFinancialInfoQuery();
   const { mutateAsync, isPending } = useFinancialServiceFinancialWithdrawCreateMutation();
-
+  const queryClient = getQueryClient();
   const schema = Yup.object().shape({
     amount: Yup.string().required(t("withdraw.requiredAmount")),
     address: Yup.string().required(t("withdraw.requiredWallet")),
@@ -50,6 +52,7 @@ const WithdrawDialog: FC<Props> = ({ close, open }) => {
       requestBody: { amount: { value: data.amount, currency_code: "USD" }, wallet_id: `${walletDefault?.data?.id}` },
     })
       .then(() => {
+        queryClient.invalidateQueries({ queryKey: [useFinancialServiceFinancialInfoQueryKey] });
         enqueueSnackbar(t("withdraw.submitRequest"));
         close();
         reset();
