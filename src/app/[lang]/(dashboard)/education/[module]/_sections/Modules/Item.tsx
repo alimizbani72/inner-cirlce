@@ -4,6 +4,7 @@ import { snipText } from "@/utils/string";
 import { Box, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 import { Icon } from "@/components/icons";
+import { CMSDownloadURL } from "@/consts";
 
 type Props = { content: { [k: string]: any } };
 
@@ -19,7 +20,7 @@ const ModuleItem: FC<Props> = ({ content }) => {
       href={encodeURIComponent(content.title)}
     >
       <Box height={"104px"} width={{ md: "182px", xs: "100%" }}>
-        <Image src={content.image || "/logo/logo-type.svg"} objectFit="contain" width={"100%"} height={"100%"} />
+        <Image src={CMSDownloadURL(content.banner)} objectFit="contain" width={"100%"} height={"100%"} />
       </Box>
 
       <Stack
@@ -33,7 +34,9 @@ const ModuleItem: FC<Props> = ({ content }) => {
         justifyContent="space-between"
       >
         <Stack gap={1}>
-          <Typography variant="p1-medium">{content.title}</Typography>
+          <Typography variant="p1-medium" sx={snipText(1)}>
+            {content.title}
+          </Typography>
           <Typography variant="caption-medium" color={"grey.light"} sx={snipText(1)}>
             {content.description}
           </Typography>

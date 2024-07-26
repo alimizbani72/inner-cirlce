@@ -4,6 +4,7 @@ import { flexItem } from "@/utils/grid";
 import { Box, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 import { useTranslate } from "@/locales";
+import { CMSDownloadURL } from "@/consts";
 
 type Props = { content: { [k: string]: any } };
 
@@ -19,13 +20,7 @@ const CategoryItem: FC<Props> = ({ content }) => {
       sx={flexItem({ count: { lg: 4, md: 2 }, gap: 24 })}
     >
       <Box sx={{ flexBasis: 1 }}>
-        <Image
-          src={content.image || "/logo/logo-type.svg"}
-          objectFit="contain"
-          width={"100%"}
-          height={"100%"}
-          ratio="16/9"
-        />
+        <Image src={CMSDownloadURL(content.banner)} objectFit="contain" width={"100%"} height={"100%"} ratio="16/9" />
       </Box>
 
       <Stack

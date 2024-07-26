@@ -40,8 +40,8 @@ const EducationSingleVideoSection: FC = () => {
   const { t } = useTranslate();
 
   useEffect(() => {
-    if (video?.URL) {
-      fetch(`https://vimeo.com/api/oembed.json?url=${video?.URL}`)
+    if (video?.url) {
+      fetch(`https://vimeo.com/api/oembed.json?url=${video?.url}`)
         .then((response) => response.json())
         .then((response) => {
           setVideoContent(response);
@@ -56,7 +56,7 @@ const EducationSingleVideoSection: FC = () => {
       <Stack sx={{ flex: 8 / 12 }} gap={3}>
         <BreadCrumb />
 
-        {video?.URL ? (
+        {video?.url ? (
           <>
             <Box
               sx={{
@@ -82,7 +82,7 @@ const EducationSingleVideoSection: FC = () => {
                     height: "auto !important",
                   },
                 }}
-                videoUrl={video?.URL}
+                videoUrl={video?.url}
               />
             </Box>
 

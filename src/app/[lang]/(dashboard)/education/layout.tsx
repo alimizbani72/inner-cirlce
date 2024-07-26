@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import { getQueryClient } from "@app/_providers/customQueryClient";
-import { prefetchUseContentServiceContentVideoAcademyLangQuery } from "@minecraft/queries/prefetch";
 import type { RouteParamsType } from "@/routes/type";
 import SliceWrapper from "./SliceWrapper";
+import { prefetchUseEducationVideosServiceGetEducationVideos } from "@cms/queries/prefetch";
 // ----------------------------------------------------------------------
 
 export const metadata: Metadata = {
@@ -17,7 +17,7 @@ export type LayoutProps = {
 
 export default async function EducationLayout({ children, params }: LayoutProps & RouteParamsType) {
   const queryClient = getQueryClient();
-  await Promise.all([prefetchUseContentServiceContentVideoAcademyLangQuery(queryClient, { lang: params.lang })]);
+  await Promise.all([prefetchUseEducationVideosServiceGetEducationVideos(queryClient, { locale: params.lang })]);
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>

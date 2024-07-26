@@ -4,18 +4,28 @@ import type { AppThunk } from "@/lib/store";
 interface Category {
   title: string;
   description: string;
+  banner: string;
 }
 
 interface Module {
   title: string;
   description: string;
+  banner: string;
+}
+
+interface Resource {
+  fileName: string;
+  url: string;
+  isFile: boolean;
 }
 
 interface Video {
   title: string;
   description: string;
   author: string;
-  URL: string;
+  url: string;
+  resources: Resource[];
+  membership: string[];
 }
 
 interface EducationState {
@@ -70,40 +80,59 @@ export const fetchEducationData =
   (data: any[]): AppThunk =>
   (dispatch) => {
     try {
-      const categories: Category[] = [
-        ...new Map(
-          data.map((item) => [item.Category, { title: item.Category, description: item["Category Description"] }])
-        ).values(),
-      ];
+      const categoriesMap = new Map();
+      const playlistsMap = new Map();
+      const videosMap = new Map();
 
-      const playlists: Record<string, Module[]> = {};
       data.forEach((item) => {
-        const key = item.Category;
-        if (!playlists[key]) {
-          playlists[key] = [];
-        }
-        const moduleTitle = item.module;
-        if (!playlists[key].some((module) => module.title === moduleTitle)) {
-          playlists[key].push({
-            title: moduleTitle,
-            description: item["module description"],
+        const category = item.category[0];
+        const module = item.module[0];
+
+        if (!categoriesMap.has(category.title)) {
+          categoriesMap.set(category.title, {
+            title: category.title,
+            description: category.categoryDescription,
+            banner: category.categoryBanner.url,
           });
         }
-      });
 
-      const videos: Record<string, Video[]> = {};
-      data.forEach((item) => {
-        const key = item.module;
-        if (!videos[key]) {
-          videos[key] = [];
+        if (!playlistsMap.has(category.title)) {
+          playlistsMap.set(category.title, []);
         }
-        videos[key].push({
-          title: item["video title"],
-          description: item["video description"],
-          author: item["video author"],
-          URL: item["video vimeo url"],
+
+        if (!playlistsMap.get(category.title).some((mod: any) => mod.title === module.title)) {
+          playlistsMap.get(category.title).push({
+            title: module.title,
+            description: module.moduleDescription,
+            banner: module.moduleBanner.url,
+          });
+        }
+
+        if (!videosMap.has(module.title)) {
+          videosMap.set(module.title, []);
+        }
+
+        const resources = item.resources.map((resource: any) => ({
+          fileName: resource.fileName,
+          url: resource.resource ? resource.resource.url : resource.link,
+          isFile: !!resource.resource,
+        }));
+
+        const membership = item.membership.map((member: any) => member.slug);
+
+        videosMap.get(module.title).push({
+          title: item.title,
+          description: item.description,
+          author: "Chainmind", // Assuming author is always "Chainmind" as in previous data
+          url: item.vemioUrl,
+          resources: resources,
+          membership: membership,
         });
       });
+
+      const categories = Array.from(categoriesMap.values());
+      const playlists = Object.fromEntries(playlistsMap);
+      const videos = Object.fromEntries(videosMap);
 
       dispatch(setCategories(categories));
       dispatch(setPlaylists(playlists));
