@@ -119,6 +119,7 @@ const EducationSingleVideoSection: FC = () => {
                   </Stack>
                 </Stack>
                 <CustomSelect
+                  disabled={!video?.resources?.length}
                   MenuProps={{
                     PaperProps: {
                       sx: {
@@ -139,7 +140,7 @@ const EducationSingleVideoSection: FC = () => {
                       File sources
                     </Typography>
                   </CustomMenuItem>
-                  {video.resources.map((item, index) => (
+                  {video?.resources?.map((item, index) => (
                     <CustomMenuItem key={index}>
                       <Stack
                         component={Link}

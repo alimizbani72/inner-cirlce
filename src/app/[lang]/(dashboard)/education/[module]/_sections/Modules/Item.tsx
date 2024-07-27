@@ -24,7 +24,7 @@ const ModuleItem: FC<Props> = ({ content }) => {
       href={`${encodeURIComponent(content.title)}/${encodeURIComponent(videos[0].title)}`}
     >
       <Box height={"104px"} width={{ md: "182px", xs: "100%" }}>
-        <Image src={CMSDownloadURL(content.banner)} objectFit="contain" width={"100%"} height={"100%"} />
+        <Image src={CMSDownloadURL(content.banner)} objectFit="fill" width={"100%"} height={"100%"} />
       </Box>
 
       <Stack
