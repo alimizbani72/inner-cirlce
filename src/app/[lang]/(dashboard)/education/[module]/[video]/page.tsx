@@ -8,7 +8,7 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  return { title: `Education: ${params.video?.replaceAll("-", " ")}` };
+  return { title: `Education: ${decodeURIComponent(params.video)}` };
 }
 
 export default async function EducationVideos() {

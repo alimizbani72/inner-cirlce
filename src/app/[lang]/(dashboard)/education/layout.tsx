@@ -21,7 +21,7 @@ export default async function EducationLayout({ children, params }: LayoutProps 
   const queryClient = getQueryClient();
   await Promise.all([
     prefetchUseAccountServiceAuthUserinfoQuery(queryClient),
-    prefetchUseEducationVideosServiceGetEducationVideos(queryClient, { locale: params.lang }),
+    prefetchUseEducationVideosServiceGetEducationVideos(queryClient, { locale: params.lang, limit: 1000 }),
   ]);
 
   return (

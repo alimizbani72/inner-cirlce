@@ -14,14 +14,8 @@ const SliceWrapper: FC<PropsWithChildren<{ userMembership: string }>> = ({ userM
   }, []);
 
   const lang = useAppSelector(selectLang);
-  // useContentServiceContentVideoAcademyLangQuery({ lang }, undefined, {
-  //   select: (res) => {
-  //     handleRedux((res as any).data);
-  //     return res;
-  //   },
-  // });
 
-  useEducationVideosServiceGetEducationVideos({ locale: lang as string }, undefined, {
+  useEducationVideosServiceGetEducationVideos({ limit: 1000, locale: lang as string }, undefined, {
     select: (res) => {
       handleRedux((res as any).docs);
       return res;

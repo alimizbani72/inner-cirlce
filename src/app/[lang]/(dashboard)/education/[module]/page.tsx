@@ -4,11 +4,11 @@ import EducationModuleSection from "./_sections";
 // ----------------------------------------------------------------------
 
 type Props = {
-  params: { slug: string };
+  params: { module: string };
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  return { title: `Education: ${params.slug?.replaceAll("-", " ")}` };
+  return { title: `Education: ${decodeURIComponent(params.module)}` };
 }
 
 export default async function EducationVideos() {
