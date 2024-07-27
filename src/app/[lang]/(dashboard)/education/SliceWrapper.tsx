@@ -6,11 +6,11 @@ import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { useEducationVideosServiceGetEducationVideos } from "@cms/queries";
 import { useCallback, type FC, type PropsWithChildren } from "react";
 
-const SliceWrapper: FC<PropsWithChildren> = () => {
+const SliceWrapper: FC<PropsWithChildren<{ userMembership: string }>> = ({ userMembership }) => {
   const dispatch = useAppDispatch();
 
   const handleRedux = useCallback((data: any) => {
-    dispatch(fetchEducationData(data));
+    dispatch(fetchEducationData(data, userMembership));
   }, []);
 
   const lang = useAppSelector(selectLang);

@@ -1,5 +1,4 @@
-import { Select, MenuItem, Stack, Typography, Box } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import { Stack, Typography, Box } from "@mui/material";
 import { Icon } from "@/components/icons";
 import { useState } from "react";
 import { useAppSelector } from "@/lib/hooks";
@@ -8,35 +7,7 @@ import { handleLanguageChange } from "@/utils/handleLanguageChange";
 import { usePathname } from "next/navigation";
 import { useIsMobile } from "@/hooks/use-responsive";
 import { CircleFlagLanguage } from "react-circle-flags";
-
-const CustomSelect = styled(Select)(({ theme }) => ({
-  backgroundColor: theme.palette.dark[2],
-  color: "#fff",
-  "& .MuiSelect-icon": {
-    color: "#fff",
-  },
-  "& .MuiOutlinedInput-notchedOutline": {
-    borderColor: "transparent",
-  },
-  "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-    borderColor: "transparent",
-  },
-  "&:hover .MuiOutlinedInput-notchedOutline": {
-    borderColor: "transparent",
-  },
-}));
-
-const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
-  backgroundColor: theme.palette.dark[2],
-  color: "#fff",
-  "&:hover": {
-    backgroundColor: "#333",
-  },
-
-  "& .MuiListItemText-primary": {
-    color: "#fff",
-  },
-}));
+import { CustomMenuItem, CustomSelect } from "@app/_components/CustomSelect";
 
 const languages = [
   { code: "en", name: "English" },

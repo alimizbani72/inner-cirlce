@@ -1,4 +1,5 @@
 const iconsNames = [
+  "download",
   "Send",
   "Arrow-Sort",
   "coin-usdc",

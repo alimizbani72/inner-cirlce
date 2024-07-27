@@ -4,11 +4,15 @@ import { snipText } from "@/utils/string";
 import { Box, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 import { Icon } from "@/components/icons";
+import { useAppSelector } from "@/lib/hooks";
+import { selectVideos } from "@/lib/features/academy/educationSlice";
 import { CMSDownloadURL } from "@/consts";
 
 type Props = { content: { [k: string]: any } };
 
 const ModuleItem: FC<Props> = ({ content }) => {
+  const videos = useAppSelector((state) => selectVideos(state)(decodeURIComponent(content.title)));
+
   return (
     <Stack
       borderRadius={2}
@@ -17,7 +21,7 @@ const ModuleItem: FC<Props> = ({ content }) => {
       overflow={"hidden"}
       direction={{ md: "row", xs: "column" }}
       component={Link}
-      href={encodeURIComponent(content.title)}
+      href={`${encodeURIComponent(content.title)}/${encodeURIComponent(videos[0].title)}`}
     >
       <Box height={"104px"} width={{ md: "182px", xs: "100%" }}>
         <Image src={CMSDownloadURL(content.banner)} objectFit="contain" width={"100%"} height={"100%"} />

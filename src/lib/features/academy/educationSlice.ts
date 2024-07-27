@@ -25,7 +25,6 @@ interface Video {
   author: string;
   url: string;
   resources: Resource[];
-  membership: string[];
 }
 
 interface EducationState {
@@ -77,7 +76,7 @@ export const { setCategories, setPlaylists, setVideos } = educationSlice.actions
 export const { selectCategories, selectPlaylists, selectVideos, selectVideoByTitle } = educationSlice.selectors;
 
 export const fetchEducationData =
-  (data: any[]): AppThunk =>
+  (data: any[], userMembership: string): AppThunk =>
   (dispatch) => {
     try {
       const categoriesMap = new Map();
@@ -124,9 +123,8 @@ export const fetchEducationData =
           title: item.title,
           description: item.description,
           author: "Chainmind", // Assuming author is always "Chainmind" as in previous data
-          url: item.vemioUrl,
+          url: membership.includes(userMembership) ? item.vemioUrl : "",
           resources: resources,
-          membership: membership,
         });
       });
 

@@ -14,6 +14,11 @@ import Empty from "@/components/Empty";
 import Image from "@/components/Image";
 import { formatTime } from "@/utils/format-time";
 import { useTranslate } from "@/locales";
+import { useIsMobile } from "@/hooks/use-responsive";
+import { CustomMenuItem, CustomSelect } from "@app/_components/CustomSelect";
+import { Icon } from "@/components/icons";
+import Link from "@/components/Link";
+import { CMSDownloadURL } from "@/consts";
 
 type VideoResponse = {
   title: string;
@@ -32,6 +37,7 @@ type VideoResponse = {
 const VimeoPlayer = dynamic(() => import("@/components/VimeoPlayer"), { ssr: false });
 
 const EducationSingleVideoSection: FC = () => {
+  const isMobile = useIsMobile();
   const [videoContent, setVideoContent] = useState<VideoResponse | null>(null);
   const { id, video: moduleName } = useParams();
   const video = useAppSelector((state) =>
@@ -87,28 +93,80 @@ const EducationSingleVideoSection: FC = () => {
             </Box>
 
             <Stack gap={1}>
-              <Typography variant="h4-semi-bold" textTransform={"capitalize"}>
-                {decodeURIComponent(id as string)}
-              </Typography>
-              <Stack direction={"row"} alignItems={"center"} gap={1}>
-                <Typography variant="caption-medium" color="grey.dark">
-                  {t("educationSingleVideoSection.by")}:{" "}
-                  <Typography variant="caption-medium" color="grey.light">
-                    {video?.author}
+              <Stack direction={isMobile ? "column" : "row"} justifyContent={"space-between"} gap={3}>
+                <Stack gap={1}>
+                  <Typography variant="h4-semi-bold" textTransform={"capitalize"}>
+                    {decodeURIComponent(id as string)}
                   </Typography>
-                </Typography>
-
-                <BulletIcon />
-
-                {videoContent && (
-                  <Typography variant="caption-medium" color="grey.dark">
-                    {t("educationSingleVideoSection.duration")}:{" "}
-                    <Typography variant="caption-medium" color="grey.light">
-                      {formatTime(videoContent?.duration)}
+                  <Stack direction={"row"} alignItems={"center"} gap={1}>
+                    <Typography variant="caption-medium" color="grey.dark">
+                      {t("educationSingleVideoSection.by")}:{" "}
+                      <Typography variant="caption-medium" color="grey.light">
+                        {video?.author}
+                      </Typography>
                     </Typography>
-                  </Typography>
-                )}
+
+                    <BulletIcon />
+
+                    {videoContent && (
+                      <Typography variant="caption-medium" color="grey.dark">
+                        {t("educationSingleVideoSection.duration")}:{" "}
+                        <Typography variant="caption-medium" color="grey.light">
+                          {formatTime(videoContent?.duration)}
+                        </Typography>
+                      </Typography>
+                    )}
+                  </Stack>
+                </Stack>
+                <CustomSelect
+                  MenuProps={{
+                    PaperProps: {
+                      sx: {
+                        boxShadow: "none",
+                        backgroundColor: "dark.2",
+                        color: "#fff",
+                      },
+                    },
+                  }}
+                  style={{ width: isMobile ? "100%" : "240px" }}
+                  value={1}
+                  id="resources-select"
+                  placeholder="File sources"
+                >
+                  <CustomMenuItem disabled value={1} sx={{ display: "none" }}>
+                    <Typography variant="p2-medium">
+                      {/* DICTIONARY */}
+                      File sources
+                    </Typography>
+                  </CustomMenuItem>
+                  {video.resources.map((item, index) => (
+                    <CustomMenuItem key={index}>
+                      <Stack
+                        component={Link}
+                        href={item.isFile ? CMSDownloadURL(item.url) : item.url}
+                        target="_blank"
+                        download={item.isFile}
+                        rel="noreferrer"
+                        direction={"row"}
+                        justifyContent={"space-between"}
+                        alignItems={"center"}
+                        sx={{ width: "100%", p: 1 }}
+                      >
+                        <Typography variant="p2-medium" color="grey.light">
+                          {item.fileName}
+                        </Typography>
+                        <Icon name={item.isFile ? "download" : "Arrow-right"} />
+                      </Stack>
+                    </CustomMenuItem>
+                  ))}
+                </CustomSelect>
               </Stack>
+
+              <Typography variant="p2-semi-bold" color="grey.light" sx={{ mt: 2 }}>
+                {/* DICTIONARY */}
+                Description
+              </Typography>
+              <Typography variant="p2-regular">{video.description}</Typography>
             </Stack>
           </>
         ) : (

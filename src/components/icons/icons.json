@@ -3,6 +3,71 @@
   "icons": [
     {
       "icon": {
+        "paths": ["M682.667 298.667l-170.667 170.667-170.667-170.667", "M288 693.333h448"],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "miter",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": ["Arrow down"],
+        "colorPermutations": {
+          "2451725512552552551391172021801751491981011311": [
+            {
+              "s": 4
+            },
+            {
+              "s": 4
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "miter",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 8,
+        "id": 6,
+        "name": "download",
+        "prevSize": 32,
+        "code": 59648
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 0
+    },
+    {
+      "icon": {
         "paths": [
           "M281.404 805.344l504.82-254.97c32.579-16.438 32.579-60.682 0-77.165l-504.085-254.575c-38.044-19.236-80.683 17.051-64.556 54.911l100.579 236.083-101.406 240.893c-15.898 37.904 26.695 73.971 64.648 54.822z",
           "M318.117 509.798l492.555 2.186"
@@ -112,7 +177,13 @@
           "strokeWidth": 76.80000000000001
         }
       ],
-      "properties": { "order": 2, "id": 0, "name": "Arrow-Sort", "prevSize": 24, "code": 59648 },
+      "properties": {
+        "order": 2,
+        "id": 0,
+        "name": "Arrow-Sort",
+        "prevSize": 24,
+        "code": 59648
+      },
       "setIdx": 0,
       "setId": 0,
       "iconIdx": 0
