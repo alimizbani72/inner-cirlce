@@ -20,7 +20,7 @@ const CategoryItem: FC<Props> = ({ content }) => {
       sx={flexItem({ count: { lg: 4, md: 2 }, gap: 24 })}
     >
       <Box sx={{ flexBasis: 1 }}>
-        <Image src={CMSDownloadURL(content.banner)} objectFit="fill" width={"100%"} height={"100%"} ratio="16/9" />
+        <Image src={CMSDownloadURL(content.banner)} objectFit="cover" width={"100%"} height={"100%"} ratio="16/9" />
       </Box>
 
       <Stack
