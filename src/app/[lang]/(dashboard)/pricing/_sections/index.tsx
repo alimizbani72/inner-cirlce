@@ -10,7 +10,6 @@ import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
 import PricingTable from "./PricingTable";
 import { selectPlans, selectRows } from "@/lib/features/plans/plansSlice";
 import {
-  useAccountServiceAuthUserinfoQuery,
   useFinancialServiceFinancialPayCreateMutation,
   useFinancialServiceFinancialPaymentsActiveQuery,
 } from "@minecraft/queries";
@@ -20,11 +19,12 @@ import { useTranslate } from "@/locales";
 import { useAppRouter } from "@/routes/hooks";
 import { enqueueSnackbar } from "notistack";
 import ActiveNotice from "./ActiveNotice";
+import { selectUser } from "@/lib/features/user/userSlice";
 
 const PricingSection: FC = () => {
   const { t } = useTranslate();
   const [open, setOpen] = useState("");
-  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+  const userInfo = useAppSelector(selectUser);
   const { push } = useAppRouter();
   const { refetch, data, isSuccess } = useFinancialServiceFinancialPaymentsActiveQuery(undefined, {
     enabled: false,

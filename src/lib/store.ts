@@ -7,8 +7,18 @@ import { pageSlice } from "./features/pageTitle/pageSlice";
 import { authSlice } from "./features/auth/authSlice";
 import { educationSlice } from "./features/academy/educationSlice";
 import { plansSlice } from "./features/plans/plansSlice";
+import { userSlice } from "./features/user/userSlice";
 
-const rootReducer = combineSlices(counterSlice, menuSlice, dicSlice, pageSlice, authSlice, educationSlice, plansSlice);
+const rootReducer = combineSlices(
+  counterSlice,
+  menuSlice,
+  dicSlice,
+  pageSlice,
+  authSlice,
+  educationSlice,
+  plansSlice,
+  userSlice
+);
 
 export type RootState = ReturnType<typeof rootReducer>;
 

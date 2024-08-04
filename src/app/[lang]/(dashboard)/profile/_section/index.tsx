@@ -7,7 +7,7 @@ import UserInfo from "./UserInfo";
 import useCustomRouter from "@/hooks/useCustomRouter";
 import { signOut } from "next-auth/react";
 import { profileMenuItems } from "@/configs/profile";
-import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
+import { useAuthServiceMeQuery } from "@minecraft/queries";
 import { getUserPlanType } from "@/consts";
 import CustomDialog from "@/components/CustomDialog";
 import { useModalActivation } from "@/hooks/useModalActivation";
@@ -17,7 +17,7 @@ import { useAppRouter } from "@/routes/hooks";
 const ProfileDialog = () => {
   const { push: nativePush } = useAppRouter();
   const { push, back } = useCustomRouter();
-  const { data: userInfoData } = useAccountServiceAuthUserinfoQuery();
+  const { data: userInfoData } = useAuthServiceMeQuery();
   const isFreePlan = getUserPlanType(userInfoData) === "plankton";
   const open = useModalActivation("/profile/");
   const { t } = useTranslate();

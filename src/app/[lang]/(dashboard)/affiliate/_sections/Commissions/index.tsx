@@ -5,20 +5,22 @@ import { Button, Divider, Stack, Typography } from "@mui/material";
 import AffCommissionsTabTable from "./Table";
 import ContentStack from "@app/_components/ContentStack";
 import WithdrawDialog from "@app/_components/WithdrawDialog";
-import { useAccountServiceAuthUserinfoQuery, useFinancialServiceFinancialInfoQuery } from "@minecraft/queries";
+import { useFinancialServiceFinancialInfoQuery } from "@minecraft/queries";
 import { formatCurrency } from "@/utils/toNumber";
 import { useTranslate } from "@/locales";
 import { enqueueSnackbar } from "notistack";
 import { Icon } from "@/components/icons";
+import { useAppSelector } from "@/lib/hooks";
+import { selectUser } from "@/lib/features/user/userSlice";
 
 const AffCommissionsTab: FC = () => {
   const { t } = useTranslate();
   const [openWithdrawDialog, setOpenWithdrawDialog] = useState(false);
   const { data } = useFinancialServiceFinancialInfoQuery();
-  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+  const userInfo = useAppSelector(selectUser);
 
   const handleWithdrawClick = () => {
-    if ((userInfo as any)?.data?.suspended_at) {
+    if (userInfo?.suspended) {
       enqueueSnackbar({ message: t("global.suspended"), variant: "error" });
     } else {
       setOpenWithdrawDialog(true);
@@ -58,7 +60,7 @@ const AffCommissionsTab: FC = () => {
           }}
           color="secondary"
           onClick={handleWithdrawClick}
-          startIcon={!!(userInfo as any)?.data?.suspended_at && <Icon name="Warning" />}
+          startIcon={!!userInfo?.suspended && <Icon name="Warning" />}
         >
           {t("affCommissionsTab.withdraw")}
         </Button>

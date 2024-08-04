@@ -4,7 +4,6 @@ import { Icon } from "@/components/icons";
 import { plans } from "@/configs/plans";
 import { getUserPlanType } from "@/consts";
 import { toTitleCase } from "@/utils/change-case";
-import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import { useState, type FC } from "react";
 import { useTranslate } from "@/locales";
@@ -14,13 +13,14 @@ import { useAppSelector } from "@/lib/hooks";
 import { selectLang } from "@/lib/features/dictionary/dicSlice";
 import { convertRoute } from "@/utils/string";
 import LearningDialog from "@app/_components/LearningDialog";
+import { selectUser } from "@/lib/features/user/userSlice";
 
 const WelcomeBanner: FC = () => {
   const [open, setOpen] = useState(false);
   const handleClose = () => {
     setOpen(false);
   };
-  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+  const userInfo = useAppSelector(selectUser);
   const { t } = useTranslate();
   const pathName = usePathname();
   const lang = useAppSelector(selectLang);
@@ -78,7 +78,7 @@ const WelcomeBanner: FC = () => {
             <Stack gap={1}>
               <Box>
                 <Typography variant="h3-semi-bold">
-                  {t("welcomeBanner.hi", { name: toTitleCase((userInfo as any)?.data?.full_name) })}
+                  {t("welcomeBanner.hi", { name: toTitleCase(userInfo?.full_name!) })}
                 </Typography>
                 <Typography variant="h3-regular">{t("welcomeBanner.welcomeBack")}</Typography>
               </Box>

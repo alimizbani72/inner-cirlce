@@ -11,12 +11,12 @@ import LogoType from "@/components/LogoType";
 import Logo from "@/components/Logo";
 import { Icon } from "@/components/icons";
 import UpgradePlan from "../UpgradePlan";
-import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import { useTranslate } from "@/locales";
+import { selectUser } from "@/lib/features/user/userSlice";
 
 const DesktopSidebar: FC = () => {
   const { t } = useTranslate();
-  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+  const userInfo = useAppSelector(selectUser);
 
   const dispatch = useAppDispatch();
   const isCollapsed = useAppSelector(isSidebarCollapsed);
@@ -55,13 +55,12 @@ const DesktopSidebar: FC = () => {
 
           <Stack py={4} px={isCollapsed ? 3 : 2} gap={4}>
             <Menu name={t("sidebar.services")} items={sidebarServicesItems} />
-            {sidebarCommunityItems.filter((item) =>
-              (userInfo as any)?.data?.kyc_status ? item : !item.path.includes("affiliate")
-            ).length && (
+            {sidebarCommunityItems.filter((item) => (userInfo?.kyc_status ? item : !item.path.includes("affiliate")))
+              .length && (
               <Menu
                 name={t("sidebar.community")}
                 items={sidebarCommunityItems.filter((item) =>
-                  (userInfo as any)?.data?.kyc_status ? item : !item.path.includes("affiliate")
+                  userInfo?.kyc_status ? item : !item.path.includes("affiliate")
                 )}
               />
             )}

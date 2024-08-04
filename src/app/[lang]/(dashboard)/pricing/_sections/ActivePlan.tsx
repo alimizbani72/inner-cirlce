@@ -1,13 +1,14 @@
 import RiveComp from "@/components/RiveComp";
 import { plans } from "@/configs/plans";
 import { getUserPlanType } from "@/consts";
+import { selectUser } from "@/lib/features/user/userSlice";
+import { useAppSelector } from "@/lib/hooks";
 import { useTranslate } from "@/locales";
-import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import { Box, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 
 const ActivePlan: FC = () => {
-  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+  const userInfo = useAppSelector(selectUser);
   const { t } = useTranslate();
 
   return (

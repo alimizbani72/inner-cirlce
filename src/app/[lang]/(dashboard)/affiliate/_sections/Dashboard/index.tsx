@@ -7,7 +7,6 @@ import { useMemo, useState, type FC } from "react";
 import WithdrawDialog from "@app/_components/WithdrawDialog";
 import RiveComp from "@/components/RiveComp";
 import {
-  useAccountServiceAuthUserinfoQuery,
   useAffiliateServiceAffiliateChildrenQuery,
   useAffiliateServiceAffiliateMeQuery,
   useAffiliateServiceAffiliateProgressQuery,
@@ -19,6 +18,8 @@ import { plans } from "@/configs/plans";
 import { orderArrayPlan } from "@/utils/order-plans";
 import { useTranslate } from "@/locales";
 import { enqueueSnackbar } from "notistack";
+import { useAppSelector } from "@/lib/hooks";
+import { selectUser } from "@/lib/features/user/userSlice";
 
 const ProgressBar = ({ overall, percent }: { overall?: boolean; percent: number }) => (
   <Stack
@@ -49,14 +50,14 @@ const AFDashboardTab: FC = () => {
   const { t } = useTranslate();
   const [openWithdrawDialog, setOpenWithdrawDialog] = useState(false);
   const { data: me } = useAffiliateServiceAffiliateMeQuery();
-  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+  const userInfo = useAppSelector(selectUser);
   // const { data: balance } = useAffiliateServiceAffiliateBalanceQuery();
   const { data: balance } = useFinancialServiceFinancialInfoQuery();
   const { data: progress } = useAffiliateServiceAffiliateProgressQuery();
   const { data: children } = useAffiliateServiceAffiliateChildrenQuery();
 
   const handleWithdrawClick = () => {
-    if ((userInfo as any)?.data?.suspended_at) {
+    if (userInfo?.suspended) {
       enqueueSnackbar({ message: t("global.suspended"), variant: "error" });
     } else {
       setOpenWithdrawDialog(true);
@@ -103,7 +104,7 @@ const AFDashboardTab: FC = () => {
             sx={{ ml: "auto", width: { md: "auto", xs: "100%" } }}
             color="secondary"
             onClick={handleWithdrawClick}
-            startIcon={!!(userInfo as any)?.data?.suspended_at && <Icon name="Warning" />}
+            startIcon={!!userInfo?.suspended && <Icon name="Warning" />}
           >
             {t("afDashboardTab.withdraw")}
           </Button>

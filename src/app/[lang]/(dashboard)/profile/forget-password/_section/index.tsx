@@ -15,16 +15,17 @@ import { RHFCode, RHFTextField } from "@/components/hook-form";
 import { useTimer } from "react-timer-hook";
 import { toNumber } from "lodash";
 import {
-  useAccountServiceAuthResetPasswordCreateMutation,
-  useAccountServiceAuthUserinfoQuery,
-  useVerifyServiceVerificationsExchangeCreateMutation,
-  useVerifyServiceVerificationsSendCreateMutation,
+  useAuthServiceAuthSendCodeCreateMutation,
+  useAuthServiceAuthGuestTokenCreateMutation,
+  useAuthServiceAuthResetPasswordCreateMutation,
 } from "@minecraft/queries";
 import { useEffect, useState } from "react";
 import { useSnackbar } from "notistack";
 import { LoadingButton } from "@mui/lab";
 import CustomDialog from "@/components/CustomDialog";
 import { useModalActivation } from "@/hooks/useModalActivation";
+import { useAppSelector } from "@/lib/hooks";
+import { selectUser } from "@/lib/features/user/userSlice";
 
 const getTimer = () => {
   const time = new Date();
@@ -39,12 +40,14 @@ const ForgetPasswordDialog = () => {
   const { enqueueSnackbar } = useSnackbar();
   const [loading, setLoading] = useState(false);
   const [formState, setFormState] = useState(1);
-  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+  const userInfo = useAppSelector(selectUser);
   const { minutes, seconds, totalSeconds, restart } = useTimer({ expiryTimestamp: getTimer() });
-  const { mutateAsync: sendCode, isPending: sendCodeLoading } = useVerifyServiceVerificationsSendCreateMutation();
-  const { mutateAsync: exchangeCode, data: exchangeData } = useVerifyServiceVerificationsExchangeCreateMutation();
+  const { mutateAsync: sendCode, isPending: sendCodeLoading } = useAuthServiceAuthSendCodeCreateMutation();
+  const { mutateAsync: exchangeCode, data: exchangeData } = useAuthServiceAuthGuestTokenCreateMutation();
+  console.log(exchangeData);
+
   const { mutateAsync: resetPassword, isPending: isResetPasswordPending } =
-    useAccountServiceAuthResetPasswordCreateMutation();
+    useAuthServiceAuthResetPasswordCreateMutation();
 
   const { push, back, nativeBack } = useCustomRouter();
 
@@ -66,7 +69,7 @@ const ForgetPasswordDialog = () => {
   const submitExchangeCode = async () => {
     setLoading(true);
     try {
-      await exchangeCode({ requestBody: { code: watch("verifyCode") } });
+      await exchangeCode({ requestBody: { email: userInfo?.email, otp: watch("verifyCode") } });
 
       setFormState(2);
       setLoading(false);
@@ -81,9 +84,7 @@ const ForgetPasswordDialog = () => {
       try {
         await resetPassword({
           requestBody: {
-            email: (userInfo as any)?.data?.email,
             password: data.password,
-            session_code: exchangeData?.data?.session_code,
           },
         });
         reset();
@@ -96,7 +97,7 @@ const ForgetPasswordDialog = () => {
   });
 
   const resendHandler = () => {
-    sendCode({ requestBody: { email: (userInfo as any)?.data?.email } })
+    sendCode({ requestBody: { email: userInfo?.email } })
       .then(() => {
         restart(getTimer());
       })
@@ -104,7 +105,7 @@ const ForgetPasswordDialog = () => {
   };
 
   useEffect(() => {
-    if (watch("verifyCode").length === 5) {
+    if (watch("verifyCode").length === 6) {
       submitExchangeCode();
     }
   }, [watch("verifyCode")]);
@@ -138,7 +139,7 @@ const ForgetPasswordDialog = () => {
                 <Typography variant="p2-regular" color="grey.light">
                   {t("emailVerification.subtitle")}{" "}
                   <Typography variant="p2-regular" component={"span"}>
-                    {(userInfo as any)?.data?.email}
+                    {userInfo?.email}
                   </Typography>
                 </Typography>
               </Stack>

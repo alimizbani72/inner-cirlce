@@ -1,18 +1,15 @@
 import type { PropsWithChildren } from "react";
-import { getQueryClient } from "@app/_providers/customQueryClient";
-import { prefetchUseAccountServiceAuthUserinfoQuery } from "@minecraft/queries/prefetch";
-import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
-import { useAccountServiceAuthUserinfoQueryKey } from "@minecraft/queries";
 import { notFound } from "next/navigation";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/configs/authOptions";
 // ----------------------------------------------------------------------
 
 export default async function AffiliateLayout({ children }: PropsWithChildren) {
-  const queryClient = getQueryClient();
-  await Promise.all([prefetchUseAccountServiceAuthUserinfoQuery(queryClient)]);
+  const session = await getServerSession(authOptions(""));
 
-  if (!(queryClient.getQueryData([useAccountServiceAuthUserinfoQueryKey]) as any)?.data?.kyc_status) {
+  if (!session?.user?.kyc_status) {
     return notFound();
   }
 
-  return <HydrationBoundary state={dehydrate(queryClient)}>{children}</HydrationBoundary>;
+  return <>{children}</>;
 }

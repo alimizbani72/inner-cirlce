@@ -17,6 +17,8 @@ const GoogleSignIn = () => {
       >
         Continue with Google
       </Button>
+      {/* searchParams.get("error") === "OAuthCallback" */}
+
       {searchParams.has("error") && (
         <Typography variant="p2-medium" color="error.main">
           Oops! Something went wrong with the Google sign-in process. Please try again or use a different method to log

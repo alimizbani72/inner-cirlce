@@ -9,8 +9,7 @@ import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { useTranslate } from "@/locales";
 import {
-  useAccountServiceAuthUserinfoQuery,
-  useAccountServiceAuthUserinfoQueryKey,
+  useAuthServiceMeQueryKey,
   useUserServiceAccountsPartnerCreateMutation,
   useWalletServiceWalletCreateMutation,
   useWalletServiceWalletDefaultQuery,
@@ -25,6 +24,8 @@ import { useMemo } from "react";
 import { useModalActivation } from "@/hooks/useModalActivation";
 import { enqueueSnackbar } from "notistack";
 import { getQueryClient } from "@app/_providers/customQueryClient";
+import { useAppSelector } from "@/lib/hooks";
+import { selectUser } from "@/lib/features/user/userSlice";
 
 const PersonalInfoDialog = () => {
   const isMobile = useIsMobile();
@@ -32,20 +33,20 @@ const PersonalInfoDialog = () => {
   const queryClient = getQueryClient();
   const direction = isMobile ? "column" : "row";
   const { t } = useTranslate();
-  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+  const userInfo = useAppSelector(selectUser);
   const { mutateAsync: createWallet } = useWalletServiceWalletCreateMutation();
 
   const { mutate: createPartner, isPending } = useUserServiceAccountsPartnerCreateMutation();
 
   const defaultValues = useMemo(
     () => ({
-      fullname: (userInfo as any)?.data?.full_name,
-      email: (userInfo as any)?.data?.email,
-      country: (userInfo as any)?.data?.country,
-      city: (userInfo as any)?.data?.city,
-      building: (userInfo as any)?.data?.building_number,
-      zipcode: (userInfo as any)?.data?.zip_code,
-      street: (userInfo as any)?.data?.street,
+      fullname: userInfo?.full_name,
+      email: userInfo?.email,
+      country: userInfo?.country,
+      city: userInfo?.city,
+      building: userInfo?.building_number,
+      zipcode: userInfo?.zip_code,
+      street: userInfo?.street,
       wallet: "",
     }),
     [userInfo]
@@ -101,7 +102,7 @@ const PersonalInfoDialog = () => {
               },
               {
                 onSuccess() {
-                  queryClient.invalidateQueries({ queryKey: [useAccountServiceAuthUserinfoQueryKey] });
+                  queryClient.invalidateQueries({ queryKey: [useAuthServiceMeQueryKey] });
                   push("/profile/become-partner/kyc-info");
                 },
               }

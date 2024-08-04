@@ -12,23 +12,21 @@ import FormProvider from "@/components/hook-form/form-provider";
 
 import * as Yup from "yup";
 import { useIsMobile } from "@/hooks/use-responsive";
-import {
-  useAccountServiceAuthUserinfoQuery,
-  useAccountServiceAuthUserinfoQueryKey,
-  useUserServiceAccountsUpdateCreateMutation,
-} from "@minecraft/queries";
+import { useAuthServiceMe, useAuthServiceMeQueryKey } from "@minecraft/queries";
 import InputEditor from "@app/_components/InputEditor";
 import { enqueueSnackbar } from "notistack";
 import { getQueryClient } from "@app/_providers/customQueryClient";
 import CustomDialog from "@/components/CustomDialog";
 import { useModalActivation } from "@/hooks/useModalActivation";
 import { useTranslate } from "@/locales";
+import { useAppSelector } from "@/lib/hooks";
+import { selectUser } from "@/lib/features/user/userSlice";
 
 const SettingsDialog = () => {
   const open = useModalActivation("/settings/");
   const queryClient = getQueryClient();
-  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
-  const { mutateAsync } = useUserServiceAccountsUpdateCreateMutation();
+  const userInfo = useAppSelector(selectUser);
+  const { mutateAsync } = useAuthServiceMe();
   const { push, back } = useCustomRouter();
   const isMobile = useIsMobile();
   const { t } = useTranslate();
@@ -39,7 +37,7 @@ const SettingsDialog = () => {
   });
   const methods = useForm({
     resolver: yupResolver(UpdateUserSchema),
-    defaultValues: { name: (userInfo as any)?.data?.full_name },
+    defaultValues: { name: userInfo?.full_name! },
     mode: "onSubmit",
   });
 
@@ -47,11 +45,11 @@ const SettingsDialog = () => {
   const { name } = watch();
 
   const onSave = async () => {
-    if (name !== (userInfo as any)?.data?.full_name) {
-      mutateAsync({ requestBody: { full_name: name, avatar_url: (userInfo as any)?.data?.avatar_url } })
+    if (name !== userInfo?.full_name) {
+      mutateAsync({ requestBody: { full_name: name, avatar_url: userInfo?.avatar_url } })
         .then(() => {
           enqueueSnackbar(t("settingsDialog.nameUpdateSuccess"));
-          queryClient.invalidateQueries({ queryKey: [useAccountServiceAuthUserinfoQueryKey] });
+          queryClient.invalidateQueries({ queryKey: [useAuthServiceMeQueryKey] });
         })
         .catch(() => {
           enqueueSnackbar(t("settingsDialog.nameUpdateFailed"), { variant: "error" });

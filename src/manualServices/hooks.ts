@@ -21,7 +21,7 @@ export const useDefaultServicePostApiV1FilesUpload = <
       TData,
       TError,
       {
-        formData?: { files?: Blob | File };
+        formData?: { file?: Blob | File };
       },
       TContext
     >,
@@ -32,7 +32,7 @@ export const useDefaultServicePostApiV1FilesUpload = <
     TData,
     TError,
     {
-      formData?: { files?: Blob | File };
+      formData?: { file?: Blob | File };
     },
     TContext
   >({

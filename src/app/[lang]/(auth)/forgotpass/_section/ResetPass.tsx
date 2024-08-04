@@ -26,7 +26,7 @@ const ResetPass: FC = () => {
   const { replace } = useAppRouter();
   const { enqueueSnackbar } = useSnackbar();
   const [loading, setLoading] = useState(false);
-  const { email, session_code } = useAppSelector(getForgotPasswordInfo);
+  const { email, otp } = useAppSelector(getForgotPasswordInfo);
   const FormSchema = useMemo(
     () =>
       Yup.object().shape({
@@ -52,7 +52,7 @@ const ResetPass: FC = () => {
       const signupRes = await signIn("forgot-pass", {
         email,
         password: data.password,
-        session_code,
+        otp,
         redirect: false,
       });
       setLoading(false);

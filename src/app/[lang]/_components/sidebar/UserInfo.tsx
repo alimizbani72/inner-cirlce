@@ -6,23 +6,17 @@ import { Avatar, Box, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 import { Icon } from "@/components/icons";
 import useCustomRouter from "@/hooks/useCustomRouter";
-import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import IntercomMessenger from "../IntercomMessenger";
-import { isoToTimestamp } from "@/utils/toNumber";
+import { selectUser } from "@/lib/features/user/userSlice";
 
 const SidebarUserInfo: FC = () => {
-  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+  const userInfo = useAppSelector(selectUser);
   const isCollapsed = useAppSelector(isSidebarCollapsed);
   const { push } = useCustomRouter();
 
   return (
     <>
-      <IntercomMessenger
-        user_id={(userInfo as any)?.data?.id?.toString()!}
-        name={(userInfo as any)?.data?.full_name!}
-        email={(userInfo as any)?.data?.full_name!}
-        created_at={isoToTimestamp((userInfo as any)?.data?.created_at)}
-      />
+      <IntercomMessenger email={userInfo?.full_name!} />
 
       <Stack
         sx={{
@@ -71,9 +65,9 @@ const SidebarUserInfo: FC = () => {
           onClick={() => push("/profile/", { backURL: true })}
           sx={{ width: 40, height: 40, bgcolor: "pink.dark", fontWeight: 600, cursor: "pointer" }}
           variant="circular"
-          src={(userInfo as any)?.data?.avatar_url}
+          src={userInfo?.avatar_url}
         >
-          {(userInfo as any)?.data?.full_name?.at(0)}
+          {userInfo?.full_name?.at(0)}
         </Avatar>
 
         {!isCollapsed && (
@@ -85,7 +79,7 @@ const SidebarUserInfo: FC = () => {
             flex={1}
           >
             <Typography ml={1.5} mr={"auto"} variant="p2-medium">
-              {(userInfo as any)?.data?.full_name}
+              {userInfo?.full_name}
             </Typography>
 
             <Icon name="More" />

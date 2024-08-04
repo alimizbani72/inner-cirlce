@@ -328,7 +328,7 @@ let sessionFetchPromise: Promise<Session | null> | null = null;
 const fetchSession = async (): Promise<Session | null> => {
   if (isServer) {
     // Use server-side session fetching
-    const session = await getServerSession(authOptions);
+    const session = await getServerSession(authOptions(""));
     return session;
   }
 

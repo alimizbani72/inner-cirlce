@@ -2,14 +2,15 @@ import { Avatar, Button, Divider, Stack, Typography } from "@mui/material";
 import LangSelector from "./LangSelector";
 import { Icon } from "@/components/icons";
 import { useIsMobile } from "@/hooks/use-responsive";
-import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import { getUserPlanType } from "@/consts";
 import { toTitleCase } from "@/utils/change-case";
 import { useTranslate } from "@/locales";
+import { useAppSelector } from "@/lib/hooks";
+import { selectUser } from "@/lib/features/user/userSlice";
 
 const UserInfo = () => {
-  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
-  const isFreePlan = getUserPlanType(userInfo) === "plankton";
+  const userInfo = useAppSelector(selectUser);
+  const isFreePlan = getUserPlanType(userInfo!) === "plankton";
   const { t } = useTranslate();
 
   const isMobile = useIsMobile();
@@ -23,15 +24,15 @@ const UserInfo = () => {
         gap={2}
       >
         <Stack direction={"row"} spacing={2} alignItems={"center"}>
-          <Avatar sx={{ width: 64, height: 64 }} src={(userInfo as any)?.data?.avatar_url}>
-            {(userInfo as any)?.data?.full_name?.at(0)}
+          <Avatar sx={{ width: 64, height: 64 }} src={userInfo?.avatar_url}>
+            {userInfo?.full_name?.at(0)}
           </Avatar>
           <Stack>
             <Typography variant="p2-semi-bold" color="common.white">
-              {(userInfo as any)?.data?.full_name}
+              {userInfo?.full_name}
             </Typography>
             <Typography variant="caption-medium" color="grey.light">
-              {(userInfo as any)?.data?.email}
+              {userInfo?.email}
             </Typography>
           </Stack>
         </Stack>

@@ -1,11 +1,7 @@
 import { Stack, Typography } from "@mui/material";
 import { Icon } from "@/components/icons";
 import { useIsMobile } from "@/hooks/use-responsive";
-import {
-  useAccountServiceAuthUserinfoQuery,
-  useAccountServiceAuthUserinfoQueryKey,
-  useUserServiceAccountsAvatarUpdate,
-} from "@minecraft/queries";
+import { useAuthServiceMe, useAuthServiceMeQueryKey } from "@minecraft/queries";
 import { useCallback, useState } from "react";
 import { UploadAvatar } from "@/components/upload";
 import { useDefaultServicePostApiV1FilesUpload } from "@/manualServices/hooks";
@@ -14,17 +10,17 @@ import { enqueueSnackbar } from "notistack";
 import { getQueryClient } from "@app/_providers/customQueryClient";
 import { LoadingButton } from "@mui/lab";
 import { useTranslate } from "@/locales";
+import { useAppSelector } from "@/lib/hooks";
+import { selectUser } from "@/lib/features/user/userSlice";
 
 const UserProfile = () => {
   const isMobile = useIsMobile();
   const queryClient = getQueryClient();
-  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+  const userInfo = useAppSelector(selectUser);
   const { mutate: uploadFile, isPending: isUploadPending } = useDefaultServicePostApiV1FilesUpload();
-  const { mutate: uploadAvatar, isPending: isUploadAvatarPending } = useUserServiceAccountsAvatarUpdate();
+  const { mutate: uploadAvatar, isPending: isUploadAvatarPending } = useAuthServiceMe();
   const [avatar, setAvatar] = useState<any>(
-    (userInfo as any)?.data?.avatar_url
-      ? { preview: (userInfo as any)?.data?.avatar_url, link: (userInfo as any)?.data?.avatar_url }
-      : null
+    userInfo?.avatar_url ? { preview: userInfo?.avatar_url, link: userInfo?.avatar_url } : null
   );
 
   const { t } = useTranslate();
@@ -45,7 +41,7 @@ const UserProfile = () => {
     }
 
     uploadFile(
-      { formData: { files: avatar } },
+      { formData: { file: avatar } },
       {
         onSuccess: (res: any) => {
           uploadAvatar(
@@ -54,7 +50,7 @@ const UserProfile = () => {
               onSuccess: () => {
                 enqueueSnackbar(t("userProfile.avatarUpdatedSuccess"));
                 setAvatar({ ...avatar, link: downloadURL(res.data?.[0]) });
-                queryClient.invalidateQueries({ queryKey: [useAccountServiceAuthUserinfoQueryKey] });
+                queryClient.invalidateQueries({ queryKey: [useAuthServiceMeQueryKey] });
               },
               onError: () => {
                 enqueueSnackbar(t("userProfile.avatarUpdateFailed"), { variant: "error" });
@@ -76,7 +72,7 @@ const UserProfile = () => {
         onSuccess: () => {
           enqueueSnackbar(t("userProfile.avatarRemovedSuccess"));
           setAvatar(null);
-          queryClient.invalidateQueries({ queryKey: [useAccountServiceAuthUserinfoQueryKey] });
+          queryClient.invalidateQueries({ queryKey: [useAuthServiceMeQueryKey] });
         },
         onError: () => {
           enqueueSnackbar(t("userProfile.avatarRemoveFailed"), { variant: "error" });

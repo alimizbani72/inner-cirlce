@@ -4,7 +4,7 @@ import useCustomRouter from "@/hooks/useCustomRouter";
 import { Button, DialogActions, Divider, IconButton, Stack, Typography } from "@mui/material";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import { useAccountServiceAuthUserinfoQuery, useKycServiceKycVerificationCreateMutation } from "@minecraft/queries";
+import { useKycServiceKycVerificationCreateMutation } from "@minecraft/queries";
 import { LoadingButton } from "@mui/lab";
 import CustomizedSteppers from "@/components/CustomizedSteppers";
 import { kycCallback } from "@/consts";
@@ -12,9 +12,11 @@ import { usePathname } from "next/navigation";
 import CustomDialog from "@/components/CustomDialog";
 import { useModalActivation } from "@/hooks/useModalActivation";
 import { useTranslate } from "@/locales";
+import { useAppSelector } from "@/lib/hooks";
+import { selectUser } from "@/lib/features/user/userSlice";
 
 const KYCInfoDialog = () => {
-  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+  const userInfo = useAppSelector(selectUser);
   const { mutateAsync, isPending } = useKycServiceKycVerificationCreateMutation();
 
   const pathname = usePathname();
@@ -72,7 +74,7 @@ const KYCInfoDialog = () => {
           <Button
             color="primary"
             onClick={() => push("/profile/become-partner/success")}
-            disabled={!(userInfo as any)?.data?.kyc_status}
+            disabled={!userInfo?.kyc_status}
           >
             {t("kycInfoDialog.nextStepButton")}
           </Button>

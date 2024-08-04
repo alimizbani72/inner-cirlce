@@ -4,9 +4,10 @@ import RiveComp from "@/components/RiveComp";
 import { Icon } from "@/components/icons";
 import { plans } from "@/configs/plans";
 import { getUserPlanType } from "@/consts";
+import { selectUser } from "@/lib/features/user/userSlice";
+import { useAppSelector } from "@/lib/hooks";
 import { useTranslate } from "@/locales";
 import { useAppRouter } from "@/routes/hooks";
-import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import { Box, Divider, Stack, Typography } from "@mui/material";
 import { usePathname } from "next/navigation";
 import type { FC } from "react";
@@ -15,7 +16,7 @@ interface UpgradePlanProps {}
 
 const UpgradePlan: FC<UpgradePlanProps> = () => {
   const { t } = useTranslate();
-  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+  const userInfo = useAppSelector(selectUser);
   const isFreePlan = getUserPlanType(userInfo) === "plankton";
 
   const { push } = useAppRouter();

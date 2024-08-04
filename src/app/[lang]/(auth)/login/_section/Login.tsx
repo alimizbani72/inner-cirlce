@@ -9,6 +9,7 @@ import FormProvider from "@/components/hook-form/form-provider";
 import * as Yup from "yup";
 import { useTranslate } from "@/locales";
 import { useAppRouter } from "@/routes/hooks";
+
 import { LoadingButton } from "@mui/lab";
 import { signIn } from "next-auth/react";
 import GoogleSignIn from "./GoogleSignIn";
@@ -47,7 +48,7 @@ const Login: FC = () => {
       redirect: false,
     });
     if (res?.ok) {
-      push("/dashboard");
+      window.location.href = "/dashboard";
       setLoading(false);
     } else {
       setLoading(false);

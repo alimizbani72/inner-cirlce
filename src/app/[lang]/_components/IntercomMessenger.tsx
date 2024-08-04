@@ -4,10 +4,7 @@ import Intercom from "@intercom/messenger-js-sdk";
 import type { FC } from "react";
 
 type IntercomMessengerProps = {
-  user_id: string;
-  name: string;
   email: string;
-  created_at: number;
 };
 
 const IntercomMessenger: FC<IntercomMessengerProps> = ({ email }) => {
