@@ -37,10 +37,10 @@ export const authOptions: (cookies?: any) => NextAuthOptions = (cookies) => ({
     CredentialsProvider(forgotPass),
   ],
   callbacks: {
-    jwt: async ({ token, user, account }) => {
-      // if (trigger === "update") {
-      //   token.user!.phone = session.phone;
-      // }
+    jwt: async ({ token, user, account, trigger, session }) => {
+      if (trigger === "update") {
+        token.user = { ...token.user, ...session.user };
+      }
 
       if (account?.id_token) {
         try {

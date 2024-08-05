@@ -32,7 +32,7 @@ const ResetPassSection: FC = () => {
 
   // const [sessionCode, setSessionCode] = useState("");
 
-  const { mutateAsync: getSession } = useAuthServiceAuthGuestTokenCreateMutation();
+  const { mutateAsync: getSession, data: guestToken } = useAuthServiceAuthGuestTokenCreateMutation();
   const { mutateAsync: resetPasshandler, isPending } = useAuthServiceAuthResetPasswordCreateMutation();
 
   const getSessionHandler = useCallback(async () => {
@@ -71,11 +71,10 @@ const ResetPassSection: FC = () => {
   const onSubmit = handleSubmit(async (data) => {
     try {
       await resetPasshandler({
+        token: guestToken?.data,
         requestBody: { password: data.password },
       });
-
       replace("/login");
-
       enqueueSnackbar(t("resetPassword.successChange"), {
         variant: "success",
       });

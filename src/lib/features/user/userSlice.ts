@@ -29,16 +29,21 @@ const initialState: UserSliceState = {
 export const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: (create) => ({
-    initializeUser: create.reducer((state, action: PayloadAction<IUser>) => {
+  reducers: {
+    initializeUser: (state, action: PayloadAction<IUser>) => {
       state.user = action.payload;
-    }),
-  }),
+    },
+    modifyUser: (state, action: PayloadAction<Partial<IUser>>) => {
+      if (state.user) {
+        state.user = { ...state.user, ...action.payload };
+      }
+    },
+  },
   selectors: {
     selectUser: (state) => state.user,
   },
 });
 
-export const { initializeUser } = userSlice.actions;
+export const { initializeUser, modifyUser } = userSlice.actions;
 
 export const { selectUser } = userSlice.selectors;

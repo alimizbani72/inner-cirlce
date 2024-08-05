@@ -9,7 +9,7 @@ type RegisterInfo = {
 
 type ForgotPasswordInfo = {
   email: string;
-  otp?: string;
+  token: string;
 };
 
 export interface authSliceState {
@@ -27,7 +27,7 @@ const initialState: authSliceState = {
   },
   forgotPassword: {
     email: "",
-    otp: "",
+    token: "",
   },
   registerStep: 1,
   forgotPasswordStep: 1,

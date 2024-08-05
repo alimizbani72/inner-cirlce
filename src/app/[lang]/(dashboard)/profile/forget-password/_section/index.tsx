@@ -44,7 +44,6 @@ const ForgetPasswordDialog = () => {
   const { minutes, seconds, totalSeconds, restart } = useTimer({ expiryTimestamp: getTimer() });
   const { mutateAsync: sendCode, isPending: sendCodeLoading } = useAuthServiceAuthSendCodeCreateMutation();
   const { mutateAsync: exchangeCode, data: exchangeData } = useAuthServiceAuthGuestTokenCreateMutation();
-  console.log(exchangeData);
 
   const { mutateAsync: resetPassword, isPending: isResetPasswordPending } =
     useAuthServiceAuthResetPasswordCreateMutation();
@@ -83,6 +82,7 @@ const ForgetPasswordDialog = () => {
     if (formState === 2) {
       try {
         await resetPassword({
+          token: exchangeData?.data,
           requestBody: {
             password: data.password,
           },

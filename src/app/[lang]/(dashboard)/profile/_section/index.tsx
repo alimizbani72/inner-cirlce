@@ -7,18 +7,19 @@ import UserInfo from "./UserInfo";
 import useCustomRouter from "@/hooks/useCustomRouter";
 import { signOut } from "next-auth/react";
 import { profileMenuItems } from "@/configs/profile";
-import { useAuthServiceMeQuery } from "@minecraft/queries";
 import { getUserPlanType } from "@/consts";
 import CustomDialog from "@/components/CustomDialog";
 import { useModalActivation } from "@/hooks/useModalActivation";
 import { useTranslate } from "@/locales";
 import { useAppRouter } from "@/routes/hooks";
+import { useAppSelector } from "@/lib/hooks";
+import { selectUser } from "@/lib/features/user/userSlice";
 
 const ProfileDialog = () => {
   const { push: nativePush } = useAppRouter();
   const { push, back } = useCustomRouter();
-  const { data: userInfoData } = useAuthServiceMeQuery();
-  const isFreePlan = getUserPlanType(userInfoData) === "plankton";
+  const userInfo = useAppSelector(selectUser);
+  const isFreePlan = getUserPlanType(userInfo) === "plankton";
   const open = useModalActivation("/profile/");
   const { t } = useTranslate();
 
@@ -40,9 +41,7 @@ const ProfileDialog = () => {
         <Stack justifyContent="center" alignItems="center">
           <UserInfo />
           {profileMenuItems
-            .filter((item) =>
-              isFreePlan || (userInfoData as any)?.data?.kyc_status ? !item.path.includes("become-partner") : item
-            )
+            .filter((item) => (isFreePlan || userInfo?.kyc_status ? !item.path.includes("become-partner") : item))
             .map((item, index) => (
               <Stack
                 direction={"row"}
