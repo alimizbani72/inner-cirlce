@@ -5,6 +5,7 @@ import DashboardHeader from "@app/(dashboard)/dashboard/_section/Header";
 import DesktopSidebar from "@app/_components/sidebar/Desktop";
 import Scrollbar from "@/components/Scrollbar";
 import PaymentNotice from "./_section/PaymentNotice";
+import TwoFASubmitter from "@app/_components/TwoFASubmitter";
 // ----------------------------------------------------------------------
 
 export const metadata: Metadata = {
@@ -20,6 +21,7 @@ export default async function DashboardLayout({ children, modal }: LayoutProps) 
   return (
     <>
       {modal}
+      <TwoFASubmitter />
       <Stack direction={"row"} component="main">
         <DesktopSidebar />
 

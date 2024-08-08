@@ -212,6 +212,7 @@
     "title": "Hồ sơ",
     "logout": "Đăng xuất",
     "copyright": "Bản quyền © {{year}} {{company}}. Bảo lưu mọi quyền.",
+    "enable2FA": "Bật 2FA",
     "profileSetting": "Cài đặt hồ sơ",
     "termsOfService": "Điều khoản sử dụng | Chính sách bảo mật",
     "becomePartner": "Trở thành đối tác"

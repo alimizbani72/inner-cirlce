@@ -212,6 +212,7 @@
     "title": "Profil",
     "logout": "Déconnexion",
     "copyright": "Copyright © {{year}} {{company}}. Tous droits réservés.",
+    "enable2FA": "Activer la 2FA",
     "profileSetting": "Paramètres du profil",
     "termsOfService": "Conditions d'utilisation | Politique de confidentialité",
     "becomePartner": "Devenir partenaire"

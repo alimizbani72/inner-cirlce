@@ -212,6 +212,7 @@
     "title": "Profil",
     "logout": "Çıkış Yap",
     "copyright": "Telif Hakkı © {{year}} {{company}}. Tüm hakları saklıdır.",
+    "enable2FA": "2FA'yı etkinleştir",
     "profileSetting": "Profil Ayarları",
     "termsOfService": "Kullanım Şartları | Gizlilik Politikası",
     "becomePartner": "Ortak Olun"

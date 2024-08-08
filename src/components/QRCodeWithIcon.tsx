@@ -21,7 +21,7 @@ const QRCodeWithIcon: FC<QRCodeWithIconProps> = ({ size = 256, iconSrc, value })
     () => ({
       width: size,
       height: size,
-      type: "svg" as DrawType,
+      type: "canvas" as DrawType,
       data: value,
       image: iconSrc,
       qrOptions: {

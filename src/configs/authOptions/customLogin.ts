@@ -14,14 +14,23 @@ export const customLogin = {
         body: JSON.stringify({
           email: credentials?.email,
           password: credentials?.password,
+          otp: credentials?.otp ? credentials.otp : null,
         }),
       });
 
       const result = await response.json();
-      if (response.status === 200 && result.success) {
+
+      if (response.status === 200 && result.success && result.data) {
         return result.data;
       }
-    } catch (_error) {
+
+      if (response.status === 200 && result.success && !result.data) {
+        throw new Error("2FA_REQUIRED");
+      }
+    } catch (error) {
+      if (error.message === "2FA_REQUIRED") {
+        throw new Error("2FA_REQUIRED");
+      }
       throw new Error("Failed to fetch user");
     }
     return null;

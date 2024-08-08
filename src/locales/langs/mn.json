@@ -212,6 +212,7 @@
     "title": "Профайл",
     "logout": "Гарах",
     "copyright": "著作権 © {{year}} {{company}}. Бүх эрх хуулиар хамгаалагдсан。",
+    "enable2FA": "2FA-г идэвхжүүлэх",
     "profileSetting": "Профайл тохиргоо",
     "termsOfService": "Үйлчилгээний нөхцөл | プライバシーポリシー",
     "becomePartner": "パートナーになる"

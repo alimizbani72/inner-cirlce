@@ -14,6 +14,7 @@ import { useTranslate } from "@/locales";
 import { useAppRouter } from "@/routes/hooks";
 import { useAppSelector } from "@/lib/hooks";
 import { selectUser } from "@/lib/features/user/userSlice";
+import TwoFA from "@app/_components/2FA";
 
 const ProfileDialog = () => {
   const { push: nativePush } = useAppRouter();
@@ -40,6 +41,7 @@ const ProfileDialog = () => {
       <DialogContent dividers sx={{ p: 3 }}>
         <Stack justifyContent="center" alignItems="center">
           <UserInfo />
+          <TwoFA isEnable={!!userInfo?.has_2fa} />
           {profileMenuItems
             .filter((item) => (isFreePlan || userInfo?.kyc_status ? !item.path.includes("become-partner") : item))
             .map((item, index) => (

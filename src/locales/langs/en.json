@@ -14,7 +14,10 @@
     "backHome": "Back To Home",
     "back": "Back",
     "nextStep": "Next Step",
-    "seeStrategies": "See Strategies"
+    "seeStrategies": "See Strategies",
+    "later": "Later",
+    "enable": "Enable",
+    "verify": "Verify"
   },
   "createAccount": {
     "title": "Create your account",
@@ -213,6 +216,7 @@
     "title": "Profile",
     "logout": "Logout",
     "copyright": "Copyright © {{year}} {{company}}. All rights reserved.",
+    "enable2FA": "Enable 2FA",
     "profileSetting": "Profile Settings",
     "termsOfService": "Terms of Use | Privacy Policy",
     "becomePartner": "Become a Partner"

@@ -212,6 +212,7 @@
     "title": "Perfil",
     "logout": "Cerrar sesión",
     "copyright": "Copyright © {{year}} {{company}}. Todos los derechos reservados.",
+    "enable2FA": "Habilitar 2FA",
     "profileSetting": "Configuración del perfil",
     "termsOfService": "Términos de uso | Política de privacidad",
     "becomePartner": "Conviértase en socio"
