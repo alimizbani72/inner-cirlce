@@ -7,7 +7,6 @@ import UserInfo from "./UserInfo";
 import useCustomRouter from "@/hooks/useCustomRouter";
 import { signOut } from "next-auth/react";
 import { profileMenuItems } from "@/configs/profile";
-import { getUserPlanType } from "@/consts";
 import CustomDialog from "@/components/CustomDialog";
 import { useModalActivation } from "@/hooks/useModalActivation";
 import { useTranslate } from "@/locales";
@@ -20,7 +19,6 @@ const ProfileDialog = () => {
   const { push: nativePush } = useAppRouter();
   const { push, back } = useCustomRouter();
   const userInfo = useAppSelector(selectUser);
-  const isFreePlan = getUserPlanType(userInfo) === "plankton";
   const open = useModalActivation("/profile/");
   const { t } = useTranslate();
 
@@ -43,7 +41,7 @@ const ProfileDialog = () => {
           <UserInfo />
           <TwoFA isEnable={!!userInfo?.has_2fa} />
           {profileMenuItems
-            .filter((item) => (isFreePlan || userInfo?.kyc_status ? !item.path.includes("become-partner") : item))
+            .filter((item) => (userInfo?.kyc_status ? !item.path.includes("become-partner") : item))
             .map((item, index) => (
               <Stack
                 direction={"row"}

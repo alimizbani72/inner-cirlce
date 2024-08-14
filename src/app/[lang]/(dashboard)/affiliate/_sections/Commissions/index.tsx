@@ -14,6 +14,7 @@ import { useAppSelector } from "@/lib/hooks";
 import { selectUser } from "@/lib/features/user/userSlice";
 import EnableModal from "@app/_components/2FA/EnableModal";
 import TwoFAAlertDialog from "../TwoFAAlertDialog";
+import { getUserPlanType } from "@/consts";
 
 const AffCommissionsTab: FC = () => {
   const { t } = useTranslate();
@@ -22,6 +23,7 @@ const AffCommissionsTab: FC = () => {
   const [open2faAlert, setOpen2faAlert] = useState(false);
   const { data } = useFinancialServiceFinancialInfoQuery();
   const userInfo = useAppSelector(selectUser);
+  const isFreePlan = getUserPlanType(userInfo) === "plankton";
 
   const handleWithdrawClick = () => {
     if (userInfo?.suspended) {
@@ -68,6 +70,7 @@ const AffCommissionsTab: FC = () => {
             color="secondary"
             onClick={handleWithdrawClick}
             startIcon={!!userInfo?.suspended && <Icon name="Warning" />}
+            disabled={isFreePlan}
           >
             {t("affCommissionsTab.withdraw")}
           </Button>

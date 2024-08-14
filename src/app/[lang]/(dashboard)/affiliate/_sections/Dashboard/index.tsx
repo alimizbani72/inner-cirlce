@@ -22,6 +22,7 @@ import { useAppSelector } from "@/lib/hooks";
 import { selectUser } from "@/lib/features/user/userSlice";
 import TwoFAAlertDialog from "../TwoFAAlertDialog";
 import EnableModal from "@app/_components/2FA/EnableModal";
+import { getUserPlanType } from "@/consts";
 
 const ProgressBar = ({ overall, percent }: { overall?: boolean; percent: number }) => (
   <Stack
@@ -59,6 +60,7 @@ const AFDashboardTab: FC = () => {
   const { data: balance } = useFinancialServiceFinancialInfoQuery();
   const { data: progress } = useAffiliateServiceAffiliateProgressQuery();
   const { data: children } = useAffiliateServiceAffiliateChildrenQuery();
+  const isFreePlan = getUserPlanType(userInfo) === "plankton";
 
   const handleWithdrawClick = () => {
     if (userInfo?.suspended) {
@@ -112,6 +114,7 @@ const AFDashboardTab: FC = () => {
               color="secondary"
               onClick={handleWithdrawClick}
               startIcon={!!userInfo?.suspended && <Icon name="Warning" />}
+              disabled={isFreePlan}
             >
               {t("afDashboardTab.withdraw")}
             </Button>

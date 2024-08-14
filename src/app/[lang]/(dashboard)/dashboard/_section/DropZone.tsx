@@ -14,7 +14,7 @@ const DropZone: FC = () => {
       borderColor="dark.3"
       bgcolor="dark.2"
       flex={1}
-      minHeight={{ md: "auto", xs: "350px" }}
+      minHeight={{ md: "auto", xs: "400px" }}
     >
       <Box
         sx={{
@@ -57,16 +57,16 @@ const DropZone: FC = () => {
         sx={{
           aspectRatio: 1,
           position: "absolute",
-          top: { md: 24, xs: 50 },
-          right: { md: 24, xs: 0 },
+          top: { md: 30, xs: 50 },
+          right: 0,
           left: { md: "unset", xs: 0 },
           bottom: { md: 24 },
           alignItems: "center",
         }}
-        width={{ md: 236, xs: 1 }}
-        height={236}
+        width={{ md: 300, xs: 1 }}
+        height={300}
       >
-        <RiveComp src="/assets/rive/flying_box.riv" width={236} height={236} />
+        <RiveComp src="/assets/rive/flying_box.riv" width={300} height={300} />
       </Stack>
 
       <Stack
