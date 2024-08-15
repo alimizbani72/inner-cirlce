@@ -16,7 +16,7 @@ import { getQueryClient } from "@app/_providers/customQueryClient";
 type Props = {
   onClose: VoidFunction;
   open: string;
-  handlePay: (plan_type: string) => Promise<void>;
+  handlePay: (plan_type: string) => void;
   handleOnContinue: () => void;
 };
 

@@ -20,10 +20,12 @@ import { useAppRouter } from "@/routes/hooks";
 import { enqueueSnackbar } from "notistack";
 import ActiveNotice from "./ActiveNotice";
 import { selectUser } from "@/lib/features/user/userSlice";
+import CurrencyDialog from "./CurrencyDialog";
 
 const PricingSection: FC = () => {
   const { t } = useTranslate();
   const [open, setOpen] = useState("");
+  const [openCurrencyDialog, setOpenCurrencyDialog] = useState("");
   const userInfo = useAppSelector(selectUser);
   const { push } = useAppRouter();
   const { refetch, data, isSuccess } = useFinancialServiceFinancialPaymentsActiveQuery(undefined, {
@@ -40,15 +42,15 @@ const PricingSection: FC = () => {
       if (isSuccess && data?.data?.id) {
         setOpen(plan_type);
       } else {
-        await handlePay(plan_type);
+        await setOpenCurrencyDialog(plan_type);
       }
     } catch (error) {
       enqueueSnackbar({ message: error?.body?.message, variant: "error" });
     }
   };
-  const handlePay = async (plan_type: string) => {
+  const handlePay = async (plan_type: string, currency?: string) => {
     try {
-      const response = await mutateAsync({ requestBody: { plan_type, symbol: "USDC" } });
+      const response = await mutateAsync({ requestBody: { plan_type, symbol: currency || "USDC" } });
       push(`/checkout/qr-wallet?plan_type=${plan_type}&id=${(response as any)?.data?.id}`);
       setOpen("");
     } catch (error) {
@@ -119,7 +121,18 @@ const PricingSection: FC = () => {
           </Stack>
         </Stack>
       </Stack>
-      <ActiveNotice open={open} onClose={() => setOpen("")} handlePay={handlePay} handleOnContinue={handleOnContinue} />
+      <ActiveNotice
+        open={open}
+        onClose={() => setOpen("")}
+        handlePay={(plan_type) => setOpenCurrencyDialog(plan_type)}
+        handleOnContinue={handleOnContinue}
+      />
+      <CurrencyDialog
+        isPending={isPending}
+        open={openCurrencyDialog}
+        onClose={() => setOpenCurrencyDialog("")}
+        handlePay={handlePay}
+      />
     </>
   );
 };

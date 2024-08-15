@@ -99,14 +99,79 @@ const CheckboxIndeterminateIcon = (props: SvgIconProps) => (
 
 const RadioIcon = (props: SvgIconProps) => (
   <SvgIcon {...props}>
-    <path d="M12 2A10 10 0 1 1 2 12C2 6.477 6.477 2 12 2Zm0 1.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17Z" />
+    <rect x="0.75" y="0.75" width="22.5" height="22.5" rx="11.25" fill="#070720" stroke="#14162E" strokeWidth="1.5" />
   </SvgIcon>
 );
 
-const RadioCheckedIcon = (props: SvgIconProps) => (
-  <SvgIcon {...props}>
-    <path d="M12 2A10 10 0 1 1 2 12C2 6.477 6.477 2 12 2Zm0 1.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Z" />
-  </SvgIcon>
+const RadioCheckedIcon = (_props: SvgIconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 32 30" fill="none">
+    <g filter="url(#filter0_d_11247_27858)">
+      <rect x="8" y="4" width="24" height="24" rx="12" fill="url(#paint0_radial_11247_27858)" />
+      <rect x="8.75" y="4.75" width="22.5" height="22.5" rx="11.25" stroke="#14162E" strokeWidth="1.5" />
+    </g>
+    <g filter="url(#filter1_d_11247_27858)">
+      <rect x="16" y="12" width="8" height="8" rx="4" fill="#070720" />
+    </g>
+    <defs>
+      <filter
+        id="filter0_d_11247_27858"
+        x="0"
+        y="0"
+        width="40"
+        height="40"
+        filterUnits="userSpaceOnUse"
+        colorInterpolationFilters="sRGB"
+      >
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
+        <feColorMatrix
+          in="SourceAlpha"
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+          result="hardAlpha"
+        />
+        <feOffset dy="4" />
+        <feGaussianBlur stdDeviation="4" />
+        <feComposite in2="hardAlpha" operator="out" />
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.16 0" />
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_11247_27858" />
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_11247_27858" result="shape" />
+      </filter>
+      <filter
+        id="filter1_d_11247_27858"
+        x="8"
+        y="8"
+        width="24"
+        height="24"
+        filterUnits="userSpaceOnUse"
+        colorInterpolationFilters="sRGB"
+      >
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
+        <feColorMatrix
+          in="SourceAlpha"
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+          result="hardAlpha"
+        />
+        <feOffset dy="4" />
+        <feGaussianBlur stdDeviation="4" />
+        <feComposite in2="hardAlpha" operator="out" />
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.16 0" />
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_11247_27858" />
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_11247_27858" result="shape" />
+      </filter>
+      <radialGradient
+        id="paint0_radial_11247_27858"
+        cx="0"
+        cy="0"
+        r="1"
+        gradientUnits="userSpaceOnUse"
+        gradientTransform="translate(20 16) rotate(90) scale(12)"
+      >
+        <stop stopColor="#FF7DBC" />
+        <stop offset="1" stopColor="#FF409D" />
+      </radialGradient>
+    </defs>
+  </svg>
 );
 
 const RatingIcon = (props: SvgIconProps) => (
