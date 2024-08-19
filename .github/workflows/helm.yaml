@@ -1,0 +1,66 @@
+name: release
+
+on:
+  workflow_dispatch:
+    tags:
+      - 'v*.*.*'
+
+env:
+  REGISTRY_HOST: chainmind.azurecr.io
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+  RELEASE_NAME: inner-circle
+  RELEASE_NAMESPACE: inner-circle
+  RELEASE_DOMAIN: innercircle-chainmind.com
+
+jobs:
+  helm:
+    needs: [build]
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: "true"
+
+      - name: Lowecase the repo name
+        run: |
+          echo "REPOSITORY_NAME=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
+
+      - name: Declare short commit id
+        id: vars
+        shell: bash
+        run: |
+          echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+
+      - name: "Set IMG_NAME variable"
+        run: echo 'IMG_NAME=${{ env.REGISTRY_HOST }}/mainland/minecraft' >>$GITHUB_ENV
+
+      - name: "Set IMG_TAG variable"
+        run: echo 'IMG_TAG=${{ env.BRANCH_NAME }}-${{ steps.vars.outputs.sha_short }}' >>$GITHUB_ENV
+
+      - name: Run Helm and Deploy
+        uses: WyriHaximus/github-action-helm3@v3
+        if: env.BRANCH_NAME == 'main'
+        with:
+          exec: |
+            helm upgrade --install \
+              "${{ env.RELEASE_NAME }}.${{ env.BRANCH_NAME }}" \
+              --namespace ${{ env.RELEASE_NAMESPACE }} \
+              --set name="${{ env.RELEASE_NAME }}-prod" \
+              --set replicaCount="10" \
+              --set domainName="${{ env.RELEASE_DOMAIN }}" \
+              --set image.repository="${{ env.IMG_NAME }}" \
+              --set image.tag="${{ env.IMG_TAG }}" \
+              --set tls.enabled="true" \
+              --set tls.clusterIssuer="cloudflare" \
+              --set tls.secretName="${{ env.BRANCH_NAME }}-${{ env.RELEASE_NAME }}-net-tls" \
+              --set resources.limits.cpu="500m" \
+              --set resources.limits.memory="500Mi" \
+              --set resources.requests.cpu="250m" \
+              --set resources.requests.memory="256Mi" \
+              --set app.nextauth_url="https://${{ env.RELEASE_DOMAIN }}" \
+              --set app.nextauth_secret="${{ secrets.PROD_NEXTAUTH_SECRET }}" \
+              --set app.google_client_id="${{ secrets.PROD_GOOGLE_CLIENT_ID }}" \
+              --set app.google_client_secret="${{ secrets.PROD_GOOGLE_CLIENT_SECRET }}" \
+              --atomic \
+              .ci/chart
+          kubeconfig: "${{ secrets.PROD_INNER_CIRCLE_KUBECONFIG }}"

@@ -1,23 +1,19 @@
-name: deploy
+name: release
 
 on:
-  push:
+  workflow_dispatch:
     branches:
       - "main"
       - "staging"
+    tags:
+      - 'v*.*.*'
 
 env:
   REGISTRY_HOST: chainmind.azurecr.io
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
-
-  RELEASE_NAME: inner-circle
-
-  STAGING_RELEASE_NAMESPACE: inner-circle-staging
-  PROD_RELEASE_NAMESPACE: inner-circle
-
-  # Release domains
-  PROD_RELEASE_DOMAIN: innercircle-chainmind.com
-  STAGING_RELEASE_DOMAIN: staging.innercircle-chainmind.com
+  RELEASE_NAME: inner-circle-staging
+  RELEASE_NAMESPACE: inner-circle-staging
+  RELEASE_DOMAIN: staging.innercircle-chainmind.com
 
 jobs:
   lint:
@@ -95,9 +91,38 @@ jobs:
             intercom_secret=${{ secrets.STAGING_INTERCOM_SECRET }}
           tags: ${{ env.IMG_NAME }}:${{ env.IMG_TAG }}
 
+  release:
+    needs: [build]
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      id-token: write
+
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "lts/*"
+      
+      - name: Setup Semantic Release
+        run: npm install -g semantic-release @semantic-release/exec @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/changelog @semantic-release/git @semantic-release/github
+      
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB_TOKEN }}
+        run: npx semantic-release
+
   helm:
     needs: [build]
     runs-on: "ubuntu-latest"
+    if: github.ref == 'refs/heads/staging'
     steps:
       - uses: actions/checkout@v3
         with:
@@ -120,18 +145,6 @@ jobs:
       - name: "Set IMG_TAG variable"
         run: echo 'IMG_TAG=${{ env.BRANCH_NAME }}-${{ steps.vars.outputs.sha_short }}' >>$GITHUB_ENV
 
-      - name: "Set RELEASE_NAME to STAGING_RELEASE_DOMAIN if branch is staging"
-        if: env.BRANCH_NAME == 'staging'
-        run: |
-          echo 'RELEASE_DOMAIN=${{ env.STAGING_RELEASE_DOMAIN }}' >>$GITHUB_ENV
-          echo 'RELEASE_NAMESPACE=${{ env.STAGING_RELEASE_NAMESPACE }}' >>$GITHUB_ENV
-
-      - name: "Set RELEASE_NAME to PROD_RELEASE_DOMAIN if branch is main"
-        if: env.BRANCH_NAME == 'main'
-        run: |
-          echo 'RELEASE_DOMAIN=${{ env.PROD_RELEASE_DOMAIN }}' >>$GITHUB_ENV
-          echo 'RELEASE_NAMESPACE=${{ env.PROD_RELEASE_NAMESPACE }}' >>$GITHUB_ENV
-
       - name: Run Helm and Deploy
         uses: WyriHaximus/github-action-helm3@v3
         if: env.BRANCH_NAME == 'staging'
@@ -140,7 +153,7 @@ jobs:
             helm upgrade --install \
               "${{ env.RELEASE_NAME }}.${{ env.BRANCH_NAME }}" \
               --namespace ${{ env.RELEASE_NAMESPACE }} \
-              --set name="${{ env.RELEASE_NAME }}-staging" \
+              --set name="${{ env.RELEASE_NAME }}" \
               --set replicaCount="3" \
               --set domainName="${{ env.RELEASE_DOMAIN }}" \
               --set image.repository="${{ env.IMG_NAME }}" \
@@ -160,32 +173,4 @@ jobs:
               --atomic \
               .ci/chart
           kubeconfig: "${{ secrets.KUBECONFIG }}"
-
-      - name: Run Helm and Deploy
-        uses: WyriHaximus/github-action-helm3@v3
-        if: env.BRANCH_NAME == 'main'
-        with:
-          exec: |
-            helm upgrade --install \
-              "${{ env.RELEASE_NAME }}.${{ env.BRANCH_NAME }}" \
-              --namespace ${{ env.RELEASE_NAMESPACE }} \
-              --set name="${{ env.RELEASE_NAME }}-prod" \
-              --set replicaCount="10" \
-              --set domainName="${{ env.RELEASE_DOMAIN }}" \
-              --set image.repository="${{ env.IMG_NAME }}" \
-              --set image.tag="${{ env.IMG_TAG }}" \
-              --set tls.enabled="true" \
-              --set tls.clusterIssuer="cloudflare" \
-              --set tls.secretName="${{ env.BRANCH_NAME }}-${{ env.RELEASE_NAME }}-net-tls" \
-              --set resources.limits.cpu="500m" \
-              --set resources.limits.memory="500Mi" \
-              --set resources.requests.cpu="250m" \
-              --set resources.requests.memory="256Mi" \
-              --set app.nextauth_url="https://${{ env.RELEASE_DOMAIN }}" \
-              --set app.nextauth_secret="${{ secrets.PROD_NEXTAUTH_SECRET }}" \
-              --set app.google_client_id="${{ secrets.PROD_GOOGLE_CLIENT_ID }}" \
-              --set app.google_client_secret="${{ secrets.PROD_GOOGLE_CLIENT_SECRET }}" \
-              --atomic \
-              .ci/chart
-          kubeconfig: "${{ secrets.PROD_INNER_CIRCLE_KUBECONFIG }}"
 
