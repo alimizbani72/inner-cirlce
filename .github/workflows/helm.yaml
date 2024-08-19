@@ -4,6 +4,16 @@ on:
   workflow_dispatch:
     tags:
       - 'v*.*.*'
+    inputs:
+      image_repository:
+        description: 'docker image repository'
+        default: "chainmind.azurecr.io/frontiers/front"
+        type: string
+        required: true
+      image_tag:
+        description: 'docker image tag'
+        type: string
+        required: true
 
 env:
   REGISTRY_HOST: chainmind.azurecr.io
@@ -14,28 +24,11 @@ env:
 
 jobs:
   helm:
-    needs: [build]
     runs-on: "ubuntu-latest"
     steps:
       - uses: actions/checkout@v3
         with:
           submodules: "true"
-
-      - name: Lowecase the repo name
-        run: |
-          echo "REPOSITORY_NAME=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
-
-      - name: Declare short commit id
-        id: vars
-        shell: bash
-        run: |
-          echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
-
-      - name: "Set IMG_NAME variable"
-        run: echo 'IMG_NAME=${{ env.REGISTRY_HOST }}/mainland/minecraft' >>$GITHUB_ENV
-
-      - name: "Set IMG_TAG variable"
-        run: echo 'IMG_TAG=${{ env.BRANCH_NAME }}-${{ steps.vars.outputs.sha_short }}' >>$GITHUB_ENV
 
       - name: Run Helm and Deploy
         uses: WyriHaximus/github-action-helm3@v3
@@ -48,8 +41,8 @@ jobs:
               --set name="${{ env.RELEASE_NAME }}-prod" \
               --set replicaCount="10" \
               --set domainName="${{ env.RELEASE_DOMAIN }}" \
-              --set image.repository="${{ env.IMG_NAME }}" \
-              --set image.tag="${{ env.IMG_TAG }}" \
+              --set image.repository="${{ inputs.image_repository }}" \
+              --set image.tag="${{ inputs.image_tag }}" \
               --set tls.enabled="true" \
               --set tls.clusterIssuer="cloudflare" \
               --set tls.secretName="${{ env.BRANCH_NAME }}-${{ env.RELEASE_NAME }}-net-tls" \
