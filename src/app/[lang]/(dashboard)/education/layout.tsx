@@ -5,8 +5,6 @@ import { getQueryClient } from "@app/_providers/customQueryClient";
 import type { RouteParamsType } from "@/routes/type";
 import SliceWrapper from "./SliceWrapper";
 import { prefetchUseEducationVideosServiceGetEducationVideos } from "@cms/queries/prefetch";
-import { UseAuthServiceMeQueryKeyFn } from "@minecraft/queries";
-import { prefetchUseAuthServiceMeQuery } from "@minecraft/queries/prefetch";
 // ----------------------------------------------------------------------
 
 export const metadata: Metadata = {
@@ -20,13 +18,12 @@ export type LayoutProps = {
 export default async function EducationLayout({ children, params }: LayoutProps & RouteParamsType) {
   const queryClient = getQueryClient();
   await Promise.all([
-    prefetchUseAuthServiceMeQuery(queryClient),
     prefetchUseEducationVideosServiceGetEducationVideos(queryClient, { locale: params.lang, limit: 1000 }),
   ]);
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <SliceWrapper userMembership={(queryClient.getQueryData([UseAuthServiceMeQueryKeyFn]) as any)?.data?.plan_type} />
+      <SliceWrapper />
       {children}
     </HydrationBoundary>
   );

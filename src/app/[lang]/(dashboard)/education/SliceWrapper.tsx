@@ -2,15 +2,17 @@
 
 import { fetchEducationData } from "@/lib/features/academy/educationSlice";
 import { selectLang } from "@/lib/features/dictionary/dicSlice";
+import { selectUser } from "@/lib/features/user/userSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { useEducationVideosServiceGetEducationVideos } from "@cms/queries";
 import { useCallback, type FC, type PropsWithChildren } from "react";
 
-const SliceWrapper: FC<PropsWithChildren<{ userMembership: string }>> = ({ userMembership }) => {
+const SliceWrapper: FC<PropsWithChildren> = () => {
   const dispatch = useAppDispatch();
+  const userInfo = useAppSelector(selectUser);
 
   const handleRedux = useCallback((data: any) => {
-    dispatch(fetchEducationData(data, userMembership));
+    dispatch(fetchEducationData(data, userInfo?.plan_type || ""));
   }, []);
 
   const lang = useAppSelector(selectLang);
