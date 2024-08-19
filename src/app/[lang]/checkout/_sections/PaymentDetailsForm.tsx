@@ -9,9 +9,10 @@ import { Box, Stack, Typography } from "@mui/material";
 import { Icon } from "@/components/icons";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import RadioBox from "./RadioBox";
 import { useAppRouter } from "@/routes/hooks";
+import { useAppSelector } from "@/lib/hooks";
+import { selectUser } from "@/lib/features/user/userSlice";
 
 const UpdateUserSchema = Yup.object().shape({
   email: Yup.string(),
@@ -32,7 +33,7 @@ interface PaymentDetailsFormProps {}
 const PaymentDetailsForm: FC<PaymentDetailsFormProps> = () => {
   const { push } = useAppRouter();
   const [paymentMethod, setPaymentMethod] = useState<1 | 2>(1);
-  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+  const userInfo = useAppSelector(selectUser);
 
   const methods = useForm({
     resolver: yupResolver(UpdateUserSchema),
@@ -55,7 +56,7 @@ const PaymentDetailsForm: FC<PaymentDetailsFormProps> = () => {
       <RHFTextField
         name="email"
         label="Email Address"
-        placeholder={(userInfo as any)?.data?.email}
+        placeholder={userInfo?.email}
         sx={{ path: { stroke: (theme) => theme.palette.success.main } }}
         InputProps={{ readOnly: true, endAdornment: <Icon name="Check" /> }}
       />

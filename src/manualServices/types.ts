@@ -2,7 +2,7 @@ import type { DefaultService } from "./services";
 
 export type PostApiV1FilesUploadData = {
   formData?: {
-    files?: Blob | File;
+    file?: Blob | File;
   };
 };
 
@@ -17,7 +17,7 @@ export type $OpenApiTs = {
     post: {
       req: {
         formData?: {
-          files?: Blob | File;
+          file?: Blob | File;
         };
       };
       res: {

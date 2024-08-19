@@ -1,6 +1,6 @@
 "use client";
 import { Stack, Typography } from "@mui/material";
-import { useCallback, useEffect, useMemo, useState, type FC } from "react";
+import { useCallback, useEffect, useMemo, type FC } from "react";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -14,8 +14,8 @@ import { useAppRouter } from "@/routes/hooks";
 import { LoadingButton } from "@mui/lab";
 import { useSnackbar } from "notistack";
 import {
-  useAccountServiceAuthResetPasswordCreateMutation,
-  useVerifyServiceVerificationsExchangeCreateMutation,
+  useAuthServiceAuthGuestTokenCreateMutation,
+  useAuthServiceAuthResetPasswordCreateMutation,
 } from "@minecraft/queries";
 import { useSearchParams } from "next/navigation";
 
@@ -30,22 +30,15 @@ const ResetPassSection: FC = () => {
   const { enqueueSnackbar } = useSnackbar();
   const searchParams = useSearchParams();
 
-  const [sessionCode, setSessionCode] = useState("");
+  // const [sessionCode, setSessionCode] = useState("");
 
-  const { mutateAsync: getSession } = useVerifyServiceVerificationsExchangeCreateMutation();
-  const { mutateAsync: resetPasshandler, isPending } = useAccountServiceAuthResetPasswordCreateMutation();
+  const { mutateAsync: getSession, data: guestToken } = useAuthServiceAuthGuestTokenCreateMutation();
+  const { mutateAsync: resetPasshandler, isPending } = useAuthServiceAuthResetPasswordCreateMutation();
 
   const getSessionHandler = useCallback(async () => {
     if (searchParams.get("otp")) {
       try {
-        await getSession(
-          { requestBody: { code: searchParams.get("otp")! } },
-          {
-            onSuccess(data) {
-              setSessionCode(data.data?.session_code!);
-            },
-          }
-        );
+        await getSession({ requestBody: { otp: searchParams.get("otp")!, email: searchParams.get("email")! } });
       } catch (_error) {
         replace("/login");
       }
@@ -78,11 +71,10 @@ const ResetPassSection: FC = () => {
   const onSubmit = handleSubmit(async (data) => {
     try {
       await resetPasshandler({
-        requestBody: { email: searchParams.get("email")!, password: data.password, session_code: sessionCode },
+        token: guestToken?.data,
+        requestBody: { password: data.password },
       });
-
       replace("/login");
-
       enqueueSnackbar(t("resetPassword.successChange"), {
         variant: "success",
       });

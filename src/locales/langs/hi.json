@@ -212,6 +212,7 @@
     "title": "प्रोफ़ाइल",
     "logout": "लॉगआउट",
     "copyright": "कॉपीराइट © {{year}} {{company}}। सर्वाधिकार सुरक्षित।",
+    "enable2FA": "2FA सक्षम करें",
     "profileSetting": "प्रोफ़ाइल सेटिंग्स",
     "termsOfService": "उपयोग की शर्तें | गोपनीयता नीति",
     "becomePartner": "साझेदार बनें"

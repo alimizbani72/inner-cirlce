@@ -9,7 +9,7 @@ export type LayoutProps = {
 };
 
 export default async function LandingLayout({ children }: LayoutProps) {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession(authOptions(""));
 
   return <LadingLayoutSection isLogin={!!session?.accessToken}>{children}</LadingLayoutSection>;
 }

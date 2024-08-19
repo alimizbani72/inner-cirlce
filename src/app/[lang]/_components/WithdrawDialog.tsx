@@ -22,6 +22,7 @@ import { useSnackbar } from "notistack";
 import { useTranslate } from "@/locales";
 import { LoadingButton } from "@mui/lab";
 import { getQueryClient } from "@app/_providers/customQueryClient";
+import useOTP from "@/hooks/useOTP";
 
 type Props = {
   close: VoidFunction;
@@ -46,21 +47,38 @@ const WithdrawDialog: FC<Props> = ({ close, open }) => {
     mode: "onSubmit",
   });
   const { handleSubmit, reset, resetField, watch } = methods;
+  const { serviceHandler } = useOTP();
 
   const onSubmit = handleSubmit((data) => {
-    mutateAsync({
-      requestBody: { amount: { value: data.amount, currency_code: "USD" }, wallet_id: `${walletDefault?.data?.id}` },
-    })
-      .then(() => {
-        queryClient.invalidateQueries({ queryKey: [useFinancialServiceFinancialInfoQueryKey] });
-        enqueueSnackbar(t("withdraw.submitRequest"));
-        close();
-        reset();
-        resetField("amount");
-      })
-      .catch((error) => {
+    const withdrawFunc = async (otp: string) => {
+      try {
+        await mutateAsync(
+          {
+            requestBody: {
+              otp,
+              amount: { value: data.amount, currency_code: "USD" },
+              wallet_id: `${walletDefault?.data?.id}`,
+            },
+          },
+          {
+            onSuccess: () => {
+              queryClient.invalidateQueries({ queryKey: [useFinancialServiceFinancialInfoQueryKey] });
+              enqueueSnackbar(t("withdraw.submitRequest"));
+              close();
+              reset();
+              resetField("amount");
+            },
+            onError: (error: any) => {
+              enqueueSnackbar(error?.body?.message || t("formErrors.formError"), { variant: "error" });
+            },
+          }
+        );
+      } catch (error) {
         enqueueSnackbar(error?.body?.message || t("formErrors.formError"), { variant: "error" });
-      });
+      }
+    };
+
+    serviceHandler(withdrawFunc);
   });
 
   return (
@@ -123,7 +141,7 @@ const WithdrawDialog: FC<Props> = ({ close, open }) => {
           <LoadingButton
             loading={isPending}
             onClick={onSubmit}
-            disabled={!(toNumber(watch("amount")) > 0 && walletDefault?.data?.address)}
+            disabled={!(toNumber(watch("amount")) > 99 && walletDefault?.data?.address)}
           >
             {t("withdraw.Withdraw")}
           </LoadingButton>

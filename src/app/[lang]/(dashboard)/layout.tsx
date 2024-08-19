@@ -4,10 +4,8 @@ import { Stack } from "@mui/material";
 import DashboardHeader from "@app/(dashboard)/dashboard/_section/Header";
 import DesktopSidebar from "@app/_components/sidebar/Desktop";
 import Scrollbar from "@/components/Scrollbar";
-import { getQueryClient } from "@app/_providers/customQueryClient";
-import { prefetchUseAccountServiceAuthUserinfoQuery } from "@minecraft/queries/prefetch";
-import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import PaymentNotice from "./_section/PaymentNotice";
+import TwoFASubmitter from "@app/_components/TwoFASubmitter";
 // ----------------------------------------------------------------------
 
 export const metadata: Metadata = {
@@ -20,15 +18,10 @@ export type LayoutProps = {
 };
 
 export default async function DashboardLayout({ children, modal }: LayoutProps) {
-  const queryClient = getQueryClient();
-  await Promise.all([
-    prefetchUseAccountServiceAuthUserinfoQuery(queryClient),
-    // Add more prefetch queries here
-  ]);
-
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
+    <>
       {modal}
+      <TwoFASubmitter />
       <Stack direction={"row"} component="main">
         <DesktopSidebar />
 
@@ -46,6 +39,6 @@ export default async function DashboardLayout({ children, modal }: LayoutProps) 
           </Scrollbar>
         </Stack>
       </Stack>
-    </HydrationBoundary>
+    </>
   );
 }

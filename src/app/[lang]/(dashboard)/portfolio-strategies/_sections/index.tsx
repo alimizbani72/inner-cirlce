@@ -4,15 +4,16 @@ import { Stack } from "@mui/material";
 import type { FC } from "react";
 import StrategiesItem from "./StrategiesItem";
 import { plans } from "@/configs/plans";
-import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import { getUserPlanType } from "@/consts";
 import { useTranslate } from "@/locales";
+import { useAppSelector } from "@/lib/hooks";
+import { selectUser } from "@/lib/features/user/userSlice";
 
 type Props = {};
 
 const PortfolioStrategiesSection: FC<Props> = () => {
   const { t } = useTranslate();
-  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+  const userInfo = useAppSelector(selectUser);
 
   return (
     <Stack

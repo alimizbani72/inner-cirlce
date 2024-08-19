@@ -13,8 +13,8 @@ import { useAppRouter } from "@/routes/hooks";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { getForgotPasswordInfo, setForgotPasswordInfo, setForgotPasswordStep } from "@/lib/features/auth/authSlice";
 import {
-  useVerifyServiceVerificationsEmailCheckCreateMutation,
-  useVerifyServiceVerificationsSendCreateMutation,
+  useAuthServiceAuthSendCodeCreateMutation,
+  useAuthServiceAuthEmailExistsCreateMutation,
 } from "@minecraft/queries";
 import { useSnackbar } from "notistack";
 import { LoadingButton } from "@mui/lab";
@@ -47,16 +47,15 @@ const ForgotPass: FC = () => {
 
   const { handleSubmit, setError } = methods;
 
-  const { mutateAsync: checkEmail, isPending: checkEmailLoading } =
-    useVerifyServiceVerificationsEmailCheckCreateMutation();
-  const { mutateAsync, isPending } = useVerifyServiceVerificationsSendCreateMutation();
+  const { mutateAsync: checkEmail, isPending: checkEmailLoading } = useAuthServiceAuthEmailExistsCreateMutation();
+  const { mutateAsync, isPending } = useAuthServiceAuthSendCodeCreateMutation();
 
   const onSubmit = handleSubmit(async (data) => {
     try {
       const checkEmailResult = await checkEmail({ requestBody: { email: data.email } });
       if (checkEmailResult.data) {
         await mutateAsync({ requestBody: { email: data.email } });
-        dispatch(setForgotPasswordInfo({ email: data.email?.toLowerCase() }));
+        dispatch(setForgotPasswordInfo({ email: data.email?.toLowerCase(), token: "" }));
         dispatch(setForgotPasswordStep(2));
       } else {
         setError("email", { message: t("formErrors.userNotFound") });

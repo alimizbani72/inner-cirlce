@@ -10,8 +10,8 @@ import { useTranslate } from "@/locales";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { getRegisterInfo, setRegisterInfo, setRegisterStep } from "@/lib/features/auth/authSlice";
 import {
-  useVerifyServiceVerificationsEmailCheckCreateMutation,
-  useVerifyServiceVerificationsSendCreateMutation,
+  useAuthServiceAuthEmailExistsCreateMutation,
+  useAuthServiceAuthSendCodeCreateMutation,
 } from "@minecraft/queries";
 import { LoadingButton } from "@mui/lab";
 import { useSnackbar } from "notistack";
@@ -76,8 +76,8 @@ const Register: FC = () => {
 
   const { isValid } = formState;
 
-  const { mutateAsync: checkEmail } = useVerifyServiceVerificationsEmailCheckCreateMutation();
-  const { mutateAsync, isPending } = useVerifyServiceVerificationsSendCreateMutation();
+  const { mutateAsync: checkEmail } = useAuthServiceAuthEmailExistsCreateMutation();
+  const { mutateAsync, isPending } = useAuthServiceAuthSendCodeCreateMutation();
 
   const onSubmit = handleSubmit((data) => {
     mutateAsync({ requestBody: { email: data.email } })

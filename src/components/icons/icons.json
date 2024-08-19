@@ -6599,7 +6599,7 @@
         "attrs": [
           {
             "fill": "none",
-            "stroke": "rgb(255, 255, 255)",
+            "stroke": "rgb(151, 153, 180)",
             "strokeLinejoin": "round",
             "strokeLinecap": "round",
             "strokeMiterlimit": "4",
@@ -6607,7 +6607,7 @@
           },
           {
             "fill": "none",
-            "stroke": "rgb(255, 255, 255)",
+            "stroke": "rgb(151, 153, 180)",
             "strokeLinejoin": "round",
             "strokeLinecap": "round",
             "strokeMiterlimit": "4",
@@ -6615,7 +6615,7 @@
           },
           {
             "fill": "none",
-            "stroke": "rgb(255, 255, 255)",
+            "stroke": "rgb(151, 153, 180)",
             "strokeLinejoin": "round",
             "strokeLinecap": "round",
             "strokeMiterlimit": "4",
@@ -6623,7 +6623,7 @@
           },
           {
             "fill": "none",
-            "stroke": "rgb(255, 255, 255)",
+            "stroke": "rgb(151, 153, 180)",
             "strokeLinejoin": "round",
             "strokeLinecap": "round",
             "strokeMiterlimit": "4",
@@ -6631,7 +6631,7 @@
           },
           {
             "fill": "none",
-            "stroke": "rgb(255, 255, 255)",
+            "stroke": "rgb(151, 153, 180)",
             "strokeLinejoin": "round",
             "strokeLinecap": "round",
             "strokeMiterlimit": "4",
@@ -6665,7 +6665,7 @@
       "attrs": [
         {
           "fill": "none",
-          "stroke": "rgb(255, 255, 255)",
+          "stroke": "rgb(151, 153, 180)",
           "strokeLinejoin": "round",
           "strokeLinecap": "round",
           "strokeMiterlimit": "4",
@@ -6673,7 +6673,7 @@
         },
         {
           "fill": "none",
-          "stroke": "rgb(255, 255, 255)",
+          "stroke": "rgb(151, 153, 180)",
           "strokeLinejoin": "round",
           "strokeLinecap": "round",
           "strokeMiterlimit": "4",
@@ -6681,7 +6681,7 @@
         },
         {
           "fill": "none",
-          "stroke": "rgb(255, 255, 255)",
+          "stroke": "rgb(151, 153, 180)",
           "strokeLinejoin": "round",
           "strokeLinecap": "round",
           "strokeMiterlimit": "4",
@@ -6689,7 +6689,7 @@
         },
         {
           "fill": "none",
-          "stroke": "rgb(255, 255, 255)",
+          "stroke": "rgb(151, 153, 180)",
           "strokeLinejoin": "round",
           "strokeLinecap": "round",
           "strokeMiterlimit": "4",
@@ -6697,7 +6697,7 @@
         },
         {
           "fill": "none",
-          "stroke": "rgb(255, 255, 255)",
+          "stroke": "rgb(151, 153, 180)",
           "strokeLinejoin": "round",
           "strokeLinecap": "round",
           "strokeMiterlimit": "4",
@@ -6708,6 +6708,133 @@
         "order": 61,
         "id": 22,
         "name": "Password",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 40
+    },
+    {
+      "icon": {
+        "paths": [
+          "M432.38 506.236c2.33 2.33 3.025 5.828 1.766 8.866-1.259 3.042-4.228 5.026-7.517 5.026-3.291 0-6.257-1.984-7.517-5.026-1.26-3.038-0.563-6.537 1.763-8.866 3.181-3.17 8.326-3.17 11.504 0",
+          "M469.316 725.423h-298.791c-22.643 0.004-44.361-8.986-60.372-24.998-16.011-16.009-25.004-37.726-24.997-60.369v-256.108c-0.006-22.643 8.986-44.361 24.997-60.372s37.728-25.003 60.372-24.997h298.791",
+          "M261.647 506.236c2.327 2.33 3.023 5.828 1.764 8.866-1.26 3.042-4.226 5.026-7.517 5.026s-6.257-1.984-7.517-5.026c-1.26-3.038-0.563-6.537 1.764-8.866 3.18-3.17 8.326-3.17 11.506 0",
+          "M667.772 447.974h200.675c38.881 0 70.4 31.519 70.4 70.4v136.649c0 38.881-31.519 70.4-70.4 70.4h-200.675c-38.881 0-70.4-31.519-70.4-70.4v-136.649c0-38.881 31.519-70.4 70.4-70.4z",
+          "M662.652 447.974v-86.625c0-58.242 47.215-105.456 105.455-105.456v0c27.968 0 54.793 11.11 74.569 30.887s30.886 46.6 30.886 74.569v0 87.346"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "stroke": "rgb(0, 177, 113)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(0, 177, 113)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(0, 177, 113)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(0, 177, 113)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(0, 177, 113)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": ["Password--green"],
+        "colorPermutations": {
+          "133105115622212321138123567531245157491251188512529632125525525512556415714813515216883166133244177321": [
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            },
+            {
+              "s": 12
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "stroke": "rgb(0, 177, 113)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(0, 177, 113)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(0, 177, 113)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(0, 177, 113)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(0, 177, 113)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 61,
+        "id": 22,
+        "name": "Password--green",
         "prevSize": 32
       },
       "setIdx": 0,

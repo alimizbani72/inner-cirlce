@@ -212,6 +212,7 @@
     "title": "プロフィール",
     "logout": "ログアウト",
     "copyright": "著作権 © {{year}} {{company}}。全著作権所有。",
+    "enable2FA": "2FAを有効にする",
     "profileSetting": "プロフィール設定",
     "termsOfService": "利用規約 | プライバシーポリシー",
     "becomePartner": "パートナーになる"

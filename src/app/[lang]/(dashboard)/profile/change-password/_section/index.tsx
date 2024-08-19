@@ -13,15 +13,13 @@ import FormProvider from "@/components/hook-form/form-provider";
 import * as Yup from "yup";
 import { Button } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
-import {
-  useAccountServiceAuthChangePassword,
-  useAccountServiceAuthUserinfoQuery,
-  useVerifyServiceVerificationsSendCreateMutation,
-} from "@minecraft/queries";
+import { useAuthServiceAuthChangePassword, useAuthServiceAuthSendCodeCreateMutation } from "@minecraft/queries";
 import { enqueueSnackbar } from "notistack";
 import CustomDialog from "@/components/CustomDialog";
 import { useModalActivation } from "@/hooks/useModalActivation";
 import { useTranslate } from "@/locales";
+import { useAppSelector } from "@/lib/hooks";
+import { selectUser } from "@/lib/features/user/userSlice";
 
 const defaultValues = {
   currentPassword: "",
@@ -32,12 +30,11 @@ const defaultValues = {
 const ChangePasswordDialog = () => {
   const open = useModalActivation("/change-password/");
   const { push, back, nativeBack } = useCustomRouter();
-  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+  const userInfo = useAppSelector(selectUser);
   const { t } = useTranslate();
 
-  const { mutateAsync, isPending } = useAccountServiceAuthChangePassword();
-  const { mutateAsync: sendVerification, isPending: isForgetPassPending } =
-    useVerifyServiceVerificationsSendCreateMutation();
+  const { mutateAsync, isPending } = useAuthServiceAuthChangePassword();
+  const { mutateAsync: sendVerification, isPending: isForgetPassPending } = useAuthServiceAuthSendCodeCreateMutation();
 
   const UpdateUserSchema = Yup.object().shape({
     newPassword: Yup.string()
@@ -99,7 +96,7 @@ const ChangePasswordDialog = () => {
               variant="p2-medium"
               textAlign={"right"}
               onClick={async () => {
-                await sendVerification({ requestBody: { email: (userInfo as any)?.data?.email } }).then(() => {
+                await sendVerification({ requestBody: { email: userInfo?.email } }).then(() => {
                   push("/profile/forget-password");
                 });
               }}

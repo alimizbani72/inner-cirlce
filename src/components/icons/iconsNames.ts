@@ -24,6 +24,7 @@ const iconsNames = [
   "Mailbox--colorful",
   "Money--colorful",
   "Password--colorful",
+  "Password--green",
   "Payout--colorful",
   "Portfolio--colorful",
   "Subscription--colorful",

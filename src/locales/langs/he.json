@@ -212,6 +212,7 @@
     "title": "פרופיל",
     "logout": "התנתק",
     "copyright": "זכויות יוצרים © {{year}} {{company}}. כל הזכויות שמורות.",
+    "enable2FA": "להפעיל אימות דו-שלבי",
     "profileSetting": "הגדרות פרופיל",
     "termsOfService": "תנאי שימוש | מדיניות פרטיות",
     "becomePartner": "הפוך לשותף"

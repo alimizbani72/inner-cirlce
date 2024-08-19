@@ -11,10 +11,10 @@ import { Icon } from "@/components/icons";
 import { useTranslate } from "@/locales";
 import { useAppSelector } from "@/lib/hooks";
 import { getForgotPasswordInfo } from "@/lib/features/auth/authSlice";
-import { useAppRouter } from "@/routes/hooks";
 import { LoadingButton } from "@mui/lab";
 import { useSnackbar } from "notistack";
 import { signIn } from "next-auth/react";
+import { useAuthServiceAuthResetPasswordCreateMutation } from "@minecraft/queries";
 
 const defaultValues = {
   password: "",
@@ -23,10 +23,10 @@ const defaultValues = {
 
 const ResetPass: FC = () => {
   const { t } = useTranslate();
-  const { replace } = useAppRouter();
   const { enqueueSnackbar } = useSnackbar();
   const [loading, setLoading] = useState(false);
-  const { email, session_code } = useAppSelector(getForgotPasswordInfo);
+  const { email, token } = useAppSelector(getForgotPasswordInfo);
+  const { mutateAsync: resetPasshandler } = useAuthServiceAuthResetPasswordCreateMutation();
   const FormSchema = useMemo(
     () =>
       Yup.object().shape({
@@ -49,20 +49,30 @@ const ResetPass: FC = () => {
   const onSubmit = handleSubmit(async (data) => {
     setLoading(true);
     try {
-      const signupRes = await signIn("forgot-pass", {
-        email,
-        password: data.password,
-        session_code,
-        redirect: false,
-      });
-      setLoading(false);
-      if (signupRes?.ok) {
-        replace("/dashboard");
-      } else {
-        enqueueSnackbar(t("formErrors.formError"), {
-          variant: "error",
-        });
-      }
+      await resetPasshandler(
+        {
+          token,
+          requestBody: { password: data.password },
+        },
+        {
+          onSuccess() {
+            signIn("custom-login", {
+              password: data.password,
+              email,
+              redirect: false,
+            }).then((res) => {
+              if (res?.ok) {
+                window.location.href = "/dashboard";
+              } else {
+                enqueueSnackbar(t("formErrors.formError"), {
+                  variant: "error",
+                });
+              }
+            });
+            setLoading(false);
+          },
+        }
+      );
     } catch (_error) {
       setLoading(false);
       enqueueSnackbar(t("formErrors.formError"), {

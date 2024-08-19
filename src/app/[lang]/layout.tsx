@@ -12,6 +12,10 @@ import { StoreProvider } from "./_providers/StoreProvider";
 import ProgressBarProvider from "./_providers/ProgressBarProvider";
 import { getDictionary } from "@/locales/dictionary";
 import { primaryFont } from "@/theme/localFonts";
+import { authOptions } from "@/configs/authOptions";
+import { getQueryClient } from "./_providers/customQueryClient";
+import { prefetchUseAuthServiceMeQuery } from "@minecraft/queries/prefetch";
+import { UseAuthServiceMeQueryKeyFn } from "@minecraft/queries";
 // ----------------------------------------------------------------------
 
 export const viewport: Viewport = {
@@ -74,10 +78,18 @@ export type LayoutProps = {
 };
 
 export default async function RootLayout({ children, params }: LayoutProps) {
-  const session = await getServerSession();
+  const queryClient = getQueryClient();
+  await Promise.all([prefetchUseAuthServiceMeQuery(queryClient)]);
+
+  const session = await getServerSession(authOptions(""));
+
   const dict = await getDictionary(params.lang);
   return (
-    <StoreProvider currentLang={params.lang} dict={dict}>
+    <StoreProvider
+      currentLang={params.lang}
+      dict={dict}
+      user={{ ...session?.user!, ...(queryClient.getQueryData(UseAuthServiceMeQueryKeyFn()) as any)?.data }}
+    >
       <html lang="en" className={primaryFont.className}>
         <head>
           <script src="https://www.google.com/recaptcha/api.js" async defer />

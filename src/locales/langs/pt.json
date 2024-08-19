@@ -212,6 +212,7 @@
     "title": "Perfil",
     "logout": "Sair",
     "copyright": "Copyright © {{year}} {{company}}. Todos os direitos reservados.",
+    "enable2FA": "Ativar 2FA",
     "profileSetting": "Configurações do Perfil",
     "termsOfService": "Termos de Uso | Política de Privacidade",
     "becomePartner": "Torne-se um Parceiro"

@@ -19,11 +19,10 @@ import {
   setForgotPasswordInfo,
 } from "@/lib/features/auth/authSlice";
 import {
-  useVerifyServiceVerificationsExchangeCreateMutation,
-  useVerifyServiceVerificationsSendCreateMutation,
+  useAuthServiceAuthGuestTokenCreateMutation,
+  useAuthServiceAuthSendCodeCreateMutation,
 } from "@minecraft/queries";
 import { signIn } from "next-auth/react";
-import { useAppRouter } from "@/routes/hooks";
 
 const getTimer = () => {
   const time = new Date();
@@ -34,7 +33,6 @@ const getTimer = () => {
 const EmailConfirm: FC = () => {
   const [loading, setLoading] = useState(false);
   const { t } = useTranslate();
-  const { replace } = useAppRouter();
   const dispatch = useDispatch();
   const registerInfo = useSelector(getRegisterInfo);
   const forgotPasswordInfo = useSelector(getForgotPasswordInfo);
@@ -55,8 +53,8 @@ const EmailConfirm: FC = () => {
 
   const { handleSubmit, watch, setError } = methods;
 
-  const { mutateAsync: sendCode, isPending: sendCodeLoading } = useVerifyServiceVerificationsSendCreateMutation();
-  const { mutateAsync: exchangeCode } = useVerifyServiceVerificationsExchangeCreateMutation();
+  const { mutateAsync: sendCode, isPending: sendCodeLoading } = useAuthServiceAuthSendCodeCreateMutation();
+  const { mutateAsync: getSession } = useAuthServiceAuthGuestTokenCreateMutation();
 
   const resendHandler = () => {
     sendCode({ requestBody: { email } })
@@ -69,26 +67,32 @@ const EmailConfirm: FC = () => {
   const onSubmit = handleSubmit(async (data) => {
     setLoading(true);
     try {
-      const exchangeRes = await exchangeCode({ requestBody: { code: data.verifyCode } });
       if (registerStep === 2) {
         const signupRes = await signIn("custom-signup", {
           full_name: registerInfo.name,
           password: registerInfo.password,
           email,
           policy_approved: true,
-          session_code: exchangeRes.data?.session_code,
+          otp: data.verifyCode,
           redirect: false,
         });
         setLoading(false);
         if (signupRes?.ok) {
-          replace("/dashboard");
+          window.location.href = "/dashboard";
         } else {
           setError("verifyCode", { message: "There was an error processing your request. Please try again." });
           // JSON.parse(signupRes?.error || "")?.errors.message
         }
       } else {
-        dispatch(setForgotPasswordInfo({ email, session_code: exchangeRes.data?.session_code }));
-        dispatch(setForgotPasswordStep(3));
+        await getSession(
+          { requestBody: { otp: data.verifyCode, email } },
+          {
+            onSuccess(res) {
+              dispatch(setForgotPasswordInfo({ email, token: res.data! }));
+              dispatch(setForgotPasswordStep(3));
+            },
+          }
+        );
       }
     } catch (error) {
       setLoading(false);
@@ -97,7 +101,7 @@ const EmailConfirm: FC = () => {
   });
 
   useEffect(() => {
-    if (watch("verifyCode").length === 5) {
+    if (watch("verifyCode").length === 6) {
       onSubmit();
     }
   }, [watch("verifyCode")]);

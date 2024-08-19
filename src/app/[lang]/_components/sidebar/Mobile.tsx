@@ -7,16 +7,16 @@ import Menu from "./Menu";
 import SidebarUserInfo from "./UserInfo";
 import { sidebarCommunityItems, sidebarServicesItems } from "@/configs/sidebar";
 import { Icon } from "@/components/icons";
-import { useAppDispatch } from "@/lib/hooks";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { mobileMenuToggle } from "@/lib/features/menu/menuSlice";
 import UpgradePlan from "../UpgradePlan";
-import { useAccountServiceAuthUserinfoQuery } from "@minecraft/queries";
 import { useTranslate } from "@/locales";
+import { selectUser } from "@/lib/features/user/userSlice";
 
 const MobileSidebar: FC = () => {
   const { t } = useTranslate();
   const dispatch = useAppDispatch();
-  const { data: userInfo } = useAccountServiceAuthUserinfoQuery();
+  const userInfo = useAppSelector(selectUser);
 
   return (
     <Stack sx={{ height: "100vh", width: "100vw" }}>
@@ -37,13 +37,12 @@ const MobileSidebar: FC = () => {
 
       <Stack py={4} px={2} gap={4}>
         <Menu name={t("sidebar.services")} items={sidebarServicesItems} />
-        {sidebarCommunityItems.filter((item) =>
-          (userInfo as any)?.data?.kyc_status ? item : !item.path.includes("affiliate")
-        ).length && (
+        {sidebarCommunityItems.filter((item) => (userInfo?.kyc_status ? item : !item.path.includes("affiliate")))
+          .length && (
           <Menu
             name={t("sidebar.community")}
             items={sidebarCommunityItems.filter((item) =>
-              (userInfo as any)?.data?.kyc_status ? item : !item.path.includes("affiliate")
+              userInfo?.kyc_status ? item : !item.path.includes("affiliate")
             )}
           />
         )}

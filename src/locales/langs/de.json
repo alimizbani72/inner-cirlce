@@ -212,6 +212,7 @@
     "title": "Profil",
     "logout": "Abmelden",
     "copyright": "Copyright © {{year}} {{company}}. Alle Rechte vorbehalten.",
+    "enable2FA": "2FA aktivieren",
     "profileSetting": "Profileinstellungen",
     "termsOfService": "Nutzungsbedingungen | Datenschutzrichtlinie",
     "becomePartner": "Partner werden"

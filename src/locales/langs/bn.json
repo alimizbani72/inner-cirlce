@@ -212,6 +212,7 @@
     "title": "প্রোফাইল",
     "logout": "লগআউট",
     "copyright": "কপিরাইট © {{year}} {{company}}. সর্বস্বত্ব সংরক্ষিত।",
+    "enable2FA": "2FA সক্রিয় করুন",
     "profileSetting": "প্রোফাইল সেটিংস",
     "termsOfService": "ব্যবহারের শর্তাবলী | গোপনীয়তা নীতি",
     "becomePartner": "অংশীদার হন"

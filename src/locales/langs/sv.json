@@ -212,6 +212,7 @@
     "title": "Profil",
     "logout": "Logga ut",
     "copyright": "Copyright © {{year}} {{company}}. Alla rättigheter förbehållna.",
+    "enable2FA": "Aktivera 2FA",
     "profileSetting": "Profilinställningar",
     "termsOfService": "Användarvillkor | Integritetspolicy",
     "becomePartner": "Bli Partner"

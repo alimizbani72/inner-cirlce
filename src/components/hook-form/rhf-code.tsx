@@ -32,7 +32,7 @@ export default function RHFCode({ name, label, loading, ...other }: RHFCodesProp
               {...field}
               autoFocus
               gap={1.5}
-              length={5}
+              length={6}
               TextFieldsProps={{
                 error: !!error,
                 placeholder: "-",

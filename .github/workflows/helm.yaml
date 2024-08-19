@@ -1,0 +1,59 @@
+name: release
+
+on:
+  workflow_dispatch:
+    tags:
+      - 'v*.*.*'
+    inputs:
+      image_repository:
+        description: 'docker image repository'
+        default: "chainmind.azurecr.io/frontiers/front"
+        type: string
+        required: true
+      image_tag:
+        description: 'docker image tag'
+        type: string
+        required: true
+
+env:
+  REGISTRY_HOST: chainmind.azurecr.io
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+  RELEASE_NAME: inner-circle
+  RELEASE_NAMESPACE: inner-circle
+  RELEASE_DOMAIN: innercircle-chainmind.com
+
+jobs:
+  helm:
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: "true"
+
+      - name: Run Helm and Deploy
+        uses: WyriHaximus/github-action-helm3@v3
+        if: env.BRANCH_NAME == 'main'
+        with:
+          exec: |
+            helm upgrade --install \
+              "${{ env.RELEASE_NAME }}.${{ env.BRANCH_NAME }}" \
+              --namespace ${{ env.RELEASE_NAMESPACE }} \
+              --set name="${{ env.RELEASE_NAME }}-prod" \
+              --set replicaCount="10" \
+              --set domainName="${{ env.RELEASE_DOMAIN }}" \
+              --set image.repository="${{ inputs.image_repository }}" \
+              --set image.tag="${{ inputs.image_tag }}" \
+              --set tls.enabled="true" \
+              --set tls.clusterIssuer="cloudflare" \
+              --set tls.secretName="${{ env.BRANCH_NAME }}-${{ env.RELEASE_NAME }}-net-tls" \
+              --set resources.limits.cpu="500m" \
+              --set resources.limits.memory="500Mi" \
+              --set resources.requests.cpu="250m" \
+              --set resources.requests.memory="256Mi" \
+              --set app.nextauth_url="https://${{ env.RELEASE_DOMAIN }}" \
+              --set app.nextauth_secret="${{ secrets.PROD_NEXTAUTH_SECRET }}" \
+              --set app.google_client_id="${{ secrets.PROD_GOOGLE_CLIENT_ID }}" \
+              --set app.google_client_secret="${{ secrets.PROD_GOOGLE_CLIENT_SECRET }}" \
+              --atomic \
+              .ci/chart
+          kubeconfig: "${{ secrets.PROD_INNER_CIRCLE_KUBECONFIG }}"

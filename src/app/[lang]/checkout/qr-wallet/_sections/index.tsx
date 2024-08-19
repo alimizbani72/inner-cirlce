@@ -19,6 +19,7 @@ import { useTranslate } from "@/locales";
 import { toPascalCase } from "@/utils/change-case";
 import StaticAlert from "@app/_components/StaticAlert";
 import { useGlobalCheckoutPageWarningServiceGetGlobalsCheckoutPageWarning } from "@cms/queries";
+import Image from "@/components/Image";
 
 type Props = { planType: string; id: string };
 
@@ -162,10 +163,14 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
           mt={3}
           flex={1}
         >
-          <QRCodeWithIcon value={walletAddress} iconSrc="/assets/svg/usdc-polygon.svg" size={isMobile ? 200 : 140} />
+          <QRCodeWithIcon
+            value={walletAddress}
+            iconSrc={`/assets/currencies/${(data?.data?.total_amount as any)?.currency_code}.svg`}
+            size={isMobile ? 200 : 140}
+          />
 
           <Typography variant="h4-semi-bold" mt={2}>
-            USDC -{" "}
+            {(data?.data?.total_amount as any)?.currency_code} -{" "}
             <Typography variant="h4-semi-bold" color={"warning.main"}>
               {t("checkout.polygonNetwork")}
             </Typography>
@@ -211,7 +216,12 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
                 {t("checkout.amountToSend")}
               </Typography>
               <Stack direction={"row"} gap={1}>
-                <Icon name="coin-usdc" />
+                <Image
+                  width={24}
+                  height={24}
+                  src={`/assets/currencies/${(data?.data?.total_amount as any)?.currency_code}.svg`}
+                  alt={(data?.data?.total_amount as any)?.currency_code}
+                />
                 <Typography variant="p1-medium">{formatCurrencyWithoutDollar(data?.data?.total_amount!)}</Typography>
               </Stack>
             </Stack>
@@ -221,7 +231,12 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
                 {t("checkout.paidAmount")}
               </Typography>
               <Stack direction={"row"} gap={1}>
-                <Icon name="coin-usdc" />
+                <Image
+                  width={24}
+                  height={24}
+                  src={`/assets/currencies/${(data?.data?.total_amount as any)?.currency_code}.svg`}
+                  alt={(data?.data?.total_amount as any)?.currency_code}
+                />
                 <Typography variant="p1-medium">{formatCurrencyWithoutDollar(data?.data?.paid_amount!)}</Typography>
               </Stack>
             </Stack>

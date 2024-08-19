@@ -35,7 +35,7 @@ const BecomePartnerDialog = () => {
         <Stack gap={3} justifyContent={"center"} alignItems={"center"}>
           <Image src="/assets/png/partner.png" />
           <Typography variant="p2-regular">{t("becomePartner.description")}</Typography>
-          <Button onClick={() => push("personal-info")}>{t("becomePartner.startNow")}</Button>
+          <Button onClick={() => push("kyc-info")}>{t("becomePartner.startNow")}</Button>
         </Stack>
       </DialogContent>
     </CustomDialog>

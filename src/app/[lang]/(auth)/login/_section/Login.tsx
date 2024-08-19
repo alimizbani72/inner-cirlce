@@ -9,18 +9,23 @@ import FormProvider from "@/components/hook-form/form-provider";
 import * as Yup from "yup";
 import { useTranslate } from "@/locales";
 import { useAppRouter } from "@/routes/hooks";
+
 import { LoadingButton } from "@mui/lab";
 import { signIn } from "next-auth/react";
 import GoogleSignIn from "./GoogleSignIn";
+import { useAppDispatch } from "@/lib/hooks";
+import { setLoginInfo, setLoginStep } from "@/lib/features/auth/authSlice";
 
 const defaultValues = {
   email: "",
   password: "",
+  otp: "", // Add OTP field to default values
 };
 
 const Login: FC = () => {
   const { t } = useTranslate();
   const { push } = useAppRouter();
+  const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(false);
   const FormSchema = useMemo(
     () =>
@@ -47,12 +52,20 @@ const Login: FC = () => {
       redirect: false,
     });
     if (res?.ok) {
-      push("/dashboard");
-      setLoading(false);
+      window.location.href = "/dashboard";
+    } else if (res?.error === "2FA_REQUIRED") {
+      dispatch(
+        setLoginInfo({
+          email: data.email?.toLowerCase(),
+          password: data.password,
+          redirect: false,
+        })
+      );
+      dispatch(setLoginStep(2));
     } else {
-      setLoading(false);
       setError("email", { message: "Email or password is wrong" });
     }
+    setLoading(false);
   });
   return (
     <>

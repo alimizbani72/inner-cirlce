@@ -212,6 +212,7 @@
     "title": "โปรไฟล์",
     "logout": "ออกจากระบบ",
     "copyright": "ลิขสิทธิ์ © {{year}} {{company}}. สงวนลิขสิทธิ์.",
+    "enable2FA": "เปิดใช้งาน 2FA",
     "profileSetting": "การตั้งค่าโปรไฟล์",
     "termsOfService": "ข้อกำหนดการใช้งาน | นโยบายความเป็นส่วนตัว",
     "becomePartner": "เป็นพันธมิตร"
