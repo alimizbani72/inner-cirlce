@@ -134,7 +134,6 @@ const DropZone: FC = () => {
               alignItems="center"
               gap={2}
               sx={{
-                maxWidth: 186,
                 borderRadius: 1.5,
                 bgcolor: "dark.1",
                 border: "1.5px solid",
@@ -157,7 +156,7 @@ const DropZone: FC = () => {
                 }}
               />
               <Icon name="Time" />
-              <Typography textAlign="center" variant="p2-medium" textTransform="uppercase">
+              <Typography textAlign="center" variant="p1-medium" textTransform="uppercase">
                 {data.message}
               </Typography>
               <Box
