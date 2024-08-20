@@ -7,13 +7,13 @@ import FlipClockCountdown from "@leenguyen/react-flip-clock-countdown";
 import { useGlobalDropZoneServiceGetGlobalsDropZone } from "@cms/queries";
 import { useParams } from "next/navigation";
 import { Icon } from "@/components/icons";
-import { toNumber } from "@/utils/toNumber";
 import type { dropZone } from "@cms/requests";
 import { useAppSelector } from "@/lib/hooks";
 import { selectUser } from "@/lib/features/user/userSlice";
 import { CMSDownloadURL, getUserPlanType } from "@/consts";
 import Image from "@/components/Image";
 import CustomTable from "@/components/CustomTable";
+import { toNumber } from "@/utils/toNumber";
 
 const columns = [
   {
@@ -42,6 +42,9 @@ const DropZone: FC = () => {
   const { lang } = useParams();
   const { data } = useGlobalDropZoneServiceGetGlobalsDropZone({ locale: lang as string });
   const [isClient, setIsClient] = useState(false);
+  const [finishedCountdown, setFinishedCountdown] = useState(
+    toNumber(data?.timestampUnix) * 1000 < new Date().getTime()
+  );
   const userInfo = useAppSelector(selectUser);
   const userPlan = getUserPlanType(userInfo);
 
@@ -49,7 +52,7 @@ const DropZone: FC = () => {
     setIsClient(true);
   }, []);
 
-  return data?.status === "active" && toNumber(data?.timestampUnix) * 1000 < new Date().getTime() ? (
+  return data?.status === "active" && finishedCountdown ? (
     <CustomTable
       title="Drop Zone"
       columns={columns}
@@ -175,6 +178,9 @@ const DropZone: FC = () => {
               to={new Date(toNumber(data?.timestampUnix) * 1000)}
               labelStyle={{ fontSize: 0 }}
               renderMap={[true, true, true, true]}
+              onComplete={() => {
+                setFinishedCountdown(true);
+              }}
               digitBlockStyle={{
                 width: 32,
                 height: 48,
