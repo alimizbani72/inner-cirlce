@@ -1,11 +1,61 @@
 "use client";
 
-import type { FC } from "react";
+import { useEffect, useState, type FC } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import RiveComp from "@/components/RiveComp";
 import FlipClockCountdown from "@leenguyen/react-flip-clock-countdown";
+import { useGlobalDropZoneServiceGetGlobalsDropZone } from "@cms/queries";
+import { useParams } from "next/navigation";
+import { Icon } from "@/components/icons";
+import { toNumber } from "@/utils/toNumber";
+import type { dropZone } from "@cms/requests";
+import { useAppSelector } from "@/lib/hooks";
+import { selectUser } from "@/lib/features/user/userSlice";
+import { CMSDownloadURL, getUserPlanType } from "@/consts";
+import Image from "@/components/Image";
+import CustomTable from "@/components/CustomTable";
+
+const columns = [
+  {
+    title: "Name",
+    modify: (row: dropZone["coins"][number]) => (
+      <Stack direction="row" alignItems="center" gap={1.5}>
+        <Image src={CMSDownloadURL((row?.icon as any)?.url!)} width={24} height={24} />
+        <Typography variant="p2-medium">{row.name}</Typography>
+        <Typography variant="p2-medium" color="grey.light">
+          {row.name}
+        </Typography>
+      </Stack>
+    ),
+  },
+  {
+    title: "cmrValue",
+    modify: (row: dropZone["coins"][number]) => row.cmrValue,
+  },
+  {
+    title: "potentialMultiplicator",
+    modify: (row: dropZone["coins"][number]) => row.potentialMultiplicator,
+  },
+];
+
 const DropZone: FC = () => {
-  return (
+  const { lang } = useParams();
+  const { data } = useGlobalDropZoneServiceGetGlobalsDropZone({ locale: lang as string });
+  const [isClient, setIsClient] = useState(false);
+  const userInfo = useAppSelector(selectUser);
+  const userPlan = getUserPlanType(userInfo);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  return data?.status === "active" && toNumber(data?.timestampUnix) * 1000 < new Date().getTime() ? (
+    <CustomTable
+      title="Drop Zone"
+      columns={columns}
+      data={data?.coins.filter((item: any) => item.membership.find((mem: any) => mem.slug === userPlan)) || []}
+    />
+  ) : (
     <Stack
       position="relative"
       overflow="hidden"
@@ -72,31 +122,73 @@ const DropZone: FC = () => {
       <Stack
         sx={{
           position: "absolute",
-          bottom: { md: 76, xs: 24 },
+          bottom: { md: 60, xs: 24 },
           left: { md: 64, xs: 0 },
           right: { md: "unset", xs: 0 },
           alignItems: "center",
         }}
       >
-        <FlipClockCountdown
-          to={new Date().getTime() + 1 * 3600 * 1000 + 5000}
-          labelStyle={{ fontSize: 0 }}
-          renderMap={[false, true, true, true]}
-          digitBlockStyle={{
-            width: 32,
-            height: 48,
-            fontSize: 32,
-            fontWeight: 500,
-            borderRadius: "6px",
-            backgroundColor: "#565CE4",
-          }}
-          separatorStyle={{ size: 0 }}
-          dividerStyle={{ color: "#4348AF", height: 1 }}
-          spacing={{ clock: "8px", digitBlock: "4px" }}
-          renderOnServer
-        >
-          Finished
-        </FlipClockCountdown>
+        {isClient &&
+          (data?.status === "inactive" ? (
+            <Stack
+              alignItems="center"
+              gap={2}
+              sx={{
+                maxWidth: 186,
+                borderRadius: 1.5,
+                bgcolor: "dark.1",
+                border: "1.5px solid",
+                borderColor: "dark.3",
+                px: 4,
+                py: 2,
+                boxShadow: "0px 40px 80px 0px rgba(7, 7, 32, 0.40)",
+                backdropFilter: "blur(6px)",
+                position: "relative",
+              }}
+            >
+              <Box
+                sx={{
+                  position: "absolute",
+                  background: "linear-gradient(90deg, #14162E 0%, rgba(255, 64, 157, 0.14) 49.64%, #14162E 100%)",
+                  backdropFilter: "blur(24px)",
+                  height: "1px",
+                  width: "118px",
+                  top: -1,
+                }}
+              />
+              <Icon name="Time" />
+              <Typography textAlign="center" variant="p2-medium" textTransform="uppercase">
+                {data.message}
+              </Typography>
+              <Box
+                sx={{
+                  position: "absolute",
+                  background: "linear-gradient(90deg, #14162E 0%, rgba(86, 92, 228, 0.14) 49.64%, #14162E 100%)",
+                  backdropFilter: "blur(24px)",
+                  height: "1px",
+                  width: "118px",
+                  bottom: -1,
+                }}
+              />
+            </Stack>
+          ) : (
+            <FlipClockCountdown
+              to={new Date(toNumber(data?.timestampUnix) * 1000)}
+              labelStyle={{ fontSize: 0 }}
+              renderMap={[true, true, true, true]}
+              digitBlockStyle={{
+                width: 32,
+                height: 48,
+                fontSize: 32,
+                fontWeight: 500,
+                borderRadius: "6px",
+                backgroundColor: "#565CE4",
+              }}
+              separatorStyle={{ size: 0 }}
+              dividerStyle={{ color: "#4348AF", height: 1 }}
+              spacing={{ clock: "8px", digitBlock: "4px" }}
+            />
+          ))}
       </Stack>
     </Stack>
   );

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getQueryClient } from "@app/_providers/customQueryClient";
 import {
+  prefetchUseGlobalDropZoneServiceGetGlobalsDropZone,
   prefetchUseGlobalLiveFeedServiceGetGlobalsLiveFeed,
   prefetchUseGlobalSocialMediaServiceGetGlobalsSocialMedia,
   prefetchUseRoadmapsServiceGetRoadmaps,
@@ -22,6 +23,7 @@ export default async function Dashboard({ params }: RouteParamsType) {
     prefetchUseRoadmapsServiceGetRoadmaps(queryClient, { locale: params.lang }),
     prefetchUseGlobalLiveFeedServiceGetGlobalsLiveFeed(queryClient, { locale: params.lang }),
     prefetchUseGlobalSocialMediaServiceGetGlobalsSocialMedia(queryClient, { locale: params.lang }),
+    prefetchUseGlobalDropZoneServiceGetGlobalsDropZone(queryClient, { locale: params.lang }),
     prefetchUseFinancialServiceFinancialPaymentsActiveQuery(queryClient),
   ]);
 
