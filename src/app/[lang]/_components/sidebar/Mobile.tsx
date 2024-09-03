@@ -27,6 +27,8 @@ const MobileSidebar: FC = () => {
         alignItems={"center"}
         justifyContent={"center"}
         position={"relative"}
+        borderBottom={"1.5px solid"}
+        borderColor={"dark.3"}
       >
         <IconButton sx={{ position: "absolute", left: 24 }} onClick={() => dispatch(mobileMenuToggle(false))}>
           <Icon name="Close" />
@@ -34,6 +36,8 @@ const MobileSidebar: FC = () => {
 
         <LogoType />
       </Stack>
+
+      <SidebarUserInfo />
 
       <Stack py={4} px={2} gap={4}>
         <Menu name={t("sidebar.services")} items={sidebarServicesItems} />
@@ -48,10 +52,8 @@ const MobileSidebar: FC = () => {
         )}
       </Stack>
 
-      <Stack mt={"auto"} gap={3}>
+      <Stack mt={"auto"} mb={4} gap={3}>
         <UpgradePlan />
-
-        <SidebarUserInfo />
       </Stack>
     </Stack>
   );
