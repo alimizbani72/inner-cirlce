@@ -106,7 +106,8 @@
     "affiliate": "Affiliate",
     "education": "Education",
     "help-center": "Help Center",
-    "secret-hunts": "Secret Hunts"
+    "secret-hunts": "Secret Hunts",
+    "settings": "Settings"
   },
   "wallet": {
     "requiredAddress": "USDC Polygon (Matic) Wallet address is required",
@@ -209,7 +210,7 @@
   },
   "userInfo": {
     "noMembership": "You do not have a",
-    "membershipSuffix": " membership!!",
+    "membershipSuffix": " membership!",
     "upgradeButton": "Please Upgrade"
   },
   "profileDialog": {

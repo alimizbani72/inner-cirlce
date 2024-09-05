@@ -11,10 +11,12 @@ export const sidebarServicesItems = [
   {
     path: "portfolio-strategies/",
     icon: "Portfolio",
+    mainSlug: "portfolio-strategies",
   },
   {
     path: "education/",
     icon: "Tutorial",
+    mainSlug: "education",
   },
 ];
 
@@ -22,6 +24,11 @@ export const sidebarCommunityItems = [
   {
     path: "affiliate/",
     icon: "Affiliate",
+  },
+  {
+    path: "settings/account/",
+    icon: "Settings",
+    mainSlug: "settings",
   },
   // {
   //   path: "secret-hunts/",
@@ -42,4 +49,8 @@ export const mapPathToName = {
   "education/": "education",
   "help-center/": "help-center",
   "secret-hunts/": "secret-hunts",
+  "settings/account/": "settings",
+  "settings/become-a-partner/": "settings",
+  "settings/billing/": "settings",
+  "settings/business-account/": "settings",
 };

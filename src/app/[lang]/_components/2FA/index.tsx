@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FC } from "react";
-import { IconButton, Stack, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { Icon } from "@/components/icons";
 import EnableModal from "./EnableModal";
 import DisableModal from "./DisableModal";
@@ -34,20 +34,21 @@ const TwoFA: FC<TwoFAProps> = ({ isEnable }) => {
       {openEnable && <EnableModal open={openEnable} close={closeEnableModal} />}
       {openDisable && <DisableModal open={openDisable} close={closeDisableModal} />}
 
-      <Stack
+      <Button
         onClick={handleClick}
-        direction={"row"}
-        sx={{ borderBottom: "1px solid", borderColor: "dark.3", width: "100%", py: 2, cursor: "pointer" }}
-        gap={2}
+        startIcon={<Icon name="Password" />}
+        sx={{
+          whiteSpace: "pre",
+          "svg path": {
+            stroke: (theme) => `${isEnable ? theme.palette.danger.main : theme.palette.success.main} !important`,
+          },
+        }}
+        fullWidth
+        size="large"
+        color="info"
       >
-        <Icon name={isEnable ? "Password--green" : "Password"} />
-
         <Typography variant="p2-medium">{isEnable ? "Disable 2FA" : t("profileDialog.enable2FA")}</Typography>
-
-        <IconButton sx={{ ml: "auto" }}>
-          <Icon name="Arrow-right" />
-        </IconButton>
-      </Stack>
+      </Button>
     </>
   );
 };

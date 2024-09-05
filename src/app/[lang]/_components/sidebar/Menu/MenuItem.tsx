@@ -18,6 +18,7 @@ type MenuItemProps = {
   label: string;
   subItems: { path: string }[] | undefined;
   isCollapsed?: boolean;
+  mainSlug?: string;
 };
 
 const activeStyle = {
@@ -26,11 +27,14 @@ const activeStyle = {
   boxShadow: "0px 4px 8px 0px rgba(0, 0, 0, 0.16)",
 };
 
-const MenuItem: FC<MenuItemProps> = ({ icon, label, subItems, route, isCollapsed }) => {
+const MenuItem: FC<MenuItemProps> = ({ icon, label, subItems, route, isCollapsed, mainSlug }) => {
   const pathname = usePathname();
   const { push } = useAppRouter();
   const dispatch = useAppDispatch();
-  const isActive = useCallback((path: string | undefined) => pathname.slice(4) === path, [pathname]);
+  const isActive = useCallback(
+    (path: string | undefined) => (mainSlug ? pathname.includes(mainSlug) : pathname.slice(4) === path),
+    [pathname]
+  );
 
   const open = useBoolean(!!subItems?.find((s) => isActive(s.path)));
 

@@ -43,7 +43,7 @@ const Menu: FC<MenuProps> = ({ name, items }) => {
         </ListSubheader>
       }
     >
-      {items.map(({ path, items, icon, name }: any) => (
+      {items.map(({ path, items, icon, name, mainSlug }: any) => (
         <MenuItem
           key={path ?? icon}
           route={path}
@@ -51,6 +51,7 @@ const Menu: FC<MenuProps> = ({ name, items }) => {
           subItems={items}
           isCollapsed={isCollapsed}
           icon={icon as iconsType}
+          mainSlug={mainSlug}
         />
       ))}
     </List>
