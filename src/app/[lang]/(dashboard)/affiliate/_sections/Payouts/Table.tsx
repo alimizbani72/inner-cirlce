@@ -1,19 +1,22 @@
 "use client";
 
-import { useCallback, useMemo, useState, type FC } from "react";
 import type React from "react";
+import { type FC, useCallback, useMemo, useState } from "react";
 
-import { Box, Stack, Typography } from "@mui/material";
-import Scrollbar from "@/components/Scrollbar";
 import CustomTable from "@/components/CustomTable";
+import Scrollbar from "@/components/Scrollbar";
 import CustomPopover, { usePopover } from "@/components/custom-popover";
 import { Icon } from "@/components/icons";
-import { DatePicker } from "@mui/x-date-pickers";
+import { useIsMobile } from "@/hooks/use-responsive";
+import useToggleState from "@/hooks/use-toggle-state";
+import { useTranslate } from "@/locales";
 import { fDate } from "@/utils/format-time";
+import { formatCurrency } from "@/utils/toNumber";
 import { useFinancialServiceFinancialPayoutsQuery } from "@minecraft/queries";
 import type { PayoutResponse } from "@minecraft/requests";
-import { formatCurrency } from "@/utils/toNumber";
-import { useTranslate } from "@/locales";
+import { Box, Button, Stack, Typography } from "@mui/material";
+import { DatePicker } from "@mui/x-date-pickers";
+import DownloadModal from "./DownloadModal";
 
 const datePickerStyle = {
   ".MuiIconButton-root": {
@@ -56,7 +59,8 @@ const slotProps = {
 
 const AffPayoutsTabTable: FC = () => {
   const { t } = useTranslate();
-
+  const isMobile = useIsMobile();
+  const [open, toggle] = useToggleState();
   const columns = useMemo(
     () => [
       {
@@ -122,19 +126,48 @@ const AffPayoutsTabTable: FC = () => {
             columns={columns}
             data={data?.data || []}
             isPending={isPending}
+            mobileAction={
+              <Button
+                startIcon={<Icon name="download" />}
+                color={isMobile ? "primary" : "info"}
+                sx={{ width: "100%" }}
+                onClick={toggle}
+              >
+                {t("affPayoutsTabTable.dwonloadStatement")}
+              </Button>
+            }
             emptyTitle={t("affPayoutsTabTable.emptyTitle")}
             emptySubtitle={t("affPayoutsTabTable.emptySubtitle")}
             action={
               <Box>
-                <Stack direction="row" gap={0.5} onClick={handleOpenFilter} sx={{ cursor: "pointer" }}>
-                  <Typography variant="p2-semi-bold">
-                    {dates.length
-                      ? `${t("affPayoutsTabTable.from")} ${fDate(dates?.[0], "dd.MM.yyyy") || "-"} ${t(
-                          "affPayoutsTabTable.to"
-                        )} ${fDate(dates?.[1], "dd.MM.yyyy") || "-"}`
-                      : t("affPayoutsTabTable.dateAndTime")}
-                  </Typography>
-                  <Icon name={filterPopover.open ? "Arrow-up" : "Arrow-down"} />
+                <Stack
+                  direction="row"
+                  alignItems={"center"}
+                  gap={2}
+                  sx={{
+                    cursor: "pointer",
+                  }}
+                >
+                  <Box onClick={handleOpenFilter}>
+                    <Typography variant="p2-semi-bold">
+                      {dates.length
+                        ? `${t("affPayoutsTabTable.from")} ${fDate(dates?.[0], "dd.MM.yyyy") || "-"} ${t(
+                            "affPayoutsTabTable.to"
+                          )} ${fDate(dates?.[1], "dd.MM.yyyy") || "-"}`
+                        : t("affPayoutsTabTable.dateAndTime")}
+                    </Typography>
+                    <Icon name={filterPopover.open ? "Arrow-up" : "Arrow-down"} />
+                  </Box>
+                  <Stack>
+                    <Button
+                      startIcon={<Icon name="download" />}
+                      color="info"
+                      onClick={toggle}
+                      sx={{ display: { md: "flex", xs: "none" } }}
+                    >
+                      {t("affPayoutsTabTable.dwonloadStatement")}
+                    </Button>
+                  </Stack>
                 </Stack>
 
                 <CustomPopover
@@ -167,6 +200,7 @@ const AffPayoutsTabTable: FC = () => {
                         onChange={(value) => {
                           setDates((state: any) => [value, state?.[1]]);
                         }}
+                        desktopModeMediaQuery="@media (min-width: 0px)"
                       />
                     </Stack>
 
@@ -181,6 +215,7 @@ const AffPayoutsTabTable: FC = () => {
                         onChange={(value) => {
                           setDates((state: any) => [state?.[0], value]);
                         }}
+                        desktopModeMediaQuery="@media (min-width: 0px)"
                       />
                     </Stack>
                   </Stack>
@@ -188,6 +223,7 @@ const AffPayoutsTabTable: FC = () => {
               </Box>
             }
           />
+          {open && <DownloadModal open={open} close={toggle} />}
         </Stack>
       </Scrollbar>
     </Stack>

@@ -1,18 +1,18 @@
 "use client";
 
-import { useMemo, useState, type FC } from "react";
-import { Stack, Typography } from "@mui/material";
-import Toggle from "@app/_components/Toggle";
-import Scrollbar from "@/components/Scrollbar";
-import SortTable from "@/components/sortTable";
-import { useAppSelector } from "@/lib/hooks";
-import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
 import Empty from "@/components/Empty";
 import Loading from "@/components/Loading";
-import { useContentServiceContentCoinReportLangQuery } from "@minecraft/queries";
-import { useParams } from "next/navigation";
-import { useTranslate } from "@/locales";
+import Scrollbar from "@/components/Scrollbar";
+import SortTable from "@/components/sortTable";
 import { useIsMobile } from "@/hooks/use-responsive";
+import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
+import { useAppSelector } from "@/lib/hooks";
+import { useTranslate } from "@/locales";
+import Toggle from "@app/_components/Toggle";
+import { useContentServiceContentCoinReportLangQuery } from "@minecraft/queries";
+import { Stack, Typography } from "@mui/material";
+import { useParams } from "next/navigation";
+import { type FC, useMemo, useState } from "react";
 
 interface TableProps {}
 

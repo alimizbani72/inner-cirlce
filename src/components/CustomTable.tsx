@@ -1,6 +1,5 @@
 "use client";
 
-import { Fragment, useState } from "react";
 import { Paper, Stack, Typography } from "@mui/material";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -9,10 +8,11 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import type { ReactNode } from "react";
-import Scrollbar from "./Scrollbar";
-import { Icon } from "./icons";
+import { Fragment, useState } from "react";
 import Empty from "./Empty";
 import Loading from "./Loading";
+import Scrollbar from "./Scrollbar";
+import { Icon } from "./icons";
 
 const levelColorLine = {
   0: "#090A23",
@@ -27,6 +27,7 @@ type PropType = {
   width?: any;
   minWidthCell?: any;
   action?: ReactNode;
+  mobileAction?: ReactNode;
   emptyTitle?: string;
   emptySubtitle?: string;
   isPending?: boolean;
@@ -42,6 +43,7 @@ const CustomTable = ({
   emptyTitle,
   emptySubtitle,
   isPending,
+  mobileAction,
 }: PropType) => {
   const [expandedRows, setExpandedRows] = useState<{ [key: string]: boolean }>({});
 
@@ -108,11 +110,19 @@ const CustomTable = ({
       }}
     >
       {(title || action) && (
-        <Stack direction="row" width={"100%"} justifyContent={"space-between"} p={3} pb={2}>
-          {title && <Typography variant="p1-semi-bold">{title}</Typography>}
+        <>
+          <Stack direction="row" width={"100%"} alignItems={"center"} justifyContent={"space-between"} p={3} pb={2}>
+            {title && <Typography variant="p1-semi-bold">{title}</Typography>}
 
-          {action && action}
-        </Stack>
+            {action && action}
+          </Stack>
+          {!!mobileAction && (
+            <Stack px={3} pb={3} display={{ xs: "flex", md: "none" }}>
+              {" "}
+              {mobileAction}
+            </Stack>
+          )}
+        </>
       )}
 
       {data?.length ? (

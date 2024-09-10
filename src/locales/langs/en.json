@@ -367,8 +367,13 @@
     "emptySubtitle": "Track profits, losses and valuation all in one place.",
     "from": "FROM",
     "to": "TO",
-    "dateAndTime": "Date & Time"
+    "dateAndTime": "Date & Time",
+    "dwonloadStatement": "Download Statements",
+    "downloadBtn": "Download",
+    "cancelBtn": "Cancel",
+    "format": "Format"
   },
+  
   "affNetworkTabTable": {
     "username": "Username",
     "package": "Package",
