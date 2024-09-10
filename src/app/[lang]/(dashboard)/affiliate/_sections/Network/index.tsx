@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState, type FC } from "react";
-import { Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import Toggle from "@app/_components/Toggle";
 import AffNetworkTabTable from "./Table";
 import AffNetworkTabChart from "./Chart";
@@ -13,25 +13,26 @@ const AffNetworkTab: FC = () => {
   const buttons = useMemo(
     () => [
       { label: t("affNetworkTab.table"), value: 1 },
-      {
-        label: (
-          <Stack direction="row" gap={1} alignItems="center">
-            {t("affNetworkTab.chart")}
-            <Stack
-              alignItems={"center"}
-              justifyContent={"center"}
-              sx={{ borderRadius: 1.5, backgroundColor: "rgba(98, 101, 131, 0.12)" }}
-              px={1}
-              height={24}
-            >
-              <Typography variant="caption-semi-bold" color={"pink.light"}>
-                {t("affNetworkTab.comingSoon")}
-              </Typography>
-            </Stack>
-          </Stack>
-        ),
-        value: 2,
-      },
+      { label: t("affNetworkTab.chart"), value: 2 },
+      // {
+      //   label: (
+      //     <Stack direction="row" gap={1} alignItems="center">
+      //       {t("affNetworkTab.chart")}
+      //       <Stack
+      //         alignItems={"center"}
+      //         justifyContent={"center"}
+      //         sx={{ borderRadius: 1.5, backgroundColor: "rgba(98, 101, 131, 0.12)" }}
+      //         px={1}
+      //         height={24}
+      //       >
+      //         <Typography variant="caption-semi-bold" color={"pink.light"}>
+      //           {t("affNetworkTab.comingSoon")}
+      //         </Typography>
+      //       </Stack>
+      //     </Stack>
+      //   ),
+      //   value: 2,
+      // },
     ],
     [t]
   );

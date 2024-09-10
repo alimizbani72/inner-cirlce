@@ -22,3 +22,5 @@
     at p
 
 # add sponsor code in session storage
+
+# server error 500 handle 

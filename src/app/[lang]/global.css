@@ -2,6 +2,8 @@
 @import url("react-lazy-load-image-component/src/effects/blur.css");
 @import url("react-lazy-load-image-component/src/effects/opacity.css");
 @import url("@leenguyen/react-flip-clock-countdown/dist/index.css");
+@import url("@xyflow/react/dist/style.css");
+@import url("@xyflow/react/dist/base.css");
 * {
   -webkit-tap-highlight-color: transparent;
   margin: 0;

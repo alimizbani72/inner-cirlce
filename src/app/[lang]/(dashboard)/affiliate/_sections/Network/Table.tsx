@@ -45,7 +45,7 @@ const AffNetworkTabTable: FC = () => {
             maxWidth={{ md: "calc(100vw - 64px)", xs: "calc(100vw - 48px)" }}
             sx={{ "> div": { borderBottomRightRadius: 0, borderBottomLeftRadius: 0 } }}
           >
-            <CustomTable columns={columns} data={data?.data?.nested_users!} />
+            <CustomTable columns={columns} data={(data?.data?.nested_users?.[0] as any)?.children} />
           </Stack>
         </Scrollbar>
       ) : (
