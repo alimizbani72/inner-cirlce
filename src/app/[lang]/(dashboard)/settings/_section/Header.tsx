@@ -15,7 +15,7 @@ import SectionSelect from "./SectionSelector";
 
 const tabs = [
   { icon: "User", link: "account" },
-  { icon: "Hand", link: "become-a-partner" },
+  { icon: "Hand", link: "become-partner" },
   { icon: "Money", link: "billing" },
   { icon: "Star", link: "business-account" },
 ];
