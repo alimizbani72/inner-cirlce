@@ -5,7 +5,7 @@ import { footerMenu, footerSocials } from "@/configs/landingMenu";
 import { Divider, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 import LandingContainer from "./LandingContainer";
-import LanguageSelect from "@dashboard/profile/_section/LangSelector";
+import LanguageSelect from "@dashboard/_profile_draft/_section/LangSelector";
 
 interface FooterProps {}
 

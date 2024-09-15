@@ -50,7 +50,7 @@ export const mapPathToName = {
   "help-center/": "help-center",
   "secret-hunts/": "secret-hunts",
   "settings/account/": "settings",
-  "settings/become-a-partner/": "settings",
+  "settings/become-partner/": "settings",
   "settings/billing/": "settings",
   "settings/business-account/": "settings",
 };

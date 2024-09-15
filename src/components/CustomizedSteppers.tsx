@@ -67,7 +67,7 @@ function CustomStepIcon(props: StepIconProps) {
   );
 }
 
-const steps = ["Personal Information", "KYC Information", "Two-Factor Authentication"];
+const steps = ["KYC Information", "Two-Factor Authentication"];
 
 type CustomizedSteppersProps = StackProps & {
   activeStep: number;

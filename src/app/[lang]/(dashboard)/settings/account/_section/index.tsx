@@ -79,7 +79,7 @@ const SettingsSection = () => {
 
         <Stack width={1} mt={3} direction={{ md: "row" }} gap={2} justifyContent="center" alignItems="center">
           <Button
-            onClick={() => push("/settings/change-password")}
+            onClick={() => push("/settings/account/change-password")}
             startIcon={<Icon name="Arrow-Round" />}
             sx={{ whiteSpace: "pre" }}
             fullWidth
