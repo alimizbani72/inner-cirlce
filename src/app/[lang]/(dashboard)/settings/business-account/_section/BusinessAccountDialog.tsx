@@ -18,32 +18,41 @@ import type { FC } from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 
-interface BillingAddressDialogProps {
+interface BusinessAccountDialogProps {
   close: VoidFunction;
   open: boolean;
-  info: {
-    country: string;
-    city: string;
-    zip_code: string;
-    address: string;
-  };
 }
 
-const BillingAddressDialog: FC<BillingAddressDialogProps> = ({ open, close, info }) => {
+const BusinessAccountDialog: FC<BusinessAccountDialogProps> = ({ open, close }) => {
   const UpdateUserSchema = Yup.object().shape({
+    name: Yup.string().required("This field is required"),
+    company_name: Yup.string().required("This field is required"),
+    email: Yup.string().email().required("This field is required"),
     country: Yup.string().required("This field is required"),
     city: Yup.string().required("This field is required"),
     zip_code: Yup.string().required("This field is required"),
     address: Yup.string().required("This field is required"),
+    company_number: Yup.string().required("This field is required"),
+    vat_number: Yup.string().required("This field is required"),
   });
 
   const methods = useForm({
     resolver: yupResolver(UpdateUserSchema),
-    defaultValues: { country: info.country, city: info.city, zip_code: info.zip_code, address: info.address },
+    defaultValues: {
+      name: "",
+      company_name: "",
+      email: "",
+      country: "",
+      city: "",
+      zip_code: "",
+      address: "",
+      company_number: "",
+      vat_number: "",
+    },
     mode: "onSubmit",
   });
 
-  const { handleSubmit, formState } = methods;
+  const { handleSubmit } = methods;
 
   const onSubmit = handleSubmit(async (data) => {
     console.log("🚀 ~ data:", data);
@@ -55,7 +64,7 @@ const BillingAddressDialog: FC<BillingAddressDialogProps> = ({ open, close, info
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack direction={"row"} alignItems="center" spacing={1}>
             <Typography variant="h4-semi-bold" color={"common.white"}>
-              {info.address ? "Change billing address" : "Setup billing address"}
+              Business Account
             </Typography>
           </Stack>
 
@@ -67,29 +76,48 @@ const BillingAddressDialog: FC<BillingAddressDialogProps> = ({ open, close, info
       <Divider />
 
       <DialogContent dividers sx={{ p: 3 }}>
-        <Stack justifyContent="center" alignItems="center">
+        <Stack>
+          <Typography variant="p2-regular">
+            <Typography variant="p2-medium" textTransform="uppercase" color="warning.main">
+              NOTE:
+            </Typography>{" "}
+            Please provide correct data; it will be verified.
+          </Typography>
           <FormProvider methods={methods} sx={{ gap: 3, width: "100%", mt: 3 }}>
             <Stack direction={{ md: "row" }} gap={3}>
-              <RHFTextField name="country" label="Country" placeholder="Enter Country" />
-              <RHFTextField name="city" label="City" placeholder="Enter City" />
+              <RHFTextField name="name" label="Account holder name" placeholder="Enter account holder name" />
+              <RHFTextField name="company_name" label="Company name" placeholder="Enter company name" />
             </Stack>
-            <RHFTextField name="zip_code" label="zip code" placeholder="Enter zip code" />
+            <Stack direction={{ md: "row" }} gap={3}>
+              <RHFTextField name="email" label="Email" placeholder="Enter your email address" />
+              <RHFTextField name="country" label="Country" placeholder="Enter Country" />
+            </Stack>
+            <Stack direction={{ md: "row" }} gap={3}>
+              <RHFTextField name="city" label="City" placeholder="Enter City" />
+              <RHFTextField name="zip_code" label="zip code" placeholder="Enter zip code" />
+            </Stack>
             <RHFTextField name="address" label="address" placeholder="Enter address" />
+            <Stack direction={{ md: "row" }} gap={3}>
+              <RHFTextField
+                name="city"
+                label="Company registration number"
+                placeholder="Enter company registration number"
+              />
+              <RHFTextField name="vat_number" label="VAT number" placeholder="Enter VAT number" />
+            </Stack>
           </FormProvider>
         </Stack>
       </DialogContent>
       <DialogActions sx={{ p: 3 }}>
         <Stack flex={1} direction={"row"} gap={2} justifyContent="space-between">
           <Button color="info" onClick={close}>
-            Back
+            Cancel
           </Button>
-          <LoadingButton disabled={formState.isDirty} onClick={onSubmit}>
-            {info.address ? "Save Changes" : "Submit & Setup"}
-          </LoadingButton>
+          <LoadingButton onClick={onSubmit}>Submit & Active</LoadingButton>
         </Stack>
       </DialogActions>
     </CustomDialog>
   );
 };
 
-export default BillingAddressDialog;
+export default BusinessAccountDialog;
