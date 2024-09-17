@@ -16,6 +16,8 @@ export interface IUser {
   has_2fa: boolean;
   banned: boolean;
   suspended: boolean;
+  telegram_group_joined: boolean;
+  telegram_id: string;
 }
 
 interface UserSliceState {

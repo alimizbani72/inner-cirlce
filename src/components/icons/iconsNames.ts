@@ -4,6 +4,7 @@ const iconsNames = [
 	"PDF",
 	"CSV",
 	"Send",
+	"Link",
 	"Arrow-Sort",
 	"coin-usdc",
 	"Danger",

@@ -95,7 +95,8 @@
     "newPasswordPattern": "Must contain 8 characters, one uppercase, one lowercase, one number, and one special character",
     "requiredCurrentPassword": "Please enter your current password",
     "required": "This field is required",
-    "invalidWallet": "Invalid Polygon wallet address"
+    "invalidWallet": "Invalid Polygon wallet address",
+    "unexpectedError": "An error occurred. Please try again."
   },
   "sidebar": {
     "services": "Services",
@@ -107,7 +108,8 @@
     "education": "Education",
     "help-center": "Help Center",
     "secret-hunts": "Secret Hunts",
-    "settings": "Settings"
+    "settings": "Settings",
+    "telegram-channel": "Telegram Channel"
   },
   "wallet": {
     "requiredAddress": "USDC Polygon (Matic) Wallet address is required",
@@ -373,7 +375,7 @@
     "cancelBtn": "Cancel",
     "format": "Format"
   },
-  
+
   "affNetworkTabTable": {
     "username": "Username",
     "package": "Package",
@@ -425,5 +427,18 @@
   },
   "loading": {
     "onLoading": "On loading..."
+  },
+  "telegramChannel": {
+    "copy": "Copy",
+    "chainmindChannel": "  Chainmind Channel",
+    "unlockaccessMessage": "Unlock access to our premium Telegram channel, exclusively for Whale subscribers.",
+    "realTimeMarketInsights": "Real-time market insights",
+    "directCommunication": "Direct Communication",
+    "joinOurPublicChatRoom": "Join Our Public Chat Room",
+    "connectedwith": "Connected with:",
+    "exclusiveWhaleChannel": "Exclusive Whale Channel",
+    "premium": "premium",
+    "joinPremiumTelegramChannel": "Join to our premium Telegram channel, exclusivly for Whale users.",
+    "joinPremiumChatRoom": "Join Our Premium Chat Room"
   }
 }

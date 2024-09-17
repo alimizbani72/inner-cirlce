@@ -25,6 +25,7 @@ export const sidebarCommunityItems = [
     path: "affiliate/",
     icon: "Affiliate",
   },
+
   {
     path: "settings/account/",
     icon: "Settings",
@@ -44,13 +45,14 @@ export const sidebarCommunityItems = [
 export const mapPathToName = {
   "dashboard/": "dashboard",
   "coin-reports/": "coin-reports",
+  "telegram-channel/": "telegram-channel",
   "portfolio-strategies/": "portfolio-strategies",
   "affiliate/": "affiliate",
   "education/": "education",
   "help-center/": "help-center",
   "secret-hunts/": "secret-hunts",
   "settings/account/": "settings",
-  "settings/become-partner/": "settings",
+  "settings/become-a-partner/": "settings",
   "settings/billing/": "settings",
   "settings/business-account/": "settings",
 };

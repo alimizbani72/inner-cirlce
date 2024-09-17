@@ -13,6 +13,8 @@ import MobileSidebar from "@app/_components/sidebar/Mobile";
 import { pageHasBackButton, pageTitle } from "@/lib/features/pageTitle/pageSlice";
 import { useAppRouter } from "@/routes/hooks";
 import { useTranslate } from "@/locales";
+import { Button } from "@mui/material";
+import Link from "@/components/Link";
 
 const DashboardHeader: FC = () => {
   const { t } = useTranslate();
@@ -44,6 +46,11 @@ const DashboardHeader: FC = () => {
             <Icon name="Menu" />
           </IconButton>
           <LogoType />
+
+          <Link href="/telegram-channel" sx={{ position: "absolute", right: 24 }}>
+            <img src="/assets/svg/telegramlogo.svg" />
+          </Link>
+
           {/* <IconButton>
             <Icon name="Bell" />
           </IconButton> */}
@@ -96,7 +103,11 @@ const DashboardHeader: FC = () => {
 
         {isClient && <Typography variant={"p1-medium"}>{name}</Typography>}
       </Stack>
-
+      <Link href="/telegram-channel">
+        <Button color="info" sx={{ p: 1, pr: 3 }} startIcon={<img src="/assets/svg/telegramlogo.svg" />}>
+          Telegram Channel
+        </Button>
+      </Link>
       {/* <Button color="info" startIcon={<Icon name="Bell" />}>
         Notification
       </Button> */}
