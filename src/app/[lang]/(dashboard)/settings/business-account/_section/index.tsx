@@ -1,5 +1,9 @@
 "use client";
 import { Stack, Typography } from "@mui/material";
+import RequestCard from "./RequestCard";
+import BusinessInfo from "./BusinessInfo";
+
+const status = true;
 
 const BusinessAccountSection = () => {
   return (
@@ -10,7 +14,7 @@ const BusinessAccountSection = () => {
         </Typography>
       </Stack>
 
-      <Stack maxWidth={{ md: 360 }} gap={3} justifyContent={"center"} alignItems={"center"}></Stack>
+      {status ? <BusinessInfo /> : <RequestCard />}
     </Stack>
   );
 };
