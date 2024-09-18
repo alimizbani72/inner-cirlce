@@ -1,8 +1,9 @@
 
 const iconsNames = [
-    "download",
-	"PDF",
+    "PDF",
+	"download",
 	"CSV",
+	"Qr-code",
 	"Send",
 	"Link",
 	"Arrow-Sort",

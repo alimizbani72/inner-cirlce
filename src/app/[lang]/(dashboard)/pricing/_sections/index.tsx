@@ -34,7 +34,7 @@ const PricingSection: FC = () => {
   });
   const { mutateAsync, isPending } = useFinancialServiceFinancialPayCreateMutation();
   const handleOnContinue = () => {
-    push(`/checkout/qr-wallet?plan_type=${data?.data?.plan_type}&id=${data?.data?.id}`);
+    push(`/checkout?plan_type=${data?.data?.plan_type}&id=${data?.data?.id}`);
   };
   const handleCheckActivePayment = async (plan_type: string) => {
     try {
@@ -51,7 +51,7 @@ const PricingSection: FC = () => {
   const handlePay = async (plan_type: string, currency?: string) => {
     try {
       const response = await mutateAsync({ requestBody: { plan_type, symbol: currency || "USDC" } });
-      push(`/checkout/qr-wallet?plan_type=${plan_type}&id=${(response as any)?.data?.id}`);
+      push(`/checkout?plan_type=${plan_type}&id=${(response as any)?.data?.id}`);
       setOpen("");
     } catch (error) {
       enqueueSnackbar({ message: error?.body?.message, variant: "error" });

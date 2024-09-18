@@ -1,7 +1,7 @@
 "use client";
 
 import { Icon } from "@/components/icons";
-import { Divider, IconButton, Stack, Typography } from "@mui/material";
+import { Button, Divider, IconButton, Stack, Typography } from "@mui/material";
 import { useCallback, useMemo, type FC } from "react";
 import { Box } from "@mui/system";
 
@@ -19,7 +19,9 @@ import { useTranslate } from "@/locales";
 import { toPascalCase } from "@/utils/change-case";
 import StaticAlert from "@app/_components/StaticAlert";
 import { useGlobalCheckoutPageWarningServiceGetGlobalsCheckoutPageWarning } from "@cms/queries";
-import Image from "@/components/Image";
+import useToggleState from "@/hooks/use-toggle-state";
+import QrCodeModal from "./QrCodeModal";
+import CircularIcon from "./CircularIcon";
 
 type Props = { planType: string; id: string };
 
@@ -31,6 +33,7 @@ const QRCodeWithIcon = dynamic(() => import("@/components/QRCodeWithIcon"), {
 const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
   const { t } = useTranslate();
   const isMobile = useIsMobile();
+  const [open, toggle] = useToggleState();
   const { copy } = useCopyToClipboard();
   const { push, back } = useAppRouter();
   const { data: warningData } = useGlobalCheckoutPageWarningServiceGetGlobalsCheckoutPageWarning();
@@ -49,6 +52,9 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
       return 3000;
     },
   });
+  const isExpired = useMemo(() => {
+    return data?.data?.status === "expired";
+  }, [data?.data]);
 
   const getTimer = useCallback(() => {
     const time = new Date();
@@ -136,6 +142,15 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
               </Box>
             )}
           </Stack>
+          <Stack display={{ xs: "none", md: "flex" }} direction={"row"} spacing={3}>
+            <Typography variant="caption-semi-bold">{t("checkout.PoweredByChainMind")}</Typography>
+            <Divider
+              orientation="vertical"
+              flexItem
+              sx={{ border: "1.5px solid rgba(255, 255, 255, 0.08)", height: "16px" }}
+            />
+            <Typography variant="caption-medium">{t("checkout.legal")}</Typography>
+          </Stack>
         </Stack>
       </Stack>
       {/* Form */}
@@ -163,12 +178,30 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
           mt={3}
           flex={1}
         >
-          <QRCodeWithIcon
-            value={walletAddress}
-            iconSrc={`/assets/currencies/${(data?.data?.total_amount as any)?.currency_code}.svg`}
-            size={isMobile ? 200 : 140}
-          />
-
+          {!isMobile ? (
+            <QRCodeWithIcon
+              value={walletAddress}
+              iconSrc={`/assets/currencies/${(data?.data?.total_amount as any)?.currency_code}.svg`}
+              size={isMobile ? 200 : 140}
+            />
+          ) : (
+            <Button
+              startIcon={<Icon name="Qr-code" />}
+              sx={{ width: "100%", display: { xs: "flex", md: "none" } }}
+              color="info"
+              onClick={toggle}
+            >
+              {t("checkout.scanQrCode")}
+            </Button>
+          )}
+          {open && (
+            <QrCodeModal
+              open={open}
+              close={toggle}
+              currencyCode={(data?.data?.total_amount as any)?.currency_code}
+              walletAddress={walletAddress}
+            />
+          )}
           <Typography variant="h4-semi-bold" mt={2}>
             {(data?.data?.total_amount as any)?.currency_code} -{" "}
             <Typography variant="h4-semi-bold" color={"warning.main"}>
@@ -176,7 +209,7 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
             </Typography>
           </Typography>
 
-          <ContentStack direction="row" gap={2} mt={{ md: 4, xs: 3 }} mb={4} p={2} alignItems={"center"}>
+          <ContentStack direction="row" gap={2} mt={{ md: 4, xs: 3 }} mb={3} p={2} alignItems={"center"}>
             <Stack gap={2} direction={"row"} alignItems={"center"}>
               <Stack
                 width={48}
@@ -198,48 +231,108 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
             </IconButton>
           </ContentStack>
 
-          <Stack mt="auto" gap={2} width={"100%"}>
-            <Stack direction="row" justifyContent={"space-between"}>
-              <Typography variant="p2-medium" color="grey.light" textTransform={"uppercase"}>
-                {t("checkout.expiredAt")}
-              </Typography>
-              <Stack direction="row" gap={1}>
-                <Icon name="Time" />
-                <Typography variant="p1-medium">{`${minutes?.toString()?.padStart(2, "0")}:${seconds
-                  ?.toString()
-                  ?.padStart(2, "0")}`}</Typography>
-              </Stack>
-            </Stack>
-            <Divider flexItem sx={{ borderColor: "rgba(255, 255, 255, 0.08)" }} />
-            <Stack direction="row" justifyContent={"space-between"}>
-              <Typography variant="p2-medium" color="grey.light" textTransform={"uppercase"}>
-                {t("checkout.amountToSend")}
-              </Typography>
-              <Stack direction={"row"} gap={1}>
-                <Image
-                  width={24}
-                  height={24}
-                  src={`/assets/currencies/${(data?.data?.total_amount as any)?.currency_code}.svg`}
-                  alt={(data?.data?.total_amount as any)?.currency_code}
-                />
-                <Typography variant="p1-medium">{formatCurrencyWithoutDollar(data?.data?.total_amount!)}</Typography>
-              </Stack>
-            </Stack>
-            <Divider flexItem sx={{ borderColor: "rgba(255, 255, 255, 0.08)" }} />
-            <Stack direction="row" justifyContent={"space-between"}>
-              <Typography variant="p2-medium" color="grey.light" textTransform={"uppercase"}>
-                {t("checkout.paidAmount")}
-              </Typography>
-              <Stack direction={"row"} gap={1}>
-                <Image
-                  width={24}
-                  height={24}
-                  src={`/assets/currencies/${(data?.data?.total_amount as any)?.currency_code}.svg`}
-                  alt={(data?.data?.total_amount as any)?.currency_code}
-                />
-                <Typography variant="p1-medium">{formatCurrencyWithoutDollar(data?.data?.paid_amount!)}</Typography>
-              </Stack>
-            </Stack>
+          <Stack width={"100%"}>
+            <Box
+              sx={{
+                border: "1.5px solid",
+                borderRadius: 1.5,
+                borderColor: "dark.3",
+                bgcolor: "dark.2",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <Box
+                sx={{
+                  flex: 1,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                }}
+              >
+                {/* expiration */}
+                {isExpired ? (
+                  <>
+                    <Box
+                      sx={{
+                        width: 40,
+                        height: 40,
+                        border: "3px solid",
+                        borderRadius: "50%",
+                        backgroundColor: "dark.2",
+                        borderColor: (theme) => theme.palette.danger.main,
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        mb: 1,
+                      }}
+                    >
+                      <Box sx={{ path: { stroke: (theme) => theme.palette.danger.main } }}>
+                        <Icon name="Close" />
+                      </Box>
+                    </Box>
+
+                    <Typography color="danger.main" variant="p2-medium" textTransform={"uppercase"}>
+                      {t("checkout.expired")}
+                    </Typography>
+                  </>
+                ) : (
+                  <>
+                    <CircularIcon totalTime={300} remainingTime={150} />
+                    <Typography variant="caption-medium" color="grey.light" textTransform={"uppercase"} pt={1}>
+                      {t("checkout.expiredAt")}
+                    </Typography>
+                    <Stack direction="row" gap={1}>
+                      <Typography variant="p1-medium">{`${minutes?.toString()?.padStart(2, "0")}:${seconds
+                        ?.toString()
+                        ?.padStart(2, "0")}`}</Typography>
+                    </Stack>
+                  </>
+                )}
+              </Box>
+              <Divider orientation="vertical" flexItem />
+
+              {/* Amount Information Section */}
+              <Box sx={{ flex: 2 }}>
+                <Stack spacing={2} pt={2}>
+                  <Stack pl={2}>
+                    <Typography variant="caption-medium" color="grey.light" textTransform={"uppercase"}>
+                      {t("checkout.amountToSend")}
+                    </Typography>
+                    <Stack direction={"row"} gap={1}>
+                      <Typography variant="h4-semi-bold">{(data?.data?.total_amount as any)?.currency_code}</Typography>
+
+                      <Typography variant="h4-semi-bold">
+                        {formatCurrencyWithoutDollar(data?.data?.total_amount!)}
+                      </Typography>
+                    </Stack>
+                  </Stack>
+                  <Divider />
+
+                  <Stack pl={2}>
+                    <Typography variant="caption-medium" color="grey.light" textTransform={"uppercase"}>
+                      {t("checkout.paidAmount")}
+                    </Typography>
+                    <Stack direction={"row"} gap={1}>
+                      <Typography variant="h4-semi-bold">{(data?.data?.total_amount as any)?.currency_code}</Typography>
+
+                      <Typography variant="h4-semi-bold">
+                        {formatCurrencyWithoutDollar(data?.data?.paid_amount!)}
+                      </Typography>
+                    </Stack>
+                  </Stack>
+                  <Divider />
+
+                  <Stack pl={2}>
+                    <Typography variant="caption-medium" color="grey.light" textTransform={"uppercase"}>
+                      {t("checkout.subscribeTo")}
+                    </Typography>
+                    <Typography variant="h4-semi-bold">{planType}</Typography>
+                  </Stack>
+                </Stack>
+              </Box>
+            </Box>
           </Stack>
         </Stack>
       </Stack>

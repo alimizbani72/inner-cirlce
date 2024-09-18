@@ -1,13 +1,18 @@
 "use client";
 
 import { Icon } from "@/components/icons";
-import { Divider, Stack, Typography } from "@mui/material";
+import { Divider, IconButton, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 import PaymentReceipt from "./PaymentReceipt";
 import { Box } from "@mui/system";
 import PaymentDetailsForm from "./PaymentDetailsForm";
+import { useAppRouter } from "@/routes/hooks";
+import { useTranslate } from "@/locales";
+type Props = { planType: string; id: string };
 
-const CheckoutSection: FC = () => {
+const CheckoutSection: FC<Props> = ({ planType, id }) => {
+  const { back } = useAppRouter();
+  const { t } = useTranslate();
   return (
     <Stack direction={{ md: "row" }} flex={1} minHeight={"100%"} position={"relative"}>
       {/* Receipt */}
@@ -27,7 +32,7 @@ const CheckoutSection: FC = () => {
           textTransform={"uppercase"}
           color={"rgba(255, 255, 255, 0.08)"}
         >
-          • Shark • Shark •
+          • {planType} • {planType} •
         </Typography>
         <Box sx={{ position: "absolute", inset: 0, zIndex: 1 }}>
           <img src="/assets/svg/checkout-texture.svg" width="100%" height="100%" style={{ objectFit: "cover" }} />
@@ -42,12 +47,22 @@ const CheckoutSection: FC = () => {
           maxWidth={{ md: "486px" }}
           px={3}
         >
-          <Icon name="Arrow-left" />
-          <Typography variant="h4-semi-bold">Your Order</Typography>
+          <IconButton onClick={() => back()}>
+            <Icon name="Arrow-left" />
+          </IconButton>
+          <Typography variant="h4-semi-bold">{t("checkout.yourOrder")}</Typography>
         </Stack>
         <Divider flexItem sx={{ mt: 3, mb: { md: 4, xs: 3 }, borderColor: "rgba(255, 255, 255, 0.08)" }} />
-        <Stack position={"relative"} zIndex={2} width="100%" maxWidth={{ md: "486px" }} px={3} justifyContent="center">
-          <PaymentReceipt />
+        <Stack
+          position={"relative"}
+          zIndex={2}
+          width="100%"
+          maxWidth={{ md: "486px" }}
+          px={3}
+          justifyContent="center"
+          height={"100%"}
+        >
+          <PaymentReceipt planType={planType} />
         </Stack>
       </Stack>
       {/* Form */}
@@ -58,14 +73,15 @@ const CheckoutSection: FC = () => {
           direction="row"
           alignItems="center"
           width="100%"
-          maxWidth={{ md: "434px" }}
+          maxWidth="220px"
+          textAlign={"center"}
           px={3}
         >
-          <Typography variant="h4-semi-bold">Payment Details</Typography>
+          <Typography variant="h4-semi-bold">{t("checkout.paymentDetail")}</Typography>
         </Stack>
         <Divider flexItem sx={{ my: 3, borderColor: "rgba(255, 255, 255, 0.08)" }} />
-        <Stack position={"relative"} zIndex={2} width="100%" maxWidth={{ md: "434px" }} justifyContent="center" px={3}>
-          <PaymentDetailsForm />
+        <Stack position={"relative"} height={"100%"} zIndex={2} width="100%" px={{ xs: 3, md: 8.5 }}>
+          <PaymentDetailsForm planType={planType} id={id} />
         </Stack>
       </Stack>
     </Stack>
