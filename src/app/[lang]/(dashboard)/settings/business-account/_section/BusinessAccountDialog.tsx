@@ -55,6 +55,7 @@ const BusinessAccountDialog: FC<BusinessAccountDialogProps> = ({ open, close }) 
   const { handleSubmit } = methods;
 
   const onSubmit = handleSubmit(async (data) => {
+    // biome-ignore lint/suspicious/noConsoleLog: <explanation>
     console.log("🚀 ~ data:", data);
   });
 

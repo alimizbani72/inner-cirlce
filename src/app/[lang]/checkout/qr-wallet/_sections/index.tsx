@@ -2,14 +2,13 @@
 
 import { Icon } from "@/components/icons";
 import { Button, Divider, IconButton, Stack, Typography } from "@mui/material";
-import { useCallback, useMemo, type FC } from "react";
+import { useMemo, type FC } from "react";
 import { Box } from "@mui/system";
 
 import dynamic from "next/dynamic";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { useIsMobile } from "@/hooks/use-responsive";
 import ContentStack from "@app/_components/ContentStack";
-import { useTimer } from "react-timer-hook";
 import { formatCurrencyWithoutDollar, toNumber } from "@/utils/toNumber";
 import { plans } from "@/configs/plans";
 import RiveComp from "@/components/RiveComp";
@@ -21,7 +20,7 @@ import StaticAlert from "@app/_components/StaticAlert";
 import { useGlobalCheckoutPageWarningServiceGetGlobalsCheckoutPageWarning } from "@cms/queries";
 import useToggleState from "@/hooks/use-toggle-state";
 import QrCodeModal from "./QrCodeModal";
-import CircularIcon from "./CircularIcon";
+import PayoutTimer from "./PayoutTimer";
 
 type Props = { planType: string; id: string };
 
@@ -52,18 +51,6 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
       return 3000;
     },
   });
-
-  const getTimer = useCallback(() => {
-    const time = new Date();
-    time.setSeconds(time.getSeconds() + toNumber(data?.data?.duration));
-    return time;
-  }, [data?.data]);
-
-  const { minutes, seconds } = useTimer({ expiryTimestamp: getTimer() });
-
-  const isExpired = useMemo(() => {
-    return minutes === 0 && seconds === 0;
-  }, [minutes, seconds]);
 
   const walletAddress = useMemo(() => `${data?.data?.address}`, [data?.data]);
 
@@ -243,55 +230,10 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
                 alignItems: "center",
               }}
             >
-              <Box
-                sx={{
-                  flex: 1,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexDirection: "column",
-                }}
-              >
-                {/* expiration */}
-                {isExpired ? (
-                  <>
-                    <Box
-                      sx={{
-                        width: 40,
-                        height: 40,
-                        border: "3px solid",
-                        borderRadius: "50%",
-                        backgroundColor: "dark.2",
-                        borderColor: (theme) => theme.palette.danger.main,
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        mb: 1,
-                      }}
-                    >
-                      <Box sx={{ path: { stroke: (theme) => theme.palette.danger.main } }}>
-                        <Icon name="Close" />
-                      </Box>
-                    </Box>
+              {/* expiration */}
 
-                    <Typography color="danger.main" variant="p2-medium" textTransform={"uppercase"}>
-                      {t("checkout.expired")}
-                    </Typography>
-                  </>
-                ) : (
-                  <>
-                    <CircularIcon totalTime={300} remainingTime={150} />
-                    <Typography variant="caption-medium" color="grey.light" textTransform={"uppercase"} pt={1}>
-                      {t("checkout.expiredAt")}
-                    </Typography>
-                    <Stack direction="row" gap={1}>
-                      <Typography variant="p1-medium">{`${minutes?.toString()?.padStart(2, "0")}:${seconds
-                        ?.toString()
-                        ?.padStart(2, "0")}`}</Typography>
-                    </Stack>
-                  </>
-                )}
-              </Box>
+              <PayoutTimer duration={toNumber(data?.data?.duration)} />
+
               <Divider orientation="vertical" flexItem />
 
               {/* Amount Information Section */}

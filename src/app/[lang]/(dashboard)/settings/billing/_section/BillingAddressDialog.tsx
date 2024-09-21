@@ -46,6 +46,7 @@ const BillingAddressDialog: FC<BillingAddressDialogProps> = ({ open, close, info
   const { handleSubmit, formState } = methods;
 
   const onSubmit = handleSubmit(async (data) => {
+    // biome-ignore lint/suspicious/noConsoleLog: <explanation>
     console.log("🚀 ~ data:", data);
   });
 
