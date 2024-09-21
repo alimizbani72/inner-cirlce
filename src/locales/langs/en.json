@@ -191,7 +191,8 @@
     "cityPlaceHolder": "Enter your city",
     "addressPlaceHolder": "Enter your address",
     "scanQrCode": "Scan QR Code",
-    "expired": "Expired"
+    "expired": "Expired",
+    "paymentMethod": "Payment Method"
   },
   "userProfile": {
     "title": "User Profile",

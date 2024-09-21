@@ -1,11 +1,11 @@
 "use client";
 
-import { useMemo, type FC } from "react";
+import { type ChangeEvent, useMemo, useState, type FC } from "react";
 import { RHFCheckbox, RHFTextField } from "@/components/hook-form";
 import FormProvider from "@/components/hook-form/form-provider";
 import * as Yup from "yup";
 import { LoadingButton } from "@mui/lab";
-import { Box, Divider, Stack, Typography } from "@mui/material";
+import { Box, Divider, FormControlLabel, Radio, RadioGroup, Stack, Typography } from "@mui/material";
 import { Icon } from "@/components/icons";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -14,6 +14,7 @@ import { useAppSelector } from "@/lib/hooks";
 import { selectUser } from "@/lib/features/user/userSlice";
 import { useTranslate } from "@/locales";
 import Link from "@/components/Link";
+import Image from "@/components/Image";
 
 const defaultValues = {
   email: "",
@@ -25,15 +26,18 @@ const defaultValues = {
   address: "",
   terms: false,
 };
-
+const currencyList = ["USDC", "DAI", "USDT", "USDC.E"];
 interface PaymentDetailsFormProps {
   planType: string;
   id: string;
 }
 const PaymentDetailsForm: FC<PaymentDetailsFormProps> = ({ planType, id }) => {
-  const { push } = useAppRouter();
+  const { replace } = useAppRouter();
   const userInfo = useAppSelector(selectUser);
   const { t } = useTranslate();
+  // const { enqueueSnackbar } = useSnackbar();
+  // const { mutateAsync, isPending } = useFinancialServiceFinancialPayCreateMutation();
+  const [selectedCurrency, setSelectedCurrency] = useState(currencyList?.[0]);
 
   const UpdateUserSchema = useMemo(
     () =>
@@ -58,11 +62,24 @@ const PaymentDetailsForm: FC<PaymentDetailsFormProps> = ({ planType, id }) => {
 
   const { handleSubmit } = methods;
 
-  const onSubmit = handleSubmit((data) => {
-    // biome-ignore lint/suspicious/noConsoleLog: <explanation>
-    console.log("🚀 ~ data:", data);
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSelectedCurrency(event.target.value);
+  };
 
-    push(`/checkout/qr-wallet?plan_type=${planType}&id=${id}`);
+  const onSubmit = handleSubmit(async (_data) => {
+    replace(`/checkout/qr-wallet?plan_type=${planType}&id=${id}`);
+    // try {
+    //   const response = await mutateAsync({
+    //     requestBody: {
+    //       ...data,
+    //       plan_type: planType,
+    //       symbol: selectedCurrency || "USDC",
+    //     },
+    //   });
+    //   replace(`/checkout/qr-wallet?plan_type=${planType}&id=${(response as any)?.data?.id}`);
+    // } catch (error) {
+    //   enqueueSnackbar({ message: error?.body?.message || "An error occurred", variant: "error" });
+    // }
   });
 
   return (
@@ -101,12 +118,52 @@ const PaymentDetailsForm: FC<PaymentDetailsFormProps> = ({ planType, id }) => {
             <RHFTextField name="city" label={t("checkout.city")} placeholder={t("checkout.cityPlaceHolder")} />
           </Stack>
           <RHFTextField name="address" label={t("checkout.address")} placeholder={t("checkout.addressPlaceHolder")} />
+          <Stack spacing={1}>
+            <Typography>{t("checkout.paymentMethod")}</Typography>
+            <Stack alignItems={"center"} sx={{ textAlign: "center" }} gap={1}>
+              <RadioGroup
+                sx={{ flexDirection: "row", flexWrap: "wrap", gap: 3, width: "100%" }}
+                defaultValue={currencyList?.[0]}
+                value={selectedCurrency}
+                onChange={handleChange}
+              >
+                {currencyList.map((currency) => (
+                  <FormControlLabel
+                    key={currency}
+                    sx={{
+                      flex: "1 1 45%",
+                      mx: 0,
+                      justifyContent: "space-between",
+                      bgcolor: currency === selectedCurrency ? "dark.3" : "dark.2",
+                      borderRadius: "12px",
+                      border: "1.5px solid",
+                      borderColor: "dark.3",
+                      p: 2,
+                      height: "56px",
+                    }}
+                    labelPlacement="start"
+                    value={currency}
+                    control={<Radio disableTouchRipple disableRipple />}
+                    label={
+                      <Stack direction={"row"} gap={1}>
+                        <Image src={`/assets/currencies/${currency}.svg`} alt={currency} />
+                        <Typography variant="p2-medium">{currency}</Typography>
+                      </Stack>
+                    }
+                  />
+                ))}
+              </RadioGroup>
+            </Stack>
+          </Stack>
         </Stack>
+
+        {/* button section */}
         <Stack
           direction={{ xs: "column", md: "row" }}
-          alignItems={"center"}
+          alignItems={{ xs: "start", md: "center" }}
           spacing={3}
-          sx={{ mt: { xs: 4, md: "auto" } }}
+          pl={1}
+          sx={{ mt: 4 }}
         >
           <RHFCheckbox
             label={
@@ -125,16 +182,18 @@ const PaymentDetailsForm: FC<PaymentDetailsFormProps> = ({ planType, id }) => {
             {t("checkout.payNow")}
           </LoadingButton>
         </Stack>
-        <Stack display={{ xs: "flex", md: "none" }} direction={"row"} justifyContent={"center"} spacing={3} pt={4}>
-          <Typography variant="caption-semi-bold">{t("checkout.PoweredByChainMind")}</Typography>
-          <Divider
-            orientation="vertical"
-            flexItem
-            sx={{ border: "1.5px solid rgba(255, 255, 255, 0.08)", height: "16px" }}
-          />
-          <Typography variant="caption-medium">{t("checkout.legal")}</Typography>
-        </Stack>
       </FormProvider>
+
+      {/* PoweredByChainMind section only visible on mobile */}
+      <Stack display={{ xs: "flex", md: "none" }} direction={"row"} justifyContent={"center"} spacing={3} pt={4}>
+        <Typography variant="caption-semi-bold">{t("checkout.PoweredByChainMind")}</Typography>
+        <Divider
+          orientation="vertical"
+          flexItem
+          sx={{ border: "1.5px solid rgba(255, 255, 255, 0.08)", height: "16px" }}
+        />
+        <Typography variant="caption-medium">{t("checkout.legal")}</Typography>
+      </Stack>
     </Box>
   );
 };

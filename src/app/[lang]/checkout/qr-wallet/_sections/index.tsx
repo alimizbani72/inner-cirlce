@@ -52,9 +52,6 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
       return 3000;
     },
   });
-  const isExpired = useMemo(() => {
-    return data?.data?.status === "expired";
-  }, [data?.data]);
 
   const getTimer = useCallback(() => {
     const time = new Date();
@@ -63,6 +60,10 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
   }, [data?.data]);
 
   const { minutes, seconds } = useTimer({ expiryTimestamp: getTimer() });
+
+  const isExpired = useMemo(() => {
+    return minutes === 0 && seconds === 0;
+  }, [minutes, seconds]);
 
   const walletAddress = useMemo(() => `${data?.data?.address}`, [data?.data]);
 

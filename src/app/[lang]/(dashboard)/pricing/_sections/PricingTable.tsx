@@ -11,7 +11,7 @@ type Props = {
   rows: Record<string, Array<string | boolean>>;
   userType: string;
   handlePayment: (plan_type: string) => Promise<void>;
-  isPending: boolean;
+  isPending?: boolean;
 };
 
 const PricingTable: FC<Props> = ({ plansData, rows, userType, handlePayment, isPending }) => {

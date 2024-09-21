@@ -21,7 +21,7 @@ const PaymentNotice = () => {
   const { t } = useTranslate();
 
   const handleOnContinue = () => {
-    push(`/checkout/qr-wallet?plan_type=${data?.data?.plan_type}&id=${data?.data?.id}`);
+    push(`/checkout?plan_type=${data?.data?.plan_type}&id=${data?.data?.id}`);
   };
 
   return (

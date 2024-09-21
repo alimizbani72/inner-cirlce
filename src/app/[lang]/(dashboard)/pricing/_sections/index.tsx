@@ -9,10 +9,7 @@ import { useAppSelector } from "@/lib/hooks";
 import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
 import PricingTable from "./PricingTable";
 import { selectPlans, selectRows } from "@/lib/features/plans/plansSlice";
-import {
-  useFinancialServiceFinancialPayCreateMutation,
-  useFinancialServiceFinancialPaymentsActiveQuery,
-} from "@minecraft/queries";
+import { useFinancialServiceFinancialPaymentsActiveQuery } from "@minecraft/queries";
 import { getUserPlanType } from "@/consts";
 import { plans } from "@/configs/plans";
 import { useTranslate } from "@/locales";
@@ -20,44 +17,33 @@ import { useAppRouter } from "@/routes/hooks";
 import { enqueueSnackbar } from "notistack";
 import ActiveNotice from "./ActiveNotice";
 import { selectUser } from "@/lib/features/user/userSlice";
-import CurrencyDialog from "./CurrencyDialog";
 
 const PricingSection: FC = () => {
   const { t } = useTranslate();
   const [open, setOpen] = useState("");
-  const [openCurrencyDialog, setOpenCurrencyDialog] = useState("");
   const userInfo = useAppSelector(selectUser);
   const { push } = useAppRouter();
   const { refetch, data, isSuccess } = useFinancialServiceFinancialPaymentsActiveQuery(undefined, {
     enabled: false,
     retry: false,
   });
-  const { mutateAsync, isPending } = useFinancialServiceFinancialPayCreateMutation();
   const handleOnContinue = () => {
     push(`/checkout?plan_type=${data?.data?.plan_type}&id=${data?.data?.id}`);
   };
+
   const handleCheckActivePayment = async (plan_type: string) => {
     try {
       await refetch();
       if (isSuccess && data?.data?.id) {
         setOpen(plan_type);
       } else {
-        await setOpenCurrencyDialog(plan_type);
+        push(`/checkout?plan_type=${plan_type}`);
       }
     } catch (error) {
       enqueueSnackbar({ message: error?.body?.message, variant: "error" });
     }
   };
-  const handlePay = async (plan_type: string, currency?: string) => {
-    try {
-      const response = await mutateAsync({ requestBody: { plan_type, symbol: currency || "USDC" } });
-      push(`/checkout?plan_type=${plan_type}&id=${(response as any)?.data?.id}`);
-      setOpen("");
-    } catch (error) {
-      enqueueSnackbar({ message: error?.body?.message, variant: "error" });
-      setOpen("");
-    }
-  };
+
   const isCollapsed = useAppSelector(isSidebarCollapsed);
   const plansData = useAppSelector(selectPlans);
   const rows = useAppSelector(selectRows);
@@ -91,7 +77,6 @@ const PricingSection: FC = () => {
               {plansData.map((plan) => (
                 <PlanCard
                   handlePayment={handleCheckActivePayment}
-                  isPending={isPending}
                   key={plan.id}
                   {...plan}
                   disabled={
@@ -114,7 +99,6 @@ const PricingSection: FC = () => {
                   rows={rows}
                   userType={getUserPlanType(userInfo)}
                   handlePayment={handleCheckActivePayment}
-                  isPending={isPending}
                 />
               </Stack>
             </Scrollbar>
@@ -124,14 +108,8 @@ const PricingSection: FC = () => {
       <ActiveNotice
         open={open}
         onClose={() => setOpen("")}
-        handlePay={(plan_type) => setOpenCurrencyDialog(plan_type)}
+        handlePay={(plan_type) => push(`/checkout?plan_type=${plan_type}`)}
         handleOnContinue={handleOnContinue}
-      />
-      <CurrencyDialog
-        isPending={isPending}
-        open={openCurrencyDialog}
-        onClose={() => setOpenCurrencyDialog("")}
-        handlePay={handlePay}
       />
     </>
   );

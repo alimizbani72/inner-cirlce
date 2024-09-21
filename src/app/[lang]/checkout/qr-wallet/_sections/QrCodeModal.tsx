@@ -1,8 +1,12 @@
 import CustomDialog from "@/components/CustomDialog";
 import { Icon } from "@/components/icons";
-import QRCodeWithIcon from "@/components/QRCodeWithIcon";
 import { useTranslate } from "@/locales";
-import { DialogContent, DialogTitle, Divider, IconButton, Stack, Typography } from "@mui/material";
+import { Box, DialogContent, DialogTitle, Divider, IconButton, Stack, Typography } from "@mui/material";
+import dynamic from "next/dynamic";
+const QRCodeWithIcon = dynamic(() => import("@/components/QRCodeWithIcon"), {
+  ssr: false,
+  loading: () => <Box sx={{ width: 244, height: 244 }} />,
+});
 
 type FilterDialogProps = {
   open: boolean;

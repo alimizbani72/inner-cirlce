@@ -13,7 +13,7 @@ type Props = {
   buttonText: string;
   disabled?: boolean;
   handlePayment: (plan_type: string) => Promise<void>;
-  isPending: boolean;
+  isPending?: boolean;
 };
 
 const PlanCard: FC<Props> = ({
