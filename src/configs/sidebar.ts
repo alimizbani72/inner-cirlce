@@ -9,9 +9,10 @@ export const sidebarServicesItems = [
     icon: "Coin-reports",
   },
   {
-    path: "portfolio-strategies/",
+    path: undefined,
+    name: "portfolio",
     icon: "Portfolio",
-    mainSlug: "portfolio-strategies",
+    items: [{ path: "my-portfolios/" }, { path: "portfolio-strategies/" }],
   },
   {
     path: "education/",
@@ -47,6 +48,7 @@ export const mapPathToName = {
   "coin-reports/": "coin-reports",
   "telegram-channel/": "telegram-channel",
   "portfolio-strategies/": "portfolio-strategies",
+  "my-portfolios/": "my-portfolios",
   "affiliate/": "affiliate",
   "education/": "education",
   "help-center/": "help-center",

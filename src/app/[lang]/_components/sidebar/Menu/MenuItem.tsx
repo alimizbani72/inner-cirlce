@@ -11,6 +11,7 @@ import { useAppDispatch } from "@/lib/hooks";
 import { mobileMenuToggle } from "@/lib/features/menu/menuSlice";
 import type { iconsType } from "@/components/icons/iconsNames";
 import { Icon } from "@/components/icons";
+import { useTranslate } from "@/locales";
 
 type MenuItemProps = {
   icon: iconsType;
@@ -28,6 +29,7 @@ const activeStyle = {
 };
 
 const MenuItem: FC<MenuItemProps> = ({ icon, label, subItems, route, isCollapsed, mainSlug }) => {
+  const { t } = useTranslate();
   const pathname = usePathname();
   const { push } = useAppRouter();
   const dispatch = useAppDispatch();
@@ -119,7 +121,7 @@ const MenuItem: FC<MenuItemProps> = ({ icon, label, subItems, route, isCollapsed
                     textOverflow: "ellipsis",
                     overflow: "hidden",
                   }}
-                  primary={(mapPathToName as any)[subItem.path]}
+                  primary={t(`sidebar.${(mapPathToName as any)[subItem.path]}` as any)}
                 />
               </ListItemButton>
             ))}
