@@ -71,8 +71,8 @@ const CustomTable = ({
               {item.modify(row)}
             </TableCell>
           ))}
-          <TableCell align="right">
-            {row.children && row.children.length > 0 && (
+          {row.children && row.children.length > 0 && (
+            <TableCell align="right">
               <Stack
                 direction={"row"}
                 gap={0.5}
@@ -90,8 +90,8 @@ const CustomTable = ({
                 </Typography>
                 <Icon name={expandedRows[row.id] ? "Arrow-up" : "Arrow-down"} />
               </Stack>
-            )}
-          </TableCell>
+            </TableCell>
+          )}
         </TableRow>
         {expandedRows[row.id] && row.children && renderRows(row.children, level + 1)}
       </Fragment>
@@ -170,7 +170,7 @@ const CustomTable = ({
                       {head.title}
                     </TableCell>
                   ))}
-                  <TableCell />
+                  {data.some((item) => item.children && item.children.length > 0) && <TableCell />}
                 </TableRow>
               </TableHead>
               <TableBody>{renderRows(data)}</TableBody>

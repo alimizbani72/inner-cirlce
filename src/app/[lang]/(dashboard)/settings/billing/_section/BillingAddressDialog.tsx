@@ -2,7 +2,15 @@ import CustomDialog from "@/components/CustomDialog";
 import { RHFTextField } from "@/components/hook-form";
 import FormProvider from "@/components/hook-form/form-provider";
 import { Icon } from "@/components/icons";
+import { selectUser } from "@/lib/features/user/userSlice";
+import { useAppSelector } from "@/lib/hooks";
+import { useTranslate } from "@/locales";
+import { getQueryClient } from "@app/_providers/customQueryClient";
 import { yupResolver } from "@hookform/resolvers/yup";
+import {
+  useFinancialServiceBillingAddressCreateMutation,
+  useFinancialServiceBillingAddressQueryKey,
+} from "@minecraft/queries";
 import { LoadingButton } from "@mui/lab";
 import {
   Button,
@@ -14,6 +22,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import { enqueueSnackbar } from "notistack";
 import type { FC } from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
@@ -21,15 +30,21 @@ import * as Yup from "yup";
 interface BillingAddressDialogProps {
   close: VoidFunction;
   open: boolean;
-  info: {
+  info?: {
     country: string;
     city: string;
-    zip_code: string;
+    zipcode: string;
     address: string;
   };
 }
 
 const BillingAddressDialog: FC<BillingAddressDialogProps> = ({ open, close, info }) => {
+  const { t } = useTranslate();
+  const queryClient = getQueryClient();
+  const userInfo = useAppSelector(selectUser);
+
+  const { mutateAsync, isPending } = useFinancialServiceBillingAddressCreateMutation();
+
   const UpdateUserSchema = Yup.object().shape({
     country: Yup.string().required("This field is required"),
     city: Yup.string().required("This field is required"),
@@ -39,15 +54,32 @@ const BillingAddressDialog: FC<BillingAddressDialogProps> = ({ open, close, info
 
   const methods = useForm({
     resolver: yupResolver(UpdateUserSchema),
-    defaultValues: { country: info.country, city: info.city, zip_code: info.zip_code, address: info.address },
+    defaultValues: {
+      country: info?.country || "",
+      city: info?.city || "",
+      zip_code: info?.zipcode || "",
+      address: info?.address || "",
+    },
     mode: "onSubmit",
   });
 
-  const { handleSubmit, formState } = methods;
+  const { handleSubmit } = methods;
 
   const onSubmit = handleSubmit(async (data) => {
-    // biome-ignore lint/suspicious/noConsoleLog: <explanation>
-    console.log("🚀 ~ data:", data);
+    mutateAsync({
+      requestBody: {
+        ...data,
+        email_address: userInfo?.email,
+        first_name: userInfo?.full_name,
+        last_name: userInfo?.full_name,
+      },
+    })
+      .then(() => {
+        queryClient.invalidateQueries({ queryKey: [useFinancialServiceBillingAddressQueryKey] });
+        enqueueSnackbar("Your Billing address has been updated successfully.");
+        close();
+      })
+      .catch(() => enqueueSnackbar(t("formErrors.formError"), { variant: "error" }));
   });
 
   return (
@@ -56,7 +88,7 @@ const BillingAddressDialog: FC<BillingAddressDialogProps> = ({ open, close, info
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack direction={"row"} alignItems="center" spacing={1}>
             <Typography variant="h4-semi-bold" color={"common.white"}>
-              {info.address ? "Change billing address" : "Setup billing address"}
+              {info?.address ? "Change billing address" : "Setup billing address"}
             </Typography>
           </Stack>
 
@@ -84,8 +116,8 @@ const BillingAddressDialog: FC<BillingAddressDialogProps> = ({ open, close, info
           <Button color="info" onClick={close}>
             Back
           </Button>
-          <LoadingButton disabled={formState.isDirty} onClick={onSubmit}>
-            {info.address ? "Save Changes" : "Submit & Setup"}
+          <LoadingButton onClick={onSubmit} loading={isPending}>
+            {info?.address ? "Save Changes" : "Submit & Setup"}
           </LoadingButton>
         </Stack>
       </DialogActions>

@@ -23,63 +23,68 @@ const AccountInfo: FC<AccountInfoProps> = () => {
   return (
     <ContentStack gap={2}>
       <Stack direction={{ md: "row" }} gap={3}>
-        <Stack gap={0.5}>
+        <Stack flex={1} gap={0.5}>
           <Typography variant="p2-medium">{accountInfo.name || "---"}</Typography>
           <Typography variant="caption-medium" color="grey.light">
             Account holder name
           </Typography>
         </Stack>
         <Divider orientation={isMobile ? "horizontal" : "vertical"} flexItem />
-        <Stack gap={0.5}>
+        <Stack flex={1} gap={0.5}>
           <Typography variant="p2-medium">{accountInfo.company_name || "---"}</Typography>
           <Typography variant="caption-medium" color="grey.light">
             Company name
           </Typography>
         </Stack>
         <Divider orientation={isMobile ? "horizontal" : "vertical"} flexItem />
-        <Stack gap={0.5}>
+        <Stack flex={1} gap={0.5}>
           <Typography variant="p2-medium">{accountInfo.email || "---"}</Typography>
           <Typography variant="caption-medium" color="grey.light">
             Email
           </Typography>
         </Stack>
-
         <Divider orientation={isMobile ? "horizontal" : "vertical"} flexItem />
-        <Stack gap={0.5}>
+        <Stack flex={1} gap={0.5}>
           <Typography variant="p2-medium">{accountInfo.company_number || "---"}</Typography>
           <Typography variant="caption-medium" color="grey.light">
             Company registration number
+          </Typography>
+        </Stack>
+        <Divider orientation={isMobile ? "horizontal" : "vertical"} flexItem />
+        <Stack flex={1} gap={0.5}>
+          <Typography variant="p2-medium">{accountInfo.vat_number || "---"}</Typography>
+          <Typography variant="caption-medium" color="grey.light">
+            VAT number
           </Typography>
         </Stack>
       </Stack>
       <Divider flexItem />
 
       <Stack direction={{ md: "row" }} gap={3}>
-        <Stack gap={0.5}>
+        <Stack flex={1} gap={0.5}>
           <Typography variant="p2-medium">{accountInfo.country || "---"}</Typography>
           <Typography variant="caption-medium" color="grey.light">
             Country
           </Typography>
         </Stack>
         <Divider orientation={isMobile ? "horizontal" : "vertical"} flexItem />
-        <Stack direction="row" gap={3}>
-          <Stack mr={{ md: "unset", xs: "auto" }} gap={0.5}>
+        <Stack flex={2} direction="row" gap={3}>
+          <Stack flex={1} mr={{ md: "unset", xs: "auto" }} gap={0.5}>
             <Typography variant="p2-medium">{accountInfo.city || "---"}</Typography>
             <Typography variant="caption-medium" color="grey.light">
               City
             </Typography>
           </Stack>
           <Divider orientation="vertical" flexItem />
-          <Stack mr={{ md: "unset", xs: "auto" }} gap={0.5}>
+          <Stack flex={1} mr={{ md: "unset", xs: "auto" }} gap={0.5}>
             <Typography variant="p2-medium">{accountInfo.zip_code || "---"}</Typography>
             <Typography variant="caption-medium" color="grey.light">
               Zip Code
             </Typography>
           </Stack>
         </Stack>
-
         <Divider orientation={isMobile ? "horizontal" : "vertical"} flexItem />
-        <Stack gap={0.5}>
+        <Stack flex={2} gap={0.5}>
           <Typography variant="p2-medium">{accountInfo.address || "---"}</Typography>
           <Typography variant="caption-medium" color="grey.light">
             Address

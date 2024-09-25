@@ -34,6 +34,7 @@
     "@mui/system": "^5.15.15",
     "@mui/x-data-grid": "^7.3.2",
     "@mui/x-date-pickers": "^7.3.2",
+    "@react-pdf/renderer": "^3.4.5",
     "@reduxjs/toolkit": "^2.2.4",
     "@rive-app/react-canvas": "^4.9.4",
     "@tanstack/react-query": "^5.34.2",
