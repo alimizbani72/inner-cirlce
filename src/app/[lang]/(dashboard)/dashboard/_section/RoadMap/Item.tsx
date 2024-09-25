@@ -1,44 +1,94 @@
 import { Icon } from "@/components/icons";
 import { fDate } from "@/utils/format-time";
-import type { roadmaps } from "@cms/requests";
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, IconButton, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
+import RoadMapModal from "./RoadMapModal";
+import useToggleState from "@/hooks/use-toggle-state";
+import Status, { statusColors } from "./Status";
 
-interface RoadMapItemProps extends roadmaps {
-  isOdd?: boolean;
+interface RoadMapItemProps {
+  title: string;
+  date: string;
+  status: string;
+  modalContent: {
+    image: string;
+    descriptionText: string;
+    descriptionPoints: string[];
+    additionalDescription: string;
+  };
 }
 
-const RoadMapItem: FC<RoadMapItemProps> = ({ title, dateOnly, isOdd }) => {
-  return (
-    <Stack
-      gap={2}
-      p={2}
-      flex={1}
-      direction={"row"}
-      borderRadius={1.5}
-      bgcolor={"dark.3"}
-      alignItems={{ md: "center", xs: undefined }}
-    >
-      <Box
-        sx={{
-          width: "2px",
-          height: { md: "100%", xs: undefined },
-          bgcolor: "dark.1",
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <Box sx={{ width: "100%", height: "30%", bgcolor: isOdd ? "pink.dark" : "blue.dark" }} />
-      </Box>
-      <Stack gap={1} mr={{ md: undefined, xs: "auto" }}>
-        <Typography variant="p2-medium">{title}</Typography>
-        <Typography variant="caption-regular" color={"grey.light"}>
-          {fDate(dateOnly, "dd MMM, yyyy")}
-        </Typography>
-      </Stack>
+const RoadMapItem: FC<RoadMapItemProps> = ({ title, date, status, modalContent }) => {
+  const [open, toggleModal] = useToggleState();
 
-      <Icon name="Arrow-right" color={"grey.light"} />
-    </Stack>
+  const color = statusColors[status as keyof typeof statusColors];
+
+  return (
+    <>
+      <Stack
+        onClick={toggleModal}
+        gap={2}
+        p={2}
+        flex={1}
+        sx={{
+          cursor: "pointer",
+          ":hover": {
+            bgcolor: "dark.1",
+            "& > div:first-of-type": {
+              bgcolor: "dark.3",
+            },
+          },
+        }}
+        direction={"row"}
+        borderRadius={1.5}
+        bgcolor={open ? "dark.1" : "dark.3"}
+        alignItems={{ md: "center", xs: undefined }}
+      >
+        <Box
+          sx={{
+            width: "2px",
+            height: { md: "100%", xs: undefined },
+            bgcolor: open ? "dark.3" : "dark.1",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <Box sx={{ width: "100%", height: "30%", bgcolor: color }} />
+        </Box>
+        <Stack gap={1} mr={{ md: undefined, xs: "auto" }}>
+          <Typography variant="p2-medium">{title}</Typography>
+          <Stack direction={"row"} spacing={1} alignItems={"center"}>
+            <Typography variant="caption-regular" color={"grey.light"}>
+              {fDate(date, "dd MMM, yyyy")}
+            </Typography>
+            <Box
+              sx={{
+                width: "4px",
+                height: "4px",
+                borderRadius: "50%",
+                bgcolor: "#626583",
+              }}
+            />
+            <Status status={status}>{status}</Status>
+          </Stack>
+        </Stack>
+        <IconButton>
+          <Icon name="Arrow-right" color={"grey.light"} />
+        </IconButton>
+      </Stack>
+      {open && (
+        <RoadMapModal
+          title={title}
+          date={date}
+          status={status}
+          modalContent={modalContent}
+          open={open}
+          close={() => {
+            toggleModal();
+          }}
+        />
+      )}
+    </>
   );
 };
 

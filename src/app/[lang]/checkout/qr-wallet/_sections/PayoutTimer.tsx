@@ -37,7 +37,7 @@ const PayoutTimer: FC<PayoutTimerProps> = ({ duration }) => {
   }, [riveInput, countdownValue]);
 
   return (
-    <Stack justifyContent="center" alignItems="center" sx={{ flex: 1 }}>
+    <Stack justifyContent="center" alignItems="center" sx={{ flex: 1 }} spacing={1}>
       <RiveComp
         src="/assets/rive/hourglass.riv"
         height={48}
@@ -51,7 +51,7 @@ const PayoutTimer: FC<PayoutTimerProps> = ({ duration }) => {
         </Typography>
       ) : (
         <>
-          <Typography variant="caption-medium" color="grey.light" textTransform={"uppercase"} pt={1}>
+          <Typography variant="caption-medium" color="grey.light" textTransform={"uppercase"}>
             {t("checkout.expiredAt")}
           </Typography>
           <Stack direction="row" gap={1}>

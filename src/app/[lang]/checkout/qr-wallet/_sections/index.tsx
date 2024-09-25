@@ -173,12 +173,7 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
               size={isMobile ? 200 : 140}
             />
           ) : (
-            <Button
-              startIcon={<Icon name="Qr-code" />}
-              sx={{ width: "100%", display: { xs: "flex", md: "none" } }}
-              color="info"
-              onClick={toggle}
-            >
+            <Button startIcon={<Icon name="Qr-code" />} sx={{ width: "100%" }} color="info" onClick={toggle}>
               {t("checkout.scanQrCode")}
             </Button>
           )}
@@ -238,17 +233,16 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
 
               {/* Amount Information Section */}
               <Box sx={{ flex: 2 }}>
-                <Stack spacing={2} pt={2}>
+                <Stack spacing={2} py={2}>
                   <Stack pl={2}>
                     <Typography variant="caption-medium" color="grey.light" textTransform={"uppercase"}>
                       {t("checkout.amountToSend")}
                     </Typography>
                     <Stack direction={"row"} gap={1}>
-                      <Typography variant="h4-semi-bold">{(data?.data?.total_amount as any)?.currency_code}</Typography>
-
                       <Typography variant="h4-semi-bold">
                         {formatCurrencyWithoutDollar(data?.data?.total_amount!)}
                       </Typography>
+                      <Typography variant="h4-semi-bold">{(data?.data?.total_amount as any)?.currency_code}</Typography>
                     </Stack>
                   </Stack>
                   <Divider />
@@ -258,11 +252,10 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
                       {t("checkout.paidAmount")}
                     </Typography>
                     <Stack direction={"row"} gap={1}>
-                      <Typography variant="h4-semi-bold">{(data?.data?.total_amount as any)?.currency_code}</Typography>
-
                       <Typography variant="h4-semi-bold">
                         {formatCurrencyWithoutDollar(data?.data?.paid_amount!)}
                       </Typography>
+                      <Typography variant="h4-semi-bold">{(data?.data?.total_amount as any)?.currency_code}</Typography>
                     </Stack>
                   </Stack>
                   <Divider />
@@ -271,7 +264,9 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
                     <Typography variant="caption-medium" color="grey.light" textTransform={"uppercase"}>
                       {t("checkout.subscribeTo")}
                     </Typography>
-                    <Typography variant="h4-semi-bold">{planType}</Typography>
+                    <Typography variant="h4-semi-bold" textTransform={"capitalize"}>
+                      {planType}
+                    </Typography>
                   </Stack>
                 </Stack>
               </Box>

@@ -122,7 +122,7 @@ const PaymentDetailsForm: FC<PaymentDetailsFormProps> = ({ planType, id }) => {
             <Typography>{t("checkout.paymentMethod")}</Typography>
             <Stack alignItems={"center"} sx={{ textAlign: "center" }} gap={1}>
               <RadioGroup
-                sx={{ flexDirection: "row", flexWrap: "wrap", gap: 3, width: "100%" }}
+                sx={{ flexDirection: "row", flexWrap: "wrap", gap: 2, width: "100%" }}
                 defaultValue={currencyList?.[0]}
                 value={selectedCurrency}
                 onChange={handleChange}
