@@ -18,6 +18,18 @@ export interface IUser {
   suspended: boolean;
   telegram_group_joined: boolean;
   telegram_id: string;
+  business_info: {
+    address: string;
+    city: string;
+    company_name: string;
+    country: string;
+    email: string;
+    holder_name: string;
+    zip_code: string;
+    vat_number: string;
+    registration_number: string;
+    created_at: string;
+  } | null;
 }
 
 interface UserSliceState {

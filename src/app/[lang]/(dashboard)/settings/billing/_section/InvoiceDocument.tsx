@@ -116,7 +116,7 @@ const InvoiceDocument: FC<InvoiceDocumentProps> = ({ invoice, billingInfo }) => 
       {/* Invoice Title */}
       <View style={styles.headerSection}>
         <Text style={styles.title}>Invoice</Text>
-        <Image style={styles.logo} src="/logo/logo.png" />
+        <Image style={styles.logo} src="/logo/logo-type.png" />
       </View>
 
       <View style={styles.pageWrap}>

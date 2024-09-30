@@ -2,10 +2,12 @@
 import { Stack, Typography } from "@mui/material";
 import RequestCard from "./RequestCard";
 import BusinessInfo from "./BusinessInfo";
-
-const status = true;
+import { useAppSelector } from "@/lib/hooks";
+import { selectUser } from "@/lib/features/user/userSlice";
 
 const BusinessAccountSection = () => {
+  const userInfo = useAppSelector(selectUser);
+
   return (
     <Stack justifyContent="center" alignItems="center" p={{ md: 4, xs: 3 }} gap={{ md: 4, xs: 3 }}>
       <Stack width={1} justifyContent="center">
@@ -14,7 +16,7 @@ const BusinessAccountSection = () => {
         </Typography>
       </Stack>
 
-      {status ? <BusinessInfo /> : <RequestCard />}
+      {userInfo?.business_info ? <BusinessInfo /> : <RequestCard />}
     </Stack>
   );
 };
