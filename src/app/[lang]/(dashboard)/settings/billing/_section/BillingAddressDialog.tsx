@@ -11,6 +11,7 @@ import {
   useFinancialServiceBillingAddressCreateMutation,
   useFinancialServiceBillingAddressQueryKey,
 } from "@minecraft/queries";
+import type { BillingAddressResponse } from "@minecraft/requests";
 import { LoadingButton } from "@mui/lab";
 import {
   Button,
@@ -30,12 +31,7 @@ import * as Yup from "yup";
 interface BillingAddressDialogProps {
   close: VoidFunction;
   open: boolean;
-  info?: {
-    country: string;
-    city: string;
-    zipcode: string;
-    address: string;
-  };
+  info?: BillingAddressResponse;
 }
 
 const BillingAddressDialog: FC<BillingAddressDialogProps> = ({ open, close, info }) => {
@@ -50,6 +46,8 @@ const BillingAddressDialog: FC<BillingAddressDialogProps> = ({ open, close, info
     city: Yup.string().required("This field is required"),
     zip_code: Yup.string().required("This field is required"),
     address: Yup.string().required("This field is required"),
+    first_name: Yup.string().required("This field is required"),
+    last_name: Yup.string().required("This field is required"),
   });
 
   const methods = useForm({
@@ -59,6 +57,8 @@ const BillingAddressDialog: FC<BillingAddressDialogProps> = ({ open, close, info
       city: info?.city || "",
       zip_code: info?.zipcode || "",
       address: info?.address || "",
+      first_name: info?.first_name || "",
+      last_name: info?.last_name || "",
     },
     mode: "onSubmit",
   });
@@ -66,14 +66,7 @@ const BillingAddressDialog: FC<BillingAddressDialogProps> = ({ open, close, info
   const { handleSubmit } = methods;
 
   const onSubmit = handleSubmit(async (data) => {
-    mutateAsync({
-      requestBody: {
-        ...data,
-        email_address: userInfo?.email,
-        first_name: userInfo?.full_name,
-        last_name: userInfo?.full_name,
-      },
-    })
+    mutateAsync({ requestBody: { ...data, email_address: info?.email_address || userInfo?.email } as any })
       .then(() => {
         queryClient.invalidateQueries({ queryKey: [useFinancialServiceBillingAddressQueryKey] });
         enqueueSnackbar("Your Billing address has been updated successfully.");
@@ -102,6 +95,10 @@ const BillingAddressDialog: FC<BillingAddressDialogProps> = ({ open, close, info
       <DialogContent dividers sx={{ p: 3 }}>
         <Stack justifyContent="center" alignItems="center">
           <FormProvider methods={methods} sx={{ gap: 3, width: "100%", mt: 3 }}>
+            <Stack direction={{ md: "row" }} gap={3}>
+              <RHFTextField name="first_name" label="First name" placeholder="Enter your first name" />
+              <RHFTextField name="last_name" label="Last name" placeholder="Enter your last name" />
+            </Stack>
             <Stack direction={{ md: "row" }} gap={3}>
               <RHFTextField name="country" label="Country" placeholder="Enter Country" />
               <RHFTextField name="city" label="City" placeholder="Enter City" />

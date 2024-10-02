@@ -28,7 +28,7 @@ const PricingSection: FC = () => {
     retry: false,
   });
   const handleOnContinue = () => {
-    push(`/checkout?plan_type=${data?.data?.plan_type}&id=${data?.data?.id}`);
+    push(`/checkout/qr-wallet?plan_type=${data?.data?.plan_type}&id=${data?.data?.id}`);
   };
 
   const handleCheckActivePayment = async (plan_type: string) => {

@@ -15,28 +15,28 @@ import { selectUser } from "@/lib/features/user/userSlice";
 import { useTranslate } from "@/locales";
 import Link from "@/components/Link";
 import Image from "@/components/Image";
+import {
+  useFinancialServiceBillingAddressCreateMutation,
+  useFinancialServiceBillingAddressQuery,
+  useFinancialServiceFinancialPayCreateMutation,
+} from "@minecraft/queries";
+import { enqueueSnackbar } from "notistack";
+import { usePathname } from "next/navigation";
 
-const defaultValues = {
-  email: "",
-  first_name: "",
-  last_name: "",
-  zip_code: "",
-  country: "",
-  city: "",
-  address: "",
-  terms: false,
-};
 const currencyList = ["USDC", "DAI", "USDT", "USDC.E"];
 interface PaymentDetailsFormProps {
   planType: string;
-  id: string;
 }
-const PaymentDetailsForm: FC<PaymentDetailsFormProps> = ({ planType, id }) => {
-  const { replace } = useAppRouter();
+const PaymentDetailsForm: FC<PaymentDetailsFormProps> = ({ planType }) => {
+  const { push, replace } = useAppRouter();
+  const pathname = usePathname();
   const userInfo = useAppSelector(selectUser);
   const { t } = useTranslate();
-  // const { enqueueSnackbar } = useSnackbar();
-  // const { mutateAsync, isPending } = useFinancialServiceFinancialPayCreateMutation();
+  const { data: billingData } = useFinancialServiceBillingAddressQuery();
+
+  const { mutateAsync: billingAddress, isPending: isBillingPending } =
+    useFinancialServiceBillingAddressCreateMutation();
+  const { mutateAsync: createPay, isPending: isPayPending } = useFinancialServiceFinancialPayCreateMutation();
   const [selectedCurrency, setSelectedCurrency] = useState(currencyList?.[0]);
 
   const UpdateUserSchema = useMemo(
@@ -56,30 +56,38 @@ const PaymentDetailsForm: FC<PaymentDetailsFormProps> = ({ planType, id }) => {
 
   const methods = useForm({
     resolver: yupResolver(UpdateUserSchema),
-    defaultValues,
+    defaultValues: {
+      email: billingData?.data?.email_address || userInfo?.email || "",
+      first_name: billingData?.data?.first_name || "",
+      last_name: billingData?.data?.last_name || "",
+      zip_code: billingData?.data?.zipcode || "",
+      country: billingData?.data?.country || "",
+      city: billingData?.data?.city || "",
+      address: billingData?.data?.address || "",
+      terms: false,
+    },
     mode: "onSubmit",
   });
 
-  const { handleSubmit } = methods;
-
+  const { handleSubmit, watch } = methods;
+  const { terms } = watch();
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSelectedCurrency(event.target.value);
+    replace(`${pathname}/?plan_type=${planType}&symbol=${event.target.value}`);
   };
 
-  const onSubmit = handleSubmit(async (_data) => {
-    replace(`/checkout/qr-wallet?plan_type=${planType}&id=${id}`);
-    // try {
-    //   const response = await mutateAsync({
-    //     requestBody: {
-    //       ...data,
-    //       plan_type: planType,
-    //       symbol: selectedCurrency || "USDC",
-    //     },
-    //   });
-    //   replace(`/checkout/qr-wallet?plan_type=${planType}&id=${(response as any)?.data?.id}`);
-    // } catch (error) {
-    //   enqueueSnackbar({ message: error?.body?.message || "An error occurred", variant: "error" });
-    // }
+  const onSubmit = handleSubmit(async (data) => {
+    billingAddress({ requestBody: { ...data, email_address: userInfo?.email } })
+      .then(() => {
+        createPay({ requestBody: { plan_type: planType, symbol: selectedCurrency || "USDC" } })
+          .then((response: any) => {
+            push(`/checkout/qr-wallet?plan_type=${planType}&id=${response?.data?.id}`);
+          })
+          .catch((error) => {
+            enqueueSnackbar({ message: error?.body?.message || "An error occurred", variant: "error" });
+          });
+      })
+      .catch(() => enqueueSnackbar(t("formErrors.formError"), { variant: "error" }));
   });
 
   return (
@@ -178,7 +186,14 @@ const PaymentDetailsForm: FC<PaymentDetailsFormProps> = ({ planType, id }) => {
             }
             name="terms"
           />
-          <LoadingButton color="primary" size="large" type="submit" sx={{ width: "100%" }}>
+          <LoadingButton
+            disabled={!terms}
+            color="primary"
+            size="large"
+            type="submit"
+            sx={{ width: "100%" }}
+            loading={isBillingPending || isPayPending}
+          >
             {t("checkout.payNow")}
           </LoadingButton>
         </Stack>

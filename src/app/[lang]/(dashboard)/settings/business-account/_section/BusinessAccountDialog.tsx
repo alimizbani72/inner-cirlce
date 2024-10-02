@@ -2,11 +2,11 @@ import CustomDialog from "@/components/CustomDialog";
 import { RHFTextField } from "@/components/hook-form";
 import FormProvider from "@/components/hook-form/form-provider";
 import { Icon } from "@/components/icons";
-import { modifyUser } from "@/lib/features/user/userSlice";
-import { useAppDispatch } from "@/lib/hooks";
+import { modifyUser, selectUser } from "@/lib/features/user/userSlice";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { useTranslate } from "@/locales";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useUserServiceBusinessInfoCreateMutation } from "@minecraft/queries";
+import { useUserServiceBusinessInfo } from "@minecraft/queries";
 import { LoadingButton } from "@mui/lab";
 import {
   Button,
@@ -33,8 +33,9 @@ const BusinessAccountDialog: FC<BusinessAccountDialogProps> = ({ open, close }) 
   const { t } = useTranslate();
   const { update } = useSession();
   const dispatch = useAppDispatch();
+  const userInfo = useAppSelector(selectUser);
 
-  const { mutateAsync, isPending } = useUserServiceBusinessInfoCreateMutation();
+  const { mutateAsync, isPending } = useUserServiceBusinessInfo();
   const UpdateUserSchema = Yup.object().shape({
     holder_name: Yup.string().required("This field is required"),
     company_name: Yup.string().required("This field is required"),
@@ -50,15 +51,15 @@ const BusinessAccountDialog: FC<BusinessAccountDialogProps> = ({ open, close }) 
   const methods = useForm({
     resolver: yupResolver(UpdateUserSchema),
     defaultValues: {
-      address: "",
-      city: "",
-      company_name: "",
-      country: "",
-      email: "",
-      holder_name: "",
-      zip_code: "",
-      vat_number: "",
-      registration_number: "",
+      address: userInfo?.business_info?.address || "",
+      city: userInfo?.business_info?.city || "",
+      company_name: userInfo?.business_info?.company_name || "",
+      country: userInfo?.business_info?.country || "",
+      email: userInfo?.business_info?.email || "",
+      holder_name: userInfo?.business_info?.holder_name || "",
+      zip_code: userInfo?.business_info?.zip_code || "",
+      vat_number: userInfo?.business_info?.vat_number || "",
+      registration_number: userInfo?.business_info?.registration_number || "",
     },
     mode: "onSubmit",
   });
@@ -68,8 +69,8 @@ const BusinessAccountDialog: FC<BusinessAccountDialogProps> = ({ open, close }) 
   const onSubmit = handleSubmit(async (data) => {
     mutateAsync({ requestBody: data })
       .then(() => {
-        dispatch(modifyUser({ business_info: { ...data, created_at: "" } }));
-        update({ user: { business_info: { ...data, created_at: "" } } });
+        dispatch(modifyUser({ business_info: { ...data, created_at: userInfo?.business_info?.created_at || "" } }));
+        update({ user: { business_info: { ...data, created_at: userInfo?.business_info?.created_at || "" } } });
         enqueueSnackbar("Your business account request has been submitted successfully.");
         close();
       })
@@ -132,7 +133,7 @@ const BusinessAccountDialog: FC<BusinessAccountDialogProps> = ({ open, close }) 
             Cancel
           </Button>
           <LoadingButton onClick={onSubmit} loading={isPending}>
-            Submit & Active
+            {userInfo?.business_info?.address ? "Save Changes" : "Submit & Active"}
           </LoadingButton>
         </Stack>
       </DialogActions>

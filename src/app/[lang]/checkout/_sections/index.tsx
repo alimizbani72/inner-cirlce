@@ -8,11 +8,12 @@ import { Box } from "@mui/system";
 import PaymentDetailsForm from "./PaymentDetailsForm";
 import { useAppRouter } from "@/routes/hooks";
 import { useTranslate } from "@/locales";
-type Props = { planType: string; id: string };
+type Props = { planType: string };
 
-const CheckoutSection: FC<Props> = ({ planType, id }) => {
-  const { back } = useAppRouter();
+const CheckoutSection: FC<Props> = ({ planType }) => {
   const { t } = useTranslate();
+  const { back } = useAppRouter();
+
   return (
     <Stack direction={{ md: "row" }} flex={1} minHeight={"100%"} position={"relative"}>
       {/* Receipt */}
@@ -81,7 +82,7 @@ const CheckoutSection: FC<Props> = ({ planType, id }) => {
         </Stack>
         <Divider flexItem sx={{ my: 3, borderColor: "rgba(255, 255, 255, 0.08)" }} />
         <Stack position={"relative"} height={"100%"} zIndex={2} width="100%" px={{ xs: 3, md: 8.5 }}>
-          <PaymentDetailsForm planType={planType} id={id} />
+          <PaymentDetailsForm planType={planType} />
         </Stack>
       </Stack>
     </Stack>
