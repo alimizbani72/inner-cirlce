@@ -31,6 +31,7 @@ export function RHFSelect({
   maxHeight = 220,
   helperText,
   children,
+  label,
   PaperPropsSx,
   ...other
 }: RHFSelectProps) {
@@ -41,30 +42,55 @@ export function RHFSelect({
       name={name}
       control={control}
       render={({ field, fieldState: { error } }) => (
-        <TextField
-          {...field}
-          select
-          fullWidth
-          SelectProps={{
-            native,
-            MenuProps: {
-              PaperProps: {
-                sx: {
-                  ...(!native && {
-                    maxHeight: typeof maxHeight === "number" ? maxHeight : "unset",
-                  }),
-                  ...PaperPropsSx,
+        <>
+          {label && (
+            <InputLabel
+              sx={{
+                typography: "caption-semi-bold",
+                textTransform: "uppercase",
+                color: "white",
+              }}
+              shrink
+              htmlFor={name}
+            >
+              {label}
+            </InputLabel>
+          )}
+          <TextField
+            {...field}
+            select
+            fullWidth
+            SelectProps={{
+              native,
+              MenuProps: {
+                disableScrollLock: true,
+                PaperProps: {
+                  sx: {
+                    ...(!native && {
+                      maxHeight: typeof maxHeight === "number" ? maxHeight : "unset",
+                      bgcolor: "dark.2",
+                      backgroundImage: "none",
+
+                      boxShadow: "none",
+                      color: "white",
+                    }),
+                    ...PaperPropsSx,
+                  },
                 },
               },
-            },
-            sx: { textTransform: "capitalize" },
-          }}
-          error={!!error}
-          helperText={error ? error?.message : helperText}
-          {...other}
-        >
-          {children}
-        </TextField>
+
+              sx: {
+                textTransform: "capitalize",
+                "& .MuiSvgIcon-root": { color: "grey.light" },
+              },
+            }}
+            error={!!error}
+            helperText={error ? error?.message : helperText}
+            {...other}
+          >
+            {children}
+          </TextField>
+        </>
       )}
     />
   );

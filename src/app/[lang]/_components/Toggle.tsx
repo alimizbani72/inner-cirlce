@@ -8,9 +8,11 @@ interface ToggleProps {
   value?: any;
   buttons: { label: React.ReactNode; value: any }[];
   setValue: (value: any) => void;
+  width?: string;
+  size?: "small" | "large" | "medium";
 }
 
-const Toggle: FC<ToggleProps> = ({ value, buttons, setValue }) => {
+const Toggle: FC<ToggleProps> = ({ value, buttons, setValue, width, size }) => {
   const handleChange = (_event: any, newValue: any) => {
     if (newValue) {
       setValue(newValue);
@@ -18,9 +20,9 @@ const Toggle: FC<ToggleProps> = ({ value, buttons, setValue }) => {
   };
 
   return (
-    <ToggleButtonGroup value={value} onChange={handleChange}>
+    <ToggleButtonGroup value={value} sx={{ width: width }} size={size} onChange={handleChange}>
       {buttons.map((button) => (
-        <ToggleButton sx={{ whiteSpace: "nowrap" }} key={button.value} value={button.value}>
+        <ToggleButton sx={{ whiteSpace: "nowrap", width: width }} key={button.value} value={button.value}>
           {button.label}
         </ToggleButton>
       ))}

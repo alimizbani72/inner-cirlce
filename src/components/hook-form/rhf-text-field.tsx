@@ -1,4 +1,4 @@
-import { InputLabel, Stack } from "@mui/material";
+import { InputLabel, Stack, Typography } from "@mui/material";
 import type { TextFieldProps } from "@mui/material/TextField";
 import TextField from "@mui/material/TextField";
 import { forwardRef } from "react";
@@ -34,9 +34,10 @@ export const NumericFormatCustom = forwardRef<NumericFormatProps, CustomProps>(
 type Props = TextFieldProps & {
   name: string;
   isMoney?: boolean;
+  topHelperText?: string;
 };
 
-export default function RHFTextField({ name, id, label, helperText, type, isMoney, ...other }: Props) {
+export default function RHFTextField({ name, id, label, helperText, topHelperText, type, isMoney, ...other }: Props) {
   const { control } = useFormContext();
 
   return (
@@ -53,6 +54,11 @@ export default function RHFTextField({ name, id, label, helperText, type, isMone
             >
               {label}
             </InputLabel>
+          )}
+          {!!topHelperText && (
+            <Typography variant="caption-medium" color={"grey.light"} pb={1}>
+              {topHelperText}
+            </Typography>
           )}
           <TextField
             {...field}

@@ -19,6 +19,7 @@
     "enable": "Enable",
     "verify": "Verify"
   },
+
   "createAccount": {
     "title": "Create your account",
     "subtitle": "See your growth and get consulting support!",
@@ -319,6 +320,67 @@
   "portfolioStrategiesInnerSection": {
     "upgradeMessage": "You should upgrade your package to see this information"
   },
+  "myPortfolio": {
+    "getStartedFirstPortfolio": "Let’s get started with your first portfolio!",
+    "trackProfitsAndlossesMessage": "Track profits, losses and valuation all in one.",
+    "addPortfolio": "Add Portfolio",
+    "cancel": "Cancel",
+    "create": "Create",
+    "createPortfolio": "Create Portfolio",
+    "avatar": "Avatar",
+    "change": "Change",
+    "changeAvatar": "Change Avatar",
+    "portfolionamePlaceholder": "Enter Portfolio name",
+    "portfolioname": "Portfolio name",
+    "feelingAboutPortfolioText": "How are you feeling about this portfolio?",
+    "saveChanges": "Save Changes"
+  },
+  "portfolioTransaction" : {
+"dateAndTime": "Date & Time",
+"date": "Date",
+"time": "Time",
+"cancel" : "Cancel",
+"changeDateTime": "Change Date & Time",
+"addNote": "Add Note",
+"note": "Note",
+"quantityIsRequired": "Quantity is Required",
+"feeIsRequired" : "fee is Required",
+"addTransaction": "Add Transaction",
+"quantity": "Quantity",
+"coins": "coins",
+"enterQuentity": "Enter Quentity",
+"topQuantityHelpText": "Help text is here about the input.",
+"topPricePerCoinHelpText": "Help text is here about the input.",
+"pricePerCoin": "Price per coin",
+"fee" : "Fee",
+"topFeeHelpText" : "The transaction fee entered will be included as part of the Profit/Loss calculation.",
+"enterTheFee": "Enter The Fee",
+"notes" : "Notes",
+"totalSpent": "Total Spent" ,
+"totalReceived": "Total Received",
+"buy": "Buy",
+"sell": "Sell"
+
+  },
+  "portfolioSummary" : {
+"editPOrtfolio": "Edit Portfolio",
+"deletePOrtfolio": "Delete Portfolio",
+"createPorfolio": "Create Porfolio",
+"addTransaction": "Add Transaction"
+  },
+  "assetsTable": {
+    "total": "Total",
+    "assetsTotalValue": "Assets Total Value",
+    "transactions": "Transactions",
+    "edit": "Edit",
+    "delete": "Delete",
+    "quantity": "Quantity",
+    "pricePerCoin": "PRICE PER COIN",
+    "fee": "FEE",
+    "dateAndTime": "DATE & TIME",
+    "note": "Note"
+  }
+  ,
   "videoList": {
     "educationVideos": "Education Videos",
     "searchPlaceholder": "Search"
