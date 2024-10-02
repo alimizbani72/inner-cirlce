@@ -1,6 +1,10 @@
 import type { CSSProperties } from "react";
 import { toNumber } from "@/utils/toNumber";
-import { primaryFont } from "./localFonts";
+import { setFont } from "./localFonts";
+
+export const defaultFont = "Montserrat";
+
+export const primaryFont = setFont(defaultFont);
 
 declare module "@mui/material/styles" {
   interface TypographyVariants {
@@ -188,7 +192,7 @@ const fontVariant = (name: string, fontSize: number, lineHeight: number): Record
   }, {});
 
 const typography = {
-  fontFamily: primaryFont.style.fontFamily,
+  fontFamily: primaryFont,
   fontWeightRegular: 400,
   fontWeightMedium: 500,
   fontWeightSemiBold: 600,

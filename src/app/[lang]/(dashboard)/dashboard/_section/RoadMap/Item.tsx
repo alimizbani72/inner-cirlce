@@ -5,20 +5,17 @@ import type { FC } from "react";
 import RoadMapModal from "./RoadMapModal";
 import useToggleState from "@/hooks/use-toggle-state";
 import Status, { statusColors } from "./Status";
+import { convertRichTextToHTML } from "@/utils/convertRichTextToHTML";
 
 interface RoadMapItemProps {
   title: string;
   date: string;
   status: string;
-  modalContent: {
-    image: string;
-    descriptionText: string;
-    descriptionPoints: string[];
-    additionalDescription: string;
-  };
+  image: string;
+  descriptionText: any;
 }
 
-const RoadMapItem: FC<RoadMapItemProps> = ({ title, date, status, modalContent }) => {
+const RoadMapItem: FC<RoadMapItemProps> = ({ title, date, status, image, descriptionText }) => {
   const [open, toggleModal] = useToggleState();
 
   const color = statusColors[status as keyof typeof statusColors];
@@ -26,7 +23,11 @@ const RoadMapItem: FC<RoadMapItemProps> = ({ title, date, status, modalContent }
   return (
     <>
       <Stack
-        onClick={toggleModal}
+        onClick={() => {
+          if (descriptionText) {
+            toggleModal();
+          }
+        }}
         gap={2}
         p={2}
         flex={1}
@@ -81,7 +82,8 @@ const RoadMapItem: FC<RoadMapItemProps> = ({ title, date, status, modalContent }
           title={title}
           date={date}
           status={status}
-          modalContent={modalContent}
+          image={image}
+          descriptionText={convertRichTextToHTML(descriptionText)}
           open={open}
           close={() => {
             toggleModal();

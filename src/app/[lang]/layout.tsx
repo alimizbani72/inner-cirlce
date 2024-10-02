@@ -11,7 +11,6 @@ import type { ReactNode } from "react";
 import { StoreProvider } from "./_providers/StoreProvider";
 import ProgressBarProvider from "./_providers/ProgressBarProvider";
 import { getDictionary } from "@/locales/dictionary";
-import { primaryFont } from "@/theme/localFonts";
 import { authOptions } from "@/configs/authOptions";
 import { getQueryClient } from "./_providers/customQueryClient";
 import { prefetchUseAuthServiceMeQuery } from "@minecraft/queries/prefetch";
@@ -90,7 +89,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
       dict={dict}
       user={{ ...session?.user!, ...(queryClient.getQueryData(UseAuthServiceMeQueryKeyFn()) as any)?.data }}
     >
-      <html lang="en" className={primaryFont.className}>
+      <html lang="en">
         <head>
           <script src="https://www.google.com/recaptcha/api.js" async defer />
         </head>

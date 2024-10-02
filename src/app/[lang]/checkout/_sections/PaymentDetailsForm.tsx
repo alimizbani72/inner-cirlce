@@ -77,7 +77,7 @@ const PaymentDetailsForm: FC<PaymentDetailsFormProps> = ({ planType }) => {
   };
 
   const onSubmit = handleSubmit(async (data) => {
-    billingAddress({ requestBody: { ...data, email_address: userInfo?.email } })
+    billingAddress({ requestBody: { ...data } })
       .then(() => {
         createPay({ requestBody: { plan_type: planType, symbol: selectedCurrency || "USDC" } })
           .then((response: any) => {

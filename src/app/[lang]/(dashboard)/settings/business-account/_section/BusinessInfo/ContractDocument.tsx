@@ -24,7 +24,6 @@ Font.register({
     { src: "/assets/fonts/montserrat/Montserrat-Regular.ttf", fontWeight: "normal" },
     { src: "/assets/fonts/montserrat/Montserrat-Medium.ttf", fontWeight: "medium" },
     { src: "/assets/fonts/montserrat/Montserrat-SemiBold.ttf", fontWeight: "semibold" },
-    { src: "/assets/fonts/montserrat/Montserrat-Bold.ttf", fontWeight: "bold" },
   ],
 });
 

@@ -1,8 +1,9 @@
 import CustomDialog from "@/components/CustomDialog";
 import { Icon } from "@/components/icons";
 import { fDate } from "@/utils/format-time";
-import { Box, DialogContent, DialogTitle, Divider, IconButton, ListItemText, Stack, Typography } from "@mui/material";
+import { Box, DialogContent, DialogTitle, Divider, IconButton, Stack, Typography } from "@mui/material";
 import Status from "./Status";
+import ContentParser from "@app/_components/ContentParser";
 
 type RoadMapModalProps = {
   open: boolean;
@@ -10,15 +11,11 @@ type RoadMapModalProps = {
   title: string;
   date: string;
   status: string;
-  modalContent: {
-    image: string;
-    descriptionText: string;
-    descriptionPoints: string[];
-    additionalDescription: string;
-  };
+  image: string;
+  descriptionText: string;
 };
 
-export default function RoadMapModal({ open, close, modalContent, title, status, date }: RoadMapModalProps) {
+export default function RoadMapModal({ open, close, image, descriptionText, title, status, date }: RoadMapModalProps) {
   return (
     <CustomDialog fullWidth maxWidth="xs" onClose={close} aria-labelledby="RoadMapModal-dialog" open={open}>
       <DialogTitle id="RoadMapModal-dialog">
@@ -48,25 +45,8 @@ export default function RoadMapModal({ open, close, modalContent, title, status,
       <Divider />
       <DialogContent dividers>
         <Stack spacing={3} pt={3}>
-          <img src={modalContent.image} />
-          <Typography variant="p2-regular">{modalContent.descriptionText}</Typography>
-          <Stack>
-            {modalContent.descriptionPoints.map((point, index) => (
-              <Stack direction={"row"} alignItems={"center"} key={index}>
-                <Box
-                  sx={{
-                    width: 4,
-                    height: 4,
-                    borderRadius: "50%",
-                    bgcolor: "grey.contrastText",
-                    marginRight: 2,
-                  }}
-                />
-                <ListItemText primary={<Typography variant="p2-regular">{point}</Typography>} />
-              </Stack>
-            ))}
-          </Stack>
-          <Typography variant="p2-regular">{modalContent.additionalDescription}</Typography>
+          <img src={image} />
+          <ContentParser content={descriptionText} />
         </Stack>
       </DialogContent>
     </CustomDialog>

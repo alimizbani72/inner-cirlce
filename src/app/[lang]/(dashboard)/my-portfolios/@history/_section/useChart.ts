@@ -24,7 +24,7 @@ export function useChart(options?: ChartOptions): ChartOptions {
       },
       ...options?.chart,
     },
-   
+
     /** **************************************
      * Colors
      *************************************** */
@@ -50,12 +50,12 @@ export function useChart(options?: ChartOptions): ChartOptions {
      *************************************** */
     stroke: {
       curve: "smooth",
-      lineCap: 'round',
+      lineCap: "round",
       width: 2,
       colors: ["#6E50E7"],
       ...options?.stroke,
     },
-   
+
     /** **************************************
      * Grid
      *************************************** */
@@ -63,16 +63,13 @@ export function useChart(options?: ChartOptions): ChartOptions {
       strokeDashArray: 3,
       borderColor: theme.palette.divider,
       ...options?.grid,
-      padding: { left: 24,
-        ...options?.grid?.padding,
-       },
-       xaxis: {
+      padding: { left: 24, ...options?.grid?.padding },
+      xaxis: {
         lines: {
           show: false,
         },
         ...options?.grid?.xaxis,
       },
-     
     },
 
     /** **************************************
