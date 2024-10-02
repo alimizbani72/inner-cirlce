@@ -1,18 +1,7 @@
-import { Stack, Typography } from "@mui/material";
+import HistorySection from "./_section";
 
-const History = () => {
-  return (
-    <Stack
-      width={{ md: "50%", xs: "100%" }}
-      height={"320px"}
-      sx={{ border: "1px solid", borderColor: "dark.3", borderRadius: 2 }}
-      textAlign={"center"}
-      alignItems={"center"}
-      justifyContent={"center"}
-    >
-      <Typography>History Section</Typography>
-    </Stack>
-  );
+const HistoryParallel = () => {
+  return <HistorySection />;
 };
 
-export default History;
+export default HistoryParallel;

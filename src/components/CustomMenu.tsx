@@ -1,7 +1,9 @@
-import { Menu, MenuItem, type MenuProps } from "@mui/material";
+import { Menu, type MenuProps } from "@mui/material";
 import type { FC, PropsWithChildren } from "react";
-
-const CustomMenu: FC<PropsWithChildren<MenuProps>> = ({ children, ...props }) => {
+type Props = {
+  width?: string | number;
+} & PropsWithChildren<MenuProps>;
+const CustomMenu: FC<Props> = ({ children, width, ...props }) => {
   return (
     <Menu
       disableScrollLock={true}
@@ -18,17 +20,16 @@ const CustomMenu: FC<PropsWithChildren<MenuProps>> = ({ children, ...props }) =>
           backgroundColor: "dark.2",
           color: "white",
           boxShadow: "0px 16px 32px 0px rgba(0, 0, 0, 0.16)",
-          mr: 3,
           border: "1px solid",
           borderColor: "dark.3",
           backgroundImage: "none",
+          width: width,
           p: 2,
-          gap: 2,
         },
       }}
       {...props}
     >
-      <MenuItem>{children}</MenuItem>
+      {children}
     </Menu>
   );
 };

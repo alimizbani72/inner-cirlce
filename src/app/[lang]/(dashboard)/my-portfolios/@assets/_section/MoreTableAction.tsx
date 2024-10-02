@@ -1,36 +1,29 @@
 "use client";
 import { Icon } from "@/components/icons";
-import { Divider } from "@mui/material";
+import { Divider, MenuItem } from "@mui/material";
 import { IconButton, Stack } from "@mui/material";
-import type React from "react";
-import { useState } from "react";
 import ActionItem from "./ActionItem";
 import CustomMenu from "@/components/CustomMenu";
 import { useTranslate } from "@/locales";
+import { usePopover } from "@/components/custom-popover";
 
 const MoreTableAction = () => {
   const { t } = useTranslate();
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-
-  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-  };
+  const { onClose, onOpen, open } = usePopover();
   return (
     <>
-      <IconButton onClick={handleMenuOpen}>
+      <IconButton onClick={onOpen}>
         <Icon name="More" />
       </IconButton>
 
-      <CustomMenu anchorEl={anchorEl} open={!!anchorEl} onClose={handleMenuClose}>
-        <Stack spacing={2}>
-          <ActionItem iconName="Pen" label={t("assetsTable.edit")} />
-          <Divider />
-          <ActionItem iconName="Trash" label={t("assetsTable.delete")} />
-        </Stack>
+      <CustomMenu anchorEl={open} open={!!open} onClose={onClose}>
+        <MenuItem>
+          <Stack spacing={2}>
+            <ActionItem iconName="Pen" label={t("assetsTable.edit")} />
+            <Divider />
+            <ActionItem iconName="Trash" label={t("assetsTable.delete")} />
+          </Stack>
+        </MenuItem>
       </CustomMenu>
     </>
   );
