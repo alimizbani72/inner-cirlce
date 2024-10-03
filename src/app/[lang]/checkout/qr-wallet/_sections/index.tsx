@@ -64,6 +64,7 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
       <Stack
         sx={{
           position: "relative",
+          display: { xs: "none", md: "flex" },
           background: (theme) => theme.palette.gradient.blue,
           flex: { md: 1 },
           pt: { md: 8, xs: 3 },

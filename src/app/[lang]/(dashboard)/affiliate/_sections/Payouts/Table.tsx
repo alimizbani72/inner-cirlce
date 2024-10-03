@@ -1,20 +1,19 @@
 "use client";
 
 import type React from "react";
-import { type FC, useCallback, useMemo, useState } from "react";
+import { type ChangeEvent, type FC, useCallback, useMemo, useState } from "react";
 
 import CustomTable from "@/components/CustomTable";
 import Scrollbar from "@/components/Scrollbar";
 import CustomPopover, { usePopover } from "@/components/custom-popover";
 import { Icon } from "@/components/icons";
-import { useIsMobile } from "@/hooks/use-responsive";
 import useToggleState from "@/hooks/use-toggle-state";
 import { useTranslate } from "@/locales";
 import { fDate } from "@/utils/format-time";
 import { formatCurrency } from "@/utils/toNumber";
 import { useFinancialServiceFinancialPayoutsQuery } from "@minecraft/queries";
-import type { PayoutResponse } from "@minecraft/requests";
-import { Box, Button, Stack, Typography } from "@mui/material";
+import type { PayoutResponse, SampleListOpts } from "@minecraft/requests";
+import { Box, Stack, Typography } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
 import DownloadModal from "./DownloadModal";
 
@@ -59,7 +58,7 @@ const slotProps = {
 
 const AffPayoutsTabTable: FC = () => {
   const { t } = useTranslate();
-  const isMobile = useIsMobile();
+  // const isMobile = useIsMobile();
   const [open, toggle] = useToggleState();
   const columns = useMemo(
     () => [
@@ -88,6 +87,7 @@ const AffPayoutsTabTable: FC = () => {
   );
 
   const filterPopover = usePopover();
+  const [page, setpage] = useState(1);
   const [dates, setDates] = useState<any>([]);
   const filter = {
     filters: {
@@ -95,12 +95,13 @@ const AffPayoutsTabTable: FC = () => {
       ...(dates?.[1] && { to_created_at: fDate(dates?.[1], "yyyy-MM-dd") }),
     },
     sorts: { created_at: false },
-    per_page: 10000,
+    page: page,
+    per_page: 10,
   };
 
-  const { data, isPending } = useFinancialServiceFinancialPayoutsQuery(
-    dates.length && { opts: JSON.stringify(filter) }
-  );
+  const { data, isPending } = useFinancialServiceFinancialPayoutsQuery({
+    opts: JSON.stringify(filter) as SampleListOpts,
+  });
 
   const handleOpenFilter = useCallback(
     (event: React.MouseEvent<HTMLElement>) => {
@@ -113,6 +114,10 @@ const AffPayoutsTabTable: FC = () => {
     filterPopover.onClose();
   }, [filterPopover]);
 
+  const handleChangePage = (_event: ChangeEvent<unknown>, newPage: number) => {
+    setpage(newPage as any);
+  };
+
   return (
     <Stack>
       <Scrollbar>
@@ -124,18 +129,21 @@ const AffPayoutsTabTable: FC = () => {
           <CustomTable
             title={t("affPayoutsTabTable.payouts")}
             columns={columns}
+            page={page}
+            handleChangePage={handleChangePage}
+            totalCount={data?.meta?.total_count}
             data={data?.data || []}
             isPending={isPending}
-            mobileAction={
-              <Button
-                startIcon={<Icon name="download" />}
-                color={isMobile ? "primary" : "info"}
-                sx={{ width: "100%" }}
-                onClick={toggle}
-              >
-                {t("affPayoutsTabTable.dwonloadStatement")}
-              </Button>
-            }
+            // mobileAction={
+            //   <Button
+            //     startIcon={<Icon name="download" />}
+            //     color={isMobile ? "primary" : "info"}
+            //     sx={{ width: "100%" }}
+            //     onClick={toggle}
+            //   >
+            //     {t("affPayoutsTabTable.dwonloadStatement")}
+            //   </Button>
+            // }
             emptyTitle={t("affPayoutsTabTable.emptyTitle")}
             emptySubtitle={t("affPayoutsTabTable.emptySubtitle")}
             action={
@@ -158,7 +166,7 @@ const AffPayoutsTabTable: FC = () => {
                     </Typography>
                     <Icon name={filterPopover.open ? "Arrow-up" : "Arrow-down"} />
                   </Box>
-                  <Stack>
+                  {/* <Stack>
                     <Button
                       startIcon={<Icon name="download" />}
                       color="info"
@@ -167,7 +175,7 @@ const AffPayoutsTabTable: FC = () => {
                     >
                       {t("affPayoutsTabTable.dwonloadStatement")}
                     </Button>
-                  </Stack>
+                  </Stack> */}
                 </Stack>
 
                 <CustomPopover

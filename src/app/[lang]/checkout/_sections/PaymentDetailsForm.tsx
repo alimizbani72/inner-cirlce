@@ -22,6 +22,7 @@ import {
 } from "@minecraft/queries";
 import { enqueueSnackbar } from "notistack";
 import { usePathname } from "next/navigation";
+import { useIsMobile } from "@/hooks/use-responsive";
 
 const currencyList = ["USDC", "DAI", "USDT", "USDC.E"];
 interface PaymentDetailsFormProps {
@@ -29,6 +30,7 @@ interface PaymentDetailsFormProps {
 }
 const PaymentDetailsForm: FC<PaymentDetailsFormProps> = ({ planType }) => {
   const { replace } = useAppRouter();
+  const isMobile = useIsMobile();
   const pathname = usePathname();
   const userInfo = useAppSelector(selectUser);
   const { t } = useTranslate();
@@ -164,29 +166,31 @@ const PaymentDetailsForm: FC<PaymentDetailsFormProps> = ({ planType }) => {
               </RadioGroup>
             </Stack>
           </Stack>
+          <Stack pl={0.5}>
+            <RHFCheckbox
+              label={
+                <Typography sx={{ textWrap: "nowrap" }}>
+                  <Typography variant="p2-regular" color="grey.light">
+                    {t("checkout.agreeTo")}
+                  </Typography>{" "}
+                  <Typography variant="p2-regular" component={Link} href="/terms-and-condition">
+                    {t("checkout.termsAndConditions")}
+                  </Typography>
+                  {"  "}
+                  {!isMobile && (
+                    <Typography variant="p2-regular" color="grey.light">
+                      are clear, and I agree to proceed as outlined
+                    </Typography>
+                  )}
+                </Typography>
+              }
+              name="terms"
+            />
+          </Stack>
         </Stack>
 
         {/* button section */}
-        <Stack
-          direction={{ xs: "column", md: "row" }}
-          alignItems={{ xs: "start", md: "center" }}
-          spacing={3}
-          pl={1}
-          sx={{ mt: 4 }}
-        >
-          <RHFCheckbox
-            label={
-              <Typography sx={{ textWrap: "nowrap" }}>
-                <Typography variant="p2-regular" color="grey.light">
-                  {t("checkout.agreeTo")}
-                </Typography>{" "}
-                <Typography variant="p2-regular" component={Link} href="/terms-and-condition">
-                  {t("checkout.termsAndConditions")}
-                </Typography>
-              </Typography>
-            }
-            name="terms"
-          />
+        <Stack alignItems={{ xs: "start", md: "center" }} sx={{ mt: 3 }}>
           <LoadingButton
             disabled={!terms}
             color="primary"

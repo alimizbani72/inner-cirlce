@@ -1,6 +1,6 @@
 "use client";
 
-import { Paper, Stack, Typography } from "@mui/material";
+import { Divider, Pagination, Paper, Stack, Typography } from "@mui/material";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -8,6 +8,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import type { ReactNode } from "react";
+import type React from "react";
 import { Fragment, useState } from "react";
 import Empty from "./Empty";
 import Loading from "./Loading";
@@ -21,6 +22,9 @@ const levelColorLine = {
 };
 
 type PropType = {
+  totalCount?: number;
+  page?: number;
+  handleChangePage?: (_event: React.ChangeEvent<unknown>, newPage: number) => void;
   title?: ReactNode;
   columns: { title: string; modify: (item: any) => ReactNode }[];
   data: any[];
@@ -34,6 +38,9 @@ type PropType = {
 };
 
 const CustomTable = ({
+  page = 1,
+  handleChangePage,
+  totalCount = 10,
   title,
   columns,
   data,
@@ -181,6 +188,21 @@ const CustomTable = ({
         <Loading />
       ) : (
         <Empty title={emptyTitle} subtitle={emptySubtitle} />
+      )}
+      {totalCount > 10 && (
+        <>
+          <Divider flexItem orientation="horizontal" />
+          <Stack direction={"row"} justifyContent={"center"} py={1.5}>
+            <Pagination
+              count={Math.ceil(totalCount / 10)}
+              defaultPage={1}
+              page={page}
+              onChange={handleChangePage}
+              siblingCount={0}
+              boundaryCount={2}
+            />
+          </Stack>
+        </>
       )}
     </Stack>
   );

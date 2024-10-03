@@ -1,19 +1,23 @@
 "use client";
 
-import { useMemo, type FC } from "react";
+import { type ChangeEvent, useMemo, useState, type FC } from "react";
 import { Stack } from "@mui/material";
 import Scrollbar from "@/components/Scrollbar";
 import CustomTable from "@/components/CustomTable";
 import { useAffiliateServiceAffiliateCommissionListQuery } from "@minecraft/queries";
 import { formatCurrency, toNumber } from "@/utils/toNumber";
 import { fDate } from "@/utils/format-time";
-import Empty from "@/components/Empty";
-import type { PayoutCommissionResponse } from "@minecraft/requests";
+import type { PayoutCommissionResponse, SampleListOpts } from "@minecraft/requests";
 import { toTitleCase } from "@/utils/change-case";
 import { useTranslate } from "@/locales";
 
 const AffCommissionsTabTable: FC = () => {
   const { t } = useTranslate();
+  const [filterOpts, setFilterOpts] = useState({
+    sorts: { created_at: false },
+    page: 1,
+    per_page: 10,
+  });
   const columns = useMemo(
     () => [
       {
@@ -39,26 +43,34 @@ const AffCommissionsTabTable: FC = () => {
     ],
     [t]
   );
-  const { data: commissionList } = useAffiliateServiceAffiliateCommissionListQuery();
+  const { data: commissionList, isLoading } = useAffiliateServiceAffiliateCommissionListQuery({
+    opts: JSON.stringify(filterOpts) as SampleListOpts,
+  });
+
+  const handleChangePage = (_event: ChangeEvent<unknown>, newPage: number) => {
+    setFilterOpts((prev) => ({ ...prev, page: newPage }));
+  };
+
   return (
     <Stack>
-      {commissionList?.data?.length ? (
-        <Scrollbar>
-          <Stack
-            alignItems="flex-start"
-            maxWidth={{ md: "calc(100vw - 64px)", xs: "calc(100vw - 48px)" }}
-            sx={{ "> div": { borderBottomRightRadius: 0, borderBottomLeftRadius: 0 } }}
-          >
-            <CustomTable
-              title={t("affCommissionsTabTable.commissionsTitle")}
-              columns={columns}
-              data={commissionList?.data || []}
-            />
-          </Stack>
-        </Scrollbar>
-      ) : (
-        <Empty title={t("affCommissionsTabTable.noRecord")} />
-      )}
+      <Scrollbar>
+        <Stack
+          alignItems="flex-start"
+          maxWidth={{ md: "calc(100vw - 64px)", xs: "calc(100vw - 48px)" }}
+          sx={{ "> div": { borderBottomRightRadius: 0, borderBottomLeftRadius: 0 } }}
+        >
+          <CustomTable
+            page={filterOpts.page}
+            isPending={isLoading}
+            handleChangePage={handleChangePage}
+            totalCount={commissionList?.meta?.total_count}
+            title={t("affCommissionsTabTable.commissionsTitle")}
+            columns={columns}
+            data={commissionList?.data || []}
+            emptyTitle={t("affCommissionsTabTable.noRecord")}
+          />
+        </Stack>
+      </Scrollbar>
     </Stack>
   );
 };

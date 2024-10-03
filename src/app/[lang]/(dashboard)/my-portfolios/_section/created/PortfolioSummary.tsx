@@ -52,10 +52,12 @@ const PortfolioSummary = () => {
           <Stack direction={"row"} spacing={1}>
             <MorePortfolioAction />
             <Typography>{activePortfolio.avatar}</Typography>
-            <Typography variant="p2-semi-bold">{activePortfolio.portfolioName}</Typography>
+            <Typography variant="p2-semi-bold" whiteSpace={"nowrap"}>
+              {activePortfolio.portfolioName}
+            </Typography>
           </Stack>
           <Stack direction={{ xs: "column", md: "row" }} spacing={1}>
-            <Badge color="grey.light" label="invested value" value={activePortfolio.investedValue} />
+            <Badge color="white" label="invested value" value={activePortfolio.investedValue} />
             <Badge color="success.main" label="profit" value={activePortfolio.profit} />
             <Badge color="error.main" label="Loss" value={activePortfolio.loss} />
           </Stack>
