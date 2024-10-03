@@ -19,6 +19,7 @@ const ContentParser: FC<Props> = ({ content }: Props) => {
         " h5": { mt: "10px !important", mb: 3 },
         " h6": { mt: "10px !important", mb: 3 },
         " p": { typography: "regular-h4", lineHeight: "24px !important" },
+        " a": { typography: "regular-h4", color: "blue.light" },
         " image": { maxWidth: "100%" },
       }}
       dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }}

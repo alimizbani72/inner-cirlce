@@ -38,7 +38,7 @@ const RoadMap: FC<RoadMapProps> = () => {
               <RoadMapItem
                 title={i.title}
                 date={i.dateOnly}
-                image={CMSDownloadURL((i?.image as any)?.url!)}
+                image={CMSDownloadURL((i?.image as any)?.sizes?.roadmap?.url!)}
                 descriptionText={i?.descriptionText}
                 status={i.status}
               />

@@ -17,7 +17,7 @@ type RoadMapModalProps = {
 
 export default function RoadMapModal({ open, close, image, descriptionText, title, status, date }: RoadMapModalProps) {
   return (
-    <CustomDialog fullWidth maxWidth="xs" onClose={close} aria-labelledby="RoadMapModal-dialog" open={open}>
+    <CustomDialog fullWidth maxWidth="md" onClose={close} aria-labelledby="RoadMapModal-dialog" open={open}>
       <DialogTitle id="RoadMapModal-dialog">
         <Stack direction="row" justifyContent="space-between">
           <Stack gap={1} mr={{ md: undefined, xs: 4 }}>
