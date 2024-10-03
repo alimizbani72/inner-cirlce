@@ -28,7 +28,7 @@ interface PaymentDetailsFormProps {
   planType: string;
 }
 const PaymentDetailsForm: FC<PaymentDetailsFormProps> = ({ planType }) => {
-  const { push, replace } = useAppRouter();
+  const { replace } = useAppRouter();
   const pathname = usePathname();
   const userInfo = useAppSelector(selectUser);
   const { t } = useTranslate();
@@ -77,11 +77,12 @@ const PaymentDetailsForm: FC<PaymentDetailsFormProps> = ({ planType }) => {
   };
 
   const onSubmit = handleSubmit(async (data) => {
-    billingAddress({ requestBody: { ...data } })
+    //TODO: FIX TYPES HERE
+    billingAddress({ requestBody: { ...data, email_address: userInfo?.email } } as any)
       .then(() => {
         createPay({ requestBody: { plan_type: planType, symbol: selectedCurrency || "USDC" } })
           .then((response: any) => {
-            push(`/checkout/qr-wallet?plan_type=${planType}&id=${response?.data?.id}`);
+            replace(`/checkout/qr-wallet?plan_type=${planType}&id=${response?.data?.id}`);
           })
           .catch((error) => {
             enqueueSnackbar({ message: error?.body?.message || "An error occurred", variant: "error" });

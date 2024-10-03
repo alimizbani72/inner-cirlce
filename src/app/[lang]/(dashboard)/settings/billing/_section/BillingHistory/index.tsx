@@ -20,7 +20,14 @@ const columns = [
 ];
 
 const BillingHistory: FC = () => {
-  const { data } = useFinancialServiceFinancialPaymentsQuery();
+  const { data } = useFinancialServiceFinancialPaymentsQuery({
+    opts: JSON.stringify({
+      sorts: { created_at: false },
+      page: 1,
+      per_page: 200,
+      filters: { status: ["completed", "manually-completed"] },
+    }),
+  });
 
   return (
     <CustomTable

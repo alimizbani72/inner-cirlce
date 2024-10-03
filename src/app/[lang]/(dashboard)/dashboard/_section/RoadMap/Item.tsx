@@ -24,7 +24,7 @@ const RoadMapItem: FC<RoadMapItemProps> = ({ title, date, status, image, descrip
     <>
       <Stack
         onClick={() => {
-          if (descriptionText) {
+          if (descriptionText && descriptionText.lenght) {
             toggleModal();
           }
         }}
