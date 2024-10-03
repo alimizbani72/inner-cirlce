@@ -104,6 +104,7 @@ const MenuItem: FC<MenuItemProps> = ({ icon, label, subItems, route, isCollapsed
                 }}
                 sx={{
                   borderRadius: 3,
+                  mt: 1,
                   ...(isActive(subItem.path) && activeStyle),
                   ...(isCollapsed && { p: 1, whiteSpace: "nowrap" }),
                 }}

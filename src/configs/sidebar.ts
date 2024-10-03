@@ -12,7 +12,8 @@ export const sidebarServicesItems = [
     path: undefined,
     name: "portfolio",
     icon: "Portfolio",
-    items: [{ path: "my-portfolios/" }, { path: "portfolio-strategies/" }],
+    // items: [{ path: "my-portfolios/" }, { path: "portfolio-strategies/" }],
+    items: [{ path: "portfolio-strategies/" }],
   },
   {
     path: "education/",

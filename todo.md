@@ -25,3 +25,5 @@
 
 # server error 500 handle 
 # fix the assets table width when collapsed
+
+# add telegram public address in env

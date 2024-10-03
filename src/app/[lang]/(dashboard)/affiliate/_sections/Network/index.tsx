@@ -13,7 +13,7 @@ const AffNetworkTab: FC = () => {
   const buttons = useMemo(
     () => [
       { label: t("affNetworkTab.table"), value: 1 },
-      { label: t("affNetworkTab.chart"), value: 2 },
+      // { label: t("affNetworkTab.chart"), value: 2 },
       // {
       //   label: (
       //     <Stack direction="row" gap={1} alignItems="center">
