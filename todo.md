@@ -27,3 +27,5 @@
 # fix the assets table width when collapsed
 
 # add telegram public address in env
+
+#test
