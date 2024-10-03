@@ -9,7 +9,14 @@ import {
 export default async function BillingPage() {
   const queryClient = getQueryClient();
   await Promise.all([
-    prefetchUseFinancialServiceFinancialPaymentsQuery(queryClient),
+    prefetchUseFinancialServiceFinancialPaymentsQuery(queryClient, {
+      opts: JSON.stringify({
+        sorts: { created_at: false },
+        page: 1,
+        per_page: 200,
+        filters: { status: ["completed", "manually-completed"] },
+      }),
+    }),
     prefetchUseFinancialServiceBillingAddressQuery(queryClient),
   ]);
 

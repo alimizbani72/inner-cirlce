@@ -1,17 +1,10 @@
 import CustomTable from "@/components/CustomTable";
-import { Icon } from "@/components/icons";
-import { Button, Stack } from "@mui/material";
-import dynamic from "next/dynamic";
+import { Stack } from "@mui/material";
 import type { FC } from "react";
-import ContractDocument from "./ContractDocument";
 import { useAppSelector } from "@/lib/hooks";
 import { selectUser } from "@/lib/features/user/userSlice";
 import { fDate } from "@/utils/format-time";
-
-const BlobProvider = dynamic(() => import("@react-pdf/renderer").then((mod) => mod.BlobProvider), {
-  ssr: false,
-  loading: () => <p>Loading...</p>,
-});
+import ViewContractButton from "./ViewContractButton";
 
 interface AccountContractProps {}
 
@@ -28,25 +21,7 @@ const columns = [
     title: "",
     modify: (row: any) => (
       <Stack direction="row" alignItems="center" justifyContent="flex-end">
-        <BlobProvider document={<ContractDocument info={row?.business_Info} />}>
-          {/* @ts-ignore */}
-          {({ loading, url }) =>
-            loading ? (
-              "Loading preview..."
-            ) : (
-              <Button
-                variant="text"
-                endIcon={<Icon name="Arrow-right" />}
-                target="_blank"
-                href={url!}
-                rel="noopener noreferrer"
-              >
-                <Stack sx={{ width: 32, height: 32, borderRadius: 1, bgcolor: "white", mr: 1.5 }} />
-                OPEN
-              </Button>
-            )
-          }
-        </BlobProvider>
+        <ViewContractButton info={row?.business_Info} />
       </Stack>
     ),
   },

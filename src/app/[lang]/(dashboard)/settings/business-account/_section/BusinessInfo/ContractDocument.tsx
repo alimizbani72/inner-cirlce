@@ -99,7 +99,7 @@ const ContractDocument: FC<ContractDocumentProps> = ({ info }) => {
             <Text style={{ fontSize: 12, fontWeight: "normal" }}>Chamerstrasse 172</Text>
             <Text style={{ fontSize: 12, fontWeight: "normal" }}>6300 Zug</Text>
             <Text style={{ fontSize: 12, fontWeight: "normal" }}>Switzerland</Text>
-            <Text style={{ fontSize: 12, fontWeight: "normal" }}>UID:CHE-473.139.498</Text>
+            <Text style={{ fontSize: 12, fontWeight: "normal" }}>UID: CHE-473.139.498</Text>
           </View>
           <View
             style={{
@@ -180,7 +180,9 @@ const ContractDocument: FC<ContractDocumentProps> = ({ info }) => {
                 .
               </Text>
               <Text style={{ fontSize: 12, fontWeight: "medium", color: "#404365" }}>Company Address::</Text>
-              <Text style={{ fontSize: 12, fontWeight: "medium", color: "#070720" }}>{info.address}</Text>
+              <Text
+                style={{ fontSize: 12, fontWeight: "medium", color: "#070720" }}
+              >{`${info.address}, ${info.zip_code}, ${info.city}, ${info.country}`}</Text>
             </View>
 
             <View style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: 3 }}>
@@ -224,7 +226,6 @@ const ContractDocument: FC<ContractDocumentProps> = ({ info }) => {
               fontWeight: "medium",
               color: "#070720",
               lineHeight: "2",
-              textTransform: "capitalize",
             }}
           >
             Is officially recognized as an Affiliate Partner of ChainMind AG.
@@ -236,7 +237,6 @@ const ContractDocument: FC<ContractDocumentProps> = ({ info }) => {
               fontWeight: "medium",
               color: "#070720",
               lineHeight: "2",
-              textTransform: "capitalize",
             }}
           >
             This document serves as an official confirmation that the aforementioned company and account holder have
@@ -251,7 +251,6 @@ const ContractDocument: FC<ContractDocumentProps> = ({ info }) => {
               fontWeight: "medium",
               color: "#070720",
               lineHeight: "2",
-              textTransform: "capitalize",
               borderBottom: "1px solid #EBEDF0",
               paddingBottom: 16,
               marginBottom: 8,

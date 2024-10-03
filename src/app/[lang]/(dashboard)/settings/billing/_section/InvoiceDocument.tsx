@@ -64,7 +64,7 @@ const useStyles = () =>
           color: "#ffffff",
         },
         dateSection: {
-          width: 200,
+          width: 220,
           gap: 4,
         },
         dateRow: {
@@ -129,15 +129,15 @@ const InvoiceDocument: FC<InvoiceDocumentProps> = ({ invoice, billingInfo }) => 
           {/* Invoice Header */}
           <View style={styles.dateSection}>
             <View style={styles.dateRow}>
-              <Text style={styles.lightText}>Invoice Number:</Text>
+              <Text style={styles.lightText}>Invoice Number: </Text>
               <Text style={styles.boldText}>{invoice.id}</Text>
             </View>
             <View style={styles.dateRow}>
-              <Text style={styles.lightText}>Date of Issue:</Text>
+              <Text style={styles.lightText}>Date of Issue: </Text>
               <Text style={styles.boldText}>{fDate(invoice.created_at, "MMMM dd yyyy")}</Text>
             </View>
             <View style={styles.dateRow}>
-              <Text style={styles.lightText}>Due Date:</Text>
+              <Text style={styles.lightText}>Due Date: </Text>
               <Text style={styles.boldText}>{fDate(invoice.created_at, "MMMM dd yyyy")}</Text>
             </View>
           </View>

@@ -13,7 +13,7 @@ const ArrowDownIcon = (props: SvgIconProps) => (
 const CheckboxIcon = (props: SvgIconProps) => (
   <SvgIcon {...props}>
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0.75" y="0.75" width="22.5" height="22.5" rx="5.25" fill="#090A23" stroke="#14162E" strokeWidth="1.5" />
+      <rect x="0.75" y="0.75" width="22.5" height="22.5" rx="5.25" fill="#090A23" stroke="#ffffff" strokeWidth="1.5" />
     </svg>
   </SvgIcon>
 );
