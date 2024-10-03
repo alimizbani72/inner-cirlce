@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/Chainmind-AG/inner-circle/compare/v1.0.0...v1.0.1) (2024-10-03)
+
+
+### Bug Fixes
+
+* **test:** change todo ([4c7e94f](https://github.com/Chainmind-AG/inner-circle/commit/4c7e94fdafda2978a83bee25ec48c00321082c50))
+
 # [1.0.0](https://github.com/Chainmind-AG/inner-circle/compare/v0.1.0...v1.0.0) (2024-10-03)
 
 
