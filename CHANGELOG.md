@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/Chainmind-AG/inner-circle/compare/v1.0.1...v1.1.0) (2024-10-10)
+
+
+### Features
+
+* **helm:** pack the helm release into tgz file and push it to registry ([5a68a5d](https://github.com/Chainmind-AG/inner-circle/commit/5a68a5df7df34bfd8b093179ba63a57c268d98f4))
+
 ## [1.0.1](https://github.com/Chainmind-AG/inner-circle/compare/v1.0.0...v1.0.1) (2024-10-03)
 
 
