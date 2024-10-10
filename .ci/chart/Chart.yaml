@@ -1,7 +1,7 @@
 apiVersion: v2
 appVersion: 0.0.1
 name: chainmind-web
-version: 0.0.1
+version: 0.0.0
 description: A helm chart for chainmind web project
 home: https://github.com/ChainMind-AG/inner-circle
 maintainers:
