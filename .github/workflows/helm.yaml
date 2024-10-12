@@ -51,7 +51,7 @@ jobs:
             --username ${{ secrets.REGISTRY_USER }} \
             --password ${{ secrets.REGISTRY_TOKEN }}
           helm package . --app-version ${{ env.IMG_TAG }}
-          helm push chainmind-web-${escaped_version}.tgz oci://${{ env.REGISTRY_HOST }}/helm
+          helm push chainmind-web-${{ env.IMG_TAG }}.tgz oci://${{ env.REGISTRY_HOST }}/helm
 
       - name: Run Helm and Deploy
         uses: WyriHaximus/github-action-helm3@v3
