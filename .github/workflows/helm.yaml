@@ -47,6 +47,7 @@ jobs:
           cd .ci/chart
           export escaped_version=$(printf '%s\n' "${{ env.IMG_TAG }}" | sed -e 's/[\/.]/\\./g')
           sed -i "s/^appVersion:.*$/appVersion: ${escaped_version}/" Chart.yaml
+          sed -i "s/^version:.*$/version: ${escaped_version}/" Chart.yaml
           helm registry login ${{ env.REGISTRY_HOST }} \
             --username ${{ secrets.REGISTRY_USER }} \
             --password ${{ secrets.REGISTRY_TOKEN }}
