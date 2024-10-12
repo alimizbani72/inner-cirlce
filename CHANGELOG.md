@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/Chainmind-AG/inner-circle/compare/v1.2.0...v1.2.1) (2024-10-12)
+
+
+### Bug Fixes
+
+* **helm-build:** fix helm pack push ([d5b7553](https://github.com/Chainmind-AG/inner-circle/commit/d5b75535914e037004ad735941d79ea6688dcd5c))
+
 # [1.2.0](https://github.com/Chainmind-AG/inner-circle/compare/v1.1.0...v1.2.0) (2024-10-12)
 
 
