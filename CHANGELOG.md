@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/Chainmind-AG/inner-circle/compare/v1.2.2...v1.2.3) (2024-10-12)
+
+
+### Bug Fixes
+
+* **helm-pack:** rename version from 0.0.1 to 0.0.0 because later on in the pipline we replace the 0.0.0 with the current release tag in Chart.yaml ([1452efd](https://github.com/Chainmind-AG/inner-circle/commit/1452efde5053b8068f34ac93af21d6eb59b9571f))
+
 ## [1.2.2](https://github.com/Chainmind-AG/inner-circle/compare/v1.2.1...v1.2.2) (2024-10-12)
 
 
