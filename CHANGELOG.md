@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/Chainmind-AG/inner-circle/compare/v1.2.1...v1.2.2) (2024-10-12)
+
+
+### Bug Fixes
+
+* **helm-deploy:** Rename release name from inner-circle.v1.2.1 to inner-circle.main ([2d82bdb](https://github.com/Chainmind-AG/inner-circle/commit/2d82bdb10e9ae3bff3bf6c8dacce4a715f84cacb))
+
 ## [1.2.1](https://github.com/Chainmind-AG/inner-circle/compare/v1.2.0...v1.2.1) (2024-10-12)
 
 
