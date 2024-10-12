@@ -1,3 +1,10 @@
+## [1.2.5](https://github.com/Chainmind-AG/inner-circle/compare/v1.2.4...v1.2.5) (2024-10-12)
+
+
+### Bug Fixes
+
+* **helm-pack:** put appVersion tag in helm pack ([04459b1](https://github.com/Chainmind-AG/inner-circle/commit/04459b1afcdac0938d4889c0f581d9776b36bc77))
+
 ## [1.2.4](https://github.com/Chainmind-AG/inner-circle/compare/v1.2.3...v1.2.4) (2024-10-12)
 
 
