@@ -58,7 +58,7 @@ jobs:
         with:
           exec: |
             helm upgrade --install \
-              "${{ env.RELEASE_NAME }}.${{ env.BRANCH_NAME }}" \
+              "${{ env.RELEASE_NAME }}.main" \
               --namespace ${{ env.RELEASE_NAMESPACE }} \
               --set name="${{ env.RELEASE_NAME }}-prod" \
               --set replicaCount="10" \
