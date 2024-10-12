@@ -45,8 +45,8 @@ jobs:
       - name: Pack the helm
         run: |
           cd .ci/chart
-          escaped_version=$(printf '%s\n' "${{ env.IMG_TAG }}" | sed -e 's/[\/.]/\\./g')
-          sed -i "s/version\: 0\.0\.0/version\: ${escaped_version}/" Chart.yaml
+          export escaped_version=$(printf '%s\n' "${{ env.IMG_TAG }}" | sed -e 's/[\/.]/\\./g')
+          sed -i "s/^appVersion:.*$/appVersion: ${escaped_version}/" Chart.yaml
           helm registry login ${{ env.REGISTRY_HOST }} \
             --username ${{ secrets.REGISTRY_USER }} \
             --password ${{ secrets.REGISTRY_TOKEN }}
@@ -77,5 +77,5 @@ jobs:
               --set app.google_client_id="${{ secrets.PROD_GOOGLE_CLIENT_ID }}" \
               --set app.google_client_secret="${{ secrets.PROD_GOOGLE_CLIENT_SECRET }}" \
               --atomic \
-              .ci/chart
+              oci://${{ env.REGISTRY_HOST }}/helm/chainmind-web:${{ env.IMG_TAG }}
           kubeconfig: "${{ secrets.PROD_INNER_CIRCLE_KUBECONFIG }}"
