@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/Chainmind-AG/inner-circle/compare/v1.1.0...v1.2.0) (2024-10-12)
+
+
+### Features
+
+* **build:** add branch name as docker image tag in build stage ([14628b9](https://github.com/Chainmind-AG/inner-circle/commit/14628b92cc6a5179da855ef865de7ca4cb598527))
+
 # [1.1.0](https://github.com/Chainmind-AG/inner-circle/compare/v1.0.1...v1.1.0) (2024-10-10)
 
 
