@@ -78,5 +78,6 @@ jobs:
               --set app.google_client_id="${{ secrets.PROD_GOOGLE_CLIENT_ID }}" \
               --set app.google_client_secret="${{ secrets.PROD_GOOGLE_CLIENT_SECRET }}" \
               --atomic \
-              oci://${{ env.REGISTRY_HOST }}/helm/chainmind-web:${{ env.IMG_TAG }}
+              --version ${{ env.IMG_TAG }} \
+              oci://${{ env.REGISTRY_HOST }}/helm/chainmind-web
           kubeconfig: "${{ secrets.PROD_INNER_CIRCLE_KUBECONFIG }}"
