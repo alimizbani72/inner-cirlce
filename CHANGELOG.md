@@ -1,3 +1,10 @@
+## [1.2.6](https://github.com/Chainmind-AG/inner-circle/compare/v1.2.5...v1.2.6) (2024-10-12)
+
+
+### Bug Fixes
+
+* **helm-pack:** using te right endpoint for chart oci ([d2105aa](https://github.com/Chainmind-AG/inner-circle/commit/d2105aa1ef4b32d9fdde9d7784321322be2f228a))
+
 ## [1.2.5](https://github.com/Chainmind-AG/inner-circle/compare/v1.2.4...v1.2.5) (2024-10-12)
 
 
