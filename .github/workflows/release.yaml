@@ -5,6 +5,8 @@ on:
     branches:
       - "main"
       - "staging"
+      - "feat/*"
+      - "fix/*"
     tags:
       - 'v*.*.*'
 
@@ -50,7 +52,15 @@ jobs:
         run: echo 'IMG_NAME=${{ env.REGISTRY_HOST }}/frontiers/front' >>$GITHUB_ENV
 
       - name: "Set IMG_TAG variable"
+        if: env.BRANCH_NAME == 'main' || env.BRANCH_NAME == 'staging'
         run: echo 'IMG_TAG=${{ env.BRANCH_NAME }}-${{ steps.vars.outputs.sha_short }}' >>$GITHUB_ENV
+
+      - name: "Set IMG_TAG variable feature branch"
+        if: env.BRANCH_NAME != 'staging' && env.BRANCH_NAME != 'main'
+        run: |
+          PREFIX_NAME_V1="${{ env.BRANCH_NAME }}"
+          PREFIX_NAME="${PREFIX_NAME_V1//\//-}"
+          echo "IMG_TAG=${PREFIX_NAME}-${{ steps.vars.outputs.sha_short }}" >>$GITHUB_ENV
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -64,6 +74,23 @@ jobs:
           registry: ${{ env.REGISTRY_HOST }}
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_TOKEN }}
+
+      # Build for feature branches
+      - name: Build and push
+        if: env.BRANCH_NAME != 'staging' && env.BRANCH_NAME != 'main'
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          build-args: |
+            url=https://staging.innercircle-chainmind.com/
+            minecraft_endpoint=https://staging-minecraft.innercircle-chainmind.com/
+            google_client_id=${{ secrets.STAGING_GOOGLE_CLIENT_ID }}
+            google_client_secret=${{ secrets.STAGING_GOOGLE_CLIENT_SECRET }}
+            cms_endpoint=https://cms.innercircle-chainmind.com/
+            intercom_secret=${{ secrets.STAGING_INTERCOM_SECRET }}
+          tags: ${{ env.IMG_NAME }}:${{ env.IMG_TAG }}
 
       - name: Build and push
         if: env.BRANCH_NAME == 'main'
@@ -128,7 +155,7 @@ jobs:
   helm:
     needs: [build]
     runs-on: "ubuntu-latest"
-    if: github.ref == 'refs/heads/staging'
+    if: github.ref != 'refs/heads/main'
     steps:
       - uses: actions/checkout@v3
         with:
@@ -149,24 +176,35 @@ jobs:
         run: echo 'IMG_NAME=${{ env.REGISTRY_HOST }}/frontiers/front' >>$GITHUB_ENV
 
       - name: "Set IMG_TAG variable"
-        run: echo 'IMG_TAG=${{ env.BRANCH_NAME }}-${{ steps.vars.outputs.sha_short }}' >>$GITHUB_ENV
+        if: env.BRANCH_NAME == 'staging'
+        run: |
+          echo 'IMG_TAG=${{ env.BRANCH_NAME }}-${{ steps.vars.outputs.sha_short }}' >>$GITHUB_ENV
+
+      # Feature branch IMG_TAG
+      - name: "Set IMG_TAG variable feature branch"
+        if: env.BRANCH_NAME != 'staging'
+        run: |
+          PREFIX_NAME_V1="${{ env.BRANCH_NAME }}"
+          PREFIX_NAME="${PREFIX_NAME_V1//\//-}"
+          echo "RELEASE_NAME=${PREFIX_NAME}" >>$GITHUB_ENV
+          echo "RELEASE_DOMAIN=${PREFIX_NAME}-${{ env.RELEASE_DOMAIN }}" >>$GITHUB_ENV
+          echo "IMG_TAG=${PREFIX_NAME}-${{ steps.vars.outputs.sha_short }}" >>$GITHUB_ENV
 
       - name: Run Helm and Deploy
         uses: WyriHaximus/github-action-helm3@v3
-        if: env.BRANCH_NAME == 'staging'
         with:
           exec: |
             helm upgrade --install \
-              "${{ env.RELEASE_NAME }}.${{ env.BRANCH_NAME }}" \
+              "inner-circle.${{ env.RELEASE_NAME }}" \
               --namespace ${{ env.RELEASE_NAMESPACE }} \
               --set name="${{ env.RELEASE_NAME }}" \
-              --set replicaCount="3" \
+              --set replicaCount="1" \
               --set domainName="${{ env.RELEASE_DOMAIN }}" \
               --set image.repository="${{ env.IMG_NAME }}" \
               --set image.tag="${{ env.IMG_TAG }}" \
               --set tls.enabled="true" \
               --set tls.clusterIssuer="cloudflare" \
-              --set tls.secretName="${{ env.BRANCH_NAME }}-${{ env.RELEASE_NAME }}-net-tls" \
+              --set tls.secretName="inner-circle-${{ env.RELEASE_NAME }}-net-tls" \
               --set resources.limits.cpu="500m" \
               --set resources.limits.memory="500Mi" \
               --set resources.requests.cpu="250m" \
@@ -179,4 +217,3 @@ jobs:
               --atomic \
               .ci/chart
           kubeconfig: "${{ secrets.KUBECONFIG }}"
-
