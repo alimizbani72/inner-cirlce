@@ -79,6 +79,7 @@ const handleAuthRedirection = (session: any, pathname: string, reqUrl: string, l
     `/${locale}/disclaimer/`,
     `/${locale}/privacy-policy/`,
     `/${locale}/imprint/`,
+    `/${locale}/guest/`,
   ];
 
   const isAuthRoute = authRoutes.includes(pathname);
