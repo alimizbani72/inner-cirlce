@@ -24,8 +24,15 @@ export const sidebarServicesItems = [
 
 export const sidebarCommunityItems = [
   {
-    path: "affiliate/",
+    path: undefined,
+    name: "affiliate",
     icon: "Affiliate",
+    items: [
+      { path: "affiliate/", name: "Affiliate Dashboard" },
+      { path: "affiliate/how-it-works/", name: "How it works" },
+      { path: "affiliate/marketing-assets/", name: "Marketing Assets" },
+      { path: "affiliate/marketing-rules/", name: "Marketing Rules" },
+    ],
   },
 
   {

@@ -53,13 +53,13 @@ export function Lightbox({
         buttons: [<DisplayTotal key={0} totalItems={totalItems} disableTotal={disableTotal} />, "close"],
       }}
       render={{
-        iconClose: () => <Icon name="Eye-On" />,
-        iconZoomIn: () => <Icon name="Eye-On" />,
-        iconZoomOut: () => <Icon name="Eye-On" />,
-        iconSlideshowPlay: () => <Icon name="Eye-On" />,
+        iconClose: () => <Icon name="Close" />,
+        iconZoomIn: () => <Icon name="Plus" />,
+        iconZoomOut: () => <Icon name="Mines" />,
+        iconSlideshowPlay: () => <Icon name="Play" />,
         iconSlideshowPause: () => <Icon name="Eye-On" />,
-        iconPrev: () => <Icon name="Eye-On" />,
-        iconNext: () => <Icon name="Eye-On" />,
+        iconPrev: () => <Icon name="Arrow-left" />,
+        iconNext: () => <Icon name="Arrow-right" />,
         iconExitFullscreen: () => <Icon name="Eye-On" />,
         iconEnterFullscreen: () => <Icon name="Eye-On" />,
       }}

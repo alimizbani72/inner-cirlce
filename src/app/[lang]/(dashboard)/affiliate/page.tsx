@@ -16,7 +16,7 @@ import {
 // ----------------------------------------------------------------------
 
 export const metadata: Metadata = {
-  title: "Affiliate",
+  title: "Affiliate | Dashboard",
 };
 
 export default async function Affiliate() {

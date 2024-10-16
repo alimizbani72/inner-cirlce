@@ -31,14 +31,10 @@ const datePickerStyle = {
 };
 
 const slotProps = {
-  calendarHeader: {
-    sx: { ".MuiPickersCalendarHeader-label": { color: "white" } },
-    slotProps: {
-      switchViewButton: { sx: { color: "white" } },
-      previousIconButton: { sx: { color: "white" } },
-      nextIconButton: { sx: { color: "white" } },
-    },
-  },
+  switchViewButton: { sx: { color: "white" } },
+  previousIconButton: { sx: { color: "white" } },
+  nextIconButton: { sx: { color: "white" } },
+  calendarHeader: { sx: { ".MuiPickersCalendarHeader-label": { color: "white" } } },
   desktopPaper: {
     sx: {
       ".MuiPickersYear-yearButton": { color: "white" },
