@@ -106,6 +106,8 @@ jobs:
             google_client_secret=${{ secrets.PROD_GOOGLE_CLIENT_SECRET }}
             cms_endpoint=https://cms.innercircle-chainmind.com/
             intercom_secret=${{ secrets.PROD_INTERCOM_SECRET }}
+            telegram_channel=${{ secrets.PROD_TELEGRAM_CHANNEL }}
+            openai_api_key=${{ secrets.PROD_OPENAI_API_KEY }}
           tags: ${{ env.IMG_NAME }}:${{ env.IMG_TAG }},${{ env.IMG_NAME }}:${{ env.BRANCH_NAME }}
 
       - name: Build and push
@@ -122,6 +124,8 @@ jobs:
             google_client_secret=${{ secrets.STAGING_GOOGLE_CLIENT_SECRET }}
             cms_endpoint=https://cms.innercircle-chainmind.com/
             intercom_secret=${{ secrets.STAGING_INTERCOM_SECRET }}
+            telegram_channel=${{ secrets.STAGING_TELEGRAM_CHANNEL }}
+            openai_api_key=${{ secrets.STAGING_OPENAI_API_KEY }}
           tags: ${{ env.IMG_NAME }}:${{ env.IMG_TAG }},${{ env.IMG_NAME }}:${{ env.BRANCH_NAME }}
 
   release:
