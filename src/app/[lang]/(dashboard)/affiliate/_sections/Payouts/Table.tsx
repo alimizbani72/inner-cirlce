@@ -13,9 +13,10 @@ import { fDate } from "@/utils/format-time";
 import { formatCurrency } from "@/utils/toNumber";
 import { useFinancialServiceFinancialPayoutsQuery } from "@minecraft/queries";
 import type { PayoutResponse, SampleListOpts } from "@minecraft/requests";
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
 import DownloadModal from "./DownloadModal";
+import { useIsMobile } from "@/hooks/use-responsive";
 
 const datePickerStyle = {
   ".MuiIconButton-root": {
@@ -54,7 +55,7 @@ const slotProps = {
 
 const AffPayoutsTabTable: FC = () => {
   const { t } = useTranslate();
-  // const isMobile = useIsMobile();
+  const isMobile = useIsMobile();
   const [open, toggle] = useToggleState();
   const columns = useMemo(
     () => [
@@ -130,16 +131,16 @@ const AffPayoutsTabTable: FC = () => {
             totalCount={data?.meta?.total_count}
             data={data?.data || []}
             isPending={isPending}
-            // mobileAction={
-            //   <Button
-            //     startIcon={<Icon name="download" />}
-            //     color={isMobile ? "primary" : "info"}
-            //     sx={{ width: "100%" }}
-            //     onClick={toggle}
-            //   >
-            //     {t("affPayoutsTabTable.dwonloadStatement")}
-            //   </Button>
-            // }
+            mobileAction={
+              <Button
+                startIcon={<Icon name="download" />}
+                color={isMobile ? "primary" : "info"}
+                sx={{ width: "100%" }}
+                onClick={toggle}
+              >
+                {t("affPayoutsTabTable.dwonloadStatement")}
+              </Button>
+            }
             emptyTitle={t("affPayoutsTabTable.emptyTitle")}
             emptySubtitle={t("affPayoutsTabTable.emptySubtitle")}
             action={
@@ -148,6 +149,7 @@ const AffPayoutsTabTable: FC = () => {
                   direction="row"
                   alignItems={"center"}
                   gap={2}
+                  pl={isMobile ? 5 : undefined}
                   sx={{
                     cursor: "pointer",
                   }}
@@ -162,7 +164,7 @@ const AffPayoutsTabTable: FC = () => {
                     </Typography>
                     <Icon name={filterPopover.open ? "Arrow-up" : "Arrow-down"} />
                   </Box>
-                  {/* <Stack>
+                  <Stack>
                     <Button
                       startIcon={<Icon name="download" />}
                       color="info"
@@ -171,7 +173,7 @@ const AffPayoutsTabTable: FC = () => {
                     >
                       {t("affPayoutsTabTable.dwonloadStatement")}
                     </Button>
-                  </Stack> */}
+                  </Stack>
                 </Stack>
 
                 <CustomPopover

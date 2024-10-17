@@ -504,6 +504,7 @@
   },
   "affCommissionsTabTable": {
     "userID": "User ID",
+    "userEmail": "User Email",
     "amount": "Amount",
     "packageName": "Package Name",
     "percentage": "Percentage",

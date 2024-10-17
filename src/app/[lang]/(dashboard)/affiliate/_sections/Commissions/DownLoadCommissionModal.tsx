@@ -6,10 +6,10 @@ import { DialogActions, DialogContent, Divider, IconButton, Stack, Typography } 
 import DialogTitle from "@mui/material/DialogTitle";
 import { DatePicker } from "@mui/x-date-pickers";
 import { useState } from "react";
-import FormatOption from "./FormatOption";
 import { fDate } from "@/utils/format-time";
-import { useFinancialServiceFinancialPayoutsQuery } from "@minecraft/queries";
-import DownloadPayoutButton from "./DownloadPayoutButton";
+import { useAffiliateServiceAffiliateCommissionListQuery } from "@minecraft/queries";
+import FormatOption from "../Payouts/FormatOption";
+import DownloadCommissionButton from "./DownloadCommissionButton";
 
 const datePickerStyle = {
   ".MuiIconButton-root": {
@@ -51,7 +51,7 @@ type FilterDialogProps = {
   close: VoidFunction;
 };
 
-export default function DownloadModal({ open, close }: FilterDialogProps) {
+export default function DownLoadCommissionModal({ open, close }: FilterDialogProps) {
   const [dates, setDates] = useState<any>([]);
 
   const { t } = useTranslate();
@@ -67,14 +67,13 @@ export default function DownloadModal({ open, close }: FilterDialogProps) {
     per_page: 100,
   };
 
-  const { data: payoutData } = useFinancialServiceFinancialPayoutsQuery({
+  const { data: commissionList } = useAffiliateServiceAffiliateCommissionListQuery({
     opts: JSON.stringify(filter) as any,
   });
-
   const isDownloadDisabled = !dates[0] || !dates[1];
   return (
-    <CustomDialog fullWidth maxWidth="xs" onClose={close} aria-labelledby="Download-dialog" open={open}>
-      <DialogTitle sx={{ m: 0, p: 2 }} id="Download-dialog">
+    <CustomDialog fullWidth maxWidth="xs" onClose={close} aria-labelledby="DownLoadCommission-dialog" open={open}>
+      <DialogTitle sx={{ m: 0, p: 2 }} id="DownLoadCommission-dialog">
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Typography variant="h4-semi-bold">{t("affPayoutsTabTable.dwonloadStatement")}</Typography>
           <IconButton onClick={close}>
@@ -140,9 +139,9 @@ export default function DownloadModal({ open, close }: FilterDialogProps) {
           <LoadingButton color="info" onClick={close}>
             {t("affPayoutsTabTable.cancelBtn")}
           </LoadingButton>
-          <DownloadPayoutButton
+          <DownloadCommissionButton
             isDownloadDisabled={isDownloadDisabled}
-            payoutData={payoutData?.data as any}
+            commissions={commissionList?.data || []}
             fromDate={dates[0]}
             toDate={dates[1]}
             closeModal={close}
