@@ -1,4 +1,7 @@
-import type { MoneyResponse } from "@minecraft/requests";
+type MoneyResponse = {
+  currency_code?: string;
+  value?: number | string;
+};
 import numeral from "numeral";
 
 const CURRENCY_CODE: Record<string, string> = {
