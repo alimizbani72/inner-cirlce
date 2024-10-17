@@ -39,3 +39,7 @@ export function isoToTimestamp(isoString: string) {
   const date = new Date(isoString);
   return Math.floor(date.getTime() / 1000);
 }
+
+export const formatTitle = (title: string, sign: string = "$") => {
+  return `${title} ${sign}`;
+};

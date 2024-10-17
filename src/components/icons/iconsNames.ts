@@ -104,6 +104,7 @@ const iconsNames = [
   "Tiktok",
   "Time",
   "Trash",
+  "More-rectangle",
   "Tutorial",
   "User",
   "Wallet",
