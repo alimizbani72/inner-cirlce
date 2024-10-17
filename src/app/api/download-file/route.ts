@@ -1,4 +1,3 @@
-// app/api/download-file/route.ts
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
@@ -6,23 +5,20 @@ export async function GET(request: Request) {
   const fileUrl = searchParams.get("url");
   const fileName = searchParams.get("filename") || "file";
 
-  if (!fileUrl) {
-    return NextResponse.json({ error: "File URL is required" }, { status: 400 });
-  }
-
   try {
-    // Fetch the external file
-    const externalResponse = await fetch(fileUrl);
+    const response = await fetch(fileUrl!);
 
-    if (!externalResponse.ok) {
-      return NextResponse.json({ error: "Failed to fetch the file" }, { status: 500 });
+    if (!response.ok) {
+      return new NextResponse("Failed to fetch the file", { status: response.status });
     }
 
-    const contentType = externalResponse.headers.get("content-type") || "application/octet-stream";
-    const fileBuffer = await externalResponse.arrayBuffer();
+    // Get the content type from the response
+    const contentType = response.headers.get("content-type") || "application/octet-stream";
 
-    // Serve the file
-    return new NextResponse(Buffer.from(fileBuffer), {
+    // Create a new readable stream from the response body
+    const stream = response.body;
+
+    return new NextResponse(stream, {
       headers: {
         "Content-Type": contentType,
         "Content-Disposition": `attachment; filename="${fileName}"`,
@@ -30,6 +26,6 @@ export async function GET(request: Request) {
     });
   } catch (error) {
     console.error("Error fetching the file:", error);
-    return NextResponse.json({ error: "An error occurred" }, { status: 500 });
+    return new NextResponse("Internal Server Error", { status: 500 });
   }
 }

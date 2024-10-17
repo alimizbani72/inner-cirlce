@@ -55,12 +55,12 @@ const DesktopSidebar: FC = () => {
 
           <Stack py={4} px={isCollapsed ? 3 : 2} gap={4}>
             <Menu name={t("sidebar.services")} items={sidebarServicesItems} />
-            {sidebarCommunityItems.filter((item) => (userInfo?.kyc_status ? item : !item.path.includes("affiliate")))
+            {sidebarCommunityItems.filter((item) => (userInfo?.kyc_status ? item : !item?.path?.includes("affiliate")))
               .length && (
               <Menu
                 name={t("sidebar.community")}
                 items={sidebarCommunityItems.filter((item) =>
-                  userInfo?.kyc_status ? item : !item.path.includes("affiliate")
+                  userInfo?.kyc_status ? item : !item?.path?.includes("affiliate")
                 )}
               />
             )}

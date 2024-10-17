@@ -51,27 +51,12 @@ export function useFileDownload() {
       const pathname = new URL(fileUrl).pathname;
       const fileName = pathname.substring(pathname.lastIndexOf("/") + 1);
 
-      const encodedUrl = encodeURIComponent(fileUrl);
-      const encodedFileName = encodeURIComponent(fileName);
-      const apiUrl = `/api/download-file?url=${encodedUrl}&filename=${encodedFileName}`;
-
-      const response = await fetch(apiUrl);
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || "Failed to fetch the file");
-      }
-
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-
       const link = document.createElement("a");
-      link.href = url;
+      link.href = `/api/download-file?url=${fileUrl}&filename=${fileName}`;
       link.setAttribute("download", fileName);
       document.body.appendChild(link);
       link.click();
-      link.parentNode?.removeChild(link);
-      window.URL.revokeObjectURL(url);
+      document.body.removeChild(link);
     } catch (error: any) {
       console.error("Error downloading the file:", error);
       alert(error.message);
