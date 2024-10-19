@@ -1,0 +1,13 @@
+{
+  "settingsDialog": {
+    "profileSettings": "Profile Settings",
+    "nameRequired": "Name is required",
+    "invalidCharacter": "Your name can't contain numbers",
+    "nameUpdateSuccess": "Your Name updated successfully!",
+    "nameUpdateFailed": "Failed to update name!",
+    "fullName": "Full Name",
+    "password": "Password",
+    "change": "Change",
+    "changePassword": "Change Password"
+  }
+}

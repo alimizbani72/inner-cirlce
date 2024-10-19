@@ -1,0 +1,15 @@
+{
+  "button": {
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "upgrade": "Upgrade",
+    "buyNow": "Buy Now",
+    "backHome": "Back To Home",
+    "back": "Back",
+    "nextStep": "Next Step",
+    "seeStrategies": "See Strategies",
+    "later": "Later",
+    "enable": "Enable",
+    "verify": "Verify"
+  }
+}

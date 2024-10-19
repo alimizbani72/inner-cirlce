@@ -1,0 +1,8 @@
+{
+  "portfolioSummary": {
+    "editPOrtfolio": "Edit Portfolio",
+    "deletePOrtfolio": "Delete Portfolio",
+    "createPorfolio": "Create Porfolio",
+    "addTransaction": "Add Transaction"
+  }
+}

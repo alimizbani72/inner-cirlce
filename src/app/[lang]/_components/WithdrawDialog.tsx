@@ -56,7 +56,7 @@ const WithdrawDialog: FC<Props> = ({ close, open }) => {
           {
             requestBody: {
               otp,
-              amount: { value: toNumber(data.amount), currency_code: "USD" },
+              amount: { value: data.amount, currency_code: "USD" },
               wallet_id: `${walletDefault?.data?.id}`,
             },
           },

@@ -1,0 +1,18 @@
+{
+  "afDashboardTab": {
+    "totalTurnover": "Total Turnover",
+    "commissionWallet": "Commission Wallet",
+    "withdraw": "Withdraw",
+    "currentRank": "Current Rank",
+    "overrideBonus": "Override Bonus",
+    "goldCoins": "Gold Coins",
+    "first": "First",
+    "second": "Second",
+    "third": "Third",
+    "other": "Other",
+    "overall": "Overall",
+    "nextRank": "Next Rank",
+    "teamMembers": "Team Members",
+    "firstLineVolume": "First line Volume"
+  }
+}

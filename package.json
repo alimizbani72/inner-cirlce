@@ -8,7 +8,8 @@
     "dev": "next dev -p 7500",
     "start": "next start -p 7500",
     "prebuild": "bun run lint && bun run format",
-    "build": "bun run codegen && next build",
+    "build": "bun run codegen && bun run dicgen && next build",
+    "dev:build" : "bun run codegen && next build",
     "postbuild": "next-sitemap",
     "lint": "biome lint ./src",
     "lint:fix": "biome lint --apply ./src",
@@ -18,7 +19,10 @@
     "re-build": "rm -rf node_modules .next out dist build && bun install && bun run build",
     "codegen": "ts-node codegenScript.ts && bun run format && bun run lint:fix",
     "icongen": "ts-node icongen.ts",
-    "prepare": "husky || true"
+    "prepare": "husky || true",
+    "translate": "ts-node translate.ts",
+    "build:translations": "ts-node build-translations.ts",
+    "dicgen":"bun run translate && bun run build:translations"
   },
   "dependencies": {
     "@emotion/cache": "^11.11.0",
@@ -107,6 +111,7 @@
     "@types/vimeo__player": "^2.18.3",
     "husky": "^9.0.11",
     "next-sitemap": "^4.2.3",
+    "openai": "^4.68.1",
     "openapi-typescript-codegen": "^0.29.0",
     "ts-morph": "^22.0.0",
     "ts-node": "^10.9.2",

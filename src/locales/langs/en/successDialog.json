@@ -1,0 +1,7 @@
+{
+  "successDialog": {
+    "requestSent": "Your Request Sent!",
+    "reviewMessage": "Admins will review it and send the result to your email in next 24 hours.",
+    "backToHome": "Back To Home"
+  }
+}

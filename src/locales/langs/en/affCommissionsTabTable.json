@@ -1,0 +1,12 @@
+{
+  "affCommissionsTabTable": {
+    "userID": "User ID",
+    "userEmail": "User Email",
+    "amount": "Amount",
+    "packageName": "Package Name",
+    "percentage": "Percentage",
+    "commissionDate": "Commission Date",
+    "commissionsTitle": "Commissions",
+    "noRecord": "You have not any commission record yet"
+  }
+}

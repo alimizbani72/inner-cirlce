@@ -44,3 +44,8 @@ public/*.js
 
 # Sentry Config File
 .sentryclirc
+
+
+# Ignore generated translation files
+/src/locales/langs/translated/
+/src/locales/langs/merged/

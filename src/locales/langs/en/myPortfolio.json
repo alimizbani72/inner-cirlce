@@ -1,0 +1,21 @@
+{
+  "myPortfolio": {
+    "updatePortfolio": " Update Portfolio",
+    "getStartedFirstPortfolio": "Let’s get started with your first portfolio!",
+    "trackProfitsAndlossesMessage": "Track profits, losses and valuation all in one.",
+    "addPortfolio": "Add Portfolio",
+    "cancel": "Cancel",
+    "create": "Create",
+    "createPortfolio": "Create Portfolio",
+    "update": "Update",
+    "avatar": "Avatar",
+    "change": "Change",
+    "changeAvatar": "Change Avatar",
+    "portfolionamePlaceholder": "Enter Portfolio name",
+    "portfolioname": "Portfolio name",
+    "feelingAboutPortfolioText": "How are you feeling about this portfolio?",
+    "saveChanges": "Save Changes",
+    "errorcreateMessage": "failed to create portfolio",
+    "errorUpdateMessage": "failed to update portfolio"
+  }
+}

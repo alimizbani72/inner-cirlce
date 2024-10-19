@@ -1,0 +1,14 @@
+{
+  "withdraw": {
+    "Withdraw": "Withdraw",
+    "requiredAmount": "Amount is required",
+    "requiredWallet": "Wallet address is required",
+    "submitRequest": "Your request submitted successfully.",
+    "availableWithdraw": "Available for withdraw",
+    "amount": "Amount",
+    "enterAmount": "Enter the amount",
+    "address": "Address",
+    "feeWithdrawal": "There will be 3% fee for withdrawal.",
+    "minimumAmount": "The minimum amount for withdrawal are 100 dollars."
+  }
+}

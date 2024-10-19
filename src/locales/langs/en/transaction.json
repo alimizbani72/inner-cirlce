@@ -1,0 +1,6 @@
+{
+  "transaction": {
+    "editTransaction": "Edit Transaction",
+    "deleteTransaction": "Delete Transaction"
+  }
+}

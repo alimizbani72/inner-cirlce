@@ -1,0 +1,9 @@
+{
+  "portfolioTable": {
+    "strategyPlan": "Strategy Plan",
+    "plannedInvestment": "Planned Investment",
+    "enterAmount": "Enter Amount",
+    "upgradeMessage": "By upgrading, subscribers can access additional benefits, enhanced functionalities, and premium content not available in their current plan.",
+    "strategy": "Strategy"
+  }
+}

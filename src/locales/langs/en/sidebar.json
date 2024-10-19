@@ -1,0 +1,17 @@
+{
+  "sidebar": {
+    "services": "Services",
+    "community": "Community",
+    "dashboard": "Dashboard",
+    "coin-reports": "Coin Reports",
+    "portfolio": "Portfolio",
+    "my-portfolios": "My Portfolios",
+    "portfolio-strategies": "Portfolio Strategies",
+    "affiliate": "Affiliate",
+    "education": "Education",
+    "help-center": "Help Center",
+    "secret-hunts": "Secret Hunts",
+    "settings": "Settings",
+    "telegram-channel": "Telegram Channel"
+  }
+}

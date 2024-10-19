@@ -1,0 +1,12 @@
+{
+  "userProfile": {
+    "title": "User Profile",
+    "choosePicError": "Choose your pic!",
+    "avatarUpdatedSuccess": "Avatar updated successfully!",
+    "avatarUpdateFailed": "Failed to update avatar!",
+    "avatarRemovedSuccess": "Avatar removed successfully!",
+    "avatarRemoveFailed": "Failed to remove avatar!",
+    "uploadPicture": "Upload Picture",
+    "remove": "Remove"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "assetsTable": {
+    "total": "Total",
+    "assetsTotalValue": "Assets Total Value",
+    "transactions": "Transactions",
+    "edit": "Edit",
+    "delete": "Delete",
+    "quantity": "Quantity",
+    "pricePerCoin": "PRICE PER COIN",
+    "fee": "FEE",
+    "dateAndTime": "DATE & TIME",
+    "note": "Note",
+    "name": "name",
+    "currentHoldings": "Current Holdings",
+    "actualPrice": "Actual Price",
+    "actualValue": "Actual Value",
+    "distribution": "Distribution",
+    "exitProximity": "Exit Proximity",
+    "totalBought": "Total bought",
+    "totalSold": "Total Sold",
+    "totalInvest": "Total Invest",
+    "realizedPNL": "Realized PNL",
+    "unrealizedpnl": "UNRealized PnL",
+    "profit": "Profit"
+  }
+}

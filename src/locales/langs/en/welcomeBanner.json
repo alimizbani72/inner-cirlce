@@ -1,0 +1,9 @@
+{
+  "welcomeBanner": {
+    "hi": "Hi {{name}}",
+    "welcomeBack": "👋, Welcome back!",
+    "knowledgeMessage": "Knowledge is power in the marketplace; wisdom is knowing how to use it!",
+    "welcomeVideo": "Welcome Video",
+    "youAre": "You're a"
+  }
+}

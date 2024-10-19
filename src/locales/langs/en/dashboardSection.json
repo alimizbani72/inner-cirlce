@@ -1,0 +1,6 @@
+{
+  "dashboardSection": {
+    "incompletePaymentAlert": "Incomplete Payment Alert",
+    "incompletePaymentDescription": "Your upgrade to the {{planType}} Package is pending due to an incomplete payment. Please complete your payment to finalize the upgrade."
+  }
+}

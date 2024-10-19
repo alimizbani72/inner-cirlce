@@ -1,0 +1,11 @@
+{
+  "twoFactorDialog": {
+    "title": "Become a Partner",
+    "securityMessage": "For added security, please set up Two-Factor Authentication (2FA).",
+    "qrInstruction": "Scan the QR code with an authentication app and enter the code below.",
+    "authCodeLabel": "Authentication Code",
+    "authCodePlaceholder": "Enter Authentication Code",
+    "backButton": "Back",
+    "nextStepButton": "Next Step"
+  }
+}

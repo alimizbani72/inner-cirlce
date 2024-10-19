@@ -1,0 +1,20 @@
+{
+  "createAccount": {
+    "title": "Create your account",
+    "subtitle": "See your growth and get consulting support!",
+    "registerWithGoogle": "Register with Google",
+    "orContinueWithEmail": "Or Continue with Email",
+    "fullNameLabel": "Full name",
+    "fullNamePlaceholder": "Enter your full name",
+    "emailLabel": "Email address",
+    "emailPlaceholder": "Enter your email address",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "inviteCodeLabel": "Your Sponsor",
+    "agreeToTerms": "I agree to the",
+    "termsAndConditions": "I have read the {{termsAndConditions}} and the {{disclaimer}} and expressly accept them as part of the contract. I also agree and understand that by purchasing and immediately accessing digital content, {{refundWaiver}}.",
+    "createAccountButton": "Create Account",
+    "alreadyHaveAccount": "Already have an account?",
+    "login": "Login"
+  }
+}
