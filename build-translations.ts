@@ -38,27 +38,26 @@ function buildLanguage(lang: string) {
   let langDir: string;
 
   if (lang === "en") {
-    // For English, source directory is EN_DIR
     langDir = path.join(LANGS_DIR, "en");
   } else {
-    // For other languages, source directory is TRANSLATED_DIR/<lang>
     langDir = path.join(LANGS_DIR, "translated", lang);
   }
 
   const outputFile = path.join(LANGS_DIR, "merged", `${lang}.json`);
-
-  if (!fs.existsSync(langDir)) {
-    console.error(`Language directory ${langDir} does not exist.`);
-    return;
-  }
-
-  const translations = loadTranslations(langDir);
 
   // Ensure the output directory exists
   const outputDir = path.dirname(outputFile);
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
+
+  if (!fs.existsSync(langDir)) {
+    console.warn(`Language directory ${langDir} does not exist. Creating empty translation file.`);
+    fs.writeFileSync(outputFile, JSON.stringify({}, null, 2), "utf8");
+    return;
+  }
+
+  const translations = loadTranslations(langDir);
 
   fs.writeFileSync(outputFile, JSON.stringify(translations, null, 2), "utf8");
   // biome-ignore lint/suspicious/noConsoleLog: <explanation>
@@ -68,6 +67,9 @@ function buildLanguage(lang: string) {
 function buildAllLanguages() {
   const LANGS_DIR = path.join(__dirname, "src", "locales", "langs");
   const translatedDir = path.join(LANGS_DIR, "translated");
+  if (!fs.existsSync(translatedDir)) {
+    fs.mkdirSync(translatedDir, { recursive: true });
+  }
 
   // Get list of languages from the translated directory
   const languages = [
