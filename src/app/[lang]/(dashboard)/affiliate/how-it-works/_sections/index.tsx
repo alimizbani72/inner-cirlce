@@ -2,23 +2,27 @@
 import { Box, Divider, Stack, Typography } from "@mui/material";
 import dynamic from "next/dynamic";
 import type { FC } from "react";
-import { termsAndConditions } from "@/assets/html/terms";
 import { useTranslate } from "@/locales";
 import { toPascalCase } from "@/utils/change-case";
 import RiveComp from "@/components/RiveComp";
 import { toNumber } from "@/utils/toNumber";
 import { useAffiliateServiceAffiliateMeQuery } from "@minecraft/queries";
+import { useGlobalAffiliateHowItWorksServiceGetGlobalsAffiliateHowItWorks } from "@cms/queries";
+import { selectLang } from "@/lib/features/dictionary/dicSlice";
+import { useAppSelector } from "@/lib/hooks";
 
-const ContentParser = dynamic(() => import("@app/_components/ContentParser"), { ssr: false });
+const CMSContentParser = dynamic(() => import("@app/_components/CMSContentParser"), { ssr: false });
 
 const AffiliateHowItWorksSection: FC = () => {
   const { t } = useTranslate();
+  const lang = useAppSelector(selectLang);
   const { data: me } = useAffiliateServiceAffiliateMeQuery();
+  const { data } = useGlobalAffiliateHowItWorksServiceGetGlobalsAffiliateHowItWorks({ locale: lang });
 
   return (
     <Stack p={{ md: 4, xs: 3 }} gap={3} direction={{ md: "row", xs: "column-reverse" }}>
       <Stack flex={2 / 3}>
-        <ContentParser content={termsAndConditions} />
+        <CMSContentParser layout={data?.layout} />
       </Stack>
       <Stack flex={1 / 3}>
         <Stack border="1.5px solid" top={{ md: 32 }} position="sticky" borderColor="dark.3" borderRadius={1.5} gap={2}>

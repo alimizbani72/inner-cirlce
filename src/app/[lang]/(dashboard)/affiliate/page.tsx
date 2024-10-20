@@ -12,6 +12,8 @@ import {
   prefetchUseFinancialServiceFinancialPayoutsQuery,
   prefetchUseWalletServiceWalletDefaultQuery,
 } from "@minecraft/queries/prefetch";
+import { prefetchUseGlobalAffilateTermsServiceGetGlobalsAffilateTerms } from "@cms/queries/prefetch";
+import type { RouteParamsType } from "@/routes/type";
 
 // ----------------------------------------------------------------------
 
@@ -19,7 +21,7 @@ export const metadata: Metadata = {
   title: "Affiliate | Dashboard",
 };
 
-export default async function Affiliate() {
+export default async function Affiliate({ params }: RouteParamsType) {
   const queryClient = getQueryClient();
   await Promise.all([
     prefetchUseWalletServiceWalletDefaultQuery(queryClient),
@@ -30,6 +32,7 @@ export default async function Affiliate() {
     prefetchUseAffiliateServiceAffiliateChildrenQuery(queryClient),
     prefetchUseAffiliateServiceAffiliateCommissionListQuery(queryClient),
     prefetchUseAffiliateServiceAffiliateReferralCodeQuery(queryClient),
+    prefetchUseGlobalAffilateTermsServiceGetGlobalsAffilateTerms(queryClient, { locale: params.lang }),
   ]);
 
   return (

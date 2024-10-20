@@ -17,6 +17,11 @@ import { Icon } from "@/components/icons";
 import { LoadingButton } from "@mui/lab";
 import { useAffiliateServiceAffiliateTosCreateMutation } from "@minecraft/queries";
 import { enqueueSnackbar } from "notistack";
+import { useGlobalAffilateTermsServiceGetGlobalsAffilateTerms } from "@cms/queries";
+import { selectLang } from "@/lib/features/dictionary/dicSlice";
+import { useAppSelector } from "@/lib/hooks";
+import dynamic from "next/dynamic";
+const CMSContentParser = dynamic(() => import("@app/_components/CMSContentParser"), { ssr: false });
 
 type Props = {
   close: VoidFunction;
@@ -24,7 +29,11 @@ type Props = {
 };
 
 const TACDialog: FC<Props> = ({ close, open }) => {
+  const lang = useAppSelector(selectLang);
+
   const [value, setValue] = useState(false);
+  const { data } = useGlobalAffilateTermsServiceGetGlobalsAffilateTerms({ locale: lang });
+
   const { mutateAsync, isPending } = useAffiliateServiceAffiliateTosCreateMutation();
   const handleSubmit = async () => {
     mutateAsync()
@@ -52,42 +61,7 @@ const TACDialog: FC<Props> = ({ close, open }) => {
       <Divider />
       <DialogContent dividers>
         <Stack gap={3}>
-          <Typography variant="p2-medium">
-            <Typography variant="p2-bold" textTransform="uppercase" color="warning.main">
-              NOTE:
-            </Typography>{" "}
-            Please read and agree to the terms and conditions to access the affiliate content.
-          </Typography>
-
-          <Typography variant="p2-regular">
-            This Agreement is made as of [Date] between [Your Company Name] (“Company”) and [Affiliate Name]
-            (“Affiliate”).
-          </Typography>
-
-          <Stack>
-            <Typography variant="p2-semi-bold">1. Purpose</Typography>
-            <Typography variant="p2-regular">
-              The Affiliate will promote the Company’s products/services and earn commissions on sales generated through
-              their unique referral link.
-            </Typography>
-          </Stack>
-
-          <Stack>
-            <Typography variant="p2-semi-bold">2. Commissions</Typography>
-
-            <Typography variant="p2-regular">
-              The Affiliate will earn a commission of [Percentage]% on net sales. Payments will be made monthly, within
-              [Number] days, with a minimum payout of [Amount].
-            </Typography>
-          </Stack>
-
-          <Stack>
-            <Typography variant="p2-semi-bold">3.Responsibilities</Typography>
-            <Typography variant="p2-regular">
-              The Affiliate agrees to promote products professionally, use approved marketing materials, and comply with
-              applicable laws.
-            </Typography>
-          </Stack>
+          <CMSContentParser layout={data?.layout} />
         </Stack>
       </DialogContent>
       <DialogActions sx={{ p: 3 }}>

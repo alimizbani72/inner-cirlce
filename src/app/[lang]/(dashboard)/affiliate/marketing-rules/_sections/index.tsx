@@ -2,18 +2,23 @@
 import { Box, Stack } from "@mui/material";
 import dynamic from "next/dynamic";
 import type { FC } from "react";
-import { termsAndConditions } from "@/assets/html/terms";
 import Image from "@/components/Image";
+import { useGlobalAffilateRulesServiceGetGlobalsAffilateRules } from "@cms/queries";
+import { selectLang } from "@/lib/features/dictionary/dicSlice";
+import { useAppSelector } from "@/lib/hooks";
 
-const ContentParser = dynamic(() => import("@app/_components/ContentParser"), { ssr: false });
+const CMSContentParser = dynamic(() => import("@app/_components/CMSContentParser"), { ssr: false });
 
 const AffiliateMarketingRulesSection: FC = () => {
+  const lang = useAppSelector(selectLang);
+  const { data } = useGlobalAffilateRulesServiceGetGlobalsAffilateRules({ locale: lang });
+
   return (
     <Stack p={{ md: 4, xs: 3 }} gap={2} alignItems="center" position="relative">
       <Stack maxWidth={744}>
         <Image src="/assets/png/rules.png" width="100%" />
 
-        <ContentParser content={termsAndConditions} />
+        <CMSContentParser layout={data?.layout} />
       </Stack>
 
       <Box
