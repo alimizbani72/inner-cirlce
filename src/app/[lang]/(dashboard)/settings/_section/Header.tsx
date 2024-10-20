@@ -85,36 +85,38 @@ const SettingsHeader = () => {
           <SectionSelect tabs={tabs} />
         ) : (
           <Stack direction="row">
-            {tabs.map((tab) => (
-              <Stack
-                key={tab.icon}
-                direction="row"
-                gap={1}
-                component={isActive(tab.link) ? "div" : Link}
-                href={`/settings/${tab.link}`}
-                sx={{
-                  py: 1,
-                  px: 2,
-                  borderRadius: "20px",
-                  border: "1px solid",
-                  color: "transparent",
-                  ...(isActive(tab.link)
-                    ? {
-                        borderColor: "dark.2",
-                        bgcolor: "dark.3",
-                        boxShadow: "0px 4px 8px 0px rgba(0, 0, 0, 0.16)",
-                      }
-                    : {
-                        "svg path": { stroke: "rgb(151, 153, 180)" },
-                      }),
-                }}
-              >
-                <Icon name={`${tab.icon}${isActive(tab.link) ? "--colorful" : ""}` as any} />
-                <Typography variant="p2-medium" color={isActive(tab.link) ? "white" : "grey.light"}>
-                  {toTitleCase(tab.link)}
-                </Typography>
-              </Stack>
-            ))}
+            {tabs
+              .filter((t) => (userInfo?.kyc_status ? !t.link.includes("become-partner") : t))
+              .map((tab) => (
+                <Stack
+                  key={tab.icon}
+                  direction="row"
+                  gap={1}
+                  component={isActive(tab.link) ? "div" : Link}
+                  href={`/settings/${tab.link}`}
+                  sx={{
+                    py: 1,
+                    px: 2,
+                    borderRadius: "20px",
+                    border: "1px solid",
+                    color: "transparent",
+                    ...(isActive(tab.link)
+                      ? {
+                          borderColor: "dark.2",
+                          bgcolor: "dark.3",
+                          boxShadow: "0px 4px 8px 0px rgba(0, 0, 0, 0.16)",
+                        }
+                      : {
+                          "svg path": { stroke: "rgb(151, 153, 180)" },
+                        }),
+                  }}
+                >
+                  <Icon name={`${tab.icon}${isActive(tab.link) ? "--colorful" : ""}` as any} />
+                  <Typography variant="p2-medium" color={isActive(tab.link) ? "white" : "grey.light"}>
+                    {toTitleCase(tab.link)}
+                  </Typography>
+                </Stack>
+              ))}
           </Stack>
         )}
         <LanguageSelect />
