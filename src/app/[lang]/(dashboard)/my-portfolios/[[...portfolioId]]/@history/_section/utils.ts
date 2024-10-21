@@ -6,15 +6,16 @@ const formatDate = (date: string) => {
 };
 
 export const transformDataForChart = (data: any[] | undefined) => {
-  if (!data) {
-    return null;
-  }
+ 
   const transformedData = data?.map((item) => ({
     date: item.date,
     investment: toNumber(item.investment),
   }));
-  const last7Data = transformedData.slice(-7);
 
+  const last7Data = transformedData?.slice(-7);
+  if (!last7Data?.length) {
+    return null;
+  }
   return {
     series: [
       {

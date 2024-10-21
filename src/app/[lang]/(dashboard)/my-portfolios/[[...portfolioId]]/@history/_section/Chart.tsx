@@ -5,11 +5,8 @@ import dynamic from "next/dynamic";
 import Box from "@mui/material/Box";
 import type { ChartProps } from "./types";
 
-import Loading from "@/components/Loading";
-
 const ApexChart = dynamic(() => import("react-apexcharts").then((mod) => mod.default), {
   ssr: false,
-  loading: () => <Loading />,
 });
 
 export function Chart({

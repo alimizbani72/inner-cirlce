@@ -40,7 +40,7 @@ export function ChartHistory({ title, subheader, chart, loading, ...other }: Pro
   // }, []);
 
   return (
-    <Card {...other} sx={{ bgcolor: "dark.2", border: "1.5px solid", borderColor: "dark.3" }}>
+    <Card {...other} sx={{ bgcolor: "dark.2" }}>
       <CardHeader
         sx={{ typography: "p1-medium" }}
         title={title}

@@ -17,8 +17,7 @@ const PriceInput = ({ perCoinPrice, isEditMode, name, label, placeholder, topHel
 
   useEffect(() => {
     if (perCoinPrice && !isEditMode) {
-      const formattedPrice = Number(perCoinPrice).toFixed();
-      setValue("price", formattedPrice);
+      setValue("price", perCoinPrice);
     }
   }, [perCoinPrice, setValue, isEditMode]);
 
