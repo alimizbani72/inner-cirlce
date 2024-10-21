@@ -6,8 +6,12 @@ import numeral from "numeral";
 import { useTranslate } from "@/locales";
 import Bullets from "../../_section/Bullets";
 import MoreTransactionAction from "./MoreTransactionAction";
+import { useParams } from "next/navigation";
+import { getActivePortfolioId } from "../../_section/utils";
 
 const TransactionsTable = ({ transactions }: { transactions: any[] }) => {
+  const { portfolioId } = useParams();
+  const hasPortfolioId = getActivePortfolioId(portfolioId);
   const { t } = useTranslate();
   return (
     <Table>
@@ -16,7 +20,7 @@ const TransactionsTable = ({ transactions }: { transactions: any[] }) => {
           <TableRow key={transaction.id}>
             <TableCell sx={{ pl: "0 !important" }}>
               <Stack direction={"row"} spacing={2} alignItems={"center"}>
-                <MoreTransactionAction transaction={transaction} />
+                {hasPortfolioId && <MoreTransactionAction transaction={transaction} />}
                 <Divider flexItem orientation="vertical" />
                 <Bullets bgcolor={transaction.type === "buy" ? "success.main" : "danger.main"} />
                 <TransactionDetail
