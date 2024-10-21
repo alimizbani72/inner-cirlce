@@ -13,6 +13,7 @@ import { useTranslate } from "@/locales";
 import { formatTitle } from "@/utils/toNumber";
 import usePortfolioData from "../../_section/hook/usePortfolioData";
 import { Icon } from "@/components/icons";
+import ValueWithSymbol from "./ValueWithSymbol";
 
 const AssetsTable = () => {
   const { t } = useTranslate();
@@ -37,15 +38,15 @@ const AssetsTable = () => {
               gap={1}
             >
               <CryptoIcon name={row.row.name} symbol={row.row.symbol} logoUrl={row.row.logo} />
-              <Icon name={row.isOpen ? "Arrow-up" : "Arrow-down"} />
+              <Icon name={row.isOpen ? "arrow-colorfull-up" : "arrow-colorfull-down"} />
             </Stack>
           </Stack>
         ),
       },
       {
-        title: formatTitle(t("assetsTable.currentHoldings")),
+        title: t("assetsTable.currentHoldings"),
         field: "current_holdings",
-        modify: (row: any) => row.current_holdings,
+        modify: (row: any) => <ValueWithSymbol value={row.current_holdings} symbol={row.symbol} />,
       },
       {
         title: formatTitle(t("assetsTable.actualPrice")),
@@ -78,12 +79,12 @@ const AssetsTable = () => {
       {
         title: t("assetsTable.totalBought"),
         field: "total_purchased",
-        modify: (row: any) => row.total_purchased,
+        modify: (row: any) => <ValueWithSymbol value={row.total_purchased} symbol={row.symbol} />,
       },
       {
         title: t("assetsTable.totalSold"),
         field: "total_sold",
-        modify: (row: any) => row.total_sold,
+        modify: (row: any) => <ValueWithSymbol value={row.total_sold} symbol={row.symbol} />,
       },
       {
         title: formatTitle(t("assetsTable.totalInvest")),
@@ -134,7 +135,7 @@ const AssetsTable = () => {
           >
             <CustomAssetTable
               isPending={isLoading}
-              minWidthCell={285}
+              minWidthCell={160}
               title={"Assets"}
               columns={columns}
               data={((selectedPortfolio?.data as any)?.assets as any) ?? []}

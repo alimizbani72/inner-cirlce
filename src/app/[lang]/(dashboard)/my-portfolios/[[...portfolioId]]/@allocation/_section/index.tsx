@@ -5,20 +5,24 @@ import CryptoChip from "./CryptoChip";
 import Chart from "./Chart";
 import { useTranslate } from "@/locales";
 import usePortfolioData from "../../_section/hook/usePortfolioData";
+import { useAppSelector } from "@/lib/hooks";
+import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
 
 const Allocation = () => {
   const { t } = useTranslate();
   const { selectedPortfolio, isLoading } = usePortfolioData();
   const [hoveredCrypto, setHoveredCrypto] = useState<string | null>(null);
-
+  const isCollapsed = useAppSelector(isSidebarCollapsed);
   const seriesData =
     (selectedPortfolio?.data as any)?.assets.map((asset: any) => ({
       x: asset.symbol,
       y: Math.floor(asset.distribution),
     })) || [];
+
   return (
     <Stack
-      width={{ md: "50%", xs: "342px" }}
+      width={{ md: "100%", xs: "342px" }}
+      maxWidth={{ md: isCollapsed ? "calc(50vw - 97px)" : "calc(50vw - 168px)" }}
       height={"320px"}
       p={3}
       sx={{
@@ -48,6 +52,7 @@ const Allocation = () => {
               label={asset.symbol}
               value={asset.distribution}
               isActive={hoveredCrypto === asset.symbol}
+              onHover={setHoveredCrypto}
             />
           ))}
         </Stack>

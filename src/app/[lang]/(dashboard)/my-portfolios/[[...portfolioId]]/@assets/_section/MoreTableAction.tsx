@@ -1,6 +1,6 @@
 "use client";
 import { Icon } from "@/components/icons";
-import { Divider, MenuItem } from "@mui/material";
+import { MenuItem } from "@mui/material";
 import { IconButton, Stack } from "@mui/material";
 import ActionItem from "./ActionItem";
 import CustomMenu from "@/components/CustomMenu";
@@ -9,11 +9,9 @@ import { usePopover } from "@/components/custom-popover";
 import { useParams } from "next/navigation";
 import { useSnackbar } from "notistack";
 import { useQueryClient } from "@tanstack/react-query";
-import {
-  usePortfolioServicePortfoliosIdAssetsSymbolDeleteMutation,
-  UsePortfolioServicePortfoliosIdQueryKeyFn,
-} from "@minecraft/queries";
+import { usePortfolioServicePortfoliosIdAssetsSymbolDeleteMutation } from "@minecraft/queries";
 import { getActivePortfolioId } from "../../_section/utils";
+import { invalidatePortfolioQueries } from "../../_section/InvaidatePorfolioQueries";
 type MoreTableProps = {
   symbol: string;
 };
@@ -30,11 +28,13 @@ const MoreTableAction = ({ symbol }: MoreTableProps) => {
       { id: activePortfolioId, symbol },
       {
         onSuccess: () => {
-          queryClient.invalidateQueries({
-            queryKey: UsePortfolioServicePortfoliosIdQueryKeyFn({
-              id: activePortfolioId,
-            }),
+          invalidatePortfolioQueries(queryClient, {
+            portfolioId: activePortfolioId,
+            invalidatePortfolioId: true,
+            invalidateHistory: true,
+            invalidatePortfolio: true,
           });
+
           enqueueSnackbar("Asset Deleted Successfully", {
             variant: "success",
           });
@@ -51,15 +51,20 @@ const MoreTableAction = ({ symbol }: MoreTableProps) => {
 
   return (
     <>
-      <IconButton onClick={onOpen}>
+      <IconButton
+        onClick={(event) => {
+          event.stopPropagation();
+          onOpen(event);
+        }}
+      >
         <Icon name="More" />
       </IconButton>
 
       <CustomMenu anchorEl={open} open={!!open} onClose={onClose}>
         <MenuItem>
           <Stack spacing={2}>
-            <ActionItem iconName="Pen" label={t("assetsTable.edit")} />
-            <Divider />
+            {/* <ActionItem iconName="Pen" label={t("assetsTable.edit")} />
+            <Divider /> */}
             <ActionItem iconName="Trash" label={t("assetsTable.delete")} onClick={handleDelete} />
           </Stack>
         </MenuItem>

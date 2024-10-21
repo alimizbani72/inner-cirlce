@@ -1,21 +1,20 @@
 "use client";
 import { Icon } from "@/components/icons";
 import { Divider, MenuItem } from "@mui/material";
-import { IconButton, Stack } from "@mui/material";
+import { IconButton } from "@mui/material";
 import ActionItem from "./ActionItem";
 import CustomMenu from "@/components/CustomMenu";
 import { useTranslate } from "@/locales";
 import { usePopover } from "@/components/custom-popover";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { openEditMode, selectActiveSymbol } from "@/lib/features/portfolio/transactionSlice";
-import {
-  usePortfolioServicePortfolioTransactionsIdDeleteMutation,
-  UsePortfolioServicePortfolioTransactionsQueryKeyFn,
-} from "@minecraft/queries";
+import { usePortfolioServicePortfolioTransactionsIdDeleteMutation } from "@minecraft/queries";
 import { useSnackbar } from "notistack";
 import { useQueryClient } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import { getActivePortfolioId } from "../../_section/utils";
+import { Stack } from "@mui/material";
+import { invalidatePortfolioQueries } from "../../_section/InvaidatePorfolioQueries";
 type TransactionType = {
   id: string;
   symbol: string;
@@ -35,6 +34,7 @@ const MoreTransactionAction = ({ transaction }: Props) => {
   const { onClose, onOpen, open } = usePopover();
   const queryClient = useQueryClient();
   const activeSymbol = useAppSelector(selectActiveSymbol);
+  const getportfolioId = getActivePortfolioId(portfolioId);
   const dispatch = useAppDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const handleEditClick = () => {
@@ -49,17 +49,13 @@ const MoreTransactionAction = ({ transaction }: Props) => {
       { id: transaction.id as any },
       {
         onSuccess: () => {
-          queryClient.invalidateQueries({
-            queryKey: UsePortfolioServicePortfolioTransactionsQueryKeyFn({
-              opts: JSON.stringify({
-                filters: {
-                  symbol: activeSymbol,
-                  portfolio_id: getActivePortfolioId(portfolioId),
-                },
-                page: 1,
-                per_page: 15,
-              }),
-            }),
+          invalidatePortfolioQueries(queryClient, {
+            portfolioId: getportfolioId,
+            invalidatePortfolioId: true,
+            invalidateHistory: true,
+            invalidateTransactions: true,
+            invalidatePortfolio: true,
+            activeSymbol: activeSymbol,
           });
           enqueueSnackbar("Transaction Deleted Successfully", {
             variant: "success",
@@ -82,13 +78,19 @@ const MoreTransactionAction = ({ transaction }: Props) => {
       </IconButton>
 
       <CustomMenu anchorEl={open} open={!!open} onClose={onClose}>
-        <MenuItem>
-          <Stack spacing={2}>
-            <ActionItem iconName="Pen" label={t("transaction.editTransaction")} onClick={handleEditClick} />
-            <Divider />
-            <ActionItem iconName="Trash" label={t("transaction.deleteTransaction")} onClick={handleDelete} />
+        <Stack direction="column" spacing={1}>
+          <Stack>
+            <MenuItem onClick={handleEditClick}>
+              <ActionItem iconName="Pen" label={t("transaction.editTransaction")} />
+            </MenuItem>
           </Stack>
-        </MenuItem>
+          <Divider />
+          <Stack>
+            <MenuItem onClick={handleDelete}>
+              <ActionItem iconName="Trash" label={t("transaction.deleteTransaction")} />
+            </MenuItem>
+          </Stack>
+        </Stack>
       </CustomMenu>
     </>
   );

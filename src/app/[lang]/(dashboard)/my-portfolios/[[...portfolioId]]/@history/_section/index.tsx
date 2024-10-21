@@ -2,38 +2,44 @@
 import { Stack } from "@mui/material";
 import { ChartHistory } from "./ChartHistory";
 import { useTranslate } from "@/locales";
+import { useAppSelector } from "@/lib/hooks";
+import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
+import { useParams } from "next/navigation";
+import { getActivePortfolioId } from "../../_section/utils";
+import {
+  usePortfolioServiceOverviewHistoryQuery,
+  usePortfolioServicePortfoliosIdHistoryQuery,
+} from "@minecraft/queries";
+import { transformDataForChart } from "./utils";
 
 const HistorySection = () => {
+  const isCollapsed = useAppSelector(isSidebarCollapsed);
   const { t } = useTranslate();
+  const { portfolioId } = useParams();
+
+  const activePortfolioId = getActivePortfolioId(portfolioId);
+
+  const { data: overview } = usePortfolioServiceOverviewHistoryQuery(undefined, undefined, {
+    enabled: !activePortfolioId,
+  });
+
+  const { data: portfoliohistory } = usePortfolioServicePortfoliosIdHistoryQuery(
+    {
+      id: activePortfolioId,
+    },
+    undefined,
+    { enabled: !!activePortfolioId }
+  );
+
+  const selectedPortfolio = activePortfolioId ? portfoliohistory : overview;
+  const chartData = transformDataForChart(selectedPortfolio?.data || []);
+
   return (
-    <Stack width={{ md: "50%", xs: "100%" }}>
-      <ChartHistory
-        title={t("history.history")}
-        chart={{
-          series: [
-            {
-              name: "All",
-              categories: ["2018", "2019", "2020", "2021", "2022", "2023"],
-              data: [{ data: [2400000, 1200000, 6400000, 9600000, 760000, 4199000] }],
-            },
-            {
-              name: "Weekly",
-              categories: ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5"],
-              data: [{ data: [1000, 4123, 3523, 15132, 49222] }],
-            },
-            {
-              name: "Monthly",
-              categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"],
-              data: [{ data: [83, 112, 119, 88, 103, 112, 114, 108, 93] }],
-            },
-            {
-              name: "Yearly",
-              categories: ["2018", "2019", "2020", "2021", "2022", "2023"],
-              data: [{ data: [24, 72000, 64000, 96000, 76, 41] }],
-            },
-          ],
-        }}
-      />
+    <Stack
+      width={{ md: "50%", xs: "100%" }}
+      maxWidth={{ md: isCollapsed ? "calc(50vw - 97px)" : "calc(50vw - 168px)" }}
+    >
+      <ChartHistory title={t("history.history")} chart={chartData as any} />
     </Stack>
   );
 };

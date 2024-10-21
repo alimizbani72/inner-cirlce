@@ -5,9 +5,10 @@ interface CryptoChipProps {
   label: string;
   value: number;
   isActive: boolean;
+  onHover: (symbol: string | null) => void;
 }
 
-const CryptoChip = ({ label, value, isActive }: CryptoChipProps) => {
+const CryptoChip = ({ label, value, isActive, onHover }: CryptoChipProps) => {
   return (
     <Chip
       label={
@@ -27,6 +28,8 @@ const CryptoChip = ({ label, value, isActive }: CryptoChipProps) => {
         py: 0.5,
         px: { xs: 1, md: 2 },
       }}
+      onMouseEnter={() => onHover(label)}
+      onMouseLeave={() => onHover(null)}
     />
   );
 };

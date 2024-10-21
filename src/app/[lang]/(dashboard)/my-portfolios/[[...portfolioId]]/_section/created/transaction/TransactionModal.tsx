@@ -6,21 +6,23 @@ import { Icon } from "@/components/icons";
 import Toggle from "@app/_components/Toggle";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import { DialogActions, DialogContent, DialogTitle, Divider, IconButton, Stack, Typography } from "@mui/material";
+import {
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Divider,
+  IconButton,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
-import useToggleState from "@/hooks/use-toggle-state";
-import DateAndTimeModal from "./DateAndTimeModal";
-import { formatDateTime } from "@/utils/formatDateTime";
-import NoteModal from "./NoteModal";
-import CustomBadge from "./CustomBadge";
 import { useTranslate } from "@/locales";
 import {
   usePortfolioServiceCoinsSymbolPriceQuery,
-  UsePortfolioServicePortfoliosIdQueryKeyFn,
   usePortfolioServicePortfolioTransactionsCreateMutation,
   usePortfolioServicePortfolioTransactionsIdUpdateMutation,
-  UsePortfolioServicePortfolioTransactionsQueryKeyFn,
 } from "@minecraft/queries";
 import { useParams } from "next/navigation";
 import { useSnackbar } from "notistack";
@@ -39,16 +41,18 @@ import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { useQueryClient } from "@tanstack/react-query";
 import { LoadingButton } from "@mui/lab";
 import CoinsList from "./CoinsList";
+import PriceInput from "./PriceInput";
+import { invalidatePortfolioQueries } from "../../InvaidatePorfolioQueries";
+import DateBadge from "./DateBadge";
+import NoteBadge from "./NoteBadge";
+import Total from "./Total";
 
-// type TransactionModalProps = {
-//   coinsList: Coin[];
-//   // totalCount: number;
-//   // onPageChange: (newPage: number) => void;
-//   // page: number;
-//   isLoading: boolean;
-//   setSearchQuery: (value: string) => void;
-// };
-
+const formSchema = Yup.object().shape({
+  coins: Yup.mixed().nullable(),
+  quantity: Yup.string().required(),
+  price: Yup.string(),
+  fee: Yup.string(),
+});
 const TransactionModal = () => {
   const { t } = useTranslate();
   const buttons = useMemo(
@@ -74,6 +78,7 @@ const TransactionModal = () => {
     ],
     [t]
   );
+
   const { portfolioId } = useParams();
   const isEditMode = useAppSelector(selectIsEditMode);
   const queryClient = useQueryClient();
@@ -84,8 +89,6 @@ const TransactionModal = () => {
   const transactionToEdit = useAppSelector(selectTransactionToEdit);
   const initialDate = isEditMode && transactionToEdit ? new Date(transactionToEdit.date) : null;
   const [btnValue, setBtnValue] = useState<number>(isEditMode && transactionToEdit?.type === "sell" ? 2 : 1);
-  const [dateModalIsOpen, toggleDateAndTimeModal] = useToggleState();
-  const [noteModalIsOpen, toggleNoteModal] = useToggleState();
   const [dateTime, setDateTime] = useState<Date | null>(initialDate);
   const [note, setNote] = useState<string>(transactionToEdit?.note || "");
 
@@ -94,34 +97,8 @@ const TransactionModal = () => {
   const { mutateAsync: updateTransaction, isPending: updateIsPending } =
     usePortfolioServicePortfolioTransactionsIdUpdateMutation();
 
-  const formSchema = useMemo(
-    () =>
-      Yup.object().shape({
-        coins: Yup.mixed().nullable(),
-        quantity: Yup.string().required(),
-        price: Yup.string(),
-        fee: Yup.string().required(),
-      }),
-    [t]
-  );
-  // const defaultValues = useMemo(() => {
-  //   if (isEditMode && transactionToEdit) {
-  //     return {
-  //       coins: transactionToEdit.symbol,
-  //       quantity: transactionToEdit.quantity,
-  //       price: transactionToEdit.price,
-  //       fee: transactionToEdit.fee,
-  //     };
-  //   }
-  //   return {
-  //     coins: coinsList[0].symbol || "",
-  //     quantity: "",
-  //     price: "",
-  //     fee: "",
-  //   };
-  // }, [isEditMode, transactionToEdit, coinsList]);
   const defaultValues = {
-    coins: null,
+    coins: transactionToEdit ? transactionToEdit.symbol : null,
     quantity: transactionToEdit ? transactionToEdit.quantity : "",
     price: transactionToEdit ? transactionToEdit.price : "",
     fee: transactionToEdit ? transactionToEdit.fee : "",
@@ -140,6 +117,9 @@ const TransactionModal = () => {
   const { handleSubmit, watch } = methods;
 
   const selectedCoinSymbol = (watch("coins") as any)?.symbol;
+  const quantity = toNumber(watch("quantity"));
+  const fee = toNumber(watch("fee"));
+  const price = toNumber(watch("price"));
 
   const { data: perCoinPrice } = usePortfolioServiceCoinsSymbolPriceQuery(
     {
@@ -152,57 +132,51 @@ const TransactionModal = () => {
   const activePortfolioId = getActivePortfolioId(portfolioId);
 
   const onSubmit = handleSubmit(async (data) => {
+    const formattedDate = fDate(dateTime, "yyyy-MM-dd") ?? undefined;
+    const transactionType = btnValue === 1 ? "buy" : "sell";
+
+    const requestBody = {
+      type: transactionType,
+      date: formattedDate,
+      fee: toNumber(data.fee),
+      note: note,
+      price: toNumber(data.price),
+      quantity: toNumber(data.quantity),
+      ...(isEditMode ? {} : { symbol: (data.coins as any)?.symbol }),
+      ...(isEditMode ? {} : { portfolio_id: activePortfolioId }),
+    };
     try {
-      const formattedDate = fDate(dateTime, "yyyy-MM-dd") ?? undefined;
-      const transactionType = btnValue === 1 ? "buy" : "sell";
-
-      const requestBody = {
-        type: transactionType,
-        date: formattedDate,
-        fee: toNumber(data.fee),
-        note: note,
-        price: toNumber(perCoinPrice?.data),
-        quantity: toNumber(data.quantity),
-        symbol: (data.coins as any)?.symbol,
-        ...(isEditMode ? {} : { portfolio_id: activePortfolioId }),
-      };
-
-      const mutationFn =
-        isEditMode && transactionToEdit
-          ? updateTransaction({ id: transactionToEdit.id as any, requestBody })
-          : createTransaction({ requestBody });
-
-      await mutationFn;
-
-      queryClient.invalidateQueries({
-        queryKey: UsePortfolioServicePortfolioTransactionsQueryKeyFn({
-          opts: JSON.stringify({
-            filters: {
-              symbol: activeSymbol,
-              portfolio_id: activePortfolioId,
-            },
-            page: 1,
-            per_page: 15,
-          }),
-        }),
-      });
-      if (!isEditMode) {
-        queryClient.invalidateQueries({
-          queryKey: UsePortfolioServicePortfoliosIdQueryKeyFn({
-            id: activePortfolioId,
-          }),
+      if (isEditMode && transactionToEdit) {
+        await updateTransaction({
+          id: transactionToEdit.id as any,
+          requestBody,
+        });
+      } else {
+        await createTransaction({
+          requestBody,
         });
       }
 
+      invalidatePortfolioQueries(queryClient, {
+        portfolioId: activePortfolioId,
+        activeSymbol: activeSymbol,
+        invalidateHistory: true,
+        invalidatePortfolio: true,
+        invalidatePortfolioId: true,
+        invalidateTransactions: true,
+      });
+
       dispatch(closeTransactionModal());
     } catch (_error) {
-      enqueueSnackbar(
-        `${isEditMode ? t("portfolioTransaction.udateErrorMessage") : t("portfolioTransaction.createErrorMessage")}`,
-        { variant: "error" }
-      );
+      const errorMessage = isEditMode
+        ? t("portfolioTransaction.udateErrorMessage")
+        : t("portfolioTransaction.createErrorMessage");
+
+      enqueueSnackbar(errorMessage, {
+        variant: "error",
+      });
     }
   });
-
   const isSubmitDisabled = !dateTime;
 
   return (
@@ -228,20 +202,26 @@ const TransactionModal = () => {
       <DialogContent sx={{ p: 3 }}>
         <FormProvider methods={methods} onSubmit={onSubmit} sx={{ gap: 3 }}>
           <Toggle size="large" setValue={handleButtonChange} buttons={buttons} value={btnValue} width="100%" />
-          <CoinsList />
+          {isEditMode ? (
+            <TextField name="coin" value={transactionToEdit?.symbol} InputProps={{ readOnly: true }} />
+          ) : (
+            <CoinsList />
+          )}
           <Stack direction={{ xs: "column", md: "row" }} spacing={3}>
             <RHFTextField
               name="quantity"
               label={t("portfolioTransaction.quantity")}
               placeholder={t("portfolioTransaction.enterQuentity")}
               topHelperText={t("portfolioTransaction.topQuantityHelpText")}
+              type="number"
+              isMoney
             />
-            <RHFTextField
+            <PriceInput
               topHelperText={t("portfolioTransaction.topPricePerCoinHelpText")}
-              value={perCoinPrice?.data || ""}
-              name="price_per_coin"
+              name="price"
               label={t("portfolioTransaction.pricePerCoin")}
-              InputProps={{ readOnly: true }}
+              isEditMode={isEditMode}
+              perCoinPrice={perCoinPrice?.data}
             />
           </Stack>
 
@@ -250,16 +230,12 @@ const TransactionModal = () => {
             name="fee"
             label={t("portfolioTransaction.fee")}
             placeholder={t("portfolioTransaction.enterTheFee")}
+            type="number"
+            isMoney
           />
-
           <Stack direction={"row"} spacing={1} flexWrap={"wrap"}>
-            <CustomBadge
-              icon="Clock"
-              value={formatDateTime(dateTime, t("portfolioTransaction.dateAndTime"))}
-              onClick={toggleDateAndTimeModal}
-            />
-
-            <CustomBadge icon="Pen" value={t("portfolioTransaction.notes")} onClick={toggleNoteModal} />
+            <DateBadge onConfirm={(dateTime) => setDateTime(dateTime)} initialDate={dateTime} />
+            <NoteBadge onConfirm={(newNote) => setNote(newNote)} initialNote={note} />
           </Stack>
         </FormProvider>
       </DialogContent>
@@ -267,10 +243,7 @@ const TransactionModal = () => {
       <DialogActions>
         <Stack width={"100%"} direction={"row"} justifyContent={"space-between"}>
           <Stack>
-            <Typography variant="p1-medium">$0</Typography>
-            <Typography variant="caption-medium" color={"grey.light"}>
-              {btnValue === 1 ? t("portfolioTransaction.totalSpent") : t("portfolioTransaction.totalReceived")}
-            </Typography>
+            <Total btnValue={btnValue} fee={fee} price={price} quantity={quantity} />
           </Stack>
           <LoadingButton
             onClick={onSubmit}
@@ -282,23 +255,6 @@ const TransactionModal = () => {
           </LoadingButton>
         </Stack>
       </DialogActions>
-
-      {dateModalIsOpen && (
-        <DateAndTimeModal
-          open={dateModalIsOpen}
-          close={toggleDateAndTimeModal}
-          onConfirm={(dateTime) => setDateTime(dateTime)}
-          initialDate={dateTime}
-        />
-      )}
-      {noteModalIsOpen && (
-        <NoteModal
-          open={noteModalIsOpen}
-          close={toggleNoteModal}
-          onConfirm={(newNote) => setNote(newNote)}
-          initialNote={note}
-        />
-      )}
     </CustomDialog>
   );
 };

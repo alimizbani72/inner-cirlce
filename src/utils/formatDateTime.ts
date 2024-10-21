@@ -5,13 +5,7 @@ export const formatDateTime = (date: any, placeHolder: string) => {
     return placeHolder;
   }
 
-  const formattedDate = fDate(date, "yyyy-MM-dd");
-
-  // const formattedTime = time.toLocaleTimeString("en-US", {
-  //   hour: "numeric",
-  //   minute: "numeric",
-  //   hour12: true,
-  // });
+  const formattedDate = fDate(date,  "MMM d, yyyy");
 
   return `${formattedDate}`;
 };

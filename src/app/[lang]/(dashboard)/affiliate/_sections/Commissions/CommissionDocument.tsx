@@ -104,7 +104,7 @@ const useStyles = () =>
           borderBottomWidth: 1,
           borderBottomColor: "#e0e0e0",
           paddingBottom: 5,
-          marginBottom: 10,
+          marginBottom: 5,
         },
 
         tableRow: {
@@ -115,26 +115,35 @@ const useStyles = () =>
           paddingTop: 5,
         },
         tableCellHeader: {
-          flex: 1,
+          flexBasis: 100,
           fontSize: 10,
           fontWeight: "semibold",
           color: "#333333",
-          textTransform: "uppercase",
+        },
+        dateCellHeader: {
+          flexBasis: 120,
+          fontSize: 10,
+          fontWeight: "semibold",
+          color: "#333333",
+        },
+        emailCellHeader: {
+          flexBasis: 200,
+          fontSize: 10,
+          fontWeight: "semibold",
+          color: "#333333",
         },
         tableCell: {
-          flex: 1,
+          flexBasis: 100,
           fontSize: 10,
           color: "#666666",
         },
-        amountCell: {
-          flex: 1,
+        emailCell: {
+          flexBasis: 200,
           fontSize: 10,
           color: "#666666",
-          textAlign: "right",
         },
-        footer: {
-          marginTop: 20,
-          textAlign: "center",
+        dateCell: {
+          flexBasis: 120,
           fontSize: 10,
           color: "#666666",
         },
@@ -144,19 +153,10 @@ const useStyles = () =>
 const CommissionDocument: FC<CommissionDocumentProps> = ({ commissions, fromDate, toDate }) => {
   const styles = useStyles();
 
-  const columns = [
-    { title: "UserID", field: "user_id" },
-    { title: "Email", field: "email" },
-    { title: "Package Name", field: "plan_type" },
-    { title: "Amount", field: "amount" },
-    { title: "Percentage", field: "percent" },
-    { title: "Date", field: "created_at" },
-  ];
-
   return (
     <Document>
       <Page size="A4" style={styles.page}>
-        {/* Invoice Title */}
+        {/* commission Title */}
         <View style={styles.headerSection}>
           <Text style={styles.title}>Commissions</Text>
           <Image style={styles.logo} src="/logo/logo-type.png" />
@@ -194,25 +194,27 @@ const CommissionDocument: FC<CommissionDocumentProps> = ({ commissions, fromDate
 
         <View style={styles.tableWrap}>
           <View style={styles.tableHeader}>
-            {columns.map((column) => (
-              <Text key={column.title} style={styles.tableCellHeader}>
-                {column.title}
-              </Text>
-            ))}
+            <Text style={styles.tableCellHeader}>UserID</Text>
+            <Text style={styles.emailCellHeader}>Email</Text>
+            <Text style={styles.tableCellHeader}>Package Name</Text>
+            <Text style={styles.tableCellHeader}>Amount</Text>
+            <Text style={styles.tableCellHeader}>Percentage</Text>
+            <Text style={styles.dateCellHeader}>Date</Text>
           </View>
 
           {/* Table Body */}
           {commissions.map((commission, index) => (
             <View key={index} style={styles.tableRow}>
               <Text style={styles.tableCell}>{commission.user_id}</Text>
-              <Text style={styles.tableCell}>{commission.email}</Text>
-              <Text style={styles.tableCell}>{formatCurrency(commission.amount)}</Text>
+              <Text style={styles.emailCell}>{commission.email}</Text>
               <Text style={styles.tableCell}>{commission.plan_type}</Text>
+              <Text style={styles.tableCell}>{formatCurrency(commission.amount)}</Text>
               <Text style={styles.tableCell}>{commission.percent}</Text>
-              <Text style={styles.tableCell}>{fDate((commission as any).created_at, "dd.MM.yyyy")}</Text>
+              <Text style={styles.dateCell}>{fDate((commission as any).created_at, "dd.MM.yyyy")}</Text>
             </View>
           ))}
         </View>
+        {/* Footer */}
         <View style={{ ...styles.row, position: "absolute", left: 50, right: 50, bottom: 20 }}>
           <Text style={{ fontSize: 8, fontWeight: "light" }}>
             {" "}
@@ -224,7 +226,6 @@ const CommissionDocument: FC<CommissionDocumentProps> = ({ commissions, fromDate
             fixed
           />
         </View>
-        {/* Footer */}
       </Page>
     </Document>
   );

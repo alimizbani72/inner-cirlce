@@ -1,14 +1,11 @@
 import { Icon } from "@/components/icons";
-import { Divider, MenuItem } from "@mui/material";
-import { IconButton, Stack } from "@mui/material";
+import { Divider, MenuItem, Stack } from "@mui/material";
+import { IconButton } from "@mui/material";
 import CustomMenu from "@/components/CustomMenu";
 import { useTranslate } from "@/locales";
 import { usePopover } from "@/components/custom-popover";
 import ActionItem from "../../@assets/_section/ActionItem";
-import {
-  usePortfolioServicePortfoliosIdDeleteMutation,
-  UsePortfolioServicePortfoliosQueryKeyFn,
-} from "@minecraft/queries";
+import { usePortfolioServicePortfoliosIdDeleteMutation } from "@minecraft/queries";
 import { useParams } from "next/navigation";
 import { useSnackbar } from "notistack";
 import { useAppRouter } from "@/routes/hooks";
@@ -17,6 +14,7 @@ import { getActivePortfolioId } from "../utils";
 import useToggleState from "@/hooks/use-toggle-state";
 import AddPortfolioModal from "../add/AddPortfolioModal";
 import type { Portfolio } from "../type";
+import { invalidatePortfolioQueries } from "../InvaidatePorfolioQueries";
 
 type Props = {
   portfolio: Portfolio | undefined;
@@ -30,16 +28,20 @@ const MorePortfolioAction = ({ portfolio }: Props) => {
   const queryClient = useQueryClient();
   const { onClose, onOpen, open } = usePopover();
   const { mutateAsync } = usePortfolioServicePortfoliosIdDeleteMutation();
+  const getportfolioId = getActivePortfolioId(portfolioId);
   const handleDelete = async () => {
     await mutateAsync(
-      { id: getActivePortfolioId(portfolioId) },
+      { id: getportfolioId },
       {
         onSuccess: () => {
           enqueueSnackbar("Portfolio Deleted Successfully", {
             variant: "success",
           });
-          queryClient.invalidateQueries({
-            queryKey: UsePortfolioServicePortfoliosQueryKeyFn(),
+          invalidatePortfolioQueries(queryClient, {
+            portfolioId: getportfolioId,
+            invalidateHistory: true,
+            invalidatePortfolio: true,
+            invalidatePortfolioId: true,
           });
           router.push("/my-portfolios");
           onClose();
@@ -63,13 +65,19 @@ const MorePortfolioAction = ({ portfolio }: Props) => {
       </IconButton>
 
       <CustomMenu anchorEl={open} open={!!open} onClose={onClose}>
-        <MenuItem>
-          <Stack spacing={2}>
-            <ActionItem iconName="Pen" label={t("portfolioSummary.editPOrtfolio")} onClick={onopenPortfolioModal} />
-            <Divider />
-            <ActionItem iconName="Trash" label={t("portfolioSummary.deletePOrtfolio")} onClick={handleDelete} />
+        <Stack spacing={1}>
+          <Stack>
+            <MenuItem onClick={onopenPortfolioModal}>
+              <ActionItem iconName="Pen" label={t("portfolioSummary.editPOrtfolio")} />
+            </MenuItem>
           </Stack>
-        </MenuItem>
+          <Divider />
+          <Stack>
+            <MenuItem onClick={handleDelete}>
+              <ActionItem iconName="Trash" label={t("portfolioSummary.deletePOrtfolio")} />
+            </MenuItem>
+          </Stack>
+        </Stack>
       </CustomMenu>
       {openPortfolioModal && (
         <AddPortfolioModal open={openPortfolioModal} close={toggleportfolio} portfolio={portfolio} isEditMode={true} />

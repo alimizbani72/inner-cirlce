@@ -20,7 +20,7 @@ const usePortfolioData = () => {
 
   const selectedPortfolio = activePortfolioId ? portfolioDetail : overview;
   const isLoading = isLoadingPortfolioDetail || isLoadingOverview;
-  return { selectedPortfolio, portfolioDetail, overview, portfolioId: activePortfolioId, isLoading } as const;
+  return { selectedPortfolio, portfolioDetail, overview, portfolioId: activePortfolioId, isLoading };
 };
 
 export default usePortfolioData;

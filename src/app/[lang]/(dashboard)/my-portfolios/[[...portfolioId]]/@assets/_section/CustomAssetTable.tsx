@@ -12,24 +12,13 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import { Fragment, useCallback, useMemo, useState, type ReactNode } from "react";
+import { Fragment, useMemo, useState, type ReactNode } from "react";
 import type React from "react";
-import { useIsMobile } from "@/hooks/use-responsive";
-import { useTranslate } from "@/locales";
-import numeral from "numeral";
 import { useAppDispatch } from "@/lib/hooks";
 import { setActiveSymbol } from "@/lib/features/portfolio/transactionSlice";
 import TransCollapse from "./TransCollapse";
-
-type DataItem = {
-  [key: string]: string;
-};
-const calculateTotal = (data: DataItem[], field: keyof DataItem): number => {
-  return data.reduce((total, rowItem) => {
-    const value = parseFloat(rowItem[field]?.replace(/[$,]/g, "")) || 0;
-    return total + value;
-  }, 0);
-};
+import TotalRow from "./TotalRow";
+import { calculateTotal } from "../../_section/utils";
 
 type Column = {
   title: string | ((item: any) => React.ReactNode);
@@ -68,11 +57,7 @@ const CustomAssetTable = ({
   hasTitle = true,
 }: PropType) => {
   const [expandedRows, setExpandedRows] = useState<{ [key: string]: boolean }>({});
-
   const dispatch = useAppDispatch();
-  const isMobile = useIsMobile();
-  const { t } = useTranslate();
-
   const handleToggleExpand = (symbol: string) => {
     setExpandedRows((prev) => ({
       ...prev,
@@ -81,8 +66,6 @@ const CustomAssetTable = ({
 
     if (!expandedRows[symbol]) {
       dispatch(setActiveSymbol(symbol));
-    } else {
-      dispatch(setActiveSymbol(null));
     }
   };
 
@@ -96,41 +79,7 @@ const CustomAssetTable = ({
     }),
     [data]
   );
-  const renderTotalRow = useCallback(
-    (item: any, index: number, totals: Record<string, number>) => {
-      const field = item.field;
-      const totalValue = totals[field];
-      const colorFullFields = ["realized_pnl", "actual_value"];
-      const color = colorFullFields.includes(field) ? (totalValue < 0 ? "error.main" : "success.main") : "white";
 
-      if (field === "name") {
-        return (
-          <TableCell key={index}>
-            <Stack width={"100%"} pl={1} pb={3}>
-              <Typography variant="p2-medium" color={"grey.light"} textTransform={"uppercase"}>
-                {isMobile ? t("assetsTable.total") : t("assetsTable.assetsTotalValue")}
-              </Typography>
-            </Stack>
-          </TableCell>
-        );
-      }
-
-      if (totalValue !== undefined) {
-        return (
-          <TableCell key={index}>
-            <Stack width={"100%"} pb={3}>
-              <Typography variant="p2-medium" color={color}>
-                {numeral(totalValue).format("0,0.00")}
-              </Typography>
-            </Stack>
-          </TableCell>
-        );
-      }
-
-      return <TableCell key={index} />;
-    },
-    [isMobile, t]
-  );
   return (
     <Stack
       sx={{
@@ -148,7 +97,6 @@ const CustomAssetTable = ({
             {!!leftIcon && <Icon name={leftIcon} />}
             <Typography variant="p1-semi-bold">{title}</Typography>
           </Stack>
-
           {action && action}
         </Stack>
       )}
@@ -236,7 +184,11 @@ const CustomAssetTable = ({
                         />
                       </Fragment>
                     ))}
-                    <TableRow>{columns.map((item, index) => renderTotalRow(item, index, totals))}</TableRow>
+                    <TableRow>
+                      {columns.map((item, index) => (
+                        <TotalRow key={index} item={item} index={index} totals={totals} />
+                      ))}
+                    </TableRow>
                   </TableBody>
                 </Table>
               </Scrollbar>

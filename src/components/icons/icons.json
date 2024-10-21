@@ -94,6 +94,75 @@
     },
     {
       "icon": {
+        "paths": [
+          "M307.503 640h408.994c19.004 0 28.523-22.98 15.083-36.42l-204.493-204.495c-8.333-8.331-21.841-8.331-30.174 0l-204.495 204.495c-13.439 13.44-3.921 36.42 15.085 36.42z"
+        ],
+        "attrs": [
+          {
+            "fill": "rgb(255, 255, 255)"
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": ["arrow-colorfull-up"],
+        "colorPermutations": {
+          "2552552551981011311": [
+            {
+              "f": 1
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "properties": {
+        "order": 2,
+        "id": 1,
+        "name": "arrow-colorfull-up",
+        "prevSize": 32,
+        "code": 59648
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 0
+    },
+    {
+      "icon": {
+        "paths": [
+          "M716.497 384h-408.994c-19.006 0-28.524 22.979-15.085 36.418l204.495 204.495c8.333 8.333 21.841 8.333 30.174 0l204.493-204.495c13.44-13.439 3.921-36.418-15.083-36.418z"
+        ],
+        "attrs": [
+          {
+            "fill": "rgb(98, 101, 131)"
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": ["arrow-colorfull-down"]
+      },
+      "attrs": [
+        {
+          "fill": "rgb(98, 101, 131)"
+        }
+      ],
+      "properties": {
+        "order": 3,
+        "id": 0,
+        "name": "arrow-colorfull-down",
+        "prevSize": 32,
+        "code": 59649
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 1
+    },
+    {
+      "icon": {
         "paths": ["M682.667 298.667l-170.667 170.667-170.667-170.667", "M288 693.333h448"],
         "attrs": [
           {

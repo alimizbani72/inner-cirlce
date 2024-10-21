@@ -14,6 +14,9 @@ type TabsProps = {
 const Tabs = ({ portfolios, portfolioId, overviewId, overviewtotal_actual_value }: TabsProps) => {
   const router = useAppRouter();
   const onSelectTab = (id: string) => {
+    if ((id === overviewId && !portfolioId) || id === portfolioId) {
+      return;
+    }
     router.push(id === overviewId ? "/my-portfolios" : `/my-portfolios/${id}`);
   };
 

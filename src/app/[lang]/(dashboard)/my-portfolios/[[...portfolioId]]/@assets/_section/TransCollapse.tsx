@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import type { FC } from "react";
 import TransactionsTable from "./TransactionsTable";
 import { useTranslate } from "@/locales";
+import { getActivePortfolioId } from "../../_section/utils";
 
 type TransCollapseProps = {
   symbol: string;
@@ -20,7 +21,7 @@ const TransCollapse: FC<TransCollapseProps> = ({ symbol, colSpan, isClose }) => 
       opts: JSON.stringify({
         filters: {
           symbol,
-          portfolio_id: portfolioId,
+          portfolio_id: getActivePortfolioId(portfolioId),
         },
         page: 1,
         per_page: 20,

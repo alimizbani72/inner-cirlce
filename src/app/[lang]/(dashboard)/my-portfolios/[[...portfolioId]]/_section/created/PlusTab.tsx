@@ -38,6 +38,7 @@ const PlusTab = () => {
             borderRadius: "50%",
             p: 2.5,
             bgcolor: "dark.3",
+            mb: 1,
           }}
         >
           <IconButton>

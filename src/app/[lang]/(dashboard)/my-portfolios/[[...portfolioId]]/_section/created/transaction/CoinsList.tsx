@@ -1,46 +1,16 @@
 import { RHFAutocomplete } from "@/components/hook-form";
 import Image from "@/components/Image";
-import { useDebounce } from "@/hooks/use-debounce";
-import { usePortfolioServiceCoinsQuery } from "@minecraft/queries";
+import useCoinsList from "@/hooks/use-CoinsList";
+import { InputAdornment } from "@mui/material";
 import { CircularProgress } from "@mui/material";
 import { MenuItem, Stack, TextField } from "@mui/material";
-import { useState, useEffect, type FC } from "react";
+import type { FC } from "react";
+import { useFormContext } from "react-hook-form";
 
-// Custom Hook to manage coins list fetching and state
-const useCoinsList = (initialQuery: string) => {
-  const [searchQuery, setSearchQuery] = useState(initialQuery);
-  const [initialCoins, setInitialCoins] = useState<any[]>([]);
-  const [coins, setCoins] = useState<any[]>([]);
-  const debouncedSearch = useDebounce(searchQuery, 500);
-
-  const filteropts = {
-    page: 1,
-    per_page: 15,
-    filters: {
-      query: debouncedSearch,
-    },
-  };
-
-  const { data, isLoading } = usePortfolioServiceCoinsQuery({ opts: JSON.stringify(filteropts) });
-
-  useEffect(() => {
-    // Set initial coins on first load
-    if (!debouncedSearch && data?.data) {
-      setInitialCoins(data.data);
-      setCoins(data.data);
-    } else if (debouncedSearch && data?.data) {
-      // Set filtered coins when searching
-      setCoins(data.data);
-    }
-  }, [data, debouncedSearch]);
-
-  return { coins, isLoading, setSearchQuery, initialCoins };
-};
-
-// CoinsList Component
 const CoinsList: FC = () => {
   const { coins, isLoading, setSearchQuery, initialCoins } = useCoinsList("");
-
+  const { watch } = useFormContext();
+  const selectedCoin = watch("coins");
   return (
     <RHFAutocomplete
       id="coin-search"
@@ -82,6 +52,21 @@ const CoinsList: FC = () => {
           placeholder="Enter coin name or symbol"
           InputProps={{
             ...params.InputProps,
+            startAdornment: (
+              <>
+                {/* Display the selected coin's logo */}
+                {selectedCoin?.logo && (
+                  <InputAdornment position="start">
+                    <Image
+                      src={selectedCoin.logo}
+                      alt={selectedCoin.name}
+                      style={{ width: "24px", height: "24px", marginLeft: "5px" }}
+                    />
+                  </InputAdornment>
+                )}
+                {params.InputProps.startAdornment}
+              </>
+            ),
             endAdornment: (
               <>
                 {isLoading ? <CircularProgress color="inherit" size={20} /> : null}

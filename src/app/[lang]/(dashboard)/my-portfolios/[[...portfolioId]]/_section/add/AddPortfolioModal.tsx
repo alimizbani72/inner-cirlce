@@ -72,27 +72,33 @@ const AddPortfolioModal = ({ open, close, portfolio, isEditMode }: AddPortfolioP
   };
   const { handleSubmit, formState } = methods;
   const { isValid } = formState;
+
   const onSubmit = handleSubmit(async (data) => {
     const requestBody = {
       name: data.name,
       avatar: portfolioAvatar,
       background_color: bgColor,
     };
-    const mutationFn =
-      isEditMode && portfolio
-        ? updatePortfolio({ requestBody, id: portfolio.id as any })
-        : createPortfolio({ requestBody });
-
-    const successMessage = isEditMode ? t("myPortfolio.errorUpdateMessage") : t("myPortfolio.errorcreateMessage");
-
     try {
-      await mutationFn;
+      if (isEditMode && portfolio) {
+        await updatePortfolio({
+          requestBody,
+          id: portfolio.id as any,
+        });
+      } else {
+        await createPortfolio({
+          requestBody,
+        });
+      }
+
       queryClient.invalidateQueries({
         queryKey: UsePortfolioServicePortfoliosQueryKeyFn(),
       });
+
       close();
     } catch (_error) {
-      enqueueSnackbar(successMessage, {
+      const errorMessage = isEditMode ? t("myPortfolio.errorUpdateMessage") : t("myPortfolio.errorcreateMessage");
+      enqueueSnackbar(errorMessage, {
         variant: "error",
       });
     }

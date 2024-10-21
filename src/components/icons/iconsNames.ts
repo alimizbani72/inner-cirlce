@@ -1,5 +1,7 @@
 const iconsNames = [
   "image",
+  "arrow-colorfull-up",
+  "arrow-colorfull-down",
   "download",
   "PDF",
   "download",

@@ -155,7 +155,7 @@ const PayoutDocument: FC<PayoutDocumentProps> = ({ payouts, fromDate, toDate }) 
   return (
     <Document>
       <Page size="A4" style={styles.page}>
-        {/* Invoice Title */}
+        {/* payout Title */}
         <View style={styles.headerSection}>
           <Text style={styles.title}>Payout</Text>
           <Image style={styles.logo} src="/logo/logo-type.png" />
