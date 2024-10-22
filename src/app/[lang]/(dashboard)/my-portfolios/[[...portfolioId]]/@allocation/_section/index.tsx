@@ -9,6 +9,7 @@ import { useAppSelector } from "@/lib/hooks";
 import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
 import Loading from "@/components/Loading";
 import Empty from "@/components/Empty";
+import { parseToNumber } from "../../_section/utils";
 
 const Allocation = () => {
   const { t } = useTranslate();
@@ -17,7 +18,7 @@ const Allocation = () => {
   const isCollapsed = useAppSelector(isSidebarCollapsed);
   const seriesData = (selectedPortfolio?.data as any)?.assets.map((asset: any) => ({
     x: asset.symbol,
-    y: asset.distribution,
+    y: parseToNumber(asset.distribution).toFixed(),
   }));
 
   return (

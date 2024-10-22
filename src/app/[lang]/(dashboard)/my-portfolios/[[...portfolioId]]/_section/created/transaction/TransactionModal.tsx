@@ -28,7 +28,7 @@ import { useParams } from "next/navigation";
 import { useSnackbar } from "notistack";
 import { fDate } from "@/utils/format-time";
 import { toNumber } from "@/utils/toNumber";
-import { getActivePortfolioId } from "../../utils";
+import { getActivePortfolioId, parseToNumber } from "../../utils";
 import Bullets from "../../Bullets";
 import {
   closeTransactionModal,
@@ -138,10 +138,10 @@ const TransactionModal = () => {
     const requestBody = {
       type: transactionType,
       date: formattedDate,
-      fee: toNumber(data.fee),
+      fee: parseToNumber(data.fee),
       note: note,
-      price: toNumber(data.price),
-      quantity: toNumber(data.quantity),
+      price: parseToNumber(data.price),
+      quantity: parseToNumber(data.quantity),
       ...(isEditMode ? {} : { symbol: (data.coins as any)?.symbol }),
       ...(isEditMode ? {} : { portfolio_id: activePortfolioId }),
     };
@@ -156,7 +156,6 @@ const TransactionModal = () => {
           requestBody,
         });
       }
-
       invalidatePortfolioQueries(queryClient, {
         portfolioId: activePortfolioId,
         activeSymbol: activeSymbol,

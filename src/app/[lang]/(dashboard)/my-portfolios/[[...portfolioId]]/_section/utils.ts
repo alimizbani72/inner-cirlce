@@ -15,3 +15,4 @@ export const calculateTotal = (data: DataItem[], field: keyof DataItem): number 
     return total + value;
   }, 0);
 };
+export const parseToNumber = (input: any) => parseFloat(input) || 0;

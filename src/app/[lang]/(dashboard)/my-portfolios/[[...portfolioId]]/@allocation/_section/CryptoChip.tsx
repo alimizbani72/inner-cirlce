@@ -1,5 +1,6 @@
 import { Chip, Stack, Typography } from "@mui/material";
 import Bullets from "../../_section/Bullets";
+import { parseToNumber } from "../../_section/utils";
 
 interface CryptoChipProps {
   label: string;
@@ -16,7 +17,7 @@ const CryptoChip = ({ label, value, isActive, onHover }: CryptoChipProps) => {
           <Typography variant="p2-medium" color={isActive ? "white" : "grey.light"}>
             {label}
           </Typography>
-          <Typography variant="p2-medium">{Math.floor(value)}%</Typography>
+          <Typography variant="p2-medium">{parseToNumber(value).toFixed(2)}%</Typography>
         </Stack>
       }
       variant="outlined"

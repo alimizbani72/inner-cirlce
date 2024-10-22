@@ -25,7 +25,7 @@ const TransactionsTable = ({ transactions }: { transactions: any[] }) => {
                 <Bullets bgcolor={transaction.type === "buy" ? "success.main" : "danger.main"} />
                 <TransactionDetail
                   label={t("assetsTable.quantity")}
-                  value={`$${numeral(transaction.quantity).format("0,0.00")}`}
+                  value={numeral(transaction.quantity).format("0,0.00")}
                 />
                 <Divider flexItem orientation="vertical" />
                 <TransactionDetail
