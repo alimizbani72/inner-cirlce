@@ -10,6 +10,7 @@ import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
 import Loading from "@/components/Loading";
 import Empty from "@/components/Empty";
 import { parseToNumber } from "../../_section/utils";
+import Scrollbar from "@/components/Scrollbar";
 
 const Allocation = () => {
   const { t } = useTranslate();
@@ -46,24 +47,29 @@ const Allocation = () => {
             <Chart seriesData={seriesData} onHover={setHoveredCrypto} />
           </Stack>
 
-          <Stack
-            direction={"row"}
-            justifyContent={"center"}
-            flexWrap="wrap"
-            gap={1}
-            pt={{ xs: 6, md: 9 }}
-            px={{ xs: undefined, md: 3 }}
-          >
-            {(selectedPortfolio?.data as any)?.assets.map((asset: any) => (
-              <CryptoChip
-                key={asset.symbol}
-                label={asset.symbol}
-                value={asset.distribution}
-                isActive={hoveredCrypto === asset.symbol}
-                onHover={setHoveredCrypto}
-              />
-            ))}
-          </Stack>
+          <Scrollbar options={{ scrollbars: { autoHide: "scroll" } }}>
+            <Stack
+              direction="row"
+              flexWrap="wrap"
+              spacing={1}
+              pt={{ xs: 6, md: 9 }}
+              justifyContent={"center"}
+              sx={{
+                maxHeight: "210px",
+                // "& > *": { flex: "0 0 auto" },
+              }}
+            >
+              {(selectedPortfolio?.data as any)?.assets.map((asset: any) => (
+                <CryptoChip
+                  key={asset.symbol}
+                  label={asset.symbol}
+                  value={asset.distribution}
+                  isActive={hoveredCrypto === asset.symbol}
+                  onHover={setHoveredCrypto}
+                />
+              ))}
+            </Stack>
+          </Scrollbar>
         </>
       )}
     </Stack>

@@ -27,7 +27,6 @@ import {
 import { useParams } from "next/navigation";
 import { useSnackbar } from "notistack";
 import { fDate } from "@/utils/format-time";
-import { toNumber } from "@/utils/toNumber";
 import { getActivePortfolioId, parseToNumber } from "../../utils";
 import Bullets from "../../Bullets";
 import {
@@ -117,9 +116,9 @@ const TransactionModal = () => {
   const { handleSubmit, watch } = methods;
 
   const selectedCoinSymbol = (watch("coins") as any)?.symbol;
-  const quantity = toNumber(watch("quantity"));
-  const fee = toNumber(watch("fee"));
-  const price = toNumber(watch("price"));
+  const quantity = parseToNumber(watch("quantity"));
+  const fee = parseToNumber(watch("fee"));
+  const price = parseToNumber(watch("price"));
 
   const { data: perCoinPrice } = usePortfolioServiceCoinsSymbolPriceQuery(
     {
