@@ -2,6 +2,7 @@ import Image from "@/components/Image";
 import { Button, Stack, Typography } from "@mui/material";
 import { type FC, useState } from "react";
 import BusinessAccountDialog from "./BusinessAccountDialog";
+import { useTranslate } from "@/locales";
 
 interface RequestCardProps {}
 
@@ -16,13 +17,13 @@ const steps = [
 
 const RequestCard: FC<RequestCardProps> = () => {
   const [openDialog, setOpenDialog] = useState(false);
-
+  const { t } = useTranslate();
   return (
     <>
       <Stack maxWidth={{ md: 360 }} gap={3} justifyContent="center">
         <Image src="/assets/png/business.png" />
         <Stack gap={1}>
-          <Typography variant="p2-semi-bold">What you will get in “Business Account”?</Typography>
+          <Typography variant="p2-semi-bold">{t("businessaccount.whatyouWillGet")}</Typography>
           {steps.map((step) => (
             <Typography key={step} variant="p2-regular">
               {step}
@@ -30,7 +31,7 @@ const RequestCard: FC<RequestCardProps> = () => {
           ))}
         </Stack>
         <Button fullWidth onClick={() => setOpenDialog(true)}>
-          Make My Account To “Business”
+          {t("businessaccount.makemyAccountTobusiness")}
         </Button>
       </Stack>
       {openDialog && <BusinessAccountDialog open={openDialog} close={() => setOpenDialog(false)} />}

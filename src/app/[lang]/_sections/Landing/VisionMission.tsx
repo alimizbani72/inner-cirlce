@@ -84,8 +84,8 @@ const VisionMission: FC<VisionMissionProps> = () => {
         sx={{ "> div:nth-child(2)": { mx: { md: -4 }, my: { md: "unset", xs: -4 }, zIndex: 2 } }}
       >
         <Circle title={t("visionMission.circle1Title")} />
-        <Circle blueBorder title={t("visionMission.circle2Title")} />
-        <Circle title={t("visionMission.circle3Title")} />
+        <Circle blueBorder title={t("visionMission.circle1Title")} />
+        <Circle title={t("visionMission.circle1Title")} />
       </Stack>
     </LandingContainer>
   );

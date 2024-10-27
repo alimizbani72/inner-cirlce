@@ -7,21 +7,23 @@ import { selectUser } from "@/lib/features/user/userSlice";
 import { useState } from "react";
 import { Icon } from "@/components/icons";
 import BusinessAccountDialog from "./BusinessAccountDialog";
+import { useTranslate } from "@/locales";
 
 const BusinessAccountSection = () => {
   const userInfo = useAppSelector(selectUser);
   const [openDialog, setOpenDialog] = useState(false);
+  const { t } = useTranslate();
 
   return (
     <>
       <Stack justifyContent="center" alignItems="center" p={{ md: 4, xs: 3 }} gap={{ md: 4, xs: 3 }}>
         <Stack width={1} gap={2} justifyContent="space-between" alignItems={{ md: "center" }} direction={{ md: "row" }}>
           <Typography variant="p1-medium" color="white">
-            Business Account
+            {t("businessaccount.businessAccount")}
           </Typography>
 
           <Button size="large" color="info" startIcon={<Icon name="Pen" />} onClick={() => setOpenDialog(true)}>
-            Change Info
+            {t("businessaccount.changeInfo")}
           </Button>
         </Stack>
 

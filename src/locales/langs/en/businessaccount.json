@@ -17,7 +17,10 @@
      "countryPlaceholder": "Enter your email address",
      "email": "Email",
        "companyregistrationnumber": "Company registration number",
-    "companyregistrationplaceholder": "Enter company registration number"
+    "companyregistrationplaceholder": "Enter company registration number",
+    "changeInfo": "Change Info",
+    "whatyouWillGet": "What you will get in “Business Account”?",
+    "makemyAccountTobusiness": "Make My Account To “Business”"
      
     }
 }

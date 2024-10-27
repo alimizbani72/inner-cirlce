@@ -19,7 +19,7 @@ const Allocation = () => {
   const isCollapsed = useAppSelector(isSidebarCollapsed);
   const seriesData = (selectedPortfolio?.data as any)?.assets.map((asset: any) => ({
     x: asset.symbol,
-    y: parseToNumber(asset.distribution).toFixed(),
+    y: parseToNumber(asset.distribution).toFixed(2),
   }));
 
   return (
