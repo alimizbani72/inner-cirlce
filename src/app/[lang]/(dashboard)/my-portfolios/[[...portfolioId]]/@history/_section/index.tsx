@@ -10,15 +10,16 @@ import {
   usePortfolioServiceOverviewHistoryQuery,
   usePortfolioServicePortfoliosIdHistoryQuery,
 } from "@minecraft/queries";
-import { transformDataForChart } from "./utils";
 import Loading from "@/components/Loading";
 import Empty from "@/components/Empty";
+import { useMemo, useState } from "react";
+import { getChartData } from "./utils";
 
 const HistorySection = () => {
   const isCollapsed = useAppSelector(isSidebarCollapsed);
   const { t } = useTranslate();
   const { portfolioId } = useParams();
-
+  const [filter, setFilter] = useState("All");
   const activePortfolioId = getActivePortfolioId(portfolioId);
 
   const { data: overview, isLoading: overviewLoading } = usePortfolioServiceOverviewHistoryQuery(undefined, undefined, {
@@ -32,9 +33,12 @@ const HistorySection = () => {
     undefined,
     { enabled: !!activePortfolioId }
   );
+
   const loading = activePortfolioId ? portfolioDetailLoading : overviewLoading;
   const selectedPortfolio = activePortfolioId ? portfoliohistory : overview;
-  const chartData = transformDataForChart(selectedPortfolio?.data || []);
+
+  const chartData = useMemo(() => getChartData(selectedPortfolio, filter), [selectedPortfolio, filter]);
+
   return (
     <Stack
       width={{ md: "50%", xs: "100%" }}
@@ -48,7 +52,12 @@ const HistorySection = () => {
       ) : !chartData ? (
         <Empty />
       ) : (
-        <ChartHistory title={t("history.history")} chart={chartData as any} />
+        <ChartHistory
+          title={t("history.history")}
+          setFilter={setFilter}
+          chart={{ series: [{ data: chartData }] }}
+          filter={filter}
+        />
       )}
     </Stack>
   );
