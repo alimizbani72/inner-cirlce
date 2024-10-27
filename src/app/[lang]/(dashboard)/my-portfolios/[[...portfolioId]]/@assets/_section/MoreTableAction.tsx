@@ -35,13 +35,13 @@ const MoreTableAction = ({ symbol }: MoreTableProps) => {
             invalidatePortfolio: true,
           });
 
-          enqueueSnackbar("Asset Deleted Successfully", {
+          enqueueSnackbar(t("assetsTable.assetDeletesuccessMessage"), {
             variant: "success",
           });
           onClose();
         },
         onError: () => {
-          enqueueSnackbar("Fialed to delete Asset", {
+          enqueueSnackbar(t("assetsTable.assetDeleteerrorMessage"), {
             variant: "error",
           });
         },

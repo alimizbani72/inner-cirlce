@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import { useMemo, type FC } from "react";
 import LandingContainer from "../LandingContainer";
 import { Box, Button, Typography } from "@mui/material";
 import { useIsMobile } from "@/hooks/use-responsive";
@@ -9,44 +9,48 @@ import Image from "@/components/Image";
 import { isOdd } from "@/utils/toNumber";
 import PinkBar from "./PinkBar";
 import BlueBar from "./BlueBar";
-
-const data = [
-  {
-    id: "coin-reports",
-    title: "Coin Reports",
-    text: "There’s over 2 million coins/tokens in the market, how do you find the ones that will do 100x? Our team spends hundreds of hours researching projects in the market to find the hidden gems before the world gets to find out so you can get in before the potential price explosions.",
-    image: "/assets/landing/how/coin-reports.svg",
-  },
-  {
-    id: "workshops",
-    title: "Workshops",
-    text: "Our Experts and Analysts will work with you to develop your portfolio by choosing the right projects while having the right strategies for entry and exit to maximise your potential gains.",
-    image: "/assets/landing/how/workshops.svg",
-  },
-  {
-    id: "community",
-    title: "Community",
-    text: "Inner circle group where insider information will be shared and firsthand opportunities to make sure you have the right information at the right time throughout the bull market.",
-    image: "/assets/landing/how/community.svg",
-  },
-  {
-    id: "ai-tools",
-    title: "AI Tools",
-    text: "AI Tools and bulletproof strategies that is exclusively available for our inner circle.",
-    image: "/assets/landing/how/ai-tools.svg",
-  },
-  {
-    id: "academy",
-    title: "Academy",
-    text: "Academy with an ongoing feed of videos to keep you ahead of the trends. (Coming Soon signal)",
-    image: "/assets/landing/how/academy.svg",
-  },
-];
+import { useTranslate } from "@/locales";
 
 interface HowProps {}
 
 const How: FC<HowProps> = () => {
   const isMobile = useIsMobile();
+  const { t } = useTranslate();
+  const data = useMemo(
+    () => [
+      {
+        id: "coin-reports",
+        title: t("how.coinReports"),
+        text: t("how.coinreportText"),
+        image: "/assets/landing/how/coin-reports.svg",
+      },
+      {
+        id: "workshops",
+        title: t("how.workshops"),
+        text: t("how.workshopsText"),
+        image: "/assets/landing/how/workshops.svg",
+      },
+      {
+        id: "community",
+        title: t("how.community"),
+        text: t("how.communityText"),
+        image: "/assets/landing/how/community.svg",
+      },
+      {
+        id: "ai-tools",
+        title: `AI ${t("how.tools")}`,
+        text: `AI ${t("how.aitoolsMesasge")}`,
+        image: "/assets/landing/how/ai-tools.svg",
+      },
+      {
+        id: "academy",
+        title: t("how.academy"),
+        text: t("how.academyMessage"),
+        image: "/assets/landing/how/academy.svg",
+      },
+    ],
+    [t]
+  );
 
   return (
     <LandingContainer pt={{ md: 15, xs: 13 }} pb={{ md: 20, xs: 14 }} alignItems={"center"}>
@@ -132,7 +136,7 @@ const How: FC<HowProps> = () => {
         endIcon={<Icon name="Arrow-right" />}
         sx={{ position: "relative", zIndex: 4 }}
       >
-        Join To ChainMind
+        {t("how.joinTo")} ChainMind
       </Button>
     </LandingContainer>
   );

@@ -3,11 +3,13 @@ import ContentStack from "@app/_components/ContentStack";
 import { Divider, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 import { useFinancialServiceBillingAddressQuery } from "@minecraft/queries";
+import { useTranslate } from "@/locales";
 
 interface BillingInfoProps {}
 
 const BillingInfo: FC<BillingInfoProps> = () => {
   const isMobile = useIsMobile();
+  const { t } = useTranslate();
   const { data } = useFinancialServiceBillingAddressQuery();
 
   return (
@@ -17,21 +19,21 @@ const BillingInfo: FC<BillingInfoProps> = () => {
           <Stack gap={0.5}>
             <Typography variant="p2-medium">{data?.data?.first_name || "---"}</Typography>
             <Typography variant="caption-medium" color="grey.light">
-              First name
+              {t("billinghistory.firstName")}
             </Typography>
           </Stack>
           <Divider orientation={isMobile ? "horizontal" : "vertical"} flexItem />
           <Stack gap={0.5}>
             <Typography variant="p2-medium">{data?.data?.last_name || "---"}</Typography>
             <Typography variant="caption-medium" color="grey.light">
-              Last name
+              {t("billinghistory.lastName")}
             </Typography>
           </Stack>
           <Divider orientation={isMobile ? "horizontal" : "vertical"} flexItem />
           <Stack gap={0.5}>
             <Typography variant="p2-medium">{data?.data?.country || "---"}</Typography>
             <Typography variant="caption-medium" color="grey.light">
-              Country
+              {t("billinghistory.country")}
             </Typography>
           </Stack>
           <Divider orientation={isMobile ? "horizontal" : "vertical"} flexItem />
@@ -39,14 +41,14 @@ const BillingInfo: FC<BillingInfoProps> = () => {
             <Stack mr={{ md: "unset", xs: "auto" }} gap={0.5}>
               <Typography variant="p2-medium">{data?.data?.city || "---"}</Typography>
               <Typography variant="caption-medium" color="grey.light">
-                City
+                {t("billinghistory.city")}
               </Typography>
             </Stack>
             <Divider orientation="vertical" flexItem />
             <Stack mr={{ md: "unset", xs: "auto" }} gap={0.5}>
               <Typography variant="p2-medium">{data?.data?.zipcode || "---"}</Typography>
               <Typography variant="caption-medium" color="grey.light">
-                Zip Code
+                {t("billinghistory.zipCode")}
               </Typography>
             </Stack>
           </Stack>
@@ -55,7 +57,7 @@ const BillingInfo: FC<BillingInfoProps> = () => {
           <Stack gap={0.5}>
             <Typography variant="p2-medium">{data?.data?.address || "---"}</Typography>
             <Typography variant="caption-medium" color="grey.light">
-              Address
+              {t("billinghistory.address")}
             </Typography>
           </Stack>
         </Stack>

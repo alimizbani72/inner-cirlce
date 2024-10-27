@@ -1,0 +1,21 @@
+{
+    "landingpricing": {
+   "plankton": "Plankton",
+   "planktondescription": "22 coin reports +1 portfolio strategy",
+   "shrimp": "Shrimp",
+   "shrimpdescription": "Dip your fins in. Crypto basics so simple, even shrimp get it.",
+   "fish": "Fish",
+   "fishdescription": "Swim into crypto. Tips and tricks for the ambitious fish.",
+   "Shark": "Shark",
+   "sharkdescription": "Dive deep. Apex predator insights to rule the crypto sea.",
+   "whale": "Whale",
+   "whaledescription": "Make waves. Exclusive access for those ready to whale around.",
+   "highlyLimited": "Highly Limited",
+   "fisherman": "Fisherman",
+   "captaincryptoMessage": "Captain the crypto seas. Navigate, mentor, and reel in the big ones.  Exclusive Personalized Strategies for maximum results",
+   "applyForFisherman": "Apply For Fisherman",
+   "popular": "Popular",
+   "getStarted": "Get Started",
+   "choosePlan": "Choose Plan"
+    }
+}

@@ -74,7 +74,7 @@ export default function NoteModal({ open, close, onConfirm, initialNote }: DateM
           <CustomTextArea
             value={note}
             multiline
-            placeholder="Write your note here..."
+            placeholder={t("portfolioTransaction.notePlaceholder")}
             variant="outlined"
             onChange={(e) => setNote(e.target.value)}
           />

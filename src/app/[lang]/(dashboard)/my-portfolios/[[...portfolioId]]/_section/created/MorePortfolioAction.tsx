@@ -34,7 +34,7 @@ const MorePortfolioAction = ({ portfolio }: Props) => {
       { id: getportfolioId },
       {
         onSuccess: () => {
-          enqueueSnackbar("Portfolio Deleted Successfully", {
+          enqueueSnackbar(t("portfolioSummary.portfolioSuccessMessage"), {
             variant: "success",
           });
           invalidatePortfolioQueries(queryClient, {
@@ -47,7 +47,7 @@ const MorePortfolioAction = ({ portfolio }: Props) => {
           onClose();
         },
         onError: () => {
-          enqueueSnackbar("Fialed to delete Portfolio", {
+          enqueueSnackbar(t("portfolioSummary.portfolioerrorMessage"), {
             variant: "error",
           });
         },

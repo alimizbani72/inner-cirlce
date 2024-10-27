@@ -1,8 +1,11 @@
+"use client";
+
 import CustomTable from "@/components/CustomTable";
 import { fDate } from "@/utils/format-time";
 import { useFinancialServiceFinancialPaymentsQuery } from "@minecraft/queries";
 import type { FC } from "react";
 import ActionButtons from "./ActionButtons";
+import { useTranslate } from "@/locales";
 
 const columns = [
   {
@@ -20,6 +23,7 @@ const columns = [
 ];
 
 const BillingHistory: FC = () => {
+  const { t } = useTranslate();
   const { data } = useFinancialServiceFinancialPaymentsQuery({
     opts: JSON.stringify({
       sorts: { created_at: false },
@@ -31,11 +35,11 @@ const BillingHistory: FC = () => {
 
   return (
     <CustomTable
-      title="History"
+      title={t("billinghistory.history")}
       data={data?.data ?? []}
       columns={columns}
-      emptyTitle="You have not any billing history yet"
-      emptySubtitle="Track profits, losses and valuation all in one place."
+      emptyTitle={t("billinghistory.emptyTitle")}
+      emptySubtitle={t("billinghistory.emptySubtitle")}
     />
   );
 };

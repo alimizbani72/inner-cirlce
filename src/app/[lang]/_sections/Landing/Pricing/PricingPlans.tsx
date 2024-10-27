@@ -9,6 +9,7 @@ import { Box, Button, Typography, Stack } from "@mui/material";
 
 import BlurTexture from "./BlurTexture";
 import { useRouter } from "next/navigation";
+import { useTranslate } from "@/locales";
 
 interface PricingPlansProps {
   plans: { id: string; title: string; image: string; description: string; cost: number; onClick: VoidFunction }[];
@@ -16,6 +17,7 @@ interface PricingPlansProps {
 
 const PricingPlans: FC<PricingPlansProps> = ({ plans }) => {
   const { push } = useRouter();
+  const { t } = useTranslate();
   return (
     <LandingContainer gap={{ md: 6, xs: 4 }} alignItems={"center"}>
       <SectionTitle
@@ -93,7 +95,7 @@ const PricingPlans: FC<PricingPlansProps> = ({ plans }) => {
                             }}
                           >
                             <Typography textTransform="uppercase" color="dark.1" variant="caption-semi-bold">
-                              Popular
+                              {t("landingpricing.popular")}
                             </Typography>
                           </Stack>
                         )}
@@ -105,7 +107,7 @@ const PricingPlans: FC<PricingPlansProps> = ({ plans }) => {
                     <Typography mt="auto" variant="h3-semi-bold">
                       {plan.cost ? fCurrency(plan.cost, "$0,0[.]00") : "FREE"}
                     </Typography>
-                    <Button onClick={() => push("/pricing")}>Get Started</Button>
+                    <Button onClick={() => push("/pricing")}>{t("landingpricing.getStarted")}</Button>
                   </Stack>
                 </Stack>
               ))}

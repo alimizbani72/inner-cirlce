@@ -6,13 +6,14 @@ import { TextField } from "@mui/material";
 import Starts from "./Stars";
 import { Icon } from "@/components/icons";
 import { IconButton } from "@mui/material";
+import { useTranslate } from "@/locales";
 
 interface StayInTouchProps {}
 
 const StayInTouch: FC<StayInTouchProps> = () => {
   const isMobile = useIsMobile();
   const [value, setValue] = useState("");
-
+  const { t } = useTranslate();
   return (
     <LandingContainer alignItems="center" mb={4}>
       <Stack
@@ -49,7 +50,7 @@ const StayInTouch: FC<StayInTouchProps> = () => {
             }}
           >
             <Typography textAlign="center" textTransform="uppercase" color="white" variant="caption-semi-bold">
-              STAY UPDATE
+              {t("stayInTouch.stayUpdate")}
             </Typography>
           </Stack>
 
@@ -65,10 +66,10 @@ const StayInTouch: FC<StayInTouchProps> = () => {
               mb: 1,
             }}
           >
-            Let's Stay In Touch
+            {t("stayInTouch.title")}
           </Typography>
           <Typography textAlign="center" color="white" variant="p2-regular">
-            All our latest content on the best fandoms delivered to your inbox a couple times a month
+            {t("stayInTouch.description")}
           </Typography>
         </Stack>
 
@@ -95,7 +96,7 @@ const StayInTouch: FC<StayInTouchProps> = () => {
               ),
             }}
             type="email"
-            placeholder="Enter your email..."
+            placeholder={t("stayInTouch.emailPlaceholder")}
           />
         </Stack>
       </Stack>

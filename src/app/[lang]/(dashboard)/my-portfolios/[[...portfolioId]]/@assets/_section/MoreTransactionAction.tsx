@@ -57,13 +57,13 @@ const MoreTransactionAction = ({ transaction }: Props) => {
             invalidatePortfolio: true,
             activeSymbol: activeSymbol,
           });
-          enqueueSnackbar("Transaction Deleted Successfully", {
+          enqueueSnackbar(t("transaction.transactiondeleteSuccessMessage"), {
             variant: "success",
           });
           onClose();
         },
         onError: () => {
-          enqueueSnackbar("Fialed to delete transaction", {
+          enqueueSnackbar(t("transaction.transactiondeleteErrorMessage"), {
             variant: "error",
           });
         },

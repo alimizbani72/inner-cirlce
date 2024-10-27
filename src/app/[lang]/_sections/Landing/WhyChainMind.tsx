@@ -1,48 +1,51 @@
 import { Button, Stack, Typography } from "@mui/material";
-import type { FC } from "react";
+import { useMemo, type FC } from "react";
 import SectionTitle from "./SectionTitle";
 import { Icon } from "@/components/icons";
 import { useIsMobile } from "@/hooks/use-responsive";
 import LandingContainer from "./LandingContainer";
-
-const data = [
-  {
-    id: "operating-emotions",
-    title: "A team of highly professional analysts and crypto experts working for you.",
-    icon: "Team",
-  },
-  {
-    id: "playing-giants",
-    title: "Immediate access to actual market movements to make decisions fast.",
-    icon: "Chart",
-  },
-  {
-    id: "lack-of-info",
-    title: "You can get a chance to access top-secret gems early.",
-    icon: "Coin-reports",
-  },
-  {
-    id: "entry-timing",
-    title: "How to create a balanced portfolio considering a healthy risk to profit ratio.",
-    icon: "Portfolio",
-  },
-  {
-    id: "lack-of-or-knowledge",
-    title: "Buy and Exit strategies can help you avoid emotional decisions and losing all your money.",
-    icon: "Arrow",
-  },
-  {
-    id: "lack-or-knowledge",
-    title: "Connect with a community of people who share experiences, knowledge, and opportunities.",
-    icon: "Community",
-  },
-];
+import { useTranslate } from "@/locales";
 
 interface WhyChainMindProps {}
 
 const WhyChainMind: FC<WhyChainMindProps> = () => {
   const isMobile = useIsMobile();
-
+  const { t } = useTranslate();
+  const data = useMemo(
+    () => [
+      {
+        id: "operating-emotions",
+        title: t("whychainmind.operatingemotions"),
+        icon: "Team",
+      },
+      {
+        id: "playing-giants",
+        title: t("whychainmind.playinggiants"),
+        icon: "Chart",
+      },
+      {
+        id: "lack-of-info",
+        title: t("whychainmind.lackofinfo"),
+        icon: "Coin-reports",
+      },
+      {
+        id: "entry-timing",
+        title: t("whychainmind.entrytiming"),
+        icon: "Portfolio",
+      },
+      {
+        id: "lack-of-or-knowledge",
+        title: t("whychainmind.lackoforknowledge"),
+        icon: "Arrow",
+      },
+      {
+        id: "lack-or-knowledge",
+        title: t("whychainmind.lackorknowledge"),
+        icon: "Community",
+      },
+    ],
+    [t]
+  );
   return (
     <Stack
       width={{ md: "calc(100% - 32px)", xs: "calc(100% - 16px)" }}
@@ -103,7 +106,7 @@ const WhyChainMind: FC<WhyChainMindProps> = () => {
         </Stack>
 
         <Button href="/login" fullWidth={isMobile} size="large" endIcon={<Icon name="Arrow-right" />}>
-          Join To ChainMind
+          {t("how.joinTo")} ChainMind
         </Button>
       </LandingContainer>
     </Stack>

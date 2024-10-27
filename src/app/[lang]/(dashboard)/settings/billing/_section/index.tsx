@@ -6,17 +6,19 @@ import { useFinancialServiceBillingAddressQuery } from "@minecraft/queries";
 import { Icon } from "@/components/icons";
 import { useState } from "react";
 import BillingAddressDialog from "./BillingAddressDialog";
+import { useTranslate } from "@/locales";
 
 const BillingSection = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const { data } = useFinancialServiceBillingAddressQuery();
+  const { t } = useTranslate();
 
   return (
     <>
       <Stack justifyContent="center" alignItems="center" p={{ md: 4, xs: 3 }} gap={{ md: 4, xs: 3 }}>
         <Stack width={1} gap={2} justifyContent="space-between" alignItems={{ md: "center" }} direction={{ md: "row" }}>
           <Typography variant="p1-medium" color="white">
-            Billing
+            {t("billinghistory.billing")}
           </Typography>
 
           <Button
@@ -25,7 +27,7 @@ const BillingSection = () => {
             startIcon={<Icon name="Pen" />}
             onClick={() => setOpenDialog(true)}
           >
-            {data?.data?.address ? "Change Info" : "Setup Billing Address"}
+            {data?.data?.address ? t("billinghistory.changeInfo") : t("billinghistory.setupbilling")}
           </Button>
         </Stack>
 

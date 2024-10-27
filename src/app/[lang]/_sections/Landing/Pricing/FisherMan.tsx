@@ -3,11 +3,13 @@ import { useIsMobile } from "@/hooks/use-responsive";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 import LandingContainer from "../LandingContainer";
+import { useTranslate } from "@/locales";
 
 interface FisherManProps {}
 
 const FisherMan: FC<FisherManProps> = () => {
   const isMobile = useIsMobile();
+  const { t } = useTranslate();
   return (
     <Stack width="100%" position={"relative"} py={{ md: 15, xs: 18.5 }} alignItems={"center"}>
       <Box
@@ -53,21 +55,20 @@ const FisherMan: FC<FisherManProps> = () => {
           }}
         >
           <Typography textTransform="uppercase" color="dark.1" variant="caption-semi-bold">
-            Highly Limited
+            {t("landingpricing.highlyLimited")}
           </Typography>
         </Stack>
 
         <Typography color="white" variant="h2-semi-bold">
-          Fisherman
+          {t("landingpricing.fisherman")}
         </Typography>
 
         <Typography color="white" variant="h4-regular" mt={2} mb={3} maxWidth={606} textAlign="center">
-          Captain the crypto seas. Navigate, mentor, and reel in the big ones.  Exclusive Personalized Strategies for
-          maximum results
+          {t("landingpricing.captaincryptoMessage")}
         </Typography>
 
         <Button fullWidth={isMobile} size="large">
-          Apply For Fisherman
+          {t("landingpricing.applyForFisherman")}
         </Button>
       </LandingContainer>
     </Stack>

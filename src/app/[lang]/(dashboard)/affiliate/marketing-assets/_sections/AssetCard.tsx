@@ -1,3 +1,4 @@
+"use client";
 import { Icon } from "@/components/icons";
 import type { iconsType } from "@/components/icons/iconsNames";
 import type { MarketingAssetResponse } from "@minecraft/requests";
@@ -8,6 +9,7 @@ import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { LoadingButton } from "@mui/lab";
 import { Lightbox } from "@/components/lightbox";
 import { useLightBox } from "@/hooks/useLightBox";
+import { useTranslate } from "@/locales";
 
 interface AssetCardProps extends MarketingAssetResponse {
   sx?: SxProps;
@@ -20,6 +22,7 @@ const icon: Record<string, string> = {
 };
 
 const AssetCard: FC<AssetCardProps> = ({ description, items, title, type, sx }) => {
+  const { t } = useTranslate();
   const slides = useMemo(() => {
     if (type === "image") {
       return items?.map((item) => ({ src: item.item! }));
@@ -100,7 +103,7 @@ const AssetCard: FC<AssetCardProps> = ({ description, items, title, type, sx }) 
               startIcon={<Icon name="download" />}
               onClick={handleDownload}
             >
-              Download
+              {t("marketingassetTab.dwonload")}
             </LoadingButton>
 
             {type === "pdf" ? (

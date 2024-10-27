@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "@/components/Link";
+import { useTranslate } from "@/locales";
 import { Box, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
 
 const NeedHelp: FC = () => {
+  const { t } = useTranslate();
   return (
     <Stack
       border="1.5px solid"
@@ -41,10 +43,9 @@ const NeedHelp: FC = () => {
       />
 
       <Stack sx={{ py: 3, px: { md: 3, xs: 2.5 }, position: "relative", zIndex: 1 }}>
-        <Typography variant="h4-semi-bold">Need Help?</Typography>
+        <Typography variant="h4-semi-bold">{t("marketingassetTab.needHelp")}</Typography>
         <Typography variant="p2-regular" color="#BBBDD0">
-          If you have any questions about using our assets or need additional materials, don’t hesitate to reach out!
-          Contact us at:{" "}
+          {t("marketingassetTab.haveanyquestionsMessage")}:{" "}
           <Box
             display={{ md: "inline-block", xs: "flex" }}
             mt={{ md: "unset", xs: "10px" }}

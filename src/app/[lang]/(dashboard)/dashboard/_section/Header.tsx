@@ -105,7 +105,7 @@ const DashboardHeader: FC = () => {
       </Stack>
       <Link href="/telegram-channel">
         <Button color="info" sx={{ p: 1, pr: 3 }} startIcon={<img src="/assets/svg/telegramlogo.svg" />}>
-          Telegram Channel
+          {t("sidebar.telegram-channel")}
         </Button>
       </Link>
       {/* <Button color="info" startIcon={<Icon name="Bell" />}>

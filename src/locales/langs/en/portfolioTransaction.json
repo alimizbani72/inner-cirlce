@@ -25,6 +25,7 @@
     "totalSpent": "Total Spent",
     "totalReceived": "Total Received",
     "buy": "Buy",
-    "sell": "Sell"
+    "sell": "Sell",
+    "notePlaceholder": "Write your note here..."
   }
 }

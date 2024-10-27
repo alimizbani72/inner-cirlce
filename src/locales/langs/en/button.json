@@ -10,6 +10,8 @@
     "seeStrategies": "See Strategies",
     "later": "Later",
     "enable": "Enable",
-    "verify": "Verify"
+    "verify": "Verify",
+    "submit": "Submit",
+    "saveChanges": "Save Changes"
   }
 }

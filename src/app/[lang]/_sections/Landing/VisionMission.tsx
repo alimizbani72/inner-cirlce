@@ -3,6 +3,7 @@ import LandingContainer from "./LandingContainer";
 import { Stack, Typography } from "@mui/material";
 import SectionTitle from "./SectionTitle";
 import { useIsMobile } from "@/hooks/use-responsive";
+import { useTranslate } from "@/locales";
 
 interface VisionMissionProps {}
 
@@ -25,6 +26,7 @@ const Circle: FC<{ title: string; blueBorder?: boolean }> = ({ title, blueBorder
 
 const VisionMission: FC<VisionMissionProps> = () => {
   const isMobile = useIsMobile();
+  const { t } = useTranslate();
   return (
     <LandingContainer gap={6} my={{ md: 20, xs: 14 }} alignItems={"center"} position={"relative"} overflow={"hidden"}>
       <SectionTitle
@@ -40,8 +42,7 @@ const VisionMission: FC<VisionMissionProps> = () => {
         maxWidth={736}
         width={"100%"}
       >
-        The secret to getting into the 5% who will make life changing money during this cycle is to have access to the
-        right information at the right time.
+        {t("visionMission.seccretMessage")}
       </Typography>
 
       <svg width="9" height="200" viewBox="0 0 9 200" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -75,16 +76,16 @@ const VisionMission: FC<VisionMissionProps> = () => {
         maxWidth={736}
         width={"100%"}
       >
-        to simplify and enhance the cryptocurrency investment experience for users of all levels.
+        {t("visionMission.simplifyandenhanceMessage")}
       </Typography>
 
       <Stack
         direction={{ md: "row" }}
         sx={{ "> div:nth-child(2)": { mx: { md: -4 }, my: { md: "unset", xs: -4 }, zIndex: 2 } }}
       >
-        <Circle title="How Chainmind has positively impacted their crypto investments." />
-        <Circle blueBorder title="How Chainmind has positively impacted their crypto investments." />
-        <Circle title="How Chainmind has positively impacted their crypto investments." />
+        <Circle title={t("visionMission.circle1Title")} />
+        <Circle blueBorder title={t("visionMission.circle2Title")} />
+        <Circle title={t("visionMission.circle3Title")} />
       </Stack>
     </LandingContainer>
   );

@@ -21,6 +21,8 @@
     "totalInvest": "Total Invest",
     "realizedPNL": "Realized PNL",
     "unrealizedpnl": "UNRealized PnL",
-    "profit": "Profit"
+    "profit": "Profit",
+    "assetDeletesuccessMessage": "Asset Deleted Successfully",
+    "assetDeleteerrorMessage": "Fialed to delete Asset"
   }
 }

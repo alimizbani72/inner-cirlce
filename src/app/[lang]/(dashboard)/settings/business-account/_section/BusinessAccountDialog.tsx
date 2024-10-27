@@ -37,14 +37,14 @@ const BusinessAccountDialog: FC<BusinessAccountDialogProps> = ({ open, close }) 
 
   const { mutateAsync, isPending } = useUserServiceBusinessInfo();
   const UpdateUserSchema = Yup.object().shape({
-    holder_name: Yup.string().required("This field is required"),
-    company_name: Yup.string().required("This field is required"),
-    email: Yup.string().email().required("This field is required"),
-    country: Yup.string().required("This field is required"),
-    city: Yup.string().required("This field is required"),
-    zip_code: Yup.string().required("This field is required"),
-    address: Yup.string().required("This field is required"),
-    registration_number: Yup.string().required("This field is required"),
+    holder_name: Yup.string().required(t("businessaccount.isrequired")),
+    company_name: Yup.string().required(t("businessaccount.isrequired")),
+    email: Yup.string().email().required(t("businessaccount.isrequired")),
+    country: Yup.string().required(t("businessaccount.isrequired")),
+    city: Yup.string().required(t("businessaccount.isrequired")),
+    zip_code: Yup.string().required(t("businessaccount.isrequired")),
+    address: Yup.string().required(t("businessaccount.isrequired")),
+    registration_number: Yup.string().required(t("businessaccount.isrequired")),
     vat_number: Yup.string(),
   });
 
@@ -79,7 +79,7 @@ const BusinessAccountDialog: FC<BusinessAccountDialogProps> = ({ open, close }) 
           })
         );
         update({ user: { business_info: { ...data, created_at: userInfo?.business_info?.created_at || "" } } });
-        enqueueSnackbar("Your business account request has been submitted successfully.");
+        enqueueSnackbar(t("businessaccount.submittedsuccessmessage"));
         close();
       })
       .catch(() => enqueueSnackbar(t("formErrors.formError"), { variant: "error" }));
@@ -91,7 +91,7 @@ const BusinessAccountDialog: FC<BusinessAccountDialogProps> = ({ open, close }) 
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack direction={"row"} alignItems="center" spacing={1}>
             <Typography variant="h4-semi-bold" color={"common.white"}>
-              Business Account
+              {t("businessaccount.businessAccount")}
             </Typography>
           </Stack>
 
@@ -106,29 +106,57 @@ const BusinessAccountDialog: FC<BusinessAccountDialogProps> = ({ open, close }) 
         <Stack>
           <Typography variant="p2-medium">
             <Typography variant="p2-bold" textTransform="uppercase" color="warning.main">
-              NOTE:
+              {t("businessaccount.note")}:
             </Typography>{" "}
-            Please provide correct data; it will be verified.
+            {t("businessaccount.provideCorrectData")}
           </Typography>
           <FormProvider methods={methods} sx={{ gap: 3, width: "100%", mt: 3 }}>
             <Stack direction={{ md: "row" }} gap={3}>
-              <RHFTextField name="holder_name" label="Account holder name *" placeholder="Enter account holder name" />
-              <RHFTextField name="company_name" label="Company name *" placeholder="Enter company name" />
+              <RHFTextField
+                name="holder_name"
+                label={`${t("businessaccount.accountholdername")} *`}
+                placeholder={t("businessaccount.AccountholdernamePlaceholder")}
+              />
+              <RHFTextField
+                name="company_name"
+                label={`${t("businessaccount.companyname")} *`}
+                placeholder={t("businessaccount.companynamePlaceholder")}
+              />
             </Stack>
             <Stack direction={{ md: "row" }} gap={3}>
-              <RHFTextField name="email" label="Email *" placeholder="Enter your email address" />
-              <RHFTextField name="country" label="Country *" placeholder="Enter Country" />
+              <RHFTextField
+                name="email"
+                label={`${t("businessaccount.email")} *`}
+                placeholder={t("businessaccount.emailPlaceholder")}
+              />
+              <RHFTextField
+                name="country"
+                label={`${t("billinghistory.country")} *`}
+                placeholder={t("billinghistory.countryPlaceHolder")}
+              />
             </Stack>
             <Stack direction={{ md: "row" }} gap={3}>
-              <RHFTextField name="city" label="City *" placeholder="Enter City" />
-              <RHFTextField name="zip_code" label="zip code *" placeholder="Enter zip code" />
+              <RHFTextField
+                name="city"
+                label={`${t("billinghistory.city")} *`}
+                placeholder={t("billinghistory.cityPlaceHolder")}
+              />
+              <RHFTextField
+                name="zip_code"
+                label={`${t("billinghistory.zipCode")} *`}
+                placeholder={t("billinghistory.zipCodePlaceHolder")}
+              />
             </Stack>
-            <RHFTextField name="address" label="address *" placeholder="Enter address" />
+            <RHFTextField
+              name="address"
+              label={`${t("billinghistory.address")} *`}
+              placeholder={t("billinghistory.addressPlaceHolder")}
+            />
             <Stack direction={{ md: "row" }} gap={3}>
               <RHFTextField
                 name="registration_number"
-                label="Company registration number *"
-                placeholder="Enter company registration number"
+                label={`${t("businessaccount.companyregistrationnumber")} *`}
+                placeholder={t("businessaccount.companyregistrationplaceholder")}
               />
               <RHFTextField name="vat_number" label="VAT number" placeholder="Enter VAT number" />
             </Stack>
@@ -138,10 +166,10 @@ const BusinessAccountDialog: FC<BusinessAccountDialogProps> = ({ open, close }) 
       <DialogActions sx={{ p: 3 }}>
         <Stack flex={1} direction={"row"} gap={2} justifyContent="space-between">
           <Button color="info" onClick={close}>
-            Cancel
+            {t("button.cancel")}
           </Button>
           <LoadingButton onClick={onSubmit} loading={isPending}>
-            {userInfo?.business_info?.address ? "Save Changes" : "Submit"}
+            {userInfo?.business_info?.address ? t("button.saveChanges") : t("button.submit")}
           </LoadingButton>
         </Stack>
       </DialogActions>

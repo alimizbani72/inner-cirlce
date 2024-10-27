@@ -36,7 +36,7 @@ const PortfolioSummary = ({ selectedPortfolio, portfolios, portfolioId }: Portfo
             <Stack direction={"row"} spacing={1}>
               <Icon name="More-rectangle" />
               <Typography variant="p2-semi-bold" whiteSpace={"nowrap"}>
-                Overview
+                {t("portfolioSummary.overview")}
               </Typography>
             </Stack>
           ) : (

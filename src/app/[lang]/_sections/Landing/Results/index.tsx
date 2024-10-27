@@ -5,12 +5,13 @@ import { Icon } from "@/components/icons";
 import { useIsMobile } from "@/hooks/use-responsive";
 import LandingContainer from "../LandingContainer";
 import ResultsCoin from "./ResultsCoin";
+import { useTranslate } from "@/locales";
 
 interface ResultsProps {}
 
 const Results: FC<ResultsProps> = () => {
   const isMobile = useIsMobile();
-
+  const { t } = useTranslate();
   return (
     <Stack
       width={{ md: "calc(100% - 32px)", xs: "calc(100% - 16px)" }}
@@ -44,7 +45,7 @@ const Results: FC<ResultsProps> = () => {
 
         <LandingContainer alignItems={"center"}>
           <Button href="/login" fullWidth={isMobile} size="large" endIcon={<Icon name="Arrow-right" />}>
-            Join To ChainMind
+            {t("how.joinTo")} ChainMind
           </Button>
         </LandingContainer>
       </Stack>
