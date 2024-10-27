@@ -95,7 +95,7 @@ return {
           font-weight: bold;
           box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.16), 0px 0px 0px 4px rgba(255, 255, 255, 0.40) inset;
         ">
-          $${value.toFixed(2)}
+          $${numeral(value).format("0,0.00")}
         </div>
       `;
     },
