@@ -26,6 +26,8 @@ const languages = [
   { code: "bn", name: "Bengali" },
   { code: "vi", name: "Vietnamese" },
   { code: "mn", name: "Mongolian" },
+  { code: "no", name: "Norwegian" },
+  { code: "fi", name: "Finnish" },
 ];
 
 const LanguageSelect = () => {

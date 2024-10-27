@@ -23,7 +23,7 @@ if (!fs.existsSync(CACHE_DIR)) {
   fs.mkdirSync(CACHE_DIR, { recursive: true });
 }
 
-const TARGET_LANGUAGES = ["bn", "de", "es", "fr", "he", "hi", "ja", "ko", "mn", "pt", "ru", "sv", "th", "tr", "vi"];
+const TARGET_LANGUAGES = ["bn", "de", "es", "fr", "he", "hi", "ja", "ko", "mn", "pt", "ru", "sv", "th", "tr", "vi", "fi", "no"];
 
 interface HashStore {
   [relativePath: string]: string;

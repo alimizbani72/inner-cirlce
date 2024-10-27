@@ -12,7 +12,7 @@ import { useTranslate } from "@/locales";
 import { fDate } from "@/utils/format-time";
 import { formatCurrency } from "@/utils/toNumber";
 import { useFinancialServiceFinancialPayoutsQuery } from "@minecraft/queries";
-import type { PayoutResponse, SampleListOpts } from "@minecraft/requests";
+import type { PayoutResponse } from "@minecraft/requests";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
 import DownloadModal from "./DownloadModal";
@@ -97,7 +97,7 @@ const AffPayoutsTabTable: FC = () => {
   };
 
   const { data, isPending } = useFinancialServiceFinancialPayoutsQuery({
-    opts: JSON.stringify(filter) as SampleListOpts,
+    opts: JSON.stringify(filter) as any,
   });
 
   const handleOpenFilter = useCallback(

@@ -8,7 +8,7 @@ import CustomTable from "@/components/CustomTable";
 import { useAffiliateServiceAffiliateCommissionListQuery } from "@minecraft/queries";
 import { formatCurrency, toNumber } from "@/utils/toNumber";
 import { fDate } from "@/utils/format-time";
-import type { PayoutCommissionResponse, SampleListOpts } from "@minecraft/requests";
+import type { PayoutCommissionResponse } from "@minecraft/requests";
 import { toTitleCase } from "@/utils/change-case";
 import { useTranslate } from "@/locales";
 import { Icon } from "@/components/icons";
@@ -98,7 +98,7 @@ const AffCommissionsTabTable: FC = () => {
   };
 
   const { data: commissionList, isLoading } = useAffiliateServiceAffiliateCommissionListQuery({
-    opts: JSON.stringify(filterOpts) as SampleListOpts,
+    opts: JSON.stringify(filterOpts) as any,
   });
 
   const handleOpenFilter = useCallback(
