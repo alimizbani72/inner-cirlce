@@ -209,7 +209,7 @@ const TransactionModal = () => {
             <RHFTextField
               name="quantity"
               label={t("portfolioTransaction.quantity")}
-              placeholder={t("portfolioTransaction.enterQuentity")}
+              placeholder={t("portfolioTransaction.enterQuantity")}
               topHelperText={t("portfolioTransaction.topQuantityHelpText")}
               type="number"
               isMoney

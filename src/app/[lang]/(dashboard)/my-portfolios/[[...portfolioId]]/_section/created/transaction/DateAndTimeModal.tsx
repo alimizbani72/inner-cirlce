@@ -87,6 +87,7 @@ export default function DateAndTimeModal({ open, close, onConfirm, initialDate }
               value={date}
               slotProps={slotProps}
               sx={datePickerStyle}
+              maxDate={new Date()}
               onChange={(newDate) => setDate(newDate)}
               desktopModeMediaQuery="@media (min-width: 0px)"
             />

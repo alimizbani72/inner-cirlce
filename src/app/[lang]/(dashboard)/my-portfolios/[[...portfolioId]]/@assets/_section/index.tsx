@@ -91,7 +91,11 @@ const AssetsTable = () => {
         field: "total_invested",
         modify: (row: any) => `$${numeral(row.total_invested).format("0,0.00")}`,
       },
-
+      {
+        title: formatTitle(t("assetsTable.unrealizedpnl")),
+        field: "unrealized_pnl",
+        modify: (row: any) => `$${numeral(row.unrealized_pnl).format("0,0.00")}`,
+      },
       {
         title: formatTitle(t("assetsTable.realizedPNL")),
         field: "realized_pnl",
@@ -100,11 +104,6 @@ const AssetsTable = () => {
             ${numeral(row.realized_pnl).format("0,0.00")}
           </Typography>
         ),
-      },
-      {
-        title: formatTitle(t("assetsTable.unrealizedpnl")),
-        field: "unrealized_pnl",
-        modify: (row: any) => `$${numeral(row.unrealized_pnl).format("0,0.00")}`,
       },
     ],
     [t]

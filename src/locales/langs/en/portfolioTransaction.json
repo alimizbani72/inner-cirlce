@@ -12,7 +12,7 @@
     "addTransaction": "Add Transaction",
     "quantity": "Quantity",
     "coins": "coins",
-    "enterQuentity": "Enter Quentity",
+    "enterQuantity": "Enter Quantity",
     "topQuantityHelpText": "Help text is here about the input.",
     "topPricePerCoinHelpText": "Help text is here about the input.",
     "pricePerCoin": "Price per coin",
