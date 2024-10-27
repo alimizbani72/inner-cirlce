@@ -1,5 +1,5 @@
 import {
-    UsePortfolioServicePortfoliosIdHistoryQueryKeyFn,
+  UsePortfolioServicePortfoliosIdHistoryQueryKeyFn,
   UsePortfolioServicePortfoliosIdQueryKeyFn,
   UsePortfolioServicePortfoliosQueryKeyFn,
   UsePortfolioServicePortfolioTransactionsQueryKeyFn,
@@ -9,14 +9,14 @@ interface InvalidateOptions {
   portfolioId: any;
   activeSymbol?: any;
   invalidateTransactions?: boolean;
-  invalidatePortfolio?: boolean; 
-  invalidatePortfolioId?: boolean
-  invalidateHistory?: boolean; 
+  invalidatePortfolio?: boolean;
+  invalidatePortfolioId?: boolean;
+  invalidateHistory?: boolean;
 }
 export const invalidatePortfolioQueries = (
   queryClient: QueryClient,
   {
-    invalidatePortfolioId= false,
+    invalidatePortfolioId = false,
     portfolioId,
     activeSymbol,
     invalidateTransactions = false,
@@ -45,14 +45,13 @@ export const invalidatePortfolioQueries = (
     });
   }
 
-if (invalidatePortfolioId) {
-
-  queryClient.invalidateQueries({
-    queryKey: UsePortfolioServicePortfoliosIdQueryKeyFn({
-      id: portfolioId,
-    }),
-  });
-}
+  if (invalidatePortfolioId) {
+    queryClient.invalidateQueries({
+      queryKey: UsePortfolioServicePortfoliosIdQueryKeyFn({
+        id: portfolioId,
+      }),
+    });
+  }
   if (invalidateHistory) {
     queryClient.invalidateQueries({
       queryKey: UsePortfolioServicePortfoliosIdHistoryQueryKeyFn({

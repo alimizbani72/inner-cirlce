@@ -5,7 +5,7 @@ export const formatDateTime = (date: any, placeHolder: string) => {
     return placeHolder;
   }
 
-  const formattedDate = fDate(date,  "MMM d, yyyy");
+  const formattedDate = fDate(date, "MMM d, yyyy");
 
   return `${formattedDate}`;
 };

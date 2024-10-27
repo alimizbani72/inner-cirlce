@@ -5,7 +5,25 @@ type DictionaryLoader = {
   [key: string]: () => Promise<Dictionary>;
 };
 
-const languages = ["bn", "de", "en", "es", "fr", "he", "hi", "ja", "ko", "mn", "pt", "ru", "sv", "th", "tr", "vi"];
+const languages = [
+  "bn",
+  "de",
+  "es",
+  "fr",
+  "he",
+  "hi",
+  "ja",
+  "ko",
+  "mn",
+  "pt",
+  "ru",
+  "sv",
+  "th",
+  "tr",
+  "vi",
+  "fi",
+  "no",
+];
 
 let dictionaries: DictionaryLoader;
 

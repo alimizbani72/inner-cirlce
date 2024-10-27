@@ -6,7 +6,7 @@ export const getActivePortfolioId = (id: any) => {
   if (!id?.length) {
     return null;
   }
-  return  id[0]
+  return id[0];
 };
 
 export const calculateTotal = (data: DataItem[], field: keyof DataItem): number => {

@@ -6,21 +6,23 @@ import cookie from "cookie";
 
 const LOCALES: string[] = [
   "en",
+  "bn",
   "de",
   "es",
-  "pt",
-  "sv",
-  "ru",
   "fr",
   "he",
   "hi",
-  "ko",
   "ja",
+  "ko",
+  "mn",
+  "pt",
+  "ru",
+  "sv",
   "th",
   "tr",
-  "bn",
   "vi",
-  "mn",
+  "fi",
+  "no",
 ];
 const DEFAULT_LOCALE: string = "en";
 const AUTH_SECRET: string | undefined = process.env.NEXTAUTH_SECRET;

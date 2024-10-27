@@ -89,7 +89,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
       dict={dict}
       user={{ ...session?.user!, ...(queryClient.getQueryData(UseAuthServiceMeQueryKeyFn()) as any)?.data }}
     >
-      <html lang="en">
+      <html lang={params.lang ?? "en"}>
         <head>
           <script src="https://www.google.com/recaptcha/api.js" async defer />
         </head>

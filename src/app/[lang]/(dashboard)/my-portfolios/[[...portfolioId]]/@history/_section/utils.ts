@@ -2,11 +2,10 @@ import { format } from "date-fns";
 import { toNumber } from "lodash";
 
 const formatDate = (date: string) => {
-  return format(date, 'MMM d');
+  return format(date, "MMM d");
 };
 
 export const transformDataForChart = (data: any[] | undefined) => {
- 
   const transformedData = data?.map((item) => ({
     date: item.date,
     investment: toNumber(item.investment),
@@ -20,7 +19,7 @@ export const transformDataForChart = (data: any[] | undefined) => {
     series: [
       {
         // name: "All",
-        categories: last7Data.map((item) => formatDate(item.date)), 
+        categories: last7Data.map((item) => formatDate(item.date)),
         data: [{ data: last7Data.map((item) => item.investment) }],
       },
       // {
