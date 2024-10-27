@@ -6,6 +6,7 @@ type DictionaryLoader = {
 };
 
 const languages = [
+  "en",
   "bn",
   "de",
   "es",
