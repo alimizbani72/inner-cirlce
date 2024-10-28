@@ -2,6 +2,7 @@
   "affPayoutsTab": {
     "setupWalletMessage": "Setup your wallet so we can send the money to you.",
     "changeWallet": "Change Wallet",
-    "setupWallet": "Setup Wallet"
+    "setupWallet": "Setup Wallet",
+    "noDataToDownload": "There is no data to download."
   }
 }
