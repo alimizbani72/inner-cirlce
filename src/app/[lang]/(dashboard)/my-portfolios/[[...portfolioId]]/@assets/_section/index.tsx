@@ -30,7 +30,7 @@ const AssetsTable = () => {
         field: "name",
         modify: (row: any) => (
           <Stack direction={"row"} alignItems={"center"} sx={{ cursor: "pointer" }} onClick={row.onClick} gap={1}>
-            {portfolioId && <MoreTableAction symbol={row.row.symbol} />}
+            {portfolioId && <MoreTableAction slug={row.row.slug} />}
             <Stack
               direction={"row"}
               sx={{ width: "100%" }}
@@ -52,7 +52,8 @@ const AssetsTable = () => {
       {
         title: formatTitle(t("assetsTable.actualPrice")),
         field: "actual_price",
-        modify: (row: any) => `$${numeral(row.actual_price).format("0,0.00")}`,
+        modify: (row: any) =>
+          `$${row.actual_price > 1 ? numeral(row.actual_price).format("0,0.00") : row.actual_price}`,
       },
       {
         title: formatTitle(t("assetsTable.actualValue")),

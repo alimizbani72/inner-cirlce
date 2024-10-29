@@ -20,7 +20,7 @@ import { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslate } from "@/locales";
 import {
-  usePortfolioServiceCoinsSymbolPriceQuery,
+  usePortfolioServiceCoinsSlugPriceQuery,
   usePortfolioServicePortfolioTransactionsCreateMutation,
   usePortfolioServicePortfolioTransactionsIdUpdateMutation,
 } from "@minecraft/queries";
@@ -115,14 +115,14 @@ const TransactionModal = () => {
 
   const { handleSubmit, watch } = methods;
 
-  const selectedCoinSymbol = (watch("coins") as any)?.symbol;
+  const selectedCoinSymbol = (watch("coins") as any)?.slug;
   const quantity = parseToNumber(watch("quantity"));
   const fee = parseToNumber(watch("fee"));
   const price = parseToNumber(watch("price"));
 
-  const { data: perCoinPrice } = usePortfolioServiceCoinsSymbolPriceQuery(
+  const { data: perCoinPrice } = usePortfolioServiceCoinsSlugPriceQuery(
     {
-      symbol: selectedCoinSymbol,
+      slug: selectedCoinSymbol,
     },
     undefined,
     { enabled: !!selectedCoinSymbol }
@@ -141,7 +141,7 @@ const TransactionModal = () => {
       note: note,
       price: parseToNumber(data.price),
       quantity: parseToNumber(data.quantity),
-      ...(isEditMode ? {} : { symbol: (data.coins as any)?.symbol }),
+      ...(isEditMode ? {} : { slug: (data.coins as any)?.slug }),
       ...(isEditMode ? {} : { portfolio_id: activePortfolioId }),
     };
     try {

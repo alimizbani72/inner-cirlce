@@ -9,23 +9,23 @@ import { usePopover } from "@/components/custom-popover";
 import { useParams } from "next/navigation";
 import { useSnackbar } from "notistack";
 import { useQueryClient } from "@tanstack/react-query";
-import { usePortfolioServicePortfoliosIdAssetsSymbolDeleteMutation } from "@minecraft/queries";
+import { usePortfolioServicePortfoliosIdAssetsSlugDeleteMutation } from "@minecraft/queries";
 import { getActivePortfolioId } from "../../_section/utils";
 import { invalidatePortfolioQueries } from "../../_section/InvaidatePorfolioQueries";
 type MoreTableProps = {
-  symbol: string;
+  slug: string;
 };
-const MoreTableAction = ({ symbol }: MoreTableProps) => {
+const MoreTableAction = ({ slug }: MoreTableProps) => {
   const { portfolioId } = useParams();
   const queryClient = useQueryClient();
   const { enqueueSnackbar } = useSnackbar();
   const { t } = useTranslate();
   const { onClose, onOpen, open } = usePopover();
   const activePortfolioId = getActivePortfolioId(portfolioId);
-  const { mutateAsync } = usePortfolioServicePortfoliosIdAssetsSymbolDeleteMutation();
+  const { mutateAsync } = usePortfolioServicePortfoliosIdAssetsSlugDeleteMutation();
   const handleDelete = async () => {
     await mutateAsync(
-      { id: activePortfolioId, symbol },
+      { id: activePortfolioId, slug },
       {
         onSuccess: () => {
           invalidatePortfolioQueries(queryClient, {
