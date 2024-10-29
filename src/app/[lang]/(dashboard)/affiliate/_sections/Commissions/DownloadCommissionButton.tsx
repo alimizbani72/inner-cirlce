@@ -4,6 +4,7 @@ import { fDate } from "@/utils/format-time";
 import { convertAndDownloadCSV } from "@/utils/convertAndDownloaCSV";
 import { enqueueSnackbar } from "notistack";
 import { useTranslate } from "@/locales";
+import { toNumber } from "@/utils/toNumber";
 type DownloadPayoutButtonProps = {
   commissions: any[];
   fromDate: string;
@@ -32,7 +33,7 @@ const DownloadCommissionButton: FC<DownloadPayoutButtonProps> = ({
         amount: commission?.amount?.value,
         packageName: commission?.plan_type,
         percent: commission?.percent,
-        date: fDate(commission?.created_at, "dd.MM.yyyy"),
+        date: fDate(toNumber(commission?.created_at) * 1000, "dd.MM.yyyy"),
       })) as any;
 
       convertAndDownloadCSV(

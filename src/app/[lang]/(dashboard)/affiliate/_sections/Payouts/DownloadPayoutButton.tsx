@@ -54,18 +54,18 @@ const DownloadPayoutButton: FC<DownloadPayoutButtonProps> = ({
 
   const downloadCSV = () => {
     try {
-      const finalData = payoutData?.map((arr) => ({
-        userId: arr?.user_id,
-        walletId: arr?.wallet_id,
-        amount: arr?.amount?.value,
-        date: fDate((arr as any).created_at, "dd.MM.yyyy"),
-        status: arr.status,
+      const finalData = payoutData?.map((payout) => ({
+        userId: payout?.user_id,
+        walletId: payout?.wallet_id,
+        amount: payout?.amount?.value,
+        date: fDate(payout?.created_at, "dd.MM.yyyy"),
+        status: payout.status,
       })) as any;
 
       convertAndDownloadCSV(
         finalData,
         ["User ID", "Wallet Id", "Amount", "Date", "Status"],
-        `payout_${fromDate}_${toDate}`
+        `payout_${fDate(fromDate, "dd.MM.yyyy")}_${fDate(toDate, "dd.MM.yyyy")}`
       );
       closeModal();
     } catch (error) {
