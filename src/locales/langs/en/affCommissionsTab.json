@@ -1,0 +1,9 @@
+{
+  "affCommissionsTab": {
+    "totalTurnover": "Total Turnover",
+    "totalCommission": "Total commission",
+    "availableForWithdraw": "Available for withdraw",
+    "withdraw": "Withdraw",
+    "noDataToDownload": "There is no data to download."
+  }
+}

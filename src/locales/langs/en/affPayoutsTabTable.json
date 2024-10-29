@@ -1,0 +1,19 @@
+{
+  "affPayoutsTabTable": {
+    "userId": "User ID",
+    "walletId": "Wallet ID",
+    "amount": "Amount",
+    "date": "Date",
+    "status": "Status",
+    "payouts": "Payouts",
+    "emptyTitle": "You have not any payouts yet",
+    "emptySubtitle": "Track profits, losses and valuation all in one place.",
+    "from": "FROM",
+    "to": "TO",
+    "dateAndTime": "Date & Time",
+    "dwonloadStatement": "Download Statements",
+    "downloadBtn": "Download",
+    "cancelBtn": "Cancel",
+    "format": "Format"
+  }
+}

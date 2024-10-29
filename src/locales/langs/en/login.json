@@ -1,0 +1,11 @@
+{
+  "login": {
+    "title": "Login to your account",
+    "loginWithGoogle": "Login with Google",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot Password?",
+    "loginButton": "Login",
+    "noAccount": "Don't have an account?",
+    "register": "Register"
+  }
+}

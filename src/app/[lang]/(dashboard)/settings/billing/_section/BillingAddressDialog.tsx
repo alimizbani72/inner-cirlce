@@ -24,7 +24,7 @@ import {
   Typography,
 } from "@mui/material";
 import { enqueueSnackbar } from "notistack";
-import type { FC } from "react";
+import { useMemo, type FC } from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 
@@ -41,14 +41,18 @@ const BillingAddressDialog: FC<BillingAddressDialogProps> = ({ open, close, info
 
   const { mutateAsync, isPending } = useFinancialServiceBillingAddressCreateMutation();
 
-  const UpdateUserSchema = Yup.object().shape({
-    country: Yup.string().required("This field is required"),
-    city: Yup.string().required("This field is required"),
-    zip_code: Yup.string().required("This field is required"),
-    address: Yup.string().required("This field is required"),
-    first_name: Yup.string().required("This field is required"),
-    last_name: Yup.string().required("This field is required"),
-  });
+  const UpdateUserSchema = useMemo(
+    () =>
+      Yup.object().shape({
+        country: Yup.string().required(t("billinghistory.countryFieldisRequired")),
+        city: Yup.string().required(t("billinghistory.citFieldisRequired")),
+        zip_code: Yup.string().required(t("billinghistory.zipcodeFieldisRequired")),
+        address: Yup.string().required(t("billinghistory.addressFieldisRequired")),
+        first_name: Yup.string().required(t("billinghistory.firstnameFieldisRequired")),
+        last_name: Yup.string().required(t("billinghistory.lastnameFieldisRequired")),
+      }),
+    [t]
+  );
 
   const methods = useForm({
     resolver: yupResolver(UpdateUserSchema),
@@ -69,7 +73,7 @@ const BillingAddressDialog: FC<BillingAddressDialogProps> = ({ open, close, info
     mutateAsync({ requestBody: { ...data, email_address: info?.email_address || userInfo?.email } as any })
       .then(() => {
         queryClient.invalidateQueries({ queryKey: [useFinancialServiceBillingAddressQueryKey] });
-        enqueueSnackbar("Your Billing address has been updated successfully.");
+        enqueueSnackbar(t("billinghistory.successMessage"));
         close();
       })
       .catch(() => enqueueSnackbar(t("formErrors.formError"), { variant: "error" }));
@@ -96,25 +100,49 @@ const BillingAddressDialog: FC<BillingAddressDialogProps> = ({ open, close, info
         <Stack justifyContent="center" alignItems="center">
           <FormProvider methods={methods} sx={{ gap: 3, width: "100%", mt: 3 }}>
             <Stack direction={{ md: "row" }} gap={3}>
-              <RHFTextField name="first_name" label="First name" placeholder="Enter your first name" />
-              <RHFTextField name="last_name" label="Last name" placeholder="Enter your last name" />
+              <RHFTextField
+                name="first_name"
+                label={t("billinghistory.firstName")}
+                placeholder={t("billinghistory.firstNamePlaceHolder")}
+              />
+              <RHFTextField
+                name="last_name"
+                label={t("billinghistory.lastName")}
+                placeholder={t("billinghistory.lastNamePlaceHolder")}
+              />
             </Stack>
             <Stack direction={{ md: "row" }} gap={3}>
-              <RHFTextField name="country" label="Country" placeholder="Enter Country" />
-              <RHFTextField name="city" label="City" placeholder="Enter City" />
+              <RHFTextField
+                name="country"
+                label={t("billinghistory.country")}
+                placeholder={t("billinghistory.countryPlaceHolder")}
+              />
+              <RHFTextField
+                name="city"
+                label={t("billinghistory.city")}
+                placeholder={t("billinghistory.cityPlaceHolder")}
+              />
             </Stack>
-            <RHFTextField name="zip_code" label="zip code" placeholder="Enter zip code" />
-            <RHFTextField name="address" label="address" placeholder="Enter address" />
+            <RHFTextField
+              name="zip_code"
+              label={t("billinghistory.zipCode")}
+              placeholder={t("billinghistory.zipCodePlaceHolder")}
+            />
+            <RHFTextField
+              name="address"
+              label={t("billinghistory.address")}
+              placeholder={t("billinghistory.addressPlaceHolder")}
+            />
           </FormProvider>
         </Stack>
       </DialogContent>
       <DialogActions sx={{ p: 3 }}>
         <Stack flex={1} direction={"row"} gap={2} justifyContent="space-between">
           <Button color="info" onClick={close}>
-            Back
+            {t("billinghistory.back")}
           </Button>
           <LoadingButton onClick={onSubmit} loading={isPending}>
-            {info?.address ? "Save Changes" : "Submit & Setup"}
+            {info?.address ? t("billinghistory.saveChanges") : t("billinghistory.submitSetup")}
           </LoadingButton>
         </Stack>
       </DialogActions>

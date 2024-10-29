@@ -1,19 +1,11 @@
-export const formatDateTime = (date: Date | null, time: Date | null, placeHolder: string) => {
-  if (!date || !time) {
+import { fDate } from "./format-time";
+
+export const formatDateTime = (date: any, placeHolder: string) => {
+  if (!date) {
     return placeHolder;
   }
 
-  const formattedDate = date.toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
+  const formattedDate = fDate(date, "MMM d, yyyy");
 
-  const formattedTime = time.toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "numeric",
-    hour12: true,
-  });
-
-  return `${formattedDate}, ${formattedTime}`;
+  return `${formattedDate}`;
 };

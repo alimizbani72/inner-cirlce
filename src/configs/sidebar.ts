@@ -12,8 +12,7 @@ export const sidebarServicesItems = [
     path: undefined,
     name: "portfolio",
     icon: "Portfolio",
-    // items: [{ path: "my-portfolios/" }, { path: "portfolio-strategies/" }],
-    items: [{ path: "portfolio-strategies/" }],
+    items: [{ path: "my-portfolios/" }, { path: "portfolio-strategies/" }],
   },
   {
     path: "education/",
@@ -24,10 +23,16 @@ export const sidebarServicesItems = [
 
 export const sidebarCommunityItems = [
   {
-    path: "affiliate/",
+    path: undefined,
+    name: "affiliate",
     icon: "Affiliate",
+    items: [
+      { path: "affiliate/", name: "Affiliate Dashboard" },
+      { path: "affiliate/how-it-works/", name: "How it works" },
+      { path: "affiliate/marketing-assets/", name: "Marketing Assets" },
+      { path: "affiliate/marketing-rules/", name: "Marketing Rules" },
+    ],
   },
-
   {
     path: "settings/account/",
     icon: "Settings",
@@ -50,7 +55,6 @@ export const mapPathToName = {
   "telegram-channel/": "telegram-channel",
   "portfolio-strategies/": "portfolio-strategies",
   "my-portfolios/": "my-portfolios",
-  "affiliate/": "affiliate",
   "education/": "education",
   "help-center/": "help-center",
   "secret-hunts/": "secret-hunts",
@@ -58,4 +62,8 @@ export const mapPathToName = {
   "settings/become-a-partner/": "settings",
   "settings/billing/": "settings",
   "settings/business-account/": "settings",
+  "affiliate/": "affiliate-dashboard",
+  "affiliate/how-it-works/": "how-it-works",
+  "affiliate/marketing-assets/": "marketing-assets",
+  "affiliate/marketing-rules/": "marketing-rules",
 };

@@ -1,0 +1,31 @@
+{
+  "portfolioTransaction": {
+    "dateAndTime": "Date & Time",
+    "date": "Date",
+    "time": "Time",
+    "cancel": "Cancel",
+    "changeDateTime": "Change Date & Time",
+    "addNote": "Add Note",
+    "note": "Note",
+    "quantityIsRequired": "Quantity is Required",
+    "feeIsRequired": "fee is Required",
+    "addTransaction": "Add Transaction",
+    "quantity": "Quantity",
+    "coins": "coins",
+    "enterQuantity": "Enter Quantity",
+    "topQuantityHelpText": "Help text is here about the input.",
+    "topPricePerCoinHelpText": "Help text is here about the input.",
+    "pricePerCoin": "Price per coin",
+    "udateErrorMessage": "Failed to Update transaction",
+    "createErrorMessage": "Failed to Create transaction",
+    "fee": "Fee",
+    "topFeeHelpText": "The transaction fee entered will be included as part of the Profit/Loss calculation.",
+    "enterTheFee": "Enter The Fee",
+    "notes": "Notes",
+    "totalSpent": "Total Spent",
+    "totalReceived": "Total Received",
+    "buy": "Buy",
+    "sell": "Sell",
+    "notePlaceholder": "Write your note here..."
+  }
+}

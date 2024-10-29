@@ -1,0 +1,12 @@
+{
+  "portfolioSummary": {
+    "editPOrtfolio": "Edit Portfolio",
+    "deletePOrtfolio": "Delete Portfolio",
+    "createPorfolio": "Create Porfolio",
+    "addTransaction": "Add Transaction",
+    "overview": "Overview",
+    "portfolioSuccessMessage": "Portfolio Deleted Successfully",
+    "portfolioerrorMessage": "Fialed to delete Portfolio"
+
+  }
+}

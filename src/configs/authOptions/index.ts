@@ -7,6 +7,7 @@ import { customSingUp } from "./customSignUp";
 import { forgotPass } from "./forgotPass";
 import { googleLoginProvider } from "./googleLogin";
 import type { IUser } from "@/lib/features/user/userSlice";
+import { guestLogin } from "./guestLogin";
 
 declare module "next-auth" {
   interface User {
@@ -33,6 +34,7 @@ export const authOptions: (cookies?: any) => NextAuthOptions = (cookies) => ({
   providers: [
     GoogleProvider(googleLoginProvider),
     CredentialsProvider(customLogin),
+    CredentialsProvider(guestLogin),
     CredentialsProvider(customSingUp(cookies)),
     CredentialsProvider(forgotPass),
   ],

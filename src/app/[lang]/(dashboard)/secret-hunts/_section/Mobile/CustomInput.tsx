@@ -1,6 +1,7 @@
 import { Icon } from "@/components/icons";
 import Image from "@/components/Image";
 import RiveComp from "@/components/RiveComp";
+import { useTranslate } from "@/locales";
 import { Box, Stack, TextField, Typography, type TextFieldProps } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { enqueueSnackbar } from "notistack";
@@ -59,6 +60,7 @@ type CustomInputProps = { isLoading?: boolean };
 
 const CustomInput: FC<CustomInputProps> = () => {
   const [inputValue, setInputValue] = useState("");
+  const { t } = useTranslate();
   const [loading, setIsLoading] = useState(false);
   const testApi = async () => {
     setIsLoading(true);
@@ -178,7 +180,7 @@ const CustomInput: FC<CustomInputProps> = () => {
             sx={{ display: loading ? "none" : "flex" }}
           >
             <Icon name="binoculars" />
-            <Typography variant="p1-semi-bold">Search</Typography>
+            <Typography variant="p1-semi-bold">{t("secrethunt.search")}</Typography>
           </Stack>
         </Stack>
       </Stack>

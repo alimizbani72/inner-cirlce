@@ -12,10 +12,11 @@ import { useTranslate } from "@/locales";
 import { fDate } from "@/utils/format-time";
 import { formatCurrency } from "@/utils/toNumber";
 import { useFinancialServiceFinancialPayoutsQuery } from "@minecraft/queries";
-import type { PayoutResponse, SampleListOpts } from "@minecraft/requests";
-import { Box, Stack, Typography } from "@mui/material";
+import type { PayoutResponse } from "@minecraft/requests";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
 import DownloadModal from "./DownloadModal";
+import { useIsMobile } from "@/hooks/use-responsive";
 
 const datePickerStyle = {
   ".MuiIconButton-root": {
@@ -25,14 +26,10 @@ const datePickerStyle = {
 };
 
 const slotProps = {
-  calendarHeader: {
-    sx: { ".MuiPickersCalendarHeader-label": { color: "white" } },
-    slotProps: {
-      switchViewButton: { sx: { color: "white" } },
-      previousIconButton: { sx: { color: "white" } },
-      nextIconButton: { sx: { color: "white" } },
-    },
-  },
+  switchViewButton: { sx: { color: "white" } },
+  previousIconButton: { sx: { color: "white" } },
+  nextIconButton: { sx: { color: "white" } },
+  calendarHeader: { sx: { ".MuiPickersCalendarHeader-label": { color: "white" } } },
   desktopPaper: {
     sx: {
       ".MuiPickersYear-yearButton": { color: "white" },
@@ -58,7 +55,7 @@ const slotProps = {
 
 const AffPayoutsTabTable: FC = () => {
   const { t } = useTranslate();
-  // const isMobile = useIsMobile();
+  const isMobile = useIsMobile();
   const [open, toggle] = useToggleState();
   const columns = useMemo(
     () => [
@@ -100,7 +97,7 @@ const AffPayoutsTabTable: FC = () => {
   };
 
   const { data, isPending } = useFinancialServiceFinancialPayoutsQuery({
-    opts: JSON.stringify(filter) as SampleListOpts,
+    opts: JSON.stringify(filter) as any,
   });
 
   const handleOpenFilter = useCallback(
@@ -134,16 +131,16 @@ const AffPayoutsTabTable: FC = () => {
             totalCount={data?.meta?.total_count}
             data={data?.data || []}
             isPending={isPending}
-            // mobileAction={
-            //   <Button
-            //     startIcon={<Icon name="download" />}
-            //     color={isMobile ? "primary" : "info"}
-            //     sx={{ width: "100%" }}
-            //     onClick={toggle}
-            //   >
-            //     {t("affPayoutsTabTable.dwonloadStatement")}
-            //   </Button>
-            // }
+            mobileAction={
+              <Button
+                startIcon={<Icon name="download" />}
+                color={isMobile ? "primary" : "info"}
+                sx={{ width: "100%" }}
+                onClick={toggle}
+              >
+                {t("affPayoutsTabTable.dwonloadStatement")}
+              </Button>
+            }
             emptyTitle={t("affPayoutsTabTable.emptyTitle")}
             emptySubtitle={t("affPayoutsTabTable.emptySubtitle")}
             action={
@@ -152,6 +149,7 @@ const AffPayoutsTabTable: FC = () => {
                   direction="row"
                   alignItems={"center"}
                   gap={2}
+                  pl={isMobile ? 5 : undefined}
                   sx={{
                     cursor: "pointer",
                   }}
@@ -166,7 +164,7 @@ const AffPayoutsTabTable: FC = () => {
                     </Typography>
                     <Icon name={filterPopover.open ? "Arrow-up" : "Arrow-down"} />
                   </Box>
-                  {/* <Stack>
+                  <Stack>
                     <Button
                       startIcon={<Icon name="download" />}
                       color="info"
@@ -175,7 +173,7 @@ const AffPayoutsTabTable: FC = () => {
                     >
                       {t("affPayoutsTabTable.dwonloadStatement")}
                     </Button>
-                  </Stack> */}
+                  </Stack>
                 </Stack>
 
                 <CustomPopover

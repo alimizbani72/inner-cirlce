@@ -9,7 +9,7 @@ import { educationSlice } from "./features/academy/educationSlice";
 import { plansSlice } from "./features/plans/plansSlice";
 import { userSlice } from "./features/user/userSlice";
 import { twoFASubmitterSlice } from "./features/two-fa-submitter/twoFASubmitterSlice";
-import { portfolioSlice } from "./features/portfolio/portfolioSlice";
+import { transactionSlice } from "./features/portfolio/transactionSlice";
 
 const rootReducer = combineSlices(
   counterSlice,
@@ -21,7 +21,7 @@ const rootReducer = combineSlices(
   plansSlice,
   userSlice,
   twoFASubmitterSlice,
-  portfolioSlice
+  transactionSlice
 );
 
 export type RootState = ReturnType<typeof rootReducer>;

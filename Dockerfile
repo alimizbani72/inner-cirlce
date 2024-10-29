@@ -23,6 +23,8 @@ ARG google_client_id
 ARG google_client_secret
 ARG cms_endpoint
 ARG intercom_secret
+ARG telegram_channel
+ARG openai_api_key
 
 ENV NODE_ENV=production
 ENV NEXT_PUBLIC_URL=$url
@@ -31,6 +33,8 @@ ENV GOOGLE_CLIENT_ID=$google_client_id
 ENV GOOGLE_CLIENT_SECRET=$google_client_secret
 ENV NEXT_PUBLIC_CMS_ENDPOINT=$cms_endpoint
 ENV INTERCOM_SECRET $intercom_secret
+ENV NEXT_PUBLIC_TELEGRAM_CHANNEL=$telegram_channel
+ENV OPENAI_API_KEY $openai_api_key
 
 RUN bun run build
 
@@ -44,6 +48,8 @@ ARG google_client_id
 ARG google_client_secret
 ARG cms_endpoint
 ARG intercom_secret
+ARG telegram_channel
+ARG openai_api_key
 
 ENV NODE_ENV=production
 ENV NEXT_PUBLIC_URL=$url
@@ -52,6 +58,8 @@ ENV GOOGLE_CLIENT_ID=$google_client_id
 ENV GOOGLE_CLIENT_SECRET=$google_client_secret
 ENV NEXT_PUBLIC_CMS_ENDPOINT=$cms_endpoint
 ENV INTERCOM_SECRET $intercom_secret
+ENV NEXT_PUBLIC_TELEGRAM_CHANNEL=$telegram_channel
+ENV OPENAI_API_KEY $openai_api_key
 
 # Uncomment the following line in case you want to disable telemetry during runtime.
 # ENV NEXT_TELEMETRY_DISABLED 1

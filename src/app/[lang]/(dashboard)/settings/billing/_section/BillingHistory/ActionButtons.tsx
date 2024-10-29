@@ -7,12 +7,13 @@ import BillingAddressAlertDialog from "../AlertDialog";
 import BillingAddressDialog from "../BillingAddressDialog";
 import ViewInvoiceButton from "./ViewInvoiceButton";
 import DownloadInvoiceButton from "./DownloadInvoiceButton";
+import { useTranslate } from "@/locales";
 
 const ActionButtons = ({ row }: any) => {
   const { data: billingInfo } = useFinancialServiceBillingAddressQuery();
   const [openBillingAddressDialog, setOpenBillingAddressDialog] = useState(false);
   const [openBillingAddressAlertDialog, setOpenBillingAddressAlertDialog] = useState(false);
-
+  const { t } = useTranslate();
   const handleSetupBillingAddress = () => {
     setOpenBillingAddressAlertDialog(true);
   };
@@ -36,7 +37,7 @@ const ActionButtons = ({ row }: any) => {
           sx={{ cursor: "pointer" }}
         >
           <Icon name={"Home"} />
-          <Typography variant="p2-medium">Set Address</Typography>
+          <Typography variant="p2-medium">{t("billinghistory.setAddress")}</Typography>
         </Stack>
       )}
 

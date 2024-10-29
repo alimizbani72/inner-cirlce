@@ -4,8 +4,10 @@ import RiveComp from "@/components/RiveComp";
 import CustomInput from "./CustomInput";
 import Image from "@/components/Image";
 import IconGrid from "./IconGrid";
+import { useTranslate } from "@/locales";
 
 const SecretHuntsDesktop = () => {
+  const { t } = useTranslate();
   return (
     <Stack sx={{ position: "relative", height: "100%" }}>
       <Head />
@@ -25,7 +27,7 @@ const SecretHuntsDesktop = () => {
           </Box>
         </Box>
         <Stack justifyContent={"center"} alignItems={"center"} sx={{ position: "relative", zIndex: 2 }}>
-          <Typography variant="h2-regular">Find the hidden keyworks & Earn</Typography>
+          <Typography variant="h2-regular">{t("secrethunt.FindthehiddenText")}</Typography>
           <RiveComp src="/assets/rive/BTC_shining.riv" width={147} height={52} />
         </Stack>
 

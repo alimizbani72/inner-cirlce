@@ -17,7 +17,7 @@ type MenuItemProps = {
   icon: iconsType;
   route: string | undefined;
   label: string;
-  subItems: { path: string }[] | undefined;
+  subItems: { path: string; name: string }[] | undefined;
   isCollapsed?: boolean;
   mainSlug?: string;
 };
@@ -122,7 +122,7 @@ const MenuItem: FC<MenuItemProps> = ({ icon, label, subItems, route, isCollapsed
                     textOverflow: "ellipsis",
                     overflow: "hidden",
                   }}
-                  primary={t(`sidebar.${(mapPathToName as any)[subItem.path]}` as any)}
+                  primary={t(`sidebar.${(mapPathToName as any)[subItem.path]}` as any) || subItem.name}
                 />
               </ListItemButton>
             ))}

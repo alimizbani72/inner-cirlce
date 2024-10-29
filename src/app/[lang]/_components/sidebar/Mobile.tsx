@@ -41,12 +41,13 @@ const MobileSidebar: FC = () => {
 
       <Stack py={4} px={2} gap={4}>
         <Menu name={t("sidebar.services")} items={sidebarServicesItems} />
-        {sidebarCommunityItems.filter((item) => (userInfo?.kyc_status ? item : !item.path.includes("affiliate")))
-          .length && (
+        {sidebarCommunityItems.filter((item) =>
+          userInfo?.kyc_status ? item : !item?.items?.some((i) => i.path?.includes("affiliate"))
+        ).length && (
           <Menu
             name={t("sidebar.community")}
             items={sidebarCommunityItems.filter((item) =>
-              userInfo?.kyc_status ? item : !item.path.includes("affiliate")
+              userInfo?.kyc_status ? item : !item?.items?.some((i) => i.path?.includes("affiliate"))
             )}
           />
         )}

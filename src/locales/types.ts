@@ -1,4 +1,4 @@
-import type en from "./langs/en.json";
+import type en from "./langs/merged/en.json";
 
 export type DictionaryJson = typeof en;
 

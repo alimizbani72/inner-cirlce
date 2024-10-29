@@ -58,7 +58,7 @@ const SettingsSection = () => {
     <Stack justifyContent="center" alignItems="center" p={{ md: 4, xs: 3 }} gap={{ md: 4, xs: 3 }}>
       <Stack width={1} justifyContent="center">
         <Typography variant="p1-medium" color="white">
-          Account
+          {t("settingsDialog.account")}
         </Typography>
       </Stack>
 
@@ -70,7 +70,7 @@ const SettingsSection = () => {
 
           <RHFTextField
             name="Email Address"
-            label="Email Address"
+            label={t("settingsDialog.email")}
             type="email"
             value={userInfo?.email}
             InputProps={{ readOnly: true }}

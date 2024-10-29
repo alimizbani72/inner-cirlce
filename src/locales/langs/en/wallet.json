@@ -1,0 +1,13 @@
+{
+  "wallet": {
+    "requiredAddress": "USDC Polygon (Matic) Wallet address is required",
+    "requiredName": "Name is required",
+    "successMessage": "Your wallet address has been updated successfully.",
+    "setupWallet": "Setup Your Wallet",
+    "addressInputLabel": "USDC Polygon (Matic) Wallet address",
+    "addressInputPlaceholder": "Enter USDC Polygon (Matic) wallet address",
+    "nameInputLabel": "Your individual pseudonym",
+    "nameInputPlaceholder": "Enter your individual pseudonym",
+    "saveButton": "Save Wallet"
+  }
+}

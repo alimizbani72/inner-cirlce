@@ -2,34 +2,19 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@dashboard/*": [
-        "src/app/[lang]/(dashboard)/*"
-      ],
-      "@app/*": [
-        "src/app/[lang]/*"
-      ],
-      "@minecraft/*": [
-        "src/services/minecraft/*"
-      ],
-      "@cms/*": [
-        "src/services/cms/*"
-      ],
-      "@/*": [
-        "src/*"
-      ],
+      "@dashboard/*": ["src/app/[lang]/(dashboard)/*"],
+      "@app/*": ["src/app/[lang]/*"],
+      "@minecraft/*": ["src/services/minecraft/*"],
+      "@cms/*": ["src/services/cms/*"],
+      "@/*": ["src/*"]
     },
-    "target": "ES6",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext",
-      "WebWorker"
-    ],
+    "module": "CommonJS",
+    "target": "ES2019",
+    "lib": ["dom", "dom.iterable", "esnext", "WebWorker"],
     "strict": true,
     "noEmit": true,
     "allowJs": true,
     "jsx": "preserve",
-    "module": "esnext",
     "incremental": true,
     "skipLibCheck": true,
     "noImplicitAny": true,
@@ -49,13 +34,6 @@
       }
     ]
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }

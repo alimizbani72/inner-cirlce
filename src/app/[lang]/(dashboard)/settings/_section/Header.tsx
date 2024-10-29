@@ -10,23 +10,25 @@ import { Avatar, Button, Stack, Typography } from "@mui/material";
 import LanguageSelect from "./LangSelector";
 import { usePathname } from "next/navigation";
 import Link from "@/components/Link";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import SectionSelect from "./SectionSelector";
-
-const tabs = [
-  { icon: "User", link: "account" },
-  { icon: "Hand", link: "become-partner" },
-  { icon: "Money", link: "billing" },
-  { icon: "Star", link: "business-account" },
-];
 
 const SettingsHeader = () => {
   const { t } = useTranslate();
+  const tabs = useMemo(
+    () => [
+      { id: "account", icon: "User", link: t("settingTabs.account") },
+      { id: "become-partner", icon: "Hand", link: t("settingTabs.become-partner") },
+      { id: "billing", icon: "Money", link: t("settingTabs.billing") },
+      { id: "business-account", icon: "Star", link: t("settingTabs.business-account") },
+    ],
+    [t]
+  );
   const isMobile = useIsMobile();
   const userInfo = useAppSelector(selectUser);
   const isFreePlan = getUserPlanType(userInfo!) === "plankton";
   const pathname = usePathname();
-  const isActive = useCallback((link: string) => pathname.includes(`settings/${link}`), [pathname]);
+  const isActive = useCallback((id: string) => pathname.includes(`settings/${id}`), [pathname]);
 
   return (
     <Stack>
@@ -85,36 +87,38 @@ const SettingsHeader = () => {
           <SectionSelect tabs={tabs} />
         ) : (
           <Stack direction="row">
-            {tabs.map((tab) => (
-              <Stack
-                key={tab.icon}
-                direction="row"
-                gap={1}
-                component={isActive(tab.link) ? "div" : Link}
-                href={`/settings/${tab.link}`}
-                sx={{
-                  py: 1,
-                  px: 2,
-                  borderRadius: "20px",
-                  border: "1px solid",
-                  color: "transparent",
-                  ...(isActive(tab.link)
-                    ? {
-                        borderColor: "dark.2",
-                        bgcolor: "dark.3",
-                        boxShadow: "0px 4px 8px 0px rgba(0, 0, 0, 0.16)",
-                      }
-                    : {
-                        "svg path": { stroke: "rgb(151, 153, 180)" },
-                      }),
-                }}
-              >
-                <Icon name={`${tab.icon}${isActive(tab.link) ? "--colorful" : ""}` as any} />
-                <Typography variant="p2-medium" color={isActive(tab.link) ? "white" : "grey.light"}>
-                  {toTitleCase(tab.link)}
-                </Typography>
-              </Stack>
-            ))}
+            {tabs
+              .filter((t) => (userInfo?.kyc_status ? !t.id.includes("become-partner") : t))
+              .map((tab) => (
+                <Stack
+                  key={tab.id}
+                  direction="row"
+                  gap={1}
+                  component={isActive(tab.id) ? "div" : Link}
+                  href={`/settings/${tab.id}`}
+                  sx={{
+                    py: 1,
+                    px: 2,
+                    borderRadius: "20px",
+                    border: "1px solid",
+                    color: "transparent",
+                    ...(isActive(tab.id)
+                      ? {
+                          borderColor: "dark.2",
+                          bgcolor: "dark.3",
+                          boxShadow: "0px 4px 8px 0px rgba(0, 0, 0, 0.16)",
+                        }
+                      : {
+                          "svg path": { stroke: "rgb(151, 153, 180)" },
+                        }),
+                  }}
+                >
+                  <Icon name={`${tab.icon}${isActive(tab.id) ? "--colorful" : ""}` as any} />
+                  <Typography variant="p2-medium" color={isActive(tab.id) ? "white" : "grey.light"}>
+                    {tab.link}
+                  </Typography>
+                </Stack>
+              ))}
           </Stack>
         )}
         <LanguageSelect />

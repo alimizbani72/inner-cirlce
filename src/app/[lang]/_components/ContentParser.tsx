@@ -13,12 +13,16 @@ const ContentParser: FC<Props> = ({ content }: Props) => {
       my="32px"
       sx={{
         color: "white",
-        " h2": { mt: "10px !important", mb: 3 },
-        " h3": { mt: "10px !important", mb: 3 },
-        " h4": { mt: "10px !important", mb: 3 },
-        " h5": { mt: "10px !important", mb: 3 },
-        " h6": { mt: "10px !important", mb: 3 },
-        " p": { typography: "regular-h4", lineHeight: "24px !important" },
+        " h1": { mb: 1 },
+        " h2": { mt: "10px !important", mb: 1 },
+        " h3": { mt: "10px !important", mb: 1 },
+        " h4": { mt: "10px !important", mb: 1 },
+        " h5": { mt: "10px !important", mb: 1 },
+        " h6": { mt: "10px !important", mb: 1 },
+        " p": { typography: "p2-regular", lineHeight: "24px !important", color: "#BBBDD0" },
+        " li": { typography: "p2-regular", lineHeight: "24px !important", color: "#BBBDD0" },
+        " strong": { typography: "p2-bold", lineHeight: "24px !important" },
+        " u": { color: "blue.light" },
         " a": { typography: "regular-h4", color: "blue.light" },
         " image": { maxWidth: "100%" },
       }}

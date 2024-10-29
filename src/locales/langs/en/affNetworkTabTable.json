@@ -1,0 +1,8 @@
+{
+  "affNetworkTabTable": {
+    "username": "Username",
+    "package": "Package",
+    "joinedDate": "Joined Date",
+    "moneyMade": "Turnover"
+  }
+}

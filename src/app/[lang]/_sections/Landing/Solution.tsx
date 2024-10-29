@@ -4,12 +4,13 @@ import SectionTitle from "./SectionTitle";
 import { Icon } from "@/components/icons";
 import { useIsMobile } from "@/hooks/use-responsive";
 import LandingContainer from "./LandingContainer";
+import { useTranslate } from "@/locales";
 
 interface SolutionProps {}
 
 const Solution: FC<SolutionProps> = () => {
   const isMobile = useIsMobile();
-
+  const { t } = useTranslate();
   return (
     <Stack
       width={{ md: "calc(100% - 32px)", xs: "calc(100% - 16px)" }}
@@ -36,8 +37,7 @@ const Solution: FC<SolutionProps> = () => {
               maxWidth={736}
               width={"100%"}
             >
-              The secret to getting into the 5% who will make life changing money during this cycle is to have access to
-              the right information at the right time.
+              {t("solution.secretMessage")}
             </Typography>
           </LandingContainer>
 
@@ -61,10 +61,7 @@ const Solution: FC<SolutionProps> = () => {
                 maxWidth={736}
                 width={"100%"}
               >
-                That’s why ChainMind spent the past years putting together one of the strongest teams in the industry
-                with researchers, engineers & financial analysts who have created the most in depth strategies, using
-                the most effective and reliable technologies and indicators to read and forecast the market to provide
-                an edge to the ChainMind Community.
+                {t("solution.chainmindreasonMessage")}
               </Typography>
             </LandingContainer>
             <Box
@@ -88,16 +85,14 @@ const Solution: FC<SolutionProps> = () => {
               maxWidth={736}
               width={"100%"}
             >
-              Having access to this knowledge base will help you maximize your potential gains this bullmarket, without
-              spending hundrets of Hours of researching and learning the market, having problems knowing when to exit or
-              enter, falling for one of the many traps or losing it all due to emotions.
+              {t("solution.accessMessage")}
             </Typography>
           </LandingContainer>
         </Stack>
 
         <LandingContainer alignItems={"center"}>
           <Button href="/login" fullWidth={isMobile} size="large" endIcon={<Icon name="Arrow-right" />}>
-            Join To ChainMind
+            {t("how.joinTo")} ChainMind
           </Button>
         </LandingContainer>
       </Stack>

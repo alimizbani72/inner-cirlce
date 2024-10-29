@@ -1,54 +1,12 @@
 import { Stack } from "@mui/material";
-import type { FC } from "react";
+import { useMemo, type FC } from "react";
 import Scrollbar from "@/components/Scrollbar";
 import PricingTable from "./PricingTable";
 import SectionTitle from "../SectionTitle";
 import LandingContainer from "../LandingContainer";
 import PricingPlans from "./PricingPlans";
 import FisherMan from "./FisherMan";
-
-const plans = [
-  {
-    id: "Plankton",
-    title: "Plankton",
-    image: "/assets/rive/plankton.riv",
-    description: "22 coin reports +1 portfolio strategy",
-    cost: 0,
-    onClick: () => ({}),
-  },
-  {
-    id: "Shrimp",
-    title: "Shrimp",
-    image: "/assets/rive/shrimp.riv",
-    description: "Dip your fins in. Crypto basics so simple, even shrimp get it.",
-    cost: 532,
-    onClick: () => ({}),
-  },
-  {
-    id: "Fish",
-    title: "Fish",
-    image: "/assets/rive/fish.riv",
-    description: "Swim into crypto. Tips and tricks for the ambitious fish.",
-    cost: 2138,
-    onClick: () => ({}),
-  },
-  {
-    id: "Shark",
-    title: "Shark",
-    image: "/assets/rive/shark.riv",
-    description: "Dive deep. Apex predator insights to rule the crypto sea.",
-    cost: 5349,
-    onClick: () => ({}),
-  },
-  {
-    id: "Whale",
-    title: "Whale",
-    image: "/assets/rive/whale_animation.riv",
-    description: "Make waves. Exclusive access for those ready to whale around.",
-    cost: 10702,
-    onClick: () => ({}),
-  },
-];
+import { useTranslate } from "@/locales";
 
 const plansName = ["Shrimp", "Fish", "Shark", "Whale"];
 
@@ -69,6 +27,53 @@ const rows = {
 };
 
 const Pricing: FC = () => {
+  const { t } = useTranslate();
+  const plans = useMemo(
+    () => [
+      {
+        id: "Plankton",
+        title: t("landingpricing.plankton"),
+        image: "/assets/rive/plankton.riv",
+        description: t("landingpricing.planktondescription"),
+        cost: 0,
+        onClick: () => ({}),
+      },
+      {
+        id: "Shrimp",
+        title: t("landingpricing.shrimp"),
+        image: "/assets/rive/shrimp.riv",
+        description: t("landingpricing.shrimpdescription"),
+        cost: 532,
+        onClick: () => ({}),
+      },
+      {
+        id: "Fish",
+        title: t("landingpricing.fish"),
+        image: "/assets/rive/fish.riv",
+        description: t("landingpricing.fishdescription"),
+        cost: 2138,
+        onClick: () => ({}),
+      },
+      {
+        id: "Shark",
+        title: t("landingpricing.Shark"),
+        image: "/assets/rive/shark.riv",
+        description: t("landingpricing.sharkdescription"),
+        cost: 5349,
+        onClick: () => ({}),
+      },
+      {
+        id: "Whale",
+        title: t("landingpricing.whale"),
+        image: "/assets/rive/whale_animation.riv",
+        description: t("landingpricing.whaledescription"),
+        cost: 10702,
+        onClick: () => ({}),
+      },
+    ],
+    [t]
+  );
+
   return (
     <Stack
       id="pricing"

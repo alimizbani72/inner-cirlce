@@ -23,6 +23,7 @@ import { selectUser } from "@/lib/features/user/userSlice";
 import TwoFAAlertDialog from "../TwoFAAlertDialog";
 import EnableModal from "@app/_components/2FA/EnableModal";
 import { getUserPlanType } from "@/consts";
+import TACDialog from "../TACDialog";
 
 const ProgressBar = ({ overall, percent }: { overall?: boolean; percent: number }) => (
   <Stack
@@ -61,6 +62,7 @@ const AFDashboardTab: FC = () => {
   const { data: progress } = useAffiliateServiceAffiliateProgressQuery();
   const { data: children } = useAffiliateServiceAffiliateChildrenQuery();
   const isFreePlan = getUserPlanType(userInfo) === "plankton";
+  const [openTACDialog, setOpenTACDialog] = useState(!me?.data?.agreed_to_tos);
 
   const handleWithdrawClick = () => {
     if (userInfo?.suspended) {
@@ -369,6 +371,15 @@ const AFDashboardTab: FC = () => {
       )}
 
       {openEnable2FA && <EnableModal open={openEnable2FA} close={() => setOpenEnable2FA(false)} />}
+
+      {
+        <TACDialog
+          open={openTACDialog}
+          close={() => {
+            setOpenTACDialog(false);
+          }}
+        />
+      }
     </>
   );
 };

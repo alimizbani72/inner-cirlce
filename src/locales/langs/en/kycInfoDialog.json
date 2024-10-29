@@ -1,0 +1,9 @@
+{
+  "kycInfoDialog": {
+    "title": "Become a Partner",
+    "description": "To complete your registration, you will need to complete the KYC process. You will need to provide identity documents and other necessary information.",
+    "doKycNow": "Do KYC Now",
+    "backButton": "Back",
+    "nextStepButton": "Next Step"
+  }
+}

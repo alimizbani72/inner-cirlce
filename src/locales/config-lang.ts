@@ -20,6 +20,8 @@ import {
   th as thAdapter,
   tr as trAdapter,
   vi as viAdapter,
+  fi as fiAdapter,
+  nb as nbAdapter,
 } from "date-fns/locale";
 
 // date pickers (MUI)
@@ -40,6 +42,8 @@ import {
   // thTH as thDate,
   trTR as trDate,
   viVN as viDate,
+  fiFI as fiDate,
+  nbNO as nbDate,
 } from "@mui/x-date-pickers/locales";
 // core (MUI)
 import {
@@ -59,6 +63,8 @@ import {
   thTH as thCore,
   trTR as trCore,
   viVN as viCore,
+  fiFI as fiCore,
+  nbNO as nbCore,
 } from "@mui/material/locale";
 // data grid (MUI)
 import {
@@ -78,6 +84,8 @@ import {
   // thTH as thDataGrid,
   trTR as trDataGrid,
   viVN as viDataGrid,
+  fiFI as fiDataGrid,
+  nbNO as nbDataGrid,
 } from "@mui/x-data-grid/locales";
 
 export const allLangs = [
@@ -260,6 +268,28 @@ export const allLangs = [
     numberFormat: {
       code: "vi-VN",
       currency: "VND",
+    },
+  },
+  {
+    label: "Finnish",
+    value: "fi",
+    systemValue: merge(fiDate, fiDataGrid, fiCore),
+    adapterLocale: fiAdapter,
+    icon: "flagpack:fi",
+    numberFormat: {
+      code: "fi-FI",
+      currency: "EUR",
+    },
+  },
+  {
+    label: "Norwegian",
+    value: "nb",
+    systemValue: merge(nbDate, nbDataGrid, nbCore),
+    adapterLocale: nbAdapter,
+    icon: "flagpack:no",
+    numberFormat: {
+      code: "nb-NO",
+      currency: "NOK",
     },
   },
 ];

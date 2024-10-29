@@ -179,7 +179,7 @@ const PaymentDetailsForm: FC<PaymentDetailsFormProps> = ({ planType }) => {
                   {"  "}
                   {!isMobile && (
                     <Typography variant="p2-regular" color="grey.light">
-                      are clear, and I agree to proceed as outlined
+                      {t("checkout.areclearandIagreeto")}
                     </Typography>
                   )}
                 </Typography>
