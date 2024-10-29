@@ -7,12 +7,12 @@ import { useTranslate } from "@/locales";
 import { getActivePortfolioId } from "../../_section/utils";
 
 type TransCollapseProps = {
-  symbol: string;
+  slug: string;
   colSpan: number;
   isClose: boolean;
 };
 
-const TransCollapse: FC<TransCollapseProps> = ({ symbol, colSpan, isClose }) => {
+const TransCollapse: FC<TransCollapseProps> = ({ slug, colSpan, isClose }) => {
   const { t } = useTranslate();
   const { portfolioId } = useParams();
 
@@ -20,7 +20,7 @@ const TransCollapse: FC<TransCollapseProps> = ({ symbol, colSpan, isClose }) => 
     {
       opts: JSON.stringify({
         filters: {
-          symbol,
+          slug,
           portfolio_id: getActivePortfolioId(portfolioId),
         },
         page: 1,

@@ -44,7 +44,7 @@ export const transactionSlice = createSlice({
       state.editMode = false;
       state.isModalOpen = false;
     },
-    setActiveSymbol: (state, action: PayloadAction<string | null>) => {
+    setActiveSlug: (state, action: PayloadAction<string | null>) => {
       state.activeSymbol = action.payload;
     },
   },
@@ -56,6 +56,6 @@ export const transactionSlice = createSlice({
   },
 });
 
-export const { openEditMode, openAddMode, closeTransactionModal, setActiveSymbol } = transactionSlice.actions;
+export const { openEditMode, openAddMode, closeTransactionModal, setActiveSlug } = transactionSlice.actions;
 export const { selectIsModalOpen, selectIsEditMode, selectTransactionToEdit, selectActiveSymbol } =
   transactionSlice.selectors;

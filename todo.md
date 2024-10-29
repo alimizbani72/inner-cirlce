@@ -27,3 +27,5 @@
 # when hover on chips  charts becomes active in allocation
 
 # change OpenAPI.ts to get baseURL form .env (Josh Solvation:)
+
+# handle very small numbers like 0.000000000123 on portfolio

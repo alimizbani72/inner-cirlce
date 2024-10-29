@@ -15,7 +15,7 @@ import TableRow from "@mui/material/TableRow";
 import { Fragment, useMemo, useState, type ReactNode } from "react";
 import type React from "react";
 import { useAppDispatch } from "@/lib/hooks";
-import { setActiveSymbol } from "@/lib/features/portfolio/transactionSlice";
+import { setActiveSlug } from "@/lib/features/portfolio/transactionSlice";
 import TransCollapse from "./TransCollapse";
 import TotalRow from "./TotalRow";
 import { calculateTotal } from "../../_section/utils";
@@ -58,14 +58,14 @@ const CustomAssetTable = ({
 }: PropType) => {
   const [expandedRows, setExpandedRows] = useState<{ [key: string]: boolean }>({});
   const dispatch = useAppDispatch();
-  const handleToggleExpand = (symbol: string) => {
+  const handleToggleExpand = (slug: string) => {
     setExpandedRows((prev) => ({
       ...prev,
-      [symbol]: !prev[symbol],
+      [slug]: !prev[slug],
     }));
 
-    if (!expandedRows[symbol]) {
-      dispatch(setActiveSymbol(symbol));
+    if (!expandedRows[slug]) {
+      dispatch(setActiveSlug(slug));
     }
   };
 
@@ -154,7 +154,7 @@ const CustomAssetTable = ({
                   </TableHead>
                   <TableBody>
                     {data?.map((rowItem) => (
-                      <Fragment key={rowItem.symbol}>
+                      <Fragment key={rowItem.slug}>
                         <TableRow
                           onClick={() => onTableClick && onTableClick(rowItem.id)}
                           sx={{ cursor: onTableClick ? "pointer" : "default", px: "30px !important" }}
@@ -163,13 +163,13 @@ const CustomAssetTable = ({
                             <TableCell
                               align="left"
                               key={index}
-                              sx={{ borderBottom: expandedRows[rowItem.symbol] ? "none !important" : undefined }}
+                              sx={{ borderBottom: expandedRows[rowItem.slug] ? "none !important" : undefined }}
                             >
                               {item.field === "name"
                                 ? item.modify({
                                     row: rowItem,
-                                    onClick: () => handleToggleExpand(rowItem.symbol),
-                                    isOpen: expandedRows[rowItem.symbol],
+                                    onClick: () => handleToggleExpand(rowItem.slug),
+                                    isOpen: expandedRows[rowItem.slug],
                                   })
                                 : item.modify(rowItem)}
                             </TableCell>
@@ -177,9 +177,9 @@ const CustomAssetTable = ({
                         </TableRow>
 
                         <TransCollapse
-                          symbol={rowItem.symbol}
+                          slug={rowItem.slug}
                           colSpan={columns.length}
-                          isClose={!expandedRows[rowItem.symbol]}
+                          isClose={!expandedRows[rowItem.slug]}
                         />
                       </Fragment>
                     ))}

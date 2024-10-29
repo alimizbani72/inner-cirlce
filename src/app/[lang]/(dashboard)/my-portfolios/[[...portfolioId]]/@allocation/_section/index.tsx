@@ -61,7 +61,7 @@ const Allocation = () => {
             >
               {(selectedPortfolio?.data as any)?.assets.map((asset: any) => (
                 <CryptoChip
-                  key={asset.symbol}
+                  key={asset.slug}
                   label={asset.symbol}
                   value={asset.distribution}
                   isActive={hoveredCrypto === asset.symbol}
