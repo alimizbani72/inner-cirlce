@@ -26,4 +26,4 @@
 # add telegram public address in env
 # when hover on chips  charts becomes active in allocation
 
-#test
+# change OpenAPI.ts to get baseURL form .env (Josh Solvation:)
