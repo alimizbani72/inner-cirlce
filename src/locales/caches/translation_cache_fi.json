@@ -465,5 +465,12 @@
   "Enter Quantity": "Syötä määrä",
   "What you will get in “Business Account”?": "Mitä saat \"Business Account\" -tilillä?",
   "Make My Account To “Business”": "Muuta tiliäni \"Business\"-tiliksi",
-  "  are clear, and I agree to proceed as outlined": "ovat selkeitä, ja suostun jatkamaan kuten on esitetty"
+  "  are clear, and I agree to proceed as outlined": "ovat selkeitä, ja suostun jatkamaan kuten on esitetty",
+  "There is no data to download.": "Ei ole ladattavia tietoja.",
+  "Assets": "Varat",
+  "Account": "Tili",
+  "Email Address": "Sähköpostiosoite",
+  "Affiliate Dashboard": "Kumppanuuskojelauta",
+  "How it Works": "Kuinka se toimii",
+  "Marketing Rules": "Markkinointisäännöt"
 }

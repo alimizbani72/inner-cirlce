@@ -465,5 +465,12 @@
   "Enter Quantity": "Skriv inn mengde",
   "What you will get in “Business Account”?": "Hva får du i «Business Account»?",
   "Make My Account To “Business”": "Gjør kontoen min til «Business»",
-  "  are clear, and I agree to proceed as outlined": "er klare, og jeg er enig i å fortsette som beskrevet"
+  "  are clear, and I agree to proceed as outlined": "er klare, og jeg er enig i å fortsette som beskrevet",
+  "There is no data to download.": "Det er ingen data å laste ned.",
+  "Assets": "Aktiva",
+  "Account": "Konto",
+  "Email Address": "E-postadresse",
+  "Affiliate Dashboard": "Kontrollpanel for tilknyttede selskaper",
+  "How it Works": "Hvordan det fungerer",
+  "Marketing Rules": "Markedsføringsregler"
 }

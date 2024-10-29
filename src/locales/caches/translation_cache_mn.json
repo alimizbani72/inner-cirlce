@@ -465,5 +465,12 @@
   "Enter Quantity": "Тоо хэмжээ оруулна уу",
   "What you will get in “Business Account”?": "“Business Account”-д та юу авах вэ?",
   "Make My Account To “Business”": "Миний дансийг “Business” болгоно уу",
-  "  are clear, and I agree to proceed as outlined": "тодорхой байна, би зохицуулалтын дагуу үргэлжлүүлэхэд зөвшөөрч байна"
+  "  are clear, and I agree to proceed as outlined": "тодорхой байна, би зохицуулалтын дагуу үргэлжлүүлэхэд зөвшөөрч байна",
+  "There is no data to download.": "Татаж авах өгөгдөл байхгүй байна.",
+  "Assets": "Хөрөнгө",
+  "Account": "Данс",
+  "Email Address": "И-мэйл хаяг",
+  "Affiliate Dashboard": "Түншлэлийн самбар",
+  "How it Works": "Яаж ажилладаг вэ",
+  "Marketing Rules": "Маркетингийн дүрэм"
 }
