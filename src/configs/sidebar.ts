@@ -33,7 +33,6 @@ export const sidebarCommunityItems = [
       { path: "affiliate/marketing-rules/", name: "Marketing Rules" },
     ],
   },
-
   {
     path: "settings/account/",
     icon: "Settings",
@@ -56,7 +55,6 @@ export const mapPathToName = {
   "telegram-channel/": "telegram-channel",
   "portfolio-strategies/": "portfolio-strategies",
   "my-portfolios/": "my-portfolios",
-  "affiliate/": "affiliate",
   "education/": "education",
   "help-center/": "help-center",
   "secret-hunts/": "secret-hunts",
@@ -64,4 +62,8 @@ export const mapPathToName = {
   "settings/become-a-partner/": "settings",
   "settings/billing/": "settings",
   "settings/business-account/": "settings",
+  "affiliate/": "affiliate-dashboard",
+  "affiliate/how-it-works/": "how-it-works",
+  "affiliate/marketing-assets/": "marketing-assets",
+  "affiliate/marketing-rules/": "marketing-rules",
 };

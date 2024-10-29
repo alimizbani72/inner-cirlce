@@ -72,7 +72,6 @@ const CustomAssetTable = ({
   const totals = useMemo(
     () => ({
       actual_value: calculateTotal(data, "actual_value"),
-      total_sold: calculateTotal(data, "total_sold"),
       total_invested: calculateTotal(data, "total_invested"),
       realized_pnl: calculateTotal(data, "realized_pnl"),
       unrealized_pnl: calculateTotal(data, "unrealized_pnl"),

@@ -15,8 +15,14 @@ const TotalRow: React.FC<TotalRowProps> = ({ item, index, totals }) => {
   const { t } = useTranslate();
   const field = item.field;
   const totalValue = totals[field];
-  const colorFullFields = ["realized_pnl", "actual_value"];
-  const color = colorFullFields.includes(field) ? (totalValue < 0 ? "error.main" : "success.main") : "white";
+  const colorFullFields = ["realized_pnl", "actual_value", "unrealized_pnl"];
+  const color = colorFullFields.includes(field)
+    ? totalValue === 0
+      ? "white"
+      : totalValue < 0
+        ? "error.main"
+        : "success.main"
+    : "white";
 
   if (field === "name") {
     return (
@@ -35,7 +41,7 @@ const TotalRow: React.FC<TotalRowProps> = ({ item, index, totals }) => {
       <TableCell key={index}>
         <Stack width={"100%"} pb={3}>
           <Typography variant="p2-medium" color={color}>
-            {numeral(totalValue).format("0,0.00")}
+            ${numeral(totalValue).format("0,0.00")}
           </Typography>
         </Stack>
       </TableCell>

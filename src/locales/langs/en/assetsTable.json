@@ -1,6 +1,7 @@
 {
   "assetsTable": {
     "total": "Total",
+    "assets": "Assets",
     "assetsTotalValue": "Assets Total Value",
     "transactions": "Transactions",
     "edit": "Edit",

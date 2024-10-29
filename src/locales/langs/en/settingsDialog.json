@@ -1,5 +1,7 @@
 {
   "settingsDialog": {
+    "account": "Account",
+    "email": "Email Address",
     "profileSettings": "Profile Settings",
     "nameRequired": "Name is required",
     "invalidCharacter": "Your name can't contain numbers",

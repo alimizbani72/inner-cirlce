@@ -122,7 +122,7 @@ const MenuItem: FC<MenuItemProps> = ({ icon, label, subItems, route, isCollapsed
                     textOverflow: "ellipsis",
                     overflow: "hidden",
                   }}
-                  primary={subItem.name || t(`sidebar.${(mapPathToName as any)[subItem.path]}` as any)}
+                  primary={t(`sidebar.${(mapPathToName as any)[subItem.path]}` as any) || subItem.name}
                 />
               </ListItemButton>
             ))}

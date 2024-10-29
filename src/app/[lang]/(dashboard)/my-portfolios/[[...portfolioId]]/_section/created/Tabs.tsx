@@ -4,6 +4,7 @@ import TabsItem from "./TabsItem";
 import { useAppRouter } from "@/routes/hooks";
 import { Icon } from "@/components/icons";
 import type { Portfolio } from "../type";
+import { useTranslate } from "@/locales";
 
 type TabsProps = {
   portfolios: Portfolio[];
@@ -13,6 +14,7 @@ type TabsProps = {
 };
 const Tabs = ({ portfolios, portfolioId, overviewId, overviewtotal_actual_value }: TabsProps) => {
   const router = useAppRouter();
+  const { t } = useTranslate();
   const onSelectTab = (id: string) => {
     if ((id === overviewId && !portfolioId) || id === portfolioId) {
       return;
@@ -24,7 +26,7 @@ const Tabs = ({ portfolios, portfolioId, overviewId, overviewtotal_actual_value 
     <Stack direction="row" width={"100%"} spacing={1}>
       <TabsItem
         isActive={!portfolioId}
-        portfolioName="Overview"
+        portfolioName={t("portfolioSummary.overview")}
         portfolioAvatar={(<Icon name="More-rectangle" />) as any}
         bgColor="dark.3"
         price={overviewtotal_actual_value}

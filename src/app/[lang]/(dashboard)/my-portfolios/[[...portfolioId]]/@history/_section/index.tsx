@@ -49,7 +49,7 @@ const HistorySection = () => {
         <Stack>
           <Loading />
         </Stack>
-      ) : !chartData ? (
+      ) : !chartData?.length ? (
         <Empty />
       ) : (
         <ChartHistory

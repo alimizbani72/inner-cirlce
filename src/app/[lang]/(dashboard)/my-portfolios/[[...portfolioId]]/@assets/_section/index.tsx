@@ -1,7 +1,7 @@
 "use client";
 import Scrollbar from "@/components/Scrollbar";
 import { useAppSelector } from "@/lib/hooks";
-import { Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import CryptoIcon from "./CryptoIcons";
 import CustomAssetTable from "./CustomAssetTable";
 import numeral from "numeral";
@@ -14,6 +14,7 @@ import { formatTitle } from "@/utils/toNumber";
 import usePortfolioData from "../../_section/hook/usePortfolioData";
 import { Icon } from "@/components/icons";
 import ValueWithSymbol from "./ValueWithSymbol";
+import ColoredTypography from "./ColoredTypography";
 
 const AssetsTable = () => {
   const { t } = useTranslate();
@@ -56,11 +57,7 @@ const AssetsTable = () => {
       {
         title: formatTitle(t("assetsTable.actualValue")),
         field: "actual_value",
-        modify: (row: any) => (
-          <Typography variant="p2-medium" color={parseFloat(row.actual_value) <= 0 ? "error.main" : "success.main"}>
-            ${numeral(row.actual_value).format("0,0.00")}
-          </Typography>
-        ),
+        modify: (row: any) => <ColoredTypography value={row.actual_value} dolloarSign />,
       },
       // {
       //   title: t("assetsTable.exitProximity"),
@@ -74,7 +71,7 @@ const AssetsTable = () => {
       {
         title: formatTitle(t("assetsTable.distribution"), "%"),
         field: "distribution",
-        modify: (row: any) => `${Math.floor(row.distribution)} %`,
+        modify: (row: any) => <ColoredTypography value={row.distribution} hasPercentage />,
       },
       {
         title: t("assetsTable.totalBought"),
@@ -94,16 +91,12 @@ const AssetsTable = () => {
       {
         title: formatTitle(t("assetsTable.unrealizedpnl")),
         field: "unrealized_pnl",
-        modify: (row: any) => `$${numeral(row.unrealized_pnl).format("0,0.00")}`,
+        modify: (row: any) => <ColoredTypography value={row.unrealized_pnl} dolloarSign />,
       },
       {
         title: formatTitle(t("assetsTable.realizedPNL")),
         field: "realized_pnl",
-        modify: (row: any) => (
-          <Typography variant="p2-medium" color={parseFloat(row.realized_pnl) <= 0 ? "error.main" : "success.main"}>
-            ${numeral(row.realized_pnl).format("0,0.00")}
-          </Typography>
-        ),
+        modify: (row: any) => <ColoredTypography value={row.realized_pnl} dolloarSign />,
       },
     ],
     [t]
@@ -135,7 +128,7 @@ const AssetsTable = () => {
             <CustomAssetTable
               isPending={isLoading}
               minWidthCell={160}
-              title={"Assets"}
+              title={t("assetsTable.assets")}
               columns={columns}
               data={((selectedPortfolio?.data as any)?.assets as any) ?? []}
             />

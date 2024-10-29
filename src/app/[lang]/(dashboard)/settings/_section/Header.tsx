@@ -10,18 +10,20 @@ import { Avatar, Button, Stack, Typography } from "@mui/material";
 import LanguageSelect from "./LangSelector";
 import { usePathname } from "next/navigation";
 import Link from "@/components/Link";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import SectionSelect from "./SectionSelector";
-
-const tabs = [
-  { icon: "User", link: "account" },
-  { icon: "Hand", link: "become-partner" },
-  { icon: "Money", link: "billing" },
-  { icon: "Star", link: "business-account" },
-];
 
 const SettingsHeader = () => {
   const { t } = useTranslate();
+  const tabs = useMemo(
+    () => [
+      { icon: "User", link: t("settingTabs.account") },
+      { icon: "Hand", link: t("settingTabs.become-partner") },
+      { icon: "Money", link: t("settingTabs.billing") },
+      { icon: "Star", link: t("settingTabs.business-account") },
+    ],
+    [t]
+  );
   const isMobile = useIsMobile();
   const userInfo = useAppSelector(selectUser);
   const isFreePlan = getUserPlanType(userInfo!) === "plankton";
@@ -86,7 +88,7 @@ const SettingsHeader = () => {
         ) : (
           <Stack direction="row">
             {tabs
-              .filter((t) => (userInfo?.kyc_status ? !t.link.includes("become-partner") : t))
+              .filter((t) => (userInfo?.kyc_status ? !t.icon.includes("Hand") : t))
               .map((tab) => (
                 <Stack
                   key={tab.icon}
