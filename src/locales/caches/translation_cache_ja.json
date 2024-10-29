@@ -465,5 +465,12 @@
   "Enter Quantity": "数量を入力してください",
   "What you will get in “Business Account”?": "「ビジネスアカウント」で何が得られますか？",
   "Make My Account To “Business”": "私のアカウントを「ビジネス」に変更する",
-  "  are clear, and I agree to proceed as outlined": "明確であり、説明された通りに進めることに同意します。"
+  "  are clear, and I agree to proceed as outlined": "明確であり、説明された通りに進めることに同意します。",
+  "There is no data to download.": "ダウンロードするデータはありません。",
+  "Assets": "資産",
+  "Account": "アカウント",
+  "Email Address": "メールアドレス",
+  "Affiliate Dashboard": "アフィリエイトダッシュボード",
+  "How it Works": "仕組み",
+  "Marketing Rules": "マーケティングルール"
 }
