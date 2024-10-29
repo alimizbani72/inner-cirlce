@@ -1,3 +1,11 @@
+# [1.4.0](https://github.com/Chainmind-AG/inner-circle/compare/v1.3.1...v1.4.0) (2024-10-29)
+
+
+### Features
+
+* **portfolio:** add coins slug ([36cf8cd](https://github.com/Chainmind-AG/inner-circle/commit/36cf8cdcf60cd47887a6ab3460494a07d383a8fa))
+* **portfolio:** add coins slug ([d8f5f04](https://github.com/Chainmind-AG/inner-circle/commit/d8f5f04ffbaa983c151ecdff4a0ca4b769e2ce52))
+
 ## [1.3.1](https://github.com/Chainmind-AG/inner-circle/compare/v1.3.0...v1.3.1) (2024-10-29)
 
 
