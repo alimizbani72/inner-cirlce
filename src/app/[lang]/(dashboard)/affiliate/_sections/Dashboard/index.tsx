@@ -330,29 +330,31 @@ const AFDashboardTab: FC = () => {
           </ContentStack>
 
           <ContentStack flex={8 / 12} p={0} direction={"row"} flexWrap={{ md: "unset", xs: "wrap" }}>
-            {orderArrayPlan(children?.data?.distribution_of_plans)?.map((item, index) => (
-              <Stack
-                key={item.plan_type}
-                flex={1}
-                py={3}
-                px={{ md: 2, xs: 3 }}
-                alignItems={"center"}
-                justifyContent={"center"}
-                bgcolor={{ sm: !(index % 2) ? undefined : "dark.3" }}
-              >
-                {(plans as any)[item.plan_type!]?.rive && (
-                  <Box sx={{ aspectRatio: 1 }}>
-                    <RiveComp width={80} height={80} src={(plans as any)[item.plan_type!]?.rive} />
-                  </Box>
-                )}
-                <Typography mt={1} variant="h4-semi-bold">
-                  {item.count}
-                </Typography>
-                <Typography variant="p2-medium" textTransform={"capitalize"} color="grey.light">
-                  {item.plan_type}
-                </Typography>
-              </Stack>
-            ))}
+            {orderArrayPlan(children?.data?.distribution_of_plans)
+              ?.filter((item) => item.plan_type !== "shell")
+              ?.map((item, index) => (
+                <Stack
+                  key={item.plan_type}
+                  flex={1}
+                  py={3}
+                  px={{ md: 2, xs: 3 }}
+                  alignItems={"center"}
+                  justifyContent={"center"}
+                  bgcolor={{ sm: !(index % 2) ? undefined : "dark.3" }}
+                >
+                  {(plans as any)[item.plan_type!]?.rive && (
+                    <Box sx={{ aspectRatio: 1 }}>
+                      <RiveComp width={80} height={80} src={(plans as any)[item.plan_type!]?.rive} />
+                    </Box>
+                  )}
+                  <Typography mt={1} variant="h4-semi-bold">
+                    {item.count}
+                  </Typography>
+                  <Typography variant="p2-medium" textTransform={"capitalize"} color="grey.light">
+                    {item.plan_type}
+                  </Typography>
+                </Stack>
+              ))}
           </ContentStack>
         </Stack>
 
