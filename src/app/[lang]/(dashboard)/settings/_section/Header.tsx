@@ -17,10 +17,10 @@ const SettingsHeader = () => {
   const { t } = useTranslate();
   const tabs = useMemo(
     () => [
-      { icon: "User", link: t("settingTabs.account") },
-      { icon: "Hand", link: t("settingTabs.become-partner") },
-      { icon: "Money", link: t("settingTabs.billing") },
-      { icon: "Star", link: t("settingTabs.business-account") },
+      { id: "account", icon: "User", link: t("settingTabs.account") },
+      { id: "become-partner", icon: "Hand", link: t("settingTabs.become-partner") },
+      { id: "billing", icon: "Money", link: t("settingTabs.billing") },
+      { id: "business-account", icon: "Star", link: t("settingTabs.business-account") },
     ],
     [t]
   );
@@ -28,7 +28,7 @@ const SettingsHeader = () => {
   const userInfo = useAppSelector(selectUser);
   const isFreePlan = getUserPlanType(userInfo!) === "plankton";
   const pathname = usePathname();
-  const isActive = useCallback((link: string) => pathname.includes(`settings/${link}`), [pathname]);
+  const isActive = useCallback((id: string) => pathname.includes(`settings/${id}`), [pathname]);
 
   return (
     <Stack>
@@ -88,21 +88,21 @@ const SettingsHeader = () => {
         ) : (
           <Stack direction="row">
             {tabs
-              .filter((t) => (userInfo?.kyc_status ? !t.icon.includes("Hand") : t))
+              .filter((t) => (userInfo?.kyc_status ? !t.id.includes("become-partner") : t))
               .map((tab) => (
                 <Stack
-                  key={tab.icon}
+                  key={tab.id}
                   direction="row"
                   gap={1}
-                  component={isActive(tab.link) ? "div" : Link}
-                  href={`/settings/${tab.link}`}
+                  component={isActive(tab.id) ? "div" : Link}
+                  href={`/settings/${tab.id}`}
                   sx={{
                     py: 1,
                     px: 2,
                     borderRadius: "20px",
                     border: "1px solid",
                     color: "transparent",
-                    ...(isActive(tab.link)
+                    ...(isActive(tab.id)
                       ? {
                           borderColor: "dark.2",
                           bgcolor: "dark.3",
@@ -113,9 +113,9 @@ const SettingsHeader = () => {
                         }),
                   }}
                 >
-                  <Icon name={`${tab.icon}${isActive(tab.link) ? "--colorful" : ""}` as any} />
-                  <Typography variant="p2-medium" color={isActive(tab.link) ? "white" : "grey.light"}>
-                    {toTitleCase(tab.link)}
+                  <Icon name={`${tab.icon}${isActive(tab.id) ? "--colorful" : ""}` as any} />
+                  <Typography variant="p2-medium" color={isActive(tab.id) ? "white" : "grey.light"}>
+                    {tab.link}
                   </Typography>
                 </Stack>
               ))}
