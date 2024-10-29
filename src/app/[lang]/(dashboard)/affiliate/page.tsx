@@ -27,12 +27,11 @@ export default async function Affiliate({ params }: RouteParamsType) {
     prefetchUseWalletServiceWalletDefaultQuery(queryClient),
     prefetchUseAffiliateServiceAffiliateMeQuery(queryClient),
     prefetchUseFinancialServiceFinancialInfoQuery(queryClient),
-    prefetchUseFinancialServiceFinancialPayoutsQuery(queryClient),
     prefetchUseAffiliateServiceAffiliateProgressQuery(queryClient),
     prefetchUseAffiliateServiceAffiliateChildrenQuery(queryClient),
-    prefetchUseAffiliateServiceAffiliateCommissionListQuery(queryClient),
-    prefetchUseAffiliateServiceAffiliateReferralCodeQuery(queryClient),
-    prefetchUseGlobalAffilateTermsServiceGetGlobalsAffilateTerms(queryClient, { locale: params.lang }),
+    prefetchUseGlobalAffilateTermsServiceGetGlobalsAffilateTerms(queryClient, {
+      locale: params.lang,
+    }),
   ]);
 
   return (

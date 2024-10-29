@@ -2,6 +2,12 @@ import type { PropsWithChildren } from "react";
 import { notFound } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/configs/authOptions";
+import { getQueryClient } from "@app/_providers/customQueryClient";
+import { prefetchUseAffiliateServiceAffiliateReferralCodeQuery } from "@minecraft/queries/prefetch";
+import Template from "@dashboard/affiliate/_sections/AffTemplate";
+import { Stack } from "@mui/material";
+import LearningBanner from "@dashboard/coin-reports/_sections/LearningBanner";
+import AffiliateHeader from "./_sections/Header";
 // ----------------------------------------------------------------------
 
 export default async function AffiliateLayout({ children }: PropsWithChildren) {
@@ -11,5 +17,19 @@ export default async function AffiliateLayout({ children }: PropsWithChildren) {
     return notFound();
   }
 
-  return <>{children}</>;
+  const queryClient = getQueryClient();
+  await Promise.all([prefetchUseAffiliateServiceAffiliateReferralCodeQuery(queryClient)]);
+
+  return (
+    <Stack flex={1} py={{ md: 4, xs: 3 }}>
+      {/* Header */}
+      <Stack gap={4}>
+        <LearningBanner />
+        <AffiliateHeader />
+      </Stack>
+      {/* Tabs */}
+      <Template />
+      {children}
+    </Stack>
+  );
 }
