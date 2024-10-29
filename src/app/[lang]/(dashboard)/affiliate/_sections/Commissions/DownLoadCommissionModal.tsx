@@ -2,14 +2,7 @@ import CustomDialog from "@/components/CustomDialog";
 import { Icon } from "@/components/icons";
 import { useTranslate } from "@/locales";
 import { LoadingButton } from "@mui/lab";
-import {
-  DialogActions,
-  DialogContent,
-  Divider,
-  IconButton,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { DialogActions, DialogContent, Divider, IconButton, Stack, Typography } from "@mui/material";
 import DialogTitle from "@mui/material/DialogTitle";
 import { DatePicker } from "@mui/x-date-pickers";
 import { useState } from "react";
@@ -60,10 +53,7 @@ type FilterDialogProps = {
   close: VoidFunction;
 };
 
-export default function DownLoadCommissionModal({
-  open,
-  close,
-}: FilterDialogProps) {
+export default function DownLoadCommissionModal({ open, close }: FilterDialogProps) {
   const [dates, setDates] = useState<any>([]);
 
   const { t } = useTranslate();
@@ -79,28 +69,15 @@ export default function DownLoadCommissionModal({
     per_page: 100,
   };
 
-  const { data: commissionList } =
-    useAffiliateServiceAffiliateCommissionListQuery({
-      opts: JSON.stringify(filter) as any,
-    });
+  const { data: commissionList } = useAffiliateServiceAffiliateCommissionListQuery({
+    opts: JSON.stringify(filter) as any,
+  });
   const isDownloadDisabled = !dates[0] || !dates[1];
   return (
-    <CustomDialog
-      fullWidth
-      maxWidth="xs"
-      onClose={close}
-      aria-labelledby="DownLoadCommission-dialog"
-      open={open}
-    >
+    <CustomDialog fullWidth maxWidth="xs" onClose={close} aria-labelledby="DownLoadCommission-dialog" open={open}>
       <DialogTitle sx={{ m: 0, p: 2 }} id="DownLoadCommission-dialog">
-        <Stack
-          direction="row"
-          alignItems="center"
-          justifyContent="space-between"
-        >
-          <Typography variant="h4-semi-bold">
-            {t("affPayoutsTabTable.dwonloadStatement")}
-          </Typography>
+        <Stack direction="row" alignItems="center" justifyContent="space-between">
+          <Typography variant="h4-semi-bold">{t("affPayoutsTabTable.dwonloadStatement")}</Typography>
           <IconButton onClick={close}>
             <Icon name="Close" />
           </IconButton>
@@ -111,9 +88,7 @@ export default function DownLoadCommissionModal({
         <Stack spacing={3} pt={3}>
           <Stack gap={3} direction={{ xs: "column", md: "row" }}>
             <Stack gap={1} width={"100%"}>
-              <Typography variant="caption-semi-bold">
-                {t("affPayoutsTabTable.from")}
-              </Typography>
+              <Typography variant="caption-semi-bold">{t("affPayoutsTabTable.from")}</Typography>
 
               <DatePicker
                 format="dd.MM.yyyy"
@@ -128,9 +103,7 @@ export default function DownLoadCommissionModal({
             </Stack>
 
             <Stack gap={1} width={"100%"}>
-              <Typography variant="caption-semi-bold">
-                {t("affPayoutsTabTable.to")}
-              </Typography>
+              <Typography variant="caption-semi-bold">{t("affPayoutsTabTable.to")}</Typography>
 
               <DatePicker
                 format="dd.MM.yyyy"
@@ -146,10 +119,7 @@ export default function DownLoadCommissionModal({
           </Stack>
           <Stack spacing={1}>
             <Typography>{t("affPayoutsTabTable.format")}</Typography>
-            <Stack
-              direction={{ xs: "column", md: "row" }}
-              spacing={{ xs: 1, md: 3 }}
-            >
+            <Stack direction={{ xs: "column", md: "row" }} spacing={{ xs: 1, md: 3 }}>
               <FormatOption
                 iconName="PDF"
                 label="PDF"
@@ -167,11 +137,7 @@ export default function DownLoadCommissionModal({
         </Stack>
       </DialogContent>
       <DialogActions>
-        <Stack
-          width={"100%"}
-          direction={"row"}
-          justifyContent={"space-between"}
-        >
+        <Stack width={"100%"} direction={"row"} justifyContent={"space-between"}>
           <LoadingButton color="info" onClick={close}>
             {t("affPayoutsTabTable.cancelBtn")}
           </LoadingButton>

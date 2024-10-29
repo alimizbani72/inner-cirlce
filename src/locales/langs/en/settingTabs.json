@@ -1,9 +1,8 @@
 {
-    "settingTabs": {
-        "account": "Account",
-        "become-partner": "Become a Partner",
-        "billing": "Billing",
-        "business-account": "Business Account"
-    }
+  "settingTabs": {
+    "account": "Account",
+    "become-partner": "Become a Partner",
+    "billing": "Billing",
+    "business-account": "Business Account"
   }
-  
+}

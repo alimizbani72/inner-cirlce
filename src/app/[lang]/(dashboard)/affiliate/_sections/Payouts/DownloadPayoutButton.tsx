@@ -31,13 +31,7 @@ const DownloadPayoutButton: FC<DownloadPayoutButtonProps> = ({
         import("./PayoutDocument"),
       ]);
 
-      const doc = (
-        <PayoutDocument
-          payouts={payoutData}
-          fromDate={fromDate}
-          toDate={toDate}
-        />
-      );
+      const doc = <PayoutDocument payouts={payoutData} fromDate={fromDate} toDate={toDate} />;
 
       const blob = await pdf(doc).toBlob();
 
@@ -45,10 +39,7 @@ const DownloadPayoutButton: FC<DownloadPayoutButtonProps> = ({
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = `payout_${fDate(fromDate, "dd.MM.yyyy")}_${fDate(
-        toDate,
-        "dd.MM.yyyy"
-      )}.pdf`;
+      link.download = `payout_${fDate(fromDate, "dd.MM.yyyy")}_${fDate(toDate, "dd.MM.yyyy")}.pdf`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);

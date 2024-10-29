@@ -12,9 +12,7 @@ export const metadata: Metadata = {
 
 export default async function NetworkPage() {
   const queryClient = getQueryClient();
-  await Promise.all([
-    prefetchUseAffiliateServiceAffiliateChildrenQuery(queryClient),
-  ]);
+  await Promise.all([prefetchUseAffiliateServiceAffiliateChildrenQuery(queryClient)]);
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>

@@ -12,9 +12,7 @@ export const metadata: Metadata = {
 
 export default async function PayoutsPage() {
   const queryClient = getQueryClient();
-  await Promise.all([
-    prefetchUseFinancialServiceFinancialPayoutsQuery(queryClient),
-  ]);
+  await Promise.all([prefetchUseFinancialServiceFinancialPayoutsQuery(queryClient)]);
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>

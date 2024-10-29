@@ -1,8 +1,4 @@
-export const convertAndDownloadCSV = (
-  data: any[],
-  headersTitle: string[],
-  filename: string
-) => {
+export const convertAndDownloadCSV = (data: any[], headersTitle: string[], filename: string) => {
   let str = "";
 
   for (let i = 0; i < data.length; i++) {

@@ -37,18 +37,8 @@ const DownloadCommissionButton: FC<DownloadPayoutButtonProps> = ({
 
       convertAndDownloadCSV(
         finalData,
-        [
-          "User ID",
-          "User Email",
-          "Amount",
-          "Package Name",
-          "Percentage",
-          "Commission Date",
-        ],
-        `commission_${fDate(fromDate, "dd.MM.yyyy")}_${fDate(
-          toDate,
-          "dd.MM.yyyy"
-        )}`
+        ["User ID", "User Email", "Amount", "Package Name", "Percentage", "Commission Date"],
+        `commission_${fDate(fromDate, "dd.MM.yyyy")}_${fDate(toDate, "dd.MM.yyyy")}`
       );
       closeModal();
     } catch (error) {
@@ -65,13 +55,7 @@ const DownloadCommissionButton: FC<DownloadPayoutButtonProps> = ({
         import("./CommissionDocument"),
       ]);
 
-      const doc = (
-        <CommissionDocument
-          commissions={commissions}
-          fromDate={fromDate}
-          toDate={toDate}
-        />
-      );
+      const doc = <CommissionDocument commissions={commissions} fromDate={fromDate} toDate={toDate} />;
 
       const blob = await pdf(doc).toBlob();
 
@@ -79,10 +63,7 @@ const DownloadCommissionButton: FC<DownloadPayoutButtonProps> = ({
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = `commission_${fDate(fromDate, "dd.MM.yyyy")}_${fDate(
-        toDate,
-        "dd.MM.yyyy"
-      )}.pdf`;
+      link.download = `commission_${fDate(fromDate, "dd.MM.yyyy")}_${fDate(toDate, "dd.MM.yyyy")}.pdf`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);

@@ -1,20 +1,20 @@
 {
-    "billinghistory": {
-        "setAddress": "Set Address",
-        "history": "History",
-        "emptyTitle": "You have not any billing history yet",
-        "emptySubtitle": "Track profits, losses and valuation all in one place.",
-        "setupbillingAddress": "Setup Your Billing Address",
-        "dwonloadmessage": "For download or preview, you should setup your billing address first.",
-        "discard": "Discard",
-        "setupNow": "Setup Now",
-        "countryFieldisRequired": "country field is required",
-        "citFieldisRequired": "city field is required",
-        "zipcodeFieldisRequired": "zipCode field is required",
-        "addressFieldisRequired": "address field is required",
-        "firstnameFieldisRequired": "firstName field is required",
-        "lastnameFieldisRequired": "lastName field is required",
-        "firstNamePlaceHolder": "Enter your first name",
+  "billinghistory": {
+    "setAddress": "Set Address",
+    "history": "History",
+    "emptyTitle": "You have not any billing history yet",
+    "emptySubtitle": "Track profits, losses and valuation all in one place.",
+    "setupbillingAddress": "Setup Your Billing Address",
+    "dwonloadmessage": "For download or preview, you should setup your billing address first.",
+    "discard": "Discard",
+    "setupNow": "Setup Now",
+    "countryFieldisRequired": "country field is required",
+    "citFieldisRequired": "city field is required",
+    "zipcodeFieldisRequired": "zipCode field is required",
+    "addressFieldisRequired": "address field is required",
+    "firstnameFieldisRequired": "firstName field is required",
+    "lastnameFieldisRequired": "lastName field is required",
+    "firstNamePlaceHolder": "Enter your first name",
     "lastNamePlaceHolder": "Enter your last name",
     "zipCodePlaceHolder": "Enter your zip code",
     "countryPlaceHolder": "Enter your country",
@@ -33,5 +33,5 @@
     "billing": "Billing",
     "changeInfo": "Change Info",
     "setupbilling": "Setup Billing Address"
-    }
+  }
 }

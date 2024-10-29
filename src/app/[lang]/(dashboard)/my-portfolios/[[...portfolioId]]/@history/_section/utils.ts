@@ -1,8 +1,5 @@
-type FilterType = string
-export function getChartData(
-  selectedPortfolio: { data?: any[] | undefined} | null | undefined,
-  filter: FilterType
-) {
+type FilterType = string;
+export function getChartData(selectedPortfolio: { data?: any[] | undefined } | null | undefined, filter: FilterType) {
   if (!selectedPortfolio?.data) {
     return null;
   }

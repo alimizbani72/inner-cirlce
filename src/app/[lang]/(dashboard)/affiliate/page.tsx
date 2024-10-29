@@ -4,12 +4,9 @@ import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import { getQueryClient } from "@app/_providers/customQueryClient";
 import {
   prefetchUseAffiliateServiceAffiliateChildrenQuery,
-  prefetchUseAffiliateServiceAffiliateCommissionListQuery,
   prefetchUseAffiliateServiceAffiliateMeQuery,
   prefetchUseAffiliateServiceAffiliateProgressQuery,
-  prefetchUseAffiliateServiceAffiliateReferralCodeQuery,
   prefetchUseFinancialServiceFinancialInfoQuery,
-  prefetchUseFinancialServiceFinancialPayoutsQuery,
   prefetchUseWalletServiceWalletDefaultQuery,
 } from "@minecraft/queries/prefetch";
 import { prefetchUseGlobalAffilateTermsServiceGetGlobalsAffilateTerms } from "@cms/queries/prefetch";
