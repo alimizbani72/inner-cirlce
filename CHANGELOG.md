@@ -1,3 +1,11 @@
+## [1.3.1](https://github.com/Chainmind-AG/inner-circle/compare/v1.3.0...v1.3.1) (2024-10-29)
+
+
+### Bug Fixes
+
+* **package:** remove shell package ([4d58e70](https://github.com/Chainmind-AG/inner-circle/commit/4d58e70fa6becfc1f89fa8b9e46383613b44265a))
+* **package:** remove shell package ([dee9d1f](https://github.com/Chainmind-AG/inner-circle/commit/dee9d1f8decd5170df1397987e82726a4e562dd2))
+
 # [1.3.0](https://github.com/Chainmind-AG/inner-circle/compare/v1.2.6...v1.3.0) (2024-10-29)
 
 
