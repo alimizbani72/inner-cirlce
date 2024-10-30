@@ -27,7 +27,9 @@ const KYCInfoDialog = () => {
 
   const onSubmit = async () => {
     try {
-      const res = await mutateAsync({ requestBody: { redirect_url: kycCallback(pathname) } });
+      const res = await mutateAsync({
+        requestBody: { redirect_url: kycCallback(pathname) },
+      });
       if (res.data?.verification_url) {
         window.location.href = res.data?.verification_url;
       }
