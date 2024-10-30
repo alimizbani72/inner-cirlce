@@ -26,3 +26,29 @@ export const emojiList = [
 ];
 
 export const avatarBgColors = ["#FFACAC", "#FFE3AC", "#FFF7AC", "#E5FFAC", "#B3FFAC", "#ACFAFF", "#ACCDFF", "#E0ACFF"];
+export const allocationBasedColors = [
+  "#9799B4",
+  "#8A2BE2",
+  "#7FFF00",
+  "#00CED1",
+  "#DC143C",
+  "#32CD32",
+  "#7A7C97",
+  "#F3BA2F",
+  "#42435D",
+  "#252740",
+  "#12132D",
+  "#FF5733",
+  "#33FF57",
+  "#FF33A1",
+  "#33FFF2",
+  "#FF8C00",
+  "#FF4500",
+  "#FFD700",
+  "#8B4513",
+  "#1E90FF",
+  "#FF69B4",
+  "#ADFF2F",
+  "#FF6347",
+  "#40E0D0",
+];

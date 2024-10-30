@@ -1,10 +1,10 @@
 {
   "portfolioTransaction": {
-    "dateAndTime": "Date & Time",
+    "dateAndTime": "Date",
     "date": "Date",
     "time": "Time",
     "cancel": "Cancel",
-    "changeDateTime": "Change Date & Time",
+    "changeDateTime": "Change Date",
     "addNote": "Add Note",
     "note": "Note",
     "quantityIsRequired": "Quantity is Required",

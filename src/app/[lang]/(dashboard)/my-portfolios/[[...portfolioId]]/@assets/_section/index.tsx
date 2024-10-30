@@ -15,6 +15,7 @@ import usePortfolioData from "../../_section/hook/usePortfolioData";
 import { Icon } from "@/components/icons";
 import ValueWithSymbol from "./ValueWithSymbol";
 import ColoredTypography from "./ColoredTypography";
+import Distribution from "./Distribution";
 
 const AssetsTable = () => {
   const { t } = useTranslate();
@@ -52,13 +53,12 @@ const AssetsTable = () => {
       {
         title: formatTitle(t("assetsTable.actualPrice")),
         field: "actual_price",
-        modify: (row: any) =>
-          `$${row.actual_price > 1 ? numeral(row.actual_price).format("0,0.00") : row.actual_price}`,
+        modify: (row: any) => <ColoredTypography value={row.actual_price} customColor="white" />,
       },
       {
         title: formatTitle(t("assetsTable.actualValue")),
         field: "actual_value",
-        modify: (row: any) => <ColoredTypography value={row.actual_value} dolloarSign />,
+        modify: (row: any) => <ColoredTypography value={row.actual_value} />,
       },
       // {
       //   title: t("assetsTable.exitProximity"),
@@ -72,7 +72,7 @@ const AssetsTable = () => {
       {
         title: formatTitle(t("assetsTable.distribution"), "%"),
         field: "distribution",
-        modify: (row: any) => <ColoredTypography value={row.distribution} hasPercentage />,
+        modify: (row: any) => <Distribution value={row.distribution} />,
       },
       {
         title: t("assetsTable.totalBought"),
@@ -92,12 +92,12 @@ const AssetsTable = () => {
       {
         title: formatTitle(t("assetsTable.unrealizedpnl")),
         field: "unrealized_pnl",
-        modify: (row: any) => <ColoredTypography value={row.unrealized_pnl} dolloarSign />,
+        modify: (row: any) => <ColoredTypography value={row.unrealized_pnl} />,
       },
       {
         title: formatTitle(t("assetsTable.realizedPNL")),
         field: "realized_pnl",
-        modify: (row: any) => <ColoredTypography value={row.realized_pnl} dolloarSign />,
+        modify: (row: any) => <ColoredTypography value={row.realized_pnl} />,
       },
     ],
     [t]

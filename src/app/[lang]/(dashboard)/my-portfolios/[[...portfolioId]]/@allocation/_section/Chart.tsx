@@ -1,5 +1,7 @@
 import dynamic from "next/dynamic";
 import type { ApexOptions } from "apexcharts";
+import { allocationBasedColors } from "@/utils/emojies";
+import { useMemo } from "react";
 
 const ApexChart = dynamic(() => import("react-apexcharts").then((mod) => mod.default), {
   ssr: false,
@@ -8,9 +10,18 @@ const ApexChart = dynamic(() => import("react-apexcharts").then((mod) => mod.def
 type ChartProps = {
   seriesData: { x: string; y: number }[];
   onHover: (label: string | null) => void;
+  hoveredCrypto: string | null;
 };
 
-const Chart = ({ seriesData, onHover }: ChartProps) => {
+const Chart = ({ seriesData, onHover, hoveredCrypto }: ChartProps) => {
+  const colorsWithHoverEffect = useMemo(
+    () =>
+      seriesData.map((crypto, index) =>
+        crypto.x === hoveredCrypto ? allocationBasedColors[index] : `${allocationBasedColors[index]}97`
+      ),
+    [seriesData, hoveredCrypto]
+  );
+
   const options: ApexOptions = {
     series: [
       {
@@ -62,36 +73,10 @@ const Chart = ({ seriesData, onHover }: ChartProps) => {
         },
       },
     },
-    colors: [
-      "#9799B4",
-      "#8A2BE2",
-      "#7FFF00",
-      "#00CED1",
-      "#DC143C",
-      "#32CD32",
-      "#7A7C97",
-      "#F3BA2F",
-      "#42435D",
-      "#252740",
-      "#12132D",
-      "#FF5733",
-      "#33FF57",
-      "#FF33A1",
-      "#33FFF2",
-      "#FF8C00",
-      "#FF4500",
-      "#FFD700",
-      "#8B4513",
-      "#1E90FF",
-      "#FF69B4",
-      "#ADFF2F",
-      "#FF6347",
-      "#40E0D0",
-    ],
+    colors: colorsWithHoverEffect,
     plotOptions: {
       treemap: { distributed: true, enableShades: false },
     },
-
     stroke: {
       width: 0,
       colors: ["transparent"],
