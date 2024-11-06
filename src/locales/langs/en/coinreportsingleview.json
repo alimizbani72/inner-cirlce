@@ -1,0 +1,23 @@
+{
+  "coinreportsingleview": {
+    "currentPrice": "Current Price",
+    "currentMarketCap": "Current Market Cap",
+    "liquidity": "Liquidity",
+    "category": "Category",
+    "totalsupply": "Total supply",
+    "maxsupply": "Max. supply",
+    "circulatingSupply": "Circulating Supply",
+    "evaluation": "Evaluation",
+    "rtl": "RTL",
+    "ds": "DS",
+    "potentialMultiplier": "Potential Multiplier",
+    "targetPrice": "Target Price",
+    "howTobuy": "How To buy",
+    "watchVideo": "Watch Video",
+    "inDepthReport": "In Depth Report",
+    "tableOfContent": "Table Of Content",
+    "upgradeYourAccount": "Upgrade Your Account!",
+    "upgradeDescription": "By upgrading, subscribers can access additional benefits, enhanced functionalities, and premium content not available in their current plan.",
+    "upgradeNow": "Upgrade Now"
+  }
+}

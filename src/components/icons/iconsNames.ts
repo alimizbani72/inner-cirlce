@@ -1,5 +1,9 @@
 const iconsNames = [
   "image",
+  "Question-1",
+  "website",
+  "Star-grey",
+  "Star-color--full",
   "arrow-colorfull-up",
   "arrow-colorfull-down",
   "download",
