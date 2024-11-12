@@ -7,9 +7,15 @@ import { useTranslate } from "@/locales";
 import Bullets from "../../_section/Bullets";
 import MoreTransactionAction from "./MoreTransactionAction";
 import { useParams } from "next/navigation";
-import { getActivePortfolioId } from "../../_section/utils";
+import { formatPrice, getActivePortfolioId } from "../../_section/utils";
 
-const TransactionsTable = ({ transactions }: { transactions: any[] }) => {
+type Props = {
+  symbol: string;
+  logo: string;
+  name: string;
+  transactions: any[];
+};
+const TransactionsTable = ({ transactions, symbol, logo, name }: Props) => {
   const { portfolioId } = useParams();
   const hasPortfolioId = getActivePortfolioId(portfolioId);
   const { t } = useTranslate();
@@ -20,22 +26,21 @@ const TransactionsTable = ({ transactions }: { transactions: any[] }) => {
           <TableRow key={transaction.id}>
             <TableCell sx={{ pl: "0 !important" }}>
               <Stack direction={"row"} spacing={2} alignItems={"center"}>
-                {hasPortfolioId && <MoreTransactionAction transaction={transaction} />}
+                {hasPortfolioId && <MoreTransactionAction transaction={{ ...transaction, logo, symbol, name }} />}
                 <Divider flexItem orientation="vertical" />
                 <Bullets bgcolor={transaction.type === "buy" ? "success.main" : "danger.main"} />
-                <TransactionDetail
-                  label={t("assetsTable.quantity")}
-                  value={numeral(transaction.quantity).format("0,0.00")}
-                />
+                <TransactionDetail label={t("assetsTable.quantity")} value={formatPrice(transaction.quantity)} />
                 <Divider flexItem orientation="vertical" />
                 <TransactionDetail
                   label={t("assetsTable.pricePerCoin")}
-                  value={`$${numeral(transaction.price).format("0,0.00")}`}
+                  hascurrency
+                  value={formatPrice(transaction.price)}
                 />
                 <Divider flexItem orientation="vertical" />
                 <TransactionDetail
                   label={t("assetsTable.fee")}
-                  value={`$${numeral(transaction.fee).format("0,0.00")}`}
+                  hascurrency
+                  value={numeral(transaction.fee).format("0,0.00")}
                 />
                 <Divider flexItem orientation="vertical" />
                 <TransactionDetail label={t("assetsTable.dateAndTime")} value={transaction.date} />

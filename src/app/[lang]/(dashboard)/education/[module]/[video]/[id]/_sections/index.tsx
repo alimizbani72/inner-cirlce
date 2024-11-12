@@ -43,10 +43,7 @@ const EducationSingleVideoSection: FC = () => {
   const [videoContent, setVideoContent] = useState<VideoResponse | null>(null);
   const { id, video: moduleName } = useParams();
   const video = useAppSelector((state) =>
-    selectVideoByTitle(state)(
-      decodeURIComponent(id as string),
-      decodeURIComponent(moduleName as string)
-    )
+    selectVideoByTitle(state)(decodeURIComponent(id as string), decodeURIComponent(moduleName as string))
   );
   const { t } = useTranslate();
 
@@ -63,12 +60,7 @@ const EducationSingleVideoSection: FC = () => {
   usePageTitle({ title: `Education: ${decodeURIComponent(id as string)}` });
 
   return (
-    <Stack
-      p={{ md: 4, xs: 3 }}
-      height={"100%"}
-      direction={{ md: "row", xs: "column" }}
-      gap={{ md: 3, xs: 4 }}
-    >
+    <Stack p={{ md: 4, xs: 3 }} height={"100%"} direction={{ md: "row", xs: "column" }} gap={{ md: 3, xs: 4 }}>
       <Stack sx={{ flex: 8 / 12 }} gap={3}>
         <BreadCrumb />
 
@@ -110,16 +102,9 @@ const EducationSingleVideoSection: FC = () => {
             </Box>
 
             <Stack gap={1}>
-              <Stack
-                direction={isMobile ? "column" : "row"}
-                justifyContent={"space-between"}
-                gap={3}
-              >
+              <Stack direction={isMobile ? "column" : "row"} justifyContent={"space-between"} gap={3}>
                 <Stack gap={1}>
-                  <Typography
-                    variant="h4-semi-bold"
-                    textTransform={"capitalize"}
-                  >
+                  <Typography variant="h4-semi-bold" textTransform={"capitalize"}>
                     {decodeURIComponent(id as string)}
                   </Typography>
                   <Stack direction={"row"} alignItems={"center"} gap={1}>
@@ -187,11 +172,7 @@ const EducationSingleVideoSection: FC = () => {
                 </CustomSelect>
               </Stack>
 
-              <Typography
-                variant="p2-semi-bold"
-                color="grey.light"
-                sx={{ mt: 2 }}
-              >
+              <Typography variant="p2-semi-bold" color="grey.light" sx={{ mt: 2 }}>
                 {/* DICTIONARY */}
                 Description
               </Typography>

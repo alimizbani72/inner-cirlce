@@ -1,3 +1,5 @@
+import numeral from "numeral";
+
 type DataItem = {
   [key: string]: string;
 };
@@ -16,3 +18,7 @@ export const calculateTotal = (data: DataItem[], field: keyof DataItem): number 
   }, 0);
 };
 export const parseToNumber = (input: any) => parseFloat(input) || 0;
+
+export const formatPrice = (value: any) => {
+  return value > 0.01 ? numeral(value).format("0,0.00") : value;
+};

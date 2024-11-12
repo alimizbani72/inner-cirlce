@@ -7,12 +7,14 @@ interface DistributionProps {
 }
 
 const Distribution: React.FC<DistributionProps> = ({ value }) => {
-  const roundedValue = Math.round(value * 100) / 100;
-  const color = roundedValue === 0 ? "white" : roundedValue < 0 ? "error.main" : "success.main";
+  const parsedValue = parseToNumber(value);
+  const displayValue = Math.abs(parsedValue) < 0.01 ? 0 : parsedValue;
+
+  const color = displayValue === 0 ? "white" : displayValue < 0 ? "error.main" : "success.main";
 
   return (
     <Typography variant="p2-medium" color={color}>
-      {parseToNumber(value).toFixed(2)}%
+      {displayValue.toFixed(2)}%
     </Typography>
   );
 };

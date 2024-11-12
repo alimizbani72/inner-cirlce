@@ -4,7 +4,7 @@ interface TransactionState {
   transactionToEdit: Transaction | null;
   editMode: boolean;
   isModalOpen: boolean;
-  activeSymbol: string | null;
+  activeSymbol: string;
 }
 
 interface Transaction {
@@ -16,13 +16,15 @@ interface Transaction {
   note?: string;
   date: string;
   type: "buy" | "sell";
+  logo: string;
+  name: string;
 }
 
 const initialState: TransactionState = {
   transactionToEdit: null,
   editMode: false,
   isModalOpen: false,
-  activeSymbol: null,
+  activeSymbol: "",
 };
 
 export const transactionSlice = createSlice({
@@ -44,7 +46,7 @@ export const transactionSlice = createSlice({
       state.editMode = false;
       state.isModalOpen = false;
     },
-    setActiveSlug: (state, action: PayloadAction<string | null>) => {
+    setActiveSlug: (state, action: PayloadAction<string>) => {
       state.activeSymbol = action.payload;
     },
   },

@@ -10,6 +10,9 @@ interface CryptoChipProps {
 }
 
 const CryptoChip = ({ label, value, isActive, onHover }: CryptoChipProps) => {
+  const parsedValue = parseToNumber(value);
+  const displayValue = Math.abs(parsedValue) < 0.01 ? 0 : parsedValue;
+
   return (
     <Chip
       label={
@@ -17,7 +20,7 @@ const CryptoChip = ({ label, value, isActive, onHover }: CryptoChipProps) => {
           <Typography variant="p2-medium" color={isActive ? "white" : "grey.light"}>
             {label}
           </Typography>
-          <Typography variant="p2-medium">{parseToNumber(value).toFixed(2)}%</Typography>
+          <Typography variant="p2-medium">{displayValue.toFixed(2)}%</Typography>
         </Stack>
       }
       variant="outlined"

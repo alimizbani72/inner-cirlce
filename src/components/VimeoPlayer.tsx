@@ -12,13 +12,7 @@ interface VimeoPlayerProps {
   sx?: BoxProps["sx"];
 }
 
-const VimeoPlayer: FC<VimeoPlayerProps> = ({
-  videoId,
-  videoUrl,
-  width = 640,
-  height = 360,
-  sx,
-}) => {
+const VimeoPlayer: FC<VimeoPlayerProps> = ({ videoId, videoUrl, width = 640, height = 360, sx }) => {
   const vimeoRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {

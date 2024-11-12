@@ -29,6 +29,7 @@ const Tabs = ({ portfolios, portfolioId, overviewId, overviewtotal_actual_value 
         portfolioName={t("portfolioSummary.overview")}
         portfolioAvatar={(<Icon name="More-rectangle" />) as any}
         bgColor="dark.3"
+        customAvatarbgColor={!portfolioId ? "dark.1" : "dark.3"}
         price={overviewtotal_actual_value}
         onClick={() => onSelectTab(overviewId)}
       />

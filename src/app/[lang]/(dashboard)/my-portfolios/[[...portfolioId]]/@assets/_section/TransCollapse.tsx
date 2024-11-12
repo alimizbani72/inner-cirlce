@@ -10,9 +10,12 @@ type TransCollapseProps = {
   slug: string;
   colSpan: number;
   isClose: boolean;
+  symbol: string;
+  logo: string;
+  name: string;
 };
 
-const TransCollapse: FC<TransCollapseProps> = ({ slug, colSpan, isClose }) => {
+const TransCollapse: FC<TransCollapseProps> = ({ slug, colSpan, isClose, symbol, name, logo }) => {
   const { t } = useTranslate();
   const { portfolioId } = useParams();
 
@@ -57,7 +60,7 @@ const TransCollapse: FC<TransCollapseProps> = ({ slug, colSpan, isClose }) => {
                   <Typography variant="p2-semi-bold" color={"grey.light"} textTransform={"uppercase"}>
                     {t("assetsTable.transactions")}
                   </Typography>
-                  <TransactionsTable transactions={transactions?.data || []} />
+                  <TransactionsTable transactions={transactions?.data || []} logo={logo} symbol={symbol} name={name} />
                 </Stack>
               </>
             )}

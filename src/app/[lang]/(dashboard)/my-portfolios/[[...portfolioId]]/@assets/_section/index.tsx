@@ -40,7 +40,7 @@ const AssetsTable = () => {
               gap={1}
             >
               <CryptoIcon name={row.row.name} symbol={row.row.symbol} logoUrl={row.row.logo} />
-              <Icon name={row.isOpen ? "arrow-colorfull-up" : "arrow-colorfull-down"} />
+              {portfolioId && <Icon name={row.isOpen ? "arrow-colorfull-up" : "arrow-colorfull-down"} />}
             </Stack>
           </Stack>
         ),
