@@ -30,7 +30,10 @@ const Opportunity: FC<OpportunityProps> = ({ buttonLink, blockTitle, buttonText,
     <Stack
       width={{ md: "calc(100% - 32px)", xs: "calc(100% - 16px)" }}
       mx={{ md: 2, xs: 1 }}
-      sx={{ background: "linear-gradient(180deg, #CDDFF2 0%, #F6FAFF 100%)", borderRadius: { md: 4, xs: 3 } }}
+      sx={{
+        background: "linear-gradient(180deg, #CDDFF2 0%, #F6FAFF 100%)",
+        borderRadius: { md: 4, xs: 3 },
+      }}
       py={{ md: 12, xs: 8 }}
       alignItems={"center"}
       overflow={"hidden"}
@@ -39,7 +42,7 @@ const Opportunity: FC<OpportunityProps> = ({ buttonLink, blockTitle, buttonText,
         <SectionTitle title={blockTitle} color="dark.1" firsLetterColor="pink.dark" />
 
         <Stack gap={{ md: 4, xs: 3 }} direction={{ md: "row" }}>
-          {cards.map((item) => (
+          {cards?.map((item) => (
             <Stack
               flex={1}
               key={item.id}

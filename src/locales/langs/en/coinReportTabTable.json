@@ -1,0 +1,13 @@
+{
+  "coinReportTabTable": {
+    "name": "NAME",
+    "package": "PACKAGE",
+    "category": "CATEGORY",
+    "cmr": "CMR",
+    "eeSignal": "E/E Signal",
+    "potentialMultiplicator": "POT.MULT.",
+    "rtl": "RTL",
+    "riskLevel": "RISK LEVEL",
+    "currentPrice": "CURRENT PRICE"
+  }
+}
