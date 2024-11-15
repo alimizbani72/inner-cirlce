@@ -83,7 +83,7 @@ const SettingsHeader = () => {
         ) : (
           <Stack direction="row">
             {tabs.map((tab) => (
-              <DesktopTabs key={tab.link} icon={tab.icon} href={tab.link} title={tab.link} />
+              <DesktopTabs key={tab.link} icon={tab.icon} href={tab.link} title={t(tab.title as any)} />
             ))}
           </Stack>
         )}

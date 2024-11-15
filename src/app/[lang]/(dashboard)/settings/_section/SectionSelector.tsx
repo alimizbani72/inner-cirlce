@@ -33,7 +33,9 @@ const SectionSelect = ({ tabs }: Props) => {
           <Stack direction={"row"} gap={1} alignItems={"center"}>
             <Icon name={`${tabsObject[selected as keyof typeof tabsObject]?.icon}--colorful` as any} />
             <Typography variant="p2-medium" color={"white"}>
-              {t(tabsObject[selected as keyof typeof tabsObject]?.title as any)}
+              {tabsObject[selected as keyof typeof tabsObject]?.title
+                ? t(tabsObject[selected as keyof typeof tabsObject]?.title as any)
+                : ""}
             </Typography>
           </Stack>
         );

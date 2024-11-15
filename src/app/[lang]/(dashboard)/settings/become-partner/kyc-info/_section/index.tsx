@@ -66,7 +66,13 @@ const KYCInfoDialog = () => {
           <Stack gap={1} justifyContent={"center"} alignItems={"center"} sx={{ textAlign: "center" }}>
             <Icon name="KYC" size={64} />
             <Typography variant="p2-regular">{t("kycInfoDialog.description")}</Typography>
-            <LoadingButton color="primary" onClick={onSubmit} sx={{ mt: 2 }} loading={isPending}>
+            <LoadingButton
+              color="primary"
+              onClick={onSubmit}
+              sx={{ mt: 2 }}
+              loading={isPending}
+              disabled={userInfo?.kyc_status}
+            >
               {t("kycInfoDialog.doKycNow")}
             </LoadingButton>
           </Stack>

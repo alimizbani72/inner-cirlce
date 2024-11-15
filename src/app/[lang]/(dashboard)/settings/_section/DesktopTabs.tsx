@@ -1,6 +1,5 @@
 import Link from "@/components/Link";
 import { Icon } from "@/components/icons";
-import { useTranslate } from "@/locales";
 import { useActiveLink } from "@/routes/hooks";
 import { Stack, Typography } from "@mui/material";
 import type { FC } from "react";
@@ -12,8 +11,6 @@ type DesktopTabsProps = {
 };
 
 const DesktopTabs: FC<DesktopTabsProps> = ({ href, icon, title }) => {
-  const { t } = useTranslate();
-
   const isActive = useActiveLink(`settings/${href}`);
   return (
     <Stack
@@ -40,7 +37,7 @@ const DesktopTabs: FC<DesktopTabsProps> = ({ href, icon, title }) => {
     >
       <Icon name={`${icon}${isActive ? "--colorful" : ""}` as any} />
       <Typography variant="p2-medium" color={isActive ? "white" : "grey.light"}>
-        {t(title as any)}
+        {title}
       </Typography>
     </Stack>
   );
