@@ -14,3 +14,8 @@ export function convertRoute(route: string): string {
   }
   return route;
 }
+
+export function getLastSegment(path: string): string {
+  const segments = path.split("/").filter((segment) => segment); // Filter out empty segments
+  return segments[segments.length - 1];
+}

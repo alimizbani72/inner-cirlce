@@ -1,19 +1,19 @@
 "use client";
+import CustomDialog from "@/components/CustomDialog";
+import CustomizedSteppers from "@/components/CustomizedSteppers";
 import { Icon } from "@/components/icons";
+import { kycCallback } from "@/consts";
 import useCustomRouter from "@/hooks/useCustomRouter";
+import { useModalActivation } from "@/hooks/useModalActivation";
+import { selectUser } from "@/lib/features/user/userSlice";
+import { useAppSelector } from "@/lib/hooks";
+import { useTranslate } from "@/locales";
+import { useKycServiceKycVerificationCreateMutation } from "@minecraft/queries";
+import { LoadingButton } from "@mui/lab";
 import { Button, DialogActions, Divider, IconButton, Stack, Typography } from "@mui/material";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import { useKycServiceKycVerificationCreateMutation } from "@minecraft/queries";
-import { LoadingButton } from "@mui/lab";
-import CustomizedSteppers from "@/components/CustomizedSteppers";
-import { kycCallback } from "@/consts";
 import { usePathname } from "next/navigation";
-import CustomDialog from "@/components/CustomDialog";
-import { useModalActivation } from "@/hooks/useModalActivation";
-import { useTranslate } from "@/locales";
-import { useAppSelector } from "@/lib/hooks";
-import { selectUser } from "@/lib/features/user/userSlice";
 
 const KYCInfoDialog = () => {
   const userInfo = useAppSelector(selectUser);
