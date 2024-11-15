@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/Chainmind-AG/inner-circle/compare/v1.4.0...v1.4.1) (2024-11-15)
+
+
+### Bug Fixes
+
+* **setting:** change active mode ([45a2610](https://github.com/Chainmind-AG/inner-circle/commit/45a261099515a96303a639743a9da92a4b4f60d8))
+
 # [1.4.0](https://github.com/Chainmind-AG/inner-circle/compare/v1.3.1...v1.4.0) (2024-10-29)
 
 
