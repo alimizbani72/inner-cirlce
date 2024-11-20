@@ -9,64 +9,69 @@ import Header from "./header";
 import BoxList from "./box";
 import Upgrade from "./Upgrade";
 import TableOfContent from "./tableContent";
-const mockData = {
-  logo: "/assets/svg/btc.svg",
-  name: "Bitcoin",
-  symbol: "BTC",
-  packageType: "shrimp",
-  category: "Layer 1",
-  cmr: 0.1428,
-  ee_signal: 4,
-  max_supply: 21113123123123,
-  potential_multiplicator: 25,
-  rtl: 20,
-  risk_level: "Low Risk",
-  current_price: 63331.879,
-  target_price: 95,
-  data_sufficiency: 20,
-  circulating_supply: 1835785100123,
-  total_supply: 21000000,
-  market_cap: 833187993.24,
-  volume_24h: 5631789.45,
-  liquidity_index: 3.21,
-};
+import { useCoinReportServiceCoinReportSlugQuery } from "@minecraft/queries";
+import { useParams } from "next/navigation";
+import Loading from "@/components/Loading";
+import Empty from "@/components/Empty";
+
 const CoinReportDetailSection = () => {
+  const { coinId } = useParams();
+  const { data, isPending, isError } = useCoinReportServiceCoinReportSlugQuery({ slug: coinId as string });
   const userInfo = useAppSelector(selectUser);
   const userPlanType = plans[getUserPlanType(userInfo) as keyof typeof plans]?.order;
-  const packageOrder = plans[mockData.packageType as keyof typeof plans].order;
+  const packageOrder = plans[data?.data?.plan_type as keyof typeof plans]?.order;
   const needsUpgrade = packageOrder > userPlanType;
+
+  if (isPending) {
+    return (
+      <Stack width="100%" height="100%" alignItems="center">
+        <Loading sx={{ width: "100%", height: "100%" }} />
+      </Stack>
+    );
+  }
+  if (isError) {
+    return (
+      <Stack width="100%" height="100%" alignItems="center">
+        <Empty sx={{ width: "100%", height: "100%" }} icon="Warning" />
+      </Stack>
+    );
+  }
 
   return (
     <Stack spacing={3} p={4} pb={0} height={"100%"}>
       <Header
-        logo={mockData.logo}
-        ee_signal={mockData.ee_signal}
-        name={mockData.name}
-        symbol={mockData.symbol}
-        packageType={mockData.packageType}
+        logo={data?.data?.logo}
+        ee_signal={data?.data?.ee_signal}
+        name={data?.data?.name}
+        symbol={data?.data?.symbol}
+        plan_type={data?.data?.plan_type as string}
         needsUpgrade={needsUpgrade}
       />
       <BoxList
-        category={mockData.category}
-        circulating_supply={mockData.circulating_supply}
-        current_price={mockData.current_price}
-        liquidity_index={mockData.liquidity_index}
-        market_cap={mockData.market_cap}
-        max_supply={mockData.max_supply}
-        total_supply={mockData.total_supply}
-        symbol={needsUpgrade ? "" : mockData.symbol}
+        category={data?.data?.category}
+        circulating_supply={data?.data?.circulating_supply}
+        current_price={data?.data?.current_price}
+        liquidity_index={data?.data?.liquidity_index}
+        market_cap={data?.data?.market_cap}
+        max_supply={data?.data?.max_supply}
+        total_supply={data?.data?.total_supply}
+        symbol={needsUpgrade ? "" : data?.data?.symbol}
       />
       {needsUpgrade ? (
         <Upgrade />
       ) : (
         <Stack spacing={3} pb={4}>
           <Card
-            evaluation={mockData.cmr}
-            rtl={mockData.rtl}
-            ds={mockData.data_sufficiency}
-            potential_multiplier={mockData.potential_multiplicator}
-            risk_level={mockData.risk_level}
-            target_price={mockData.target_price}
+            // recommended_percentage={data.data?.recommended_percentage}
+            evaluation={data?.data?.cmr}
+            rtl={data?.data?.rtl}
+            ds={data?.data?.data_sufficiency}
+            potential_multiplier={data?.data?.potential_multiplier}
+            potential_multiplier_end_date={(data?.data as any)?.potential_multiplier_end_date}
+            potential_multiplier_start_date={(data?.data as any)?.potential_multiplier_start_date}
+            risk_level={data?.data?.risk_level}
+            target_price={data?.data?.target_price}
+            target_price_date={(data?.data as any)?.target_price_date}
           />
           <TableOfContent />
         </Stack>

@@ -8,14 +8,14 @@ import Entry from "./Entry";
 import Image from "@/components/Image";
 import ButtonAction from "./ButtonAction";
 type Props = {
-  logo: string;
-  name: string;
-  symbol: string;
-  packageType: string;
+  logo: string | undefined;
+  name: string | undefined;
+  symbol: string | undefined;
+  plan_type: string;
   needsUpgrade: boolean;
-  ee_signal: number;
+  ee_signal: string | undefined;
 };
-const Header = ({ logo, name, symbol, packageType, needsUpgrade, ee_signal }: Props) => {
+const Header = ({ logo, name, symbol, plan_type, needsUpgrade, ee_signal }: Props) => {
   return (
     <>
       <Stack
@@ -69,9 +69,11 @@ const Header = ({ logo, name, symbol, packageType, needsUpgrade, ee_signal }: Pr
 
           <Box sx={{ width: "4px", height: "4px", borderRadius: "50%", bgcolor: "dark.3" }} />
           <Stack direction={"row"} alignItems={"center"} spacing={1}>
-            <Box sx={{ aspectRatio: 1 }}>
-              <RiveComp src={plans[packageType as keyof typeof plans]?.rive} width={32} height={32} />
-            </Box>
+            {plan_type && (
+              <Box sx={{ aspectRatio: 1 }}>
+                <RiveComp src={plans[plan_type as keyof typeof plans]?.rive} width={32} height={32} />
+              </Box>
+            )}
 
             {needsUpgrade && <Icon name="lock" size={20} />}
           </Stack>

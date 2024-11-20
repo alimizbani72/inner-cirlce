@@ -4,20 +4,49 @@ import numeral from "numeral";
 import CardItem from "./CardItem";
 import Summary from "./Summary";
 import { useTranslate } from "@/locales";
+import { fDate } from "@/utils/format-time";
+
+const formatDate = (dateTime: any) => fDate(dateTime, "dd.MMM.yyyy");
 
 type Props = {
-  evaluation: number;
-  rtl: number;
-  risk_level: string;
-  ds: number;
-  potential_multiplier: number;
-  target_price: number;
+  evaluation: string | undefined;
+  rtl: string | undefined;
+  risk_level: string | undefined;
+  ds: string | undefined;
+  potential_multiplier: string | undefined;
+  target_price: string | undefined;
+  potential_multiplier_end_date: string | undefined;
+  potential_multiplier_start_date: string | undefined;
+  target_price_date: string | undefined;
+  // recommended_percentage: number | undefined;
 };
 
-const Card = ({ ds, evaluation, potential_multiplier, risk_level, rtl, target_price }: Props) => {
+const Card = ({
+  ds,
+  // recommended_percentage,
+  evaluation,
+  potential_multiplier,
+  risk_level,
+  rtl,
+  target_price,
+  potential_multiplier_end_date,
+  potential_multiplier_start_date,
+  target_price_date,
+}: Props) => {
   const { t } = useTranslate();
+
   return (
-    <Stack borderRadius={2} spacing={3} bgcolor={"dark.2"} overflow={"hidden"}>
+    <Stack
+      spacing={3}
+      sx={{
+        border: "1px solid",
+        borderTop: 0,
+        borderColor: "dark.3",
+        overflow: "hidden",
+        bgcolor: "dark.2",
+        borderRadius: 2,
+      }}
+    >
       <Stack direction={{ xs: "column", md: "row" }} spacing={0.3}>
         <CardItem
           title={t("coinreportsingleview.evaluation")}
@@ -25,17 +54,23 @@ const Card = ({ ds, evaluation, potential_multiplier, risk_level, rtl, target_pr
           subtitle="Based on market readings"
         />
         <CardItem title={t("coinreportsingleview.rtl")} value={rtl} subtitle={risk_level} symbol="%" />
-        <CardItem title={t("coinreportsingleview.ds")} value={ds} hasCaclulation symbol="%" />
+        <CardItem
+          title={t("coinreportsingleview.ds")}
+          value={ds}
+          // subtitle={recommended_percentage}
+          hasCaclulation
+          symbol="%"
+        />
         <CardItem
           title={t("coinreportsingleview.potentialMultiplier")}
           value={potential_multiplier}
           symbol="X"
-          subtitle="01.Jan.2024 - 25.Dec.2025"
+          subtitle={`${formatDate(potential_multiplier_start_date)} - ${formatDate(potential_multiplier_end_date)}`}
         />
         <CardItem
           title={t("coinreportsingleview.targetPrice")}
           value={target_price}
-          subtitle="18.Feb.2024"
+          subtitle={formatDate(target_price_date)}
           symbol="X"
         />
       </Stack>
