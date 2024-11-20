@@ -223,7 +223,7 @@ const TransactionModal = () => {
           </Stack>
           <Stack direction={{ xs: "column", md: "row" }} spacing={3}>
             <DateInput onConfirm={(dateTime) => setDateTime(dateTime)} initialDate={dateTime} />
-            <Stack spacing={1} width={"100%"}>
+            <Stack spacing={0.5} width={"100%"}>
               <FeeTooltip />
               <RHFTextField name="fee" placeholder={t("portfolioTransaction.enterTheFee")} type="number" isMoney />
             </Stack>
