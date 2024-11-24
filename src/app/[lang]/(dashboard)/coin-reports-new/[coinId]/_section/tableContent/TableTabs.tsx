@@ -1,12 +1,14 @@
 import { Divider, Stack, Typography } from "@mui/material";
-import type { ContentData, SelectedTabKey } from "./types";
+import type { SelectedTabKey } from "./types";
 import { useTranslate } from "@/locales";
+import type { SingleCoinReports } from "@minecraft/requests";
 
 type TableTabsProps = {
-  contentData: ContentData;
+  contentData: SingleCoinReports;
   selectedTab: SelectedTabKey;
   onSelect: (key: SelectedTabKey) => void;
 };
+
 const TableTabs = ({ contentData, selectedTab, onSelect }: TableTabsProps) => {
   const { t } = useTranslate();
   const keys = Object.keys(contentData) as SelectedTabKey[];
@@ -23,7 +25,7 @@ const TableTabs = ({ contentData, selectedTab, onSelect }: TableTabsProps) => {
                 color: selectedTab === key ? "primary.light" : "grey.light",
               }}
             >
-              {contentData[key].title}
+              {contentData[key]?.title}
             </Typography>
 
             {index < keys.length - 1 && <Divider />}

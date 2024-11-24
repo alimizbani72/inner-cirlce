@@ -13,6 +13,7 @@ import { useCoinReportServiceCoinReportSlugQuery } from "@minecraft/queries";
 import { useParams } from "next/navigation";
 import Loading from "@/components/Loading";
 import Empty from "@/components/Empty";
+import type { SingleCoinReports } from "@minecraft/requests";
 
 const CoinReportDetailSection = () => {
   const { coinId } = useParams();
@@ -73,7 +74,7 @@ const CoinReportDetailSection = () => {
             target_price={data?.data?.target_price}
             target_price_date={(data?.data as any)?.target_price_date}
           />
-          <TableOfContent />
+          <TableOfContent reports={data?.data?.reports as SingleCoinReports} />
         </Stack>
       )}
     </Stack>

@@ -6,7 +6,6 @@ import { plans } from "@/configs/plans";
 import { Box, Stack, Typography } from "@mui/material";
 import Entry from "./Entry";
 import Image from "@/components/Image";
-import ButtonAction from "./ButtonAction";
 type Props = {
   logo: string | undefined;
   name: string | undefined;
@@ -80,7 +79,8 @@ const Header = ({ logo, name, symbol, plan_type, needsUpgrade, ee_signal }: Prop
         </Stack>
         <Stack direction={"row"} spacing={{ xs: 3, md: 2 }} flexWrap={"wrap"}>
           <Entry signal={ee_signal} />
-          <ButtonAction />
+          {/* Needs API  */}
+          {/* <ButtonAction /> */}
         </Stack>
       </Stack>
     </>

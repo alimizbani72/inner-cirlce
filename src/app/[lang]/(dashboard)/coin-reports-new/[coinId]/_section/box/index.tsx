@@ -3,13 +3,13 @@ import { Box, Divider, Stack } from "@mui/material";
 import BoxItems from "./BoxItem";
 import { useTranslate } from "@/locales";
 type Props = {
-  current_price: number | undefined;
-  liquidity_index: number | undefined;
-  market_cap: number | undefined;
+  current_price: string | undefined;
+  liquidity_index: string | undefined;
+  market_cap: string | undefined;
   category: string | undefined;
-  total_supply: number | undefined;
-  circulating_supply: number | undefined;
-  max_supply: number | undefined;
+  total_supply: string | undefined;
+  circulating_supply: string | undefined;
+  max_supply: string | undefined;
   symbol: string | undefined;
 };
 const BoxList = ({

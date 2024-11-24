@@ -51,7 +51,7 @@ const Card = ({
         <CardItem
           title={t("coinreportsingleview.evaluation")}
           value={numeral(evaluation).format("0,0.00")}
-          subtitle="Based on market readings"
+          subtitle={t("coinreportsingleview.basedonmarketreadings")}
         />
         <CardItem title={t("coinreportsingleview.rtl")} value={rtl} subtitle={risk_level} symbol="%" />
         <CardItem
@@ -76,7 +76,7 @@ const Card = ({
       </Stack>
       <Stack spacing={4} px={3} pb={3}>
         <Summary
-          title="Report Summary"
+          title={t("coinreportsingleview.reportSummary")}
           description="Lorem ipsum dolor sit amet, 
           consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
            Pellentesque pulvinar pellentesque habitant morbi tristique senectus. Sed vulputate mi sit amet mauris commodo quis imperdiet.
@@ -87,9 +87,8 @@ const Card = ({
               Ipsum a arcu cursus vitae congue mauris rhoncus aenean vel."
         />
         <Summary
-          title="Brief on Our Evaluation"
-          description="We conducted a thorough evaluation based on the available data.  While we endeavoured for comprehensive analysis,
-           the data volume influenced our conclusions. For a detailed insight into our methodology and findings, please click here"
+          title={t("coinreportsingleview.briefonOurEvaluation")}
+          description={t("coinreportsingleview.briefonOurEvaluationDescription")}
         />
       </Stack>
     </Stack>

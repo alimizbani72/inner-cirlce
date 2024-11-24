@@ -1,13 +1,3 @@
-export type Section = {
-  title: string;
-  description: string;
-};
+import type { SingleCoinReports } from "@minecraft/requests";
 
-export type ContentData = {
-  [key: string]: {
-    title: string;
-    sections: Section[];
-  };
-};
-
-export type SelectedTabKey = keyof ContentData;
+export type SelectedTabKey = keyof SingleCoinReports;

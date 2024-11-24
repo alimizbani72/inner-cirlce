@@ -1,3 +1,4 @@
+import { useTranslate } from "@/locales";
 import { Stack, Typography } from "@mui/material";
 // const getRecommendation = (ds: any) => {
 //   let status;
@@ -29,6 +30,7 @@ type Props = {
 };
 
 const CardItem = ({ title, value, hasCaclulation, subtitle, symbol }: Props) => {
+  const { t } = useTranslate();
   // const { status, color, icon, percentage } = getRecommendation(subtitle);
   return (
     <Stack
@@ -47,7 +49,7 @@ const CardItem = ({ title, value, hasCaclulation, subtitle, symbol }: Props) => 
       {hasCaclulation ? (
         <Stack direction={"row"} alignItems={"center"}>
           <Typography variant="p2-regular" color="grey.light" mr={"auto"}>
-            Recommended
+            {t("coinreportsingleview.recommended")}
           </Typography>
           {/* <Box sx={{ path: { stroke: (theme) => (theme.palette as any)[color].main } }}>
             <Icon name={icon as iconsType} />

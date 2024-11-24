@@ -18,6 +18,11 @@
     "tableOfContent": "Table Of Content",
     "upgradeYourAccount": "Upgrade Your Account!",
     "upgradeDescription": "By upgrading, subscribers can access additional benefits, enhanced functionalities, and premium content not available in their current plan.",
-    "upgradeNow": "Upgrade Now"
+    "upgradeNow": "Upgrade Now",
+    "basedonmarketreadings": "Based on market readings",
+    "recommended": "Recommended",
+    "reportSummary": "Report Summary",
+    "briefonOurEvaluation": "Brief on Our Evaluation",
+    "briefonOurEvaluationDescription": "We conducted a thorough evaluation based on the available data.  While we endeavoured for comprehensive analysis, the data volume influenced our conclusions. For a detailed insight into our methodology and findings, please click here"
   }
 }

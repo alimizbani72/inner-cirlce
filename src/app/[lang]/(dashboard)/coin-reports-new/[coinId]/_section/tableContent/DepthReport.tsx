@@ -1,15 +1,14 @@
 import { useTranslate } from "@/locales";
+import type { ReportSection } from "@minecraft/requests";
 import { Stack, Typography } from "@mui/material";
-type Section = {
-  title: string;
-  description: string;
-};
 
 type DepthReportProps = {
-  sections: Section[];
+  sections: ReportSection[];
 };
+
 const DepthReport = ({ sections }: DepthReportProps) => {
   const { t } = useTranslate();
+
   return (
     <Stack p={3} sx={{ bgcolor: "dark.2", border: "1px solid", borderColor: "dark.3", borderRadius: 2 }} spacing={3}>
       <Typography variant="h4-semi-bold">{t("coinreportsingleview.inDepthReport")}</Typography>
