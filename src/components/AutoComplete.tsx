@@ -21,7 +21,7 @@ export const AutoComplete = (props: AutoCompleteProps) => {
     getOptionLabel,
     renderInput,
     renderValue,
-    multiple = true,
+    multiple,
     value,
     placeholder,
     options,
@@ -31,18 +31,19 @@ export const AutoComplete = (props: AutoCompleteProps) => {
 
   return (
     <Stack gap={1}>
-      <InputLabel
-        sx={{
-          color: "common.white",
-        }}
-      >
-        {title}
-      </InputLabel>
+      {title && (
+        <InputLabel
+          sx={{
+            color: "common.white",
+          }}
+        >
+          {title}
+        </InputLabel>
+      )}
       <Autocomplete
-        openOnFocus
         multiple={multiple}
         fullWidth
-        // value={value}
+        value={value}
         options={options}
         onChange={(event, newValue, reason) => {
           if (
@@ -55,13 +56,10 @@ export const AutoComplete = (props: AutoCompleteProps) => {
           onChange(newValue);
         }}
         renderTags={() => null}
-        noOptionsText="No labels"
-        disableCloseOnSelect
         getOptionLabel={getOptionLabel ? getOptionLabel : (option) => option.label}
         slotProps={{
           paper: {
             sx: {
-              p: 0,
               boxShadow: "0px 4px 16px 0px rgba(10, 10, 17, 0.08)",
               bgcolor: "dark.3",
               color: "common.white",
@@ -86,9 +84,11 @@ export const AutoComplete = (props: AutoCompleteProps) => {
         {...rest}
       />
 
-      <Stack direction="row" gap={1} flexWrap="wrap">
-        {value?.map((label: any) => renderValue?.(label))}
-      </Stack>
+      {multiple && (
+        <Stack direction="row" gap={1} flexWrap="wrap">
+          {value?.map((label: any) => renderValue?.(label))}
+        </Stack>
+      )}
     </Stack>
   );
 };

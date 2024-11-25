@@ -1,52 +1,55 @@
+import { Icon } from "@/components/icons";
 import { useIsMobile } from "@/hooks/use-responsive";
 import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
 import { useAppSelector } from "@/lib/hooks";
-import { Box, Stack } from "@mui/material";
-import type { SxProps } from "@mui/material";
+import { Box, menuClasses, Stack } from "@mui/material";
 import type { DataGridProps } from "@mui/x-data-grid";
 import { DataGrid } from "@mui/x-data-grid";
 import type { ReactNode } from "react";
 
 interface DataGridCompProps extends DataGridProps {
-  leftHeader?: ReactNode;
-  rightHeader?: ReactNode;
-  headerSx?: SxProps;
+  header?: ReactNode;
+  emptyText?: ReactNode;
 }
 
+const SortIcon = () => <Icon name="Arrow-Sort" />;
+
 const DataGridMui = (props: DataGridCompProps) => {
-  const { columns, rows, leftHeader, rightHeader, headerSx, ...rest } = props;
+  const { columns, rows, header, emptyText, slots, ...rest } = props;
   const isMobile = useIsMobile();
   const isCollapsed = useAppSelector(isSidebarCollapsed);
+
   return (
     <Stack
-      maxWidth={isMobile ? "calc(100vw - 48px)" : `calc(100vw - ${isCollapsed ? "104px" : "248px"})`}
+      width={isMobile ? "calc(100vw - 48px)" : `calc(100vw - ${isCollapsed ? "104px" : "280px"})`}
       border="1.5px solid"
       borderColor="dark.3"
       alignItems="flex-start"
       borderRadius={1.5}
     >
+      {header}
       <Box
-        display="flex"
-        justifyContent="space-between"
-        alignItems="center"
-        px={2.5}
-        py={3}
         width="100%"
-        flexDirection={isMobile ? "column" : "row"}
-        sx={headerSx}
+        sx={{
+          [`& .${menuClasses.paper}`]: {
+            bgcolor: "dark.3",
+            color: "common.white",
+          },
+        }}
       >
-        {leftHeader}
-        {rightHeader}
-      </Box>
-      <Box width="100%">
         <DataGrid
           rows={rows}
           columns={columns}
           rowHeight={56}
           columnHeaderHeight={40}
-          hideFooter
-          hideFooterPagination
           disableColumnMenu
+          pagination
+          slots={{
+            columnHeaderSortIcon: SortIcon,
+            columnSortedAscendingIcon: SortIcon,
+            columnSortedDescendingIcon: SortIcon,
+            ...slots,
+          }}
           {...rest}
         />
       </Box>

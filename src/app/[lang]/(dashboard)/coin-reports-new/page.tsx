@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material";
 import type { Metadata } from "next";
 import Notice from "./_sections/Notice";
-import Table from "./_sections/Table";
+import Table from "./_sections/table";
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import { getQueryClient } from "@app/_providers/customQueryClient";
 import { prefetchUseContentServiceContentCoinReportLangQuery } from "@minecraft/queries/prefetch";
