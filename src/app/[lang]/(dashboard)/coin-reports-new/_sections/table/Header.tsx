@@ -83,7 +83,7 @@ export const Header = ({
             }}
             onClick={onFilterClick}
           >
-            <Icon name="Filter" color="grey.light" />
+            <Icon name="Filter" />
           </IconButton>
         )}
       </Box>
@@ -91,7 +91,7 @@ export const Header = ({
       <Stack direction={{ xs: "column", md: "row-reverse" }} width={{ xs: "100%", md: "unset" }} spacing={2}>
         {!isMobile && (
           <Button
-            variant="outlined"
+            color="info"
             startIcon={<Icon name="Filter" />}
             sx={{ [`& .${buttonClasses.startIcon}`]: { mr: 2 } }}
             onClick={onFilterClick}
@@ -103,7 +103,13 @@ export const Header = ({
         <TextField
           placeholder="Search"
           size="small"
-          InputProps={{ startAdornment: <Icon name="Search" /> }}
+          InputProps={{
+            startAdornment: (
+              <Box sx={{ path: { stroke: (theme) => theme.palette.grey.dark } }}>
+                <Icon name="Search" />
+              </Box>
+            ),
+          }}
           fullWidth
           onChange={(event) => setSearchValue(event.target.value)}
           sx={{
@@ -148,7 +154,9 @@ export const Header = ({
                       {time.label}
                     </Typography>
                   </Box>
-                  {index !== timeFrameOptions?.length - 1 && <Box width={4} height={4} bgcolor="dark.3" />}
+                  {index !== timeFrameOptions?.length - 1 && (
+                    <Box sx={{ width: "4px", height: "4px", borderRadius: "50%", bgcolor: "grey.light" }} />
+                  )}
                 </Fragment>
               ))}
             </Box>

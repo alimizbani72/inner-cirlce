@@ -43,5 +43,5 @@ const planKeys = Object.keys(plans) as Array<keyof typeof plans>;
 export const packageOptions = planKeys.map((plan) => ({
   label: plan,
   value: plan,
-  img: plans[plan].rive,
+  img: plans[plan].image,
 }));

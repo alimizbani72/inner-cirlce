@@ -1,6 +1,6 @@
 import { AutoComplete } from "@/components/AutoComplete";
 import CustomDialog from "@/components/CustomDialog";
-import RiveComp from "@/components/RiveComp";
+import Image from "@/components/Image";
 import { Icon } from "@/components/icons";
 import { useTranslate } from "@/locales";
 import { toTitleCase } from "@/utils/change-case";
@@ -54,7 +54,7 @@ const FilterValue = ({
     borderRadius={0.75}
     border="1.5px solid"
     borderColor="dark.3"
-    px={0.5}
+    p={0.5}
   >
     {children}
     <Typography sx={sx} variant="p2-medium">
@@ -81,16 +81,16 @@ export const FilterModal = ({ onClose, onSubmit, filters }: FilterModalProps) =>
   const { data: signalsData } = useCoinReportServiceCoinReportSignalsQuery();
 
   const categoryOptions = useMemo(
-    () => categoriesData?.data?.map((item) => ({ label: item.slug, value: item.slug })) || [],
+    () => categoriesData?.data?.map((item) => ({ label: toTitleCase(item.slug as string), value: item.slug })) || [],
     [categoriesData]
   );
 
   const signalOptions = useMemo(
     () =>
       signalsData?.data?.map((item) => ({
-        label: item.signal,
+        label: toTitleCase(item.signal as string),
         value: item.signal,
-        color: signalColor[item.signal as keyof typeof signalColor],
+        color: signalColor[item.signal as keyof typeof signalColor] ?? "white",
       })) || [],
     [signalsData]
   );
@@ -172,6 +172,14 @@ export const FilterModal = ({ onClose, onSubmit, filters }: FilterModalProps) =>
             onChange={(val) => setPackages(val)}
             value={packages}
             options={packageOptions}
+            renderOption={(props, option) => (
+              <MenuItem {...props} key={option.value} value={option.value}>
+                <Stack direction="row" spacing={2} alignItems="center">
+                  <Image src={option.img} alt={option.label} style={{ width: "24px", height: "24px" }} />
+                  <Typography variant="p2-medium">{option.label}</Typography>
+                </Stack>
+              </MenuItem>
+            )}
             placeholder={t("coinReportTable.selectPackage")}
             title={t("coinReportTable.package")}
             renderValue={(packageVal) => (
@@ -180,7 +188,7 @@ export const FilterModal = ({ onClose, onSubmit, filters }: FilterModalProps) =>
                 label={packageVal.label}
                 onRemove={() => setPackages((prev) => prev.filter((item) => item.value !== packageVal.value))}
               >
-                <RiveComp width={24} height={24} src={packageVal.img} />
+                <Image width={24} height={24} src={packageVal.img} />
               </FilterValue>
             )}
           />
