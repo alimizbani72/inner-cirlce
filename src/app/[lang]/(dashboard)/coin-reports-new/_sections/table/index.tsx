@@ -109,10 +109,14 @@ const CoinReportTable = () => {
     >
       <Stack pl={{ md: 4, xs: 3 }} pb={3} alignItems="flex-start" maxWidth="100vw">
         <Stack pr={{ md: 4, xs: 3 }}>
-          <Toggle setValue={setValue} buttons={buttons} value={value} />
+          <Toggle
+            setValue={setValue}
+            buttons={buttons}
+            value={value}
+            sx={{ px: { xs: "20px !important", md: "24px !important" } }}
+          />
         </Stack>
       </Stack>
-
       <Stack
         pl={{ md: 4, xs: 3 }}
         pb={3}
@@ -137,6 +141,12 @@ const CoinReportTable = () => {
               },
             },
           }),
+
+          "> div": {
+            borderBottomRightRadius: { xs: undefined, md: 0 },
+            borderTopRightRadius: { xs: undefined, md: 0 },
+            borderRight: { xs: undefined, md: 0 },
+          },
         }}
       >
         <DataGrid

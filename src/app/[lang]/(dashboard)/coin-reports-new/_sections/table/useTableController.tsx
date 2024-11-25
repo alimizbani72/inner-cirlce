@@ -9,10 +9,11 @@ import {
   useCoinReportServiceCoinReportSlugFavoriteCreateMutation,
   useCoinReportServiceCoinReportSlugFavoriteDeleteMutation,
 } from "@minecraft/queries";
+import { useIsMobile } from "@/hooks/use-responsive";
 
 export const useTableController = () => {
   const { t } = useTranslate();
-
+  const isMobile = useIsMobile();
   const { mutateAsync: mutateAddFavorite } = useCoinReportServiceCoinReportSlugFavoriteCreateMutation();
   const { mutateAsync: mutateRemoveFavorite } = useCoinReportServiceCoinReportSlugFavoriteDeleteMutation();
 
@@ -31,7 +32,7 @@ export const useTableController = () => {
   const renderFavoriteIcon = (params: GridRenderCellParams) => (
     <IconButton
       sx={{
-        visibility: params?.row?.is_favorite ? "visible" : "hidden",
+        visibility: isMobile || params?.row?.is_favorite ? "visible" : "hidden",
         cursor: "pointer",
         p: 0,
       }}
@@ -52,6 +53,10 @@ export const useTableController = () => {
         <Box
           sx={{
             display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: 24,
+            height: 24,
             background: "var(--Gradients-Gradient-Sky, radial-gradient(50% 50% at 50% 50%, #FFF 0%, #CDDFF2 100%))",
             borderRadius: "50%",
             path: { stroke: (theme) => theme.palette.dark[1] },
@@ -125,7 +130,12 @@ export const useTableController = () => {
         filterable: false,
         minWidth: 250,
         renderCell: (params) => (
-          <Stack direction="row" alignItems="center" gap={1} sx={{ "&:hover > button": { visibility: "visible" } }}>
+          <Stack
+            direction="row"
+            alignItems="center"
+            gap={1}
+            sx={{ "&:hover > button": { visibility: !isMobile ? "visible" : "unset" } }}
+          >
             {renderFavoriteIcon(params)}
             {renderLogo(params)}
             {renderTextWithSymbol(params)}

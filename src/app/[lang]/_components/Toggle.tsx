@@ -1,6 +1,7 @@
 "use client";
 
-import { ToggleButton, ToggleButtonGroup } from "@mui/material";
+import type { Theme } from "@mui/material";
+import { type SxProps, ToggleButton, ToggleButtonGroup } from "@mui/material";
 import type React from "react";
 import type { FC } from "react";
 
@@ -10,9 +11,10 @@ interface ToggleProps {
   setValue: (value: any) => void;
   width?: string;
   size?: "small" | "large" | "medium";
+  sx?: SxProps<Theme>;
 }
 
-const Toggle: FC<ToggleProps> = ({ value, buttons, setValue, width, size }) => {
+const Toggle: FC<ToggleProps> = ({ value, buttons, setValue, width, size, sx }) => {
   const handleChange = (_event: any, newValue: any) => {
     if (newValue) {
       setValue(newValue);
@@ -22,7 +24,7 @@ const Toggle: FC<ToggleProps> = ({ value, buttons, setValue, width, size }) => {
   return (
     <ToggleButtonGroup value={value} sx={{ width: width }} size={size} onChange={handleChange}>
       {buttons.map((button) => (
-        <ToggleButton sx={{ whiteSpace: "nowrap", width: width }} key={button.value} value={button.value}>
+        <ToggleButton sx={{ whiteSpace: "nowrap", width: width, ...sx }} key={button.value} value={button.value}>
           {button.label}
         </ToggleButton>
       ))}

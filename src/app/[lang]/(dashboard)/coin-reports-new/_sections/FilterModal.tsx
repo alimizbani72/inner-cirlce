@@ -3,6 +3,7 @@ import CustomDialog from "@/components/CustomDialog";
 import RiveComp from "@/components/RiveComp";
 import { Icon } from "@/components/icons";
 import { useTranslate } from "@/locales";
+import { toTitleCase } from "@/utils/change-case";
 import {
   SortOptions,
   packageOptions,
@@ -26,7 +27,6 @@ import {
   DialogContent,
   DialogTitle,
   IconButton,
-  InputLabel,
   MenuItem,
   Select,
   Stack,
@@ -52,16 +52,16 @@ const FilterValue = ({
     alignItems="center"
     gap={0.5}
     borderRadius={0.75}
-    border="1px solid"
+    border="1.5px solid"
     borderColor="dark.3"
     px={0.5}
   >
     {children}
     <Typography sx={sx} variant="p2-medium">
-      {label}
+      {toTitleCase(label as string)}
     </Typography>
-    <Box sx={{ cursor: "pointer" }} onClick={onRemove}>
-      <Icon name="Close" />
+    <Box sx={{ cursor: "pointer", path: { stroke: (theme) => theme.palette.grey.light } }} onClick={onRemove}>
+      <Icon name="Close" size={16} />
     </Box>
   </Box>
 );
@@ -118,42 +118,50 @@ export const FilterModal = ({ onClose, onSubmit, filters }: FilterModalProps) =>
       </DialogTitle>
       <DialogContent>
         <Box display="flex" justifyContent="space-between" gap={3} flexDirection={{ xs: "column", md: "row" }}>
-          <Stack spacing={0.5} flex={1}>
-            <InputLabel
-              sx={{
-                color: "common.white",
-              }}
-            >
+          <Stack width={"100%"} spacing={1}>
+            <Typography variant="caption-semi-bold" textTransform={"uppercase"}>
               {t("coinReportTable.sortBy")}
-            </InputLabel>
+            </Typography>
             <Select
+              MenuProps={{
+                PaperProps: {
+                  sx: {
+                    boxShadow: "none",
+                  },
+                },
+              }}
               value={formData?.sorts}
               onChange={(event) => handleSaveData("sorts", event.target.value)}
-              label={t("coinReportTable.sortBy")}
               fullWidth
               defaultValue={"newly_added"}
             >
               {SortOptions.map((sort) => (
-                <MenuItem value={sort.value}>{sort.label}</MenuItem>
+                <MenuItem value={sort.value} key={sort.value}>
+                  {sort.label}
+                </MenuItem>
               ))}
             </Select>
           </Stack>
-          <Stack spacing={0.5} flex={1}>
-            <InputLabel
-              sx={{
-                color: "common.white",
-              }}
-            >
+          <Stack width={"100%"} spacing={1}>
+            <Typography variant="caption-semi-bold" textTransform={"uppercase"}>
               {t("coinReportTable.timeFrame")}
-            </InputLabel>
+            </Typography>
             <Select
+              MenuProps={{
+                PaperProps: {
+                  sx: {
+                    boxShadow: "none",
+                  },
+                },
+              }}
               value={formData?.timeFrame}
               onChange={(event) => handleSaveData("timeFrame", event.target.value)}
-              label={t("coinReportTable.timeFrame")}
               fullWidth
             >
               {timeFrameOptions?.map((time) => (
-                <MenuItem value={time.value}>{time.label}</MenuItem>
+                <MenuItem value={time.value} key={time.value}>
+                  {time.label}
+                </MenuItem>
               ))}
             </Select>
           </Stack>
@@ -168,6 +176,7 @@ export const FilterModal = ({ onClose, onSubmit, filters }: FilterModalProps) =>
             title={t("coinReportTable.package")}
             renderValue={(packageVal) => (
               <FilterValue
+                key={packageVal.value}
                 label={packageVal.label}
                 onRemove={() => setPackages((prev) => prev.filter((item) => item.value !== packageVal.value))}
               >
@@ -185,6 +194,7 @@ export const FilterModal = ({ onClose, onSubmit, filters }: FilterModalProps) =>
             fullWidth
             renderValue={(signalVal) => (
               <FilterValue
+                key={signalVal.value}
                 label={signalVal.label}
                 onRemove={() => setSignals((prev) => prev.filter((item) => item.value !== signalVal.value))}
                 sx={{ color: signalVal.color }}
@@ -201,6 +211,7 @@ export const FilterModal = ({ onClose, onSubmit, filters }: FilterModalProps) =>
             fullWidth
             renderValue={(categoryVal) => (
               <FilterValue
+                key={categoryVal.value}
                 label={categoryVal.label}
                 onRemove={() => setCategories((prev) => prev.filter((item) => item.value !== categoryVal.value))}
               />
@@ -210,10 +221,12 @@ export const FilterModal = ({ onClose, onSubmit, filters }: FilterModalProps) =>
       </DialogContent>
       <DialogActions>
         <Box display="flex" justifyContent="space-between" width="100%">
-          <Button color="info" onClick={onClose}>
+          <Button color="info" onClick={onClose} size="large">
             {t("coinReportTable.clearAll")}
           </Button>
-          <Button onClick={handleSubmit}>{t("coinReportTable.submitFilter")}</Button>
+          <Button onClick={handleSubmit} size="large">
+            {t("coinReportTable.submitFilter")}
+          </Button>
         </Box>
       </DialogActions>
     </CustomDialog>

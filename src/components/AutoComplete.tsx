@@ -30,11 +30,13 @@ export const AutoComplete = (props: AutoCompleteProps) => {
   } = props;
 
   return (
-    <Stack gap={1}>
+    <Stack>
       {title && (
         <InputLabel
           sx={{
-            color: "common.white",
+            typography: "caption-semi-bold",
+            textTransform: "uppercase",
+            color: "white",
           }}
         >
           {title}
@@ -85,7 +87,7 @@ export const AutoComplete = (props: AutoCompleteProps) => {
       />
 
       {multiple && (
-        <Stack direction="row" gap={1} flexWrap="wrap">
+        <Stack direction="row" pt={1} gap={1} flexWrap="wrap">
           {value?.map((label: any) => renderValue?.(label))}
         </Stack>
       )}

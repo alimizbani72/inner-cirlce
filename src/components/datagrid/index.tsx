@@ -35,6 +35,9 @@ const DataGridMui = (props: DataGridCompProps) => {
             bgcolor: "dark.3",
             color: "common.white",
           },
+          "& .MuiDataGrid-footerContainer": {
+            borderTop: "none",
+          },
         }}
       >
         <DataGrid

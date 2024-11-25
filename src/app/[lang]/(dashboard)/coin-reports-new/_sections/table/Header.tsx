@@ -11,7 +11,7 @@ import {
   buttonClasses,
   outlinedInputClasses,
 } from "@mui/material";
-import { useMemo, type Dispatch, type SetStateAction } from "react";
+import { Fragment, useMemo, type Dispatch, type SetStateAction } from "react";
 import { defaultValueSort, timeFrameOptions } from "../consts";
 import type { FilterFormDataType } from "../types";
 import CountDownUpdateTime from "./CountDownUpdateTime";
@@ -110,6 +110,7 @@ export const Header = ({
             width: { xs: "100%", md: 140 },
             [`& .${outlinedInputClasses.root}`]: {
               borderRadius: "30px !important",
+              bgcolor: "dark.3",
             },
           }}
         />
@@ -125,9 +126,8 @@ export const Header = ({
           >
             <Box display="flex" alignItems="center" gap={1} p={1} bgcolor="dark.3" borderRadius={2.5}>
               {timeFrameOptions?.map((time, index) => (
-                <>
+                <Fragment key={time.value}>
                   <Box
-                    key={time.value}
                     sx={{
                       ...(filters?.timeFrame === time.value && {
                         bgcolor: "blue.dark",
@@ -149,7 +149,7 @@ export const Header = ({
                     </Typography>
                   </Box>
                   {index !== timeFrameOptions?.length - 1 && <Box width={4} height={4} bgcolor="dark.3" />}
-                </>
+                </Fragment>
               ))}
             </Box>
 
