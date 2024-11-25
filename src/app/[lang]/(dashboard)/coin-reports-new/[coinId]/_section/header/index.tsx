@@ -1,7 +1,6 @@
 "use client";
 
 import { Icon } from "@/components/icons";
-import RiveComp from "@/components/RiveComp";
 import { plans } from "@/configs/plans";
 import { Box, Stack, Typography } from "@mui/material";
 import Entry from "./Entry";
@@ -68,12 +67,7 @@ const Header = ({ logo, name, symbol, plan_type, needsUpgrade, ee_signal }: Prop
 
           <Box sx={{ width: "4px", height: "4px", borderRadius: "50%", bgcolor: "dark.3" }} />
           <Stack direction={"row"} alignItems={"center"} spacing={1}>
-            {plan_type && (
-              <Box sx={{ aspectRatio: 1 }}>
-                <RiveComp src={plans[plan_type as keyof typeof plans]?.rive} width={32} height={32} />
-              </Box>
-            )}
-
+            <Image src={plans[plan_type as keyof typeof plans]?.image} width={32} height={32} />
             {needsUpgrade && <Icon name="lock" size={20} />}
           </Stack>
         </Stack>

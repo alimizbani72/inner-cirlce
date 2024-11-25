@@ -12,10 +12,13 @@ import TableOfContent from "./tableContent";
 import { useCoinReportServiceCoinReportSlugQuery } from "@minecraft/queries";
 import { useParams } from "next/navigation";
 import Loading from "@/components/Loading";
-import Empty from "@/components/Empty";
 import type { SingleCoinReports } from "@minecraft/requests";
-
+import dynamic from "next/dynamic";
+import Empty from "@/components/Empty";
+import { useIsMobile } from "@/hooks/use-responsive";
+const TradingViewWidget = dynamic(() => import("./tradingview/TradingViewWidget"), { ssr: false });
 const CoinReportDetailSection = () => {
+  const isMobile = useIsMobile();
   const { coinId } = useParams();
   const { data, isPending, isError } = useCoinReportServiceCoinReportSlugQuery({ slug: coinId as string });
   const userInfo = useAppSelector(selectUser);
@@ -40,6 +43,7 @@ const CoinReportDetailSection = () => {
 
   return (
     <Stack spacing={3} p={4} pb={0} height={"100%"}>
+      {!isMobile && !needsUpgrade && <TradingViewWidget rawSymbol={data.data?.symbol!} />}
       <Header
         logo={data?.data?.logo}
         ee_signal={data?.data?.ee_signal}
