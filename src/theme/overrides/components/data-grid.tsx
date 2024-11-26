@@ -70,14 +70,23 @@ export function dataGrid(theme: Theme) {
         columnHeader: {
           color: theme.palette.grey.light,
           ...theme.typography["caption-medium"],
+          "&:focus-within": {
+            outline: "unset",
+          },
         },
         cell: {
           color: theme.palette.grey.light,
           display: "flex",
           alignItems: "center",
+          "&:focus-within": {
+            outline: "unset",
+          },
         },
         row: {
           "--rowBorderColor": theme.palette.dark[3],
+          "&:hover": {
+            backgroundColor: theme.palette.dark[3],
+          },
         },
         iconButtonContainer: {
           [`& .${buttonBaseClasses.root}`]: {

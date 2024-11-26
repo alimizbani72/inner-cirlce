@@ -65,6 +65,7 @@ export const AutoComplete = (props: AutoCompleteProps) => {
               boxShadow: "0px 4px 16px 0px rgba(10, 10, 17, 0.08)",
               bgcolor: "dark.3",
               color: "common.white",
+              my: 0.75,
             },
           },
         }}

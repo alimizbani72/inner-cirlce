@@ -83,3 +83,5 @@ export const packageOptions = planKeys.map((plan) => ({
   value: plan,
   img: plans[plan].image,
 }));
+
+export const TOTAL_SECONDS = 3600;

@@ -4,12 +4,7 @@ import Image from "@/components/Image";
 import { Icon } from "@/components/icons";
 import { useTranslate } from "@/locales";
 import { toTitleCase } from "@/utils/change-case";
-import {
-  SortOptions,
-  packageOptions,
-  signalsList,
-  timeFrameOptions,
-} from "@dashboard/coin-reports-new/_sections/consts";
+import { packageOptions, signalsList } from "@dashboard/coin-reports-new/_sections/consts";
 import type {
   FilterFormDataType,
   ItemType,
@@ -25,7 +20,6 @@ import {
   DialogTitle,
   IconButton,
   MenuItem,
-  Select,
   Stack,
   type SxProps,
   Typography,
@@ -69,10 +63,6 @@ export const FilterModal = ({ onClose, onSubmit, filters }: FilterModalProps) =>
   const [packages, setPackages] = useState<PackageType[]>(filters?.packages || []);
   const [signals, setSignals] = useState<SignalType[]>(filters?.signals || []);
   const [categories, setCategories] = useState<ItemType[]>(filters?.categories || []);
-  const [formData, setFormData] = useState<Pick<FilterModalProps["filters"], "sorts" | "timeFrame">>({
-    sorts: filters?.sorts,
-    timeFrame: filters?.timeFrame,
-  });
 
   const { data: categoriesData } = useCoinReportServiceCoinReportCategoriesQuery();
 
@@ -81,16 +71,12 @@ export const FilterModal = ({ onClose, onSubmit, filters }: FilterModalProps) =>
     [categoriesData]
   );
 
-  const handleSaveData = (name: keyof FilterModalProps["filters"], value: any) => {
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
   const handleSubmit = () => {
     onSubmit({
+      ...filters,
       packages: packages?.length ? packages : undefined,
       signals: signals?.length ? signals : undefined,
       categories: categories?.length ? categories : undefined,
-      ...formData,
     });
   };
 
@@ -98,10 +84,6 @@ export const FilterModal = ({ onClose, onSubmit, filters }: FilterModalProps) =>
     setCategories([]);
     setSignals([]);
     setPackages([]);
-    setFormData({
-      sorts: "newly_added",
-      timeFrame: "1d",
-    });
   };
 
   return (
@@ -113,55 +95,6 @@ export const FilterModal = ({ onClose, onSubmit, filters }: FilterModalProps) =>
         </IconButton>
       </DialogTitle>
       <DialogContent>
-        <Box display="flex" justifyContent="space-between" gap={3} flexDirection={{ xs: "column", md: "row" }}>
-          <Stack width={"100%"} spacing={1}>
-            <Typography variant="caption-semi-bold" textTransform={"uppercase"}>
-              {t("coinReportTable.sortBy")}
-            </Typography>
-            <Select
-              MenuProps={{
-                PaperProps: {
-                  sx: {
-                    boxShadow: "none",
-                  },
-                },
-              }}
-              value={formData?.sorts}
-              onChange={(event) => handleSaveData("sorts", event.target.value)}
-              fullWidth
-              defaultValue={"newly_added"}
-            >
-              {SortOptions.map((sort) => (
-                <MenuItem value={sort.value} key={sort.value}>
-                  {sort.label}
-                </MenuItem>
-              ))}
-            </Select>
-          </Stack>
-          <Stack width={"100%"} spacing={1}>
-            <Typography variant="caption-semi-bold" textTransform={"uppercase"}>
-              {t("coinReportTable.timeFrame")}
-            </Typography>
-            <Select
-              MenuProps={{
-                PaperProps: {
-                  sx: {
-                    boxShadow: "none",
-                  },
-                },
-              }}
-              value={formData?.timeFrame}
-              onChange={(event) => handleSaveData("timeFrame", event.target.value)}
-              fullWidth
-            >
-              {timeFrameOptions?.map((time) => (
-                <MenuItem value={time.value} key={time.value}>
-                  {time.label}
-                </MenuItem>
-              ))}
-            </Select>
-          </Stack>
-        </Box>
         <Stack spacing={3} mt={3}>
           <AutoComplete
             multiple

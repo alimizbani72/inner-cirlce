@@ -1,6 +1,5 @@
 import Image from "@/components/Image";
 import { Icon } from "@/components/icons";
-import { useIsMobile } from "@/hooks/use-responsive";
 import { useTranslate } from "@/locales";
 import {
   useCoinReportServiceCoinReportSlugFavoriteCreateMutation,
@@ -9,11 +8,10 @@ import {
 import { Box, IconButton, Stack, Typography } from "@mui/material";
 import type { GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
 import { useMemo } from "react";
-import { packageOptions, riskLevelColor, signalColor } from "../consts";
+import { packageOptions, riskLevelColor, signalsList } from "../consts";
 
 export const useTableController = () => {
   const { t } = useTranslate();
-  const isMobile = useIsMobile();
   const { mutateAsync: mutateAddFavorite } = useCoinReportServiceCoinReportSlugFavoriteCreateMutation();
   const { mutateAsync: mutateRemoveFavorite } = useCoinReportServiceCoinReportSlugFavoriteDeleteMutation();
 
@@ -32,14 +30,17 @@ export const useTableController = () => {
   const renderFavoriteIcon = (params: GridRenderCellParams) => (
     <IconButton
       sx={{
-        visibility: isMobile || params?.row?.is_favorite ? "visible" : "hidden",
+        visibility: { xs: "visible", md: params?.row?.is_favorite ? "visible" : "hidden" },
         cursor: "pointer",
         p: 0,
       }}
       disableFocusRipple
       disableRipple
       disableTouchRipple
-      onClick={() => (params.value ? toggleFavorite(params.value, params) : undefined)}
+      onClick={(event) => {
+        event?.stopPropagation();
+        params.value ? toggleFavorite(params.row.slug, params) : undefined;
+      }}
     >
       {params.value && <Icon name={params?.row?.is_favorite ? "Star-color--full" : "Star-grey"} />}
     </IconButton>
@@ -72,7 +73,7 @@ export const useTableController = () => {
     <Typography variant="p2-medium" display="flex" alignItems="center" gap={1}>
       {params.value || "••••••••"}
       <Typography variant="p2-medium" color="grey.light">
-        {params.value ? params.row.symbol : "••••"}
+        {params.value ? params.row.symbol?.toLocaleUpperCase() : "••••"}
       </Typography>
     </Typography>
   );
@@ -93,12 +94,12 @@ export const useTableController = () => {
                     "& path": { stroke: theme.palette.success.main },
                   }
                 : {
-                    color: "danger.main",
+                    color: params.row.cmr_change_percentage === 0 ? "common.white" : "danger.main",
                     "& path": { stroke: theme.palette.danger.main },
                   }),
             })}
           >
-            <Icon name={isPositive ? "Arrow-up" : "Arrow-down"} />
+            {params.row.cmr_change_percentage !== 0 && <Icon name={isPositive ? "Arrow-up" : "Arrow-down"} />}
             {params.row.cmr_change_percentage}
           </Typography>
         )}
@@ -112,14 +113,14 @@ export const useTableController = () => {
     </Typography>
   );
 
-  const renderSignalColor = (params: GridRenderCellParams) => (
-    <Typography
-      variant="p2-medium"
-      color={signalColor[params.value?.toLocaleLowerCase().replaceAll(" ", "_") as keyof typeof signalColor]}
-    >
-      {params.value}
-    </Typography>
-  );
+  const renderSignalColor = (params: GridRenderCellParams) => {
+    const currentSignal = signalsList.find((signal) => signal.value === params.value);
+    return (
+      <Typography variant="p2-medium" color={currentSignal?.color}>
+        {currentSignal?.label}
+      </Typography>
+    );
+  };
 
   const renderRiskLevel = (params: GridRenderCellParams) => (
     <Typography
@@ -136,14 +137,9 @@ export const useTableController = () => {
         headerName: t("coinReportTabTable.name"),
         field: "name",
         filterable: false,
-        minWidth: 250,
+        minWidth: 300,
         renderCell: (params) => (
-          <Stack
-            direction="row"
-            alignItems="center"
-            gap={1}
-            sx={{ "&:hover > button": { visibility: !isMobile ? "visible" : "unset" } }}
-          >
+          <Stack direction="row" alignItems="center" gap={1} sx={{ "&:hover > button": { visibility: "visible" } }}>
             {renderFavoriteIcon(params)}
             {renderLogo(params)}
             {renderTextWithSymbol(params)}
@@ -168,7 +164,8 @@ export const useTableController = () => {
       {
         headerName: t("coinReportTabTable.category"),
         field: "category",
-        minWidth: 150,
+        minWidth: 200,
+        flex: 1,
         renderCell: (params) => (
           <Typography variant="p2-medium">
             {params.value} {!params.row.name && "••••••••"}
@@ -184,14 +181,12 @@ export const useTableController = () => {
       {
         headerName: t("coinReportTabTable.eeSignal"),
         field: "signal",
-        minWidth: 130,
         sortable: false,
         renderCell: renderSignalColor,
       },
       {
         headerName: t("coinReportTabTable.potentialMultiplicator"),
         field: "potential_multiplier",
-        minWidth: 130,
         sortable: false,
         renderCell: (params: GridRenderCellParams) => (
           <Typography variant="p2-medium">
@@ -203,6 +198,7 @@ export const useTableController = () => {
         headerName: t("coinReportTabTable.rtl"),
         field: "rtl",
         sortable: false,
+        minWidth: 100,
         renderCell: (params: GridRenderCellParams) => (
           <Typography variant="p2-medium">
             {params.value ? `${params.value?.toString()?.slice(0, 5)}%` : "••••••••"}
@@ -212,15 +208,15 @@ export const useTableController = () => {
       {
         headerName: t("coinReportTabTable.riskLevel"),
         field: "risk_level",
-        minWidth: 130,
         sortable: false,
         renderCell: renderRiskLevel,
       },
       {
         headerName: t("coinReportTabTable.currentPrice"),
         field: "current_price",
-        minWidth: 150,
         sortable: false,
+        minWidth: 150,
+        flex: 1,
         renderCell: renderText,
       },
     ],

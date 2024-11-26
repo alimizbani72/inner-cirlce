@@ -4,7 +4,7 @@ import { DataGrid } from "@/components/datagrid";
 import { useIsMobile } from "@/hooks/use-responsive";
 import Toggle from "@app/_components/Toggle";
 import { Stack, Typography } from "@mui/material";
-import { type GridSortModel, useGridApiRef, gridClasses } from "@mui/x-data-grid";
+import { type GridSortModel, useGridApiRef, gridClasses, type GridRowParams } from "@mui/x-data-grid";
 import { useDebounce } from "@/hooks/use-debounce";
 import { defaultValueSort } from "@dashboard/coin-reports-new/_sections/consts";
 import type { FilterFormDataType } from "@dashboard/coin-reports-new/_sections/types.d";
@@ -15,6 +15,7 @@ import { Header } from "./Header";
 import { useTableController } from "./useTableController";
 import { useRouter } from "next/navigation";
 import { FilterModal } from "@dashboard/coin-reports-new/_sections/FilterModal";
+import UpgradeModal from "@dashboard/coin-reports-new/[coinId]/_section/UpgradeModal";
 
 const convertFilterData = (data: FilterFormDataType) => ({
   filters: {
@@ -44,7 +45,8 @@ const CoinReportTable = () => {
   const [searchValue, setSearchValue] = useState("");
   const [openFilterModal, setOpenFilterModal] = useState(false);
   const [filters, setFilters] = useState<FilterFormDataType>({ timeFrame: "1d", sorts: defaultValueSort });
-  const [page, setPage] = useState({ pageNumber: 0, pageSize: 15 });
+  const [page, setPage] = useState({ pageNumber: 0, pageSize: 50 });
+  const [openUpgradeModal, setOpenUpgradeModal] = useState(false);
 
   const isMobile = useIsMobile();
   const debouncedSearch = useDebounce(searchValue, 500);
@@ -63,6 +65,7 @@ const CoinReportTable = () => {
     refetch: refetchAll,
     isFetching,
   } = useCoinReportServiceCoinReportQuery({ opts }, undefined, { enabled: false });
+
   const {
     data: favoriteData,
     refetch: refetchFavorite,
@@ -85,7 +88,10 @@ const CoinReportTable = () => {
   const finalData = useMemo(() => {
     const data = value === "favorites" ? favoriteData : allData;
 
-    return { data: data?.data?.map((d, index) => ({ ...d, id: `${index}-${d?.plan}` })), meta: data?.meta };
+    return {
+      data: data?.data?.map((d, index) => ({ ...d, id: `${index}-${d?.plan}` })),
+      meta: data?.meta,
+    };
   }, [allData, favoriteData]);
 
   const handleSortChange = useCallback((model: GridSortModel) => {
@@ -112,6 +118,25 @@ const CoinReportTable = () => {
     []
   );
 
+  useEffect(() => {
+    setTimeout(() => {
+      apiRef.current.autosizeColumns({
+        includeHeaders: true,
+        includeOutliers: true,
+        outliersFactor: 1.5,
+        expand: true,
+      });
+    }, 2000);
+  }, []);
+
+  const handleRowClick = (api: GridRowParams<any>) => {
+    if (api?.row?.name) {
+      router.push(`/coin-reports-new/${api.row.slug}`);
+    } else {
+      setOpenUpgradeModal(true);
+    }
+  };
+
   return (
     <Stack
       sx={{
@@ -134,23 +159,27 @@ const CoinReportTable = () => {
       </Stack>
       <Stack
         pl={{ md: 4, xs: 3 }}
-        pb={3}
         sx={{
           ...(!isMobile && {
             [`& .${gridClasses.columnHeaders}`]: {
               [`& .${gridClasses.columnHeader}[data-field=name]`]: {
                 position: "sticky",
                 zIndex: 4,
-                width: 250,
+                minWidth: 300,
                 left: "0 !important",
                 bgcolor: "dark.3",
               },
             },
             [`& .${gridClasses.row}`]: {
+              "&:hover": {
+                [`& .${gridClasses.cell}[data-field=name]`]: {
+                  bgcolor: "dark.3",
+                },
+              },
               [`& .${gridClasses.cell}[data-field=name]`]: {
                 position: "sticky",
                 zIndex: 4,
-                width: 250,
+                minWidth: 300,
                 left: "0 !important",
                 bgcolor: "dark.1",
               },
@@ -178,13 +207,6 @@ const CoinReportTable = () => {
             noRowsOverlay: CustomNoRowsOverlay,
           }}
           columns={columns}
-          autosizeOptions={{
-            includeHeaders: false,
-            includeOutliers: false,
-            outliersFactor: 1,
-            expand: true,
-          }}
-          disableColumnResize
           header={
             <Header
               onFilterClick={toggleFilterModal}
@@ -194,9 +216,11 @@ const CoinReportTable = () => {
             />
           }
           rowCount={finalData?.meta?.total_count || 0}
-          pageSizeOptions={[10, 15, 20]}
+          pageSizeOptions={[50, 100, 200]}
           paginationModel={{ page: page?.pageNumber, pageSize: page?.pageSize }}
-          onPaginationModelChange={(model) => setPage({ pageNumber: model.page, pageSize: model.pageSize })}
+          onPaginationModelChange={(model) => {
+            setPage({ pageNumber: model.page, pageSize: model.pageSize });
+          }}
           sortModel={
             filters.sorts
               ? [{ field: Object.keys(filters.sorts)[0], sort: Object.values(filters.sorts)[0] ? "asc" : "desc" }]
@@ -204,10 +228,16 @@ const CoinReportTable = () => {
           }
           sortingMode="server"
           paginationMode="server"
+          autosizeOptions={{
+            includeHeaders: true,
+            includeOutliers: true,
+            outliersFactor: 1.5,
+            expand: true,
+          }}
           onSortModelChange={handleSortChange}
           disableVirtualization
-          onRowClick={(api) => router.push(`/coin-reports-new/${api.row.slug}`)}
-          sx={{ height: "calc(100dvh - 300px)" }}
+          onRowClick={handleRowClick}
+          sx={{ height: "calc(100dvh - 400px)" }}
         />
       </Stack>
 
@@ -218,6 +248,7 @@ const CoinReportTable = () => {
           filters={{ ...filters, sorts: Object.keys(filters?.sorts || {})?.[0] }}
         />
       )}
+      {openUpgradeModal && <UpgradeModal open close={() => setOpenUpgradeModal(false)} />}
     </Stack>
   );
 };

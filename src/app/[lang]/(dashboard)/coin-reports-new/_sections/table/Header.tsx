@@ -11,7 +11,7 @@ import {
   buttonClasses,
   outlinedInputClasses,
 } from "@mui/material";
-import { Fragment, useMemo, type Dispatch, type SetStateAction } from "react";
+import { type Dispatch, Fragment, type SetStateAction, useMemo } from "react";
 import { defaultValueSort, timeFrameOptions } from "../consts";
 import type { FilterFormDataType } from "../types";
 import CountDownUpdateTime from "./CountDownUpdateTime";
@@ -60,7 +60,7 @@ export const Header = ({
       px={2.5}
       py={3}
       width="100%"
-      flexDirection={isMobile ? "column" : "row"}
+      flexDirection={{ xs: "column", md: "row" }}
       sx={{ gap: 2, alignItems: { md: "unset", xs: "flex-start" } }}
     >
       <Box
@@ -69,9 +69,21 @@ export const Header = ({
         width={{ xs: "100%", md: "inherit" }}
         alignItems={{ xs: "flex-start", sm: "center" }}
       >
-        <Box display="flex" alignItems="center" gap={2} sx={{ flexDirection: { xs: "column", sm: "row" } }}>
+        <Box
+          display="flex"
+          alignItems={{ xs: "flex-start", md: "center" }}
+          gap={2}
+          sx={{ flexDirection: { xs: "column", sm: "row" } }}
+        >
           <Typography variant="p1-semi-bold">{t("coinReportTable.allCoins")}</Typography>
-          {nextUpdateTime && <CountDownUpdateTime onNextUpdate={onNextUpdate} updateTime={nextUpdateTime} />}
+          {nextUpdateTime && (
+            <CountDownUpdateTime
+              onNextUpdate={() => {
+                onNextUpdate();
+              }}
+              updateTime={nextUpdateTime}
+            />
+          )}
         </Box>
 
         {isMobile && (
@@ -88,7 +100,12 @@ export const Header = ({
         )}
       </Box>
 
-      <Stack direction={{ xs: "column", md: "row-reverse" }} width={{ xs: "100%", md: "unset" }} spacing={2}>
+      <Stack
+        direction={{ xs: "column", md: "row-reverse" }}
+        alignItems={{ md: "center" }}
+        width={{ xs: "100%", md: "unset" }}
+        spacing={2}
+      >
         {!isMobile && (
           <Button
             color="info"
@@ -130,7 +147,7 @@ export const Header = ({
             justifyContent="space-between"
             width={{ xs: "100%", md: "unset" }}
           >
-            <Box display="flex" alignItems="center" gap={1} p={1} bgcolor="dark.3" borderRadius={2.5}>
+            <Box display="flex" alignItems="center" gap={1} px={1} height={40} bgcolor="dark.3" borderRadius={2.5}>
               {timeFrameOptions?.map((time, index) => (
                 <Fragment key={time.value}>
                   <Box
