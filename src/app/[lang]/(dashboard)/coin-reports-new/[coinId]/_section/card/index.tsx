@@ -18,6 +18,7 @@ type Props = {
   potential_multiplier_end_date: string | undefined;
   potential_multiplier_start_date: string | undefined;
   target_price_date: string | undefined;
+  report_summary: string | undefined;
   // recommended_percentage: number | undefined;
 };
 
@@ -32,6 +33,7 @@ const Card = ({
   potential_multiplier_end_date,
   potential_multiplier_start_date,
   target_price_date,
+  report_summary,
 }: Props) => {
   const { t } = useTranslate();
 
@@ -75,17 +77,7 @@ const Card = ({
         />
       </Stack>
       <Stack spacing={4} px={3} pb={3}>
-        <Summary
-          title={t("coinreportsingleview.reportSummary")}
-          description="Lorem ipsum dolor sit amet, 
-          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-           Pellentesque pulvinar pellentesque habitant morbi tristique senectus. Sed vulputate mi sit amet mauris commodo quis imperdiet.
-            Nisl tincidunt eget nullam non. Nibh sed pulvinar proin gravida hendrerit lectus a. Sociis natoque penatibus et magnis dis.
-             Pulvinar mattis nunc sed blandit libero volutpat sed cras. Purus semper eget duis at tellus at urna condimentum mattis. 
-             Etiam tempor orci eu lobortis elementum nibh tellus molestie nunc. Nulla facilisi etiam dignissim diam quis enim lobortis scelerisque. 
-             Neque gravida in fermentum et sollicitudin ac. Sit amet mattis vulputate enim nulla aliquet. Scelerisque varius morbi enim nunc faucibus a pellentesque sit amet.
-              Ipsum a arcu cursus vitae congue mauris rhoncus aenean vel."
-        />
+        <Summary title={t("coinreportsingleview.reportSummary")} description={report_summary} />
         <Summary
           title={t("coinreportsingleview.briefonOurEvaluation")}
           description={t("coinreportsingleview.briefonOurEvaluationDescription")}

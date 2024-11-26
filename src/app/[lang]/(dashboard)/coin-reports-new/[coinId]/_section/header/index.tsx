@@ -2,17 +2,60 @@
 
 import { Icon } from "@/components/icons";
 import { plans } from "@/configs/plans";
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, IconButton, Stack, Typography } from "@mui/material";
 import Entry from "./Entry";
 import Image from "@/components/Image";
+import {
+  useCoinReportServiceCoinReportSlugFavoriteCreateMutation,
+  useCoinReportServiceCoinReportSlugFavoriteDeleteMutation,
+  UseCoinReportServiceCoinReportSlugQueryKeyFn,
+} from "@minecraft/queries";
+import { useParams } from "next/navigation";
+import { useSnackbar } from "notistack";
+import { useTranslate } from "@/locales";
+import { useQueryClient } from "@tanstack/react-query";
 type Props = {
   logo: string | undefined;
   name: string | undefined;
   symbol: string | undefined;
   plan_type: string;
   ee_signal: string | undefined;
+  isFavorite: boolean;
 };
-const Header = ({ logo, name, symbol, plan_type, ee_signal }: Props) => {
+const Header = ({ logo, name, symbol, plan_type, ee_signal, isFavorite }: Props) => {
+  const { coinId: slug } = useParams();
+  const { t } = useTranslate();
+  const { enqueueSnackbar } = useSnackbar();
+  const queryClient = useQueryClient();
+  const { mutateAsync: mutateAddFavorite } = useCoinReportServiceCoinReportSlugFavoriteCreateMutation();
+  const { mutateAsync: mutateRemoveFavorite } = useCoinReportServiceCoinReportSlugFavoriteDeleteMutation();
+
+  const toggleFavorite = async () => {
+    const successMessage = isFavorite
+      ? t("coinreportsingleview.removedSuccess")
+      : t("coinreportsingleview.addedSuccess");
+    const errorMessage = isFavorite ? t("coinreportsingleview.removedError") : t("coinreportsingleview.addedError");
+
+    try {
+      if (isFavorite) {
+        await mutateRemoveFavorite({ slug: slug as string });
+      } else {
+        await mutateAddFavorite({ slug: slug as string });
+      }
+
+      enqueueSnackbar(successMessage, {
+        variant: "success",
+      });
+      queryClient.invalidateQueries({
+        queryKey: UseCoinReportServiceCoinReportSlugQueryKeyFn({ slug: slug as string }),
+      });
+    } catch (_error) {
+      enqueueSnackbar(errorMessage, {
+        variant: "error",
+      });
+    }
+  };
+
   return (
     <Stack
       sx={{ borderRadius: 2, border: "1.5px solid", borderColor: "dark.3", p: 3, bgcolor: "dark.2" }}
@@ -24,7 +67,9 @@ const Header = ({ logo, name, symbol, plan_type, ee_signal }: Props) => {
       justifyContent={"space-between"}
     >
       <Stack direction={"row"} spacing={2} alignItems={"center"}>
-        <Icon name="Star-grey" />
+        <IconButton onClick={toggleFavorite}>
+          <Icon name={isFavorite ? "Star-color--full" : "Star-grey"} />
+        </IconButton>
         <Stack direction={"row"} alignItems={"center"} spacing={1}>
           <Image src={logo} alt={name} width={32} height={32} />
           <Typography variant="p2-regular" textTransform={"capitalize"}>

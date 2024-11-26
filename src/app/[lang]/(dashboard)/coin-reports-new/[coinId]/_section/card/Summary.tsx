@@ -1,7 +1,7 @@
 import { Stack, Typography } from "@mui/material";
 type Props = {
   title: string;
-  description: string;
+  description: string | undefined;
 };
 const Summary = ({ title, description }: Props) => {
   return (

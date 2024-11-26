@@ -11,8 +11,11 @@ import type { SingleCoinReports } from "@minecraft/requests";
 import dynamic from "next/dynamic";
 import Empty from "@/components/Empty";
 import { useIsMobile } from "@/hooks/use-responsive";
+import { usePageTitleandBackButton } from "./use-pageTitleAndbackbutton";
 const TradingViewWidget = dynamic(() => import("./tradingview/TradingViewWidget"), { ssr: false });
+
 const CoinReportDetailSection = () => {
+  usePageTitleandBackButton();
   const isMobile = useIsMobile();
   const { coinId } = useParams();
   const { data, isPending, isError } = useCoinReportServiceCoinReportSlugQuery({ slug: coinId as string });
@@ -31,7 +34,6 @@ const CoinReportDetailSection = () => {
       </Stack>
     );
   }
-
   return (
     <Stack spacing={3} p={4} pb={0} height={"100%"}>
       {!isMobile && <TradingViewWidget rawSymbol={data.data?.symbol!} />}
@@ -41,6 +43,7 @@ const CoinReportDetailSection = () => {
         name={data?.data?.name}
         symbol={data?.data?.symbol}
         plan_type={data?.data?.plan_type as string}
+        isFavorite={(data.data as any)?.is_favorite}
       />
       <BoxList
         category={data?.data?.category}
@@ -64,6 +67,7 @@ const CoinReportDetailSection = () => {
           risk_level={data?.data?.risk_level}
           target_price={data?.data?.target_price}
           target_price_date={(data?.data as any)?.target_price_date}
+          report_summary={data?.data?.report_summery}
         />
         <TableOfContent reports={data?.data?.reports as SingleCoinReports} />
       </Stack>

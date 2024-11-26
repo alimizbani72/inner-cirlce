@@ -48,7 +48,7 @@ function TradingViewWidget({ rawSymbol }: { rawSymbol: string }) {
       <Box
         ref={container}
         sx={{
-          height: "364px",
+          aspectRatio: "16/4",
           width: "100%",
           borderRadius: 1,
           overflow: "hidden",
