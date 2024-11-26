@@ -7,7 +7,7 @@ import { toTitleCase } from "@/utils/change-case";
 import {
   SortOptions,
   packageOptions,
-  signalColor,
+  signalsList,
   timeFrameOptions,
 } from "@dashboard/coin-reports-new/_sections/consts";
 import type {
@@ -16,10 +16,7 @@ import type {
   PackageType,
   SignalType,
 } from "@dashboard/coin-reports-new/_sections/types.d";
-import {
-  useCoinReportServiceCoinReportCategoriesQuery,
-  useCoinReportServiceCoinReportSignalsQuery,
-} from "@minecraft/queries";
+import { useCoinReportServiceCoinReportCategoriesQuery } from "@minecraft/queries";
 import {
   Box,
   Button,
@@ -78,21 +75,10 @@ export const FilterModal = ({ onClose, onSubmit, filters }: FilterModalProps) =>
   });
 
   const { data: categoriesData } = useCoinReportServiceCoinReportCategoriesQuery();
-  const { data: signalsData } = useCoinReportServiceCoinReportSignalsQuery();
 
   const categoryOptions = useMemo(
     () => categoriesData?.data?.map((item) => ({ label: toTitleCase(item.slug as string), value: item.slug })) || [],
     [categoriesData]
-  );
-
-  const signalOptions = useMemo(
-    () =>
-      signalsData?.data?.map((item) => ({
-        label: toTitleCase(item.signal as string),
-        value: item.signal,
-        color: signalColor[item.signal as keyof typeof signalColor] ?? "white",
-      })) || [],
-    [signalsData]
   );
 
   const handleSaveData = (name: keyof FilterModalProps["filters"], value: any) => {
@@ -204,7 +190,7 @@ export const FilterModal = ({ onClose, onSubmit, filters }: FilterModalProps) =>
           />
           <AutoComplete
             placeholder={t("coinReportTable.selectSignal")}
-            options={signalOptions}
+            options={signalsList}
             onChange={(val) => setSignals(val)}
             value={signals}
             multiple

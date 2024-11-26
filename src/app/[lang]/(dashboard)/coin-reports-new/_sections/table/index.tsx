@@ -8,8 +8,8 @@ import { type GridSortModel, useGridApiRef, gridClasses } from "@mui/x-data-grid
 import { useDebounce } from "@/hooks/use-debounce";
 import { defaultValueSort } from "@dashboard/coin-reports-new/_sections/consts";
 import type { FilterFormDataType } from "@dashboard/coin-reports-new/_sections/types.d";
-import { useCoinReportServiceCoinReportQuery } from "@minecraft/queries";
-import { useMemo, useState, useCallback } from "react";
+import { useCoinReportServiceCoinReportFavoritesQuery, useCoinReportServiceCoinReportQuery } from "@minecraft/queries";
+import { useMemo, useState, useCallback, useEffect } from "react";
 
 import { Header } from "./Header";
 import { useTableController } from "./useTableController";
@@ -44,24 +44,49 @@ const CoinReportTable = () => {
   const [searchValue, setSearchValue] = useState("");
   const [openFilterModal, setOpenFilterModal] = useState(false);
   const [filters, setFilters] = useState<FilterFormDataType>({ timeFrame: "1d", sorts: defaultValueSort });
+  const [page, setPage] = useState({ pageNumber: 0, pageSize: 15 });
 
   const isMobile = useIsMobile();
   const debouncedSearch = useDebounce(searchValue, 500);
 
-  const { data, refetch, isFetching } = useCoinReportServiceCoinReportQuery({
-    opts: JSON.stringify({
+  const opts = useMemo(() => {
+    return JSON.stringify({
       ...convertFilterData(filters),
       query: debouncedSearch,
-      page: 1,
-      per_page: 15,
-    }),
-  });
+      page: page?.pageNumber + 1,
+      per_page: page?.pageSize,
+    });
+  }, [page, debouncedSearch, filters]);
+
+  const {
+    data: allData,
+    refetch: refetchAll,
+    isFetching,
+  } = useCoinReportServiceCoinReportQuery({ opts }, undefined, { enabled: false });
+  const {
+    data: favoriteData,
+    refetch: refetchFavorite,
+    isFetching: isFetchingFavorite,
+  } = useCoinReportServiceCoinReportFavoritesQuery({ opts }, undefined, { enabled: false });
+
+  const refetch = useMemo(() => {
+    if (value === "favorites") {
+      return refetchFavorite;
+    }
+    return refetchAll;
+  }, [value]);
+
+  useEffect(() => {
+    refetch();
+  }, [opts, value]);
 
   const { columns, buttons } = useTableController();
 
   const finalData = useMemo(() => {
-    return data?.data?.map((d) => ({ ...d, id: `${d.slug}-${d.category}` }));
-  }, [data]);
+    const data = value === "favorites" ? favoriteData : allData;
+
+    return { data: data?.data?.map((d, index) => ({ ...d, id: `${index}-${d?.plan}` })), meta: data?.meta };
+  }, [allData, favoriteData]);
 
   const handleSortChange = useCallback((model: GridSortModel) => {
     const sortModel = model[0];
@@ -141,8 +166,8 @@ const CoinReportTable = () => {
       >
         <DataGrid
           apiRef={apiRef}
-          rows={finalData}
-          loading={isFetching}
+          rows={finalData?.data}
+          loading={isFetching || isFetchingFavorite}
           slotProps={{
             loadingOverlay: {
               variant: "circular-progress",
@@ -164,24 +189,25 @@ const CoinReportTable = () => {
             <Header
               onFilterClick={toggleFilterModal}
               onNextUpdate={refetch}
-              nextUpdateTime={data?.meta?.next_update}
+              nextUpdateTime={finalData?.meta?.next_update}
               {...{ setFilters, filters, setSearchValue }}
             />
           }
+          rowCount={finalData?.meta?.total_count || 0}
           pageSizeOptions={[10, 15, 20]}
-          initialState={{
-            pagination: { paginationModel: { pageSize: 15 } },
-          }}
+          paginationModel={{ page: page?.pageNumber, pageSize: page?.pageSize }}
+          onPaginationModelChange={(model) => setPage({ pageNumber: model.page, pageSize: model.pageSize })}
           sortModel={
             filters.sorts
               ? [{ field: Object.keys(filters.sorts)[0], sort: Object.values(filters.sorts)[0] ? "asc" : "desc" }]
               : undefined
           }
           sortingMode="server"
+          paginationMode="server"
           onSortModelChange={handleSortChange}
           disableVirtualization
           onRowClick={(api) => router.push(`/coin-reports-new/${api.row.slug}`)}
-          sx={{ height: 300 }}
+          sx={{ height: "calc(100dvh - 300px)" }}
         />
       </Stack>
 

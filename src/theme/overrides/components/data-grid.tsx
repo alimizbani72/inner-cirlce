@@ -14,6 +14,9 @@ export function dataGrid(theme: Theme) {
         root: {
           border: `1.5px solid ${theme.palette.dark[3]}`,
           borderRight: "unset !important",
+          [`& .${gridClasses.footerContainer}`]: {
+            minHeight: 64,
+          },
           [`& .${gridClasses["columnSeparator--sideRight"]}`]: {
             display: "none",
           },
@@ -41,6 +44,7 @@ export function dataGrid(theme: Theme) {
           },
           [`& .${tablePaginationClasses.toolbar}`]: {
             color: theme.palette.common.white,
+            minHeight: 64,
             [`& .${tablePaginationClasses.actions} > button`]: {
               color: theme.palette.common.white,
               "&.Mui-disabled": {

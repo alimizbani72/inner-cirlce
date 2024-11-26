@@ -1,15 +1,15 @@
-import { Icon } from "@/components/icons";
 import Image from "@/components/Image";
+import { Icon } from "@/components/icons";
+import { useIsMobile } from "@/hooks/use-responsive";
 import { useTranslate } from "@/locales";
-import { Box, IconButton, Stack, Typography } from "@mui/material";
-import type { GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
-import { useMemo } from "react";
-import { riskLevelColor, signalColor } from "../consts";
 import {
   useCoinReportServiceCoinReportSlugFavoriteCreateMutation,
   useCoinReportServiceCoinReportSlugFavoriteDeleteMutation,
 } from "@minecraft/queries";
-import { useIsMobile } from "@/hooks/use-responsive";
+import { Box, IconButton, Stack, Typography } from "@mui/material";
+import type { GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
+import { useMemo } from "react";
+import { packageOptions, riskLevelColor, signalColor } from "../consts";
 
 export const useTableController = () => {
   const { t } = useTranslate();
@@ -79,32 +79,37 @@ export const useTableController = () => {
 
   const renderChangePercentage = (params: GridRenderCellParams<{ cmr_change_percentage: number }>) => {
     const isPositive = params.row.cmr_change_percentage > 0;
+
     return (
       <Stack direction="row" alignItems="center" spacing={2}>
-        <Typography variant="p2-medium">{params.value}</Typography>
-        <Typography
-          variant="caption-semi-bold"
-          sx={(theme) => ({
-            ...(isPositive
-              ? {
-                  color: "success.main",
-                  "& path": { stroke: theme.palette.success.main },
-                }
-              : {
-                  color: "danger.main",
-                  "& path": { stroke: theme.palette.danger.main },
-                }),
-          })}
-        >
-          <Icon name={isPositive ? "Arrow-up" : "Arrow-down"} />
-          {params.row.cmr_change_percentage}
-        </Typography>
+        <Typography variant="p2-medium">{params.value?.toString()?.slice(0, 5)}</Typography>
+        {params.row.cmr_change_percentage !== null && (
+          <Typography
+            variant="caption-semi-bold"
+            sx={(theme) => ({
+              ...(isPositive
+                ? {
+                    color: "success.main",
+                    "& path": { stroke: theme.palette.success.main },
+                  }
+                : {
+                    color: "danger.main",
+                    "& path": { stroke: theme.palette.danger.main },
+                  }),
+            })}
+          >
+            <Icon name={isPositive ? "Arrow-up" : "Arrow-down"} />
+            {params.row.cmr_change_percentage}
+          </Typography>
+        )}
       </Stack>
     );
   };
 
   const renderText = (params: GridRenderCellParams) => (
-    <Typography variant="p2-medium">{params.value ? `${params.value}x` : "••••••••"}</Typography>
+    <Typography variant="p2-medium">
+      {params.value ? `$${params.value?.toString()?.slice(0, 8)}` : "••••••••"}
+    </Typography>
   );
 
   const renderSignalColor = (params: GridRenderCellParams) => (
@@ -117,7 +122,10 @@ export const useTableController = () => {
   );
 
   const renderRiskLevel = (params: GridRenderCellParams) => (
-    <Typography variant="p2-medium" color={riskLevelColor[params.value as keyof typeof riskLevelColor]}>
+    <Typography
+      variant="p2-medium"
+      color={riskLevelColor[params.value?.toString()?.replace(" Risk", "") as keyof typeof riskLevelColor]}
+    >
       {params.value}
     </Typography>
   );
@@ -148,7 +156,12 @@ export const useTableController = () => {
         sortable: false,
         renderCell: (params) => (
           <Typography variant="p2-medium" display="flex" alignItems="center">
-            {params.value} {!params.row.name && <Icon name="lock" />}
+            <Image
+              src={packageOptions?.find((pack) => pack.value === params.value)?.img}
+              sx={{ width: 24, height: 24 }}
+              alt={params.value}
+            />{" "}
+            {!params?.row?.name && <Icon name="lock" />}
           </Typography>
         ),
       },
@@ -180,13 +193,21 @@ export const useTableController = () => {
         field: "potential_multiplier",
         minWidth: 130,
         sortable: false,
-        renderCell: renderText,
+        renderCell: (params: GridRenderCellParams) => (
+          <Typography variant="p2-medium">
+            {params.value ? `${params.value?.toString()?.slice(0, 5)}x` : "••••••••"}
+          </Typography>
+        ),
       },
       {
         headerName: t("coinReportTabTable.rtl"),
         field: "rtl",
         sortable: false,
-        renderCell: renderText,
+        renderCell: (params: GridRenderCellParams) => (
+          <Typography variant="p2-medium">
+            {params.value ? `${params.value?.toString()?.slice(0, 5)}%` : "••••••••"}
+          </Typography>
+        ),
       },
       {
         headerName: t("coinReportTabTable.riskLevel"),
@@ -212,10 +233,10 @@ export const useTableController = () => {
         label: <Typography variant="p2-medium">{t("coinReportTable.allCoins")}</Typography>,
         value: "all-coins",
       },
-      {
-        label: <Typography variant="p2-medium">{t("coinReportTable.preSale")}</Typography>,
-        value: "pre-Sale",
-      },
+      // {
+      //   label: <Typography variant="p2-medium">{t("coinReportTable.preSale")}</Typography>,
+      //   value: "pre-Sale",
+      // },
       {
         label: <Typography variant="p2-medium">{t("coinReportTable.favorites")}</Typography>,
         value: "favorites",

@@ -1,5 +1,43 @@
 import { plans } from "@/configs/plans";
 
+export const signalsList = [
+  {
+    value: "very_strong_buy",
+    color: "#04AEAE",
+    label: "Very Strong Buy",
+  },
+  {
+    value: "strong_buy",
+    color: "#03B375",
+    label: "Strong Buy",
+  },
+  {
+    value: "buy",
+    color: "#79B303",
+    label: "Buy",
+  },
+  {
+    value: "neutral",
+    color: "#DFAB00",
+    label: "Neutral",
+  },
+  {
+    value: "sell",
+    color: "#E98A17",
+    label: "Sell",
+  },
+  {
+    value: "strong_sell",
+    color: "#F96110",
+    label: "Strong Sell",
+  },
+  {
+    value: "very_strong_sell",
+    color: "#FF3D3D",
+    label: "Very Strong Sell",
+  },
+];
+
 export enum signalColor {
   very_strong_buy = "#04AEAE",
   strong_buy = "#03B375",
@@ -30,12 +68,12 @@ export const timeFrameOptions = [
     value: "1h",
   },
   {
-    label: "24H",
+    label: "1D",
     value: "1d",
   },
   {
-    label: "7D",
-    value: "7d",
+    label: "1W",
+    value: "1w",
   },
 ];
 
