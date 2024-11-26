@@ -1,5 +1,6 @@
 import { useTranslate } from "@/locales";
 import { Stack, Typography } from "@mui/material";
+import numeral from "numeral";
 // const getRecommendation = (ds: any) => {
 //   let status;
 //   let color;
@@ -42,7 +43,7 @@ const CardItem = ({ title, value, hasCaclulation, subtitle, symbol }: Props) => 
           {title}
         </Typography>
         <Typography variant="h3-bold">
-          {value}
+          {value > 1 ? numeral(value).format("0,0.00") : value}
           {symbol && symbol}
         </Typography>
       </Stack>

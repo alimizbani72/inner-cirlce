@@ -37,7 +37,7 @@ const BoxItems: FC<RevenueBoxProps> = ({
     >
       <Typography variant="p2-medium" whiteSpace={"pre"}>
         {hascurrency && "$"}
-        {typeof value === "string" ? value : numeral(value).format("0,0.00")} {!!symbol && symbol}
+        {value > 1 ? numeral(value).format("0,0.00") : value} {!!symbol && symbol}
       </Typography>
 
       <Typography variant="caption-medium" color={"grey.light"} whiteSpace={"pre"}>

@@ -2,6 +2,7 @@
 import { Box, Divider, Stack } from "@mui/material";
 import BoxItems from "./BoxItem";
 import { useTranslate } from "@/locales";
+import { toTitleCase } from "@/utils/change-case";
 type Props = {
   current_price: string | undefined;
   liquidity_index: string | undefined;
@@ -42,7 +43,7 @@ const BoxList = ({
         <Divider />
         <BoxItems title={t("coinreportsingleview.liquidity")} value={liquidity_index} hasrightBorder symbol="%" />
         <Divider />
-        <BoxItems title={t("coinreportsingleview.category")} value={category} />
+        <BoxItems title={t("coinreportsingleview.category")} value={toTitleCase(category as string)} />
         <Divider />
         <BoxItems
           title={t("coinreportsingleview.totalsupply")}
