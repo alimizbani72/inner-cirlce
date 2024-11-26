@@ -43,7 +43,7 @@ const CoinReportTable = () => {
   const [value, setValue] = useState("all-coins");
   const [searchValue, setSearchValue] = useState("");
   const [openFilterModal, setOpenFilterModal] = useState(false);
-  const [filters, setFilters] = useState<FilterFormDataType>({ timeFrame: "24h", sorts: defaultValueSort });
+  const [filters, setFilters] = useState<FilterFormDataType>({ timeFrame: "1d", sorts: defaultValueSort });
 
   const isMobile = useIsMobile();
   const debouncedSearch = useDebounce(searchValue, 500);
@@ -60,17 +60,7 @@ const CoinReportTable = () => {
   const { columns, buttons } = useTableController();
 
   const finalData = useMemo(() => {
-    const final = data?.data?.map((d) => ({ ...d, id: `${d.slug}-${d.category}` }));
-    final?.push({
-      ...final?.[0],
-      category: null,
-      name: null,
-      potential_multiplier: null,
-      rtl: null,
-      current_price: null,
-      id: `-mmm`,
-    });
-    return final;
+    return data?.data?.map((d) => ({ ...d, id: `${d.slug}-${d.category}` }));
   }, [data]);
 
   const handleSortChange = useCallback((model: GridSortModel) => {

@@ -30,8 +30,8 @@ export const timeFrameOptions = [
     value: "1h",
   },
   {
-    label: "24",
-    value: "24h",
+    label: "24H",
+    value: "1d",
   },
   {
     label: "7D",

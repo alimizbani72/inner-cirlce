@@ -108,6 +108,16 @@ export const FilterModal = ({ onClose, onSubmit, filters }: FilterModalProps) =>
     });
   };
 
+  const handleClearAll = () => {
+    setCategories([]);
+    setSignals([]);
+    setPackages([]);
+    setFormData({
+      sorts: "newly_added",
+      timeFrame: "1d",
+    });
+  };
+
   return (
     <CustomDialog onClose={onClose} open fullWidth maxWidth="sm">
       <DialogTitle display="flex" justifyContent="space-between" alignItems="center">
@@ -229,7 +239,7 @@ export const FilterModal = ({ onClose, onSubmit, filters }: FilterModalProps) =>
       </DialogContent>
       <DialogActions>
         <Box display="flex" justifyContent="space-between" width="100%">
-          <Button color="info" onClick={onClose} size="large">
+          <Button color="info" onClick={handleClearAll} size="large">
             {t("coinReportTable.clearAll")}
           </Button>
           <Button onClick={handleSubmit} size="large">

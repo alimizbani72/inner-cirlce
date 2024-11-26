@@ -166,7 +166,7 @@ export const Header = ({
                 variant="text"
                 endIcon={<Icon name="Close" />}
                 sx={{ p: 0, minWidth: 100 }}
-                onClick={() => setFilters({ timeFrame: "24h", sorts: defaultValueSort })}
+                onClick={() => setFilters({ timeFrame: "1d", sorts: defaultValueSort })}
               >
                 {Object.keys(filterValue).length} {t("coinReportTable.filters")}
               </Button>
