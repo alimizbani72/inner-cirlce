@@ -1,3 +1,39 @@
+# [1.5.0](https://github.com/Chainmind-AG/inner-circle/compare/v1.4.2...v1.5.0) (2024-11-27)
+
+
+### Bug Fixes
+
+* **BoxList:** fix types ([07cd0bf](https://github.com/Chainmind-AG/inner-circle/commit/07cd0bfdc61bc77d5f593497562fc8c862f48e76))
+* **coin:** fix coin ([908dc4c](https://github.com/Chainmind-AG/inner-circle/commit/908dc4c0ae0b3b37e5a9ab7525630d8af1823a59))
+* **coinReport:** change timeframe in coin report ([7106188](https://github.com/Chainmind-AG/inner-circle/commit/7106188f3525930829d6b291f09d36461a79880a))
+* **CoinReportDetailSection:** enhance single coin-report ([74859de](https://github.com/Chainmind-AG/inner-circle/commit/74859de3e1182bdcef273af07192030239b007a3))
+* **CoinReportDetailSection:** fix the price and trading view cahrt ([b91c2fb](https://github.com/Chainmind-AG/inner-circle/commit/b91c2fbefe2ff52cc349e969bb3ddc4ca6da8cb4))
+* **CoinReport:** enhacne UI ([#177](https://github.com/Chainmind-AG/inner-circle/issues/177)) ([3a761eb](https://github.com/Chainmind-AG/inner-circle/commit/3a761ebe82cd32fa3ced6cfa798fbde0503fdb26))
+* **coinReport:** enhance the style and add shell ([dbbfb64](https://github.com/Chainmind-AG/inner-circle/commit/dbbfb64e7ff217bcebd3d6f37483e5810862751d))
+* **coinReport:** fix bug ([3fc3b27](https://github.com/Chainmind-AG/inner-circle/commit/3fc3b274e8c6aabc717eb9277809b05728ffbcc9))
+* **coinReport:** fix bugs ([24a7ea0](https://github.com/Chainmind-AG/inner-circle/commit/24a7ea065ffca4b152c564c37c8ecd9badb796ff))
+* **coinReport:** fix query filter ([09043e3](https://github.com/Chainmind-AG/inner-circle/commit/09043e32e6a5734eba93a59e62f9913e2ce487a5))
+* **coinReport:** fix query filter ([04a1b05](https://github.com/Chainmind-AG/inner-circle/commit/04a1b0535549e6fed52ed8088e79805ca0c5efe5))
+* **CoinReportTable:** fix console warnings and enhance style ([41fa3ca](https://github.com/Chainmind-AG/inner-circle/commit/41fa3ca009f6c451bdd76f82826c406b634e72c5))
+* **coinreport:** UI ([dd16e51](https://github.com/Chainmind-AG/inner-circle/commit/dd16e516d1c9f7ca5cf7041c268181e4efa2577b))
+* **kyc:** fix bug kyc button and education video - 1657703700 ([#153](https://github.com/Chainmind-AG/inner-circle/issues/153)) ([d9f1ff6](https://github.com/Chainmind-AG/inner-circle/commit/d9f1ff61cf2c3223dd27f1a5d293fab2f4a5cc40))
+* **myPortfolio:** small fixes ([231f7fe](https://github.com/Chainmind-AG/inner-circle/commit/231f7fe7dc332afae1b8be12f8d4a87da8247053))
+* **ssr:** lottie import ([d2a0ba2](https://github.com/Chainmind-AG/inner-circle/commit/d2a0ba26edb534721ce49eb89c49a12b36eeab0a))
+* **transactionModal:** fix padding ([f310d97](https://github.com/Chainmind-AG/inner-circle/commit/f310d977f52ed351cfd73f90c619f9752ee8c9c1))
+
+
+### Features
+
+* **Card:** add dollar sign ([7972b5f](https://github.com/Chainmind-AG/inner-circle/commit/7972b5fad467accec6f1b5c924fdd0246b6af86e))
+* **coinreport:** add new routes, fix bugs, delete plankton str ([8b12fc5](https://github.com/Chainmind-AG/inner-circle/commit/8b12fc5645c7c43ac08c8f9b1a8ba48901f9d09a))
+* **coinReport:** coin report table ([a1406e4](https://github.com/Chainmind-AG/inner-circle/commit/a1406e448b6b048296f8f9020369f9f2973b618f))
+* **CoinReportDetailSection:** add pageTitle and back button and enhance some style ([1799714](https://github.com/Chainmind-AG/inner-circle/commit/1799714ee29b57fb389f96c7d87fd75adb13469a))
+* **CoinReportDetailSection:** add tradingview Widget and images for packages ([96294c4](https://github.com/Chainmind-AG/inner-circle/commit/96294c4f382ca9de55303b67eddd42fdd2a00980))
+* **coinReportsDetailPage:** add single view for coin report 1688881187 ([19c35fe](https://github.com/Chainmind-AG/inner-circle/commit/19c35fe149ff08f124d073bef65be0a059596b45))
+* **CoinReportsSingleNew:** add service 1688881217 ([3822e6f](https://github.com/Chainmind-AG/inner-circle/commit/3822e6fbb0cb870666c2b7699a5ecee0eea09c4a))
+* **lang:** add translations ([c32f664](https://github.com/Chainmind-AG/inner-circle/commit/c32f6641cead48801d42c19fed2feaf8457c4c61))
+* **route:** add new coins report ([62f3c31](https://github.com/Chainmind-AG/inner-circle/commit/62f3c319b48018cbaa064c51dc597f38114e2228))
+
 ## [1.4.2](https://github.com/Chainmind-AG/inner-circle/compare/v1.4.1...v1.4.2) (2024-11-15)
 
 
