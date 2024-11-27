@@ -1,7 +1,7 @@
 {
   "emailVerification": {
     "title": "Email verification",
-    "subtitle": "Enter the 5 digits code that we sent to",
+    "subtitle": "Enter the 6 digits code that we sent to",
     "placeholderEmail": "Ricknovak@example.com",
     "verifyCodeLabel": "Verify code",
     "backButton": "Back",

@@ -10,8 +10,17 @@ type TabsItemProps = {
   isActive: boolean;
   price: string;
   onClick: () => void;
+  customAvatarbgColor?: string;
 };
-const TabsItem = ({ portfolioAvatar, portfolioName, bgColor, onClick, isActive, price }: TabsItemProps) => {
+const TabsItem = ({
+  portfolioAvatar,
+  portfolioName,
+  bgColor,
+  onClick,
+  isActive,
+  price,
+  customAvatarbgColor,
+}: TabsItemProps) => {
   return (
     <Stack
       direction={"row"}
@@ -29,7 +38,7 @@ const TabsItem = ({ portfolioAvatar, portfolioName, bgColor, onClick, isActive, 
       }}
     >
       <Stack direction={"row"} spacing={2}>
-        <Avatar sx={{ width: 48, height: 48, bgcolor: bgColor }}>{portfolioAvatar}</Avatar>
+        <Avatar sx={{ width: 48, height: 48, bgcolor: customAvatarbgColor || bgColor }}>{portfolioAvatar}</Avatar>
         <Stack spacing={0.5}>
           <Typography variant="p2-medium" whiteSpace={"nowrap"}>
             {portfolioName}

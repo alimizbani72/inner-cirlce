@@ -1,7 +1,9 @@
 import type { ButtonProps } from "@mui/material/Button";
 import type { Theme } from "@mui/material/styles";
 
-export type ButtonPropsOverride = ButtonProps & { color: "primary" | "secondary" | "info" };
+export type ButtonPropsOverride = ButtonProps & {
+  color: "primary" | "secondary" | "info";
+};
 
 declare module "@mui/material/Button" {
   interface ButtonPropsColorOverrides {
@@ -26,7 +28,10 @@ const COLORS = (theme: Theme) => ({
     normal: {
       borderColor: "rgba(0, 0, 0, 0.40)",
       background: theme.palette.gradient.blue,
-      transition: theme.transitions.create("all", { duration: "0.2s", easing: "ease-in-out" }),
+      transition: theme.transitions.create("all", {
+        duration: "0.2s",
+        easing: "ease-in-out",
+      }),
     },
     hover: {
       background: `radial-gradient(50% 50% at 50% 50%, ${theme.palette.blue.dark} 100%, ${theme.palette.blue.dark} 100%)`,
@@ -68,12 +73,16 @@ export function button(theme: Theme) {
           lineHeight: "24px",
           "&.Mui-disabled": {
             ...COLORS(theme).disabled,
-            ".MuiButton-icon": { "svg path, svg circle": { stroke: COLORS(theme).disabled.color } },
+            ".MuiButton-icon": {
+              "svg path, svg circle": { stroke: COLORS(theme).disabled.color },
+            },
           },
 
           ".MuiButton-icon": {
             color: COLORS(theme)[ownerState.color]?.color,
-            "svg path, svg circle": { stroke: COLORS(theme)[ownerState.color]?.color },
+            "svg path, svg circle": {
+              stroke: COLORS(theme)[ownerState.color]?.color,
+            },
           },
         }),
         startIcon: { marginLeft: 0 },
@@ -81,14 +90,17 @@ export function button(theme: Theme) {
         sizeLarge: { height: theme.spacing(6), padding: theme.spacing(1.5, 4) },
         sizeMedium: { height: theme.spacing(5), padding: theme.spacing(1, 4) },
         sizeSmall: { height: theme.spacing(4), padding: theme.spacing(0.5, 3) },
+        outlined: {
+          border: `1.5px solid ${theme.palette.dark[3]}`,
+        },
         contained: ({ ownerState }: { ownerState: ButtonPropsOverride }) => ({
-          ...COLORS(theme)[ownerState.color].normal,
-          color: COLORS(theme)[ownerState.color].color,
-          boxShadow: COLORS(theme)[ownerState.color].boxShadow,
+          ...COLORS(theme)[ownerState.color]?.normal,
+          color: COLORS(theme)[ownerState.color]?.color,
+          boxShadow: COLORS(theme)[ownerState.color]?.boxShadow,
           "&:hover": {
-            boxShadow: COLORS(theme)[ownerState.color].boxShadow,
-            ...COLORS(theme)[ownerState.color].normal,
-            ...COLORS(theme)[ownerState.color].hover,
+            boxShadow: COLORS(theme)[ownerState.color]?.boxShadow,
+            ...COLORS(theme)[ownerState.color]?.normal,
+            ...COLORS(theme)[ownerState.color]?.hover,
           },
         }),
       },

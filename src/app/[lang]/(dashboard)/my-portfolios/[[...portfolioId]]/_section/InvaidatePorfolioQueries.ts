@@ -7,7 +7,7 @@ import {
 import type { QueryClient } from "@tanstack/react-query";
 interface InvalidateOptions {
   portfolioId: any;
-  activeSymbol?: any;
+  activeSymbol?: string;
   invalidateTransactions?: boolean;
   invalidatePortfolio?: boolean;
   invalidatePortfolioId?: boolean;
@@ -29,7 +29,7 @@ export const invalidatePortfolioQueries = (
       queryKey: UsePortfolioServicePortfolioTransactionsQueryKeyFn({
         opts: JSON.stringify({
           filters: {
-            symbol: activeSymbol,
+            slug: activeSymbol,
             portfolio_id: portfolioId,
           },
           page: 1,

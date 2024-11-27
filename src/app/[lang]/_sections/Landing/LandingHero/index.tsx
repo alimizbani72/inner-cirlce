@@ -1,12 +1,14 @@
+import animationData from "@/assets/animations/IllustrationAnim.json";
+import { Icon } from "@/components/icons";
+import { useIsMobile } from "@/hooks/use-responsive";
 import { Button, Typography } from "@mui/material";
 import { Stack } from "@mui/system";
+import dynamic from "next/dynamic";
 import type { FC } from "react";
 import LandingContainer from "../LandingContainer";
 import HiddenGems from "./HiddenGems";
-import { useIsMobile } from "@/hooks/use-responsive";
-import { Icon } from "@/components/icons";
-import Lottie from "lottie-react";
-import animationData from "@/assets/animations/IllustrationAnim.json";
+
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 interface LandingHeroProps {
   highlightText: string;

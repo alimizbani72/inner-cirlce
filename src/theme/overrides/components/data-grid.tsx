@@ -1,95 +1,112 @@
-import { buttonClasses } from "@mui/material/Button";
-import { listClasses } from "@mui/material/List";
 import { listItemIconClasses } from "@mui/material/ListItemIcon";
-import { paperClasses } from "@mui/material/Paper";
 import type { Theme } from "@mui/material/styles";
-import { alpha } from "@mui/material/styles";
-import { tablePaginationClasses } from "@mui/material/TablePagination";
 
 //
-import { paper } from "@/theme/css";
+import { buttonBaseClasses, listItemTextClasses, tablePaginationClasses } from "@mui/material";
+import { gridClasses } from "@mui/x-data-grid";
 
 // ----------------------------------------------------------------------
 
 export function dataGrid(theme: Theme) {
-  const paperStyles = paper({ theme, dropdown: true });
-
   return {
     MuiDataGrid: {
       styleOverrides: {
         root: {
-          borderRadius: 0,
-          borderWidth: 0,
-          [`& .${tablePaginationClasses.root}`]: {
-            borderTop: 0,
+          border: `1.5px solid ${theme.palette.dark[3]}`,
+          borderRight: "unset !important",
+          [`& .${gridClasses.footerContainer}`]: {
+            minHeight: 64,
           },
+          [`& .${gridClasses["columnSeparator--sideRight"]}`]: {
+            display: "none",
+          },
+          [`& .${gridClasses.filler}`]: {
+            display: "none",
+          },
+          [`& .${gridClasses["columnHeader--sortable"]}[aria-sort="ascending"]`]: {
+            "& svg > path:first-child": {
+              stroke: theme.palette.common.white,
+            },
+          },
+          [`& .${gridClasses["columnHeader--sortable"]}[aria-sort=descending]`]: {
+            "& svg > path:last-child": {
+              stroke: theme.palette.common.white,
+            },
+          },
+          [`& .${gridClasses["container--top"]} [role=row]`]: {
+            background: theme.palette.dark[3],
+            borderRadius: "unset",
+          },
+          [`& .${gridClasses["row--borderBottom"]} `]: {
+            [`& .${gridClasses.columnHeader}, & .MuiDataGrid-filler`]: {
+              borderBottom: "unset",
+            },
+          },
+          [`& .${tablePaginationClasses.spacer}`]: { display: "none" },
           [`& .${tablePaginationClasses.toolbar}`]: {
-            height: "auto",
+            color: theme.palette.common.white,
+            minHeight: 64,
+            justifyContent: "center",
+            [`& .${tablePaginationClasses.actions} > button`]: {
+              color: theme.palette.common.white,
+              "&.Mui-disabled": {
+                opacity: 0.2,
+              },
+            },
+            [`& .${tablePaginationClasses.input}`]: {
+              [`& .${tablePaginationClasses.select}`]: {
+                color: theme.palette.common.white,
+                marginRight: theme.spacing(0.5),
+              },
+              [`& .${tablePaginationClasses.selectIcon}`]: {
+                color: theme.palette.common.white,
+              },
+            },
+          },
+          [`& .${gridClasses.overlayWrapper}`]: {
+            [`& .${gridClasses.overlay}`]: {
+              backgroundColor: "unset",
+            },
+          },
+        },
+        columnHeader: {
+          color: theme.palette.grey.light,
+          ...theme.typography["caption-medium"],
+          "&:focus-within": {
+            outline: "unset",
           },
         },
         cell: {
-          borderBottom: `1px dashed ${theme.palette.divider}`,
+          color: theme.palette.grey.light,
+          display: "flex",
+          alignItems: "center",
+          "&:focus-within": {
+            outline: "unset",
+          },
         },
-        selectedRowCount: {
-          whiteSpace: "nowrap",
+        row: {
+          "--rowBorderColor": theme.palette.dark[3],
+          "&:hover": {
+            backgroundColor: theme.palette.dark[3],
+            cursor: "pointer",
+          },
         },
-        columnSeparator: {
-          color: theme.palette.divider,
+        iconButtonContainer: {
+          [`& .${buttonBaseClasses.root}`]: {
+            color: theme.palette.grey.light,
+          },
+          visibility: "visible",
+          width: "auto",
         },
-        toolbarContainer: {
-          padding: theme.spacing(2),
-          borderBottom: `1px dashed ${theme.palette.divider}`,
-          backgroundColor: theme.palette.background.default,
-        },
-        paper: {
-          ...paperStyles,
-          padding: 0,
+        menuIcon: {
+          [`& .${buttonBaseClasses.root}`]: {
+            color: theme.palette.grey.light,
+          },
         },
         menu: {
-          [`& .${paperClasses.root}`]: {
-            ...paperStyles,
+          [`& .${listItemTextClasses.root} .${listItemTextClasses.primary}, & .${listItemIconClasses.root} `]: {
+            color: theme.palette.grey.dark,
           },
-          [`& .${listClasses.root}`]: {
-            padding: 0,
-            [`& .${listItemIconClasses.root}`]: {
-              minWidth: 0,
-              marginRight: theme.spacing(2),
-            },
-          },
-        },
-        columnHeaders: {
-          borderRadius: 0,
-          backgroundColor: theme.palette.background.default,
-        },
-        panelHeader: {
-          padding: theme.spacing(2),
-        },
-        panelFooter: {
-          padding: theme.spacing(2),
-          justifyContent: "flex-end",
-          borderTop: `dashed 1px ${theme.palette.divider}`,
-          [`& .${buttonClasses.root}`]: {
-            "&:first-of-type": {
-              border: `solid 1px ${alpha(theme.palette.grey[500], 0.24)}`,
-            },
-            "&:last-of-type": {
-              marginLeft: theme.spacing(1.5),
-              color: theme.palette.background.paper,
-              backgroundColor: theme.palette.text.primary,
-            },
-          },
-        },
-        filterForm: {
-          padding: theme.spacing(2),
-        },
-        filterFormValueInput: {
-          marginLeft: theme.spacing(2),
-        },
-        filterFormColumnInput: {
-          marginLeft: theme.spacing(2),
-        },
-        filterFormOperatorInput: {
-          marginLeft: theme.spacing(2),
         },
       },
     },

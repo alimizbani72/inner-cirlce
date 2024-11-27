@@ -18,12 +18,15 @@ import { invalidatePortfolioQueries } from "../../_section/InvaidatePorfolioQuer
 type TransactionType = {
   id: string;
   symbol: string;
+  slug: string;
   type: "buy" | "sell";
   quantity: string;
   fee: string;
   price: string;
   date: string;
   note?: string;
+  logo: string;
+  name: string;
 };
 type Props = {
   transaction: TransactionType;
@@ -55,7 +58,7 @@ const MoreTransactionAction = ({ transaction }: Props) => {
             invalidateHistory: true,
             invalidateTransactions: true,
             invalidatePortfolio: true,
-            activeSymbol: activeSymbol,
+            activeSymbol: activeSymbol!,
           });
           enqueueSnackbar(t("transaction.transactiondeleteSuccessMessage"), {
             variant: "success",

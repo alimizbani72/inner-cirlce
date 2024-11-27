@@ -36,11 +36,14 @@ export function textField(theme: Theme) {
         input: {
           ...theme.typography["p2-medium"],
           color: theme.palette.common.white,
-          padding: `${theme.spacing(2)} !important`,
+          padding: `${theme.spacing(2.25)} !important`,
           "&::placeholder": {
             opacity: 1,
             color: theme.palette.grey.dark,
           },
+        },
+        inputSizeSmall: {
+          padding: `${theme.spacing(1.25)} !important`,
         },
       },
     },

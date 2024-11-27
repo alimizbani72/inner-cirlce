@@ -179,6 +179,9 @@ const CustomAssetTable = ({
                         <TransCollapse
                           slug={rowItem.slug}
                           colSpan={columns.length}
+                          symbol={rowItem.symbol}
+                          name={rowItem.name}
+                          logo={rowItem.logo}
                           isClose={!expandedRows[rowItem.slug]}
                         />
                       </Fragment>

@@ -23,6 +23,7 @@ const VimeoPlayer: FC<VimeoPlayerProps> = ({ videoId, videoUrl, width = 640, hei
         width: width,
         height: height,
         responsive: true,
+        controls: true,
       });
 
       // Cleanup the player on component unmount

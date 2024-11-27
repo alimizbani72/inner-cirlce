@@ -101,7 +101,7 @@ const Problems: FC<ProblemsProps> = ({
         zIndex={4}
         gap={{ md: 4, xs: 2 }}
       >
-        {gridSections.map((item) => (
+        {gridSections?.map((item) => (
           <Stack
             key={item.id}
             direction={{ md: "row" }}

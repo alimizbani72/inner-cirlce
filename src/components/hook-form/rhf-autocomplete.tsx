@@ -1,92 +1,57 @@
-import type { AutocompleteProps } from "@mui/material/Autocomplete";
-import Autocomplete from "@mui/material/Autocomplete";
+import { TextField, Typography } from "@mui/material";
 // @mui
-import TextField from "@mui/material/TextField";
-import type { ReactNode } from "react";
 import { Controller, useFormContext } from "react-hook-form";
+import { AutoComplete, type AutoCompleteProps } from "../AutoComplete";
 
 // ----------------------------------------------------------------------
 
-interface Props<
-  T,
-  Multiple extends boolean | undefined,
-  DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined,
-> extends AutocompleteProps<T, Multiple, DisableClearable, FreeSolo> {
+interface Props extends Omit<AutoCompleteProps, "onChange"> {
   name: string;
-  label?: string;
   placeholder?: string;
-  helperText?: ReactNode;
-  hasMore?: boolean;
-  loadMore?: () => void;
 }
 
-export default function RHFAutocomplete<
-  T,
-  Multiple extends boolean | undefined,
-  DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined,
->({
-  name,
-  label,
-  placeholder,
-  helperText,
-  hasMore,
-  loadMore,
-  renderInput,
-  ...other
-}: Omit<Props<T, Multiple, DisableClearable, FreeSolo>, "renderInput"> & {
-  renderInput?: AutocompleteProps<T, Multiple, DisableClearable, FreeSolo>["renderInput"];
-}) {
-  const { control, setValue } = useFormContext();
-
-  const handleScroll = (event: any) => {
-    const { target } = event;
-    if (target.scrollTop + target.clientHeight >= target.scrollHeight - 200 && hasMore) {
-      loadMore?.();
-    }
-  };
-
+export default function RHFAutocomplete({ name, placeholder, renderInput, ...other }: Props) {
+  const { control } = useFormContext();
   return (
     <Controller
       name={name}
       control={control}
-      render={({ field, fieldState: { error } }) => (
-        <Autocomplete
-          {...field}
-          sx={{
-            "& .MuiInputBase-sizeSmall": {
-              borderRadius: "10px",
-            },
-            "& .MuiAutocomplete-tag": {
-              bgcolor: "grey.400",
-            },
-            "& .MuiChip-deleteIcon": {
-              color: "red",
-            },
-            "& .MuiChip-label": {
-              color: "grey.900",
-            },
-          }}
-          onChange={(_, newValue) => setValue(name, newValue, { shouldValidate: true })}
-          ListboxProps={{
-            ...other.ListboxProps,
-            onScroll: (event) => {
-              other.ListboxProps?.onScroll?.(event);
-              handleScroll(event);
-            },
-          }}
+      render={({ field: { ref, onChange, ...field } }) => (
+        <AutoComplete
+          onChange={(value) => onChange(value)}
+          value={field.value}
+          renderValue={other.renderValue}
           renderInput={
-            renderInput ||
-            ((params) => (
-              <TextField
-                label={label}
-                placeholder={placeholder}
-                error={!!error}
-                helperText={error ? error?.message : helperText}
-                {...params}
-              />
-            ))
+            renderInput
+              ? renderInput
+              : (params) => (
+                  <TextField
+                    {...params}
+                    {...field}
+                    inputRef={ref}
+                    fullWidth
+                    sx={{ ".MuiInputBase-root": { pr: "9px !important", py: "2px !important" } }}
+                    placeholder={placeholder}
+                  />
+                )
+          }
+          renderOption={
+            other.multiple
+              ? (_, option) => (
+                  <Typography
+                    onClick={() => {
+                      onChange(field.value ? [...field.value, option] : [option]);
+                    }}
+                    p={1}
+                    variant="p2-medium"
+                    component="div"
+                    {...option}
+                    sx={{ cursor: "pointer", color: "common.white", "&:hover": { bgcolor: "dark.2" } }}
+                  >
+                    {option.label}
+                  </Typography>
+                )
+              : other.renderOption
           }
           {...other}
         />

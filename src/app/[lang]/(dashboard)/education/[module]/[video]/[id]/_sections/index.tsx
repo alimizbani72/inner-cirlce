@@ -34,7 +34,9 @@ type VideoResponse = {
   uploadDate: string;
 };
 
-const VimeoPlayer = dynamic(() => import("@/components/VimeoPlayer"), { ssr: false });
+const VimeoPlayer = dynamic(() => import("@/components/VimeoPlayer"), {
+  ssr: false,
+});
 
 const EducationSingleVideoSection: FC = () => {
   const isMobile = useIsMobile();
@@ -66,7 +68,10 @@ const EducationSingleVideoSection: FC = () => {
           <>
             <Box
               sx={{
-                width: { md: "100% !important", xs: "calc(100vw - 48px) !important" },
+                width: {
+                  md: "100% !important",
+                  xs: "calc(100vw - 48px) !important",
+                },
                 minHeight: { sm: 350, xs: 150 },
                 position: "relative",
                 borderRadius: 2,
@@ -84,7 +89,11 @@ const EducationSingleVideoSection: FC = () => {
                   iframe: {
                     borderRadius: 2,
                     aspectRatio: 16 / 9,
-                    width: { md: "100% !important", xs: "calc(100vw - 48px) !important" },
+                    width: {
+                      md: "100% !important",
+                      xs: "calc(100vw - 48px) !important",
+                    },
+                    minHeight: "max-content",
                     height: "auto !important",
                   },
                 }}
@@ -180,7 +189,10 @@ const EducationSingleVideoSection: FC = () => {
               borderColor: "dark.3",
               borderRadius: 2,
               aspectRatio: 16 / 9,
-              width: { md: "100% !important", xs: "calc(100vw - 48px) !important" },
+              width: {
+                md: "100% !important",
+                xs: "calc(100vw - 48px) !important",
+              },
               height: "auto !important",
             }}
           >

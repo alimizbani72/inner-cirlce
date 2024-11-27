@@ -1,6 +1,22 @@
 {
   "coinReportTable": {
     "standardCoinReports": "Standard Coin Reports",
-    "coinReports": "Coin Reports"
+    "allCoins": "All Coins",
+    "favorites": "Favorites",
+    "coinReports": "Coin Reports",
+    "preSale": "Pre-Sale",
+    "nextUpdateIn": "Update in: ",
+    "filter": "Filter",
+    "filters": "Filters",
+    "clearAll": "Clear all",
+    "submitFilter": "Submit filter",
+    "selectPackage": "Select package",
+    "selectSignal": "Select signal",
+    "selectCategory": "Select category",
+    "category": "Category",
+    "signal": "Signal",
+    "package": "Package",
+    "sortBy": "Sort by",
+    "timeFrame": "Time Frame"
   }
 }

@@ -9,8 +9,10 @@ import { useAppSelector } from "@/lib/hooks";
 import { selectLang } from "@/lib/features/dictionary/dicSlice";
 import { usePathname } from "next/navigation";
 import { convertRoute } from "@/utils/string";
+import { useIsMobile } from "@/hooks/use-responsive";
 
 const LearningBanner = () => {
+  const isMobile = useIsMobile();
   const { t } = useTranslate();
   const pathName = usePathname();
   const lang = useAppSelector(selectLang);
@@ -74,12 +76,12 @@ const LearningBanner = () => {
 
         <Stack
           sx={{
-            p: { md: 2, xs: 4 },
+            p: 2,
             position: "relative",
             zIndex: 1,
             justifyContent: "space-between",
-            alignItems: { md: "center", xs: undefined },
-            flexDirection: { md: "row", xs: "column" },
+            alignItems: "center",
+            flexDirection: "row",
             gap: { md: undefined, xs: 6 },
           }}
         >
@@ -97,9 +99,25 @@ const LearningBanner = () => {
             <Typography variant="p1-semi-bold">{vid[0].title}</Typography>
           </Stack>
 
-          <Button color="info" size="large" startIcon={<Icon name="Play" />} onClick={() => setOpen(true)}>
-            {t("learningBanner.buttonText")}
-          </Button>
+          {isMobile ? (
+            <Box
+              onClick={() => setOpen(true)}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                bgcolor: "dark.1",
+                borderRadius: "50%",
+                p: 1.5,
+              }}
+            >
+              <Icon name="Play" />
+            </Box>
+          ) : (
+            <Button color="info" size="large" startIcon={<Icon name="Play" />} onClick={() => setOpen(true)}>
+              {t("learningBanner.buttonText")}
+            </Button>
+          )}
         </Stack>
       </Stack>
       <LearningDialog open={open} close={handleClose} videoLink={vid[0].videoLink} title={vid[0].title} />

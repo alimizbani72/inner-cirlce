@@ -1,3 +1,4 @@
+import { Stack } from "@mui/material";
 import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
 import Chip from "@mui/material/Chip";
@@ -42,7 +43,7 @@ export function RHFSelect({
       name={name}
       control={control}
       render={({ field, fieldState: { error } }) => (
-        <>
+        <Box width="100%">
           {label && (
             <InputLabel
               sx={{
@@ -70,7 +71,6 @@ export function RHFSelect({
                       maxHeight: typeof maxHeight === "number" ? maxHeight : "unset",
                       bgcolor: "dark.2",
                       backgroundImage: "none",
-
                       boxShadow: "none",
                       color: "white",
                     }),
@@ -78,7 +78,6 @@ export function RHFSelect({
                   },
                 },
               },
-
               sx: {
                 textTransform: "capitalize",
                 "& .MuiSvgIcon-root": { color: "grey.light" },
@@ -87,10 +86,11 @@ export function RHFSelect({
             error={!!error}
             helperText={error ? error?.message : helperText}
             {...other}
+            placeholder="sss"
           >
             {children}
           </TextField>
-        </>
+        </Box>
       )}
     />
   );
@@ -120,6 +120,7 @@ export function RHFMultiSelect({
   placeholder,
   helperText,
   sx,
+  renderValue: renderValuesProps,
   ...other
 }: RHFMultiSelectProps) {
   const { control } = useFormContext();
@@ -154,39 +155,45 @@ export function RHFMultiSelect({
       control={control}
       render={({ field, fieldState: { error } }) => (
         <FormControl sx={sx}>
-          {label && <InputLabel id={name}> {label} </InputLabel>}
-
-          <Select
-            {...field}
-            multiple
-            displayEmpty={!!placeholder}
-            labelId={name}
-            input={<OutlinedInput fullWidth label={label} error={!!error} />}
-            renderValue={renderValues}
-            {...other}
-          >
-            {placeholder && (
-              <MenuItem disabled value="">
-                <em> {placeholder} </em>
-              </MenuItem>
+          <Stack width="inherit" height="auto">
+            {label && (
+              <InputLabel id={name} sx={{ position: "relative" }}>
+                {label}
+              </InputLabel>
             )}
 
-            {options.map((option) => {
-              const selected = field.value.includes(option.value);
-
-              return (
-                <MenuItem key={option.value} value={option.value}>
-                  {checkbox && <Checkbox size="small" disableRipple checked={selected} />}
-
-                  {option.label}
+            <Select
+              {...field}
+              multiple
+              displayEmpty={!!placeholder}
+              labelId={name}
+              input={<OutlinedInput fullWidth label={label} error={!!error} />}
+              renderValue={renderValuesProps || renderValues}
+              {...other}
+            >
+              {placeholder && (
+                <MenuItem disabled value="">
+                  <em> {placeholder} </em>
                 </MenuItem>
-              );
-            })}
-          </Select>
+              )}
 
-          {(!!error || helperText) && (
-            <FormHelperText error={!!error}>{error ? error?.message : helperText}</FormHelperText>
-          )}
+              {options?.map((option) => {
+                const selected = field?.value?.includes(option?.value);
+
+                return (
+                  <MenuItem key={option.value} value={option.value}>
+                    {checkbox && <Checkbox size="small" disableRipple checked={selected} />}
+
+                    {option.label}
+                  </MenuItem>
+                );
+              })}
+            </Select>
+
+            {(!!error || helperText) && (
+              <FormHelperText error={!!error}>{error ? error?.message : helperText}</FormHelperText>
+            )}
+          </Stack>
         </FormControl>
       )}
     />

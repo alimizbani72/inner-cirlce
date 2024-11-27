@@ -6,16 +6,7 @@ import { Icon } from "@/components/icons";
 import Toggle from "@app/_components/Toggle";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import {
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Divider,
-  IconButton,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { DialogActions, DialogContent, DialogTitle, Divider, IconButton, Stack, Typography } from "@mui/material";
 import { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslate } from "@/locales";
@@ -42,15 +33,17 @@ import { LoadingButton } from "@mui/lab";
 import CoinsList from "./CoinsList";
 import PriceInput from "./PriceInput";
 import { invalidatePortfolioQueries } from "../../InvaidatePorfolioQueries";
-import DateBadge from "./DateBadge";
-import NoteBadge from "./NoteBadge";
 import Total from "./Total";
+import Image from "@/components/Image";
+import FeeTooltip from "./FeeTooltip";
+import DateInput from "./DateInput";
 
 const formSchema = Yup.object().shape({
   coins: Yup.mixed().nullable(),
   quantity: Yup.string().required(),
   price: Yup.string(),
   fee: Yup.string(),
+  note: Yup.string(),
 });
 const TransactionModal = () => {
   const { t } = useTranslate();
@@ -89,7 +82,6 @@ const TransactionModal = () => {
   const initialDate = isEditMode && transactionToEdit ? new Date(transactionToEdit.date) : null;
   const [btnValue, setBtnValue] = useState<number>(isEditMode && transactionToEdit?.type === "sell" ? 2 : 1);
   const [dateTime, setDateTime] = useState<Date | null>(initialDate);
-  const [note, setNote] = useState<string>(transactionToEdit?.note || "");
 
   const { mutateAsync: createTransaction, isPending: createIsPending } =
     usePortfolioServicePortfolioTransactionsCreateMutation();
@@ -101,6 +93,7 @@ const TransactionModal = () => {
     quantity: transactionToEdit ? transactionToEdit.quantity : "",
     price: transactionToEdit ? transactionToEdit.price : "",
     fee: transactionToEdit ? transactionToEdit.fee : "",
+    note: transactionToEdit ? transactionToEdit.note : "",
   };
 
   const methods = useForm({
@@ -114,7 +107,6 @@ const TransactionModal = () => {
   };
 
   const { handleSubmit, watch } = methods;
-
   const selectedCoinSymbol = (watch("coins") as any)?.slug;
   const quantity = parseToNumber(watch("quantity"));
   const fee = parseToNumber(watch("fee"));
@@ -138,7 +130,7 @@ const TransactionModal = () => {
       type: transactionType,
       date: formattedDate,
       fee: parseToNumber(data.fee),
-      note: note,
+      note: data.note,
       price: parseToNumber(data.price),
       quantity: parseToNumber(data.quantity),
       ...(isEditMode ? {} : { slug: (data.coins as any)?.slug }),
@@ -157,7 +149,7 @@ const TransactionModal = () => {
       }
       invalidatePortfolioQueries(queryClient, {
         portfolioId: activePortfolioId,
-        activeSymbol: activeSymbol,
+        activeSymbol: activeSymbol!,
         invalidateHistory: true,
         invalidatePortfolio: true,
         invalidatePortfolioId: true,
@@ -175,7 +167,7 @@ const TransactionModal = () => {
       });
     }
   });
-  const isSubmitDisabled = !dateTime;
+  const isSubmitDisabled = !dateTime || quantity === 0;
 
   return (
     <CustomDialog
@@ -201,7 +193,16 @@ const TransactionModal = () => {
         <FormProvider methods={methods} onSubmit={onSubmit} sx={{ gap: 3 }}>
           <Toggle size="large" setValue={handleButtonChange} buttons={buttons} value={btnValue} width="100%" />
           {isEditMode ? (
-            <TextField name="coin" value={transactionToEdit?.symbol} InputProps={{ readOnly: true }} />
+            <Stack
+              direction={"row"}
+              p={2}
+              spacing={1}
+              sx={{ border: "2px solid", borderColor: "dark.3", borderRadius: 1.5, width: "100%" }}
+            >
+              <Image src={transactionToEdit?.logo} style={{ width: "24px", height: "24px" }} />
+              <Typography>{transactionToEdit?.name}</Typography>
+              <Typography>{transactionToEdit?.symbol}</Typography>
+            </Stack>
           ) : (
             <CoinsList />
           )}
@@ -210,31 +211,29 @@ const TransactionModal = () => {
               name="quantity"
               label={t("portfolioTransaction.quantity")}
               placeholder={t("portfolioTransaction.enterQuantity")}
-              topHelperText={t("portfolioTransaction.topQuantityHelpText")}
               type="number"
               isMoney
             />
             <PriceInput
-              topHelperText={t("portfolioTransaction.topPricePerCoinHelpText")}
               name="price"
               label={t("portfolioTransaction.pricePerCoin")}
               isEditMode={isEditMode}
               perCoinPrice={perCoinPrice?.data}
             />
           </Stack>
-
-          <RHFTextField
-            topHelperText={t("portfolioTransaction.topFeeHelpText")}
-            name="fee"
-            label={t("portfolioTransaction.fee")}
-            placeholder={t("portfolioTransaction.enterTheFee")}
-            type="number"
-            isMoney
-          />
-          <Stack direction={"row"} spacing={1} flexWrap={"wrap"}>
-            <DateBadge onConfirm={(dateTime) => setDateTime(dateTime)} initialDate={dateTime} />
-            <NoteBadge onConfirm={(newNote) => setNote(newNote)} initialNote={note} />
+          <Stack direction={{ xs: "column", md: "row" }} spacing={3}>
+            <DateInput onConfirm={(dateTime) => setDateTime(dateTime)} initialDate={dateTime} />
+            <Stack spacing={0.5} width={"100%"}>
+              <FeeTooltip />
+              <RHFTextField name="fee" placeholder={t("portfolioTransaction.enterTheFee")} type="number" isMoney />
+            </Stack>
           </Stack>
+          <RHFTextField
+            name="note"
+            label={t("portfolioTransaction.note")}
+            multiline
+            placeholder={t("portfolioTransaction.notePlaceholder")}
+          />
         </FormProvider>
       </DialogContent>
       <Divider />
