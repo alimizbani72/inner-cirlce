@@ -518,5 +518,9 @@
   "Recommended": "Anbefalt",
   "Report Summary": "Rapportsammendrag",
   "Brief on Our Evaluation": "Kort om vår evaluering",
-  "We conducted a thorough evaluation based on the available data.  While we endeavoured for comprehensive analysis, the data volume influenced our conclusions. For a detailed insight into our methodology and findings, please click here": "Vi gjennomførte en grundig evaluering basert på tilgjengelige data. Selv om vi bestrebet oss på en omfattende analyse, påvirket datamengden våre konklusjoner. For en detaljert innsikt i vår metodikk og funn, vennligst klikk her."
+  "We conducted a thorough evaluation based on the available data.  While we endeavoured for comprehensive analysis, the data volume influenced our conclusions. For a detailed insight into our methodology and findings, please click here": "Vi gjennomførte en grundig evaluering basert på tilgjengelige data. Selv om vi bestrebet oss på en omfattende analyse, påvirket datamengden våre konklusjoner. For en detaljert innsikt i vår metodikk og funn, vennligst klikk her.",
+  "Successfully added to your favorites.": "Vellykket lagt til i dine favoritter.",
+  "Successfully removed from your favorites.": "Vellykket fjernet fra dine favoritter.",
+  "Unable to add to your favorites. Please try again.": "Kunne ikke legge til i dine favoritter. Vennligst prøv igjen.",
+  "Unable to remove from your favorites. Please try again.": "Kunne ikke fjerne fra dine favoritter. Vennligst prøv igjen."
 }

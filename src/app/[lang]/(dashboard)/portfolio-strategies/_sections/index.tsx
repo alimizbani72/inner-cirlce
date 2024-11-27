@@ -1,13 +1,13 @@
 "use client";
 
+import { plans } from "@/configs/plans";
+import { getUserPlanType } from "@/consts";
+import { selectUser } from "@/lib/features/user/userSlice";
+import { useAppSelector } from "@/lib/hooks";
+import { useTranslate } from "@/locales";
 import { Stack } from "@mui/material";
 import type { FC } from "react";
 import StrategiesItem from "./StrategiesItem";
-import { plans } from "@/configs/plans";
-import { getUserPlanType } from "@/consts";
-import { useTranslate } from "@/locales";
-import { useAppSelector } from "@/lib/hooks";
-import { selectUser } from "@/lib/features/user/userSlice";
 
 type Props = {};
 
@@ -24,15 +24,17 @@ const PortfolioStrategiesSection: FC<Props> = () => {
       alignItems={{ md: "flex-start", xs: undefined }}
       justifyContent="flex-start"
     >
-      {Object.entries(plans).map(([key, value]) => (
-        <StrategiesItem
-          key={key}
-          subtitle={t("global.strategy")}
-          src={value.rive}
-          type={key}
-          upgrade={plans[getUserPlanType(userInfo) as keyof typeof plans].order < value.order}
-        />
-      ))}
+      {Object.entries(plans)
+        .filter(([key]) => key !== "plankton")
+        .map(([key, value]) => (
+          <StrategiesItem
+            key={key}
+            subtitle={t("global.strategy")}
+            src={value.rive}
+            type={key}
+            upgrade={plans[getUserPlanType(userInfo) as keyof typeof plans].order < value.order}
+          />
+        ))}
     </Stack>
   );
 };

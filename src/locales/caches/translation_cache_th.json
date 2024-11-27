@@ -518,5 +518,9 @@
   "Recommended": "แนะนำ",
   "Report Summary": "สรุปรายงาน",
   "Brief on Our Evaluation": "สรุปการประเมินของเรา",
-  "We conducted a thorough evaluation based on the available data.  While we endeavoured for comprehensive analysis, the data volume influenced our conclusions. For a detailed insight into our methodology and findings, please click here": "เราได้ทำการประเมินอย่างละเอียดตามข้อมูลที่มี ในขณะที่เราพยายามวิเคราะห์อย่างครอบคลุม ปริมาณข้อมูลมีผลต่อข้อสรุปของเรา สำหรับข้อมูลเชิงลึกเกี่ยวกับวิธีการและผลการวิจัยของเรา โปรดคลิกที่นี่"
+  "We conducted a thorough evaluation based on the available data.  While we endeavoured for comprehensive analysis, the data volume influenced our conclusions. For a detailed insight into our methodology and findings, please click here": "เราได้ทำการประเมินอย่างละเอียดตามข้อมูลที่มี ในขณะที่เราพยายามวิเคราะห์อย่างครอบคลุม ปริมาณข้อมูลมีผลต่อข้อสรุปของเรา สำหรับข้อมูลเชิงลึกเกี่ยวกับวิธีการและผลการวิจัยของเรา โปรดคลิกที่นี่",
+  "Successfully added to your favorites.": "เพิ่มลงในรายการโปรดของคุณเรียบร้อยแล้ว",
+  "Successfully removed from your favorites.": "ลบออกจากรายการโปรดของคุณเรียบร้อยแล้ว",
+  "Unable to add to your favorites. Please try again.": "ไม่สามารถเพิ่มลงในรายการโปรดได้ กรุณาลองอีกครั้ง",
+  "Unable to remove from your favorites. Please try again.": "ไม่สามารถลบออกจากรายการโปรดได้ กรุณาลองอีกครั้ง"
 }

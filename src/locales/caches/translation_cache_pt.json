@@ -518,5 +518,9 @@
   "Recommended": "Recomendado",
   "Report Summary": "Resumo do Relatório",
   "Brief on Our Evaluation": "Breve sobre Nossa Avaliação",
-  "We conducted a thorough evaluation based on the available data.  While we endeavoured for comprehensive analysis, the data volume influenced our conclusions. For a detailed insight into our methodology and findings, please click here": "Realizamos uma avaliação minuciosa baseada nos dados disponíveis. Enquanto nos esforçamos para uma análise abrangente, o volume de dados influenciou nossas conclusões. Para um detalhamento de nossa metodologia e descobertas, por favor clique aqui."
+  "We conducted a thorough evaluation based on the available data.  While we endeavoured for comprehensive analysis, the data volume influenced our conclusions. For a detailed insight into our methodology and findings, please click here": "Realizamos uma avaliação minuciosa baseada nos dados disponíveis. Enquanto nos esforçamos para uma análise abrangente, o volume de dados influenciou nossas conclusões. Para um detalhamento de nossa metodologia e descobertas, por favor clique aqui.",
+  "Successfully added to your favorites.": "Adicionado com sucesso aos seus favoritos.",
+  "Successfully removed from your favorites.": "Removido com sucesso dos seus favoritos.",
+  "Unable to add to your favorites. Please try again.": "Não foi possível adicionar aos seus favoritos. Por favor, tente novamente.",
+  "Unable to remove from your favorites. Please try again.": "Não foi possível remover dos seus favoritos. Por favor, tente novamente."
 }

@@ -9,6 +9,8 @@ import { Box, IconButton, Stack, Typography } from "@mui/material";
 import type { GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
 import { useMemo } from "react";
 import { packageOptions, riskLevelColor, signalsList } from "../consts";
+import CMRHandler from "./CMRHandler";
+import CategoryHandler from "./CategoryHandler";
 
 export const useTableController = () => {
   const { t } = useTranslate();
@@ -78,35 +80,6 @@ export const useTableController = () => {
     </Typography>
   );
 
-  const renderChangePercentage = (params: GridRenderCellParams<{ cmr_change_percentage: number }>) => {
-    const isPositive = params.row.cmr_change_percentage > 0;
-
-    return (
-      <Stack direction="row" alignItems="center" spacing={2}>
-        <Typography variant="p2-medium">{params.value?.toString()?.slice(0, 5)}</Typography>
-        {params.row.cmr_change_percentage !== null && (
-          <Typography
-            variant="caption-semi-bold"
-            sx={(theme) => ({
-              ...(isPositive
-                ? {
-                    color: "success.main",
-                    "& path": { stroke: theme.palette.success.main },
-                  }
-                : {
-                    color: params.row.cmr_change_percentage === 0 ? "common.white" : "danger.main",
-                    "& path": { stroke: theme.palette.danger.main },
-                  }),
-            })}
-          >
-            {params.row.cmr_change_percentage !== 0 && <Icon name={isPositive ? "Arrow-up" : "Arrow-down"} />}
-            {params.row.cmr_change_percentage}
-          </Typography>
-        )}
-      </Stack>
-    );
-  };
-
   const renderText = (params: GridRenderCellParams) => (
     <Typography variant="p2-medium">
       {params.value ? `$${params.value?.toString()?.slice(0, 8)}` : "••••••••"}
@@ -137,6 +110,7 @@ export const useTableController = () => {
         headerName: t("coinReportTabTable.name"),
         field: "name",
         filterable: false,
+        width: 300,
         minWidth: 300,
         renderCell: (params) => (
           <Stack direction="row" alignItems="center" gap={1} sx={{ "&:hover > button": { visibility: "visible" } }}>
@@ -164,19 +138,14 @@ export const useTableController = () => {
       {
         headerName: t("coinReportTabTable.category"),
         field: "category",
-        minWidth: 200,
         flex: 1,
-        renderCell: (params) => (
-          <Typography variant="p2-medium">
-            {params.value} {!params.row.name && "••••••••"}
-          </Typography>
-        ),
+        renderCell: (params) => <CategoryHandler slug={params.value} />,
       },
       {
         headerName: t("coinReportTabTable.cmr"),
         field: "cmr",
         sortable: false,
-        renderCell: renderChangePercentage,
+        renderCell: (params) => <CMRHandler value={params.value} percentChange={params.row.cmr_change_percentage} />,
       },
       {
         headerName: t("coinReportTabTable.eeSignal"),
@@ -198,7 +167,6 @@ export const useTableController = () => {
         headerName: t("coinReportTabTable.rtl"),
         field: "rtl",
         sortable: false,
-        minWidth: 100,
         renderCell: (params: GridRenderCellParams) => (
           <Typography variant="p2-medium">
             {params.value ? `${params.value?.toString()?.slice(0, 5)}%` : "••••••••"}
@@ -215,7 +183,6 @@ export const useTableController = () => {
         headerName: t("coinReportTabTable.currentPrice"),
         field: "current_price",
         sortable: false,
-        minWidth: 150,
         flex: 1,
         renderCell: renderText,
       },

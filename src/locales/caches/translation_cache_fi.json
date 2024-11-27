@@ -518,5 +518,9 @@
   "Recommended": "Suositeltu",
   "Report Summary": "Raportin yhteenveto",
   "Brief on Our Evaluation": "Lyhyesti arvioinnistamme",
-  "We conducted a thorough evaluation based on the available data.  While we endeavoured for comprehensive analysis, the data volume influenced our conclusions. For a detailed insight into our methodology and findings, please click here": "Suoritimme perusteellisen arvioinnin saatavilla olevien tietojen perusteella. Pyrimme kattavaan analyysiin, mutta tietomäärä vaikutti johtopäätöksiimme. Lisätietoja menetelmästämme ja tuloksistamme saat klikkaamalla tästä."
+  "We conducted a thorough evaluation based on the available data.  While we endeavoured for comprehensive analysis, the data volume influenced our conclusions. For a detailed insight into our methodology and findings, please click here": "Suoritimme perusteellisen arvioinnin saatavilla olevien tietojen perusteella. Pyrimme kattavaan analyysiin, mutta tietomäärä vaikutti johtopäätöksiimme. Lisätietoja menetelmästämme ja tuloksistamme saat klikkaamalla tästä.",
+  "Successfully added to your favorites.": "Onnistuneesti lisätty suosikkeihisi.",
+  "Successfully removed from your favorites.": "Onnistuneesti poistettu suosikeistasi.",
+  "Unable to add to your favorites. Please try again.": "Suosikkeihin lisääminen epäonnistui. Yritä uudelleen.",
+  "Unable to remove from your favorites. Please try again.": "Suosikeista poistaminen epäonnistui. Yritä uudelleen."
 }

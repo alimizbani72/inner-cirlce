@@ -4,13 +4,8 @@ import Image from "@/components/Image";
 import { Icon } from "@/components/icons";
 import { useTranslate } from "@/locales";
 import { toTitleCase } from "@/utils/change-case";
-import { packageOptions, signalsList } from "@dashboard/coin-reports-new/_sections/consts";
-import type {
-  FilterFormDataType,
-  ItemType,
-  PackageType,
-  SignalType,
-} from "@dashboard/coin-reports-new/_sections/types.d";
+import { packageOptions, signalsList } from "@dashboard/coin-reports/_sections/consts";
+import type { FilterFormDataType, ItemType, PackageType, SignalType } from "@dashboard/coin-reports/_sections/types.d";
 import { useCoinReportServiceCoinReportCategoriesQuery } from "@minecraft/queries";
 import {
   Box,

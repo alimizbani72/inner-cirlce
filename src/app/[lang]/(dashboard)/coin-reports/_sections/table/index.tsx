@@ -1,21 +1,21 @@
 "use client";
 
 import { DataGrid } from "@/components/datagrid";
+import { useDebounce } from "@/hooks/use-debounce";
 import { useIsMobile } from "@/hooks/use-responsive";
 import Toggle from "@app/_components/Toggle";
-import { Stack, Typography } from "@mui/material";
-import { type GridSortModel, useGridApiRef, gridClasses, type GridRowParams } from "@mui/x-data-grid";
-import { useDebounce } from "@/hooks/use-debounce";
-import { defaultValueSort } from "@dashboard/coin-reports-new/_sections/consts";
-import type { FilterFormDataType } from "@dashboard/coin-reports-new/_sections/types.d";
+import { defaultValueSort } from "@dashboard/coin-reports/_sections/consts";
+import type { FilterFormDataType } from "@dashboard/coin-reports/_sections/types.d";
 import { useCoinReportServiceCoinReportFavoritesQuery, useCoinReportServiceCoinReportQuery } from "@minecraft/queries";
-import { useMemo, useState, useCallback, useEffect } from "react";
+import { Stack, Typography } from "@mui/material";
+import { type GridRowParams, type GridSortModel, gridClasses, useGridApiRef } from "@mui/x-data-grid";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
+import { useAppRouter } from "@/routes/hooks";
+import UpgradeModal from "@dashboard/coin-reports/[coinId]/_section/UpgradeModal";
+import { FilterModal } from "@dashboard/coin-reports/_sections/FilterModal";
 import { Header } from "./Header";
 import { useTableController } from "./useTableController";
-import { useRouter } from "next/navigation";
-import { FilterModal } from "@dashboard/coin-reports-new/_sections/FilterModal";
-import UpgradeModal from "@dashboard/coin-reports-new/[coinId]/_section/UpgradeModal";
 
 const convertFilterData = (data: FilterFormDataType) => ({
   filters: {
@@ -39,12 +39,12 @@ function CustomNoRowsOverlay() {
 
 const CoinReportTable = () => {
   const apiRef = useGridApiRef();
-  const router = useRouter();
+  const router = useAppRouter();
 
   const [value, setValue] = useState("all-coins");
   const [searchValue, setSearchValue] = useState("");
   const [openFilterModal, setOpenFilterModal] = useState(false);
-  const [filters, setFilters] = useState<FilterFormDataType>({ timeFrame: "1d", sorts: defaultValueSort });
+  const [filters, setFilters] = useState<FilterFormDataType>({ timeFrame: "1h", sorts: defaultValueSort });
   const [page, setPage] = useState({ pageNumber: 0, pageSize: 50 });
   const [openUpgradeModal, setOpenUpgradeModal] = useState(false);
 
@@ -131,7 +131,7 @@ const CoinReportTable = () => {
 
   const handleRowClick = (api: GridRowParams<any>) => {
     if (api?.row?.name) {
-      router.push(`/coin-reports-new/${api.row.slug}`);
+      router.push(`/coin-reports/${api.row.slug}`);
     } else {
       setOpenUpgradeModal(true);
     }
@@ -165,7 +165,6 @@ const CoinReportTable = () => {
               [`& .${gridClasses.columnHeader}[data-field=name]`]: {
                 position: "sticky",
                 zIndex: 4,
-                minWidth: 300,
                 left: "0 !important",
                 bgcolor: "dark.3",
               },
@@ -179,7 +178,6 @@ const CoinReportTable = () => {
               [`& .${gridClasses.cell}[data-field=name]`]: {
                 position: "sticky",
                 zIndex: 4,
-                minWidth: 300,
                 left: "0 !important",
                 bgcolor: "dark.1",
               },

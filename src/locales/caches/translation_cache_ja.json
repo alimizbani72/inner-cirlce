@@ -518,5 +518,9 @@
   "Recommended": "推奨される",
   "Report Summary": "レポートの要約",
   "Brief on Our Evaluation": "評価についての概要",
-  "We conducted a thorough evaluation based on the available data.  While we endeavoured for comprehensive analysis, the data volume influenced our conclusions. For a detailed insight into our methodology and findings, please click here": "利用可能なデータに基づいて徹底的な評価を行いました。包括的な分析を目指しましたが、データの量が結論に影響を与えました。当社の方法論と調査結果の詳細については、こちらをクリックしてください。"
+  "We conducted a thorough evaluation based on the available data.  While we endeavoured for comprehensive analysis, the data volume influenced our conclusions. For a detailed insight into our methodology and findings, please click here": "利用可能なデータに基づいて徹底的な評価を行いました。包括的な分析を目指しましたが、データの量が結論に影響を与えました。当社の方法論と調査結果の詳細については、こちらをクリックしてください。",
+  "Successfully added to your favorites.": "お気に入りに追加しました。",
+  "Successfully removed from your favorites.": "お気に入りから削除しました。",
+  "Unable to add to your favorites. Please try again.": "お気に入りに追加できませんでした。もう一度お試しください。",
+  "Unable to remove from your favorites. Please try again.": "お気に入りから削除できませんでした。もう一度お試しください。"
 }

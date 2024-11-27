@@ -518,5 +518,9 @@
   "Recommended": "Зөвлөмж болгож байна",
   "Report Summary": "Тайлангийн хураангуй",
   "Brief on Our Evaluation": "Манай үнэлгээний товч тайлбар",
-  "We conducted a thorough evaluation based on the available data.  While we endeavoured for comprehensive analysis, the data volume influenced our conclusions. For a detailed insight into our methodology and findings, please click here": "Бид боломжит өгөгдлийн дээр үндэслэн гүнзгий үнэлгээ хийсэн. Бид бүрэн шинжилгээ хийхийг хичээсэн ч, өгөгдлийн хэмжээ манай дүгнэлтэд нөлөөлсөн. Манай арга зүй болон олж мэдсэн зүйлсийн талаар дэлгэрэнгүй мэдээлэл авахыг хүсвэл энд дарна уу."
+  "We conducted a thorough evaluation based on the available data.  While we endeavoured for comprehensive analysis, the data volume influenced our conclusions. For a detailed insight into our methodology and findings, please click here": "Бид боломжит өгөгдлийн дээр үндэслэн гүнзгий үнэлгээ хийсэн. Бид бүрэн шинжилгээ хийхийг хичээсэн ч, өгөгдлийн хэмжээ манай дүгнэлтэд нөлөөлсөн. Манай арга зүй болон олж мэдсэн зүйлсийн талаар дэлгэрэнгүй мэдээлэл авахыг хүсвэл энд дарна уу.",
+  "Successfully added to your favorites.": "Таны дуртай зүйлсэд амжилттай нэмэгдлээ.",
+  "Successfully removed from your favorites.": "Таны дуртай зүйлсээс амжилттай хасагдлаа.",
+  "Unable to add to your favorites. Please try again.": "Таны дуртай зүйлсэд нэмэх боломжгүй байна. Дахин оролдоно уу.",
+  "Unable to remove from your favorites. Please try again.": "Таны дуртай зүйлсээс хасах боломжгүй байна. Дахин оролдоно уу."
 }

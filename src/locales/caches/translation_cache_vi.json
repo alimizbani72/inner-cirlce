@@ -518,5 +518,9 @@
   "Recommended": "Được khuyên dùng",
   "Report Summary": "Tóm tắt báo cáo",
   "Brief on Our Evaluation": "Tóm tắt về Đánh giá của Chúng tôi",
-  "We conducted a thorough evaluation based on the available data.  While we endeavoured for comprehensive analysis, the data volume influenced our conclusions. For a detailed insight into our methodology and findings, please click here": "Chúng tôi đã tiến hành đánh giá kỹ lưỡng dựa trên dữ liệu có sẵn. Trong khi chúng tôi cố gắng phân tích toàn diện, khối lượng dữ liệu đã ảnh hưởng đến kết luận của chúng tôi. Để hiểu rõ hơn về phương pháp và kết quả của chúng tôi, vui lòng nhấp vào đây."
+  "We conducted a thorough evaluation based on the available data.  While we endeavoured for comprehensive analysis, the data volume influenced our conclusions. For a detailed insight into our methodology and findings, please click here": "Chúng tôi đã tiến hành đánh giá kỹ lưỡng dựa trên dữ liệu có sẵn. Trong khi chúng tôi cố gắng phân tích toàn diện, khối lượng dữ liệu đã ảnh hưởng đến kết luận của chúng tôi. Để hiểu rõ hơn về phương pháp và kết quả của chúng tôi, vui lòng nhấp vào đây.",
+  "Successfully added to your favorites.": "Đã thêm vào mục yêu thích thành công.",
+  "Successfully removed from your favorites.": "Đã xóa khỏi mục yêu thích thành công.",
+  "Unable to add to your favorites. Please try again.": "Không thể thêm vào mục yêu thích. Vui lòng thử lại.",
+  "Unable to remove from your favorites. Please try again.": "Không thể xóa khỏi mục yêu thích. Vui lòng thử lại."
 }

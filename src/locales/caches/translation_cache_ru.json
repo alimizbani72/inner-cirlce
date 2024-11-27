@@ -518,5 +518,9 @@
   "Recommended": "Рекомендуется",
   "Report Summary": "Сводка отчета",
   "Brief on Our Evaluation": "Краткое изложение нашей оценки",
-  "We conducted a thorough evaluation based on the available data.  While we endeavoured for comprehensive analysis, the data volume influenced our conclusions. For a detailed insight into our methodology and findings, please click here": "Мы провели тщательную оценку на основе доступных данных. Стремясь к всестороннему анализу, объем данных повлиял на наши выводы. Для подробного ознакомления с нашей методологией и результатами, пожалуйста, нажмите здесь."
+  "We conducted a thorough evaluation based on the available data.  While we endeavoured for comprehensive analysis, the data volume influenced our conclusions. For a detailed insight into our methodology and findings, please click here": "Мы провели тщательную оценку на основе доступных данных. Стремясь к всестороннему анализу, объем данных повлиял на наши выводы. Для подробного ознакомления с нашей методологией и результатами, пожалуйста, нажмите здесь.",
+  "Successfully added to your favorites.": "Успешно добавлено в избранное.",
+  "Successfully removed from your favorites.": "Успешно удалено из избранного.",
+  "Unable to add to your favorites. Please try again.": "Не удалось добавить в избранное. Пожалуйста, попробуйте еще раз.",
+  "Unable to remove from your favorites. Please try again.": "Не удалось удалить из избранного. Пожалуйста, попробуйте еще раз."
 }

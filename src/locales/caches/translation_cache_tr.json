@@ -518,5 +518,9 @@
   "Recommended": "Tavsiye Edilen",
   "Report Summary": "Rapor Özeti",
   "Brief on Our Evaluation": "Değerlendirmemiz Hakkında Kısa Bilgi",
-  "We conducted a thorough evaluation based on the available data.  While we endeavoured for comprehensive analysis, the data volume influenced our conclusions. For a detailed insight into our methodology and findings, please click here": "Mevcut verilere dayanarak kapsamlı bir değerlendirme yaptık. Kapsamlı bir analiz için çaba sarf etsek de, veri hacmi sonuçlarımızı etkiledi. Metodolojimiz ve bulgularımız hakkında detaylı bilgi için lütfen buraya tıklayın."
+  "We conducted a thorough evaluation based on the available data.  While we endeavoured for comprehensive analysis, the data volume influenced our conclusions. For a detailed insight into our methodology and findings, please click here": "Mevcut verilere dayanarak kapsamlı bir değerlendirme yaptık. Kapsamlı bir analiz için çaba sarf etsek de, veri hacmi sonuçlarımızı etkiledi. Metodolojimiz ve bulgularımız hakkında detaylı bilgi için lütfen buraya tıklayın.",
+  "Successfully added to your favorites.": "Başarıyla favorilerinize eklendi.",
+  "Successfully removed from your favorites.": "Başarıyla favorilerinizden çıkarıldı.",
+  "Unable to add to your favorites. Please try again.": "Favorilerinize eklenemedi. Lütfen tekrar deneyin.",
+  "Unable to remove from your favorites. Please try again.": "Favorilerinizden çıkarılamadı. Lütfen tekrar deneyin."
 }

@@ -1,5 +1,5 @@
 import { useTranslate } from "@/locales";
-import { TOTAL_SECONDS } from "@dashboard/coin-reports-new/_sections/consts";
+import { TOTAL_SECONDS } from "@dashboard/coin-reports/_sections/consts";
 import { Box, CircularProgress, Typography } from "@mui/material";
 import { useCallback } from "react";
 import { useTimer } from "react-timer-hook";
