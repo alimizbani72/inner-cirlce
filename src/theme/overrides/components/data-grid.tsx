@@ -42,9 +42,11 @@ export function dataGrid(theme: Theme) {
               borderBottom: "unset",
             },
           },
+          [`& .${tablePaginationClasses.spacer}`]: { display: "none" },
           [`& .${tablePaginationClasses.toolbar}`]: {
             color: theme.palette.common.white,
             minHeight: 64,
+            justifyContent: "center",
             [`& .${tablePaginationClasses.actions} > button`]: {
               color: theme.palette.common.white,
               "&.Mui-disabled": {
@@ -86,6 +88,7 @@ export function dataGrid(theme: Theme) {
           "--rowBorderColor": theme.palette.dark[3],
           "&:hover": {
             backgroundColor: theme.palette.dark[3],
+            cursor: "pointer",
           },
         },
         iconButtonContainer: {

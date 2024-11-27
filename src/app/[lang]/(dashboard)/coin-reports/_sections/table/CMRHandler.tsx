@@ -43,6 +43,7 @@ const CMRHandler: FC<CMRHandlerProps> = ({ value, percentChange }) => {
             variant="caption-semi-bold"
           >
             {percentChange?.toString()?.slice(0, 5)}
+            {iconName ? "%" : ""}
           </Typography>
         </Stack>
       )}

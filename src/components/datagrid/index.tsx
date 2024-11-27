@@ -1,14 +1,41 @@
 import { Icon } from "@/components/icons";
 import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
 import { useAppSelector } from "@/lib/hooks";
-import { Box, Stack, menuClasses } from "@mui/material";
+import { Box, Stack, type TablePaginationProps, menuClasses, Pagination as MuiPagination } from "@mui/material";
 import type { DataGridProps } from "@mui/x-data-grid";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, gridPageCountSelector, GridPagination, useGridApiContext, useGridSelector } from "@mui/x-data-grid";
 import type { ReactNode } from "react";
 
 interface DataGridCompProps extends DataGridProps {
   header?: ReactNode;
   emptyText?: ReactNode;
+}
+
+function Pagination({
+  page,
+  onPageChange,
+  className,
+}: Pick<TablePaginationProps, "page" | "onPageChange" | "className">) {
+  const apiRef = useGridApiContext();
+  const pageCount = useGridSelector(apiRef, gridPageCountSelector);
+
+  return (
+    <MuiPagination
+      color="primary"
+      className={className}
+      count={pageCount}
+      hideNextButton
+      hidePrevButton
+      page={page + 1}
+      onChange={(event, newPage) => {
+        onPageChange(event as any, newPage - 1);
+      }}
+    />
+  );
+}
+
+function CustomPagination(props: any) {
+  return <GridPagination ActionsComponent={Pagination} {...props} />;
 }
 
 const SortIcon = () => <Icon name="Arrow-Sort" />;
@@ -19,7 +46,7 @@ const DataGridMui = (props: DataGridCompProps) => {
 
   return (
     <Stack
-      width={{ xs: "calc(100vw - 48px)", md: `calc(100vw - ${isCollapsed ? "104px" : "280px"})` }}
+      width={{ xs: "calc(100vw - 48px)", md: `calc(100vw - ${isCollapsed ? "168px" : "312px"})` }}
       border="1.5px solid"
       borderColor="dark.3"
       alignItems="flex-start"
@@ -47,6 +74,7 @@ const DataGridMui = (props: DataGridCompProps) => {
             columnHeaderSortIcon: SortIcon,
             columnSortedAscendingIcon: SortIcon,
             columnSortedDescendingIcon: SortIcon,
+            pagination: CustomPagination,
             ...slots,
           }}
           {...rest}

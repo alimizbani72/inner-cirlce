@@ -2,7 +2,6 @@
 
 import { DataGrid } from "@/components/datagrid";
 import { useDebounce } from "@/hooks/use-debounce";
-import { useIsMobile } from "@/hooks/use-responsive";
 import Toggle from "@app/_components/Toggle";
 import { defaultValueSort } from "@dashboard/coin-reports/_sections/consts";
 import type { FilterFormDataType } from "@dashboard/coin-reports/_sections/types.d";
@@ -46,20 +45,21 @@ const CoinReportTable = () => {
   const [searchValue, setSearchValue] = useState("");
   const [openFilterModal, setOpenFilterModal] = useState(false);
   const [filters, setFilters] = useState<FilterFormDataType>({ timeFrame: "1h", sorts: defaultValueSort });
-  const [page, setPage] = useState({ pageNumber: 0, pageSize: 50 });
+  const [paginationModel, setPaginationModel] = useState({
+    page: 0,
+    pageSize: 100,
+  });
   const [openUpgradeModal, setOpenUpgradeModal] = useState(false);
 
-  const isMobile = useIsMobile();
   const debouncedSearch = useDebounce(searchValue, 500);
 
   const opts = useMemo(() => {
     return JSON.stringify({
       ...convertFilterData({ ...filters, query: debouncedSearch }),
-
-      page: page?.pageNumber + 1,
-      per_page: page?.pageSize,
+      page: paginationModel?.page + 1,
+      per_page: paginationModel?.pageSize,
     });
-  }, [page, debouncedSearch, filters]);
+  }, [paginationModel, debouncedSearch, filters]);
 
   const {
     data: allData,
@@ -159,36 +159,28 @@ const CoinReportTable = () => {
         </Stack>
       </Stack>
       <Stack
-        pl={{ md: 4, xs: 3 }}
+        px={{ md: 4, xs: 3 }}
         sx={{
-          ...(!isMobile && {
-            [`& .${gridClasses.columnHeaders}`]: {
-              [`& .${gridClasses.columnHeader}[data-field=name]`]: {
-                position: "sticky",
-                zIndex: 4,
-                left: "0 !important",
+          [`& .${gridClasses.columnHeaders}`]: {
+            [`& .${gridClasses.columnHeader}[data-field=name]`]: {
+              position: "sticky",
+              zIndex: 4,
+              left: "0 !important",
+              bgcolor: "dark.3",
+            },
+          },
+          [`& .${gridClasses.row}`]: {
+            "&:hover": {
+              [`& .${gridClasses.cell}[data-field=name]`]: {
                 bgcolor: "dark.3",
               },
             },
-            [`& .${gridClasses.row}`]: {
-              "&:hover": {
-                [`& .${gridClasses.cell}[data-field=name]`]: {
-                  bgcolor: "dark.3",
-                },
-              },
-              [`& .${gridClasses.cell}[data-field=name]`]: {
-                position: "sticky",
-                zIndex: 4,
-                left: "0 !important",
-                bgcolor: "dark.1",
-              },
+            [`& .${gridClasses.cell}[data-field=name]`]: {
+              position: "sticky",
+              zIndex: 4,
+              left: "0 !important",
+              bgcolor: "dark.1",
             },
-          }),
-
-          "> div": {
-            borderBottomRightRadius: { xs: undefined, md: 0 },
-            borderTopRightRadius: { xs: undefined, md: 0 },
-            borderRight: { xs: undefined, md: 0 },
           },
         }}
       >
@@ -215,10 +207,11 @@ const CoinReportTable = () => {
             />
           }
           rowCount={finalData?.meta?.total_count || 0}
-          pageSizeOptions={[50, 100, 200]}
-          paginationModel={{ page: page?.pageNumber, pageSize: page?.pageSize }}
+          pageSizeOptions={[100]}
+          paginationModel={paginationModel}
+          paginationMode="server"
           onPaginationModelChange={(model) => {
-            setPage({ pageNumber: model.page, pageSize: model.pageSize });
+            setPaginationModel(model);
           }}
           sortModel={
             filters.sorts
@@ -226,7 +219,6 @@ const CoinReportTable = () => {
               : undefined
           }
           sortingMode="server"
-          paginationMode="server"
           autosizeOptions={{
             includeHeaders: true,
             includeOutliers: true,

@@ -11,9 +11,11 @@ import { useMemo } from "react";
 import { packageOptions, riskLevelColor, signalsList } from "../consts";
 import CMRHandler from "./CMRHandler";
 import CategoryHandler from "./CategoryHandler";
+import { useIsMobile } from "@/hooks/use-responsive";
 
 export const useTableController = () => {
   const { t } = useTranslate();
+  const isMobile = useIsMobile();
   const { mutateAsync: mutateAddFavorite } = useCoinReportServiceCoinReportSlugFavoriteCreateMutation();
   const { mutateAsync: mutateRemoveFavorite } = useCoinReportServiceCoinReportSlugFavoriteDeleteMutation();
 
@@ -110,8 +112,8 @@ export const useTableController = () => {
         headerName: t("coinReportTabTable.name"),
         field: "name",
         filterable: false,
-        width: 300,
-        minWidth: 300,
+        width: isMobile ? 150 : 300,
+        minWidth: isMobile ? 150 : 300,
         renderCell: (params) => (
           <Stack direction="row" alignItems="center" gap={1} sx={{ "&:hover > button": { visibility: "visible" } }}>
             {renderFavoriteIcon(params)}
@@ -139,12 +141,15 @@ export const useTableController = () => {
         headerName: t("coinReportTabTable.category"),
         field: "category",
         minWidth: 150,
+        width: 150,
         renderCell: (params) => <CategoryHandler slug={params.value} />,
       },
       {
         headerName: t("coinReportTabTable.cmr"),
         field: "cmr",
         sortable: false,
+        minWidth: 150,
+        width: 150,
         renderCell: (params) => <CMRHandler value={params.value} percentChange={params.row.cmr_change_percentage} />,
       },
       {
@@ -167,6 +172,7 @@ export const useTableController = () => {
         headerName: t("coinReportTabTable.rtl"),
         field: "rtl",
         minWidth: 70,
+        width: 70,
         sortable: false,
         renderCell: (params: GridRenderCellParams) => (
           <Typography variant="p2-medium">
@@ -187,7 +193,7 @@ export const useTableController = () => {
         renderCell: renderText,
       },
     ],
-    [t]
+    [t, isMobile]
   );
 
   const buttons = useMemo(
