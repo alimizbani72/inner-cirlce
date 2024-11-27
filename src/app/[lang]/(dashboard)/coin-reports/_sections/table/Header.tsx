@@ -1,18 +1,10 @@
 import { Icon } from "@/components/icons";
 import { useIsMobile, useResponsive } from "@/hooks/use-responsive";
 import { useTranslate } from "@/locales";
-import {
-  Box,
-  Button,
-  IconButton,
-  Stack,
-  TextField,
-  Typography,
-  buttonClasses,
-  outlinedInputClasses,
-} from "@mui/material";
+import { Badge, type BadgeProps, Box, Stack, TextField, Typography, outlinedInputClasses } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { type Dispatch, Fragment, type SetStateAction, useMemo } from "react";
-import { defaultValueSort, timeFrameOptions } from "../consts";
+import { timeFrameOptions } from "../consts";
 import type { FilterFormDataType } from "../types";
 import CountDownUpdateTime from "./CountDownUpdateTime";
 
@@ -25,6 +17,15 @@ interface HeaderProps {
   onNextUpdate: () => void;
 }
 
+const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    right: 35,
+    top: 12,
+    border: `2px solid ${theme.palette.primary.main}`,
+    padding: "0 4px",
+  },
+}));
+
 export const Header = ({
   onFilterClick,
   setFilters,
@@ -34,8 +35,8 @@ export const Header = ({
   onNextUpdate,
 }: HeaderProps) => {
   const { t } = useTranslate();
+  const isLarge = useResponsive("up", "lg");
   const isMobile = useIsMobile();
-  const lgBreakPoint = useResponsive("up", "lg");
   const handleTimeFrameClick = (time: { value: string }) => {
     setFilters((prev) => ({ ...prev, timeFrame: time.value }));
   };
@@ -53,70 +54,61 @@ export const Header = ({
   const hasActiveFilters = !!Object.keys(filterValue).length;
 
   return (
-    <Box
-      display="flex"
-      justifyContent="space-between"
-      alignItems="center"
-      px={2.5}
-      py={3}
-      width="100%"
-      flexDirection={{ xs: "column", md: "row" }}
-      sx={{ gap: 2, alignItems: { md: "unset", xs: "flex-start" } }}
+    <Stack
+      direction={isMobile ? "column" : "row"}
+      justifyContent={"space-between"}
+      sx={{ width: "100%", p: 3 }}
+      gap={3}
     >
-      <Box
-        display="flex"
-        justifyContent="space-between"
-        width={{ xs: "100%", md: "inherit" }}
-        alignItems={{ xs: "flex-start", sm: "center" }}
-      >
-        <Box
-          display="flex"
-          alignItems={{ xs: "flex-start", md: "center" }}
-          gap={2}
-          sx={{ flexDirection: { xs: "column", sm: "row" } }}
-        >
-          <Typography variant="p1-semi-bold">{t("coinReportTable.allCoins")}</Typography>
-          {nextUpdateTime && (
-            <CountDownUpdateTime
-              onNextUpdate={() => {
-                onNextUpdate();
-              }}
-              updateTime={nextUpdateTime}
-            />
-          )}
-        </Box>
-
-        {isMobile && (
-          <IconButton
-            sx={{
-              path: {
-                stroke: (theme) => theme.palette.grey.light,
-              },
+      <Stack direction={"row"} alignItems={"center"} gap={2} sx={{ width: "100%" }}>
+        <Typography variant="p1-semi-bold" sx={{ textAlign: "center" }}>
+          {t("coinReportTable.allCoins")}
+        </Typography>
+        {nextUpdateTime && (
+          <CountDownUpdateTime
+            onNextUpdate={() => {
+              onNextUpdate();
             }}
-            onClick={onFilterClick}
-          >
-            <Icon name="Filter" />
-          </IconButton>
+            updateTime={nextUpdateTime}
+          />
         )}
-      </Box>
-
-      <Stack
-        direction={{ xs: "column", md: "row-reverse" }}
-        alignItems={{ md: "center" }}
-        width={{ xs: "100%", md: "unset" }}
-        spacing={2}
-      >
-        {!isMobile && (
-          <Button
-            color="info"
-            startIcon={<Icon name="Filter" />}
-            sx={{ [`& .${buttonClasses.startIcon}`]: { mr: 2 } }}
-            onClick={onFilterClick}
-          >
-            {t("coinReportTable.filter")}
-          </Button>
-        )}
-
+        <Stack
+          direction={"row"}
+          alignItems="center"
+          sx={{ p: 1, height: 40, bgcolor: "dark.3", borderRadius: 2.5, ml: "auto" }}
+          gap={1}
+        >
+          {timeFrameOptions?.map((time, index) => (
+            <Fragment key={time.value}>
+              <Box
+                sx={{
+                  ...(filters?.timeFrame === time.value && {
+                    bgcolor: "blue.dark",
+                    borderRadius: 1.5,
+                    px: 1,
+                  }),
+                }}
+              >
+                <Typography
+                  variant="p2-medium"
+                  onClick={() => handleTimeFrameClick(time)}
+                  sx={{
+                    cursor: "pointer",
+                    height: 24,
+                    px: 1,
+                  }}
+                >
+                  {time.label}
+                </Typography>
+              </Box>
+              {index !== timeFrameOptions?.length - 1 && (
+                <Box sx={{ width: "4px", height: "4px", borderRadius: "50%", bgcolor: "grey.light" }} />
+              )}
+            </Fragment>
+          ))}
+        </Stack>
+      </Stack>
+      <Stack direction={"row"} alignItems={"center"} gap={2}>
         <TextField
           placeholder="Search"
           size="small"
@@ -137,60 +129,18 @@ export const Header = ({
             },
           }}
         />
-
-        {(lgBreakPoint || isMobile) && (
-          <Box
-            gap={2}
-            display="flex"
-            alignItems="center"
-            flexDirection={{ xs: "row", md: "row-reverse" }}
-            justifyContent="space-between"
-            width={{ xs: "100%", md: "unset" }}
-          >
-            <Box display="flex" alignItems="center" gap={1} px={1} height={40} bgcolor="dark.3" borderRadius={2.5}>
-              {timeFrameOptions?.map((time, index) => (
-                <Fragment key={time.value}>
-                  <Box
-                    sx={{
-                      ...(filters?.timeFrame === time.value && {
-                        bgcolor: "blue.dark",
-                        borderRadius: 1.5,
-                        px: 1,
-                      }),
-                    }}
-                  >
-                    <Typography
-                      variant="p2-medium"
-                      onClick={() => handleTimeFrameClick(time)}
-                      sx={{
-                        cursor: "pointer",
-                        height: 24,
-                        px: 1,
-                      }}
-                    >
-                      {time.label}
-                    </Typography>
-                  </Box>
-                  {index !== timeFrameOptions?.length - 1 && (
-                    <Box sx={{ width: "4px", height: "4px", borderRadius: "50%", bgcolor: "grey.light" }} />
-                  )}
-                </Fragment>
-              ))}
-            </Box>
-
-            {hasActiveFilters && (
-              <Button
-                variant="text"
-                endIcon={<Icon name="Close" />}
-                sx={{ p: 0, minWidth: 100 }}
-                onClick={() => setFilters({ timeFrame: "1d", sorts: defaultValueSort })}
-              >
-                {Object.keys(filterValue).length} {t("coinReportTable.filters")}
-              </Button>
-            )}
-          </Box>
-        )}
+        <Stack
+          direction={"row"}
+          alignItems={"center"}
+          onClick={onFilterClick}
+          sx={{ borderRadius: 3, border: "1px solid", borderColor: "dark.3", px: 3, py: 1, gap: 0.5 }}
+        >
+          <StyledBadge badgeContent={Object.keys(filterValue).length} color="primary" invisible={!hasActiveFilters}>
+            <Icon name="Filter" />
+          </StyledBadge>
+          {isLarge && <Typography variant="p2-medium"> {t("coinReportTable.filter")}</Typography>}
+        </Stack>
       </Stack>
-    </Box>
+    </Stack>
   );
 };

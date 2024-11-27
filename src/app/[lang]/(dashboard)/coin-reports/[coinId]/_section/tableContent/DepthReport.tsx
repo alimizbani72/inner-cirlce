@@ -1,4 +1,5 @@
 import { useTranslate } from "@/locales";
+import { snipText } from "@/utils/string";
 import type { ReportData } from "@minecraft/requests";
 import { Stack, Typography } from "@mui/material";
 
@@ -14,7 +15,7 @@ const DepthReport = ({ sections }: DepthReportProps) => {
       <Stack spacing={5}>
         <Stack spacing={1} mb={3}>
           <Typography variant="p1-semi-bold">{sections.title}</Typography>
-          <Typography variant="p2-regular" color={"grey.light"}>
+          <Typography variant="p2-regular" color={"grey.light"} sx={{ ...snipText(100) }}>
             {sections.description}
           </Typography>
         </Stack>

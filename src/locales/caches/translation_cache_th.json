@@ -522,5 +522,6 @@
   "Successfully added to your favorites.": "เพิ่มลงในรายการโปรดของคุณเรียบร้อยแล้ว",
   "Successfully removed from your favorites.": "ลบออกจากรายการโปรดของคุณเรียบร้อยแล้ว",
   "Unable to add to your favorites. Please try again.": "ไม่สามารถเพิ่มลงในรายการโปรดได้ กรุณาลองอีกครั้ง",
-  "Unable to remove from your favorites. Please try again.": "ไม่สามารถลบออกจากรายการโปรดได้ กรุณาลองอีกครั้ง"
+  "Unable to remove from your favorites. Please try again.": "ไม่สามารถลบออกจากรายการโปรดได้ กรุณาลองอีกครั้ง",
+  "Update in: ": "อัปเดตใน:"
 }

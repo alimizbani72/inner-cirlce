@@ -1,6 +1,7 @@
+import { useResponsive } from "@/hooks/use-responsive";
 import { useTranslate } from "@/locales";
 import { TOTAL_SECONDS } from "@dashboard/coin-reports/_sections/consts";
-import { Box, CircularProgress, Typography } from "@mui/material";
+import { Box, CircularProgress, Stack, Typography } from "@mui/material";
 import { useCallback, useState } from "react";
 import { useTimer } from "react-timer-hook";
 
@@ -12,14 +13,14 @@ interface CountDownUpdateTimeProps {
 const CountDownUpdateTime = ({ updateTime = 0, onNextUpdate }: CountDownUpdateTimeProps) => {
   const { t } = useTranslate();
   const [timeSeconds, setTimeSeconds] = useState(updateTime);
-
+  const isLarge = useResponsive("up", "lg");
   const getTimer = useCallback(() => {
     const now = new Date();
     const expire = new Date(now.getTime() + timeSeconds * 1000);
     return expire;
   }, [timeSeconds]);
 
-  const { minutes, seconds, hours, restart, totalSeconds } = useTimer({
+  const { minutes, seconds, restart, totalSeconds } = useTimer({
     expiryTimestamp: getTimer(),
     autoStart: true,
     onExpire: () => {
@@ -38,8 +39,8 @@ const CountDownUpdateTime = ({ updateTime = 0, onNextUpdate }: CountDownUpdateTi
   const progress = totalSeconds ? ((TOTAL_SECONDS - totalSeconds) / TOTAL_SECONDS) * 100 : 0;
 
   return (
-    <Box display="flex" alignItems="center">
-      <Box position="relative">
+    <Stack direction={"row"} alignItems="center">
+      <Box position="relative" sx={{ height: 20 }}>
         <CircularProgress
           size={20}
           variant="determinate"
@@ -49,13 +50,15 @@ const CountDownUpdateTime = ({ updateTime = 0, onNextUpdate }: CountDownUpdateTi
         />
         <CircularProgress size={20} variant="determinate" value={progress} color="success" thickness={4} />
       </Box>
-      <Typography variant="caption-medium" color="grey.light" ml={1}>
-        {t("coinReportTable.nextUpdateIn")}
-      </Typography>
+      {isLarge && (
+        <Typography variant="caption-medium" color="grey.light" ml={1}>
+          {t("coinReportTable.nextUpdateIn")}
+        </Typography>
+      )}
       <Typography variant="caption-medium" ml={0.5}>
-        {formatTime(hours)}:{formatTime(minutes)}:{formatTime(seconds)}
+        {formatTime(minutes)}:{formatTime(seconds)}
       </Typography>
-    </Box>
+    </Stack>
   );
 };
 

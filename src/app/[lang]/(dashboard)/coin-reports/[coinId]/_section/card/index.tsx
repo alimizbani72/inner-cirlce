@@ -1,10 +1,10 @@
 "use client";
+import { useTranslate } from "@/locales";
+import { fDate } from "@/utils/format-time";
 import { Stack } from "@mui/material";
 import numeral from "numeral";
 import CardItem from "./CardItem";
 import Summary from "./Summary";
-import { useTranslate } from "@/locales";
-import { fDate } from "@/utils/format-time";
 
 const formatDate = (dateTime: any) => fDate(dateTime, "dd.MMM.yyyy");
 
@@ -66,14 +66,14 @@ const Card = ({
         <CardItem
           title={t("coinreportsingleview.potentialMultiplier")}
           value={potential_multiplier}
-          symbol="X"
+          symbol="x"
           subtitle={`${formatDate(potential_multiplier_start_date)} - ${formatDate(potential_multiplier_end_date)}`}
         />
         <CardItem
           title={t("coinreportsingleview.targetPrice")}
           value={target_price}
           subtitle={formatDate(target_price_date)}
-          symbol="X"
+          symbol="x"
         />
       </Stack>
       <Stack spacing={4} px={3} pb={3}>
