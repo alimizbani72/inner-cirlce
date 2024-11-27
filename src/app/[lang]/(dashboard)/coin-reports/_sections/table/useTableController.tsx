@@ -138,7 +138,7 @@ export const useTableController = () => {
       {
         headerName: t("coinReportTabTable.category"),
         field: "category",
-        flex: 1,
+        minWidth: 200,
         renderCell: (params) => <CategoryHandler slug={params.value} />,
       },
       {
@@ -183,7 +183,6 @@ export const useTableController = () => {
         headerName: t("coinReportTabTable.currentPrice"),
         field: "current_price",
         sortable: false,
-        flex: 1,
         renderCell: renderText,
       },
     ],

@@ -15,4 +15,5 @@ export interface FilterFormDataType {
   categories?: ItemType[];
   timeFrame?: string;
   sorts?: Record<string, boolean>;
+  query?: string;
 }

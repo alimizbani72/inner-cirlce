@@ -23,6 +23,7 @@ const convertFilterData = (data: FilterFormDataType) => ({
     plans: data.packages?.map((pack) => pack.value),
     signals: data?.signals?.map((signal) => signal?.value),
     categories: data?.categories?.map((category) => category.value),
+    query: data?.query,
   },
   sorts: data.sorts,
 });
@@ -53,8 +54,8 @@ const CoinReportTable = () => {
 
   const opts = useMemo(() => {
     return JSON.stringify({
-      ...convertFilterData(filters),
-      query: debouncedSearch,
+      ...convertFilterData({ ...filters, query: debouncedSearch }),
+
       page: page?.pageNumber + 1,
       per_page: page?.pageSize,
     });
