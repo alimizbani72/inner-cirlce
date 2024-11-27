@@ -138,7 +138,7 @@ export const useTableController = () => {
       {
         headerName: t("coinReportTabTable.category"),
         field: "category",
-        minWidth: 200,
+        minWidth: 150,
         renderCell: (params) => <CategoryHandler slug={params.value} />,
       },
       {
@@ -166,6 +166,7 @@ export const useTableController = () => {
       {
         headerName: t("coinReportTabTable.rtl"),
         field: "rtl",
+        minWidth: 70,
         sortable: false,
         renderCell: (params: GridRenderCellParams) => (
           <Typography variant="p2-medium">

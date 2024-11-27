@@ -23,7 +23,7 @@ const convertFilterData = (data: FilterFormDataType) => ({
     plans: data.packages?.map((pack) => pack.value),
     signals: data?.signals?.map((signal) => signal?.value),
     categories: data?.categories?.map((category) => category.value),
-    query: data?.query,
+    query: data?.query || undefined,
   },
   sorts: data.sorts,
 });

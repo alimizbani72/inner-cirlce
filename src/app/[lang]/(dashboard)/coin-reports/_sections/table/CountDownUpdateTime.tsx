@@ -1,7 +1,7 @@
 import { useTranslate } from "@/locales";
 import { TOTAL_SECONDS } from "@dashboard/coin-reports/_sections/consts";
 import { Box, CircularProgress, Typography } from "@mui/material";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { useTimer } from "react-timer-hook";
 
 interface CountDownUpdateTimeProps {
@@ -11,14 +11,15 @@ interface CountDownUpdateTimeProps {
 
 const CountDownUpdateTime = ({ updateTime = 0, onNextUpdate }: CountDownUpdateTimeProps) => {
   const { t } = useTranslate();
+  const [timeSeconds, setTimeSeconds] = useState(updateTime);
 
   const getTimer = useCallback(() => {
     const now = new Date();
-    const expire = new Date(now.getTime() + updateTime * 1000);
+    const expire = new Date(now.getTime() + timeSeconds * 1000);
     return expire;
-  }, [updateTime]);
+  }, [timeSeconds]);
 
-  const { minutes, seconds, hours, restart } = useTimer({
+  const { minutes, seconds, hours, restart, totalSeconds } = useTimer({
     expiryTimestamp: getTimer(),
     autoStart: true,
     onExpire: () => {
@@ -26,6 +27,7 @@ const CountDownUpdateTime = ({ updateTime = 0, onNextUpdate }: CountDownUpdateTi
       setTimeout(() => {
         const now = new Date();
         const expire = new Date(now.getTime() + TOTAL_SECONDS * 1000);
+        setTimeSeconds(TOTAL_SECONDS);
         restart(expire, true);
       }, 3000);
     },
@@ -33,7 +35,7 @@ const CountDownUpdateTime = ({ updateTime = 0, onNextUpdate }: CountDownUpdateTi
 
   const formatTime = (time: number) => String(time).padStart(2, "0");
 
-  const progress = updateTime ? ((TOTAL_SECONDS - updateTime) / TOTAL_SECONDS) * 100 : 0;
+  const progress = totalSeconds ? ((TOTAL_SECONDS - totalSeconds) / TOTAL_SECONDS) * 100 : 0;
 
   return (
     <Box display="flex" alignItems="center">
