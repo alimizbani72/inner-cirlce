@@ -72,8 +72,8 @@ const Card = ({
         <CardItem
           title={t("coinreportsingleview.targetPrice")}
           value={target_price}
+          currency="$"
           subtitle={formatDate(target_price_date)}
-          symbol="x"
         />
       </Stack>
       <Stack spacing={4} px={3} pb={3}>

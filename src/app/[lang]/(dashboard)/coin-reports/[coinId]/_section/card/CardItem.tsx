@@ -28,11 +28,13 @@ type Props = {
   hasCaclulation?: boolean;
   subtitle?: string | number;
   symbol?: string;
+  currency?: string;
 };
 
-const CardItem = ({ title, value, hasCaclulation, subtitle, symbol }: Props) => {
+const CardItem = ({ title, value, hasCaclulation, subtitle, symbol, currency }: Props) => {
   const { t } = useTranslate();
   // const { status, color, icon, percentage } = getRecommendation(subtitle);
+
   return (
     <Stack
       sx={{ p: 3, bgcolor: "dark.3", width: "100%", height: { xs: "160px", md: "192px" } }}
@@ -43,6 +45,7 @@ const CardItem = ({ title, value, hasCaclulation, subtitle, symbol }: Props) => 
           {title}
         </Typography>
         <Typography variant="h3-bold">
+          {currency && currency}
           {value > 0.01 ? numeral(value).format("0,0.00") : value}
           {symbol && symbol}
         </Typography>
