@@ -17,11 +17,11 @@ interface HeaderProps {
   onNextUpdate: () => void;
 }
 
-const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
+const StyledBadge = styled(Badge)<BadgeProps>(() => ({
   "& .MuiBadge-badge": {
     right: 35,
     top: 12,
-    border: `2px solid ${theme.palette.primary.main}`,
+    border: `2px solid #565CE4`,
     padding: "0 4px",
   },
 }));
@@ -135,7 +135,16 @@ export const Header = ({
           onClick={onFilterClick}
           sx={{ borderRadius: 3, border: "1px solid", borderColor: "dark.3", px: 3, py: 1, gap: 0.5 }}
         >
-          <StyledBadge badgeContent={Object.keys(filterValue).length} color="primary" invisible={!hasActiveFilters}>
+          <StyledBadge
+            badgeContent={Object.keys(filterValue).length}
+            sx={{
+              "& .MuiBadge-badge": {
+                backgroundColor: "var(--Primary-Dark-Blue, #565CE4)",
+                color: "white",
+              },
+            }}
+            invisible={!hasActiveFilters}
+          >
             <Icon name="Filter" />
           </StyledBadge>
           {isLarge && <Typography variant="p2-medium"> {t("coinReportTable.filter")}</Typography>}

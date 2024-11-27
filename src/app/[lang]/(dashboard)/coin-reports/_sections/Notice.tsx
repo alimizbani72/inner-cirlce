@@ -17,29 +17,31 @@ const CoinReportNotice: FC<NoticeProps> = () => {
   return (
     <Stack px={{ md: 4, xs: 3 }}>
       <ContentStack p={0}>
-        <Collapse in={isMobile ? true : expand} collapsedSize={56}>
-          <Box p={2} display="flex" flexDirection={expand ? "column" : "row"}>
+        <Collapse in={expand} collapsedSize={isMobile ? 72 : 56}>
+          <Box p={2} display="flex" flexWrap={"wrap"} flexDirection={expand ? "column" : "row"}>
             <Typography
               component="div"
               variant="p2-regular"
-              sx={{ ...(!isMobile && !expand && snipText(1)), position: "relative", flex: 1 }}
+              sx={{
+                ...(isMobile && !expand ? snipText(2) : !expand && snipText(1)),
+                position: "relative",
+                flex: 1,
+              }}
             >
               <Typography variant="p2-medium" textTransform="uppercase" color="warning.main">
                 {t("coinReportNotice.importantNotice")}
               </Typography>{" "}
               {t("coinReportNotice.message")}
             </Typography>
-            {!isMobile && (
-              <Typography
-                variant="p2-bold"
-                color="blue.light"
-                component="div"
-                sx={{ cursor: "pointer", width: "fit-content" }}
-                onClick={() => setExpand((state) => !state)}
-              >
-                {expand ? t("coinReportNotice.viewLess") : t("coinReportNotice.viewMore")}
-              </Typography>
-            )}
+            <Typography
+              variant={!isMobile ? "p2-bold" : "caption-bold"}
+              color="blue.light"
+              component="div"
+              sx={{ cursor: "pointer", width: "fit-content", mt: isMobile && !expand ? 3 : 0 }}
+              onClick={() => setExpand((state) => !state)}
+            >
+              {expand ? t("coinReportNotice.viewLess") : t("coinReportNotice.viewMore")}
+            </Typography>
           </Box>
         </Collapse>
       </ContentStack>

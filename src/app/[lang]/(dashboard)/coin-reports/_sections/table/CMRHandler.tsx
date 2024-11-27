@@ -23,7 +23,15 @@ const CMRHandler: FC<CMRHandlerProps> = ({ value, percentChange }) => {
 
   return (
     <Stack direction="row" alignItems="center" spacing={2}>
-      <Typography variant="p2-medium">{value?.toString()?.slice(0, 5)}</Typography>
+      <Typography
+        variant="p2-medium"
+        sx={{
+          textAlign: "left",
+          minWidth: "40px",
+        }}
+      >
+        {value?.toString()?.slice(0, 5)}
+      </Typography>
       {percentChange !== null && (
         <Stack
           direction={"row"}
