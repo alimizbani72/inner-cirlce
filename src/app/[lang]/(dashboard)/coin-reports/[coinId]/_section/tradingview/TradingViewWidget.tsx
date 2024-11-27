@@ -4,7 +4,7 @@ import { memo, useEffect, useRef } from "react";
 
 function TradingViewWidget({ rawSymbol }: { rawSymbol: string }) {
   const container = useRef<HTMLDivElement | null>(null);
-  const formattedSymbol = `BINANCE:${rawSymbol.toUpperCase()}USDT`;
+  const formattedSymbol = `${rawSymbol.toUpperCase()}USDT`;
   useEffect(() => {
     if (!container.current) {
       return;

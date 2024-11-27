@@ -43,7 +43,7 @@ const CardItem = ({ title, value, hasCaclulation, subtitle, symbol }: Props) => 
           {title}
         </Typography>
         <Typography variant="h3-bold">
-          {value > 1 ? numeral(value).format("0,0.00") : value}
+          {value > 0.01 ? numeral(value).format("0,0.00") : value}
           {symbol && symbol}
         </Typography>
       </Stack>
