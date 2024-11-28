@@ -66,7 +66,6 @@ const BoxList = ({
           value={circulating_supply}
           hasTopBorder
           width="50%"
-          hascurrency
         />
       </Stack>
     </Box>

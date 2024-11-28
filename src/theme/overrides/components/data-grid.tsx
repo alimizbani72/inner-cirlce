@@ -23,6 +23,9 @@ export function dataGrid(theme: Theme) {
           [`& .${gridClasses.filler}`]: {
             display: "none",
           },
+          [`& .${gridClasses.scrollbar}`]: {
+            scrollbarColor: `${theme.palette.grey.light} transparent`,
+          },
           [`& .${gridClasses["columnHeader--sortable"]}[aria-sort="ascending"]`]: {
             "& svg > path:first-child": {
               stroke: theme.palette.common.white,
@@ -45,12 +48,16 @@ export function dataGrid(theme: Theme) {
           [`& .${tablePaginationClasses.spacer}`]: { display: "none" },
           [`& .${tablePaginationClasses.toolbar}`]: {
             color: theme.palette.common.white,
-            minHeight: 64,
             justifyContent: "center",
-            [`& .${tablePaginationClasses.actions} > button`]: {
-              color: theme.palette.common.white,
-              "&.Mui-disabled": {
-                opacity: 0.2,
+            padding: 0,
+            [`& .${tablePaginationClasses.actions}`]: {
+              marginLeft: 0,
+              marginRight: 0,
+              "&  > button": {
+                color: theme.palette.common.white,
+                "&.Mui-disabled": {
+                  opacity: 0.2,
+                },
               },
             },
             [`& .${tablePaginationClasses.input}`]: {

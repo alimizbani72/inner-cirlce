@@ -1,7 +1,14 @@
 import { Icon } from "@/components/icons";
 import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
 import { useAppSelector } from "@/lib/hooks";
-import { Box, Stack, type TablePaginationProps, menuClasses, Pagination as MuiPagination } from "@mui/material";
+import {
+  Box,
+  Stack,
+  type TablePaginationProps,
+  menuClasses,
+  Pagination as MuiPagination,
+  tablePaginationClasses,
+} from "@mui/material";
 import type { DataGridProps } from "@mui/x-data-grid";
 import { DataGrid, gridPageCountSelector, GridPagination, useGridApiContext, useGridSelector } from "@mui/x-data-grid";
 import type { ReactNode } from "react";
@@ -15,7 +22,7 @@ function Pagination({
   page,
   onPageChange,
   className,
-}: Pick<TablePaginationProps, "page" | "onPageChange" | "className">) {
+}: Pick<TablePaginationProps, "page" | "onPageChange" | "className" | "rowsPerPage" | "rowsPerPageOptions">) {
   const apiRef = useGridApiContext();
   const pageCount = useGridSelector(apiRef, gridPageCountSelector);
 
@@ -24,9 +31,9 @@ function Pagination({
       color="primary"
       className={className}
       count={pageCount}
+      page={page + 1}
       hideNextButton
       hidePrevButton
-      page={page + 1}
       onChange={(event, newPage) => {
         onPageChange(event as any, newPage - 1);
       }}
@@ -35,7 +42,13 @@ function Pagination({
 }
 
 function CustomPagination(props: any) {
-  return <GridPagination ActionsComponent={Pagination} {...props} />;
+  return (
+    <GridPagination
+      ActionsComponent={Pagination}
+      sx={{ [`& .${tablePaginationClasses.displayedRows}`]: { display: "none" } }}
+      {...props}
+    />
+  );
 }
 
 const SortIcon = () => <Icon name="Arrow-Sort" />;

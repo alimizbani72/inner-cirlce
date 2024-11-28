@@ -20,12 +20,17 @@ function TradingViewWidget({ rawSymbol }: { rawSymbol: string }) {
         "autosize": true,
         "symbol":  "${formattedSymbol}",
         "interval": "D",
-        "timezone": "Etc/UTC",
-        "theme": "dark",
-        "style": "1",
-        "locale": "en",
-        "allow_symbol_change": true,
-        "calendar": false,
+          "timezone": "Etc/UTC",
+          "theme": "dark",
+          "style": "1",
+          "locale": "en",
+           "backgroundColor": "#070720",
+          "withdateranges": true,
+          "hide_side_toolbar": false,
+          "allow_symbol_change": true,
+          "details": true,
+          "calendar": false,
+          "hide_volume": true,
         "support_host": "https://www.tradingview.com"
       }`;
 
@@ -44,7 +49,7 @@ function TradingViewWidget({ rawSymbol }: { rawSymbol: string }) {
   }, []);
 
   return (
-    <Stack p={1} sx={{ borderRadius: 2, bgcolor: "dark.1", border: "1.5px solid", borderColor: "dark.3" }}>
+    <Stack>
       <Box
         ref={container}
         sx={{

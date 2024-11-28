@@ -37,6 +37,8 @@ function CustomNoRowsOverlay() {
   );
 }
 
+let ROW_COUNT = 0;
+
 const CoinReportTable = () => {
   const apiRef = useGridApiRef();
   const router = useAppRouter();
@@ -47,19 +49,17 @@ const CoinReportTable = () => {
   const [filters, setFilters] = useState<FilterFormDataType>({ timeFrame: "1h", sorts: defaultValueSort });
   const [paginationModel, setPaginationModel] = useState({
     page: 0,
-    pageSize: 100,
+    pageSize: 50,
   });
   const [openUpgradeModal, setOpenUpgradeModal] = useState(false);
 
   const debouncedSearch = useDebounce(searchValue, 500);
 
-  const opts = useMemo(() => {
-    return JSON.stringify({
-      ...convertFilterData({ ...filters, query: debouncedSearch }),
-      page: paginationModel?.page + 1,
-      per_page: paginationModel?.pageSize,
-    });
-  }, [paginationModel, debouncedSearch, filters]);
+  const opts = JSON.stringify({
+    ...convertFilterData({ ...filters, query: debouncedSearch }),
+    page: paginationModel?.page + 1,
+    per_page: paginationModel?.pageSize,
+  });
 
   const {
     data: allData,
@@ -88,6 +88,10 @@ const CoinReportTable = () => {
 
   const finalData = useMemo(() => {
     const data = value === "favorites" ? favoriteData : allData;
+
+    if (data?.data?.length) {
+      ROW_COUNT = data?.meta?.total_count || 0;
+    }
 
     return {
       data: data?.data?.map((d, index) => ({ ...d, id: `${index}-${d?.plan}` })),
@@ -206,13 +210,10 @@ const CoinReportTable = () => {
               {...{ setFilters, filters, setSearchValue }}
             />
           }
-          rowCount={finalData?.meta?.total_count || 0}
-          pageSizeOptions={[100]}
+          rowCount={ROW_COUNT}
           paginationModel={paginationModel}
           paginationMode="server"
-          onPaginationModelChange={(model) => {
-            setPaginationModel(model);
-          }}
+          onPaginationModelChange={setPaginationModel}
           sortModel={
             filters.sorts
               ? [{ field: Object.keys(filters.sorts)[0], sort: Object.values(filters.sorts)[0] ? "asc" : "desc" }]
