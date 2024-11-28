@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/Chainmind-AG/inner-circle/compare/v1.5.0...v1.5.1) (2024-11-28)
+
+
+### Bug Fixes
+
+* **coinReport:** fix pagination and scroll color and enhanced ([45c8b30](https://github.com/Chainmind-AG/inner-circle/commit/45c8b30e272658be7d7aad9cf8fa78d3dd69f022)), closes [#179](https://github.com/Chainmind-AG/inner-circle/issues/179)
+
 # [1.5.0](https://github.com/Chainmind-AG/inner-circle/compare/v1.4.2...v1.5.0) (2024-11-27)
 
 
