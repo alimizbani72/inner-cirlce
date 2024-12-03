@@ -1,7 +1,7 @@
-import { LoadingButton } from "@mui/lab";
-import { Box } from "@mui/material";
+import Link from "@/components/Link";
 import { Icon } from "@/components/icons";
 import type { iconsType } from "@/components/icons/iconsNames";
+import { Box, Button } from "@mui/material";
 const buttonStyle = {
   position: "relative",
   zIndex: 1,
@@ -49,15 +49,24 @@ type CustomButtonProps = {
   iconName: iconsType;
 };
 
-const CustomButton = ({ loading, onClick, buttonText, iconName }: CustomButtonProps) => {
+const CustomButton = ({ buttonText, iconName }: CustomButtonProps) => {
+  const telLinkAddress = process.env.NEXT_PUBLIC_TELEGRAM_CHANNEL || "";
   return (
     <Box sx={buttonContainerStyle}>
-      <LoadingButton loading={loading} color="info" size="large" sx={buttonStyle} onClick={onClick}>
+      <Button
+        LinkComponent={Link}
+        href={telLinkAddress}
+        rel="nofollow noopener noreferrer external"
+        target="_blank"
+        color="info"
+        size="large"
+        sx={buttonStyle}
+      >
         <Box pr={1}>
           <Icon name={iconName} />
         </Box>
         {buttonText}
-      </LoadingButton>
+      </Button>
     </Box>
   );
 };
