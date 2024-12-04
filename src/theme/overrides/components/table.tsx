@@ -11,6 +11,9 @@ export function table(theme: Theme) {
       styleOverrides: {
         root: {
           position: "relative",
+          [`& td.${tableCellClasses.root}:not(.${tableCellClasses.head})`]: {
+            minWidth: 100,
+          },
         },
       },
     },
@@ -41,10 +44,7 @@ export function table(theme: Theme) {
           color: theme.palette.text.secondary,
           fontWeight: theme.typography.fontWeightBold,
           backgroundColor: theme.palette.background.default,
-        },
-        stickyHeader: {
-          backgroundColor: theme.palette.background.paper,
-          backgroundImage: `linear-gradient(to bottom, ${theme.palette.background.default} 0%, ${theme.palette.background.default} 100%)`,
+          textWrapMode: "nowrap",
         },
         paddingCheckbox: {
           paddingLeft: theme.spacing(1),
