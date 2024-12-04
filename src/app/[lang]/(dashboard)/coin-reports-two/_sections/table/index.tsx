@@ -77,7 +77,7 @@ const CoinReportTable = ({
 }: TableProps) => {
   const [openUpgradeModal, setOpenUpgradeModal] = useState(false);
   const { push } = useAppRouter();
-  const { columns } = useColumns(filters);
+  const { columns } = useColumns();
 
   const handleSortChange = (sort?: SortType) => {
     onFilterChange({

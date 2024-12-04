@@ -7,9 +7,8 @@ import PackageHandler from "./columns/PackageHandler";
 import RiskLevelHandler from "./columns/RiskLevelHandler";
 import SignalHandler from "./columns/SignalHandler";
 import TextHandler from "./columns/TextHandler";
-import type { FilterFormDataType } from "@dashboard/coin-reports-two/_sections/types";
 
-export const useColumns = (filters: FilterFormDataType) => {
+export const useColumns = () => {
   const { t } = useTranslate();
 
   const columns = useMemo(
@@ -18,7 +17,7 @@ export const useColumns = (filters: FilterFormDataType) => {
         title: t("coinReportTabTable.name"),
         sortable: true,
         fieldName: "name",
-        modify: (row: any) => <NameHandler {...row} filters={filters} />,
+        modify: (row: any) => <NameHandler {...row} />,
       },
       {
         title: t("coinReportTabTable.package"),

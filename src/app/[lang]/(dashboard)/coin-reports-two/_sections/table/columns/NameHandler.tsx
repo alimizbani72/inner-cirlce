@@ -1,14 +1,7 @@
 import Image from "@/components/Image";
 import { Icon } from "@/components/icons";
-import { handleOptsForService } from "@dashboard/coin-reports-two/_sections";
-import type { FilterFormDataType } from "@dashboard/coin-reports-two/_sections/types";
-import {
-  UseCoinReportServiceCoinReportQueryKeyFn,
-  useCoinReportServiceCoinReportSlugFavoriteCreateMutation,
-  useCoinReportServiceCoinReportSlugFavoriteDeleteMutation,
-} from "@minecraft/queries";
+import { useFavoriteToggle } from "@/hooks/useFavoriteToggle";
 import { Box, IconButton, Stack, Typography } from "@mui/material";
-import { useQueryClient } from "@tanstack/react-query";
 
 interface NameHandlerProps {
   is_favorite: boolean;
@@ -16,32 +9,15 @@ interface NameHandlerProps {
   slug: string;
   symbol: string;
   logo: string;
-  filters: FilterFormDataType;
 }
 
-const NameHandler = ({ is_favorite, name, logo, symbol, filters, slug }: NameHandlerProps) => {
-  const queryClient = useQueryClient();
-  const { mutateAsync: mutateAddFavorite } = useCoinReportServiceCoinReportSlugFavoriteCreateMutation();
-  const { mutateAsync: mutateRemoveFavorite } = useCoinReportServiceCoinReportSlugFavoriteDeleteMutation();
-
-  const toggleFavorite = () => {
-    const mutation = is_favorite ? mutateRemoveFavorite : mutateAddFavorite;
-    const updateData = { slug };
-
-    mutation(updateData, {
-      onSuccess: () => {
-        queryClient.invalidateQueries({
-          queryKey: UseCoinReportServiceCoinReportQueryKeyFn({ opts: handleOptsForService(filters) }),
-        });
-      },
-    });
-  };
-
+const NameHandler = ({ is_favorite, name, logo, symbol, slug }: NameHandlerProps) => {
+  const { isFavorite, toggleFavorite } = useFavoriteToggle(is_favorite, slug);
   return (
     <Stack direction="row" alignItems="center" gap={1} sx={{ "&:hover > button": { visibility: "visible" } }}>
       <IconButton
         sx={{
-          visibility: { xs: "visible", md: is_favorite ? "visible" : "hidden" },
+          visibility: { xs: "visible", md: isFavorite ? "visible" : "hidden" },
           cursor: "pointer",
           p: 0,
         }}
@@ -53,7 +29,7 @@ const NameHandler = ({ is_favorite, name, logo, symbol, filters, slug }: NameHan
           slug ? toggleFavorite() : undefined;
         }}
       >
-        {slug && <Icon name={is_favorite ? "Star-color--full" : "Star-grey"} />}
+        {slug && <Icon name={isFavorite ? "Star-color--full" : "Star-grey"} />}
       </IconButton>
       <Box width={24} height={24} position="relative" sx={{ "&  *": { position: "absolute !important" } }}>
         {slug ? (
