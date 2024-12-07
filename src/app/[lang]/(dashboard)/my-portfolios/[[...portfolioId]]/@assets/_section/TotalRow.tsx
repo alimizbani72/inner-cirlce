@@ -3,28 +3,38 @@ import numeral from "numeral";
 import { useIsMobile } from "@/hooks/use-responsive";
 import { useTranslate } from "@/locales";
 import type React from "react";
+import usePortfolioData from "../../_section/hook/usePortfolioData";
 
 type TotalRowProps = {
   item: any;
   index: number;
-  totals: Record<string, number>;
 };
 
-const TotalRow: React.FC<TotalRowProps> = ({ item, index, totals }) => {
+const TotalRow: React.FC<TotalRowProps> = ({ item, index }) => {
+  const { selectedPortfolio } = usePortfolioData();
+  const { total_invested, total_realized, total_unrealized, total_actual_value } = selectedPortfolio?.data as any;
   const isMobile = useIsMobile();
   const { t } = useTranslate();
-  const field = item.field;
-  const totalValue = totals[field];
+
+  const fieldMapping: Record<string, number> = {
+    total_invested,
+    realized_pnl: total_realized,
+    unrealized_pnl: total_unrealized,
+    actual_value: total_actual_value,
+  };
+
+  const totalValue = fieldMapping[item.field];
+
   const colorFullFields = ["realized_pnl", "actual_value", "unrealized_pnl"];
-  const color = colorFullFields.includes(field)
-    ? totalValue === 0
+  const color = colorFullFields.includes(item.field)
+    ? Math.abs(totalValue) === 0
       ? "white"
       : totalValue < 0
         ? "error.main"
         : "success.main"
     : "white";
 
-  if (field === "name") {
+  if (item.field === "name") {
     return (
       <TableCell key={index}>
         <Stack width={"100%"} pl={1} pb={3}>

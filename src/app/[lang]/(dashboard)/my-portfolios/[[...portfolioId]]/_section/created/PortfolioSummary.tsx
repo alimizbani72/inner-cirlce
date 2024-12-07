@@ -50,8 +50,8 @@ const PortfolioSummary = ({ selectedPortfolio, portfolios, portfolioId }: Portfo
           )}
           <Stack direction={{ xs: "column", md: "row" }} spacing={1}>
             <Badge label="Total invest" value={selectedPortfolio?.total_invested} customColor="white" />
-            <Badge label="Realized PnL" value={selectedPortfolio?.total_profit} />
-            <Badge label="UNRealized PnL" value={selectedPortfolio?.total_loss} />
+            <Badge label="Realized PnL" value={selectedPortfolio?.total_realized} />
+            <Badge label="UNRealized PnL" value={selectedPortfolio?.total_unrealized} />
           </Stack>
         </Stack>
         {!isOverviewTab && <TransactionActionButton btnText={t("portfolioSummary.addTransaction")} />}

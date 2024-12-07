@@ -24,8 +24,8 @@ const Allocation = () => {
 
   return (
     <Stack
-      width={{ md: "100%", xs: "342px" }}
-      maxWidth={{ md: isCollapsed ? "calc(50vw - 97px)" : "calc(50vw - 168px)" }}
+      width="100%"
+      maxWidth={{ xs: "calc(100vw - 48px)", md: isCollapsed ? "calc(50vw - 97px)" : "calc(50vw - 168px)" }}
       height={"320px"}
       p={3}
       sx={{
@@ -51,6 +51,7 @@ const Allocation = () => {
             <Stack
               direction="row"
               flexWrap="wrap"
+              px={{ xs: 0, md: 5 }}
               spacing={1}
               pt={{ xs: 6, md: 9 }}
               justifyContent={"center"}

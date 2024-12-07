@@ -4,7 +4,6 @@ import Empty from "@/components/Empty";
 import { Icon } from "@/components/icons";
 import type { iconsType } from "@/components/icons/iconsNames";
 import Loading from "@/components/Loading";
-import Scrollbar from "@/components/Scrollbar";
 import { Paper, Stack, Typography } from "@mui/material";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -12,13 +11,13 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import { Fragment, useMemo, useState, type ReactNode } from "react";
+import { Fragment, useState, type ReactNode } from "react";
 import type React from "react";
 import { useAppDispatch } from "@/lib/hooks";
 import { setActiveSlug } from "@/lib/features/portfolio/transactionSlice";
 import TransCollapse from "./TransCollapse";
 import TotalRow from "./TotalRow";
-import { calculateTotal } from "../../_section/utils";
+import { useIsMobile } from "@/hooks/use-responsive";
 
 type Column = {
   title: string | ((item: any) => React.ReactNode);
@@ -56,6 +55,7 @@ const CustomAssetTable = ({
   emptySubtitle,
   hasTitle = true,
 }: PropType) => {
+  const isMobile = useIsMobile();
   const [expandedRows, setExpandedRows] = useState<{ [key: string]: boolean }>({});
   const dispatch = useAppDispatch();
   const handleToggleExpand = (slug: string) => {
@@ -69,16 +69,6 @@ const CustomAssetTable = ({
     }
   };
 
-  const totals = useMemo(
-    () => ({
-      actual_value: calculateTotal(data, "actual_value"),
-      total_invested: calculateTotal(data, "total_invested"),
-      realized_pnl: calculateTotal(data, "realized_pnl"),
-      unrealized_pnl: calculateTotal(data, "unrealized_pnl"),
-    }),
-    [data]
-  );
-
   return (
     <Stack
       sx={{
@@ -87,7 +77,29 @@ const CustomAssetTable = ({
         borderColor: "dark.3",
         bgcolor: "dark.2",
         width: width ?? "100%",
+        height: "100%",
         overflow: "hidden",
+        scrollbarWidth: "thin",
+        ...(isMobile
+          ? {}
+          : {
+              "*::-webkit-scrollbar": {
+                width: "2px",
+                height: "6px",
+              },
+              "*::-webkit-scrollbar-track": {
+                background: (theme) => theme.palette.dark[2],
+                border: "0",
+              },
+              "*::-webkit-scrollbar-thumb": {
+                backgroundColor: (theme) => theme.palette.dark[3],
+                borderRadius: "20px",
+                border: "0",
+              },
+              "*::-webkit-scrollbar-corner": {
+                background: (theme) => theme.palette.dark[1],
+              },
+            }),
       }}
     >
       {hasTitle && (
@@ -104,6 +116,7 @@ const CustomAssetTable = ({
         sx={{
           bgcolor: "dark.2",
           borderRadius: 0,
+          maxHeight: `${isMobile ? "calc(100vh - 209px)" : "calc(100vh - 148px)"}`,
           ".MuiTableCell-head": {
             borderBottom: "none",
             bgcolor: "dark.3",
@@ -112,7 +125,13 @@ const CustomAssetTable = ({
             color: "grey.light",
             p: 0,
             py: 1,
-            "&:first-of-type": { pl: 3 },
+            "&:first-of-type": {
+              position: "sticky",
+              left: 0,
+              zIndex: 3,
+              bgcolor: "dark.3",
+              pl: 3,
+            },
             "&:last-of-type": { pr: 3 },
             "&:not(:last-of-type)": { pr: "14px" },
           },
@@ -126,7 +145,13 @@ const CustomAssetTable = ({
             borderBottomStyle: "solid",
             borderColor: "dark.3",
             borderWidth: "1.5px",
-            "&:first-of-type": { pl: 3 },
+            "&:first-of-type": {
+              position: "sticky",
+              left: 0,
+              zIndex: 1,
+              bgcolor: "dark.2",
+              pl: 3,
+            },
             "&:last-of-type": { pr: 3 },
             "&:not(:last-of-type)": { pr: "14px" },
           },
@@ -141,59 +166,57 @@ const CustomAssetTable = ({
             {!data?.length ? (
               <Empty title={emptyTitle} subtitle={emptySubtitle} />
             ) : (
-              <Scrollbar options={{ scrollbars: { autoHide: "never" } }}>
-                <Table aria-label="customized table" sx={{ px: "0 !important" }}>
-                  <TableHead>
-                    <TableRow>
-                      {columns.map((head, index) => (
-                        <TableCell align="left" key={index} sx={{ whiteSpace: "nowrap" }}>
-                          {typeof head.title === "string" ? head.title : head.title(data)}
-                        </TableCell>
-                      ))}
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {data?.map((rowItem) => (
-                      <Fragment key={rowItem.slug}>
-                        <TableRow
-                          onClick={() => onTableClick && onTableClick(rowItem.id)}
-                          sx={{ cursor: onTableClick ? "pointer" : "default", px: "30px !important" }}
-                        >
-                          {columns.map((item, index) => (
-                            <TableCell
-                              align="left"
-                              key={index}
-                              sx={{ borderBottom: expandedRows[rowItem.slug] ? "none !important" : undefined }}
-                            >
-                              {item.field === "name"
-                                ? item.modify({
-                                    row: rowItem,
-                                    onClick: () => handleToggleExpand(rowItem.slug),
-                                    isOpen: expandedRows[rowItem.slug],
-                                  })
-                                : item.modify(rowItem)}
-                            </TableCell>
-                          ))}
-                        </TableRow>
-
-                        <TransCollapse
-                          slug={rowItem.slug}
-                          colSpan={columns.length}
-                          symbol={rowItem.symbol}
-                          name={rowItem.name}
-                          logo={rowItem.logo}
-                          isClose={!expandedRows[rowItem.slug]}
-                        />
-                      </Fragment>
+              <Table aria-label="customized table" sx={{ px: "0 !important" }} stickyHeader>
+                <TableHead>
+                  <TableRow>
+                    {columns.map((head, index) => (
+                      <TableCell align="left" key={index} sx={{ whiteSpace: "nowrap" }}>
+                        {typeof head.title === "string" ? head.title : head.title(data)}
+                      </TableCell>
                     ))}
-                    <TableRow>
-                      {columns.map((item, index) => (
-                        <TotalRow key={index} item={item} index={index} totals={totals} />
-                      ))}
-                    </TableRow>
-                  </TableBody>
-                </Table>
-              </Scrollbar>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {data?.map((rowItem) => (
+                    <Fragment key={rowItem.slug}>
+                      <TableRow
+                        onClick={() => onTableClick && onTableClick(rowItem.id)}
+                        sx={{ cursor: onTableClick ? "pointer" : "default", px: "30px !important" }}
+                      >
+                        {columns.map((item, index) => (
+                          <TableCell
+                            align="left"
+                            key={index}
+                            sx={{ borderBottom: expandedRows[rowItem.slug] ? "none !important" : undefined }}
+                          >
+                            {item.field === "name"
+                              ? item.modify({
+                                  row: rowItem,
+                                  onClick: () => handleToggleExpand(rowItem.slug),
+                                  isOpen: expandedRows[rowItem.slug],
+                                })
+                              : item.modify(rowItem)}
+                          </TableCell>
+                        ))}
+                      </TableRow>
+
+                      <TransCollapse
+                        slug={rowItem.slug}
+                        colSpan={columns.length}
+                        symbol={rowItem.symbol}
+                        name={rowItem.name}
+                        logo={rowItem.logo}
+                        isClose={!expandedRows[rowItem.slug]}
+                      />
+                    </Fragment>
+                  ))}
+                  <TableRow>
+                    {columns.map((item, index) => (
+                      <TotalRow key={index} item={item} index={index} />
+                    ))}
+                  </TableRow>
+                </TableBody>
+              </Table>
             )}
           </>
         )}
