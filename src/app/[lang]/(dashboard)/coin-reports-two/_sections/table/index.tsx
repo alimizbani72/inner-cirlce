@@ -27,10 +27,6 @@ const ContainerStyle = styled(Stack)(({ theme }) => ({
   alignItems: "flex-start",
   borderRadius: theme.spacing(1.5),
   overflow: "hidden",
-  [theme.breakpoints.up("md")]: {
-    maxHeight: "calc(100dvh - 320px)",
-    height: "calc(100dvh - 320px)",
-  },
   [`& .${tableHeadClasses.root} `]: {
     "& > tr > th:first-child": {
       position: "sticky",

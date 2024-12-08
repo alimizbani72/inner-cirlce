@@ -47,6 +47,7 @@ const DesktopSidebar: FC = () => {
             borderColor: "dark.3",
             backgroundColor: "dark.2",
             height: "100vh",
+            overflow: "auto",
           }}
         >
           <Stack sx={{ p: 4, borderBottom: "1.5px solid", borderColor: "dark.3", position: "relative", width: "100%" }}>

@@ -39,6 +39,7 @@ type PropType = {
   sort?: SortType;
   onSortChange?: (value?: SortType) => void;
   onRowClick?: (row: any) => void;
+  containerHeight?: any;
 };
 
 const CustomTable = ({
@@ -58,6 +59,7 @@ const CustomTable = ({
   onSortChange,
   sort,
   onRowClick,
+  containerHeight,
 }: PropType) => {
   const [expandedRows, setExpandedRows] = useState<{ [key: string]: boolean }>({});
 
@@ -130,21 +132,23 @@ const CustomTable = ({
         width: width ?? "100%",
         overflow: "hidden",
         height: "100%",
-        scrollbarWidth: "thin",
-        "*::-webkit-scrollbar": {
-          width: "8px",
-          height: "8px",
-        },
-        "*::-webkit-scrollbar-track": {
-          background: "transparent",
-        },
-        "*::-webkit-scrollbar-thumb": {
-          backgroundColor: theme.palette.dark[3],
-          borderRadius: "20px",
-          border: "unset",
-        },
-        "*::-webkit-scrollbar-corner": {
-          background: theme.palette.dark[1],
+        [theme.breakpoints.up("md")]: {
+          scrollbarWidth: "thin",
+          "*::-webkit-scrollbar": {
+            width: "2px",
+            height: "2px",
+          },
+          "*::-webkit-scrollbar-track": {
+            background: "transparent",
+          },
+          "*::-webkit-scrollbar-thumb": {
+            backgroundColor: theme.palette.dark[3],
+            borderRadius: "20px",
+            border: "unset",
+          },
+          "*::-webkit-scrollbar-corner": {
+            background: theme.palette.dark[1],
+          },
         },
       })}
     >
@@ -168,7 +172,10 @@ const CustomTable = ({
         sx={{
           bgcolor: "dark.2",
           borderRadius: 0,
-          height: "100%",
+          maxHeight: containerHeight || {
+            xs: `calc(100dvh - ${totalCount > 10 ? 258 : 200}px)`,
+            md: `calc(100dvh - ${totalCount > 10 ? 202 : 147}px)`,
+          },
           "& .MuiTableCell-head": {
             borderBottom: "none",
             bgcolor: "dark.3",
