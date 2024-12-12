@@ -1,9 +1,12 @@
 "use client";
 
 import Empty from "@/components/Empty";
+import Loading from "@/components/Loading";
 import { Icon } from "@/components/icons";
 import type { iconsType } from "@/components/icons/iconsNames";
-import Loading from "@/components/Loading";
+import { useIsMobile } from "@/hooks/use-responsive";
+import { setActiveSlug } from "@/lib/features/portfolio/transactionSlice";
+import { useAppDispatch } from "@/lib/hooks";
 import { Paper, Stack, Typography } from "@mui/material";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -11,13 +14,10 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import { Fragment, useState, type ReactNode } from "react";
 import type React from "react";
-import { useAppDispatch } from "@/lib/hooks";
-import { setActiveSlug } from "@/lib/features/portfolio/transactionSlice";
-import TransCollapse from "./TransCollapse";
+import { Fragment, type ReactNode, useState } from "react";
 import TotalRow from "./TotalRow";
-import { useIsMobile } from "@/hooks/use-responsive";
+import TransCollapse from "./TransCollapse";
 
 type Column = {
   title: string | ((item: any) => React.ReactNode);
@@ -79,27 +79,6 @@ const CustomAssetTable = ({
         width: width ?? "100%",
         height: "100%",
         overflow: "hidden",
-        scrollbarWidth: "thin",
-        ...(isMobile
-          ? {}
-          : {
-              "*::-webkit-scrollbar": {
-                width: "2px",
-                height: "6px",
-              },
-              "*::-webkit-scrollbar-track": {
-                background: (theme) => theme.palette.dark[2],
-                border: "0",
-              },
-              "*::-webkit-scrollbar-thumb": {
-                backgroundColor: (theme) => theme.palette.dark[3],
-                borderRadius: "20px",
-                border: "0",
-              },
-              "*::-webkit-scrollbar-corner": {
-                background: (theme) => theme.palette.dark[1],
-              },
-            }),
       }}
     >
       {hasTitle && (

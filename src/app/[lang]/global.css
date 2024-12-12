@@ -19,6 +19,29 @@
   margin: 0;
 }
 
+@media (min-width: 899px) { /* Adjust the min-width as needed for your desktop breakpoint */
+  *::-webkit-scrollbar {
+    width: 2px;
+    height: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #090A23;
+    border: 0;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #14162E;
+    border-radius: 20px;
+    border: 0;
+    cursor: pointer;
+  }
+
+  *::-webkit-scrollbar-corner {
+    background: #070720;
+  }
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,

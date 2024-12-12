@@ -1,5 +1,6 @@
 import Image from "@/components/Image";
-import { Stack, Typography } from "@mui/material";
+import { Icon } from "@/components/icons";
+import { Box, Stack, Typography } from "@mui/material";
 
 type CryptoIconProps = {
   name: string;
@@ -8,9 +9,26 @@ type CryptoIconProps = {
 };
 const CryptoIcon = ({ name, symbol, logoUrl }: CryptoIconProps) => {
   return (
-    <Stack direction={"row"} alignItems={"center"} gap={1}>
+    <Stack direction={"row"} alignItems={"center"} gap={1} sx={{ minWidth: "97px" }}>
       <Stack>
-        <Image src={logoUrl} width={24} height={24} />
+        {symbol ? (
+          <Image src={logoUrl} width={24} height={24} />
+        ) : (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: 24,
+              height: 24,
+              background: "var(--Gradients-Gradient-Sky, radial-gradient(50% 50% at 50% 50%, #FFF 0%, #CDDFF2 100%))",
+              borderRadius: "50%",
+              path: { stroke: (theme) => theme.palette.dark[1] },
+            }}
+          >
+            <Icon name="Question" />
+          </Box>
+        )}
       </Stack>
       <Stack
         direction={{ xs: "column", md: "row" }}
@@ -24,10 +42,10 @@ const CryptoIcon = ({ name, symbol, logoUrl }: CryptoIconProps) => {
           }}
           whiteSpace={{ xs: "none", md: "wrap" }}
         >
-          {name}
+          {symbol ? name : "••••••••"}
         </Typography>
-        <Typography variant="p2-medium" sx={{ color: "grey.light" }}>
-          {symbol}
+        <Typography variant="p2-medium" sx={{ color: "grey.light", textTransform: "uppercase" }}>
+          {symbol ?? "••••"}
         </Typography>
       </Stack>
     </Stack>

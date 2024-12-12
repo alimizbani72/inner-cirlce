@@ -1,21 +1,21 @@
 "use client";
 import Scrollbar from "@/components/Scrollbar";
-import { useAppSelector } from "@/lib/hooks";
-import { Stack } from "@mui/material";
-import CryptoIcon from "./CryptoIcons";
-import CustomAssetTable from "./CustomAssetTable";
-import numeral from "numeral";
-import MoreTableAction from "./MoreTableAction";
-import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
+import { Icon } from "@/components/icons";
 import { useIsMobile } from "@/hooks/use-responsive";
-import { useMemo } from "react";
+import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
+import { useAppSelector } from "@/lib/hooks";
 import { useTranslate } from "@/locales";
 import { formatTitle } from "@/utils/toNumber";
+import { Stack } from "@mui/material";
+import numeral from "numeral";
+import { useMemo } from "react";
 import usePortfolioData from "../../_section/hook/usePortfolioData";
-import { Icon } from "@/components/icons";
-import ValueWithSymbol from "./ValueWithSymbol";
 import ColoredTypography from "./ColoredTypography";
+import CryptoIcon from "./CryptoIcons";
+import CustomAssetTable from "./CustomAssetTable";
 import Distribution from "./Distribution";
+import MoreTableAction from "./MoreTableAction";
+import ValueWithSymbol from "./ValueWithSymbol";
 
 const AssetsTable = () => {
   const { t } = useTranslate();
@@ -108,15 +108,7 @@ const AssetsTable = () => {
   );
 
   return (
-    <Stack
-      sx={{
-        ".os-scrollbar-handle": {
-          cursor: "pointer",
-          backgroundColor: "grey.dark",
-          "&:hover": { backgroundColor: "grey.dark" },
-        },
-      }}
-    >
+    <Stack>
       <Stack pl={{ xs: 3, md: 4 }} pb={5}>
         <Scrollbar options={{ scrollbars: { clickScroll: true, autoHide: "never" } }}>
           <Stack

@@ -124,7 +124,7 @@ const CustomTable = ({
 
   return (
     <Stack
-      sx={(theme) => ({
+      sx={{
         borderRadius: 2,
         border: "1.5px solid",
         borderColor: "dark.3",
@@ -132,25 +132,7 @@ const CustomTable = ({
         width: width ?? "100%",
         overflow: "hidden",
         height: "100%",
-        [theme.breakpoints.up("md")]: {
-          scrollbarWidth: "thin",
-          "*::-webkit-scrollbar": {
-            width: "2px",
-            height: "2px",
-          },
-          "*::-webkit-scrollbar-track": {
-            background: "transparent",
-          },
-          "*::-webkit-scrollbar-thumb": {
-            backgroundColor: theme.palette.dark[3],
-            borderRadius: "20px",
-            border: "unset",
-          },
-          "*::-webkit-scrollbar-corner": {
-            background: theme.palette.dark[1],
-          },
-        },
-      })}
+      }}
     >
       {(title || action) && (
         <>

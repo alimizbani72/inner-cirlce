@@ -45,13 +45,6 @@ const ContainerStyle = styled(Stack)(({ theme }) => ({
       backgroundColor: theme.palette.dark[2],
       zIndex: 3,
       paddingLeft: `${theme.spacing(1)} !important`,
-      "& > div": {
-        width: "max-content",
-        minWidth: 150,
-        [theme.breakpoints.down("md")]: {
-          width: 150,
-        },
-      },
     },
     "&:hover > td": {
       backgroundColor: theme.palette.dark[3],
