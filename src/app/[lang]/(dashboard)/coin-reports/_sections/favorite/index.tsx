@@ -1,8 +1,8 @@
 "use client";
-import { handleOptsForService } from "@dashboard/coin-reports-two/_sections";
-import { defaultValuesFilters } from "@dashboard/coin-reports-two/_sections/consts";
-import CoinReportTable from "@dashboard/coin-reports-two/_sections/table";
-import type { FilterFormDataType } from "@dashboard/coin-reports-two/_sections/types";
+import { handleOptsForService } from "@dashboard/coin-reports/_sections";
+import { defaultValuesFilters } from "@dashboard/coin-reports/_sections/consts";
+import CoinReportTable from "@dashboard/coin-reports/_sections/table";
+import type { FilterFormDataType } from "@dashboard/coin-reports/_sections/types";
 import { useCoinReportServiceCoinReportFavoritesQuery } from "@minecraft/queries";
 import { useMemo, useState } from "react";
 

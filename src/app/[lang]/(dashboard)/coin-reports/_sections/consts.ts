@@ -1,4 +1,5 @@
 import { plans } from "@/configs/plans";
+import type { FilterFormDataType } from "@dashboard/coin-reports/_sections/types";
 
 export const signalsList = [
   {
@@ -85,3 +86,10 @@ export const packageOptions = planKeys.map((plan) => ({
 }));
 
 export const TOTAL_SECONDS = 3600;
+
+export const defaultValuesFilters: FilterFormDataType = {
+  timeFrame: "1h",
+  sorts: defaultValueSort,
+  page: 1,
+  per_page: 100,
+};

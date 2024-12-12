@@ -1,17 +1,12 @@
 import CustomDialog from "@/components/CustomDialog";
 import { Icon } from "@/components/icons";
 import { useTranslate } from "@/locales";
-import type {
-  FilterFormDataType,
-  ItemType,
-  PackageType,
-  SignalType,
-} from "@dashboard/coin-reports-two/_sections/types.d";
+import type { FilterFormDataType, ItemType, PackageType, SignalType } from "@dashboard/coin-reports/_sections/types.d";
 import { Box, Button, DialogActions, DialogContent, DialogTitle, IconButton, Stack, Typography } from "@mui/material";
 import { useState } from "react";
 import CategoryAutoComplete from "./CategoryAutoComplete";
-import SignalAutoComplete from "./SignalAutoComplete";
 import PackageAutoComplete from "./PackageAutoComplete";
+import SignalAutoComplete from "./SignalAutoComplete";
 
 interface FilterModalProps {
   onClose: () => void;

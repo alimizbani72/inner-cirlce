@@ -35,7 +35,7 @@ const CoinReportToggle = ({ children }: PropsWithChildren) => {
       width={{ md: `calc(100vw - ${isCollapsed ? 105 : 248}px)`, xs: "calc(100vw - 16px)" }}
     >
       <Toggle
-        setValue={(val) => push(`/coin-reports-two${val === "favorites" ? "/favorite" : ""}`)}
+        setValue={(val) => push(`/coin-reports${val === "favorites" ? "/favorite" : ""}`)}
         buttons={buttons}
         value={pathname?.includes("favorite") ? "favorites" : "all-coins"}
         width="max-content"

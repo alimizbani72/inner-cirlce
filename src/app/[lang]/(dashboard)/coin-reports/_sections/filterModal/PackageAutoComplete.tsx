@@ -1,12 +1,12 @@
 import { AutoComplete } from "@/components/AutoComplete";
-import { Icon } from "@/components/icons";
 import Image from "@/components/Image";
+import { Icon } from "@/components/icons";
 import { useTranslate } from "@/locales";
 import { toTitleCase } from "@/utils/change-case";
-import { packageOptions } from "@dashboard/coin-reports-two/_sections/consts";
+import { packageOptions } from "@dashboard/coin-reports/_sections/consts";
 import { Box, MenuItem, Stack, Typography } from "@mui/material";
-import type { PackageType } from "../types";
 import type { Dispatch, SetStateAction } from "react";
+import type { PackageType } from "../types";
 
 interface PackageAutoCompleteProps {
   setPackages: Dispatch<SetStateAction<PackageType[]>>;

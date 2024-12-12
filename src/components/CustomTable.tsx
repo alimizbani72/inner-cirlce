@@ -25,6 +25,7 @@ export type SortType = Record<string, Boolean | undefined>;
 type PropType = {
   totalCount?: number;
   page?: number;
+  perPage?: number;
   handleChangePage?: (_event: React.ChangeEvent<unknown>, newPage: number) => void;
   title?: ReactNode;
   columns: { title: string; modify: (item: any) => ReactNode; sortable?: boolean; fieldName?: string }[];
@@ -44,6 +45,7 @@ type PropType = {
 
 const CustomTable = ({
   page = 1,
+  perPage,
   handleChangePage,
   totalCount = 10,
   title,
@@ -256,7 +258,7 @@ const CustomTable = ({
           <Divider flexItem orientation="horizontal" />
           <Stack direction={"row"} justifyContent={"center"} py={1.5}>
             <Pagination
-              count={Math.ceil(totalCount / 10)}
+              count={Math.ceil(totalCount / (perPage || 10))}
               defaultPage={1}
               page={page}
               onChange={handleChangePage}

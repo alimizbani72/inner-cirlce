@@ -1,6 +1,6 @@
-import CoinReportToggle from "@dashboard/coin-reports-two/_sections/CoinReportToggle";
-import LearningBanner from "@dashboard/coin-reports-two/_sections/LearningBanner";
-import CoinReportNotice from "@dashboard/coin-reports-two/_sections/Notice";
+import CoinReportToggle from "@dashboard/coin-reports/_sections/CoinReportToggle";
+import LearningBanner from "@dashboard/coin-reports/_sections/LearningBanner";
+import CoinReportNotice from "@dashboard/coin-reports/_sections/Notice";
 import { Stack } from "@mui/material";
 import type { PropsWithChildren } from "react";
 // ----------------------------------------------------------------------
