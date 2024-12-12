@@ -33,6 +33,8 @@ const MoreTableAction = ({ slug }: MoreTableProps) => {
             invalidatePortfolioId: true,
             invalidateHistory: true,
             invalidatePortfolio: true,
+            invalidateOverview: true,
+            invalidateoverviewhistory: true,
           });
 
           enqueueSnackbar(t("assetsTable.assetDeletesuccessMessage"), {

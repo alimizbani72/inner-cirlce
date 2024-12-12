@@ -154,6 +154,8 @@ const TransactionModal = () => {
         invalidatePortfolio: true,
         invalidatePortfolioId: true,
         invalidateTransactions: true,
+        invalidateoverviewhistory: true,
+        invalidateOverview: true,
       });
 
       dispatch(closeTransactionModal());

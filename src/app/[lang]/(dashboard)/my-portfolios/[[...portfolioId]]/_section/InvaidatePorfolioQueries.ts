@@ -1,4 +1,6 @@
 import {
+  UsePortfolioServiceOverviewHistoryQueryKeyFn,
+  UsePortfolioServiceOverviewQueryKeyFn,
   UsePortfolioServicePortfoliosIdHistoryQueryKeyFn,
   UsePortfolioServicePortfoliosIdQueryKeyFn,
   UsePortfolioServicePortfoliosQueryKeyFn,
@@ -12,6 +14,8 @@ interface InvalidateOptions {
   invalidatePortfolio?: boolean;
   invalidatePortfolioId?: boolean;
   invalidateHistory?: boolean;
+  invalidateOverview?: boolean;
+  invalidateoverviewhistory?: boolean;
 }
 export const invalidatePortfolioQueries = (
   queryClient: QueryClient,
@@ -22,6 +26,8 @@ export const invalidatePortfolioQueries = (
     invalidateTransactions = false,
     invalidatePortfolio = false,
     invalidateHistory = false,
+    invalidateOverview = false,
+    invalidateoverviewhistory = false,
   }: InvalidateOptions
 ) => {
   if (invalidateTransactions) {
@@ -42,6 +48,16 @@ export const invalidatePortfolioQueries = (
   if (invalidatePortfolio) {
     queryClient.invalidateQueries({
       queryKey: UsePortfolioServicePortfoliosQueryKeyFn(),
+    });
+  }
+  if (invalidateOverview) {
+    queryClient.invalidateQueries({
+      queryKey: UsePortfolioServiceOverviewQueryKeyFn(),
+    });
+  }
+  if (invalidateoverviewhistory) {
+    queryClient.invalidateQueries({
+      queryKey: UsePortfolioServiceOverviewHistoryQueryKeyFn(),
     });
   }
 

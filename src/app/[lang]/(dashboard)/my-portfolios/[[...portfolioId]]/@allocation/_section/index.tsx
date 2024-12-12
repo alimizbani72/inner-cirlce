@@ -18,7 +18,7 @@ const Allocation = () => {
   const [hoveredCrypto, setHoveredCrypto] = useState<string | null>(null);
   const isCollapsed = useAppSelector(isSidebarCollapsed);
   const seriesData = (selectedPortfolio?.data as any)?.assets.map((asset: any) => ({
-    x: asset.symbol,
+    x: asset.name,
     y: parseToNumber(asset.distribution).toFixed(2),
   }));
 
@@ -63,9 +63,9 @@ const Allocation = () => {
               {(selectedPortfolio?.data as any)?.assets.map((asset: any) => (
                 <CryptoChip
                   key={asset.slug}
-                  label={asset.symbol}
+                  label={asset.name}
                   value={asset.distribution}
-                  isActive={hoveredCrypto === asset.symbol}
+                  isActive={hoveredCrypto === asset.name}
                   onHover={setHoveredCrypto}
                 />
               ))}
