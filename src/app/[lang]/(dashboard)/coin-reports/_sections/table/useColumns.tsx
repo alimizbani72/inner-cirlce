@@ -39,11 +39,11 @@ export const useColumns = () => {
       },
       {
         title: t("coinReportTabTable.potentialMultiplicator"),
-        modify: (row: any) => <TextHandler length={5} value={row?.potential_multiplier} suffix="x" />,
+        modify: (row: any) => <TextHandler slug={row.slug} length={5} value={row?.potential_multiplier} suffix="x" />,
       },
       {
         title: t("coinReportTabTable.rtl"),
-        modify: (row: any) => <TextHandler length={5} value={row?.rtl} suffix="%" />,
+        modify: (row: any) => <TextHandler slug={row.slug} length={5} value={row?.rtl} suffix="%" />,
       },
       {
         title: t("coinReportTabTable.riskLevel"),
@@ -51,7 +51,7 @@ export const useColumns = () => {
       },
       {
         title: t("coinReportTabTable.currentPrice"),
-        modify: (row: any) => <TextHandler length={8} value={row?.current_price} prefix="$" />,
+        modify: (row: any) => <TextHandler length={8} slug={row.slug} value={row?.current_price} prefix="$" />,
       },
     ],
     [t]

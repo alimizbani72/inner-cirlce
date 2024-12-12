@@ -5,7 +5,7 @@ interface TextHandlerProps {
   length: number;
   suffix?: string;
   prefix?: string;
-  slug?: string;
+  slug: string;
 }
 
 const TextHandler = ({ length, value, slug, prefix = "", suffix = "" }: TextHandlerProps) => (
