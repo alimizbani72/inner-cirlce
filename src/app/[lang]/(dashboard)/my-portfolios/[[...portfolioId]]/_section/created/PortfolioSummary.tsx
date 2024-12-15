@@ -48,7 +48,7 @@ const PortfolioSummary = ({ selectedPortfolio, portfolios, portfolioId }: Portfo
               </Typography>
             </Stack>
           )}
-          <Stack direction={{ xs: "column", md: "row" }} spacing={1}>
+          <Stack direction={{ xs: "column", md: "row" }} spacing={1} flexWrap={"wrap"}>
             <Badge label="Total invest" value={selectedPortfolio?.total_invested} customColor="white" />
             <Badge label="Realized PnL" value={selectedPortfolio?.total_realized} />
             <Badge label="UNRealized PnL" value={selectedPortfolio?.total_unrealized} />

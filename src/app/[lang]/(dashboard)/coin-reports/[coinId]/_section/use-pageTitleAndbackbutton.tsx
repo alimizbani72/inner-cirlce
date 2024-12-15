@@ -7,5 +7,8 @@ export function usePageTitleandBackButton() {
 
   useEffect(() => {
     dispatch(setPageInfo({ title: "Coin Reports", hasBackButton: true }));
+    return () => {
+      dispatch(setPageInfo({ title: "", hasBackButton: false }));
+    };
   }, [dispatch]);
 }

@@ -37,6 +37,16 @@ const CoinsList: FC = () => {
           }
           return false;
         }}
+        ListboxProps={{
+          sx: {
+            "&::-webkit-scrollbar": {
+              width: "4px",
+            },
+            "&::-webkit-scrollbar-thumb": {
+              backgroundColor: "#626583",
+            },
+          },
+        }}
         loading={isLoading}
         onInputChange={(_event, value) => {
           setSearchQuery(value);

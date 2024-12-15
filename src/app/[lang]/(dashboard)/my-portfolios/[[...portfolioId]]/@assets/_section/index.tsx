@@ -1,5 +1,4 @@
 "use client";
-import Scrollbar from "@/components/Scrollbar";
 import { Icon } from "@/components/icons";
 import { useIsMobile } from "@/hooks/use-responsive";
 import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
@@ -108,29 +107,29 @@ const AssetsTable = () => {
   );
 
   return (
-    <Stack>
-      <Stack pl={{ xs: 3, md: 4 }} pb={5}>
-        <Scrollbar options={{ scrollbars: { clickScroll: true, autoHide: "never" } }}>
-          <Stack
-            alignItems="flex-start"
-            maxWidth={isMobile ? "calc(100vw - 48px)" : `calc(100vw - ${isCollapsed ? "136px" : "281px"})`}
-            sx={{
-              "> div": {
-                borderBottomRightRadius: { xs: undefined, md: 0 },
-                borderTopRightRadius: { xs: undefined, md: 0 },
-                borderRight: { xs: undefined, md: 0 },
-              },
-            }}
-          >
-            <CustomAssetTable
-              isPending={isLoading}
-              minWidthCell={160}
-              title={t("assetsTable.assets")}
-              columns={columns}
-              data={((selectedPortfolio?.data as any)?.assets as any) ?? []}
-            />
-          </Stack>
-        </Scrollbar>
+    <Stack pl={{ xs: 0, md: 4 }} pb={5}>
+      <Stack
+        alignItems="flex-start"
+        maxWidth={isMobile ? "100vw" : `calc(100vw - ${isCollapsed ? "167px" : "311px"})`}
+        sx={{
+          ...(!isMobile
+            ? {}
+            : {
+                "> div": {
+                  borderRadius: 0,
+                  borderRight: 0,
+                  borderLeft: 0,
+                },
+              }),
+        }}
+      >
+        <CustomAssetTable
+          isPending={isLoading}
+          minWidthCell={160}
+          title={t("assetsTable.assets")}
+          columns={columns}
+          data={((selectedPortfolio?.data as any)?.assets as any) ?? []}
+        />
       </Stack>
     </Stack>
   );
