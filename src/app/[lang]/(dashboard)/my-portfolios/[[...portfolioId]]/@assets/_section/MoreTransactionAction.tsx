@@ -58,8 +58,6 @@ const MoreTransactionAction = ({ transaction }: Props) => {
             invalidateHistory: true,
             invalidateTransactions: true,
             invalidatePortfolio: true,
-            invalidateOverview: true,
-            invalidateoverviewhistory: true,
             activeSymbol: activeSymbol!,
           });
           enqueueSnackbar(t("transaction.transactiondeleteSuccessMessage"), {

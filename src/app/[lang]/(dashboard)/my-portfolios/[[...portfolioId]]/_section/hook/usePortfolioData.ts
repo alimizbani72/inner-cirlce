@@ -11,11 +11,13 @@ const usePortfolioData = () => {
     undefined,
     {
       enabled: !!activePortfolioId,
+      refetchOnMount: "always" 
     }
   );
 
   const { data: overview, isLoading: isLoadingOverview } = usePortfolioServiceOverviewQuery(undefined, {
     enabled: !activePortfolioId,
+    refetchOnMount: "always",
   });
 
   const selectedPortfolio = activePortfolioId ? portfolioDetail : overview;

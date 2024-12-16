@@ -24,6 +24,7 @@ const HistorySection = () => {
 
   const { data: overview, isLoading: overviewLoading } = usePortfolioServiceOverviewHistoryQuery(undefined, undefined, {
     enabled: !activePortfolioId,
+    refetchOnMount: "always",
   });
 
   const { data: portfoliohistory, isLoading: portfolioDetailLoading } = usePortfolioServicePortfoliosIdHistoryQuery(
@@ -31,7 +32,7 @@ const HistorySection = () => {
       id: activePortfolioId,
     },
     undefined,
-    { enabled: !!activePortfolioId }
+    { enabled: !!activePortfolioId, refetchOnMount: "always" }
   );
 
   const loading = activePortfolioId ? portfolioDetailLoading : overviewLoading;
