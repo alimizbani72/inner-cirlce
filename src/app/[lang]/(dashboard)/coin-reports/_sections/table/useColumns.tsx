@@ -32,14 +32,20 @@ export const useColumns = () => {
       {
         title: t("coinReportTabTable.cmr"),
         modify: (row: any) => <CMRHandler value={row.cmr} percentChange={row.cmr_change_percentage} />,
+        sortable: true,
+        fieldName: "cmr",
       },
       {
         title: t("coinReportTabTable.eeSignal"),
         modify: (row: any) => <SignalHandler value={row.signal} />,
+        sortable: true,
+        fieldName: "signal",
       },
       {
         title: t("coinReportTabTable.potentialMultiplicator"),
         modify: (row: any) => <TextHandler slug={row.slug} length={5} value={row?.potential_multiplier} suffix="x" />,
+        sortable: true,
+        fieldName: "future_potential",
       },
       {
         title: t("coinReportTabTable.rtl"),
@@ -48,6 +54,8 @@ export const useColumns = () => {
       {
         title: t("coinReportTabTable.riskLevel"),
         modify: (row: any) => <RiskLevelHandler value={row?.risk_level} />,
+        sortable: true,
+        fieldName: "risk",
       },
       {
         title: t("coinReportTabTable.currentPrice"),

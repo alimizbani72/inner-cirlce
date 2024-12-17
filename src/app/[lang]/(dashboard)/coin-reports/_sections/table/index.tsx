@@ -10,6 +10,7 @@ import { useState } from "react";
 import { Header } from "../header";
 import type { FilterFormDataType } from "../types.d";
 import { useColumns } from "./useColumns";
+import { useIsMobile } from "@/hooks/use-responsive";
 
 export interface TableProps {
   filters: FilterFormDataType;
@@ -25,7 +26,6 @@ const ContainerStyle = styled(Stack)(({ theme }) => ({
   border: "1.5px solid",
   borderColor: theme.palette.dark[3],
   alignItems: "flex-start",
-  borderRadius: theme.spacing(1.5),
   overflow: "hidden",
   [`& .${tableHeadClasses.root} `]: {
     "& > tr > th:first-child": {
@@ -67,6 +67,7 @@ const CoinReportTable = ({
   const [openUpgradeModal, setOpenUpgradeModal] = useState(false);
   const { push } = useAppRouter();
   const { columns } = useColumns();
+  const isMobile = useIsMobile();
 
   const handleSortChange = (sort?: SortType) => {
     onFilterChange({
@@ -85,7 +86,15 @@ const CoinReportTable = ({
 
   return (
     <>
-      <ContainerStyle>
+      <ContainerStyle
+        sx={{
+          ...(isMobile
+            ? { borderLeft: "unset", borderRight: "unset" }
+            : {
+                borderRadius: 1.5,
+              }),
+        }}
+      >
         <Header {...{ onNextUpdate, filters, onFilterChange, nextUpdate }} />
 
         <CustomTable

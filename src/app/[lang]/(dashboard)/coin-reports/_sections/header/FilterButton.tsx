@@ -28,7 +28,10 @@ const FilterButton = ({ onFilterChange, filters }: FilterButtonProps) => {
   const filterValue = useMemo(() => {
     let value = {};
     for (const key in filters) {
-      if (!["timeFrame", "sorts"].includes(key) && (filters[key as keyof FilterFormDataType] as any[])?.length) {
+      if (
+        !["timeFrame", "sorts", "query"].includes(key) &&
+        (filters[key as keyof FilterFormDataType] as any[])?.length
+      ) {
         value = { ...value, [key]: filters[key as keyof FilterFormDataType] };
       }
     }
