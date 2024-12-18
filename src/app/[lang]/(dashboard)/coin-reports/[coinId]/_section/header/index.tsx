@@ -1,19 +1,12 @@
 "use client";
 
+import Image from "@/components/Image";
 import { Icon } from "@/components/icons";
 import { plans } from "@/configs/plans";
+import { useFavoriteToggle } from "@/hooks/useFavoriteToggle";
 import { Box, IconButton, Stack, Typography } from "@mui/material";
-import Entry from "./Entry";
-import Image from "@/components/Image";
-import {
-  useCoinReportServiceCoinReportSlugFavoriteCreateMutation,
-  useCoinReportServiceCoinReportSlugFavoriteDeleteMutation,
-  UseCoinReportServiceCoinReportSlugQueryKeyFn,
-} from "@minecraft/queries";
 import { useParams } from "next/navigation";
-import { useSnackbar } from "notistack";
-import { useTranslate } from "@/locales";
-import { useQueryClient } from "@tanstack/react-query";
+import Entry from "./Entry";
 type Props = {
   logo: string | undefined;
   name: string | undefined;
@@ -22,39 +15,9 @@ type Props = {
   ee_signal: string | undefined;
   isFavorite: boolean;
 };
-const Header = ({ logo, name, symbol, plan_type, ee_signal, isFavorite }: Props) => {
+const Header = ({ logo, name, symbol, plan_type, ee_signal, isFavorite: favStatus }: Props) => {
   const { coinId: slug } = useParams();
-  const { t } = useTranslate();
-  const { enqueueSnackbar } = useSnackbar();
-  const queryClient = useQueryClient();
-  const { mutateAsync: mutateAddFavorite } = useCoinReportServiceCoinReportSlugFavoriteCreateMutation();
-  const { mutateAsync: mutateRemoveFavorite } = useCoinReportServiceCoinReportSlugFavoriteDeleteMutation();
-
-  const toggleFavorite = async () => {
-    const successMessage = isFavorite
-      ? t("coinreportsingleview.removedSuccess")
-      : t("coinreportsingleview.addedSuccess");
-    const errorMessage = isFavorite ? t("coinreportsingleview.removedError") : t("coinreportsingleview.addedError");
-
-    try {
-      if (isFavorite) {
-        await mutateRemoveFavorite({ slug: slug as string });
-      } else {
-        await mutateAddFavorite({ slug: slug as string });
-      }
-
-      enqueueSnackbar(successMessage, {
-        variant: "success",
-      });
-      queryClient.invalidateQueries({
-        queryKey: UseCoinReportServiceCoinReportSlugQueryKeyFn({ slug: slug as string }),
-      });
-    } catch (_error) {
-      enqueueSnackbar(errorMessage, {
-        variant: "error",
-      });
-    }
-  };
+  const { isFavorite, toggleFavorite } = useFavoriteToggle(favStatus, slug as string);
 
   return (
     <Stack

@@ -1,12 +1,12 @@
+import { minecraftEndpoint } from "@/consts";
+import type { IUser } from "@/lib/features/user/userSlice";
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
-import { minecraftEndpoint } from "@/consts";
 import { customLogin } from "./customLogin";
 import { customSingUp } from "./customSignUp";
 import { forgotPass } from "./forgotPass";
 import { googleLoginProvider } from "./googleLogin";
-import type { IUser } from "@/lib/features/user/userSlice";
 import { guestLogin } from "./guestLogin";
 
 declare module "next-auth" {
@@ -52,7 +52,7 @@ export const authOptions: (cookies?: any) => NextAuthOptions = (cookies) => ({
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              google_id_token: account.id_token,
+              token: account.id_token,
               referral_code: cookies?.referral_code,
             }),
           });

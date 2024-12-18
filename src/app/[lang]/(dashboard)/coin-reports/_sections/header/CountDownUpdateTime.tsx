@@ -55,7 +55,7 @@ const CountDownUpdateTime = ({ updateTime = 0, onNextUpdate }: CountDownUpdateTi
           {t("coinReportTable.nextUpdateIn")}
         </Typography>
       )}
-      <Typography variant="caption-medium" ml={0.5}>
+      <Typography variant="caption-medium" ml={{ xs: 1, lg: 0.5 }}>
         {formatTime(minutes)}:{formatTime(seconds)}
       </Typography>
     </Stack>

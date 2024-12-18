@@ -4,12 +4,15 @@ import { Stack, Box, Typography } from "@mui/material";
 import { Icon } from "@/components/icons";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { useTranslate } from "@/locales";
+import { useIsMobile } from "@/hooks/use-responsive";
 
 const TelegramLink = () => {
+  const isMobile = useIsMobile();
   const { t } = useTranslate();
   const { copy } = useCopyToClipboard();
-  const link = "https://t.me/Chainmind";
-  const displayLink = link.replace("https://", "");
+  const link = process.env.NEXT_PUBLIC_TELEGRAM_CHANNEL || "";
+  const displayLink = `${link.replace("https://", "").slice(0, isMobile ? 13 : 17)}...`;
+
   return (
     <Stack
       direction={"row"}

@@ -1,21 +1,20 @@
 "use client";
-import Scrollbar from "@/components/Scrollbar";
-import { useAppSelector } from "@/lib/hooks";
-import { Stack } from "@mui/material";
-import CryptoIcon from "./CryptoIcons";
-import CustomAssetTable from "./CustomAssetTable";
-import numeral from "numeral";
-import MoreTableAction from "./MoreTableAction";
-import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
+import { Icon } from "@/components/icons";
 import { useIsMobile } from "@/hooks/use-responsive";
-import { useMemo } from "react";
+import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
+import { useAppSelector } from "@/lib/hooks";
 import { useTranslate } from "@/locales";
 import { formatTitle } from "@/utils/toNumber";
+import { Stack } from "@mui/material";
+import numeral from "numeral";
+import { useMemo } from "react";
 import usePortfolioData from "../../_section/hook/usePortfolioData";
-import { Icon } from "@/components/icons";
-import ValueWithSymbol from "./ValueWithSymbol";
 import ColoredTypography from "./ColoredTypography";
+import CryptoIcon from "./CryptoIcons";
+import CustomAssetTable from "./CustomAssetTable";
 import Distribution from "./Distribution";
+import MoreTableAction from "./MoreTableAction";
+import ValueWithSymbol from "./ValueWithSymbol";
 
 const AssetsTable = () => {
   const { t } = useTranslate();
@@ -40,7 +39,11 @@ const AssetsTable = () => {
               gap={1}
             >
               <CryptoIcon name={row.row.name} symbol={row.row.symbol} logoUrl={row.row.logo} />
-              {portfolioId && <Icon name={row.isOpen ? "arrow-colorfull-up" : "arrow-colorfull-down"} />}
+              {portfolioId && (
+                <Stack>
+                  <Icon name={row.isOpen ? "arrow-colorfull-up" : "arrow-colorfull-down"} />
+                </Stack>
+              )}
             </Stack>
           </Stack>
         ),
@@ -104,37 +107,29 @@ const AssetsTable = () => {
   );
 
   return (
-    <Stack
-      sx={{
-        ".os-scrollbar-handle": {
-          cursor: "pointer",
-          backgroundColor: "grey.dark",
-          "&:hover": { backgroundColor: "grey.dark" },
-        },
-      }}
-    >
-      <Stack pl={{ xs: 3, md: 4 }} pb={5}>
-        <Scrollbar options={{ scrollbars: { clickScroll: true, autoHide: "never" } }}>
-          <Stack
-            alignItems="flex-start"
-            maxWidth={isMobile ? "calc(100vw - 48px)" : `calc(100vw - ${isCollapsed ? "136px" : "281px"})`}
-            sx={{
-              "> div": {
-                borderBottomRightRadius: { xs: undefined, md: 0 },
-                borderTopRightRadius: { xs: undefined, md: 0 },
-                borderRight: { xs: undefined, md: 0 },
-              },
-            }}
-          >
-            <CustomAssetTable
-              isPending={isLoading}
-              minWidthCell={160}
-              title={t("assetsTable.assets")}
-              columns={columns}
-              data={((selectedPortfolio?.data as any)?.assets as any) ?? []}
-            />
-          </Stack>
-        </Scrollbar>
+    <Stack pl={{ xs: 0, md: 4 }} pb={5}>
+      <Stack
+        alignItems="flex-start"
+        maxWidth={isMobile ? "100vw" : `calc(100vw - ${isCollapsed ? "167px" : "311px"})`}
+        sx={{
+          ...(!isMobile
+            ? {}
+            : {
+                "> div": {
+                  borderRadius: 0,
+                  borderRight: 0,
+                  borderLeft: 0,
+                },
+              }),
+        }}
+      >
+        <CustomAssetTable
+          isPending={isLoading}
+          minWidthCell={160}
+          title={t("assetsTable.assets")}
+          columns={columns}
+          data={((selectedPortfolio?.data as any)?.assets as any) ?? []}
+        />
       </Stack>
     </Stack>
   );

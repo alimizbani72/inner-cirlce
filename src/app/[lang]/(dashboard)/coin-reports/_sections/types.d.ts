@@ -14,6 +14,8 @@ export interface FilterFormDataType {
   signals?: SignalType[];
   categories?: ItemType[];
   timeFrame?: string;
-  sorts?: Record<string, boolean>;
+  sorts?: Record<string, Boolean | undefined>;
   query?: string;
+  page: number;
+  per_page: number;
 }

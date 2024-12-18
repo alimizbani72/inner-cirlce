@@ -9,7 +9,7 @@
     "start": "next start -p 7500",
     "prebuild": "bun run lint && bun run format",
     "build": "bun run codegen && bun run dicgen && next build",
-    "dev:build" : "bun run codegen && next build",
+    "dev:build": "bun run codegen && next build",
     "postbuild": "next-sitemap",
     "lint": "biome lint ./src",
     "lint:fix": "biome lint --apply ./src",
@@ -22,7 +22,7 @@
     "prepare": "husky || true",
     "translate": "ts-node translate.ts",
     "build:translations": "ts-node build-translations.ts",
-    "dicgen":"bun run translate && bun run build:translations"
+    "dicgen": "bun run translate && bun run build:translations"
   },
   "dependencies": {
     "@emotion/cache": "^11.11.0",
@@ -117,5 +117,6 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5",
     "webpack": "^5.91.0"
-  }
+  },
+  "trustedDependencies": ["@biomejs/biome", "protobufjs"]
 }
