@@ -1,5 +1,6 @@
 import type { AppThunk } from "@/lib/store";
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { packageNameModifier } from "@/utils/string";
+import { type PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export interface Plan {
   id: string;
@@ -69,7 +70,7 @@ export const mapApiDataToPlans =
       const plans: Plan[] = data.map((apiPlan) => ({
         id: apiPlan.id,
         title: apiPlan.name,
-        plan_type: apiPlan.name.toLowerCase(),
+        plan_type: packageNameModifier(apiPlan.name),
         description: apiPlan.description,
         cost: apiPlan.price.toString(),
         buttonText: apiPlan.buttonText,

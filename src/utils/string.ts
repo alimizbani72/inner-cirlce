@@ -19,3 +19,7 @@ export function getLastSegment(path: string): string {
   const segments = path.split("/").filter((segment) => segment); // Filter out empty segments
   return segments[segments.length - 1];
 }
+
+export function packageNameModifier(input: string): string {
+  return input.toLowerCase().replace(/\s+/g, "_");
+}
