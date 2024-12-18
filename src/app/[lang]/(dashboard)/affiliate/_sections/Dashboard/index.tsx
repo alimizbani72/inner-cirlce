@@ -13,7 +13,7 @@ import {
   useFinancialServiceFinancialInfoQuery,
 } from "@minecraft/queries";
 import { formatCurrency, toNumber } from "@/utils/toNumber";
-import { toPascalCase } from "@/utils/change-case";
+import { toPascalCase, toTitleCase } from "@/utils/change-case";
 import { plans } from "@/configs/plans";
 import { orderArrayPlan } from "@/utils/order-plans";
 import { useTranslate } from "@/locales";
@@ -329,7 +329,13 @@ const AFDashboardTab: FC = () => {
             </Stack>
           </ContentStack>
 
-          <ContentStack flex={8 / 12} p={0} direction={"row"} flexWrap={{ md: "unset", xs: "wrap" }}>
+          <ContentStack
+            flex={8 / 12}
+            p={0}
+            direction={"row"}
+            flexWrap={{ md: "unset", xs: "wrap" }}
+            overflow={"hidden"}
+          >
             {orderArrayPlan(children?.data?.distribution_of_plans)?.map((item, index) => (
               <Stack
                 key={item.plan_type}
@@ -339,9 +345,6 @@ const AFDashboardTab: FC = () => {
                 alignItems={"center"}
                 justifyContent={"center"}
                 bgcolor={{ sm: !(index % 2) ? "dark.3" : undefined }}
-                sx={{
-                  borderRadius: index === 0 ? "8px 0 0 8px" : "none",
-                }}
               >
                 {(plans as any)[item.plan_type!]?.rive && (
                   <Box sx={{ aspectRatio: 1 }}>
@@ -352,7 +355,7 @@ const AFDashboardTab: FC = () => {
                   {item.count}
                 </Typography>
                 <Typography variant="p2-medium" textTransform={"capitalize"} color="grey.light">
-                  {item.plan_type}
+                  {toTitleCase(item.plan_type)}
                 </Typography>
               </Stack>
             ))}

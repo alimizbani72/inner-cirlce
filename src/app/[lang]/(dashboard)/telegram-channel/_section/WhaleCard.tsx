@@ -12,6 +12,7 @@ import { useCallback } from "react";
 import CustomButton from "./CustomButton";
 import { useSnackbar } from "notistack";
 import { useTelegramServiceTelegramLinkQuery } from "@minecraft/queries";
+import { plans } from "@/configs/plans";
 const buttonStyle = {
   position: "relative",
   zIndex: 1,
@@ -38,7 +39,7 @@ const WhaleCard = () => {
     enabled: false,
   });
   const userInfo = useAppSelector(selectUser);
-  const isNotUpgraded = getUserPlanType(userInfo) !== "whale";
+  const needsUpgrade = plans[getUserPlanType(userInfo) as keyof typeof plans]?.order < 6;
 
   const handleJoinClick = async () => {
     try {
@@ -71,7 +72,7 @@ const WhaleCard = () => {
   );
 
   const renderContent = () => {
-    if (isNotUpgraded) {
+    if (needsUpgrade) {
       return renderSubscriptionButton();
     }
 

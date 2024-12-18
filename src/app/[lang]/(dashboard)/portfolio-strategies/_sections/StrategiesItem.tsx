@@ -8,6 +8,7 @@ import RiveComp from "@/components/RiveComp";
 import { Icon } from "@/components/icons";
 import { flexItem } from "@/utils/grid";
 import { useTranslate } from "@/locales";
+import { toTitleCase } from "@/utils/change-case";
 
 interface StrategiesItemProps {
   src: string;
@@ -35,7 +36,7 @@ const StrategiesItem: FC<StrategiesItemProps> = ({ src, subtitle, type, upgrade 
 
       <Stack p={1} flex={1}>
         <Typography variant="h4-semi-bold" textTransform={"uppercase"}>
-          {type}
+          {toTitleCase(type)}
         </Typography>
         <Typography variant="p2-medium" textTransform={"uppercase"} color={"grey.dark"} mb={2}>
           {subtitle}

@@ -97,8 +97,8 @@ const WelcomeBanner: FC = () => {
 
           <Stack
             p={1}
-            pl={getUserPlanType(userInfo) !== "whale" ? 2 : 3}
-            pr={getUserPlanType(userInfo) !== "whale" ? undefined : 4}
+            pl={getUserPlanType(userInfo) !== "fisherman_plus" ? 2 : 3}
+            pr={getUserPlanType(userInfo) !== "fisherman_plus" ? undefined : 4}
             gap={"28px"}
             bgcolor={"rgba(255, 255, 255, 0.08)"}
             sx={{ backdropFilter: "blur(20px)", borderRadius: "32px" }}
@@ -111,7 +111,7 @@ const WelcomeBanner: FC = () => {
 
               <Stack>
                 <Typography textTransform={"uppercase"} variant="p1-semi-bold">
-                  {getUserPlanType(userInfo)}
+                  {toTitleCase(getUserPlanType(userInfo))}
                 </Typography>
                 <Typography variant="caption-medium" color={"grey.light"}>
                   {t("welcomeBanner.youAre")}
@@ -119,7 +119,7 @@ const WelcomeBanner: FC = () => {
               </Stack>
             </Stack>
 
-            {getUserPlanType(userInfo) !== "whale" && (
+            {getUserPlanType(userInfo) !== "fisherman_plus" && (
               <Button
                 href="/pricing"
                 color="secondary"
