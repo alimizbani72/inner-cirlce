@@ -1,3 +1,11 @@
+## [1.6.1](https://github.com/Chainmind-AG/inner-circle/compare/v1.6.0...v1.6.1) (2024-12-18)
+
+
+### Bug Fixes
+
+* **bug:** pricing table order issue ([5969d5b](https://github.com/Chainmind-AG/inner-circle/commit/5969d5b58d4efd2a4aacdb009f8fb7ef1efef32f))
+* **bug:** pricing table order issue ([992d522](https://github.com/Chainmind-AG/inner-circle/commit/992d522ea9a9f7a6291919b0544e51f49a1e190d))
+
 # [1.6.0](https://github.com/Chainmind-AG/inner-circle/compare/v1.5.1...v1.6.0) (2024-12-18)
 
 
