@@ -93,7 +93,7 @@ const PricingTable: FC<Props> = ({ plansData, rows, userType, handlePayment, isP
               loading={isPending}
               onClick={() => handlePayment(plan?.title.toLowerCase())}
               disabled={
-                plans[userType as keyof typeof plans].order >= plans[plan.plan_type as keyof typeof plans].order
+                plans[userType as keyof typeof plans]?.order >= plans[plan.plan_type as keyof typeof plans]?.order
               }
             >
               {plan.buttonText}

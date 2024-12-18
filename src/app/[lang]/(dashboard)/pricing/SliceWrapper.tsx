@@ -2,7 +2,7 @@
 import { mapApiDataToPlans } from "@/lib/features/plans/plansSlice";
 import { useAppDispatch } from "@/lib/hooks";
 import { usePackagesServiceGetPackages } from "@cms/queries";
-import { useCallback, type FC, type PropsWithChildren } from "react";
+import { type FC, type PropsWithChildren, useCallback } from "react";
 
 const SliceWrapper: FC<PropsWithChildren> = () => {
   const dispatch = useAppDispatch();
@@ -11,12 +11,26 @@ const SliceWrapper: FC<PropsWithChildren> = () => {
     dispatch(mapApiDataToPlans(data));
   }, []);
 
-  usePackagesServiceGetPackages({ locale: "en" }, undefined, {
-    select: (res) => {
-      handleRedux(res.docs);
-      return res;
+  usePackagesServiceGetPackages(
+    {
+      locale: "en",
+      where:
+        process.env.NEXT_PUBLIC_ENV === "PRODUCTION"
+          ? {
+              status: {
+                equals: "published",
+              },
+            }
+          : undefined,
     },
-  });
+    undefined,
+    {
+      select: (res) => {
+        handleRedux(res.docs);
+        return res;
+      },
+    }
+  );
 
   return null;
 };
