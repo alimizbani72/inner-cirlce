@@ -1,3 +1,28 @@
+# [1.6.0](https://github.com/Chainmind-AG/inner-circle/compare/v1.5.1...v1.6.0) (2024-12-18)
+
+
+### Bug Fixes
+
+* **assetTable:** enhance the table ([4fc1608](https://github.com/Chainmind-AG/inner-circle/commit/4fc160878b34eb0dc36607e7cbee4b9444f25736))
+* **auth:** google login ([7101976](https://github.com/Chainmind-AG/inner-circle/commit/7101976806327d959e4b4c1544c134a767840ef6))
+* **bug:** telegram link ([692019b](https://github.com/Chainmind-AG/inner-circle/commit/692019b9164a4185924e90ee798805cadb972df6))
+* **coinReport:** add sort field into coint report ([ab5e5f5](https://github.com/Chainmind-AG/inner-circle/commit/ab5e5f5da8db927839d649c95628eee1423aab41))
+* **coinReport:** coin report table refactor 1729741793 ([17ce38e](https://github.com/Chainmind-AG/inner-circle/commit/17ce38ecd7ea332bf92b844760bd351d0616ab3f))
+* **coins:** show values base on slug ([183ffe7](https://github.com/Chainmind-AG/inner-circle/commit/183ffe7412cad3115a1037cf5b2739e108ceec66))
+* **coins:** useFavToggle ([9d6f730](https://github.com/Chainmind-AG/inner-circle/commit/9d6f730523d5cac92845c6b1beca4fe8fb2d98cd))
+* **myportfolio:** enhance the table and search scroll ([#190](https://github.com/Chainmind-AG/inner-circle/issues/190)) ([2d57d7e](https://github.com/Chainmind-AG/inner-circle/commit/2d57d7e1ab3996d6019e9ae6e0fce2d6f84cab87))
+* **overview:** refetch data when change tabs ([81d4059](https://github.com/Chainmind-AG/inner-circle/commit/81d405911eab64f8078bb640cb3b18bee7e99949))
+* **table:** coin report table design ([1f9e920](https://github.com/Chainmind-AG/inner-circle/commit/1f9e92069b18d5d9b2074cfd7f6e3b8760fd8bc0))
+* **transaction:** invalidate overview & coin-list service ([21087b2](https://github.com/Chainmind-AG/inner-circle/commit/21087b24b891acc9221574a04a2ac5d8b1636253))
+
+
+### Features
+
+* add NEXT_PUBLIC_ENV env variable ([1c2df3f](https://github.com/Chainmind-AG/inner-circle/commit/1c2df3fd6c5af3d9ebfbf8c1e22ea1201cd4a9dc))
+* **cms:** add env condition for getting drafts data ([d74b9d5](https://github.com/Chainmind-AG/inner-circle/commit/d74b9d54db17b76e957fb35393a8eeb7c437672b))
+* **coin-report:** new table ([1d05fa9](https://github.com/Chainmind-AG/inner-circle/commit/1d05fa9a4cbf1930bd395505f951ca22ee395751))
+* **coinReport:** refactor coin report table ([292eae9](https://github.com/Chainmind-AG/inner-circle/commit/292eae9c676f94af8f26c87137e1ce8fca5f6288))
+
 ## [1.5.1](https://github.com/Chainmind-AG/inner-circle/compare/v1.5.0...v1.5.1) (2024-11-28)
 
 
