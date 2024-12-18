@@ -1,55 +1,79 @@
 "use client";
 
-import { useState, type FC } from "react";
-import { InputLabel, Stack, TextField, Typography } from "@mui/material";
-import Toggle from "@app/_components/Toggle";
+import CustomTable, { type SortType } from "@/components/CustomTable";
 import Scrollbar from "@/components/Scrollbar";
-import ContentStack from "@app/_components/ContentStack";
-import SortTable from "@/components/sortTable";
+import { useIsMobile } from "@/hooks/use-responsive";
 import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
 import { useAppSelector } from "@/lib/hooks";
-import { useContentServiceContentPortfolioStrategyPlanQuery } from "@minecraft/queries";
-import Empty from "@/components/Empty";
 import { useTranslate } from "@/locales";
-import { useIsMobile } from "@/hooks/use-responsive";
+import ContentStack from "@app/_components/ContentStack";
+import Toggle from "@app/_components/Toggle";
+import { useColumns } from "@dashboard/portfolio-strategies/[slug]/_sections/useColumns";
+import { usePortfolioStrategyServicePortfolioStrategyPlanQuery } from "@minecraft/queries";
+import type { PortfolioCoin } from "@minecraft/requests";
+import { InputLabel, MenuItem, Select, Stack, TextField, Typography, selectClasses } from "@mui/material";
+import orderBy from "lodash/orderBy";
+import { type FC, useMemo, useState } from "react";
 
 interface TableProps {
   plan: string;
 }
 
 const PortfolioTable: FC<TableProps> = ({ plan }) => {
-  const isMobile = useIsMobile();
   const isCollapsed = useAppSelector(isSidebarCollapsed);
-  const { data: content } = useContentServiceContentPortfolioStrategyPlanQuery({ plan });
-  const [value, setValue] = useState<any>(Object.keys((content as any)?.data)?.[0]);
+  const { data: content } = usePortfolioStrategyServicePortfolioStrategyPlanQuery({ plan });
+  const [value, setValue] = useState<string | undefined>(content?.data?.at(0)?.strategy);
+  const [sort, setSort] = useState<SortType>();
+  const isMobile = useIsMobile();
   const { t } = useTranslate();
+  const { columns } = useColumns();
 
   const handleChange = (newValue: any) => {
     setValue(newValue);
   };
 
+  const coins = useMemo(() => {
+    const data = content?.data?.find((item) => item.strategy === value)?.coins;
+    if (sort && data?.length) {
+      const rows = [...data!];
+      const key = Object.keys(sort!)?.[0] as keyof PortfolioCoin;
+      const sorted = orderBy(rows, [(item) => parseFloat(item[key] || "")], [sort[key] ? "asc" : "desc"]);
+      return sorted;
+    }
+    return data;
+  }, [value, sort]);
+
+  const options = useMemo(
+    () =>
+      content?.data?.map((item) => ({
+        label: item.strategy,
+        value: item.strategy,
+      })) || [],
+    [content?.data]
+  );
+
   return (
-    <Stack
-      gap={3}
-      sx={{
-        ".os-scrollbar-handle": {
-          cursor: "pointer",
-          backgroundColor: "grey.dark",
-          "&:hover": { backgroundColor: "grey.dark" },
-        },
-      }}
-    >
-      <Scrollbar>
-        <Stack pl={{ md: 4, xs: 3 }} alignItems="flex-start" maxWidth="100vw">
-          <Stack pr={{ md: 4, xs: 3 }}>
-            <Toggle
-              setValue={handleChange}
-              buttons={Object.keys((content as any)?.data).map((item) => ({ label: item, value: item }))}
-              value={value}
-            />
-          </Stack>
-        </Stack>
-      </Scrollbar>
+    <Stack gap={3}>
+      {options?.length &&
+        (isMobile ? (
+          <Select
+            value={value}
+            onChange={(event) => handleChange(event.target.value)}
+            sx={{ mx: 3, [`& .${selectClasses.iconOutlined}`]: { color: "common.white" } }}
+          >
+            {options?.map((option) => (
+              <MenuItem value={option?.value}>{option.label}</MenuItem>
+            ))}
+          </Select>
+        ) : (
+          <Scrollbar>
+            <Stack pl={{ md: 4, xs: 3 }} alignItems="flex-start" maxWidth="100vw">
+              <Stack pr={{ md: 4, xs: 3 }}>
+                {content?.data?.length && <Toggle setValue={handleChange} buttons={options} value={value} />}
+              </Stack>
+            </Stack>
+          </Scrollbar>
+        ))}
 
       {false && (
         <Stack px={{ md: 4, xs: 3 }}>
@@ -79,32 +103,26 @@ const PortfolioTable: FC<TableProps> = ({ plan }) => {
         </Stack>
       )}
 
-      <Scrollbar options={{ scrollbars: { clickScroll: true, autoHide: "never" } }}>
-        <Stack
-          pl={{ md: 4, xs: 3 }}
-          pr={{ md: 4, xs: 0 }}
-          pb={3}
-          alignItems="flex-start"
-          maxWidth={isMobile ? "100vw" : `calc(100vw - ${isCollapsed ? "104px" : "248px"})`}
-          sx={{
-            "> div": {
-              md: { borderTopRightRadius: 16, borderBottomRightRadius: 16, borderBottomLeftRadius: 16 },
-              xs: { borderTopRightRadius: 0, borderBottomRightRadius: 0, borderBottomLeftRadius: 0 },
-            },
-          }}
-        >
-          {(content as any)?.data?.[value]?.length ? (
-            <SortTable
-              title={`${value} ${t("portfolioTable.strategy")}`}
-              data={(content as any)?.data?.[value] || []}
-            />
-          ) : (
-            <Stack width="100%" alignItems="center">
-              <Empty />
-            </Stack>
-          )}
-        </Stack>
-      </Scrollbar>
+      <Stack
+        pl={{ md: 4, xs: 0 }}
+        pr={{ md: 4, xs: 0 }}
+        pb={3}
+        width={{ md: `calc(100vw - ${isCollapsed ? 105 : 248}px)`, xs: "100vw" }}
+        sx={{
+          "table tbody tr td": {
+            textWrap: "nowrap",
+          },
+        }}
+      >
+        <CustomTable
+          title={`${value ?? ""} ${t("portfolioTable.strategy")}`}
+          columns={columns}
+          data={coins || []}
+          onSortChange={(val) => setSort(val)}
+          sort={sort}
+          isStickyFirstColumn
+        />
+      </Stack>
     </Stack>
   );
 };

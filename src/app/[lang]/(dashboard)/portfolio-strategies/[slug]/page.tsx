@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import PortfolioStrategiesInnerSection from "./_sections";
 import { getQueryClient } from "@app/_providers/customQueryClient";
-import { prefetchUseContentServiceContentPortfolioStrategyPlanQuery } from "@minecraft/queries/prefetch";
+import { prefetchUsePortfolioStrategyServicePortfolioStrategyPlanQuery } from "@minecraft/queries/prefetch";
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import { plans } from "@/configs/plans";
 import { notFound } from "next/navigation";
@@ -22,7 +22,9 @@ export default async function PortfolioStrategiesInner({ params }: Props) {
   }
 
   const queryClient = getQueryClient();
-  await Promise.all([prefetchUseContentServiceContentPortfolioStrategyPlanQuery(queryClient, { plan: params?.slug })]);
+  await Promise.all([
+    prefetchUsePortfolioStrategyServicePortfolioStrategyPlanQuery(queryClient, { plan: params?.slug }),
+  ]);
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>

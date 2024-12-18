@@ -2,10 +2,10 @@
 
 import { Divider, Pagination, Paper, Stack, Typography } from "@mui/material";
 import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
+import TableBody, { tableBodyClasses } from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
+import TableHead, { tableHeadClasses } from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import type React from "react";
 import type { ReactNode } from "react";
@@ -13,6 +13,7 @@ import { Fragment, useState } from "react";
 import Empty from "./Empty";
 import Loading from "./Loading";
 import { Icon } from "./icons";
+import { useIsMobile } from "@/hooks/use-responsive";
 
 const levelColorLine = {
   0: "#090A23",
@@ -41,6 +42,7 @@ type PropType = {
   onSortChange?: (value?: SortType) => void;
   onRowClick?: (row: any) => void;
   containerHeight?: any;
+  isStickyFirstColumn?: boolean;
 };
 
 const CustomTable = ({
@@ -62,9 +64,10 @@ const CustomTable = ({
   sort,
   onRowClick,
   containerHeight,
+  isStickyFirstColumn,
 }: PropType) => {
   const [expandedRows, setExpandedRows] = useState<{ [key: string]: boolean }>({});
-
+  const isMobile = useIsMobile();
   const handleToggleExpand = (id: string) => {
     setExpandedRows((prev) => ({
       ...prev,
@@ -126,15 +129,41 @@ const CustomTable = ({
 
   return (
     <Stack
-      sx={{
-        borderRadius: 2,
+      sx={(theme) => ({
+        borderRadius: { xs: 0, md: 2 },
         border: "1.5px solid",
         borderColor: "dark.3",
         bgcolor: "dark.2",
         width: width ?? "100%",
         overflow: "hidden",
         height: "100%",
-      }}
+        [`& .${tableBodyClasses.root} > tr:hover > td`]: {
+          backgroundColor: `${theme.palette.dark[3]} !important`,
+        },
+        ...(isMobile && { borderLeft: "unset", borderRight: "unset" }),
+        ...(isStickyFirstColumn && {
+          [`& .${tableHeadClasses.root} `]: {
+            "& > tr > th:first-child": {
+              position: "sticky",
+              left: 0,
+              top: 0,
+              backgroundColor: theme.palette.dark[3],
+              zIndex: 4,
+            },
+          },
+          [`& .${tableBodyClasses.root} > tr`]: {
+            borderLeft: "unset",
+            cursor: "pointer",
+            "& > td:first-child": {
+              position: "sticky",
+              left: 0,
+              backgroundColor: theme.palette.dark[2],
+              zIndex: 3,
+              paddingLeft: `${theme.spacing(1)} !important`,
+            },
+          },
+        }),
+      })}
     >
       {(title || action) && (
         <>
