@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/Chainmind-AG/inner-circle/compare/v1.6.1...v1.6.2) (2024-12-18)
+
+
+### Bug Fixes
+
+* **plans:** packages order ([a2e5358](https://github.com/Chainmind-AG/inner-circle/commit/a2e53584b85c6394d9339f7cccac31e59efcd4eb))
+
 ## [1.6.1](https://github.com/Chainmind-AG/inner-circle/compare/v1.6.0...v1.6.1) (2024-12-18)
 
 
