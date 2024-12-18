@@ -1,22 +1,22 @@
 "use client";
 
-import { Stack, Typography } from "@mui/material";
-import { useState, type FC } from "react";
-import ActivePlan from "./ActivePlan";
-import PlanCard from "./PlanCard";
 import Scrollbar from "@/components/Scrollbar";
-import { useAppSelector } from "@/lib/hooks";
-import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
-import PricingTable from "./PricingTable";
-import { selectPlans, selectRows } from "@/lib/features/plans/plansSlice";
-import { useFinancialServiceFinancialPaymentsActiveQuery } from "@minecraft/queries";
-import { getUserPlanType } from "@/consts";
 import { plans } from "@/configs/plans";
+import { getUserPlanType } from "@/consts";
+import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
+import { selectPlans, selectRows } from "@/lib/features/plans/plansSlice";
+import { selectUser } from "@/lib/features/user/userSlice";
+import { useAppSelector } from "@/lib/hooks";
 import { useTranslate } from "@/locales";
 import { useAppRouter } from "@/routes/hooks";
+import { useFinancialServiceFinancialPaymentsActiveQuery } from "@minecraft/queries";
+import { Stack, Typography } from "@mui/material";
 import { enqueueSnackbar } from "notistack";
+import { type FC, useState } from "react";
 import ActiveNotice from "./ActiveNotice";
-import { selectUser } from "@/lib/features/user/userSlice";
+import ActivePlan from "./ActivePlan";
+import PlanCard from "./PlanCard";
+import PricingTable from "./PricingTable";
 
 const PricingSection: FC = () => {
   const { t } = useTranslate();
@@ -80,8 +80,8 @@ const PricingSection: FC = () => {
                   key={plan.id}
                   {...plan}
                   disabled={
-                    plans[getUserPlanType(userInfo) as keyof typeof plans].order >=
-                    plans[plan.plan_type as keyof typeof plans].order
+                    plans[getUserPlanType(userInfo) as keyof typeof plans]?.order >=
+                    plans[plan.plan_type as keyof typeof plans]?.order
                   }
                 />
               ))}
