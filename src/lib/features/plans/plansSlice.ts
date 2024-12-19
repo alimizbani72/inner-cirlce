@@ -13,7 +13,9 @@ export interface Plan {
 
 interface Feature {
   featureName: string;
+  featureSlug: string;
   featureValue: string;
+  goldCoinsValue?: number;
   numberValue?: number;
   numberSuffix?: string;
   textValue?: string;
@@ -91,6 +93,9 @@ export const mapApiDataToPlans =
                 break;
               case "xmark":
                 acc[feature.featureName].push(false);
+                break;
+              case "goldCoins":
+                acc[feature.featureName].push(feature.goldCoinsValue);
                 break;
               case "text":
                 acc[feature.featureName].push(feature.textValue);

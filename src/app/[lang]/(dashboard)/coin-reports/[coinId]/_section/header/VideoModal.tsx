@@ -30,18 +30,20 @@ const VideoModal: FC<Props> = ({ close, open, videoLink, title }) => {
       </DialogTitle>
       <Divider />
       <DialogContent dividers sx={{ p: 3 }}>
-        <VimeoPlayer
-          key={videoLink}
-          sx={{
-            iframe: {
-              borderRadius: 2,
-              aspectRatio: 16 / 9,
-              width: { md: "100% !important", xs: "calc(100vw - 48px) !important" },
-              height: "auto !important",
-            },
-          }}
-          videoUrl={videoLink}
-        />
+        {videoLink && (
+          <VimeoPlayer
+            key={videoLink}
+            sx={{
+              iframe: {
+                borderRadius: 2,
+                aspectRatio: 16 / 9,
+                width: { md: "100% !important", xs: "calc(100vw - 48px) !important" },
+                height: "auto !important",
+              },
+            }}
+            videoUrl={videoLink}
+          />
+        )}
       </DialogContent>
     </CustomDialog>
   );

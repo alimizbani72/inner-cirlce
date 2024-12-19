@@ -39,7 +39,9 @@ const UpgradePlan: FC<UpgradePlanProps> = () => {
         {!isFreePlan ? (
           <Stack p={2} position={"relative"} direction={"row"} zIndex={2} gap={1.5} alignItems={"center"}>
             <Box sx={{ aspectRatio: 1 }} width={40} height={40}>
-              <RiveComp src={plans[getUserPlanType(userInfo) as keyof typeof plans].rive} width={40} height={40} />
+              {plans[getUserPlanType(userInfo) as keyof typeof plans]?.rive && (
+                <RiveComp src={plans[getUserPlanType(userInfo) as keyof typeof plans]?.rive} width={40} height={40} />
+              )}
             </Box>
 
             <Stack flex={1}>

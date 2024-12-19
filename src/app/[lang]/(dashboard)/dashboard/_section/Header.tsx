@@ -1,26 +1,29 @@
 "use client";
 
-import { isMobileMenuOpened, mobileMenuToggle } from "@/lib/features/menu/menuSlice";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { Drawer, IconButton, Stack, Typography } from "@mui/material";
-import { usePathname } from "next/navigation";
-import { useEffect, useMemo, useState, type FC } from "react";
+import Link from "@/components/Link";
 import LogoType from "@/components/LogoType";
+import RiveComp from "@/components/RiveComp";
 import { Icon } from "@/components/icons";
 import { mapPathToName } from "@/configs/sidebar";
 import { useIsMobile } from "@/hooks/use-responsive";
-import MobileSidebar from "@app/_components/sidebar/Mobile";
+import { isMobileMenuOpened, mobileMenuToggle } from "@/lib/features/menu/menuSlice";
 import { pageHasBackButton, pageTitle } from "@/lib/features/pageTitle/pageSlice";
-import { useAppRouter } from "@/routes/hooks";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { useTranslate } from "@/locales";
-import { Button } from "@mui/material";
-import Link from "@/components/Link";
+import { useAppRouter } from "@/routes/hooks";
+import { toNumber } from "@/utils/toNumber";
+import MobileSidebar from "@app/_components/sidebar/Mobile";
+import { useAffiliateServiceAffiliateMeQuery } from "@minecraft/queries";
+import { Box, Button, Drawer, IconButton, Stack, Typography } from "@mui/material";
+import { usePathname } from "next/navigation";
+import { type FC, useEffect, useMemo, useState } from "react";
 
 const DashboardHeader: FC = () => {
   const { t } = useTranslate();
   const isMobile = useIsMobile();
   const pathname = usePathname();
   const dispatch = useAppDispatch();
+  const { data: me } = useAffiliateServiceAffiliateMeQuery();
   const [isClient, setIsClient] = useState(false);
   const pageTitleSelector = useAppSelector(pageTitle);
   const isMenuOpened = useAppSelector(isMobileMenuOpened);
@@ -41,15 +44,23 @@ const DashboardHeader: FC = () => {
   return isMobile ? (
     <>
       <Stack bgcolor={"dark.1"} position={"sticky"} top={0} zIndex={1000}>
-        <Stack p={3} direction={"row"} alignItems={"center"} justifyContent="center" position="relative">
-          <IconButton onClick={() => dispatch(mobileMenuToggle(true))} sx={{ position: "absolute", left: 24 }}>
+        <Stack p={3} direction={"row"} alignItems={"center"} justifyContent="space-between" position="relative">
+          <IconButton onClick={() => dispatch(mobileMenuToggle(true))}>
             <Icon name="Menu" />
           </IconButton>
           <LogoType />
 
-          <Link href="/telegram-channel" sx={{ position: "absolute", right: 24 }}>
-            <img src="/assets/svg/telegramlogo.svg" />
-          </Link>
+          <Stack direction="row" spacing={2}>
+            <Box position="relative">
+              <Box position="absolute" left="-47px" top="-19px" sx={{ aspectRatio: 1 }}>
+                <RiveComp src="/assets/rive/coin_rotation_2.riv" width={60} height={60} />
+              </Box>
+              <Typography color="common.white">{toNumber(me?.data?.goldCoins)}</Typography>
+            </Box>
+            <Link href="/telegram-channel">
+              <img src="/assets/svg/telegramlogo.svg" />
+            </Link>
+          </Stack>
 
           {/* <IconButton>
             <Icon name="Bell" />
@@ -103,11 +114,28 @@ const DashboardHeader: FC = () => {
 
         {isClient && <Typography variant={"p1-medium"}>{name}</Typography>}
       </Stack>
-      <Link href="/telegram-channel">
-        <Button color="info" sx={{ p: 1, pr: 3 }} startIcon={<img src="/assets/svg/telegramlogo.svg" />}>
-          {t("sidebar.telegram-channel")}
+      <Stack direction="row" alignItems="center" spacing={2} position={"relative"}>
+        <Button
+          color="info"
+          sx={{ py: 1, pr: 2, pl: 4.5 }}
+          startIcon={
+            <Box position="absolute" left="-6px" top="-13px" sx={{ aspectRatio: 1 }}>
+              <RiveComp src="/assets/rive/coin_rotation_2.riv" width={60} height={60} />
+            </Box>
+          }
+        >
+          <Typography color="grey.light" variant="p2-medium" mr={0.5}>
+            {t("afDashboardTab.goldCoins")}:
+          </Typography>
+          {toNumber(me?.data?.goldCoins)}
         </Button>
-      </Link>
+
+        <Link href="/telegram-channel">
+          <Button color="info" sx={{ p: 1, pr: 3 }} startIcon={<img src="/assets/svg/telegramlogo.svg" />}>
+            {t("sidebar.telegram-channel")}
+          </Button>
+        </Link>
+      </Stack>
       {/* <Button color="info" startIcon={<Icon name="Bell" />}>
         Notification
       </Button> */}

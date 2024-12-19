@@ -1,6 +1,8 @@
+import RiveComp from "@/components/RiveComp";
 import { Icon } from "@/components/icons";
 import { plans } from "@/configs/plans";
 import type { Plan } from "@/lib/features/plans/plansSlice";
+import { fCurrency } from "@/utils/format-number";
 import { LoadingButton } from "@mui/lab";
 import { Box, Stack, Typography } from "@mui/material";
 import type { FC } from "react";
@@ -51,7 +53,7 @@ const PricingTable: FC<Props> = ({ plansData, rows, userType, handlePayment, isP
             key={`row-${key}`}
             direction="row"
             sx={{
-              height: "72px",
+              minHeight: "72px",
               borderTop: "1.5px solid",
               borderColor: "dark.3",
               "&:last-child": {
@@ -62,44 +64,49 @@ const PricingTable: FC<Props> = ({ plansData, rows, userType, handlePayment, isP
           >
             <Typography sx={{ ...tableCelSx, flex: "0 0 176px" }}>{key}</Typography>
             {values.map((val, index) => (
-              <Typography key={index} sx={tableCelSx}>
+              <Box key={index} sx={tableCelSx}>
                 {typeof val === "boolean" ? (
                   <Box
                     component={Icon}
                     name={val ? "Check" : "Close"}
                     sx={{ path: { stroke: (theme) => (val ? theme.palette.success.main : theme.palette.danger.main) } }}
                   />
+                ) : key?.includes("Gold") ? (
+                  <Stack direction="row" alignItems="center" justifyContent="center" position={"relative"}>
+                    <RiveComp src="/assets/rive/coin_rotation_2.riv" width={40} height={40} />
+                    <Typography variant="p2-medium">{val || 0}</Typography>
+                  </Stack>
                 ) : (
-                  val
+                  <Typography variant="p2-medium">{val}</Typography>
                 )}
-              </Typography>
+              </Box>
             ))}
           </Stack>
         ))}
-      </Stack>
-      <Stack direction="row" height={72}>
-        <Box sx={{ flex: "0 0 176px" }} />
-        {plansData.map((plan, index) => (
-          <Stack
-            key={plan.id}
-            flex="1 1 225px"
-            sx={{
-              py: 2,
-              ...(index + 1 === plansData.length ? { pl: 2 } : { px: 2 }),
-              "&:not(:last-child)": { borderRight: "1.5px solid", borderColor: "dark.3" },
-            }}
-          >
-            <LoadingButton
-              loading={isPending}
-              onClick={() => handlePayment(plan?.title.toLowerCase())}
-              disabled={
-                plans[userType as keyof typeof plans]?.order >= plans[plan.plan_type as keyof typeof plans]?.order
-              }
-            >
-              {plan.buttonText}
-            </LoadingButton>
-          </Stack>
-        ))}
+        <Stack direction="row" bgcolor="dark.2" height={72}>
+          <Typography sx={{ ...tableCelSx, flex: "0 0 176px", width: 176 }}>Price</Typography>
+          {plansData.map((plan, index) => (
+            <Typography key={`${plan}-${index}`} sx={{ ...tableCelSx, color: "blue.light", width: 176 }}>
+              {fCurrency(plan.cost, "$0,0[.]00")}
+            </Typography>
+          ))}
+        </Stack>
+        <Stack direction="row" height={72}>
+          <Typography sx={{ ...tableCelSx, flex: "0 0 176px", width: 176 }}></Typography>
+          {plansData.map((plan) => (
+            <Stack sx={{ ...tableCelSx }} key={plan.id} justifyContent={"center"}>
+              <LoadingButton
+                loading={isPending}
+                onClick={() => handlePayment(plan?.title.toLowerCase())}
+                disabled={
+                  plans[userType as keyof typeof plans].order >= plans[plan.plan_type as keyof typeof plans].order
+                }
+              >
+                {plan.buttonText}
+              </LoadingButton>
+            </Stack>
+          ))}
+        </Stack>
       </Stack>
     </Stack>
   );
