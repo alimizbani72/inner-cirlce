@@ -11,7 +11,7 @@ const usePortfolioData = () => {
     undefined,
     {
       enabled: !!activePortfolioId,
-      refetchOnMount: "always" 
+      refetchOnMount: "always",
     }
   );
 

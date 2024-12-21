@@ -13,7 +13,7 @@ export type Portfolio = {
 };
 
 export type SelectedPortfolio = {
-  total_realized: string;
-  total_unrealized: string;
+  total_profit: string;
+  total_loss: string;
   total_invested: string;
 };

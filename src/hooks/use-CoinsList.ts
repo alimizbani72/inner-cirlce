@@ -1,6 +1,6 @@
+import { usePortfolioServiceCoinsQuery } from "@minecraft/queries";
 import { useEffect, useState } from "react";
 import { useDebounce } from "./use-debounce";
-import { usePortfolioServiceCoinsQuery } from "@minecraft/queries";
 
 const useCoinsList = (initialQuery: string) => {
   const [searchQuery, setSearchQuery] = useState(initialQuery);
@@ -10,7 +10,7 @@ const useCoinsList = (initialQuery: string) => {
 
   const filteropts = {
     page: 1,
-    per_page: 20,
+    per_page: 100,
     filters: {
       query: debouncedSearch,
     },
