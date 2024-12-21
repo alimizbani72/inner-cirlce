@@ -1,3 +1,10 @@
+## [1.6.3](https://github.com/Chainmind-AG/inner-circle/compare/v1.6.2...v1.6.3) (2024-12-21)
+
+
+### Bug Fixes
+
+* **portfolio:** change search limition to 100, change pnls to profit and loss ([93c1fb5](https://github.com/Chainmind-AG/inner-circle/commit/93c1fb547d2f4451137acf4a914e7edfc78daad9))
+
 ## [1.6.2](https://github.com/Chainmind-AG/inner-circle/compare/v1.6.1...v1.6.2) (2024-12-18)
 
 
