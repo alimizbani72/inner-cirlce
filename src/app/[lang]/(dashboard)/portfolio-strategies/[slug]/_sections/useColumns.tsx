@@ -20,7 +20,7 @@ export const useColumns = () => {
       {
         title: t("portfolioStrategyTable.signal"),
         sortable: true,
-        fieldName: "signal",
+        fieldName: "ee_signal",
         modify: (row: PortfolioCoin) => row.ee_signal,
       },
       {
@@ -40,7 +40,7 @@ export const useColumns = () => {
       {
         title: t("portfolioStrategyTable.potentialMultiplier"),
         sortable: true,
-        fieldName: "potentialMultiplier",
+        fieldName: "potential_multiplier",
         modify: (row: PortfolioCoin) => `${row.potential_multiplier?.slice(0, 5)}x`,
       },
       {

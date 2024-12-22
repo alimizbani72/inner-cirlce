@@ -2,25 +2,25 @@
 
 import { Icon } from "@/components/icons";
 import { Button, Divider, IconButton, Stack, Typography } from "@mui/material";
-import { useMemo, type FC } from "react";
 import { Box } from "@mui/system";
+import { type FC, useMemo } from "react";
 
-import dynamic from "next/dynamic";
+import RiveComp from "@/components/RiveComp";
+import { plans } from "@/configs/plans";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { useIsMobile } from "@/hooks/use-responsive";
-import ContentStack from "@app/_components/ContentStack";
-import { formatCurrencyWithoutDollar, toNumber } from "@/utils/toNumber";
-import { plans } from "@/configs/plans";
-import RiveComp from "@/components/RiveComp";
-import { useFinancialServiceFinancialPaymentsIdStatusQuery } from "@minecraft/queries";
-import { useAppRouter } from "@/routes/hooks";
+import useToggleState from "@/hooks/use-toggle-state";
 import { useTranslate } from "@/locales";
-import { toPascalCase } from "@/utils/change-case";
+import { useAppRouter } from "@/routes/hooks";
+import { toTitleCase } from "@/utils/change-case";
+import { formatCurrencyWithoutDollar, toNumber } from "@/utils/toNumber";
+import ContentStack from "@app/_components/ContentStack";
 import StaticAlert from "@app/_components/StaticAlert";
 import { useGlobalCheckoutPageWarningServiceGetGlobalsCheckoutPageWarning } from "@cms/queries";
-import useToggleState from "@/hooks/use-toggle-state";
-import QrCodeModal from "./QrCodeModal";
+import { useFinancialServiceFinancialPaymentsIdStatusQuery } from "@minecraft/queries";
+import dynamic from "next/dynamic";
 import PayoutTimer from "./PayoutTimer";
+import QrCodeModal from "./QrCodeModal";
 
 type Props = { planType: string; id: string };
 
@@ -110,7 +110,7 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
         </Stack>
         <Divider flexItem sx={{ mt: 3, mb: { md: 4, xs: 3 }, borderColor: "rgba(255, 255, 255, 0.08)" }} />
         <Stack position="relative" zIndex={2} width="100%" maxWidth={{ md: "486px" }} px={3} flex={1}>
-          <Typography variant="p2-medium">{`${t("checkout.subscribeTo")} “${toPascalCase(planType)}” ${t(
+          <Typography variant="p2-medium">{`${t("checkout.subscribeTo")} “${toTitleCase(planType)}” ${t(
             "checkout.plan"
           )}.`}</Typography>
 
@@ -266,7 +266,7 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
                       {t("checkout.subscribeTo")}
                     </Typography>
                     <Typography variant="h4-semi-bold" textTransform={"capitalize"}>
-                      {planType}
+                      {toTitleCase(planType)}
                     </Typography>
                   </Stack>
                 </Stack>

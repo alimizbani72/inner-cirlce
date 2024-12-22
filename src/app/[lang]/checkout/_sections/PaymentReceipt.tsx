@@ -1,7 +1,7 @@
 import RiveComp from "@/components/RiveComp";
 import { plans } from "@/configs/plans";
 import { useTranslate } from "@/locales";
-import { toPascalCase } from "@/utils/change-case";
+import { toTitleCase } from "@/utils/change-case";
 import { formatCurrencyWithoutDollar } from "@/utils/toNumber";
 import { useFinancialServiceFinancialCalculatePriceQuery } from "@minecraft/queries";
 import { Box, Divider, Stack, Typography } from "@mui/material";
@@ -25,7 +25,7 @@ const PaymentReceipt: FC<PaymentReceiptProps> = ({ planType }) => {
       {/* Main Content */}
       <Stack>
         <Typography mb={{ md: 4, xs: 3 }} variant="p2-medium">
-          {`${t("checkout.subscribeTo")} “${toPascalCase(planType)}” ${t("checkout.plan")}.`}
+          {`${t("checkout.subscribeTo")} “${toTitleCase(planType)}” ${t("checkout.plan")}.`}
         </Typography>
 
         <Stack
@@ -40,7 +40,7 @@ const PaymentReceipt: FC<PaymentReceiptProps> = ({ planType }) => {
           </Box>
 
           <Stack flex={1} gap={{ md: 1 }} alignItems={{ md: "center" }}>
-            <Typography variant="p1-semi-bold">{planType}</Typography>
+            <Typography variant="p1-semi-bold">{toTitleCase(planType)}</Typography>
             <Typography variant="p2-medium" color={"rgba(255, 255, 255, 0.64)"}>
               {t("checkout.diveDeepText")}
             </Typography>
@@ -57,13 +57,13 @@ const PaymentReceipt: FC<PaymentReceiptProps> = ({ planType }) => {
               <Typography variant="p1-semi-bold">{(data?.data as any)?.currency_code}</Typography>
             </Stack>
           </Stack>
-          <Divider flexItem sx={{ borderColor: "rgba(255, 255, 255, 0.08)" }} />
+          {/* <Divider flexItem sx={{ borderColor: "rgba(255, 255, 255, 0.08)" }} />
           <Stack direction="row" justifyContent={"space-between"}>
             <Typography variant="p2-medium" textTransform={"uppercase"}>
               {t("checkout.dutiesTaxes")}
             </Typography>
             <Typography variant="p1-semi-bold">0</Typography>
-          </Stack>
+          </Stack> */}
           <Divider flexItem sx={{ borderColor: "rgba(255, 255, 255, 0.08)" }} />
           <Stack direction="row" justifyContent={"space-between"}>
             <Typography variant="p2-medium" textTransform={"uppercase"}>
