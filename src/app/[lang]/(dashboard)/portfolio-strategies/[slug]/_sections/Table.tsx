@@ -12,6 +12,7 @@ import { useColumns } from "@dashboard/portfolio-strategies/[slug]/_sections/use
 import { usePortfolioStrategyServicePortfolioStrategyPlanQuery } from "@minecraft/queries";
 import type { PortfolioCoin } from "@minecraft/requests";
 import { InputLabel, MenuItem, Select, Stack, TextField, Typography, selectClasses } from "@mui/material";
+import { isFinite as checkInifinte, isNaN as checkNumber } from "lodash";
 import orderBy from "lodash/orderBy";
 import { type FC, useMemo, useState } from "react";
 
@@ -21,7 +22,25 @@ interface TableProps {
 
 const PortfolioTable: FC<TableProps> = ({ plan }) => {
   const isCollapsed = useAppSelector(isSidebarCollapsed);
-  const { data: content } = usePortfolioStrategyServicePortfolioStrategyPlanQuery({ plan });
+  const { data: content } = usePortfolioStrategyServicePortfolioStrategyPlanQuery({ plan }, undefined, {
+    select(data) {
+      if (!data?.data) {
+        return data; // Early return if no data
+      }
+
+      // Use `map` for transforming the data
+      const modifiedData = data.data.map((item, index) => ({
+        ...item,
+        coins: item.coins?.map((coin, innerIndex) => ({
+          ...coin,
+          id: `${index}-${innerIndex}`, // Create a unique id using item id and index
+        })),
+      }));
+
+      return { ...data, data: modifiedData };
+    },
+  });
+
   const [value, setValue] = useState<string | undefined>(content?.data?.at(0)?.strategy);
   const [sort, setSort] = useState<SortType>();
   const isMobile = useIsMobile();
@@ -37,9 +56,25 @@ const PortfolioTable: FC<TableProps> = ({ plan }) => {
     if (sort && data?.length) {
       const rows = [...data!];
       const key = Object.keys(sort!)?.[0] as keyof PortfolioCoin;
-      const sorted = orderBy(rows, [(item) => parseFloat(item[key] || "")], [sort[key] ? "asc" : "desc"]);
+
+      const sorted = orderBy(
+        rows,
+        [
+          (item) => {
+            const value = item[key];
+            // Check if the value is a number or can be parsed as a number
+            if (!checkNumber(parseFloat(value as string)) && checkInifinte(parseFloat(value as string))) {
+              return parseFloat(value as string);
+            }
+            // Otherwise, handle as a string for proper sorting
+            return value?.toString()?.toLowerCase();
+          },
+        ],
+        [sort[key] ? "asc" : "desc"]
+      );
       return sorted;
     }
+
     return data;
   }, [value, sort]);
 

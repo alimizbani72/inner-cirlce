@@ -523,5 +523,10 @@
   "Successfully removed from your favorites.": "Đã xóa khỏi mục yêu thích thành công.",
   "Unable to add to your favorites. Please try again.": "Không thể thêm vào mục yêu thích. Vui lòng thử lại.",
   "Unable to remove from your favorites. Please try again.": "Không thể xóa khỏi mục yêu thích. Vui lòng thử lại.",
-  "Update in: ": "Cập nhật trong:"
+  "Update in: ": "Cập nhật trong:",
+  "Choose": "Chọn",
+  "Name": "Tên",
+  "Risk level": "Mức độ rủi ro",
+  "Distribution:": "Phân phối:",
+  "Gains": "Lợi nhuận"
 }

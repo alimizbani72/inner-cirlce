@@ -1,5 +1,6 @@
 "use client";
 
+import { useIsMobile } from "@/hooks/use-responsive";
 import { Divider, Pagination, Paper, Stack, Typography } from "@mui/material";
 import Table from "@mui/material/Table";
 import TableBody, { tableBodyClasses } from "@mui/material/TableBody";
@@ -13,7 +14,6 @@ import { Fragment, useState } from "react";
 import Empty from "./Empty";
 import Loading from "./Loading";
 import { Icon } from "./icons";
-import { useIsMobile } from "@/hooks/use-responsive";
 
 const levelColorLine = {
   0: "#090A23",
@@ -153,7 +153,6 @@ const CustomTable = ({
           },
           [`& .${tableBodyClasses.root} > tr`]: {
             borderLeft: "unset",
-            cursor: "pointer",
             "& > td:first-child": {
               position: "sticky",
               left: 0,
@@ -161,6 +160,11 @@ const CustomTable = ({
               zIndex: 3,
               paddingLeft: `${theme.spacing(1)} !important`,
             },
+          },
+        }),
+        ...(!!onRowClick && {
+          [`& .${tableBodyClasses.root} > tr`]: {
+            cursor: "pointer",
           },
         }),
       })}

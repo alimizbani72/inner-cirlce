@@ -523,5 +523,10 @@
   "Successfully removed from your favorites.": "Vellykket fjernet fra dine favoritter.",
   "Unable to add to your favorites. Please try again.": "Kunne ikke legge til i dine favoritter. Vennligst prøv igjen.",
   "Unable to remove from your favorites. Please try again.": "Kunne ikke fjerne fra dine favoritter. Vennligst prøv igjen.",
-  "Update in: ": "Oppdatering om:"
+  "Update in: ": "Oppdatering om:",
+  "Choose": "Velg",
+  "Name": "Navn",
+  "Risk level": "Risikonivå",
+  "Distribution:": "Distribusjon:",
+  "Gains": "Gevinster"
 }
