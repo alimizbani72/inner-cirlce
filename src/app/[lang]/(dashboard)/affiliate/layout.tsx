@@ -23,7 +23,7 @@ export default async function AffiliateLayout({ children }: PropsWithChildren) {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <Stack flex={1} py={{ md: 4, xs: 3 }}>
+      <Stack flex={1} py={{ md: 4, xs: 3 }} width={{ xs: "calc(100vw - 16px)", md: "unset" }}>
         {/* Header */}
         <Stack gap={4}>
           <LearningBanner />

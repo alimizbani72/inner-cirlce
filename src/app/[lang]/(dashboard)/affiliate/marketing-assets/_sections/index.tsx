@@ -28,7 +28,7 @@ const AffiliateMarketingAssetsSection: FC = () => {
             {data?.data?.map((item) => (
               <AssetCard
                 key={item.title}
-                sx={flexItem({ count: { md: 3, xs: 1 }, gap: 24 })}
+                sx={flexItem({ count: { md: 3, xs: 0 }, gap: 24 })}
                 type={item.type!}
                 title={item.title!}
                 description={item.description!}
