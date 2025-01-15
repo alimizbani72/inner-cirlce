@@ -13,7 +13,7 @@ import {
   useFinancialServiceFinancialInfoQuery,
 } from "@minecraft/queries";
 import { formatCurrency, toNumber } from "@/utils/toNumber";
-import { toPascalCase } from "@/utils/change-case";
+import { toPascalCase, toTitleCase } from "@/utils/change-case";
 import { plans } from "@/configs/plans";
 import { orderArrayPlan } from "@/utils/order-plans";
 import { useTranslate } from "@/locales";
@@ -24,6 +24,7 @@ import TwoFAAlertDialog from "../TwoFAAlertDialog";
 import EnableModal from "@app/_components/2FA/EnableModal";
 import { getUserPlanType } from "@/consts";
 import TACDialog from "../TACDialog";
+import { useWidth } from "@/hooks/use-responsive";
 
 const ProgressBar = ({ overall, percent }: { overall?: boolean; percent: number }) => (
   <Stack
@@ -57,7 +58,7 @@ const AFDashboardTab: FC = () => {
   const [openWithdrawDialog, setOpenWithdrawDialog] = useState(false);
   const { data: me } = useAffiliateServiceAffiliateMeQuery();
   const userInfo = useAppSelector(selectUser);
-  // const { data: balance } = useAffiliateServiceAffiliateBalanceQuery();
+  const breakpoint = useWidth();
   const { data: balance } = useFinancialServiceFinancialInfoQuery();
   const { data: progress } = useAffiliateServiceAffiliateProgressQuery();
   const { data: children } = useAffiliateServiceAffiliateChildrenQuery();
@@ -302,8 +303,8 @@ const AFDashboardTab: FC = () => {
           </Stack>
         </Stack>
 
-        <Stack direction={{ md: "row" }} gap={3}>
-          <ContentStack flex={4 / 12} p={0}>
+        <Stack direction={{ md: "row" }} gap={3} width={{ md: `calc(100vw - 300px)` }}>
+          <ContentStack p={0} width={{ md: "33.33%" }}>
             <Stack p={3} direction="row" gap={2} flex={1} alignItems={{ md: "center" }}>
               <Stack p={2} bgcolor="dark.3" width={56} height={56} borderRadius="28px">
                 <Icon name="User--colorful" />
@@ -329,7 +330,20 @@ const AFDashboardTab: FC = () => {
             </Stack>
           </ContentStack>
 
-          <ContentStack flex={8 / 12} p={0} direction={"row"} flexWrap={{ md: "unset", xs: "wrap" }}>
+          <ContentStack
+            p={0}
+            direction={"row"}
+            flexWrap={{ md: "unset", xs: "wrap" }}
+            overflow={"auto"}
+            width={{ md: "66.66%" }}
+            sx={{
+              ...(breakpoint === "xs" && {
+                "& > div:nth-child(3n + 3),& > div:nth-child(2)": {
+                  bgcolor: "dark.3",
+                },
+              }),
+            }}
+          >
             {orderArrayPlan(children?.data?.distribution_of_plans)?.map((item, index) => (
               <Stack
                 key={item.plan_type}
@@ -339,9 +353,7 @@ const AFDashboardTab: FC = () => {
                 alignItems={"center"}
                 justifyContent={"center"}
                 bgcolor={{ sm: !(index % 2) ? "dark.3" : undefined }}
-                sx={{
-                  borderRadius: index === 0 ? "8px 0 0 8px" : "none",
-                }}
+                minWidth={{ xs: "50%", sm: "unset" }}
               >
                 {(plans as any)[item.plan_type!]?.rive && (
                   <Box sx={{ aspectRatio: 1 }}>
@@ -352,7 +364,7 @@ const AFDashboardTab: FC = () => {
                   {item.count}
                 </Typography>
                 <Typography variant="p2-medium" textTransform={"capitalize"} color="grey.light">
-                  {item.plan_type}
+                  {toTitleCase(item.plan_type)}
                 </Typography>
               </Stack>
             ))}

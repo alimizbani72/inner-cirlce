@@ -1,6 +1,6 @@
 import { Icon } from "@/components/icons";
 import { useFavoriteToggle } from "@/hooks/useFavoriteToggle";
-import CryptoIcon from "@dashboard/my-portfolios/[[...portfolioId]]/@assets/_section/CryptoIcons";
+import CryptoIcon from "@app/_components/CryptoIcon";
 import { IconButton, Stack } from "@mui/material";
 
 interface NameHandlerProps {

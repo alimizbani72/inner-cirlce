@@ -60,7 +60,7 @@ const UserInfo = () => {
           </Typography>
         </Stack>
 
-        {getUserPlanType(userInfo) !== "whale" && (
+        {getUserPlanType(userInfo) !== "fisherman_plus" && (
           <Button sx={{ ml: isMobile ? "none" : "auto" }} fullWidth={isMobile} href="/pricing">
             {t("userInfo.upgradeButton")}
           </Button>

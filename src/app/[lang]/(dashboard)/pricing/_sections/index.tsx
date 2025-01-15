@@ -21,6 +21,7 @@ import PricingTable from "./PricingTable";
 const PricingSection: FC = () => {
   const { t } = useTranslate();
   const [open, setOpen] = useState("");
+
   const userInfo = useAppSelector(selectUser);
   const { push } = useAppRouter();
   const { refetch, data, isSuccess } = useFinancialServiceFinancialPaymentsActiveQuery(undefined, {
@@ -67,14 +68,8 @@ const PricingSection: FC = () => {
           gap={4}
         >
           <Scrollbar options={{ scrollbars: { autoHide: "never" } }}>
-            <Stack
-              direction={"row"}
-              gap={3}
-              px={{ md: 4, xs: 3 }}
-              pb={3}
-              minWidth={{ md: "calc(1128px + 64px)", xs: "calc(1128px + 48px)" }}
-            >
-              {plansData.map((plan) => (
+            <Stack direction={"row"} gap={2.5} px={{ md: 4, xs: 3 }} pb={3} minWidth={"max-content"}>
+              {plansData?.map((plan) => (
                 <PlanCard
                   handlePayment={handleCheckActivePayment}
                   key={plan.id}
@@ -92,16 +87,15 @@ const PricingSection: FC = () => {
             <Typography px={{ md: 4, xs: 3 }} variant="h4-semi-bold">
               {t("plan.compares")}
             </Typography>
-            <Scrollbar options={{ scrollbars: { autoHide: "never" } }}>
-              <Stack minWidth={{ md: "calc(1128px + 64px)", xs: "calc(1128px + 48px)" }} pb={3} px={{ md: 4, xs: 3 }}>
-                <PricingTable
-                  plansData={plansData}
-                  rows={rows}
-                  userType={getUserPlanType(userInfo)}
-                  handlePayment={handleCheckActivePayment}
-                />
-              </Stack>
-            </Scrollbar>
+
+            <Stack pb={3} px={{ md: 4, xs: 0 }} maxWidth={{ md: "calc(100vw - 64px)", xs: "calc(100vw )" }}>
+              <PricingTable
+                plansData={plansData}
+                rows={rows}
+                userType={getUserPlanType(userInfo)}
+                handlePayment={handleCheckActivePayment}
+              />
+            </Stack>
           </Stack>
         </Stack>
       </Stack>

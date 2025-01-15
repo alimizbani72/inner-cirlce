@@ -1,0 +1,12 @@
+{
+  "portfolioStrategyTable": {
+    "name": "Name",
+    "signal": "Signal",
+    "cmr": "CMR",
+    "category": "Category",
+    "riskLevel": "Risk level",
+    "potentialMultiplier": "Potential Multiplier",
+    "distribution": "Distribution:",
+    "gains": "Gains"
+  }
+}

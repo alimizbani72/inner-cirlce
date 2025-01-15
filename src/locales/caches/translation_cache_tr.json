@@ -523,5 +523,10 @@
   "Successfully removed from your favorites.": "Başarıyla favorilerinizden çıkarıldı.",
   "Unable to add to your favorites. Please try again.": "Favorilerinize eklenemedi. Lütfen tekrar deneyin.",
   "Unable to remove from your favorites. Please try again.": "Favorilerinizden çıkarılamadı. Lütfen tekrar deneyin.",
-  "Update in: ": "Güncelleme:"
+  "Update in: ": "Güncelleme:",
+  "Choose": "Seçiniz",
+  "Name": "İsim",
+  "Risk level": "Risk seviyesi",
+  "Distribution:": "Dağıtım:",
+  "Gains": "Kazançlar"
 }

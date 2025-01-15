@@ -63,7 +63,7 @@ const SettingsHeader = () => {
             </Typography>
           </Stack>
 
-          {getUserPlanType(userInfo) !== "whale" && (
+          {getUserPlanType(userInfo) !== "fisherman_plus" && (
             <Button sx={{ ml: isMobile ? "none" : "auto" }} href="/pricing">
               {t("userInfo.upgradeButton")}
             </Button>

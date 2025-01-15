@@ -1,11 +1,14 @@
+import Scrollbar from "@/components/Scrollbar";
+import DashboardHeader from "@app/(dashboard)/dashboard/_section/Header";
+import TwoFASubmitter from "@app/_components/TwoFASubmitter";
+import DesktopSidebar from "@app/_components/sidebar/Desktop";
+import { getQueryClient } from "@app/_providers/customQueryClient";
+import { prefetchUseAffiliateServiceAffiliateMeQuery } from "@minecraft/queries/prefetch";
+import { Stack } from "@mui/material";
+import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Stack } from "@mui/material";
-import DashboardHeader from "@app/(dashboard)/dashboard/_section/Header";
-import DesktopSidebar from "@app/_components/sidebar/Desktop";
-import Scrollbar from "@/components/Scrollbar";
 import PaymentNotice from "./_section/PaymentNotice";
-import TwoFASubmitter from "@app/_components/TwoFASubmitter";
 // ----------------------------------------------------------------------
 
 export const metadata: Metadata = {
@@ -18,6 +21,8 @@ export type LayoutProps = {
 };
 
 export default async function DashboardLayout({ children, modal }: LayoutProps) {
+  const queryClient = getQueryClient();
+  await prefetchUseAffiliateServiceAffiliateMeQuery(queryClient);
   return (
     <>
       {modal}
@@ -25,19 +30,21 @@ export default async function DashboardLayout({ children, modal }: LayoutProps) 
       <Stack direction={"row"} component="main">
         <DesktopSidebar />
 
-        <Stack sx={{ flex: 1 }}>
-          <DashboardHeader />
+        <HydrationBoundary state={dehydrate(queryClient)}>
+          <Stack sx={{ flex: 1 }}>
+            <DashboardHeader />
 
-          {/* Main content */}
-          <Scrollbar>
-            <Stack height={{ md: "calc(100vh - 106px)" }}>
-              <>
-                <PaymentNotice />
-                {children}
-              </>
-            </Stack>
-          </Scrollbar>
-        </Stack>
+            {/* Main content */}
+            <Scrollbar>
+              <Stack height={{ md: "calc(100vh - 106px)" }}>
+                <>
+                  <PaymentNotice />
+                  {children}
+                </>
+              </Stack>
+            </Scrollbar>
+          </Stack>
+        </HydrationBoundary>
       </Stack>
     </>
   );

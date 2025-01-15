@@ -55,7 +55,7 @@ const SettingsSection = () => {
   };
 
   return (
-    <Stack justifyContent="center" alignItems="center" p={{ md: 4, xs: 3 }} gap={{ md: 4, xs: 3 }}>
+    <Stack justifyContent="center" alignItems="center" p={{ sm: 4, xs: 2 }} gap={{ sm: 4, xs: 3 }}>
       <Stack width={1} justifyContent="center">
         <Typography variant="p1-medium" color="white">
           {t("settingsDialog.account")}

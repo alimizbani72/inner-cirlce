@@ -4,7 +4,6 @@ import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import { getQueryClient } from "@app/_providers/customQueryClient";
 import {
   prefetchUseAffiliateServiceAffiliateChildrenQuery,
-  prefetchUseAffiliateServiceAffiliateMeQuery,
   prefetchUseAffiliateServiceAffiliateProgressQuery,
   prefetchUseFinancialServiceFinancialInfoQuery,
   prefetchUseWalletServiceWalletDefaultQuery,
@@ -22,7 +21,6 @@ export default async function Affiliate({ params }: RouteParamsType) {
   const queryClient = getQueryClient();
   await Promise.all([
     prefetchUseWalletServiceWalletDefaultQuery(queryClient),
-    prefetchUseAffiliateServiceAffiliateMeQuery(queryClient),
     prefetchUseFinancialServiceFinancialInfoQuery(queryClient),
     prefetchUseAffiliateServiceAffiliateProgressQuery(queryClient),
     prefetchUseAffiliateServiceAffiliateChildrenQuery(queryClient),

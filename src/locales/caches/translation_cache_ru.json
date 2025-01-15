@@ -523,5 +523,10 @@
   "Successfully removed from your favorites.": "Успешно удалено из избранного.",
   "Unable to add to your favorites. Please try again.": "Не удалось добавить в избранное. Пожалуйста, попробуйте еще раз.",
   "Unable to remove from your favorites. Please try again.": "Не удалось удалить из избранного. Пожалуйста, попробуйте еще раз.",
-  "Update in: ": "Обновление через:"
+  "Update in: ": "Обновление через:",
+  "Choose": "Выберите",
+  "Name": "Имя",
+  "Risk level": "Уровень риска",
+  "Distribution:": "Распределение:",
+  "Gains": "Прибыль"
 }

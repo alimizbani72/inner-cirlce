@@ -108,7 +108,7 @@ const UserProfile = () => {
                 loading={isUploadAvatarPending || isUploadPending}
                 startIcon={<Icon name="Plus" />}
                 fullWidth
-                sx={{ whiteSpace: "pre" }}
+                sx={{ whiteSpace: "pre", px: { xs: 1, sm: 3 } }}
                 onClick={onUpload}
               >
                 {t("userProfile.uploadPicture")}
@@ -118,6 +118,7 @@ const UserProfile = () => {
                 color="info"
                 startIcon={<Icon name="Close" />}
                 fullWidth
+                sx={{ px: { xs: 1, sm: 3 } }}
                 onClick={onRemoveAvatar}
               >
                 {t("userProfile.remove")}

@@ -10,11 +10,11 @@ import numeral from "numeral";
 import { useMemo } from "react";
 import usePortfolioData from "../../_section/hook/usePortfolioData";
 import ColoredTypography from "./ColoredTypography";
-import CryptoIcon from "./CryptoIcons";
 import CustomAssetTable from "./CustomAssetTable";
 import Distribution from "./Distribution";
 import MoreTableAction from "./MoreTableAction";
 import ValueWithSymbol from "./ValueWithSymbol";
+import CryptoIcon from "@app/_components/CryptoIcon";
 
 const AssetsTable = () => {
   const { t } = useTranslate();

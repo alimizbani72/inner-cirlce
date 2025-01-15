@@ -14,6 +14,7 @@ type Props = {
   disabled?: boolean;
   handlePayment: (plan_type: string) => Promise<void>;
   isPending?: boolean;
+  watchText?: string;
 };
 
 const PlanCard: FC<Props> = ({
@@ -28,19 +29,22 @@ const PlanCard: FC<Props> = ({
 }) => {
   return (
     <Stack
-      height={500}
-      minWidth={264}
+      height={520}
+      width={212}
+      minWidth={212}
+      maxWidth={212}
       flex={1}
       border={"1px solid"}
       borderColor={"dark.3"}
       bgcolor={"dark.2"}
       borderRadius={2}
     >
-      {plans[plan_type as keyof typeof plans]?.rive && (
-        <Stack width="100%" height={264} p={4} borderBottom={"1px solid"} borderColor={"dark.3"} alignItems="center">
+      <Stack width="100%" height={264} p={4} borderBottom={"1px solid"} borderColor={"dark.3"} alignItems="center">
+        {plans[plan_type as keyof typeof plans]?.rive && (
           <RiveComp src={plans[plan_type as keyof typeof plans]?.rive} width={200} height={200} />
-        </Stack>
-      )}
+        )}
+      </Stack>
+
       <Stack p={2} gap={2}>
         <Typography mb={-1} variant="p1-semi-bold" color="pink.light">
           {title}
@@ -50,6 +54,15 @@ const PlanCard: FC<Props> = ({
         <LoadingButton loading={isPending} onClick={() => handlePayment(plan_type)} disabled={disabled}>
           {buttonText}
         </LoadingButton>
+        {/* <Button
+          color="info"
+          size="small"
+          sx={{ whiteSpace: "pre", px: { xs: "12px", md: "24px" } }}
+          startIcon={<Icon name="Play" />}
+          onClick={() => setOpenVideoModal(true)}
+        >
+          {watchText}
+        </Button> */}
       </Stack>
     </Stack>
   );

@@ -523,5 +523,10 @@
   "Successfully removed from your favorites.": "Onnistuneesti poistettu suosikeistasi.",
   "Unable to add to your favorites. Please try again.": "Suosikkeihin lisääminen epäonnistui. Yritä uudelleen.",
   "Unable to remove from your favorites. Please try again.": "Suosikeista poistaminen epäonnistui. Yritä uudelleen.",
-  "Update in: ": "Päivitys:"
+  "Update in: ": "Päivitys:",
+  "Choose": "Valitse",
+  "Name": "Nimi",
+  "Risk level": "Riskitaso",
+  "Distribution:": "Jakelu:",
+  "Gains": "Tuotot"
 }

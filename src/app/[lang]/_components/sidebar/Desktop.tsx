@@ -50,7 +50,18 @@ const DesktopSidebar: FC = () => {
             overflow: "auto",
           }}
         >
-          <Stack sx={{ p: 4, borderBottom: "1.5px solid", borderColor: "dark.3", position: "relative", width: "100%" }}>
+          <Stack
+            sx={{
+              p: 4,
+              borderBottom: "1.5px solid",
+              borderColor: "dark.3",
+              position: "sticky",
+              width: "100%",
+              top: 0,
+              bgcolor: "dark.2",
+              zIndex: 100,
+            }}
+          >
             {isCollapsed ? <Logo /> : <LogoType />}
           </Stack>
 
@@ -68,7 +79,16 @@ const DesktopSidebar: FC = () => {
             )}
           </Stack>
 
-          <Stack mt={"auto"} gap={3}>
+          <Stack
+            mt={"auto"}
+            gap={3}
+            sx={{
+              position: "sticky",
+              bottom: 0,
+              bgcolor: "dark.2",
+              zIndex: 100,
+            }}
+          >
             {!isCollapsed && <UpgradePlan />}
 
             <SidebarUserInfo />

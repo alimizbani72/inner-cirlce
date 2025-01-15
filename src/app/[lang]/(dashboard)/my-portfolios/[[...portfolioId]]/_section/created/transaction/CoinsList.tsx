@@ -53,7 +53,7 @@ const CoinsList: FC = () => {
         }}
         filterOptions={(options) => options}
         renderOption={(props, option) => (
-          <MenuItem {...props} key={option.symbol} value={option.symbol}>
+          <MenuItem {...props} key={option.slug} value={option.symbol}>
             <Stack direction={"row"} spacing={2}>
               <Image src={option.logo} alt={option.name} style={{ width: "24px", height: "24px" }} />
               <Stack direction={"row"} spacing={1} alignItems={"center"}>

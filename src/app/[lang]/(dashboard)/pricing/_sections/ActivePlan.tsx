@@ -60,7 +60,9 @@ const ActivePlan: FC = () => {
         <Stack gap={1} direction={"row"} alignItems={"center"}>
           <Typography variant="p2-medium">{`${t("plan.currentPlan")}:`}</Typography>
           <Box sx={{ aspectRatio: 1 }} width={48} height={48}>
-            <RiveComp src={plans[getUserPlanType(userInfo) as keyof typeof plans].rive} width={48} height={48} />
+            {plans[getUserPlanType(userInfo) as keyof typeof plans]?.rive && (
+              <RiveComp src={plans[getUserPlanType(userInfo) as keyof typeof plans]?.rive} width={48} height={48} />
+            )}
           </Box>
           <Typography variant="p1-semi-bold" textTransform="capitalize">
             {getUserPlanType(userInfo)}

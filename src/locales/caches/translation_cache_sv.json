@@ -523,5 +523,10 @@
   "Successfully removed from your favorites.": "Framgångsrikt borttagen från dina favoriter.",
   "Unable to add to your favorites. Please try again.": "Kunde inte lägga till i dina favoriter. Försök igen.",
   "Unable to remove from your favorites. Please try again.": "Kunde inte ta bort från dina favoriter. Försök igen.",
-  "Update in: ": "Uppdatera i:"
+  "Update in: ": "Uppdatera i:",
+  "Choose": "Välj",
+  "Name": "Namn",
+  "Risk level": "Risknivå",
+  "Distribution:": "Distribution:",
+  "Gains": "Vinster"
 }

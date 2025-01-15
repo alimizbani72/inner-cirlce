@@ -523,5 +523,10 @@
   "Successfully removed from your favorites.": "Eliminado exitosamente de tus favoritos.",
   "Unable to add to your favorites. Please try again.": "No se pudo añadir a tus favoritos. Por favor, intenta de nuevo.",
   "Unable to remove from your favorites. Please try again.": "No se pudo eliminar de tus favoritos. Por favor, intenta de nuevo.",
-  "Update in: ": "Actualización en:"
+  "Update in: ": "Actualización en:",
+  "Choose": "Elige",
+  "Name": "Nombre",
+  "Risk level": "Nivel de riesgo",
+  "Distribution:": "Distribución:",
+  "Gains": "Ganancias"
 }

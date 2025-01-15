@@ -8,6 +8,7 @@ import { selectUser } from "@/lib/features/user/userSlice";
 import { useAppSelector } from "@/lib/hooks";
 import { useTranslate } from "@/locales";
 import { useAppRouter } from "@/routes/hooks";
+import { toTitleCase } from "@/utils/change-case";
 import { Box, Divider, Stack, Typography } from "@mui/material";
 import { usePathname } from "next/navigation";
 import type { FC } from "react";
@@ -38,12 +39,14 @@ const UpgradePlan: FC<UpgradePlanProps> = () => {
         {!isFreePlan ? (
           <Stack p={2} position={"relative"} direction={"row"} zIndex={2} gap={1.5} alignItems={"center"}>
             <Box sx={{ aspectRatio: 1 }} width={40} height={40}>
-              <RiveComp src={plans[getUserPlanType(userInfo) as keyof typeof plans].rive} width={40} height={40} />
+              {plans[getUserPlanType(userInfo) as keyof typeof plans]?.rive && (
+                <RiveComp src={plans[getUserPlanType(userInfo) as keyof typeof plans]?.rive} width={40} height={40} />
+              )}
             </Box>
 
             <Stack flex={1}>
               <Typography variant="p2-semi-bold" textTransform="capitalize">
-                {getUserPlanType(userInfo)}
+                {toTitleCase(getUserPlanType(userInfo))}
               </Typography>
               <Typography variant="caption-medium" color="grey.light">
                 {t("plan.currentPlan")}
@@ -60,7 +63,7 @@ const UpgradePlan: FC<UpgradePlanProps> = () => {
 
         <Divider flexItem sx={{ borderWidth: "1.5px", borderColor: "dark.3" }} />
 
-        {getUserPlanType(userInfo) !== "whale" && (
+        {getUserPlanType(userInfo) !== "fisherman_plus" && (
           <Stack
             p={2}
             justifyContent={"space-between"}

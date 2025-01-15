@@ -1,16 +1,16 @@
 "use client";
 
 import CustomTable, { type SortType } from "@/components/CustomTable";
+import { useIsMobile } from "@/hooks/use-responsive";
 import { useAppRouter } from "@/routes/hooks";
 import UpgradeModal from "@dashboard/coin-reports/[coinId]/_section/UpgradeModal";
 import { defaultValueSort } from "@dashboard/coin-reports/_sections/consts";
 import type { CoinReportResponseData } from "@minecraft/requests";
-import { Stack, styled, tableBodyClasses, tableHeadClasses } from "@mui/material";
+import { Stack, styled } from "@mui/material";
 import { useState } from "react";
 import { Header } from "../header";
 import type { FilterFormDataType } from "../types.d";
 import { useColumns } from "./useColumns";
-import { useIsMobile } from "@/hooks/use-responsive";
 
 export interface TableProps {
   filters: FilterFormDataType;
@@ -27,32 +27,6 @@ const ContainerStyle = styled(Stack)(({ theme }) => ({
   borderColor: theme.palette.dark[3],
   alignItems: "flex-start",
   overflow: "hidden",
-  [`& .${tableHeadClasses.root} `]: {
-    "& > tr > th:first-child": {
-      position: "sticky",
-      left: 0,
-      top: 0,
-      backgroundColor: theme.palette.dark[3],
-      zIndex: 4,
-    },
-  },
-  [`& .${tableBodyClasses.root} > tr`]: {
-    borderLeft: "unset",
-    cursor: "pointer",
-    "& > td:first-child": {
-      position: "sticky",
-      left: 0,
-      backgroundColor: theme.palette.dark[2],
-      zIndex: 3,
-      paddingLeft: `${theme.spacing(1)} !important`,
-    },
-    "&:hover > td": {
-      backgroundColor: theme.palette.dark[3],
-    },
-  },
-  "& >div:last-child": {
-    borderRadius: 0,
-  },
 }));
 
 const CoinReportTable = ({
@@ -108,6 +82,7 @@ const CoinReportTable = ({
           onSortChange={handleSortChange}
           sort={filters.sorts}
           onRowClick={handleRowClick}
+          isStickyFirstColumn
         />
       </ContainerStyle>
       {openUpgradeModal && <UpgradeModal open close={() => setOpenUpgradeModal(false)} />}

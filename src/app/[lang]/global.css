@@ -1,7 +1,7 @@
-@import '@fontsource/montserrat/400.css';
-@import '@fontsource/montserrat/500.css';
-@import '@fontsource/montserrat/600.css';
-@import '@fontsource/montserrat/700.css';
+@import "@fontsource/montserrat/400.css";
+@import "@fontsource/montserrat/500.css";
+@import "@fontsource/montserrat/600.css";
+@import "@fontsource/montserrat/700.css";
 
 @import url("react-lazy-load-image-component/src/effects/black-and-white.css");
 @import url("react-lazy-load-image-component/src/effects/blur.css");
@@ -9,29 +9,29 @@
 @import url("@leenguyen/react-flip-clock-countdown/dist/index.css");
 @import url("@xyflow/react/dist/style.css");
 @import url("@xyflow/react/dist/base.css");
-@import 'yet-another-react-lightbox/styles.css';
-@import 'yet-another-react-lightbox/plugins/captions.css';
-@import 'yet-another-react-lightbox/plugins/thumbnails.css';
-
+@import "yet-another-react-lightbox/styles.css";
+@import "yet-another-react-lightbox/plugins/captions.css";
+@import "yet-another-react-lightbox/plugins/thumbnails.css";
 
 * {
   -webkit-tap-highlight-color: transparent;
   margin: 0;
 }
 
-@media (min-width: 899px) { /* Adjust the min-width as needed for your desktop breakpoint */
+@media (min-width: 899px) {
+  /* Adjust the min-width as needed for your desktop breakpoint */
   *::-webkit-scrollbar {
     width: 2px;
     height: 6px;
   }
 
   *::-webkit-scrollbar-track {
-    background: #090A23;
+    background: #090a23;
     border: 0;
   }
 
   *::-webkit-scrollbar-thumb {
-    background-color: #14162E;
+    background-color: #626583;
     border-radius: 20px;
     border: 0;
     cursor: pointer;
@@ -52,7 +52,7 @@ textarea:-webkit-autofill:focus,
 textarea:-webkit-autofill:active,
 select:-webkit-autofill {
   border: 0;
-  -webkit-box-shadow: 0 0 0 30px #090A23 inset !important;
+  -webkit-box-shadow: 0 0 0 30px #090a23 inset !important;
   transition: background-color 5000s ease-in-out 0s;
   -webkit-text-fill-color: white;
 }
@@ -71,16 +71,21 @@ a:hover {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
-
 
 .yarl__root {
   --yarl__thumbnails_thumbnail_padding: 0;
   --yarl__thumbnails_thumbnail_border: transparent;
   --yarl__color_backdrop: rgba(var(--palette-grey-900Channel) / 0.9);
-  --yarl__slide_captions_container_background: rgba(var(--palette-common-blackChannel) / 0.32);
+  --yarl__slide_captions_container_background: rgba(
+    var(--palette-common-blackChannel) / 0.32
+  );
 }
 .yarl__slide_title {
   font-size: 20px;

@@ -2,6 +2,9 @@
   "plan": {
     "currentPlan": "Your Current Plan",
     "upgradePlan": "Upgrade your plan!",
-    "compares": "Compare Plans"
+    "compares": "Compare Plans",
+    "choose": "Choose",
+    "choosePlan": "Choose Plan",
+    "watchVideo": "Watch Video"
   }
 }

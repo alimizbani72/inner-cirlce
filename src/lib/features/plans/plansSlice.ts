@@ -1,5 +1,6 @@
 import type { AppThunk } from "@/lib/store";
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { packageNameModifier } from "@/utils/string";
+import { type PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export interface Plan {
   id: string;
@@ -12,7 +13,9 @@ export interface Plan {
 
 interface Feature {
   featureName: string;
+  featureSlug: string;
   featureValue: string;
+  goldCoinsValue?: number;
   numberValue?: number;
   numberSuffix?: string;
   textValue?: string;
@@ -69,7 +72,7 @@ export const mapApiDataToPlans =
       const plans: Plan[] = data.map((apiPlan) => ({
         id: apiPlan.id,
         title: apiPlan.name,
-        plan_type: apiPlan.name.toLowerCase(),
+        plan_type: packageNameModifier(apiPlan.name),
         description: apiPlan.description,
         cost: apiPlan.price.toString(),
         buttonText: apiPlan.buttonText,
@@ -90,6 +93,9 @@ export const mapApiDataToPlans =
                 break;
               case "xmark":
                 acc[feature.featureName].push(false);
+                break;
+              case "goldCoins":
+                acc[feature.featureName].push(feature.goldCoinsValue);
                 break;
               case "text":
                 acc[feature.featureName].push(feature.textValue);
