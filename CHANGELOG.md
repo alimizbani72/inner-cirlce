@@ -1,3 +1,22 @@
+# [1.7.0](https://github.com/Chainmind-AG/inner-circle/compare/v1.6.3...v1.7.0) (2025-01-15)
+
+
+### Bug Fixes
+
+* **design:** fix issue design ([84d99d4](https://github.com/Chainmind-AG/inner-circle/commit/84d99d497da1eecc34fe047c389602a51e984e99))
+* **my-Portfolio:** fix coin searching and replace Profit &loss with PNLs ([#201](https://github.com/Chainmind-AG/inner-circle/issues/201)) ([6d73b4f](https://github.com/Chainmind-AG/inner-circle/commit/6d73b4f5ac3f40af22345494e229080cdc0ad61d))
+* **portfolio:** change portfolio strategy table ([#197](https://github.com/Chainmind-AG/inner-circle/issues/197)) ([465912e](https://github.com/Chainmind-AG/inner-circle/commit/465912e4d1446facf3dc3dd68f97a41ba424fe93))
+* **portfolio:** strategy table sort ([602a827](https://github.com/Chainmind-AG/inner-circle/commit/602a827bece8e4eb176a54c02df4edd6bed1987f))
+
+
+### Features
+
+* **package:** add modifier for packages name ([a9d015d](https://github.com/Chainmind-AG/inner-circle/commit/a9d015d7ff7cf2ea527edad44b499aa1dc28b600))
+* **package:** add modifier for packages name ([1897cda](https://github.com/Chainmind-AG/inner-circle/commit/1897cda0210289a456d16695d9789231f35653bd))
+* **pricing:** add fisherman and fisherman plus ([3da033c](https://github.com/Chainmind-AG/inner-circle/commit/3da033cb460d1c1348209ef1feaeba63607444d2))
+* **pricing:** Change the design of the pricing table ([3ee2288](https://github.com/Chainmind-AG/inner-circle/commit/3ee22886edc6756a925f62024bd982315ef62cff))
+* **release:** new version ([5715a0c](https://github.com/Chainmind-AG/inner-circle/commit/5715a0c3ea973e829927502f4ce163f756821916))
+
 ## [1.6.3](https://github.com/Chainmind-AG/inner-circle/compare/v1.6.2...v1.6.3) (2024-12-21)
 
 
