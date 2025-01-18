@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/Chainmind-AG/inner-circle/compare/v1.7.0...v1.8.0) (2025-01-18)
+
+
+### Features
+
+* **intercom:** add user info to payload ([af89976](https://github.com/Chainmind-AG/inner-circle/commit/af899764cafe5e8212efd41fa8fc62ca2274a5a0))
+
 # [1.7.0](https://github.com/Chainmind-AG/inner-circle/compare/v1.6.3...v1.7.0) (2025-01-15)
 
 
