@@ -1,14 +1,14 @@
 "use client";
 
+import { Icon } from "@/components/icons";
+import { useIsMobile } from "@/hooks/use-responsive";
 import { isSidebarCollapsed } from "@/lib/features/menu/menuSlice";
+import { selectUser } from "@/lib/features/user/userSlice";
 import { useAppSelector } from "@/lib/hooks";
 import { Avatar, Box, Divider, Menu, MenuItem, Stack, Typography } from "@mui/material";
-import { useState, type FC, type MouseEvent } from "react";
-import { Icon } from "@/components/icons";
+import { type FC, type MouseEvent, useState } from "react";
 import IntercomMessenger from "../IntercomMessenger";
-import { selectUser } from "@/lib/features/user/userSlice";
 import LogoutDialog from "./LogoutDialog";
-import { useIsMobile } from "@/hooks/use-responsive";
 
 const SidebarUserInfo: FC = () => {
   const isMobile = useIsMobile();
@@ -26,7 +26,7 @@ const SidebarUserInfo: FC = () => {
 
   return (
     <>
-      <IntercomMessenger email={userInfo?.full_name!} />
+      {userInfo && <IntercomMessenger user={userInfo} />}
 
       <Stack
         sx={{
