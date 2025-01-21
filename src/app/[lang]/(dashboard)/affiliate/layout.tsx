@@ -1,23 +1,15 @@
-import type { PropsWithChildren } from "react";
-import { notFound } from "next/navigation";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/configs/authOptions";
 import { getQueryClient } from "@app/_providers/customQueryClient";
-import { prefetchUseAffiliateServiceAffiliateReferralCodeQuery } from "@minecraft/queries/prefetch";
 import Template from "@dashboard/affiliate/_sections/AffTemplate";
-import { Stack } from "@mui/material";
 import LearningBanner from "@dashboard/coin-reports/_sections/LearningBanner";
+import { prefetchUseAffiliateServiceAffiliateReferralCodeQuery } from "@minecraft/queries/prefetch";
+import { Stack } from "@mui/material";
+import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
+import type { PropsWithChildren } from "react";
 import AffiliateHeader from "./_sections/Header";
-import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
+import KYCWrapper from "./_sections/KYCWrapper";
 // ----------------------------------------------------------------------
 
 export default async function AffiliateLayout({ children }: PropsWithChildren) {
-  const session = await getServerSession(authOptions(""));
-
-  if (!session?.user?.kyc_status) {
-    return notFound();
-  }
-
   const queryClient = getQueryClient();
   await Promise.all([prefetchUseAffiliateServiceAffiliateReferralCodeQuery(queryClient)]);
 
@@ -31,7 +23,7 @@ export default async function AffiliateLayout({ children }: PropsWithChildren) {
         </Stack>
         {/* Tabs */}
         <Template />
-        {children}
+        <KYCWrapper>{children}</KYCWrapper>
       </Stack>
     </HydrationBoundary>
   );
