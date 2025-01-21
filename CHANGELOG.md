@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/Chainmind-AG/inner-circle/compare/v1.8.0...v1.8.1) (2025-01-21)
+
+
+### Bug Fixes
+
+* **kyc:** fix admin manual kyc,page not found ([c34a897](https://github.com/Chainmind-AG/inner-circle/commit/c34a89721e54dbea5c220f72859f4e0508f69f11))
+
 # [1.8.0](https://github.com/Chainmind-AG/inner-circle/compare/v1.7.0...v1.8.0) (2025-01-18)
 
 
