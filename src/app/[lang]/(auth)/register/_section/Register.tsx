@@ -21,6 +21,7 @@ import { useSearchParams } from "next/navigation";
 import windowAvailable from "@/utils/windowAvailable";
 import { parse } from "cookie";
 import GoogleSignIn from "@app/(auth)/login/_section/GoogleSignIn";
+import Link from "@/components/Link";
 
 const Register: FC = () => {
   const { t } = useTranslate();
@@ -178,38 +179,24 @@ const Register: FC = () => {
             },
           }}
           label={
-            // <Typography variant="p2-regular" color="grey.light">
-            //   {t("createAccount.agreeToTerms")}{" "}
-            //   <Typography variant="p2-regular" component={"span"}>
-            //     {t("createAccount.termsAndConditions")}
-            //   </Typography>
-            // </Typography>
-            // <Typography variant="caption-regular" color="grey.light">
-            //   {t("createAccount.termsAndConditions", {
-            //     termsAndConditions: (
-            //       <Typography variant="caption-regular" component={Link} href="/terms-and-condition">
-            //         {t("register.termsAndConditions")}
-            //       </Typography>
-            //     ),
-            //     disclaimer: (
-            //       <Typography variant="caption-regular" component={Link} href="/disclaimer">
-            //         {t("register.disclaimer")}
-            //       </Typography>
-            //     ),
-            //     refundWaiver: (
-            //       <Typography variant="caption-regular" component={"span"}>
-            //         {t("register.refundWaiver")}
-            //       </Typography>
-            //     ),
-            //   })}
-            // </Typography>
-
-            <Typography variant="caption-regular" color="grey.light">
-              {t("createAccount.termsAndConditions", {
-                termsAndConditions: t("register.termsAndConditions"),
-                disclaimer: t("register.disclaimer"),
-                refundWaiver: t("register.refundWaiver"),
-              })}
+            <Typography variant="p2-regular" color="grey.light">
+              {t("createAccount.firstPart")}
+              {"  "}
+              <Typography variant="caption-regular" component={Link} href="/terms-and-condition" color="inherit">
+                {t("register.termsAndConditions")}
+                {"  "}
+              </Typography>
+              {t("createAccount.and")}
+              {"  "}
+              <Typography variant="caption-regular" component={Link} href="/disclaimer" color="inherit">
+                {t("register.disclaimer")}
+                {"  "}
+              </Typography>
+              {t("createAccount.lastPart")}
+              {"  "}
+              <Typography variant="caption-regular" component={"span"}>
+                {t("register.refundWaiver")}
+              </Typography>
             </Typography>
           }
           name="terms"
