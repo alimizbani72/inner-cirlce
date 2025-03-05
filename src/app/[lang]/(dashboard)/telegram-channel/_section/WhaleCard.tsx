@@ -35,7 +35,7 @@ const buttonStyle = {
 const WhaleCard = () => {
   const { t } = useTranslate();
   const { enqueueSnackbar } = useSnackbar();
-  const { refetch, isLoading } = useTelegramServiceTelegramLinkQuery(undefined, {
+  const { refetch } = useTelegramServiceTelegramLinkQuery(undefined, {
     enabled: false,
   });
   const userInfo = useAppSelector(selectUser);
@@ -77,12 +77,7 @@ const WhaleCard = () => {
     }
 
     return !userInfo?.telegram_group_joined ? (
-      <CustomButton
-        onClick={handleJoinClick}
-        loading={isLoading}
-        buttonText={t("telegramChannel.joinOurPublicChatRoom")}
-        iconName="Link"
-      />
+      <CustomButton onClick={handleJoinClick} buttonText={t("telegramChannel.joinPremiumChatRoom")} iconName="Link" />
     ) : (
       <ConnectedStatus telegramId={userInfo?.telegram_id} />
     );

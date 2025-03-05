@@ -47,26 +47,35 @@ type CustomButtonProps = {
   onClick?: () => void;
   buttonText: string;
   iconName: iconsType;
+  href?: string;
 };
 
-const CustomButton = ({ buttonText, iconName }: CustomButtonProps) => {
-  const telLinkAddress = process.env.NEXT_PUBLIC_TELEGRAM_CHANNEL || "";
+const CustomButton = ({ buttonText, iconName, href, onClick }: CustomButtonProps) => {
   return (
     <Box sx={buttonContainerStyle}>
-      <Button
-        LinkComponent={Link}
-        href={telLinkAddress}
-        rel="nofollow noopener noreferrer external"
-        target="_blank"
-        color="info"
-        size="large"
-        sx={buttonStyle}
-      >
-        <Box pr={1}>
-          <Icon name={iconName} />
-        </Box>
-        {buttonText}
-      </Button>
+      {href ? (
+        <Button
+          LinkComponent={Link}
+          href={href}
+          rel="nofollow noopener noreferrer external"
+          target="_blank"
+          color="info"
+          size="large"
+          sx={buttonStyle}
+        >
+          <Box pr={1}>
+            <Icon name={iconName} />
+          </Box>
+          {buttonText}
+        </Button>
+      ) : (
+        <Button color="info" size="large" sx={buttonStyle} onClick={onClick}>
+          <Box pr={1}>
+            <Icon name={iconName} />
+          </Box>
+          {buttonText}
+        </Button>
+      )}
     </Box>
   );
 };
