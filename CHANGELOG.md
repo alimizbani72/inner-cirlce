@@ -1,3 +1,18 @@
+## [1.8.2](https://github.com/Chainmind-AG/inner-circle/compare/v1.8.1...v1.8.2) (2025-03-05)
+
+
+### Bug Fixes
+
+* **register:** fix colors for link ([3ae4b4c](https://github.com/Chainmind-AG/inner-circle/commit/3ae4b4cdd88fe1facd8c8d3e089da14806f61a53))
+* **Register:** fix the terms and condition link ([88aa6e7](https://github.com/Chainmind-AG/inner-circle/commit/88aa6e7b2025ee36c10b94c198d5bbcb69f0464f))
+* **telegram:** fix telegram permium link ([#215](https://github.com/Chainmind-AG/inner-circle/issues/215)) ([58e9947](https://github.com/Chainmind-AG/inner-circle/commit/58e99474f7f66c676c757f64e360b7f7cb1f465d))
+* **translate:** add translations ([8407d4e](https://github.com/Chainmind-AG/inner-circle/commit/8407d4e1bc4ee74f842a91346ff1913168d902e1))
+
+
+### Performance Improvements
+
+* **merge:** Merge pull request [#217](https://github.com/Chainmind-AG/inner-circle/issues/217) from Chainmind-AG/staging ([9d8a570](https://github.com/Chainmind-AG/inner-circle/commit/9d8a570f7feb65ca2e2e1ec5f26383e5adad2165))
+
 ## [1.8.1](https://github.com/Chainmind-AG/inner-circle/compare/v1.8.0...v1.8.1) (2025-01-21)
 
 
