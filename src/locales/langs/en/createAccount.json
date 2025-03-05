@@ -15,6 +15,9 @@
     "termsAndConditions": "I have read the {{termsAndConditions}} and the {{disclaimer}} and expressly accept them as part of the contract. I also agree and understand that by purchasing and immediately accessing digital content, {{refundWaiver}}.",
     "createAccountButton": "Create Account",
     "alreadyHaveAccount": "Already have an account?",
-    "login": "Login"
+    "login": "Login",
+    "firstPart": "I have read the",
+    "and": "and the",
+    "lastPart": "and expressly accept them as part of the contract. I also agree and understand that by purchasing and immediately accessing digital content,"
   }
 }
