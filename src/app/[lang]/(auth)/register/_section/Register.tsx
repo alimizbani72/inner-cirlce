@@ -182,19 +182,19 @@ const Register: FC = () => {
             <Typography variant="p2-regular" color="grey.light">
               {t("createAccount.firstPart")}
               {"  "}
-              <Typography variant="caption-regular" component={Link} href="/terms-and-condition" color="inherit">
+              <Typography variant="caption-regular" component={Link} href="/terms-and-condition">
                 {t("register.termsAndConditions")}
                 {"  "}
               </Typography>
               {t("createAccount.and")}
               {"  "}
-              <Typography variant="caption-regular" component={Link} href="/disclaimer" color="inherit">
+              <Typography variant="caption-regular" component={Link} href="/disclaimer">
                 {t("register.disclaimer")}
                 {"  "}
               </Typography>
               {t("createAccount.lastPart")}
               {"  "}
-              <Typography variant="caption-regular" component={"span"}>
+              <Typography variant="caption-regular" component={"span"} color="inherit">
                 {t("register.refundWaiver")}
               </Typography>
             </Typography>
