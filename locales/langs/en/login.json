@@ -1,0 +1,17 @@
+{
+  "login": {
+    "title": "Login to your account",
+    "loginWithGoogle": "Login with Google",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot Password?",
+    "loginButton": "Login",
+    "noAccount": "Don't have an account?",
+    "register": "Register",
+    "loginError": "Login Error",
+    "AnErrorOccurred": "An error occurred",
+    "continueWithGoogle": "Continue with Google",
+    "errorLoginWithGoogle": "Oops! Something went wrong with the Google sign-in process. Please try again or use a different method to log in. If you continue to experience issues, feel free to reach out to our support team for assistance",
+    "enterOtp": "Enter the six digit code from your authentication app",
+    "TwoFactorAuthentication": "Two-factor authentication"
+  }
+}

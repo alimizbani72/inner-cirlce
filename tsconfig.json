@@ -2,11 +2,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@dashboard/*": ["src/app/[lang]/(dashboard)/*"],
-      "@app/*": ["src/app/[lang]/*"],
-      "@minecraft/*": ["src/services/minecraft/*"],
-      "@cms/*": ["src/services/cms/*"],
-      "@/*": ["src/*"]
+      "@auth-section/*": ["app/(auth)/_sections/*"],
+      "@dashboard-section/*": ["app/(dashboard)/_section/*"],
+      "@auth/*": ["app/(auth)/*"],
+      "@dashboard/*": ["app/(dashboard)/*"],
+      "@app-components/*": ["app/_components/*"],
+      "@/*": ["*"]
     },
     "module": "CommonJS",
     "target": "ES2019",
@@ -34,6 +35,6 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": ["svgr.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules", "services/cms/chainmindCms.schemas.ts"]
 }

@@ -34,11 +34,11 @@ spec:
         resources:
           {{- toYaml .Values.resources | nindent 12 }}
         env:
-        - name: NEXTAUTH_URL
-          value: {{ .Values.app.nextauth_url }}
+        - name: AUTH_TRUST_HOST
+          value: "true"
         - name: NEXTAUTH_SECRET
-          value: {{ .Values.app.nextauth_secret }}
-        - name: GOOGLE_CLIENT_ID
+          value: {{ .Values.app.auth_secret }}
+        - name: NEXT_PUBLIC_GOOGLE_CLIENT_ID
           value: {{ .Values.app.google_client_id }}
         - name: GOOGLE_CLIENT_SECRET
           value: {{ .Values.app.google_client_secret }}

@@ -85,7 +85,7 @@ jobs:
           push: true
           build-args: |
             url=https://staging.innercircle-chainmind.com/
-            minecraft_endpoint=https://staging-minecraft.innercircle-chainmind.com/
+            minecraft_endpoint=https://feat-swaggo-minecraft.innercircle-chainmind.com/
             google_client_id=${{ secrets.STAGING_GOOGLE_CLIENT_ID }}
             google_client_secret=${{ secrets.STAGING_GOOGLE_CLIENT_SECRET }}
             cms_endpoint=https://cms.innercircle-chainmind.com/
@@ -121,7 +121,7 @@ jobs:
           push: true
           build-args: |
             url=https://staging.innercircle-chainmind.com/
-            minecraft_endpoint=https://staging-minecraft.innercircle-chainmind.com/
+            minecraft_endpoint=https://feat-swaggo-minecraft.innercircle-chainmind.com/
             google_client_id=${{ secrets.STAGING_GOOGLE_CLIENT_ID }}
             google_client_secret=${{ secrets.STAGING_GOOGLE_CLIENT_SECRET }}
             cms_endpoint=https://cms.innercircle-chainmind.com/
@@ -216,8 +216,8 @@ jobs:
               --set resources.limits.memory="500Mi" \
               --set resources.requests.cpu="250m" \
               --set resources.requests.memory="256Mi" \
-              --set app.nextauth_url="https://${{ env.RELEASE_DOMAIN }}" \
-              --set app.nextauth_secret="${{ secrets.STAGING_NEXTAUTH_SECRET }}" \
+              --set app.auth_trust_host="true" \
+              --set app.auth_secret="${{ secrets.STAGING_NEXTAUTH_SECRET }}" \
               --set app.google_client_id="${{ secrets.STAGING_GOOGLE_CLIENT_ID }}" \
               --set app.google_client_secret="${{ secrets.STAGING_GOOGLE_CLIENT_SECRET }}" \
               --create-namespace \

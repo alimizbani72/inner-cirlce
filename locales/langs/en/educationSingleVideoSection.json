@@ -1,0 +1,9 @@
+{
+  "educationSingleVideoSection": {
+    "by": "BY",
+    "duration": "DURATION",
+    "upgradeMessage": "You should upgrade your package to see this information",
+    "description": "Description",
+    "filesources": "File sources"
+  }
+}

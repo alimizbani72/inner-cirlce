@@ -1,0 +1,31 @@
+'use client';
+
+import type { BoxProps } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
+import type { FC } from 'react';
+import { useTranslate } from '@/locales';
+import RiveComp from './rive-loader';
+
+type Props = {
+  title?: string;
+  sx?: BoxProps['sx'];
+  size?: number;
+};
+
+const Loading: FC<Props> = ({ title, size = 60, sx }) => {
+  const { t } = useTranslate();
+
+  return (
+    <Stack alignItems="center" justifyContent="center" sx={{ mt: { md: 6 }, p: 6, gap: 2, ...sx }}>
+      <Box sx={{ aspectRatio: 1 }}>
+        <RiveComp width={size} height={size} src="/assets/rive/chainmind_loading.riv" />
+      </Box>
+
+      <Typography variant="p1-semi-bold" color="white" textAlign="center">
+        {title || t('loading.onLoading')}
+      </Typography>
+    </Stack>
+  );
+};
+
+export default Loading;

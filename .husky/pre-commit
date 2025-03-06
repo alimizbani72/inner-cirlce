@@ -1,1 +1,2 @@
-bunx biome lint --apply ./src
+bunx biome lint --write ./
+bun run tsc

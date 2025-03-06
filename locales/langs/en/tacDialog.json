@@ -1,0 +1,8 @@
+{
+  "tacDialog": {
+    "success": "Terms and conditions accepted successfully!",
+    "title": " Terms and conditions of affiliate agreement",
+    "description": "I have read and agree to the terms and conditions.",
+    "btn": "Agree & Continue"
+  }
+}

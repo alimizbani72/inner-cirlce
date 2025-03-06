@@ -9,7 +9,7 @@ RUN apt-get -y update && \
 WORKDIR /app
 
 # Install dependencies based on the preferred package manager
-COPY package.json bun.lockb ./
+COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile
 
 # Build the app
@@ -30,13 +30,14 @@ ARG public_env
 ENV NODE_ENV=production
 ENV NEXT_PUBLIC_URL=$url
 ENV NEXT_PUBLIC_MINECRAFT_ENDPOINT=$minecraft_endpoint
-ENV GOOGLE_CLIENT_ID=$google_client_id
+ENV NEXT_PUBLIC_GOOGLE_CLIENT_ID=$google_client_id
 ENV GOOGLE_CLIENT_SECRET=$google_client_secret
 ENV NEXT_PUBLIC_CMS_ENDPOINT=$cms_endpoint
 ENV INTERCOM_SECRET=$intercom_secret
 ENV NEXT_PUBLIC_TELEGRAM_CHANNEL=$telegram_channel
 ENV OPENAI_API_KEY=$openai_api_key
 ENV NEXT_PUBLIC_ENV=$public_env
+ENV NEXT_PUBLIC_LOCALES="en,bn,de,es,fr,he,hi,ja,ko,mn,pt,ru,sv,th,tr,vi,fi,no"
 
 RUN bun run build
 
@@ -57,13 +58,14 @@ ARG public_env
 ENV NODE_ENV=production
 ENV NEXT_PUBLIC_URL=$url
 ENV NEXT_PUBLIC_MINECRAFT_ENDPOINT=$minecraft_endpoint
-ENV GOOGLE_CLIENT_ID=$google_client_id
+ENV NEXT_PUBLIC_GOOGLE_CLIENT_ID=$google_client_id
 ENV GOOGLE_CLIENT_SECRET=$google_client_secret
 ENV NEXT_PUBLIC_CMS_ENDPOINT=$cms_endpoint
 ENV INTERCOM_SECRET=$intercom_secret
 ENV NEXT_PUBLIC_TELEGRAM_CHANNEL=$telegram_channel
 ENV OPENAI_API_KEY=$openai_api_key
 ENV NEXT_PUBLIC_ENV=$public_env
+ENV NEXT_PUBLIC_LOCALES="en,bn,de,es,fr,he,hi,ja,ko,mn,pt,ru,sv,th,tr,vi,fi,no"
 
 # Uncomment the following line in case you want to disable telemetry during runtime.
 # ENV NEXT_TELEMETRY_DISABLED 1
