@@ -1,25 +1,24 @@
 'use client';
-import { Divider, Stack, Typography } from '@mui/material';
-import { useMemo, type FC, useEffect, useCallback } from 'react';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm, Controller } from 'react-hook-form';
 import { RHFCheckbox, RHFTextField } from '@/components/hook-form';
 import FormProvider from '@/components/hook-form/form-provider';
-import z from 'zod';
-import { useTranslate } from '@/locales';
-import { useAppDispatch, useAppSelector } from '@/lib/hooks';
+import Link from '@/components/link';
+import LoadingButton from '@/components/loading-button';
 import { getRegisterInfo, setRegisterInfo, setRegisterStep } from '@/lib/features/auth/authSlice';
-
+import { useAppDispatch, useAppSelector } from '@/lib/hooks';
+import { useTranslate } from '@/locales';
 import { useAppRouter } from '@/routes/hooks';
+import { usePostAuthEmailExists, usePostAuthSendCode } from '@/services/minecraft/auth/auth';
+import windowAvailable from '@/utils/windowAvailable';
+import GoogleSignIn from '@auth/login/_section/GoogleSignIn';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Divider, Stack, Typography } from '@mui/material';
+import Cookies from 'js-cookie';
 import debounce from 'lodash/debounce';
 import { useSearchParams } from 'next/navigation';
-import windowAvailable from '@/utils/windowAvailable';
-import { parse } from 'cookie';
-import { usePostAuthEmailExists, usePostAuthSendCode } from '@/services/minecraft/auth/auth';
+import { type FC, useCallback, useEffect, useMemo } from 'react';
+import { Controller, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
-import GoogleSignIn from '@auth/login/_section/GoogleSignIn';
-import LoadingButton from '@/components/loading-button';
-import Link from '@/components/link';
+import z from 'zod';
 
 const Register: FC = () => {
   const { t } = useTranslate();
@@ -31,7 +30,7 @@ const Register: FC = () => {
   const referralCode = searchParams.get('sponsor') || '';
 
   if (referralCode && windowAvailable) {
-    document.cookie = `referral_code=${referralCode}; path=/; max-age=${60 * 60 * 24 * 1}`;
+    Cookies.set('referral_code', referralCode, { expires: 1 });
   }
   const FormSchema = useMemo(
     () =>
@@ -76,7 +75,7 @@ const Register: FC = () => {
     methods;
 
   useEffect(() => {
-    setValue('invite', searchParams.get('sponsor') || parse(document.cookie).referral_code || '');
+    setValue('invite', searchParams.get('sponsor') || Cookies.get('referral_code') || '');
   }, []);
 
   const { isValid } = formState;

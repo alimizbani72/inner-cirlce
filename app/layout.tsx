@@ -4,18 +4,17 @@ import { ThemeProvider } from '@/theme/theme-provider';
 import type { Metadata } from 'next';
 import './globals.css';
 
+import { STORAGE_KEY, googleProviderOption } from '@/auth';
 import { Snackbar } from '@/components/snackbar';
 import { getDictionary } from '@/locales/dictionary';
-import { headers } from 'next/headers';
-
 import { parsedCookies } from '@/utils/handleLanguageChange';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import { headers } from 'next/headers';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import AuthProvider from './_providers/AuthProvider';
 import ProgressBarProvider from './_providers/ProgressBarProvider';
 import { StoreProvider } from './_providers/StoreProvider';
 import TanStackProvider from './_providers/TanStackProvider';
-import { googleProviderOption, STORAGE_KEY } from '@/auth';
-import { GoogleOAuthProvider } from '@react-oauth/google';
 
 export const metadata: Metadata = {
   title: 'Chainmind',
@@ -28,9 +27,10 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const headersList = await headers();
-  const cookies = parsedCookies(headersList.get('cookie') || '');
-  const locale = cookies?.['lang'] || 'en';
-  const accessToken = cookies?.[STORAGE_KEY];
+  const cookieHeader = headersList.get('cookie') || '';
+  const cookies = parsedCookies(cookieHeader);
+  const locale = cookies.lang || 'en';
+  const accessToken = cookies[STORAGE_KEY];
 
   const dict = await getDictionary(locale);
   const userAgent = headersList.get('user-agent');

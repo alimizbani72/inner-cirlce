@@ -1,10 +1,19 @@
+import Cookies from 'js-cookie';
+
 export const handleLanguageChange = (language: string) => {
-  document.cookie = `lang=${language}; path=/; max-age=${60 * 60 * 24 * 365}`;
+  Cookies.set('lang', language, { expires: 365 });
   window.location.reload();
 };
+
 export const parsedCookies = (cookieHeader: string): Record<string, string> =>
-  cookieHeader.split('; ').reduce((acc: any, cookie) => {
-    const [name, ...rest] = cookie.split('=');
-    acc[name] = rest.join('=');
-    return acc;
-  }, {});
+  !cookieHeader
+    ? {}
+    : cookieHeader.split('; ').reduce((acc: Record<string, string>, cookie) => {
+        const [name, ...rest] = cookie.split('=');
+        const value = rest.join('=');
+        // Only add if we have both name and value
+        if (name && value) {
+          acc[name] = value;
+        }
+        return acc;
+      }, {});
