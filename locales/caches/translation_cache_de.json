@@ -560,5 +560,6 @@
   "Description": "Beschreibung",
   "File sources": "Dateiquellen",
   "Privacy Policy": "Datenschutzrichtlinie",
-  " Logout": "Abmelden"
+  " Logout": "Abmelden",
+  "Something went wrong": "Etwas ist schiefgelaufen"
 }

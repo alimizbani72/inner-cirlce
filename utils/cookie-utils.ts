@@ -1,8 +1,8 @@
-import Cookies from "js-cookie";
+import Cookies from 'js-cookie';
 
 class CookieUtils {
   private static readonly SALT =
-    process.env.NEXT_PUBLIC_SALT_KEY || "~c&>&q6?(eR:pLWUmuE}G]~RwtFdgc^T";
+    process.env.NEXT_PUBLIC_SALT_KEY || '~c&>&q6?(eR:pLWUmuE}G]~RwtFdgc^T';
 
   private static encryptToken(token: string): string {
     try {
@@ -14,25 +14,25 @@ class CookieUtils {
 
       return `${encodedToken}.${nonce}.${signature}`;
     } catch (error) {
-      console.error("Encryption failed:", error);
+      console.error('Encryption failed:', error);
       return token;
     }
   }
 
   private static decryptToken(encrypted: string): string | undefined {
     try {
-      const [encodedToken, nonce, signature] = encrypted.split(".");
+      const [encodedToken, nonce, signature] = encrypted.split('.');
       const token = atob(encodedToken);
       const expectedSignature = btoa(token + this.SALT + nonce);
 
       if (signature !== expectedSignature) {
-        console.error("Token signature mismatch");
+        console.error('Token signature mismatch');
         return undefined;
       }
 
       return token;
     } catch (error) {
-      console.error("Decryption failed:", error);
+      console.error('Decryption failed:', error);
       return undefined;
     }
   }
@@ -40,9 +40,9 @@ class CookieUtils {
   static setCookie(name: string, value: string, days: number = 7): void {
     Cookies.set(name, value, {
       expires: days,
-      path: "/",
+      path: '/',
       secure: true,
-      sameSite: "strict",
+      sameSite: 'strict',
     });
   }
 
@@ -58,7 +58,7 @@ class CookieUtils {
     }
 
     // If this is a token cookie, decrypt it
-    if (name === "jwt_access_token") {
+    if (name === 'jwt_access_token') {
       return this.decryptToken(value);
     }
 
@@ -66,7 +66,7 @@ class CookieUtils {
   }
 
   static removeCookie(name: string): void {
-    Cookies.remove(name, { path: "/" });
+    Cookies.remove(name, { path: '/' });
   }
 }
 

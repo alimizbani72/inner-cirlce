@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { AXIOS_INSTANCE } from "@/scripts/fetcher";
-import type { PostAuthLogin200AllOf } from "@/services/minecraft/minecraftAPI.schemas";
-import { AUTH_ROUTES_API } from "./constant";
-import { setAuthCookie } from "./utils";
+import { AXIOS_INSTANCE } from '@/scripts/fetcher';
+import type { PostAuthLogin200AllOf } from '@/services/minecraft/minecraftAPI.schemas';
+import { AUTH_ROUTES_API } from './constant';
+import { setAuthCookie } from './utils';
 
 export type SignInParams = {
   email: string;
@@ -45,7 +45,7 @@ export const signIn = async ({
 
     if (accessToken) {
       setAuthCookie(accessToken);
-      push("/dashboard");
+      push('/dashboard');
     } else if (meta?.has_2fa) {
       callback?.();
     }
@@ -78,7 +78,7 @@ export const signUp = async ({
 
     if (accessToken) {
       setAuthCookie(accessToken);
-      push("/dashboard");
+      push('/dashboard');
     }
   } catch (error) {
     throw error;
@@ -98,7 +98,7 @@ export const signInGoogle = async ({ token }: GoogleParams): Promise<void> => {
 
     const { data: accessToken } = res.data;
     if (!accessToken) {
-      throw new Error("Access token not found in response");
+      throw new Error('Access token not found in response');
     }
 
     setAuthCookie(accessToken);

@@ -560,5 +560,6 @@
   "Description": "คำอธิบาย",
   "File sources": "แหล่งไฟล์",
   "Privacy Policy": "นโยบายความเป็นส่วนตัว",
-  " Logout": "ออกจากระบบ"
+  " Logout": "ออกจากระบบ",
+  "Something went wrong": "เกิดข้อผิดพลาดบางอย่าง"
 }
