@@ -26,7 +26,7 @@ export default function AuthProvider({ children, accessToken }: AuthProviderProp
     }
 
     if (token && authRoutes.includes(pathname)) {
-      redirect('/', RedirectType.replace);
+      redirect('/dashboard', RedirectType.replace);
     }
   }
 
