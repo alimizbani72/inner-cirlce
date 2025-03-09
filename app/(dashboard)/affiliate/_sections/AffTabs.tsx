@@ -8,7 +8,7 @@ import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
 // ----------------------------------------------------------------------
 
-export default function AffTemplate() {
+export default function AffTabs() {
   const pathname = usePathname();
   const router = useAppRouter();
   const { t } = useTranslate();
@@ -52,6 +52,7 @@ export default function AffTemplate() {
     const pathSegment = pathname?.split('/')?.[2] || 'dashboard';
     return pathSegment === '' ? 'dashboard' : pathSegment;
   }, [pathname]);
+
   return (
     <Scrollbar sx={{ maxWidth: '100%' }}>
       <Stack pl={{ md: 4, xs: 3 }} alignItems="flex-start" maxWidth="100vw">

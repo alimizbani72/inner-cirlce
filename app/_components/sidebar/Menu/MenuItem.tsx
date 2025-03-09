@@ -47,6 +47,8 @@ const MenuItem: FC<MenuItemProps> = ({ icon, label, subItems, route, isCollapsed
     return null;
   }
 
+  const isActiveSubItem = !!subItems?.find((s) => isActive(s.path));
+
   return (
     <Box>
       <ListItemButton
@@ -58,11 +60,12 @@ const MenuItem: FC<MenuItemProps> = ({ icon, label, subItems, route, isCollapsed
           border: '1px solid',
           borderColor: 'dark.1',
           ...(isActive(route) && activeStyle),
-          ...(open.value && {
-            backgroundColor: 'dark.1',
-            borderColor: 'dark.3',
-            boxShadow: '0px 4px 8px 0px rgba(0, 0, 0, 0.16)',
-          }),
+          ...(open.value &&
+            isActiveSubItem && {
+              backgroundColor: 'dark.1',
+              borderColor: 'dark.3',
+              boxShadow: '0px 4px 8px 0px rgba(0, 0, 0, 0.16)',
+            }),
         }}
         onClick={
           Array.isArray(subItems)
@@ -80,7 +83,7 @@ const MenuItem: FC<MenuItemProps> = ({ icon, label, subItems, route, isCollapsed
           <Icon
             stroke={isActive(route) ? '' : 'grey.light'}
             name={
-              ((Array.isArray(subItems) ? open.value : isActive(route))
+              ((isActiveSubItem ? open.value : isActive(route))
                 ? `${icon}fillIcon`
                 : `${icon}Icon`) as IconNames
             }
@@ -93,9 +96,7 @@ const MenuItem: FC<MenuItemProps> = ({ icon, label, subItems, route, isCollapsed
             slotProps={{
               primary: {
                 variant: 'p2-regular',
-                color: (Array.isArray(subItems) ? open.value : isActive(route))
-                  ? 'white'
-                  : 'grey.light',
+                color: (isActiveSubItem ? open.value : isActive(route)) ? 'white' : 'grey.light',
               },
             }}
             primary={label}

@@ -64,7 +64,8 @@ const PortfolioSummary = ({
           <Stack direction={{ xs: 'column', md: 'row' }} spacing={1} flexWrap={'wrap'}>
             <Badge
               label="Total invest"
-              value={selectedPortfolio?.total_invested!}
+              value={`${selectedPortfolio?.total_invested!}`}
+              prefixValue="$"
               customColor="white"
               isLoading={isLoading}
             />

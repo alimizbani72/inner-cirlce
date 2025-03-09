@@ -6,8 +6,9 @@ type Props = {
   label: string;
   customColor?: string;
   isLoading: boolean;
+  prefixValue?: string;
 };
-const Badge = ({ label, value, customColor, isLoading }: Props) => {
+const Badge = ({ label, value, customColor, isLoading, prefixValue = '' }: Props) => {
   const numericValue = parseFloat(value as string);
   const color = useMemo(() => {
     if (numericValue === 0) {
@@ -38,7 +39,7 @@ const Badge = ({ label, value, customColor, isLoading }: Props) => {
         {isLoading ? (
           <Box className="loading-skeleton" width={50} height={24} />
         ) : (
-          `${numeral(value).format('0,0.00')}`
+          `${prefixValue}${numeral(value).format('0,0.00')}`
         )}
       </Typography>
     </Stack>

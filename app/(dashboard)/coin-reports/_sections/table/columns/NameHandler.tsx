@@ -25,10 +25,10 @@ const NameHandler = ({ is_favorite, name, logo, symbol, slug }: NameHandlerProps
           visibility: { xs: 'visible', md: isFavorite ? 'visible' : 'hidden' },
           cursor: 'pointer',
           p: 0,
-          '& > svg': {
+          '& > svg ': {
             position: 'absolute',
-            top: 0,
-            left: 0,
+            top: 4,
+            left: 4,
           },
         }}
         disableFocusRipple
@@ -40,7 +40,7 @@ const NameHandler = ({ is_favorite, name, logo, symbol, slug }: NameHandlerProps
         }}
       >
         {slug && (
-          <Icon name={'Star2Icon'} fill={isFavorite ? 'warning.main' : 'grey.dark'} size={45} />
+          <Icon name={'Star2Icon'} fill={isFavorite ? 'warning.main' : 'grey.dark'} size={30} />
         )}
       </IconButton>
 

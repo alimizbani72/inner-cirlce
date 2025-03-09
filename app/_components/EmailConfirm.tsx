@@ -81,7 +81,7 @@ const EmailConfirm: FC = () => {
         });
       } catch {
         setError('verifyCode', {
-          message: 'There was an error processing your request. Please try again.',
+          message: t('emailVerification.error'),
         });
       }
     } else {

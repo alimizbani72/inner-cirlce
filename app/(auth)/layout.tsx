@@ -29,7 +29,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
             justifyContent={'center'}
           >
             <Stack
-              sx={{ width: '100%', height: '100%', py: 5, maxWidth: '456px' }}
+              sx={{ width: '100%', height: '100%', py: 5, maxWidth: '400px' }}
               justifyContent={'space-between'}
               spacing={4}
             >

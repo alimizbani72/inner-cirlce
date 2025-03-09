@@ -1,5 +1,5 @@
+import AffiliateSection from '@dashboard/affiliate/_sections';
 import type { Metadata } from 'next';
-import AffiliateSection from './_sections';
 
 // ----------------------------------------------------------------------
 

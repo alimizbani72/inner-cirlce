@@ -1,4 +1,3 @@
-import Template from '@dashboard/affiliate/_sections/AffTemplate';
 import { Stack } from '@mui/material';
 import type { PropsWithChildren } from 'react';
 
@@ -16,7 +15,6 @@ export default async function AffiliateLayout({ children }: PropsWithChildren) {
         <AffiliateHeader />
       </Stack>
       {/* Tabs */}
-      <Template />
       <KYCWrapper />
       {children}
     </Stack>

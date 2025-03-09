@@ -15,7 +15,7 @@ const CheckoutSection = () => {
   const planType = searchParams.get('plan_type');
 
   return (
-    <Stack direction={{ md: 'row' }} flex={1} minHeight={'100%'} position={'relative'}>
+    <Stack direction={{ md: 'row' }} flex={1} minHeight={'100dvh'} position={'relative'}>
       {/* Receipt */}
       <Stack
         sx={{
