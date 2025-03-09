@@ -12,29 +12,48 @@
 @import "yet-another-react-lightbox/styles.css";
 @import "yet-another-react-lightbox/plugins/captions.css";
 @import "yet-another-react-lightbox/plugins/thumbnails.css";
-
-/** **************************************
- * Plugins
- *************************************** */
-/* scrollbar */
-@import "../components/scrollbar/styles.css";
-
-/** **************************************
- * No Scrollbar
- *************************************** */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-.no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
+@import "simplebar-react/dist/simplebar.min.css";
 
 /** **************************************
  * Baseline
  *************************************** */
+html {
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+body,
+#root,
+#root__layout {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 100%;
+  flex-direction: column;
+}
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: none;
+}
+input[type="number"]::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+input[type="number"]::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -56,17 +75,32 @@ select:-webkit-autofill {
   margin: 0;
 }
 
-span,
-img {
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+*::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
 }
 
-a:hover {
-  text-decoration: none !important;
+*::-webkit-scrollbar-track {
+  background: #090a23;
+  border: 0;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #626583;
+  border-radius: 20px;
+  border: 0;
+  cursor: pointer;
+}
+
+*::-webkit-scrollbar-corner {
+  background: #070720;
+}
+
+.simplebar-scrollbar:before {
+  background-color: var(--palette-text-disabled);
+}
+.simplebar-scrollbar.simplebar-visible:before {
+  opacity: 0.48;
 }
 
 @keyframes spin {
@@ -108,30 +142,6 @@ a:hover {
 }
 .yarl__video_container {
   background: var(--palette-common-black);
-}
-
-@media (min-width: 899px) {
-  /* Adjust the min-width as needed for your desktop breakpoint */
-  *::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
-  }
-
-  *::-webkit-scrollbar-track {
-    background: #090a23;
-    border: 0;
-  }
-
-  *::-webkit-scrollbar-thumb {
-    background-color: #626583;
-    border-radius: 20px;
-    border: 0;
-    cursor: pointer;
-  }
-
-  *::-webkit-scrollbar-corner {
-    background: #070720;
-  }
 }
 
 .loading-skeleton {
