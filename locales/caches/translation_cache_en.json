@@ -531,5 +531,6 @@
   "File sources": "Fuentes de archivo",
   "Privacy Policy": "Política de Privacidade",
   " Logout": "Sair",
-  "Something went wrong": "Algo salió mal"
+  "Something went wrong": "Algo salió mal",
+  "There was an error processing your request. Please try again.": "Hubo un error al procesar su solicitud. Por favor, intente de nuevo."
 }

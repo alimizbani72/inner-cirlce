@@ -561,5 +561,6 @@
   "File sources": "Файлын эх сурвалжууд",
   "Privacy Policy": "Нууцлалын бодлого",
   " Logout": "Гарах",
-  "Something went wrong": "Ямар нэг зүйл буруу боллоо"
+  "Something went wrong": "Ямар нэг зүйл буруу боллоо",
+  "There was an error processing your request. Please try again.": "Таны хүсэлтийг боловсруулахад алдаа гарлаа. Дахин оролдоно уу."
 }

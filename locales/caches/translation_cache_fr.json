@@ -561,5 +561,6 @@
   "File sources": "Sources de fichiers",
   "Privacy Policy": "Politique de confidentialité",
   " Logout": "Déconnexion",
-  "Something went wrong": "Quelque chose s'est mal passé"
+  "Something went wrong": "Quelque chose s'est mal passé",
+  "There was an error processing your request. Please try again.": "Une erreur s'est produite lors du traitement de votre demande. Veuillez réessayer."
 }

@@ -561,5 +561,6 @@
   "File sources": "Filkilder",
   "Privacy Policy": "Política de Privacidade",
   " Logout": "Sair",
-  "Something went wrong": "Noe gikk galt"
+  "Something went wrong": "Noe gikk galt",
+  "There was an error processing your request. Please try again.": "Det oppstod en feil under behandlingen av forespørselen din. Vennligst prøv igjen."
 }

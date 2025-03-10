@@ -46,8 +46,9 @@ export default async function RootLayout({
                   <ThemeProvider>
                     <MotionLazy>
                       <Snackbar />
-                      <ProgressBarProvider />
-                      <NuqsAdapter>{children}</NuqsAdapter>
+                      <ProgressBarProvider>
+                        <NuqsAdapter>{children}</NuqsAdapter>
+                      </ProgressBarProvider>
                     </MotionLazy>
                   </ThemeProvider>
                 </LocalizationProvider>

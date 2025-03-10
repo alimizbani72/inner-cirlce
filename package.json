@@ -17,12 +17,12 @@
     "re-start": "rm -rf node_modules .next out dist build && bun install && bun run dev",
     "re-build": "rm -rf node_modules .next out dist build && bun install && bun run build",
     "codegen": "orval --config orval.config.ts",
-    "icongen": "ts-node scripts/icongen.ts && bun forlint",
+    "icongen": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' scripts/icongen.ts && bun forlint",
     "prepare": "husky || true",
-    "translate": "ts-node scripts/translate.ts",
-    "build:translations": "ts-node scripts/build-translations.ts",
+    "translate": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' scripts/translate.ts",
+    "build:translations": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' scripts/build-translations.ts",
     "dictgen": "bun run translate && bun run build:translations",
-    "ignore-type": "ts-node scripts/ignore-ts-errors.ts "
+    "ignore-type": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' scripts/ignore-ts-errors.ts"
   },
   "dependencies": {
     "@fontsource/montserrat": "^5.1.1",

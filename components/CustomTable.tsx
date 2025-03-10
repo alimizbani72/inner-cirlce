@@ -11,9 +11,10 @@ import TableRow from '@mui/material/TableRow';
 import type React from 'react';
 import type { ReactNode } from 'react';
 import { Fragment, useState } from 'react';
+import Empty from './Empty';
 import Loading from './Loading';
 import Icon from './icon';
-import Empty from './Empty';
+import { Scrollbar } from './scrollbar';
 
 const levelColorLine = {
   0: '#090A23',
@@ -198,111 +199,134 @@ const CustomTable = ({
           )}
         </>
       )}
-      <TableContainer
-        component={Paper}
+      <Scrollbar
         sx={{
-          bgcolor: 'dark.2',
-          borderRadius: 0,
-          maxHeight: containerHeight || {
+          height: containerHeight || {
             xs: `calc(100dvh - ${totalCount > 10 ? 258 : 200}px)`,
             md: `calc(100dvh - ${totalCount > 10 ? 202 : 147}px)`,
           },
-          '& .MuiTableCell-head': {
-            borderBottom: 'none',
-            bgcolor: 'dark.3',
-            typography: 'caption-medium',
-            textTransform: 'uppercase',
-            color: 'grey.light',
-            p: 0,
-            py: 1,
-            '&:first-of-type': { pl: 3 },
-            '&:last-of-type': { pr: 3 },
-            '&:not(:last-of-type)': { pr: '14px' },
+          width: '100%',
+          overflow: 'auto',
+        }}
+        slotProps={{
+          contentWrapper: {
+            style: {
+              width: '100%',
+              overflowX: 'auto',
+              overflowY: 'auto',
+            },
           },
-          '.MuiTableCell-root:not(.MuiTableCell-head)': {
-            minWidth: minWidthCell ?? 150,
-            typography: 'p2-medium',
-            color: 'white',
-            textAlign: 'start',
-            p: 0,
-            py: 2,
-            borderBottomStyle: 'solid',
-            borderColor: 'dark.3',
-            borderWidth: '1.5px',
-            '&:first-of-type': { pl: 3 },
-            '&:last-of-type': { pr: 3 },
-            '&:not(:last-of-type)': { pr: '14px' },
-          },
-          '.MuiTableRow-head': { height: 40 },
-          '.MuiTableRow-root:not(.MuiTableRow-head)': { height: 56 },
         }}
       >
-        <Table
-          aria-label="customized table"
+        <TableContainer
+          component={Paper}
           sx={{
-            height: '100%',
+            bgcolor: 'dark.2',
+            borderRadius: 0,
+            width: 'auto',
+            overflow: 'visible',
+            '& .MuiTableCell-head': {
+              position: 'sticky',
+              top: 0,
+              zIndex: 2,
+              borderBottom: 'none',
+              bgcolor: 'dark.3',
+              typography: 'caption-medium',
+              textTransform: 'uppercase',
+              color: 'grey.light',
+              p: 0,
+              py: 1,
+              '&:first-of-type': { paddingLeft: 3 },
+              '&:last-of-type': { paddingRight: 3 },
+              '&:not(:last-of-type)': { paddingRight: '14px' },
+            },
+            '.MuiTableCell-root:not(.MuiTableCell-head)': {
+              minWidth: minWidthCell ?? 150,
+              typography: 'p2-medium',
+              color: 'white',
+              textAlign: 'start',
+              p: 0,
+              py: 2,
+              borderBottomStyle: 'solid',
+              borderColor: 'dark.3',
+              borderWidth: '1.5px',
+              '&:first-of-type': { paddingLeft: 3 },
+              '&:last-of-type': { paddingRight: 3 },
+              '&:not(:last-of-type)': { paddingRight: '14px' },
+            },
+            '.MuiTableRow-head': { height: '40px' },
+            '.MuiTableRow-root:not(.MuiTableRow-head)': { height: '56px' },
           }}
-          stickyHeader
         >
-          <TableHead>
-            <TableRow>
-              {columns.map((head) => (
-                <TableCell align="left" key={head.title}>
-                  {head?.sortable && head?.fieldName ? (
-                    <Stack
-                      direction="row"
-                      alignItems="center"
-                      onClick={() => handleSortChange(head?.fieldName || '')}
-                      sx={(theme) => ({
-                        cursor: 'pointer',
-                        '& svg  path': {
-                          '&:first-child': {
-                            stroke: sort?.[head?.fieldName || '']
-                              ? theme.vars.palette.common.white
-                              : theme.vars.palette.grey.light,
-                          },
-                          '&:last-child': {
-                            stroke:
-                              sort?.[head?.fieldName || ''] === false
+          <Table
+            aria-label="customized table"
+            sx={{
+              height: '100%',
+              width: '100%',
+              tableLayout: 'auto',
+            }}
+            stickyHeader
+          >
+            <TableHead>
+              <TableRow>
+                {columns.map((head) => (
+                  <TableCell align="left" key={head.title}>
+                    {head?.sortable && head?.fieldName ? (
+                      <Stack
+                        direction="row"
+                        alignItems="center"
+                        onClick={() => handleSortChange(head?.fieldName || '')}
+                        sx={(theme) => ({
+                          cursor: 'pointer',
+                          '& svg  path': {
+                            '&:first-child': {
+                              stroke: sort?.[head?.fieldName || '']
                                 ? theme.vars.palette.common.white
                                 : theme.vars.palette.grey.light,
+                            },
+                            '&:last-child': {
+                              stroke:
+                                sort?.[head?.fieldName || ''] === false
+                                  ? theme.vars.palette.common.white
+                                  : theme.vars.palette.grey.light,
+                            },
                           },
-                        },
-                      })}
-                    >
-                      {head.title} {head?.sortable && <Icon name="ArrowsortIcon" />}
-                    </Stack>
-                  ) : (
-                    head.title
-                  )}
-                </TableCell>
-              ))}
-              {data.some((item) => item.children && item.children.length > 0) && <TableCell />}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {data?.length ? (
-              renderRows(data)
-            ) : (
-              <TableRow>
-                <TableCell colSpan={columns?.length}>
-                  <Stack
-                    justifyContent="center"
-                    alignItems="center"
-                    width={{ xs: 'calc(100vw - 52px)!important', md: '100% !important' }}
-                  >
-                    {isPending ? (
-                      <Loading />
+                        })}
+                      >
+                        {head.title} {head?.sortable && <Icon name="ArrowsortIcon" />}
+                      </Stack>
                     ) : (
-                      <Empty title={emptyTitle} subtitle={emptySubtitle} />
+                      head.title
                     )}
-                  </Stack>
-                </TableCell>
+                  </TableCell>
+                ))}
+                {data.some((item) => item.children && item.children.length > 0) && <TableCell />}
               </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {data?.length ? (
+                renderRows(data)
+              ) : (
+                <TableRow>
+                  <TableCell colSpan={columns?.length}>
+                    <Stack
+                      justifyContent="center"
+                      alignItems="center"
+                      width={{ xs: 'calc(100vw - 52px)!important', md: '100% !important' }}
+                    >
+                      {isPending ? (
+                        <Loading />
+                      ) : (
+                        <Empty title={emptyTitle} subtitle={emptySubtitle} />
+                      )}
+                    </Stack>
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Scrollbar>
 
       {totalCount > 10 && (
         <>

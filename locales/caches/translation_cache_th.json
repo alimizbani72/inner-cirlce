@@ -561,5 +561,6 @@
   "File sources": "แหล่งไฟล์",
   "Privacy Policy": "นโยบายความเป็นส่วนตัว",
   " Logout": "ออกจากระบบ",
-  "Something went wrong": "เกิดข้อผิดพลาดบางอย่าง"
+  "Something went wrong": "เกิดข้อผิดพลาดบางอย่าง",
+  "There was an error processing your request. Please try again.": "เกิดข้อผิดพลาดในการประมวลผลคำขอของคุณ กรุณาลองอีกครั้ง"
 }

@@ -9,7 +9,7 @@
       "@app-components/*": ["app/_components/*"],
       "@/*": ["*"]
     },
-    "module": "CommonJS",
+    "module": "ESNext",
     "target": "ES2019",
     "lib": ["dom", "dom.iterable", "esnext", "WebWorker"],
     "strict": true,
@@ -24,11 +24,12 @@
     "isolatedModules": true,
     "strictNullChecks": true,
     "resolveJsonModule": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "noFallthroughCasesInSwitch": true,
     "useUnknownInCatchVariables": false,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
+    "allowImportingTsExtensions": true,
     "plugins": [
       {
         "name": "next"
@@ -36,5 +37,5 @@
     ]
   },
   "include": ["svgr.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", "services/cms/chainmindCms.schemas.ts"]
+  "exclude": ["node_modules", "services/cms/chainmindCms.schemas.ts", "scripts/**/*"]
 }

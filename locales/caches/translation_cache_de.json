@@ -561,5 +561,6 @@
   "File sources": "Dateiquellen",
   "Privacy Policy": "Datenschutzrichtlinie",
   " Logout": "Abmelden",
-  "Something went wrong": "Etwas ist schiefgelaufen"
+  "Something went wrong": "Etwas ist schiefgelaufen",
+  "There was an error processing your request. Please try again.": "Es gab einen Fehler bei der Verarbeitung Ihrer Anfrage. Bitte versuchen Sie es erneut."
 }

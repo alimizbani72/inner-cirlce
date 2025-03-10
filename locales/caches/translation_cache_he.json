@@ -561,5 +561,6 @@
   "File sources": "מקורות קבצים",
   "Privacy Policy": "מדיניות הפרטיות",
   " Logout": "התנתקות",
-  "Something went wrong": "משהו השתבש"
+  "Something went wrong": "משהו השתבש",
+  "There was an error processing your request. Please try again.": "אירעה שגיאה בעיבוד הבקשה שלך. אנא נסה שנית."
 }
