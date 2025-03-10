@@ -1,32 +1,19 @@
+import Icon from '@/components/icon';
 import { useTranslate } from '@/locales';
+import type { PortfolioHttpPortfolioResponse } from '@/services/minecraft/minecraftAPI.schemas';
 import { Stack, Typography } from '@mui/material';
+import usePortfolioData from '../hook/usePortfolioData';
 import Badge from './Badge';
 import MorePortfolioAction from './MorePortfolioAction';
 import TransactionActionButton from './TransactionActionButton';
-import Icon from '@/components/icon';
-import type {
-  PortfolioHttpPortfolioDetailResponse,
-  PortfolioHttpPortfolioResponse,
-} from '@/services/minecraft/minecraftAPI.schemas';
 
-type SelectedPortfolio = Pick<
-  PortfolioHttpPortfolioDetailResponse,
-  'total_unrealized' | 'total_realized' | 'total_invested'
->;
 type PortfolioSummaryProps = {
-  selectedPortfolio: SelectedPortfolio | undefined;
   portfolios: PortfolioHttpPortfolioResponse[];
-  portfolioId: string | string[] | null;
-  isLoading: boolean;
 };
 
-const PortfolioSummary = ({
-  selectedPortfolio,
-  portfolios,
-  portfolioId,
-  isLoading,
-}: PortfolioSummaryProps) => {
+const PortfolioSummary = ({ portfolios }: PortfolioSummaryProps) => {
   const { t } = useTranslate();
+  const { selectedPortfolio, portfolioId, isLoading } = usePortfolioData();
   const currentPortfolio = portfolios.find((portfolio) => portfolio.id === portfolioId);
   const isOverviewTab = !portfolioId;
 
@@ -64,20 +51,20 @@ const PortfolioSummary = ({
           <Stack direction={{ xs: 'column', md: 'row' }} spacing={1} flexWrap={'wrap'}>
             <Badge
               label="Total invest"
-              value={`${selectedPortfolio?.total_invested!}`}
+              value={`${selectedPortfolio?.data?.total_invested!}`}
               prefixValue="$"
               customColor="white"
               isLoading={isLoading}
             />
             <Badge
               label="Realized PNL"
-              value={selectedPortfolio?.total_realized!}
+              value={selectedPortfolio?.data?.total_realized!}
               prefixValue="$"
               isLoading={isLoading}
             />
             <Badge
               label="UNRealized PNL"
-              value={selectedPortfolio?.total_unrealized!}
+              value={selectedPortfolio?.data?.total_unrealized!}
               prefixValue="$"
               isLoading={isLoading}
             />

@@ -5,7 +5,6 @@
       "name": "chainmind-v2-front",
       "dependencies": {
         "@bprogress/next": "^3.2.6",
-        "@fontsource/montserrat": "^5.1.1",
         "@hookform/resolvers": "^3.10.0",
         "@intercom/messenger-js-sdk": "^0.0.14",
         "@leenguyen/react-flip-clock-countdown": "^1.6.1",
@@ -278,8 +277,6 @@
     "@floating-ui/react-dom": ["@floating-ui/react-dom@2.1.2", "", { "dependencies": { "@floating-ui/dom": "^1.0.0" }, "peerDependencies": { "react": ">=16.8.0", "react-dom": ">=16.8.0" } }, "sha512-06okr5cgPzMNBy+Ycse2A6udMi4bqwW/zgBF/rwjcNqWkyr82Mcg8b0vjX8OJpZFy/FKjJmw6wV7t44kK6kW7A=="],
 
     "@floating-ui/utils": ["@floating-ui/utils@0.2.9", "", {}, "sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg=="],
-
-    "@fontsource/montserrat": ["@fontsource/montserrat@5.2.5", "", {}, "sha512-/OA+bdg1yqUArDUnEeCqDwgTDiIpvED56TxYskje8UKpsvjl/0A9eNod7IcdHz6/Osi70vo7briRO3la8/u+5Q=="],
 
     "@gerrit0/mini-shiki": ["@gerrit0/mini-shiki@1.27.2", "", { "dependencies": { "@shikijs/engine-oniguruma": "^1.27.2", "@shikijs/types": "^1.27.2", "@shikijs/vscode-textmate": "^10.0.1" } }, "sha512-GeWyHz8ao2gBiUW4OJnQDxXQnFgZQwwQk05t/CVVgNBN7/rK8XZ7xY6YhLVv9tH3VppWWmr9DCl3MwemB/i+Og=="],
 

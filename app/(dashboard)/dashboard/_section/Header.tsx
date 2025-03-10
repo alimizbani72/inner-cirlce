@@ -6,7 +6,7 @@ import Link from '@/components/link';
 import RiveComp from '@/components/rive-loader';
 import { mapPathToName } from '@/configs/sidebar';
 import { useIsMobile } from '@/hooks/use-responsive';
-import { isMobileMenuOpened, mobileMenuToggle } from '@/lib/features/menu/menuSlice';
+import { mobileMenuToggle } from '@/lib/features/menu/menuSlice';
 import { pageHasBackButton, pageTitle } from '@/lib/features/pageTitle/pageSlice';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { useTranslate } from '@/locales';
@@ -14,12 +14,11 @@ import { useGetAffiliateMe } from '@/services/minecraft/affiliate/affiliate';
 import { normalize } from '@/utils/path';
 
 import { toNumber } from '@/utils/toNumber';
-import MobileSidebar from '@app-components/sidebar/Mobile';
-import { Box, Button, Drawer, IconButton, Stack, Typography } from '@mui/material';
+import { Box, Button, IconButton, Stack, Typography } from '@mui/material';
 import { usePathname, useRouter } from 'next/navigation';
-import { type FC, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
-const DashboardHeader: FC = () => {
+const DashboardHeader = () => {
   const { t } = useTranslate();
   const isMobile = useIsMobile();
   const pathname = usePathname();
@@ -28,7 +27,6 @@ const DashboardHeader: FC = () => {
 
   const [isClient, setIsClient] = useState(false);
   const pageTitleSelector = useAppSelector(pageTitle);
-  const isMenuOpened = useAppSelector(isMobileMenuOpened);
   const hasBackButton = useAppSelector(pageHasBackButton);
   const { back } = useRouter();
 
@@ -101,15 +99,6 @@ const DashboardHeader: FC = () => {
           {isClient && <Typography variant={'h4-medium'}>{name}</Typography>}
         </Stack>
       </Stack>
-
-      {/* Mobile menu drawer */}
-      <Drawer
-        open={isMenuOpened}
-        variant="persistent"
-        PaperProps={{ sx: { '&.MuiDrawer-paper': { bgcolor: 'dark.1' } } }}
-      >
-        <MobileSidebar />
-      </Drawer>
     </>
   ) : (
     <Stack

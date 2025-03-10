@@ -1,22 +1,25 @@
 'use client';
+import Loading from '@/components/Loading';
+import { Scrollbar } from '@/components/scrollbar';
+import { useIsMobile } from '@/hooks/use-responsive';
+import { isSidebarCollapsed } from '@/lib/features/menu/menuSlice';
+import { useAppSelector } from '@/lib/hooks';
+import { useGetPortfolios } from '@/services/minecraft/portfolio/portfolio';
 import { Box, Divider, Stack } from '@mui/material';
-import Tabs from './created/Tabs';
+import { useParams } from 'next/navigation';
+import AddPortfolioSection from './add';
 import PlusTab from './created/PlusTab';
 import PortfolioSummary from './created/PortfolioSummary';
-import AddPortfolioSection from './add';
-import usePortfolioData from './hook/usePortfolioData';
-import { useIsMobile } from '@/hooks/use-responsive';
-import { useAppSelector } from '@/lib/hooks';
-import { isSidebarCollapsed } from '@/lib/features/menu/menuSlice';
-import { Scrollbar } from '@/components/scrollbar';
-import { useGetPortfolios } from '@/services/minecraft/portfolio/portfolio';
-import Loading from '@/components/Loading';
+import Tabs from './created/Tabs';
+import { getActivePortfolioId } from './utils';
 
 const PortfolioSection = () => {
+  const { portfolioId } = useParams();
+  const activePortfolioId = getActivePortfolioId(portfolioId);
   const { data: portfolios, isFetching } = useGetPortfolios();
   const isMobile = useIsMobile();
   const isCollapsed = useAppSelector(isSidebarCollapsed);
-  const { selectedPortfolio, portfolioId, isLoading } = usePortfolioData();
+
   if (isFetching) {
     return (
       <Stack width="100%" height="calc(100vh - 130px)" alignItems="center">
@@ -46,7 +49,7 @@ const PortfolioSection = () => {
             <Box sx={{ display: 'flex' }}>
               <Tabs
                 portfolios={portfolios.data}
-                portfolioId={portfolioId}
+                portfolioId={activePortfolioId}
                 overviewtotal_actual_value={portfolios?.meta?.total_actual_value!}
               />
             </Box>
@@ -54,12 +57,7 @@ const PortfolioSection = () => {
         </Stack>
       </Stack>
       <Divider />
-      <PortfolioSummary
-        portfolios={portfolios.data}
-        selectedPortfolio={selectedPortfolio?.data}
-        portfolioId={portfolioId}
-        isLoading={isLoading}
-      />
+      <PortfolioSummary portfolios={portfolios.data} />
     </Stack>
   );
 };

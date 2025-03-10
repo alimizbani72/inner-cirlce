@@ -1,6 +1,4 @@
 'use client';
-import { isSidebarCollapsed } from '@/lib/features/menu/menuSlice';
-import { useAppSelector } from '@/lib/hooks';
 import { useTranslate } from '@/locales';
 import { useAppRouter } from '@/routes/hooks';
 import Toggle from '@app-components/Toggle';
@@ -9,7 +7,6 @@ import { usePathname } from 'next/navigation';
 import { type PropsWithChildren, useMemo } from 'react';
 
 const CoinReportToggle = ({ children }: PropsWithChildren) => {
-  const isCollapsed = useAppSelector(isSidebarCollapsed);
   const { push } = useAppRouter();
   const { t } = useTranslate();
   const pathname = usePathname();
@@ -32,7 +29,8 @@ const CoinReportToggle = ({ children }: PropsWithChildren) => {
     <Stack
       spacing={3}
       px={{ md: 4 }}
-      width={{ md: `calc(100vw - ${isCollapsed ? 105 : 248}px)`, xs: '100vw' }}
+      sx={{ width: '100%' }}
+      // width={{ md: `calc(100vw - ${isCollapsed ? 105 : 248}px)`, xs: '100vw' }}
     >
       <Box ml={{ xs: 3, md: 'unset' }}>
         <Toggle

@@ -4,38 +4,22 @@ import RiveComp from '@/components/rive-loader';
 import { Scrollbar } from '@/components/scrollbar';
 import { plans } from '@/configs/plans';
 import { useIsMobile } from '@/hooks/use-responsive';
-import { isSidebarCollapsed } from '@/lib/features/menu/menuSlice';
-import { useAppSelector } from '@/lib/hooks';
 import { useGetAffiliateChildren } from '@/services/minecraft/affiliate/affiliate';
 import { toTitleCase } from '@/utils/change-case';
 import { orderArrayPlan } from '@/utils/order-plans';
-import ContentStack from '@app-components/ContentStack';
 import { Box, Stack, Typography } from '@mui/material';
 
 const Plans = () => {
-  const isCollapsed = useAppSelector(isSidebarCollapsed);
   const isMobile = useIsMobile();
   const { data: children, isLoading } = useGetAffiliateChildren();
-  if (isLoading) {
-    return (
-      <ContentStack
-        height={{ md: '212px', xs: 'unset' }}
-        minHeight={{ md: 'unset', xs: '212px' }}
-        className={'loading-skeleton'}
-        width={{ md: '65%', xs: '100%' }}
-      />
-    );
-  }
-
-  return children?.data?.distribution_of_plans?.length ? (
+  // TODO : ADD border radius like design and check mobile version UI
+  return (
     <Scrollbar>
-      <ContentStack
-        p={0}
+      <Stack
+        className={isLoading ? 'loading-skeleton' : ''}
         direction={'row'}
         height={{ md: '212px', xs: 'unset' }}
         flexWrap={{ md: 'unset', xs: 'wrap' }}
-        overflow={'hidden'}
-        width={{ md: `calc(100vw - ${isCollapsed ? 167 : 105}px)` }}
         sx={{
           ...(isMobile && {
             '& > div:nth-child(3n + 3),& > div:nth-child(2)': {
@@ -53,7 +37,7 @@ const Plans = () => {
             alignItems={'center'}
             justifyContent={'center'}
             bgcolor={{ sm: !(index % 2) ? 'dark.3' : undefined }}
-            minWidth={{ xs: '50%', sm: 'unset' }}
+            sx={{ minWidth: '130px' }}
           >
             {(plans as any)[item.plan_type!]?.rive && (
               <Box sx={{ aspectRatio: 1 }}>
@@ -68,9 +52,9 @@ const Plans = () => {
             </Typography>
           </Stack>
         ))}
-      </ContentStack>
+      </Stack>
     </Scrollbar>
-  ) : null;
+  );
 };
 
 export default Plans;

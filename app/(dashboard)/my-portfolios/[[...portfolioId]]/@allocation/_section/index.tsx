@@ -6,7 +6,7 @@ import { isSidebarCollapsed } from '@/lib/features/menu/menuSlice';
 import { useAppSelector } from '@/lib/hooks';
 import { useTranslate } from '@/locales';
 import { useGetPortfolios } from '@/services/minecraft/portfolio/portfolio';
-import { Stack, styled, Typography } from '@mui/material';
+import { Stack, Typography, styled } from '@mui/material';
 import { useState } from 'react';
 import usePortfolioData from '../../_section/hook/usePortfolioData';
 import { parseToNumber } from '../../_section/utils';

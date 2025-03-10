@@ -1,24 +1,22 @@
 'use client';
 
-import type React from 'react';
-import { type ChangeEvent, useMemo, useState, type FC, useCallback } from 'react';
-import { Box, Button, Stack, Typography } from '@mui/material';
 import CustomTable from '@/components/CustomTable';
-import { formatCurrency, toNumber } from '@/utils/toNumber';
-import { fDate } from '@/utils/format-time';
-import { toTitleCase } from '@/utils/change-case';
-import { useTranslate } from '@/locales';
-import { useIsMobile } from '@/hooks/use-responsive';
-import useToggleState from '@/hooks/use-toggle-state';
-import { DatePicker } from '@mui/x-date-pickers';
-import DownLoadCommissionModal from './DownLoadCommissionModal';
-import { useGetAffiliateCommissionList } from '@/services/minecraft/affiliate/affiliate';
-import Icon from '@/components/icon';
 import CustomPopover from '@/components/custom-popover/custom-popover';
 import usePopover from '@/components/custom-popover/use-popover';
-import { isSidebarCollapsed } from '@/lib/features/menu/menuSlice';
-import { useAppSelector } from '@/lib/hooks';
+import Icon from '@/components/icon';
+import { useIsMobile } from '@/hooks/use-responsive';
+import useToggleState from '@/hooks/use-toggle-state';
+import { useTranslate } from '@/locales';
+import { useGetAffiliateCommissionList } from '@/services/minecraft/affiliate/affiliate';
 import type { PayoutHttpPayoutCommissionResponse } from '@/services/minecraft/minecraftAPI.schemas';
+import { toTitleCase } from '@/utils/change-case';
+import { fDate } from '@/utils/format-time';
+import { formatCurrency, toNumber } from '@/utils/toNumber';
+import { Box, Button, Stack, Typography } from '@mui/material';
+import { DatePicker } from '@mui/x-date-pickers';
+import type React from 'react';
+import { type ChangeEvent, type FC, useCallback, useMemo, useState } from 'react';
+import DownLoadCommissionModal from './DownLoadCommissionModal';
 const datePickerStyle = {
   '.MuiIconButton-root': {
     color: 'white',
@@ -56,7 +54,6 @@ const slotProps = {
 const AffCommissionsTabTable: FC = () => {
   const { t } = useTranslate();
   const isMobile = useIsMobile();
-  const isCollapsed = useAppSelector(isSidebarCollapsed);
   const [open, toggle] = useToggleState();
   const columns = useMemo(
     () => [
@@ -123,9 +120,11 @@ const AffCommissionsTabTable: FC = () => {
     <Stack px={{ md: 4, xs: 0 }} pt={3}>
       <Stack
         alignItems="flex-start"
-        maxWidth={{ md: `calc(100vw - ${isCollapsed ? '168px' : '311px'})`, xs: '100vw' }}
+        sx={{ width: '100%' }}
+        // maxWidth={{ md: `calc(100vw - ${isCollapsed ? '168px' : '311px'})`, xs: '100vw' }}
       >
         <CustomTable
+          containerHeight={'100%'}
           page={filterOpts.page}
           isPending={isLoading}
           handleChangePage={handleChangePage}

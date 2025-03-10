@@ -1,11 +1,12 @@
 import TwoFASubmitter from '@app-components/TwoFASubmitter';
 import DesktopSidebar from '@app-components/sidebar/Desktop';
-import { Stack } from '@mui/material';
+import MobileDrawer from '@app-components/sidebar/MobileDrawer';
+import { Box, Stack } from '@mui/material';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import PaymentNotice from './_section/PaymentNotice';
 import DashboardHeader from './dashboard/_section/Header';
-import LayoutWrapper from '@dashboard-section/ScrollbarLayoutWraper';
+
 // ----------------------------------------------------------------------
 
 export const metadata: Metadata = {
@@ -22,25 +23,40 @@ export default function DashboardLayout({ children, modal }: LayoutProps) {
     <>
       {modal}
       <TwoFASubmitter />
-      <Stack direction={'row'} component="main" height="100dvh">
-        <DesktopSidebar />
+      <Box sx={{ display: 'flex', height: '100dvh' }}>
+        {/* Desktop sidebar - only visible on md screens and above */}
+        <Box
+          component="aside"
+          sx={{
+            width: { md: 'auto' },
+            flexShrink: 0,
+            display: { xs: 'none', md: 'block' },
+          }}
+        >
+          <DesktopSidebar />
+        </Box>
 
-        <LayoutWrapper>
+        <MobileDrawer />
+
+        {/* Main content area */}
+        <Stack
+          component="main"
+          sx={{
+            flexGrow: 1,
+            width: '100%',
+            overflow: 'hidden',
+          }}
+        >
+          {/* Header with menu button */}
           <DashboardHeader />
-          {/* Main content */}
-          <Stack
-            className="no-scrollbar"
-            sx={{
-              overflow: 'auto',
-            }}
-          >
-            <>
-              <PaymentNotice />
-              {children}
-            </>
-          </Stack>
-        </LayoutWrapper>
-      </Stack>
+
+          {/* Content area with scrolling */}
+          <Box sx={{ flexGrow: 1, overflow: 'auto' }}>
+            <PaymentNotice />
+            {children}
+          </Box>
+        </Stack>
+      </Box>
     </>
   );
 }
