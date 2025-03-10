@@ -264,6 +264,7 @@ const CustomTable = ({
               height: '100%',
               width: '100%',
               tableLayout: 'auto',
+              borderCollapse: 'collapse',
             }}
             stickyHeader
           >

@@ -1,12 +1,9 @@
 import type { TypographyOptions } from '@mui/material/styles/createTypography';
 
-import { pxToRem, setFont } from '../styles/utils';
+import { pxToRem } from '../styles/utils';
 import { toNumber } from '@/utils/toNumber';
 import type { CSSProperties } from 'react';
-
-const defaultFont = 'Montserrat';
-
-export const primaryFont = setFont(defaultFont);
+import localFont from 'next/font/local';
 
 // ----------------------------------------------------------------------
 
@@ -182,8 +179,29 @@ const fontVariant = (name: string, fontSize: number, lineHeight: number): Record
 
 // ----------------------------------------------------------------------
 
+export const primaryFont = localFont({
+  src: [
+    {
+      path: '../../public/assets/fonts/montserrat/Montserrat-Regular.ttf',
+      weight: '400',
+    },
+    {
+      path: '../../public/assets/fonts/montserrat/Montserrat-Medium.ttf',
+      weight: '500',
+    },
+    {
+      path: '../../public/assets/fonts/montserrat/Montserrat-SemiBold.ttf',
+      weight: '600',
+    },
+    {
+      path: '../../public/assets/fonts/montserrat/Montserrat-Bold.ttf',
+      weight: '700',
+    },
+  ],
+});
+
 export const typography: TypographyOptions = {
-  fontFamily: primaryFont,
+  fontFamily: primaryFont?.style?.fontFamily,
   fontWeightRegular: 400,
   fontWeightMedium: 500,
   fontWeightSemiBold: 600,

@@ -42,7 +42,7 @@ const AffiliateTree: FC<AffiliateTreeProps> = ({ data }) => {
   }, [data]);
 
   return (
-    <Box sx={{ width: '100%', height: '600px' }}>
+    <Box sx={{ width: '100%', height: '600px', '& .controls > button': { color: 'common.black' } }}>
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -54,7 +54,7 @@ const AffiliateTree: FC<AffiliateTreeProps> = ({ data }) => {
         connectionLineType={ConnectionLineType.SmoothStep}
         snapToGrid
       >
-        <Controls />
+        <Controls className="controls" />
         <Background gap={80} size={0.1} variant={BackgroundVariant.Cross} />
       </ReactFlow>
     </Box>

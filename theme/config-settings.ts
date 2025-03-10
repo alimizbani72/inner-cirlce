@@ -12,5 +12,5 @@ export type SettingsState = {
 export const defaultSettings: SettingsState = {
   colorScheme: 'dark',
   direction: 'ltr',
-  fontFamily: primaryFont,
+  fontFamily: primaryFont.style.fontFamily,
 } as const;

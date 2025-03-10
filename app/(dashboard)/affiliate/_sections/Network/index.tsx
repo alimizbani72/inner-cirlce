@@ -13,20 +13,20 @@ const AffNetworkTab: FC = () => {
   const buttons = useMemo(
     () => [
       { label: t('affNetworkTab.table'), value: 1 },
-      // { label: t("affNetworkTab.chart"), value: 2 },
+      { label: t('affNetworkTab.chart'), value: 2 },
       // {
       //   label: (
       //     <Stack direction="row" gap={1} alignItems="center">
-      //       {t("affNetworkTab.chart")}
+      //       {t('affNetworkTab.chart')}
       //       <Stack
-      //         alignItems={"center"}
-      //         justifyContent={"center"}
-      //         sx={{ borderRadius: 1.5, backgroundColor: "rgba(98, 101, 131, 0.12)" }}
+      //         alignItems={'center'}
+      //         justifyContent={'center'}
+      //         sx={{ borderRadius: 1.5, backgroundColor: 'rgba(98, 101, 131, 0.12)' }}
       //         px={1}
       //         height={24}
       //       >
-      //         <Typography variant="caption-semi-bold" color={"pink.light"}>
-      //           {t("affNetworkTab.comingSoon")}
+      //         <Typography variant="caption-semi-bold" color={'pink.light'}>
+      //           {t('affNetworkTab.comingSoon')}
       //         </Typography>
       //       </Stack>
       //     </Stack>

@@ -13,7 +13,8 @@ const FeeTooltip = () => {
         title={t('portfolioTransaction.topFeeHelpText')}
         sx={{
           bgcolor: 'dark.3',
-          px: 1.2,
+          px: 1.25,
+          maxWidth: 24,
           borderRadius: '50%',
           color: 'white',
         }}

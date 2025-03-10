@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import PaymentNotice from './_section/PaymentNotice';
 import DashboardHeader from './dashboard/_section/Header';
+import LayoutWrapper from '@dashboard-section/ScrollbarLayoutWraper';
 // ----------------------------------------------------------------------
 
 export const metadata: Metadata = {
@@ -21,19 +22,24 @@ export default function DashboardLayout({ children, modal }: LayoutProps) {
     <>
       {modal}
       <TwoFASubmitter />
-      <Stack direction={'row'} component="main">
+      <Stack direction={'row'} component="main" height="100dvh">
         <DesktopSidebar />
 
-        <Stack sx={{ flex: 1 }}>
+        <LayoutWrapper>
           <DashboardHeader />
           {/* Main content */}
-          <Stack>
+          <Stack
+            className="no-scrollbar"
+            sx={{
+              overflow: 'auto',
+            }}
+          >
             <>
               <PaymentNotice />
               {children}
             </>
           </Stack>
-        </Stack>
+        </LayoutWrapper>
       </Stack>
     </>
   );

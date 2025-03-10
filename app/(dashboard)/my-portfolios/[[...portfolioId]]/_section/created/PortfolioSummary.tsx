@@ -72,11 +72,13 @@ const PortfolioSummary = ({
             <Badge
               label="Realized PNL"
               value={selectedPortfolio?.total_realized!}
+              prefixValue="$"
               isLoading={isLoading}
             />
             <Badge
               label="UNRealized PNL"
               value={selectedPortfolio?.total_unrealized!}
+              prefixValue="$"
               isLoading={isLoading}
             />
           </Stack>
