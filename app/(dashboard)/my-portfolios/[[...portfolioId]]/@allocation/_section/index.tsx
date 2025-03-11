@@ -1,19 +1,9 @@
 'use client';
 import Empty from '@/components/Empty';
-import Loading from '@/components/Loading';
-import { Scrollbar } from '@/components/scrollbar';
-import { isSidebarCollapsed } from '@/lib/features/menu/menuSlice';
-import { useAppSelector } from '@/lib/hooks';
-import { useTranslate } from '@/locales';
 import { useGetPortfolios } from '@/services/minecraft/portfolio/portfolio';
-import { Stack, Typography, styled } from '@mui/material';
-import { useState } from 'react';
+import { Stack, styled } from '@mui/material';
 import usePortfolioData from '../../_section/hook/usePortfolioData';
-import { parseToNumber } from '../../_section/utils';
-import Chart from './Chart';
-import CryptoChip from './CryptoChip';
-
-//TODO: refator this / create insider component
+import RenderContent from './RenderContent';
 
 const ContainerStack = styled(Stack)(({ theme }) => ({
   width: '100%',
@@ -27,77 +17,28 @@ const ContainerStack = styled(Stack)(({ theme }) => ({
 }));
 
 const Allocation = () => {
-  const { t } = useTranslate();
   const { data: portfolios } = useGetPortfolios();
   const { selectedPortfolio, isLoading } = usePortfolioData();
-  const [hoveredCrypto, setHoveredCrypto] = useState<string | null>(null);
-  const isCollapsed = useAppSelector(isSidebarCollapsed);
-  const seriesData = (selectedPortfolio?.data as any)?.assets.map((asset: any) => ({
-    x: asset.name,
-    y: parseToNumber(asset.distribution).toFixed(2),
-  }));
+
   if (!portfolios?.data?.length) {
     return null;
   }
 
-  if (isLoading) {
-    return (
-      <ContainerStack
-        maxWidth={{
-          xs: 'calc(100vw - 48px)',
-          md: isCollapsed ? 'calc(50vw - 97px)' : 'calc(50vw - 168px)',
-        }}
-      >
-        <Loading sx={{ mt: 2 }} />{' '}
-      </ContainerStack>
-    );
-  }
+  // if (isLoading) {
+  //   return <ContainerStack className={isLoading ? 'loading-skeleton' : ''}></ContainerStack>;
+  // }
 
   return (
     <ContainerStack
       maxWidth={{
         xs: 'calc(100vw - 48px)',
-        md: isCollapsed ? 'calc(50vw - 97px)' : 'calc(50vw - 168px)',
       }}
+      className={isLoading ? 'loading-skeleton' : ''}
     >
-      {!seriesData?.length ? (
+      {!selectedPortfolio?.data?.assets?.length && !isLoading ? (
         <Empty sx={{ mt: 2 }} />
       ) : (
-        <>
-          <Stack width={'100%'}>
-            <Typography variant="p1-medium">{t('allocation.allocation')}</Typography>
-            <Chart
-              seriesData={seriesData}
-              onHover={setHoveredCrypto}
-              hoveredCrypto={hoveredCrypto}
-            />
-          </Stack>
-
-          <Scrollbar>
-            <Stack
-              direction="row"
-              flexWrap="wrap"
-              px={{ xs: 0, md: 5 }}
-              spacing={1}
-              pt={{ xs: 6, md: 9 }}
-              justifyContent={'center'}
-              sx={{
-                maxHeight: '210px',
-                // "& > *": { flex: "0 0 auto" },
-              }}
-            >
-              {(selectedPortfolio?.data as any)?.assets.map((asset: any) => (
-                <CryptoChip
-                  key={asset.slug}
-                  label={asset.name}
-                  value={asset.distribution}
-                  isActive={hoveredCrypto === asset.name}
-                  onHover={setHoveredCrypto}
-                />
-              ))}
-            </Stack>
-          </Scrollbar>
-        </>
+        <RenderContent assets={selectedPortfolio?.data?.assets || []} />
       )}
     </ContainerStack>
   );

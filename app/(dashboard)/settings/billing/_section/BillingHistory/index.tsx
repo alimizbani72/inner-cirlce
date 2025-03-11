@@ -8,8 +8,6 @@ import { useTranslate } from '@/locales';
 import { useGetFinancialPayments } from '@/services/minecraft/financial/financial';
 import type { PaymentHttpPaymentItemResponse } from '@/services/minecraft/minecraftAPI.schemas';
 import { Stack } from '@mui/material';
-import { isSidebarCollapsed } from '@/lib/features/menu/menuSlice';
-import { useAppSelector } from '@/lib/hooks';
 
 const columns = [
   {
@@ -28,7 +26,6 @@ const columns = [
 
 const BillingHistory: FC = () => {
   const { t } = useTranslate();
-  const isCollapsed = useAppSelector(isSidebarCollapsed);
   const { data, isLoading } = useGetFinancialPayments({
     opts: JSON.stringify({
       sorts: { created_at: false },
@@ -40,10 +37,7 @@ const BillingHistory: FC = () => {
 
   return (
     <Stack px={{ md: 4, xs: 0 }} pb={3}>
-      <Stack
-        alignItems="flex-start"
-        maxWidth={{ md: `calc(100vw - ${isCollapsed ? '168px' : '311px'})`, xs: '100vw' }}
-      >
+      <Stack alignItems="flex-start" maxWidth="100%">
         <CustomTable
           title={t('billinghistory.history')}
           data={data?.data ?? []}

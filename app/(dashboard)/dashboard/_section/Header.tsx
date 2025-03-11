@@ -4,19 +4,17 @@ import LogoType from '@/components/LogoType';
 import Icon from '@/components/icon';
 import Link from '@/components/link';
 import RiveComp from '@/components/rive-loader';
-import { mapPathToName } from '@/configs/sidebar';
 import { useIsMobile } from '@/hooks/use-responsive';
 import { mobileMenuToggle } from '@/lib/features/menu/menuSlice';
-import { pageHasBackButton, pageTitle } from '@/lib/features/pageTitle/pageSlice';
-import { useAppDispatch, useAppSelector } from '@/lib/hooks';
+import { useAppDispatch } from '@/lib/hooks';
 import { useTranslate } from '@/locales';
 import { useGetAffiliateMe } from '@/services/minecraft/affiliate/affiliate';
-import { normalize } from '@/utils/path';
+import { normalize, shouldShowBackButton } from '@/utils/helper';
 
 import { toNumber } from '@/utils/toNumber';
 import { Box, Button, IconButton, Stack, Typography } from '@mui/material';
 import { usePathname, useRouter } from 'next/navigation';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 
 const DashboardHeader = () => {
   const { t } = useTranslate();
@@ -24,21 +22,20 @@ const DashboardHeader = () => {
   const pathname = usePathname();
   const dispatch = useAppDispatch();
   const { data: me, isFetching } = useGetAffiliateMe();
-
-  const [isClient, setIsClient] = useState(false);
-  const pageTitleSelector = useAppSelector(pageTitle);
-  const hasBackButton = useAppSelector(pageHasBackButton);
   const { back } = useRouter();
-
   const name = useMemo(() => {
     const normalizedPath = normalize(pathname.slice(1));
-    const mappedKey = mapPathToName[normalizedPath as keyof typeof mapPathToName];
-    return mappedKey ? t(`sidebar.${mappedKey}` as any) : pageTitleSelector || 'ChainMind';
-  }, [pathname, pageTitleSelector]);
+    const segments = normalizedPath.split('/').filter(Boolean);
+    const firstSegment = segments[0];
+    const lastSegment = segments.at(-1) ?? '';
+    const mainTitle = t(`sidebar.${firstSegment}` as any) || 'ChainMind';
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+    if (segments.length === 1) {
+      return mainTitle;
+    }
+
+    return `${mainTitle}: ${decodeURIComponent(lastSegment)}`;
+  }, [pathname, t]);
 
   return isMobile ? (
     <>
@@ -90,13 +87,15 @@ const DashboardHeader = () => {
           borderColor={'dark.3'}
           direction={'row'}
         >
-          {isClient && hasBackButton && (
+          {shouldShowBackButton(pathname) && (
             <IconButton sx={{ mr: 1 }} onClick={() => back()}>
               <Icon name="ArrowLeftIcon" />
             </IconButton>
           )}
 
-          {isClient && <Typography variant={'h4-medium'}>{name}</Typography>}
+          <Typography variant={'h4-medium'} textTransform={'capitalize'}>
+            {name}
+          </Typography>
         </Stack>
       </Stack>
     </>
@@ -112,13 +111,15 @@ const DashboardHeader = () => {
       height={105}
     >
       <Stack gap={1} direction={'row'}>
-        {isClient && hasBackButton && (
+        {shouldShowBackButton(pathname) && (
           <IconButton onClick={() => back()}>
             <Icon name="ArrowLeftIcon" />
           </IconButton>
         )}
 
-        {isClient && <Typography variant={'p1-medium'}>{name}</Typography>}
+        <Typography variant={'p1-medium'} textTransform={'capitalize'}>
+          {name}
+        </Typography>
       </Stack>
       <Stack direction="row" alignItems="center" spacing={2} position={'relative'}>
         {isFetching ? (

@@ -136,3 +136,15 @@ export const merge = (target: any, ...sources: any[]): any => {
 
   return merge(target, ...sources);
 };
+
+export const shouldShowBackButton = (pathname: string) => {
+  const segments = pathname.split('/').filter(Boolean);
+  if (segments[0] === 'affiliate' || segments[0] === 'settings') {
+    return false;
+  }
+  return segments.length > 1;
+};
+
+export const normalize = (value: string) => {
+  return `/${value.replace(/^\/|\/$/g, '')}/`; // Ensure leading slash & remove trailing slashes
+};

@@ -2,24 +2,23 @@
 
 import Icon from '@/components/icon';
 import { useIsMobile } from '@/hooks/use-responsive';
-import { isSidebarCollapsed } from '@/lib/features/menu/menuSlice';
-import { useAppSelector } from '@/lib/hooks';
 import IntercomMessenger from '@app-components/IntercomMessenger';
 import { Avatar, Box, Divider, Menu, MenuItem, Stack, Typography } from '@mui/material';
-import { type FC, type MouseEvent, useState } from 'react';
+import { type MouseEvent, useState } from 'react';
 import LogoutDialog from './LogoutDialog';
 import { useGetMe } from '@/services/minecraft/auth/auth';
 import { useTranslate } from '@/locales';
 import { useRouter } from 'next/navigation';
-
-const SidebarUserInfo: FC = () => {
+type Props = {
+  isCollapsed?: boolean;
+};
+const SidebarUserInfo = ({ isCollapsed }: Props) => {
   const isMobile = useIsMobile();
   const { push } = useRouter();
   const { t } = useTranslate();
   const [openDialog, setOpenDialog] = useState<boolean>(false);
   const { data, isFetching } = useGetMe();
   const userInfo = data?.data;
-  const isCollapsed = useAppSelector(isSidebarCollapsed);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const handleMenuOpen = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);

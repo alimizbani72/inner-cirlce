@@ -10,11 +10,9 @@ import BoxList from './box';
 import Card from './card';
 import Header from './header';
 import TableOfContent from './tableContent';
-import { usePageTitleandBackButton } from '@/hooks/use-pageTitleAndbackbutton';
 const TradingViewWidget = dynamic(() => import('./tradingview/TradingViewWidget'), { ssr: false });
 
 const CoinReportDetailSection = () => {
-  usePageTitleandBackButton({ title: 'Coin Report' });
   const isMobile = useIsMobile();
   const { coinId } = useParams();
   const { data, isPending, isError } = useGetCoinReportSlug(coinId as string);

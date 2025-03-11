@@ -6,8 +6,6 @@ import ViewContractButton from './ViewContractButton';
 import { useTranslate } from '@/locales';
 import { useGetMe } from '@/services/minecraft/auth/auth';
 import type { AuthHttpBusinessInfoResponse } from '@/services/minecraft/minecraftAPI.schemas';
-import { isSidebarCollapsed } from '@/lib/features/menu/menuSlice';
-import { useAppSelector } from '@/lib/hooks';
 
 interface DataType {
   id: string;
@@ -19,7 +17,6 @@ const AccountContract = () => {
   const { data } = useGetMe();
   const userInfo = data?.data;
   const { t } = useTranslate();
-  const isCollapsed = useAppSelector(isSidebarCollapsed);
   const columns = useMemo(
     () => [
       {
@@ -44,10 +41,7 @@ const AccountContract = () => {
 
   return (
     <Stack px={{ md: 4, xs: 0 }} pb={3}>
-      <Stack
-        alignItems="flex-start"
-        maxWidth={{ md: `calc(100vw - ${isCollapsed ? '168px' : '311px'})`, xs: '100vw' }}
-      >
+      <Stack alignItems="flex-start" maxWidth="100%">
         <CustomTable
           title={t('businessAccount.contract')}
           minWidthCell={'200px !important'}

@@ -15,7 +15,6 @@ import { CustomMenuItem, CustomSelect } from '@app-components/CustomSelect';
 import Link from '@/components/link';
 import Icon from '@/components/icon';
 import { BulletIcon } from '@app-components/sidebar/Menu/Bullets';
-import { usePageTitle } from '@/hooks/use-page-title';
 import { Image } from '@/components/image';
 import ContentStack from '@app-components/ContentStack';
 
@@ -64,7 +63,6 @@ const RenderVideo: FC = () => {
   }, [video]);
 
   const isVideoLoading = isLoading || isFetchingVideo;
-  usePageTitle({ title: `Education: ${decodeURIComponent(id as string)}` });
 
   if (isVideoLoading) {
     return <ContentStack className="loading-skeleton" sx={{ aspectRatio: 16 / 9 }} />;

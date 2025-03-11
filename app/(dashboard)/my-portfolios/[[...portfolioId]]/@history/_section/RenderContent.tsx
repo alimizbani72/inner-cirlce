@@ -1,5 +1,4 @@
 import { Stack } from '@mui/material';
-import Loading from '@/components/Loading';
 import Empty from '@/components/Empty';
 import { ChartHistory } from './ChartHistory';
 import { useTranslate } from '@/locales';
@@ -20,24 +19,26 @@ interface RenderContentProps {
 export const RenderContent = (props: RenderContentProps) => {
   const { loading, chartData, filter, setFilter } = props;
   const { t } = useTranslate();
-  if (loading) {
-    return (
-      <Stack>
-        <Loading />
-      </Stack>
-    );
-  }
-
-  if (!chartData?.length) {
-    return <Empty />;
-  }
 
   return (
-    <ChartHistory
-      title={t('history.history')}
-      setFilter={setFilter}
-      chart={{ series: [{ data: chartData }] }}
-      filter={filter}
-    />
+    <Stack
+      maxWidth={{
+        xs: 'calc(100vw)',
+      }}
+      width="100%"
+      className={loading ? 'loading-skeleton' : ''}
+      sx={{ bgcolor: 'dark.2', border: '1.5px solid', borderColor: 'dark.3', borderRadius: 1.5 }}
+    >
+      {!chartData?.length && !loading ? (
+        <Empty />
+      ) : (
+        <ChartHistory
+          title={t('history.history')}
+          setFilter={setFilter}
+          chart={{ series: [{ data: chartData || [] }] }}
+          filter={filter}
+        />
+      )}
+    </Stack>
   );
 };

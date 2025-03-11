@@ -1,7 +1,5 @@
 'use client';
 import { useIsMobile } from '@/hooks/use-responsive';
-import { isSidebarCollapsed } from '@/lib/features/menu/menuSlice';
-import { useAppSelector } from '@/lib/hooks';
 import { useTranslate } from '@/locales';
 import { formatTitle } from '@/utils/toNumber';
 import { Stack } from '@mui/material';
@@ -26,7 +24,6 @@ interface RowType extends PortfolioHttpAssetResponse {
 const AssetsTable = () => {
   const { t } = useTranslate();
   const isMobile = useIsMobile();
-  const isCollapsed = useAppSelector(isSidebarCollapsed);
   const { data: portfolios } = useGetPortfolios();
   const { portfolioId, selectedPortfolio, isLoading } = usePortfolioData();
 
@@ -124,10 +121,10 @@ const AssetsTable = () => {
     return null;
   }
   return (
-    <Stack pl={{ xs: 0, md: 4 }} pb={5}>
+    <Stack px={{ xs: 0, md: 4 }} pb={5}>
       <Scrollbar
         sx={{
-          maxWidth: isMobile ? '100vw' : `calc(100vw - ${isCollapsed ? '167px' : '311px'})`,
+          maxWidth: '100%',
         }}
       >
         <Stack

@@ -4,8 +4,6 @@ import { Collapse, IconButton, Stack } from '@mui/material';
 import type { FC } from 'react';
 import Menu from './Menu';
 import SidebarUserInfo from './UserInfo';
-import { useAppDispatch, useAppSelector } from '@/lib/hooks';
-import { isSidebarCollapsed, sidebarToggle } from '@/lib/features/menu/menuSlice';
 import { useTranslate } from '@/locales';
 import Icon from '@/components/icon';
 import Logo from '@/components/Logo';
@@ -15,17 +13,17 @@ import UpgradePlan from '@app-components/UpgradePlan';
 import { useGetMe } from '@/services/minecraft/auth/auth';
 import { Scrollbar } from '@/components/scrollbar';
 import SideBarLoading from './Menu/SideBarLoading';
+import useToggleState from '@/hooks/use-toggle-state';
 
 const DesktopSidebar: FC = () => {
   const { t } = useTranslate();
   const { data: userInfo, isLoading } = useGetMe();
-  const dispatch = useAppDispatch();
-  const isCollapsed = useAppSelector(isSidebarCollapsed);
+  const [isCollapsed, toggleCollapsed] = useToggleState(false);
 
   return (
     <Stack sx={{ position: 'relative', display: { md: 'flex', xs: 'none' } }}>
       <IconButton
-        onClick={() => dispatch(sidebarToggle())}
+        onClick={toggleCollapsed}
         sx={{
           bgcolor: 'dark.3',
           position: 'absolute',
@@ -67,7 +65,11 @@ const DesktopSidebar: FC = () => {
           </Stack>
           <Scrollbar sx={{ width: '100%' }}>
             <Stack py={4} px={isCollapsed ? 3 : 2} gap={4}>
-              <Menu name={t('sidebar.services')} items={sidebarServicesItems} />
+              <Menu
+                name={t('sidebar.services')}
+                items={sidebarServicesItems}
+                isCollapsed={isCollapsed}
+              />
               {isLoading ? (
                 <SideBarLoading />
               ) : (
@@ -78,6 +80,7 @@ const DesktopSidebar: FC = () => {
                       : !item?.items?.some((i) => i.path?.includes('affiliate'))
                   ).length && (
                     <Menu
+                      isCollapsed={isCollapsed}
                       name={t('sidebar.community')}
                       items={sidebarCommunityItems.filter((item) =>
                         userInfo?.data?.kyc_status
@@ -102,7 +105,7 @@ const DesktopSidebar: FC = () => {
           >
             {!isCollapsed && <UpgradePlan />}
 
-            <SidebarUserInfo />
+            <SidebarUserInfo isCollapsed={isCollapsed} />
           </Stack>
         </Stack>
       </Collapse>

@@ -6,13 +6,13 @@ import { useBoolean } from '@/hooks/use-boolean';
 import { usePathname } from 'next/navigation';
 import { mapPathToName } from '@/configs/sidebar';
 import { BulletIcon, BulletIconActive } from './Bullets';
-import { useAppRouter } from '@/routes/hooks/use-router';
 import { useAppDispatch } from '@/lib/hooks';
 import { mobileMenuToggle } from '@/lib/features/menu/menuSlice';
 import { useTranslate } from '@/locales';
 import Icon from '@/components/icon';
 import type { IconNames } from '@/components/icon/types';
 import { normalize } from '@/utils/path';
+import { useAppRouter } from '@/routes/hooks';
 
 type MenuItemProps = {
   icon: IconNames;

@@ -2,8 +2,6 @@
 
 import { plans as plansConfig } from '@/configs/plans';
 import { getUserPlanType } from '@/consts';
-import { isSidebarCollapsed } from '@/lib/features/menu/menuSlice';
-import { useAppSelector } from '@/lib/hooks';
 import { useTranslate } from '@/locales';
 import { useAppRouter } from '@/routes/hooks';
 import { Stack, Typography } from '@mui/material';
@@ -49,8 +47,6 @@ const PricingSection = () => {
     }
   };
 
-  const isCollapsed = useAppSelector(isSidebarCollapsed);
-
   return (
     <>
       <Stack
@@ -64,12 +60,7 @@ const PricingSection = () => {
       >
         <ActivePlan />
 
-        <Stack
-          py={{ md: 4, xs: 3 }}
-          maxWidth={{ md: `calc(100vw - ${isCollapsed ? 104 : 248}px)`, xs: '100vw' }}
-          overflow={'hidden'}
-          gap={4}
-        >
+        <Stack py={{ md: 4, xs: 3 }} maxWidth="100%" overflow={'hidden'} gap={4}>
           <Scrollbar>
             <Stack
               direction={'row'}

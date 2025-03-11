@@ -4,8 +4,6 @@ import CustomTable, { type SortType } from '@/components/CustomTable';
 import Toggle from '@/components/Toggle';
 import { Scrollbar } from '@/components/scrollbar';
 import { useIsMobile } from '@/hooks/use-responsive';
-import { isSidebarCollapsed } from '@/lib/features/menu/menuSlice';
-import { useAppSelector } from '@/lib/hooks';
 import { useTranslate } from '@/locales';
 import type { PlansType } from '@/routes/type';
 import type { PortfolioStrategyCoin } from '@/services/minecraft/minecraftAPI.schemas';
@@ -23,7 +21,6 @@ interface TableProps {
 }
 
 const PortfolioTable: FC<TableProps> = ({ plan }) => {
-  const isCollapsed = useAppSelector(isSidebarCollapsed);
   const { data: content, isLoading } = useGetPortfolioStrategyPlan(plan, {
     query: {
       select(data) {
@@ -120,7 +117,7 @@ const PortfolioTable: FC<TableProps> = ({ plan }) => {
               pl={{ md: 4, xs: 3 }}
               alignItems="flex-start"
               maxWidth={{
-                md: `calc(100vw - ${isCollapsed ? 105 : 249}px)`,
+                md: '100%',
                 xs: '100vw',
               }}
             >
@@ -174,12 +171,11 @@ const PortfolioTable: FC<TableProps> = ({ plan }) => {
       )}
 
       <Stack
-        pl={{ md: 4, xs: 0 }}
-        pr={{ md: 4, xs: 0 }}
+        px={{ md: 4, xs: 0 }}
         pb={3}
         width={{
-          md: `calc(100vw - ${isCollapsed ? 105 : 249}px)`,
-          xs: '100vw',
+          md: '100%',
+          xs: '100%',
         }}
         sx={{
           'table tbody tr td': {

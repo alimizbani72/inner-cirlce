@@ -5,12 +5,10 @@ import Table from './Table';
 import LearningBanner from './LearningBanner';
 import { useParams } from 'next/navigation';
 import type { PlansType } from '@/routes/type';
-import { toTitleCase } from '@/utils/change-case';
-import { usePageTitleandBackButton } from '@/hooks/use-pageTitleAndbackbutton';
 
 const PortfolioStrategiesInnerSection = () => {
   const { slug: plan } = useParams();
-  usePageTitleandBackButton({ title: `${toTitleCase(plan as string)} Strategy` });
+
   //   const dispatch = useAppDispatch();
   // ;
 

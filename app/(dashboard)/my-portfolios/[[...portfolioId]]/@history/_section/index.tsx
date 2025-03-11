@@ -1,7 +1,4 @@
 'use client';
-import { isSidebarCollapsed } from '@/lib/features/menu/menuSlice';
-import { useAppSelector } from '@/lib/hooks';
-import { Stack } from '@mui/material';
 import { useParams } from 'next/navigation';
 import { getActivePortfolioId } from '../../_section/utils';
 
@@ -15,7 +12,6 @@ import { RenderContent } from './RenderContent';
 import { getChartData } from './utils';
 
 const HistorySection = () => {
-  const isCollapsed = useAppSelector(isSidebarCollapsed);
   const { portfolioId } = useParams();
   const [filter, setFilter] = useState('All');
   const activePortfolioId = getActivePortfolioId(portfolioId);
@@ -49,15 +45,7 @@ const HistorySection = () => {
     return null;
   }
 
-  return (
-    <Stack
-      width={{ md: '50%', xs: '100%' }}
-      maxWidth={{ md: isCollapsed ? 'calc(50vw - 97px)' : 'calc(50vw - 168px)' }}
-      sx={{ bgcolor: 'dark.2', border: '1.5px solid', borderColor: 'dark.3', borderRadius: 1.5 }}
-    >
-      <RenderContent {...{ chartData, filter, loading, setFilter }} />
-    </Stack>
-  );
+  return <RenderContent {...{ chartData, filter, loading, setFilter }} />;
 };
 
 export default HistorySection;

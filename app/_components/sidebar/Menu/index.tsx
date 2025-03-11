@@ -4,18 +4,16 @@ import { List, ListSubheader } from '@mui/material';
 import type { FC } from 'react';
 import { mapPathToName, type sidebarServicesItems } from '@/configs/sidebar';
 import MenuItem from './MenuItem';
-import { useAppSelector } from '@/lib/hooks';
-import { isSidebarCollapsed } from '@/lib/features/menu/menuSlice';
 import { useTranslate } from '@/locales';
 import type { IconNames } from '@/components/icon/types';
 
 type MenuProps = {
   name: string;
   items: typeof sidebarServicesItems;
+  isCollapsed?: boolean;
 };
 
-const Menu: FC<MenuProps> = ({ name, items }) => {
-  const isCollapsed = useAppSelector(isSidebarCollapsed);
+const Menu: FC<MenuProps> = ({ name, items, isCollapsed }) => {
   const { t } = useTranslate();
 
   return (
