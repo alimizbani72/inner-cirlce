@@ -28,6 +28,7 @@ const VideoItem: FC<VideoItemProps> = ({ image, title, completed, watching, hasD
     <>
       <Stack
         direction={'row'}
+        alignItems="center"
         gap={2}
         py={2}
         sx={{ cursor: pathname !== destination ? 'pointer' : 'default' }}
@@ -41,8 +42,8 @@ const VideoItem: FC<VideoItemProps> = ({ image, title, completed, watching, hasD
           <Image borderRadius={'8px'} src={image || '/logo/logo-type.svg'} />
         </Stack>
 
-        <Stack direction={'row'} gap={1} flex={1}>
-          <Typography variant="p2-medium" sx={snipText(2)}>
+        <Stack direction={'row'} gap={1} flex={1} alignItems="center">
+          <Typography variant="p2-medium" sx={snipText(2)} display="flex" alignItems="center">
             {title}
           </Typography>
           {(completed || watching) && (

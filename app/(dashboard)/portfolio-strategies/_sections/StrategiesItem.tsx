@@ -46,7 +46,11 @@ const StrategiesItem: FC<StrategiesItemProps> = ({ src, subtitle, type, upgrade 
           <Button
             href="/pricing"
             color="tertiary"
-            sx={{ 'svg path': { fill: '#E68F0D !important' }, whiteSpace: 'nowrap' }}
+            sx={{
+              px: { xs: '16px !important', sm: '32px !important' },
+              'svg path': { fill: '#E68F0D !important' },
+              whiteSpace: 'nowrap',
+            }}
             startIcon={<Icon name="SubscriptionIcon" />}
             fullWidth
           >
@@ -65,7 +69,7 @@ const StrategiesItem: FC<StrategiesItemProps> = ({ src, subtitle, type, upgrade 
           <Button
             onClick={() => push(`/portfolio-strategies/${type}`)}
             color="tertiary"
-            sx={{ whiteSpace: 'nowrap' }}
+            sx={{ whiteSpace: 'nowrap', px: { xs: '16px !important', sm: '32px !important' } }}
           >
             {t('button.seeStrategies')}
           </Button>

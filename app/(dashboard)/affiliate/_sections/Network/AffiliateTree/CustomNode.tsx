@@ -1,16 +1,15 @@
-import { Box, Typography } from '@mui/material';
-import { Avatar, Stack } from '@mui/material';
+import Icon from '@/components/icon';
+import { useGetMe } from '@/services/minecraft/auth/auth';
+import { toNumber } from '@/utils/toNumber';
+import { Avatar, Box, Stack, Typography } from '@mui/material';
 import { Handle, Position } from '@xyflow/react';
 import { type FC, useState } from 'react';
 import type { CustomNodeProps } from './types';
-import { useAppSelector } from '@/lib/hooks';
-import { selectUser } from '@/lib/features/user/userSlice';
-import { toNumber } from '@/utils/toNumber';
-import Icon from '@/components/icon';
 
 const CustomNode: FC<CustomNodeProps> = ({ data, isConnectable }) => {
-  const user = useAppSelector(selectUser);
-  const isMine = toNumber(user?.id) === data.id;
+  const { data: user } = useGetMe();
+  const userInfo = user?.data;
+  const isMine = toNumber(userInfo?.id) === data.id;
   const [detailedView, setDetailedView] = useState(false);
 
   return (

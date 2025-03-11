@@ -4,9 +4,8 @@ import { RHFTextField } from '@/components/hook-form';
 import FormProvider from '@/components/hook-form/form-provider';
 import Icon from '@/components/icon';
 import LoadingButton from '@/components/loading-button';
-import { selectUser } from '@/lib/features/user/userSlice';
-import { useAppSelector } from '@/lib/hooks';
 import { useTranslate } from '@/locales';
+import { useGetMe } from '@/services/minecraft/auth/auth';
 import {
   getGetBillingAddressQueryKey,
   usePostBillingAddress,
@@ -37,7 +36,8 @@ interface BillingAddressDialogProps {
 const BillingAddressDialog: FC<BillingAddressDialogProps> = ({ open, close, info }) => {
   const { t } = useTranslate();
   const queryClient = getQueryClient();
-  const userInfo = useAppSelector(selectUser);
+  const { data } = useGetMe();
+  const userInfo = data?.data;
 
   const { mutateAsync, isPending } = usePostBillingAddress();
 

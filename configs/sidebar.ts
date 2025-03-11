@@ -27,7 +27,16 @@ export const sidebarCommunityItems = [
     name: 'affiliate',
     icon: 'Affiliate',
     items: [
-      { path: 'affiliate/', name: 'Affiliate Dashboard' },
+      {
+        path: 'affiliate/',
+        name: 'Affiliate Dashboard',
+        items: [
+          { path: 'affiliate/statistics', name: 'Statistics' },
+          { path: 'affiliate/network/', name: 'Network' },
+          { path: 'affiliate/commissions/', name: 'Commissions' },
+          { path: 'affiliate/payouts/', name: 'Payouts' },
+        ],
+      },
       { path: 'affiliate/how-it-works/', name: 'How it works' },
       { path: 'affiliate/marketing-assets/', name: 'Marketing Assets' },
       { path: 'affiliate/marketing-rules/', name: 'Marketing Rules' },

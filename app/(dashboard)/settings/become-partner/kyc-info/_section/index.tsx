@@ -6,9 +6,8 @@ import LoadingButton from '@/components/loading-button';
 import { kycCallback } from '@/consts';
 import useCustomRouter from '@/hooks/useCustomRouter';
 import { useModalActivation } from '@/hooks/useModalActivation';
-import { selectUser } from '@/lib/features/user/userSlice';
-import { useAppSelector } from '@/lib/hooks';
 import { useTranslate } from '@/locales';
+import { useGetMe } from '@/services/minecraft/auth/auth';
 import { usePostKycVerification } from '@/services/minecraft/kyc/kyc';
 import { Button, DialogActions, Divider, IconButton, Stack, Typography } from '@mui/material';
 import DialogContent from '@mui/material/DialogContent';
@@ -16,7 +15,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { usePathname } from 'next/navigation';
 
 const KYCInfoDialog = () => {
-  const userInfo = useAppSelector(selectUser);
+  const { data } = useGetMe();
+  const userInfo = data?.data;
   const { mutateAsync, isPending } = usePostKycVerification();
 
   const pathname = usePathname();

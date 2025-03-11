@@ -3,6 +3,7 @@ import { RHFCheckbox, RHFTextField } from '@/components/hook-form';
 import FormProvider from '@/components/hook-form/form-provider';
 import Link from '@/components/link';
 import LoadingButton from '@/components/loading-button';
+import { useDebounce } from '@/hooks/use-debounce';
 import { getRegisterInfo, setRegisterInfo, setRegisterStep } from '@/lib/features/auth/authSlice';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { useTranslate } from '@/locales';
@@ -13,7 +14,6 @@ import GoogleSignIn from '@auth/login/_section/GoogleSignIn';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Divider, Stack, Typography } from '@mui/material';
 import Cookies from 'js-cookie';
-import debounce from 'lodash/debounce';
 import { useSearchParams } from 'next/navigation';
 import { type FC, useCallback, useEffect, useMemo } from 'react';
 import { Controller, useForm } from 'react-hook-form';
@@ -80,8 +80,9 @@ const Register: FC = () => {
 
   const { isValid } = formState;
 
-  const { mutateAsync: checkEmail } = usePostAuthEmailExists();
+  const { mutateAsync: checkEmailMutate } = usePostAuthEmailExists();
   const { mutateAsync, isPending } = usePostAuthSendCode();
+  const debounceEmail = useDebounce(watch('email'), 500);
 
   const onSubmit = handleSubmit((data) => {
     mutateAsync({ data: { email: data.email } })
@@ -98,10 +99,10 @@ const Register: FC = () => {
       .catch(() => toast.error(t('formErrors.formError')));
   });
 
-  const debouncedCheckEmail = useCallback(
-    debounce(async (email) => {
+  const checkEmail = useCallback(
+    async (email: string) => {
       try {
-        const response = await checkEmail({ data: { email } });
+        const response = await checkEmailMutate({ data: { email } });
         if (response.data) {
           setError('email', {
             type: 'manual',
@@ -116,22 +117,19 @@ const Register: FC = () => {
           message: t('formErrors.formError'),
         });
       }
-    }, 500),
-    [checkEmail, setError, clearErrors, t]
+    },
+    [checkEmailMutate, setError, clearErrors, t]
   );
 
   useEffect(() => {
-    const subscription = watch((value, { name }) => {
-      if (name === 'email') {
-        trigger('email').then((isValid) => {
-          if (isValid) {
-            debouncedCheckEmail(value.email);
-          }
-        });
-      }
-    });
-    return () => subscription.unsubscribe();
-  }, [watch, debouncedCheckEmail, trigger]);
+    if (debounceEmail) {
+      trigger('email').then((isValid) => {
+        if (isValid) {
+          checkEmail(debounceEmail);
+        }
+      });
+    }
+  }, [debounceEmail, trigger]);
 
   return (
     <Stack gap={4}>

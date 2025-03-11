@@ -13,10 +13,12 @@ import Icon from '@/components/icon';
 import LoadingButton from '@/components/loading-button';
 import useCustomRouter from '@/hooks/useCustomRouter';
 import { useModalActivation } from '@/hooks/useModalActivation';
-import { selectUser } from '@/lib/features/user/userSlice';
-import { useAppSelector } from '@/lib/hooks';
 import { useTranslate } from '@/locales';
-import { usePatchAuthChangePassword, usePostAuthSendCode } from '@/services/minecraft/auth/auth';
+import {
+  useGetMe,
+  usePatchAuthChangePassword,
+  usePostAuthSendCode,
+} from '@/services/minecraft/auth/auth';
 import { Button } from '@mui/material';
 import { toast } from 'sonner';
 import zod from 'zod';
@@ -30,7 +32,7 @@ const defaultValues = {
 const ChangePasswordDialog = () => {
   const open = useModalActivation('/change-password');
   const { push, nativeBack } = useCustomRouter();
-  const userInfo = useAppSelector(selectUser);
+  const userInfo = useGetMe();
   const { t } = useTranslate();
 
   const { mutateAsync, isPending } = usePatchAuthChangePassword();
@@ -113,9 +115,11 @@ const ChangePasswordDialog = () => {
               variant="p2-medium"
               textAlign={'right'}
               onClick={async () => {
-                await sendVerification({ data: { email: userInfo?.email! } }).then(() => {
-                  push('/settings/account/forget-password');
-                });
+                await sendVerification({ data: { email: userInfo?.data?.data?.email! } }).then(
+                  () => {
+                    push('/settings/account/forget-password');
+                  }
+                );
               }}
               sx={{
                 background: (theme) =>

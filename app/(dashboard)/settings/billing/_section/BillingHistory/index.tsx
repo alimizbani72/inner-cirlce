@@ -43,6 +43,7 @@ const BillingHistory: FC = () => {
           data={data?.data ?? []}
           columns={columns}
           isPending={isLoading}
+          containerHeight={isLoading ? undefined : 'max-content'}
           emptyTitle={t('billinghistory.emptyTitle')}
           emptySubtitle={t('billinghistory.emptySubtitle')}
         />

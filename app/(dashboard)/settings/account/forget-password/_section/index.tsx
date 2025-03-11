@@ -1,46 +1,45 @@
 'use client';
+import FormProvider from '@/components/hook-form/form-provider';
 import Icon from '@/components/icon';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Divider, IconButton, Stack, Typography } from '@mui/material';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import FormProvider from '@/components/hook-form/form-provider';
 
-import zod from 'zod';
-import { Button } from '@mui/material';
-import { useTranslate } from '@/locales';
 import { RHFCode, RHFTextField } from '@/components/hook-form';
+import { useTranslate } from '@/locales';
+import { Button } from '@mui/material';
 import { useTimer } from 'react-timer-hook';
-import { toNumber } from 'lodash';
+import zod from 'zod';
 
-import { useEffect, useState } from 'react';
 import CustomDialog from '@/components/CustomDialog';
-import { useAppSelector } from '@/lib/hooks';
-import { selectUser } from '@/lib/features/user/userSlice';
-import { useModalActivation } from '@/hooks/useModalActivation';
+import LoadingButton from '@/components/loading-button';
 import useCustomRouter from '@/hooks/useCustomRouter';
+import { useModalActivation } from '@/hooks/useModalActivation';
 import {
+  useGetMe,
   usePostAuthGuestToken,
   usePostAuthResetPassword,
   usePostAuthSendCode,
 } from '@/services/minecraft/auth/auth';
+import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
-import LoadingButton from '@/components/loading-button';
 
 const getTimer = () => {
   const time = new Date();
-  time.setSeconds(time.getSeconds() + toNumber(90));
+  time.setSeconds(time.getSeconds() + 90);
   return time;
 };
 
 const ForgetPasswordDialog = () => {
-  const open = useModalActivation('/forget-password/');
+  const open = useModalActivation('/forget-password');
 
   const { t } = useTranslate();
   const [loading, setLoading] = useState(false);
   const [formState, setFormState] = useState(1);
-  const userInfo = useAppSelector(selectUser);
+  const { data } = useGetMe();
+  const userInfo = data?.data;
   const { minutes, seconds, totalSeconds, restart } = useTimer({ expiryTimestamp: getTimer() });
   const { mutateAsync: sendCode, isPending: sendCodeLoading } = usePostAuthSendCode();
   const { mutateAsync: exchangeCode, data: exchangeData } = usePostAuthGuestToken();

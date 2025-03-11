@@ -52,6 +52,7 @@ const AccountContract = () => {
               business_Info: userInfo?.business_info,
             },
           ]}
+          containerHeight={'max-content'}
           columns={columns}
         />
       </Stack>
