@@ -21,19 +21,30 @@ function encryptToken(token: string): string {
 export async function GET(request: NextRequest) {
   const token = request.nextUrl.searchParams.get('token');
 
+  // Get the base URL from environment variable or use the origin from the request
+  const baseUrl =
+    process.env.NEXT_PUBLIC_URL || request.headers.get('origin') || request.nextUrl.origin;
+
   if (!token) {
-    // Redirect to not-found to show the proper Not Found page
-    return NextResponse.redirect(new URL('/not-found', request.url));
+    // Redirect to not-found using the same baseUrl approach
+    const notFoundUrl = `${baseUrl}/not-found`;
+    console.log('Redirecting to not-found:', notFoundUrl);
+    return NextResponse.redirect(notFoundUrl);
   }
 
   const encryptedToken = encryptToken(token);
-  const response = NextResponse.redirect(new URL('/dashboard', request.url));
+
+  // Create the redirect URL
+  const redirectUrl = `${baseUrl}/dashboard`;
+  console.log('Redirecting to dashboard:', redirectUrl);
+
+  const response = NextResponse.redirect(redirectUrl);
 
   // Set the cookie
   response.cookies.set({
     name: STORAGE_KEY,
     value: encryptedToken,
-    expires: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000), // 14 days
+    expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000), // 1 days
     path: '/',
     secure: true,
     sameSite: 'strict',
