@@ -9,10 +9,10 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "../dist-scripts",
-    "rootDir": ".",
-    "baseUrl": ".",
+    "rootDir": "..",
+    "baseUrl": "..",
     "paths": {
-      "@/*": ["../*"]
+      "@/*": ["*"]
     }
   },
   "include": ["./**/*.ts"],

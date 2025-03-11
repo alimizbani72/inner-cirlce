@@ -114,6 +114,7 @@ export const signOut = async (): Promise<void> => {
   try {
     await setAuthCookie(null);
   } catch (error) {
+    console.error('Error during sign out:', error);
     throw error;
   }
 };

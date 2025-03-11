@@ -20,6 +20,10 @@ AXIOS_INSTANCE.interceptors.response.use(
   }
 );
 
+interface CancellablePromise<T> extends Promise<T> {
+  cancel?: () => void;
+}
+
 export const customInstance = async <T>(
   config: AxiosRequestConfig,
   options?: AxiosRequestConfig
@@ -27,6 +31,7 @@ export const customInstance = async <T>(
   const source = Axios.CancelToken.source();
   const accessToken = getToken();
 
+  // Add timestamp to prevent caching of sensitive requests
   const timestamp = new Date().getTime();
 
   const promise = AXIOS_INSTANCE({
@@ -42,9 +47,8 @@ export const customInstance = async <T>(
       'X-Timestamp': timestamp,
     },
     cancelToken: source.token,
-  }).then(({ data }) => data);
+  }).then(({ data }) => data) as CancellablePromise<T>;
 
-  // @ts-ignore
   promise.cancel = () => {
     source.cancel('Query was cancelled');
   };
