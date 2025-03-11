@@ -139,10 +139,9 @@ export const merge = (target: any, ...sources: any[]): any => {
 
 export const shouldShowBackButton = (pathname: string) => {
   const segments = pathname.split('/').filter(Boolean);
-  if (segments[0] === 'affiliate' || segments[0] === 'settings') {
-    return false;
-  }
-  return segments.length > 1;
+  const firstsegment = segments[0]
+  const noBackButtonPages = ['my-portfolios', 'affiliate', 'settings'];
+  return !noBackButtonPages.includes(firstsegment) && segments.length > 1;
 };
 
 export const normalize = (value: string) => {

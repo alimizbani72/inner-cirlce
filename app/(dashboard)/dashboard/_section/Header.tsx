@@ -29,6 +29,9 @@ const DashboardHeader = () => {
     const firstSegment = segments[0];
     const lastSegment = segments.at(-1) ?? '';
     const mainTitle = t(`sidebar.${firstSegment}` as any) || 'ChainMind';
+    if (firstSegment === 'my-portfolios') {
+      return t(`sidebar.my-portfolios`);
+    }
 
     if (segments.length === 1) {
       return mainTitle;
