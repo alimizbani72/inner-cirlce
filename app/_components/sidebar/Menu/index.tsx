@@ -1,15 +1,22 @@
 'use client';
 
+import type { IconNames } from '@/components/icon/types';
+import { mapPathToName } from '@/configs/sidebar';
+import { useTranslate } from '@/locales';
 import { List, ListSubheader } from '@mui/material';
 import type { FC } from 'react';
-import { mapPathToName, type sidebarServicesItems } from '@/configs/sidebar';
 import MenuItem from './MenuItem';
-import { useTranslate } from '@/locales';
-import type { IconNames } from '@/components/icon/types';
 
 type MenuProps = {
   name: string;
-  items: typeof sidebarServicesItems;
+  items: {
+    path?: string;
+    key?: string;
+    name?: string;
+    mainSlug?: string;
+    icon?: string;
+    items?: MenuProps['items'];
+  }[];
   isCollapsed?: boolean;
 };
 
@@ -41,7 +48,7 @@ const Menu: FC<MenuProps> = ({ name, items, isCollapsed }) => {
         </ListSubheader>
       }
     >
-      {items.map(({ path, items, icon, name, mainSlug }: any) => (
+      {items?.map(({ path, items, icon, name, mainSlug }: any) => (
         <MenuItem
           key={path ?? icon}
           route={path}

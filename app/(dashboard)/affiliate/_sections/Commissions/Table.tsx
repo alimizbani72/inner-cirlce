@@ -51,6 +51,7 @@ const slotProps = {
     },
   },
 };
+
 const AffCommissionsTabTable: FC = () => {
   const { t } = useTranslate();
   const isMobile = useIsMobile();
@@ -116,19 +117,16 @@ const AffCommissionsTabTable: FC = () => {
   const handleChangePage = (_event: ChangeEvent<unknown>, newPage: number) => {
     setpage(newPage as any);
   };
+
   return (
     <Stack px={{ md: 4, xs: 0 }} pt={3}>
-      <Stack
-        alignItems="flex-start"
-        sx={{ width: '100%' }}
-        // maxWidth={{ md: `calc(100vw - ${isCollapsed ? '168px' : '311px'})`, xs: '100vw' }}
-      >
+      <Stack alignItems="flex-start" sx={{ width: '100%' }}>
         <CustomTable
-          containerHeight={'100%'}
+          containerHeight={'max-content'}
           page={filterOpts.page}
           isPending={isLoading}
           handleChangePage={handleChangePage}
-          totalCount={commissionList?.meta?.total_count}
+          totalCount={commissionList?.meta?.total_count || 0}
           title={t('affCommissionsTabTable.commissionsTitle')}
           columns={columns}
           data={commissionList?.data || []}

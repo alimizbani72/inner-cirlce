@@ -8,6 +8,7 @@ import { useTranslate } from '@/locales';
 import type { PlansType } from '@/routes/type';
 import type { PortfolioStrategyCoin } from '@/services/minecraft/minecraftAPI.schemas';
 import { useGetPortfolioStrategyPlan } from '@/services/minecraft/portfolio-strategy/portfolio-strategy';
+import { toNumber } from '@/utils/toNumber';
 import ContentStack from '@app-components/ContentStack';
 import { CustomMenuItem, CustomSelect } from '@app-components/CustomSelect';
 import { useColumns } from '@dashboard/portfolio-strategies/[slug]/_sections/useColumns';
@@ -191,6 +192,7 @@ const PortfolioTable: FC<TableProps> = ({ plan }) => {
           isPending={isLoading}
           sort={sort}
           isStickyFirstColumn
+          containerHeight={toNumber(coins?.length) > 10 ? undefined : 'max-content'}
         />
       </Stack>
     </Stack>

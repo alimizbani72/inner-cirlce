@@ -4,6 +4,7 @@ import CustomTable, { type SortType } from '@/components/CustomTable';
 import { useIsMobile } from '@/hooks/use-responsive';
 import { useAppRouter } from '@/routes/hooks';
 import type { ReportCoinReportResponseData } from '@/services/minecraft/minecraftAPI.schemas';
+import { toNumber } from '@/utils/toNumber';
 import UpgradeModal from '@dashboard/coin-reports/[coinId]/_section/UpgradeModal';
 import { defaultValueSort } from '@dashboard/coin-reports/_sections/consts';
 import { Stack, styled } from '@mui/material';
@@ -72,6 +73,7 @@ const CoinReportTable = ({
         <Header {...{ onNextUpdate, filters, onFilterChange, nextUpdate }} />
 
         <CustomTable
+          containerHeight={toNumber(data?.length) > 10 ? undefined : 'max-content'}
           perPage={filters.per_page}
           columns={columns}
           data={data || []}

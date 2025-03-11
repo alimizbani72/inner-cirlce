@@ -13,6 +13,7 @@ const TeamMemberAndVolume = () => {
     <ContentStack
       p={0}
       width={{ md: '33.33%' }}
+      minWidth={243}
       className={isLoading ? 'loading-skeleton' : ''}
       height={'212px'}
     >

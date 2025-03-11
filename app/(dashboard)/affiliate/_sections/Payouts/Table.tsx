@@ -4,19 +4,19 @@ import type React from 'react';
 import { type ChangeEvent, type FC, useCallback, useMemo, useState } from 'react';
 
 import CustomTable from '@/components/CustomTable';
+import CustomPopover from '@/components/custom-popover/custom-popover';
+import usePopover from '@/components/custom-popover/use-popover';
+import Icon from '@/components/icon';
+import { useIsMobile } from '@/hooks/use-responsive';
 import useToggleState from '@/hooks/use-toggle-state';
 import { useTranslate } from '@/locales';
+import { useGetFinancialPayouts } from '@/services/minecraft/financial/financial';
+import type { PayoutHttpPayoutResponse } from '@/services/minecraft/minecraftAPI.schemas';
 import { fDate } from '@/utils/format-time';
 import { formatCurrency } from '@/utils/toNumber';
 import { Box, Button, Stack, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
 import DownloadModal from './DownloadModal';
-import { useIsMobile } from '@/hooks/use-responsive';
-import { useGetFinancialPayouts } from '@/services/minecraft/financial/financial';
-import Icon from '@/components/icon';
-import usePopover from '@/components/custom-popover/use-popover';
-import CustomPopover from '@/components/custom-popover/custom-popover';
-import type { PayoutHttpPayoutResponse } from '@/services/minecraft/minecraftAPI.schemas';
 
 const datePickerStyle = {
   '.MuiIconButton-root': {
@@ -123,9 +123,10 @@ const AffPayoutsTabTable: FC = () => {
           columns={columns}
           page={page}
           handleChangePage={handleChangePage}
-          totalCount={data?.meta?.total_count}
+          totalCount={data?.meta?.total_count || 0}
           data={(data?.data as any) || []}
           isPending={isPending}
+          containerHeight={'max-content'}
           mobileAction={
             <Button
               startIcon={<Icon name="DownloadIcon" />}

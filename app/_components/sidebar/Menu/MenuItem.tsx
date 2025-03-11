@@ -12,7 +12,7 @@ import { Box, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import { usePathname } from 'next/navigation';
 import { type FC, useCallback } from 'react';
 
-export type ItemType = { path: string; name: string; items: ItemType[] };
+export type ItemType = { path: string; name: string; items: ItemType[]; mainSlug?: string };
 
 export type MenuItemProps = {
   icon: IconNames;
@@ -29,18 +29,26 @@ export const activeStyle = {
   boxShadow: '0px 4px 8px 0px rgba(0, 0, 0, 0.16)',
 };
 
-const MenuItem: FC<MenuItemProps> = ({ icon, label, subItems, route, isCollapsed, mainSlug }) => {
+const MenuItem: FC<MenuItemProps> = ({
+  icon,
+  label,
+  subItems,
+  route,
+  isCollapsed,
+  mainSlug: mainSlugProps,
+}) => {
   const pathname = usePathname();
   const { push } = useAppRouter();
   const dispatch = useAppDispatch();
-
   const isActive = useCallback(
-    (path: string | undefined) =>
-      mainSlug ? pathname.includes(mainSlug) : normalize(pathname) === normalize(`/${path}`),
+    (path: string | undefined, mainSlug?: string) =>
+      mainSlugProps || mainSlug
+        ? pathname.includes(mainSlugProps || mainSlug || '')
+        : normalize(pathname) === normalize(`/${path}`),
     [pathname]
   );
 
-  const open = useBoolean(!!subItems?.find((s) => isActive(s.path)));
+  const open = useBoolean(!!subItems?.find((s) => isActive(s.path, s.mainSlug)));
 
   if (subItems && !subItems.length) {
     return null;
@@ -48,7 +56,7 @@ const MenuItem: FC<MenuItemProps> = ({ icon, label, subItems, route, isCollapsed
 
   const isActiveSubItem = !!subItems
     ?.flatMap((item) => (item?.items ? [item, ...item?.items] : item))
-    ?.find((s) => isActive(s?.path));
+    ?.find((s) => isActive(s?.path, s.mainSlug));
 
   return (
     <Box>

@@ -308,14 +308,7 @@ const CustomTable = ({
               {data?.length ? (
                 renderRows(data)
               ) : (
-                <TableRow
-                  sx={{
-                    height: {
-                      xs: `calc(100dvh - ${totalCount > 10 ? 298 : 240}px) !important`,
-                      md: `calc(100dvh - ${totalCount > 10 ? 242 : 189}px) !important`,
-                    },
-                  }}
-                >
+                <TableRow>
                   <TableCell colSpan={columns?.length}>
                     <Stack
                       justifyContent="center"

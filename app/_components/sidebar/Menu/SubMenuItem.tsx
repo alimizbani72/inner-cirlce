@@ -13,7 +13,7 @@ import { Collapse, List, ListItemButton, ListItemIcon, ListItemText } from '@mui
 
 interface SubMenuItemProps extends Pick<MenuItemProps, 'isCollapsed' | 'subItems'> {
   open: boolean;
-  isActive: (path: string | undefined) => boolean;
+  isActive: (path: string | undefined, mainSlug?: string) => boolean;
 }
 
 export const SubMenuItem = (props: SubMenuItemProps) => {
@@ -23,7 +23,7 @@ export const SubMenuItem = (props: SubMenuItemProps) => {
   const dispatch = useAppDispatch();
 
   const checkActiveParent = (item: ItemType) => {
-    return !!item?.items?.length && !!item.items?.find((s) => isActive(s?.path));
+    return !!item?.items?.length && !!item.items?.find((s) => isActive(s?.path, s.mainSlug));
   };
 
   return (
@@ -33,7 +33,7 @@ export const SubMenuItem = (props: SubMenuItemProps) => {
           <ListItemButton
             key={subItem.path}
             onClick={() => {
-              if (!isActive(subItem.path)) {
+              if (!isActive(subItem.path, subItem?.mainSlug)) {
                 push(`/${subItem.path}`);
               }
               dispatch(mobileMenuToggle(false));
@@ -41,13 +41,13 @@ export const SubMenuItem = (props: SubMenuItemProps) => {
             sx={{
               borderRadius: 3,
               mt: 1,
-              ...(isActive(subItem.path) && activeStyle),
+              ...(isActive(subItem.path, subItem?.mainSlug) && activeStyle),
               ...(isCollapsed && { p: 1, whiteSpace: 'nowrap' }),
             }}
           >
             {!isCollapsed && (
               <ListItemIcon sx={{ mr: 0 }}>
-                {isActive(subItem.path) || checkActiveParent(subItem) ? (
+                {isActive(subItem.path, subItem?.mainSlug) || checkActiveParent(subItem) ? (
                   <BulletIconActive />
                 ) : (
                   <BulletIcon />
@@ -60,7 +60,9 @@ export const SubMenuItem = (props: SubMenuItemProps) => {
                 primary: {
                   variant: 'p2-regular',
                   color:
-                    isActive(subItem.path) || checkActiveParent(subItem) ? 'white' : 'grey.light',
+                    isActive(subItem.path, subItem?.mainSlug) || checkActiveParent(subItem)
+                      ? 'white'
+                      : 'grey.light',
                   textOverflow: 'ellipsis',
                   overflow: 'hidden',
                 },
