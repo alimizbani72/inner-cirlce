@@ -10,9 +10,12 @@ let TOTAL_COUNT = 0;
 
 const CoinReportFavoritePage = () => {
   const [filters, setFilters] = useState<FilterFormDataType>(defaultValuesFilters);
-  const { data, refetch, isFetching } = useGetCoinReportFavorites({
-    opts: handleOptsForService(filters),
-  });
+  const { data, refetch, isFetching } = useGetCoinReportFavorites(
+    {
+      opts: handleOptsForService(filters),
+    },
+    { query: { refetchOnMount: 'always' } }
+  );
 
   const totalCount = useMemo(() => {
     if (data?.meta) {

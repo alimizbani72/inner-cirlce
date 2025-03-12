@@ -25,7 +25,10 @@ let TOTAL_COUNT = 0;
 const CoinReportPage = () => {
   const [filters, setFilters] = useState<FilterFormDataType>(defaultValuesFilters);
 
-  const { data, refetch, isFetching } = useGetCoinReport({ opts: handleOptsForService(filters) });
+  const { data, refetch, isFetching } = useGetCoinReport(
+    { opts: handleOptsForService(filters) },
+    { query: { refetchOnMount: 'always' } }
+  );
 
   const totalCount = useMemo(() => {
     if (data?.meta) {

@@ -6,6 +6,7 @@ import type { PropsWithChildren } from 'react';
 // ----------------------------------------------------------------------
 
 export default async function CoinReportTemplate({ children }: PropsWithChildren) {
+  // TODO : use next.js template convention
   return (
     <Stack gap={3} py={{ md: 4, xs: 3 }}>
       <LearningBanner />

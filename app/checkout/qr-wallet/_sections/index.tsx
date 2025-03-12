@@ -5,23 +5,23 @@ import { Button, Divider, IconButton, Stack, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import { type FC, useMemo } from 'react';
 
+import RiveComp from '@/components/rive-loader';
 import { plans } from '@/configs/plans';
 import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard';
 import { useIsMobile } from '@/hooks/use-responsive';
 import useToggleState from '@/hooks/use-toggle-state';
 import { useTranslate } from '@/locales';
 import { useAppRouter } from '@/routes/hooks';
+import { useGetGlobalsCheckoutPageWarning } from '@/services/cms/global-checkoutpagewarning/global-checkoutpagewarning';
+import { useGetFinancialPaymentsIdStatus } from '@/services/minecraft/financial/financial';
 import { toTitleCase } from '@/utils/change-case';
 import { formatCurrencyWithoutDollar, toNumber } from '@/utils/toNumber';
+import ContentStack from '@app-components/ContentStack';
+import StaticAlert from '@app-components/StaticAlert';
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/navigation';
 import PayoutTimer from './PayoutTimer';
 import QrCodeModal from './QrCodeModal';
-import { useGetFinancialPaymentsIdStatus } from '@/services/minecraft/financial/financial';
-import RiveComp from '@/components/rive-loader';
-import StaticAlert from '@app-components/StaticAlert';
-import ContentStack from '@app-components/ContentStack';
-import { useGetGlobalsCheckoutPageWarning } from '@/services/cms/global-checkoutpagewarning/global-checkoutpagewarning';
-import { useRouter } from 'next/navigation';
 
 type Props = { planType: string; id: string };
 
@@ -61,7 +61,6 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
   const handleCopy = () => {
     copy(walletAddress);
   };
-
   return (
     <Stack direction={{ md: 'row' }} flex={1} minHeight="100vh" position="relative">
       {/* Plan */}
@@ -276,7 +275,12 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
               }}
             >
               {/* expiration */}
-
+              {/* <RiveComp
+                src="/assets/rive/hourglass.riv"
+                height={48}
+                width={48}
+                inputName="Count down"
+              /> */}
               <PayoutTimer duration={toNumber(data?.data?.duration)} />
 
               <Divider orientation="vertical" flexItem />

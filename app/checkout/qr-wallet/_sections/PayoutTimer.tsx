@@ -3,8 +3,10 @@
 import RiveComp from '@/components/rive-loader';
 import { useTranslate } from '@/locales';
 import { Stack, Typography } from '@mui/material';
-import { useCallback, useEffect, useState, type FC } from 'react';
+import { type FC, useEffect, useMemo, useState } from 'react';
 import { useTimer } from 'react-timer-hook';
+
+// TODO : check and refactor
 
 type PayoutTimerProps = {
   duration: number;
@@ -13,22 +15,32 @@ type PayoutTimerProps = {
 const PayoutTimer: FC<PayoutTimerProps> = ({ duration }) => {
   const { t } = useTranslate();
   const [isExpired, setIsExpired] = useState(false);
-  const [riveInput, setRiveInput] = useState<any>(null); // State to store the input from RiveComp
-
-  const getTimer = useCallback(() => {
-    const time = new Date();
-    time.setSeconds(time.getSeconds() + duration);
-    return time;
+  const [riveInput, setRiveInput] = useState<any>(null);
+  const [isReady, setIsReady] = useState(false);
+  const expiryTimestamp = useMemo(() => {
+    if (duration && duration > 0) {
+      const now = new Date();
+      return new Date(now.getTime() + duration * 1000);
+    }
+    return null;
   }, [duration]);
 
-  const { minutes, seconds, totalSeconds } = useTimer({
-    expiryTimestamp: getTimer(),
-    onExpire() {
+  //  Initialize the timer only when we have a valid expiryTimestamp
+  const { minutes, seconds, totalSeconds, restart } = useTimer({
+    expiryTimestamp: expiryTimestamp ?? new Date(),
+    autoStart: !!expiryTimestamp, // Only start if expiryTimestamp exists
+    onExpire: () => {
       setIsExpired(true);
     },
   });
-
   const countdownValue = duration > 0 ? 61 - (totalSeconds / duration) * 60 : 61;
+
+  useEffect(() => {
+    if (expiryTimestamp) {
+      restart(expiryTimestamp, true);
+      setIsReady(true);
+    }
+  }, [expiryTimestamp, restart]);
 
   useEffect(() => {
     if (riveInput) {
@@ -38,13 +50,16 @@ const PayoutTimer: FC<PayoutTimerProps> = ({ duration }) => {
 
   return (
     <Stack justifyContent="center" alignItems="center" sx={{ flex: 1 }} spacing={1}>
-      <RiveComp
-        src="/assets/rive/hourglass.riv"
-        height={48}
-        width={48}
-        inputName="Count down"
-        onInputReady={setRiveInput}
-      />
+      {isReady && (
+        <RiveComp
+          src="/assets/rive/hourglass.riv"
+          height={48}
+          width={48}
+          inputName="Count down"
+          onInputReady={setRiveInput}
+        />
+      )}
+
       {isExpired ? (
         <Typography color="danger.main" variant="p2-medium" textTransform={'uppercase'}>
           {t('checkout.expired')}
