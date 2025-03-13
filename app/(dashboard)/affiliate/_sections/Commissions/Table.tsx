@@ -17,6 +17,7 @@ import { DatePicker } from '@mui/x-date-pickers';
 import type React from 'react';
 import { type ChangeEvent, type FC, useCallback, useMemo, useState } from 'react';
 import DownLoadCommissionModal from './DownLoadCommissionModal';
+import dayjs from 'dayjs';
 const datePickerStyle = {
   '.MuiIconButton-root': {
     color: 'white',
@@ -202,6 +203,7 @@ const AffCommissionsTabTable: FC = () => {
                     <DatePicker
                       format="DD.MM.YYYY"
                       value={dates?.[0] || null}
+                      maxDate={dayjs()}
                       slotProps={slotProps}
                       sx={datePickerStyle}
                       onChange={(value) => {
@@ -217,10 +219,12 @@ const AffCommissionsTabTable: FC = () => {
                     </Typography>
 
                     <DatePicker
-                      format="YYYY-MM-DD"
+                      format="DD.MM.YYYY"
                       slotProps={slotProps}
                       value={dates?.[1] || null}
                       sx={datePickerStyle}
+                      minDate={dates?.[0]}
+                      maxDate={dayjs()}
                       onChange={(value) => {
                         setDates((state: any) => [state?.[0], value]);
                       }}

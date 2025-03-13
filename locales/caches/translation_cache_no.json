@@ -563,5 +563,6 @@
   " Logout": "Sair",
   "Something went wrong": "Noe gikk galt",
   "There was an error processing your request. Please try again.": "Det oppstod en feil under behandlingen av forespørselen din. Vennligst prøv igjen.",
-  "Pricing": "Prisfastsettelse"
+  "Pricing": "Prisfastsettelse",
+  "File size is too large. Please upload a file smaller than 2 MB.": "Filstørrelsen er for stor. Vennligst last opp en fil som er mindre enn 2 MB."
 }

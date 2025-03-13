@@ -7,6 +7,7 @@
     "avatarRemovedSuccess": "Avatar removed successfully!",
     "avatarRemoveFailed": "Failed to remove avatar!",
     "uploadPicture": "Upload Picture",
-    "remove": "Remove"
+    "remove": "Remove",
+    "errorSizePicture": "File size is too large. Please upload a file smaller than 2 MB."
   }
 }

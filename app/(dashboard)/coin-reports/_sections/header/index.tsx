@@ -1,6 +1,9 @@
 import { useIsMobile } from '@/hooks/use-responsive';
+import { selectCoinsTimer } from '@/lib/features/timer/timerSlice';
+import { useAppSelector } from '@/lib/hooks';
 import { useTranslate } from '@/locales';
 import { Stack, Typography } from '@mui/material';
+import dayjs from 'dayjs';
 import type { FilterFormDataType } from '../types';
 import CountDownUpdateTime from './CountDownUpdateTime';
 import FilterButton from './FilterButton';
@@ -10,13 +13,13 @@ import TimeFrames from './TimeFrams';
 interface HeaderProps {
   onFilterChange?: (filter: FilterFormDataType) => void;
   filters: FilterFormDataType;
-  nextUpdate?: number;
-  onNextUpdate?: () => void;
+  onNextUpdate: () => void;
 }
 
-export const Header = ({ onFilterChange, filters, nextUpdate, onNextUpdate }: HeaderProps) => {
+export const Header = ({ onFilterChange, filters, onNextUpdate }: HeaderProps) => {
   const { t } = useTranslate();
   const isMobile = useIsMobile();
+  const timeSeconds = useAppSelector(selectCoinsTimer);
 
   const handleChangeFilter = (value: any, name?: string) => {
     onFilterChange?.(name ? { ...filters, [name]: value } : value);
@@ -33,14 +36,13 @@ export const Header = ({ onFilterChange, filters, nextUpdate, onNextUpdate }: He
         <Typography variant="p1-semi-bold" sx={{ textAlign: 'center' }}>
           {t('coinReportTable.allCoins')}
         </Typography>
-        {nextUpdate && (
+        {!!timeSeconds && (
           <CountDownUpdateTime
-            onNextUpdate={() => {
-              onNextUpdate?.();
-            }}
-            updateTime={nextUpdate}
+            onNextUpdate={onNextUpdate}
+            timeSeconds={dayjs().add(timeSeconds, 'second') as any}
           />
         )}
+
         <TimeFrames
           value={filters?.timeFrame}
           onChange={(value) => handleChangeFilter(value, 'timeFrame')}

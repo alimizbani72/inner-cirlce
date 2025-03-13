@@ -3,7 +3,7 @@ import FormProvider from '@/components/hook-form/form-provider';
 import { useTranslate } from '@/locales';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Stack, Typography } from '@mui/material';
-import type { FC } from 'react';
+import { type FC, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import z from 'zod';
 
@@ -35,6 +35,7 @@ const TwoFAConfirm: FC = () => {
   const {
     handleSubmit,
     setError,
+    watch,
     formState: { isValid, isSubmitting },
   } = methods;
 
@@ -47,8 +48,14 @@ const TwoFAConfirm: FC = () => {
     }
   });
 
+  useEffect(() => {
+    if (watch('otp').length === 6) {
+      onSubmit();
+    }
+  }, [watch('otp')]);
+
   return (
-    <>
+    <Stack gap={4}>
       <Stack spacing={1}>
         <Icon name="MailboxIcon" size={64} />
         <Typography variant="h3-semi-bold" sx={{ mt: 1 }}>
@@ -67,7 +74,7 @@ const TwoFAConfirm: FC = () => {
           {t('button.verify')}
         </LoadingButton>
       </Stack>
-    </>
+    </Stack>
   );
 };
 

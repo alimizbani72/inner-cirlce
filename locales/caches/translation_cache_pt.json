@@ -563,5 +563,6 @@
   " Logout": "Sair",
   "Something went wrong": "Algo deu errado",
   "There was an error processing your request. Please try again.": "Ocorreu um erro ao processar seu pedido. Por favor, tente novamente.",
-  "Pricing": "Preços"
+  "Pricing": "Preços",
+  "File size is too large. Please upload a file smaller than 2 MB.": "O tamanho do arquivo é muito grande. Por favor, faça o upload de um arquivo menor que 2 MB."
 }

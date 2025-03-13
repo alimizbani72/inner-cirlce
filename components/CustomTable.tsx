@@ -49,6 +49,7 @@ type PropType = {
   onRowClick?: (row: any) => void;
   containerHeight?: any;
   isStickyFirstColumn?: boolean;
+  uniqueId?: string;
 };
 
 const CustomTable = ({
@@ -71,6 +72,7 @@ const CustomTable = ({
   onRowClick,
   containerHeight,
   isStickyFirstColumn,
+  uniqueId = 'id',
 }: PropType) => {
   const [expandedRows, setExpandedRows] = useState<{ [key: string]: boolean }>({});
   const isMobile = useIsMobile();
@@ -91,7 +93,7 @@ const CustomTable = ({
 
   const renderRows = (rows: any[], level: number = 0) => {
     return rows.map((row) => (
-      <Fragment key={row.id}>
+      <Fragment key={row[uniqueId]}>
         <TableRow
           sx={(_theme) => ({
             '&.MuiTableRow-root': {
@@ -111,25 +113,25 @@ const CustomTable = ({
               <Stack
                 direction={'row'}
                 gap={0.5}
-                onClick={() => handleToggleExpand(row.id)}
+                onClick={() => handleToggleExpand(row[uniqueId])}
                 justifyContent={'flex-end'}
                 alignItems={'center'}
               >
                 <Typography
                   variant="caption-regular"
-                  color={expandedRows[row.id] ? 'common.white' : 'grey.light'}
+                  color={expandedRows[row[uniqueId]] ? 'common.white' : 'grey.light'}
                 >
                   {level + 1}
                 </Typography>
                 <Icon
-                  name={expandedRows[row.id] ? 'ArrowUpIcon' : 'ArrowDownIcon'}
-                  stroke={expandedRows[row.id] ? 'common.white' : 'grey.light'}
+                  name={expandedRows[row[uniqueId]] ? 'ArrowUpIcon' : 'ArrowDownIcon'}
+                  stroke={expandedRows[row[uniqueId]] ? 'common.white' : 'grey.light'}
                 />
               </Stack>
             </TableCell>
           )}
         </TableRow>
-        {expandedRows[row.id] && row.children && renderRows(row.children, level + 1)}
+        {expandedRows[row[uniqueId]] && row.children && renderRows(row.children, level + 1)}
       </Fragment>
     ));
   };

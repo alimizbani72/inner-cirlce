@@ -563,5 +563,6 @@
   " Logout": "Гарах",
   "Something went wrong": "Ямар нэг зүйл буруу боллоо",
   "There was an error processing your request. Please try again.": "Таны хүсэлтийг боловсруулахад алдаа гарлаа. Дахин оролдоно уу.",
-  "Pricing": "Үнэлгээ"
+  "Pricing": "Үнэлгээ",
+  "File size is too large. Please upload a file smaller than 2 MB.": "Файлын хэмжээ хэт том байна. 2 MB-аас бага хэмжээтэй файл оруулна уу."
 }

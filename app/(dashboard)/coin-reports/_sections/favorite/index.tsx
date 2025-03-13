@@ -1,14 +1,16 @@
 'use client';
+import { setCoinsTimer } from '@/lib/features/timer/timerSlice';
+import { useAppDispatch } from '@/lib/hooks';
 import { useGetCoinReportFavorites } from '@/services/minecraft/coin-report/coin-report';
+import { toNumber } from '@/utils/toNumber';
 import { handleOptsForService } from '@dashboard/coin-reports/_sections';
 import { defaultValuesFilters } from '@dashboard/coin-reports/_sections/consts';
 import CoinReportTable from '@dashboard/coin-reports/_sections/table';
 import type { FilterFormDataType } from '@dashboard/coin-reports/_sections/types';
-import { useMemo, useState } from 'react';
-
-let TOTAL_COUNT = 0;
+import { useEffect, useState } from 'react';
 
 const CoinReportFavoritePage = () => {
+  const dispatch = useAppDispatch();
   const [filters, setFilters] = useState<FilterFormDataType>(defaultValuesFilters);
   const { data, refetch, isFetching } = useGetCoinReportFavorites(
     {
@@ -17,24 +19,18 @@ const CoinReportFavoritePage = () => {
     { query: { refetchOnMount: 'always' } }
   );
 
-  const totalCount = useMemo(() => {
-    if (data?.meta) {
-      TOTAL_COUNT = data?.meta?.total_count || 0;
+  useEffect(() => {
+    if (data?.meta?.next_update) {
+      dispatch(setCoinsTimer(toNumber(data?.meta?.next_update)));
     }
-    return TOTAL_COUNT;
-  }, [data?.meta]);
-
-  const finalData = useMemo(() => {
-    return data?.data?.map((item, index) => ({ ...item, id: `${item.category}-${index}` }));
-  }, [data?.data]);
+  }, [data?.meta?.next_update]);
 
   return (
     <CoinReportTable
       onFilterChange={(filter) => setFilters(filter)}
       filters={filters}
-      data={finalData}
-      nextUpdate={data?.meta?.next_update}
-      totalCount={totalCount}
+      data={data?.data}
+      totalCount={data?.meta?.total_count || 0}
       isFetching={isFetching}
       onNextUpdate={refetch}
     />

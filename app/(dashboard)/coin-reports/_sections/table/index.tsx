@@ -17,9 +17,8 @@ export interface TableProps {
   filters: FilterFormDataType;
   onFilterChange: (filter: FilterFormDataType) => void;
   data?: ReportCoinReportResponseData[];
-  nextUpdate?: number;
   totalCount: number;
-  onNextUpdate?: () => void;
+  onNextUpdate: () => void;
   isFetching: boolean;
 }
 
@@ -33,7 +32,6 @@ const ContainerStyle = styled(Stack)(({ theme }) => ({
 const CoinReportTable = ({
   data,
   filters,
-  nextUpdate,
   onFilterChange,
   onNextUpdate,
   totalCount,
@@ -70,7 +68,7 @@ const CoinReportTable = ({
               }),
         }}
       >
-        <Header {...{ onNextUpdate, filters, onFilterChange, nextUpdate }} />
+        <Header {...{ onNextUpdate, filters, onFilterChange }} />
 
         <CustomTable
           containerHeight={toNumber(data?.length) > 10 ? undefined : 'max-content'}
@@ -85,6 +83,7 @@ const CoinReportTable = ({
           sort={filters.sorts}
           onRowClick={handleRowClick}
           isStickyFirstColumn
+          uniqueId="slug"
         />
       </ContainerStyle>
       {openUpgradeModal && <UpgradeModal open close={() => setOpenUpgradeModal(false)} />}

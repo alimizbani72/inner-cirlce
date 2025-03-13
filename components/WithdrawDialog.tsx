@@ -117,7 +117,6 @@ const WithdrawDialog: FC<Props> = ({ close, open }) => {
             name="amount"
             label={t('withdraw.amount')}
             placeholder={t('withdraw.enterAmount')}
-            type="number"
             isMoney
           />
           <RHFTextField

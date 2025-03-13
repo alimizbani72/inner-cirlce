@@ -563,5 +563,6 @@
   " Logout": "Déconnexion",
   "Something went wrong": "Quelque chose s'est mal passé",
   "There was an error processing your request. Please try again.": "Une erreur s'est produite lors du traitement de votre demande. Veuillez réessayer.",
-  "Pricing": "Tarification"
+  "Pricing": "Tarification",
+  "File size is too large. Please upload a file smaller than 2 MB.": "La taille du fichier est trop grande. Veuillez télécharger un fichier de moins de 2 Mo."
 }

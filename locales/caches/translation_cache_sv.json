@@ -563,5 +563,6 @@
   " Logout": "Logga ut",
   "Something went wrong": "Något gick fel",
   "There was an error processing your request. Please try again.": "Det uppstod ett fel vid behandlingen av din förfrågan. Var vänlig försök igen.",
-  "Pricing": "Prissättning"
+  "Pricing": "Prissättning",
+  "File size is too large. Please upload a file smaller than 2 MB.": "Filstorleken är för stor. Vänligen ladda upp en fil som är mindre än 2 MB."
 }

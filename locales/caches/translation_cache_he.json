@@ -563,5 +563,6 @@
   " Logout": "התנתקות",
   "Something went wrong": "משהו השתבש",
   "There was an error processing your request. Please try again.": "אירעה שגיאה בעיבוד הבקשה שלך. אנא נסה שנית.",
-  "Pricing": "מחירון"
+  "Pricing": "מחירון",
+  "File size is too large. Please upload a file smaller than 2 MB.": "גודל הקובץ גדול מדי. אנא העלה קובץ קטן מ-2 מגה-בייט."
 }

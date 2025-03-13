@@ -563,5 +563,6 @@
   " Logout": "Đăng xuất",
   "Something went wrong": "Đã xảy ra lỗi",
   "There was an error processing your request. Please try again.": "Đã xảy ra lỗi khi xử lý yêu cầu của bạn. Vui lòng thử lại.",
-  "Pricing": "Giá cả"
+  "Pricing": "Giá cả",
+  "File size is too large. Please upload a file smaller than 2 MB.": "Kích thước tệp quá lớn. Vui lòng tải lên tệp nhỏ hơn 2 MB."
 }

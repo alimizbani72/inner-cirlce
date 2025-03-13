@@ -9,6 +9,8 @@ import LogoutDialog from './LogoutDialog';
 import { useGetMe } from '@/services/minecraft/auth/auth';
 import { useTranslate } from '@/locales';
 import { useRouter } from 'next/navigation';
+import { snipText } from '@/utils/string';
+
 type Props = {
   isCollapsed?: boolean;
 };
@@ -123,12 +125,12 @@ const SidebarUserInfo = ({ isCollapsed }: Props) => {
                 variant="p2-medium"
                 className={isFetching ? 'loading-skeleton' : ''}
                 minWidth={80}
-                height={24}
+                sx={snipText(2)}
               >
                 {userInfo?.full_name}
               </Typography>
 
-              <Box tabIndex={0}>
+              <Box tabIndex={0} height={24}>
                 <Icon name="MoreIcon" />
               </Box>
             </Stack>

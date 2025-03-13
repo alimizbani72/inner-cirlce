@@ -27,7 +27,11 @@ const UserProfile = () => {
 
   const handleDrop = useCallback((acceptedFiles: File[]) => {
     const file = acceptedFiles[0];
-
+    const convertSize = (file.size / 1048576).toFixed(2);
+    if (+convertSize > 2) {
+      toast.error(t('userProfile.errorSizePicture'));
+      return;
+    }
     const newFile = Object.assign(file, { preview: URL.createObjectURL(file) });
 
     if (file) {

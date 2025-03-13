@@ -563,5 +563,6 @@
   " Logout": "Abmelden",
   "Something went wrong": "Etwas ist schiefgelaufen",
   "There was an error processing your request. Please try again.": "Es gab einen Fehler bei der Verarbeitung Ihrer Anfrage. Bitte versuchen Sie es erneut.",
-  "Pricing": "Preisgestaltung"
+  "Pricing": "Preisgestaltung",
+  "File size is too large. Please upload a file smaller than 2 MB.": "Die Dateigröße ist zu groß. Bitte laden Sie eine Datei hoch, die kleiner als 2 MB ist."
 }

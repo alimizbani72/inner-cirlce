@@ -539,5 +539,6 @@
   "Successful • Successful • Successful": "Exitoso • Exitoso • Exitoso",
   "Payment Failed!": "¡Pago fallido!",
   "Your payment could not be processed. Your membership has not been activated. Please try again or contact support for assistance.": "No se pudo procesar tu pago. Tu membresía no ha sido activada. Por favor, inténtalo de nuevo o contacta al soporte para obtener ayuda.",
-  "Failed • Failed • Failed • Failed": "Fallido • Fallido • Fallido • Fallido"
+  "Failed • Failed • Failed • Failed": "Fallido • Fallido • Fallido • Fallido",
+  "File size is too large. Please upload a file smaller than 2 MB.": "La taille du fichier est trop grande. Veuillez télécharger un fichier de moins de 2 Mo."
 }

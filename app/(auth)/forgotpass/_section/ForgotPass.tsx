@@ -58,10 +58,10 @@ const ForgotPass: FC = () => {
   const onSubmit = handleSubmit(async (data) => {
     try {
       const checkEmailResult = await checkEmail({
-        data: { email: data.email },
+        data: { email: data.email?.toLowerCase() },
       });
       if (checkEmailResult.data) {
-        await mutateAsync({ data: { email: data.email } });
+        await mutateAsync({ data: { email: data.email?.toLowerCase() } });
         dispatch(setForgotPasswordInfo({ email: data.email?.toLowerCase(), token: '' }));
         dispatch(setForgotPasswordStep(2));
       } else {

@@ -563,5 +563,6 @@
   " Logout": "Kirjaudu ulos",
   "Something went wrong": "Jotain meni pieleen",
   "There was an error processing your request. Please try again.": "Pyynnön käsittelyssä tapahtui virhe. Yritä uudelleen.",
-  "Pricing": "Hinnoittelu"
+  "Pricing": "Hinnoittelu",
+  "File size is too large. Please upload a file smaller than 2 MB.": "Tiedoston koko on liian suuri. Lataa tiedosto, joka on pienempi kuin 2 MB."
 }

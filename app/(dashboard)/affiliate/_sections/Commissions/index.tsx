@@ -41,12 +41,16 @@ const AffCommissionsTab: FC = () => {
           direction={{ md: 'row' }}
           height={{ md: '97.84px', xs: '325.53px' }}
           gap={3}
-          alignItems={'center'}
+          alignItems={{ xs: 'flex-start', md: 'center' }}
           className={!data?.data ? 'loading-skeleton' : ''}
         >
           {data?.data && (
             <>
-              <Stack direction={{ md: 'row' }} gap={{ md: 3, xs: 2 }}>
+              <Stack
+                direction={{ md: 'row' }}
+                gap={{ md: 3, xs: 2 }}
+                width={{ xs: '100%', md: 'unset' }}
+              >
                 <Stack gap={0.5}>
                   <Typography variant="p2-medium">
                     {formatCurrency(data?.data?.total_turnover)}
@@ -79,10 +83,14 @@ const AffCommissionsTab: FC = () => {
                 sx={{
                   ml: 'auto',
                   width: { md: 'auto', xs: '100%' },
+                  span: {
+                    position: 'relative',
+                    top: -3,
+                  },
                 }}
                 color="secondary"
                 onClick={handleWithdrawClick}
-                startIcon={!!userInfo?.data?.suspended && <Icon name="WarningIcon" />}
+                startIcon={<Icon name="PayoutIcon" />}
                 disabled={isFreePlan}
               >
                 {t('affCommissionsTab.withdraw')}

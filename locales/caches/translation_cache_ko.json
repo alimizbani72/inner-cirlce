@@ -563,5 +563,6 @@
   " Logout": "로그아웃",
   "Something went wrong": "무언가 잘못되었습니다",
   "There was an error processing your request. Please try again.": "요청을 처리하는 동안 오류가 발생했습니다. 다시 시도해 주세요.",
-  "Pricing": "가격 책정"
+  "Pricing": "가격 책정",
+  "File size is too large. Please upload a file smaller than 2 MB.": "파일 크기가 너무 큽니다. 2MB보다 작은 파일을 업로드해 주세요."
 }

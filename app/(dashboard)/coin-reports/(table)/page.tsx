@@ -1,5 +1,4 @@
 import CoinReportPage from '@dashboard/coin-reports/_sections';
-import CoinReportTemplate from '@dashboard/coin-reports/_sections/Template';
 import type { Metadata } from 'next';
 
 // ----------------------------------------------------------------------
@@ -9,9 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default async function CoinReports() {
-  return (
-    <CoinReportTemplate>
-      <CoinReportPage />
-    </CoinReportTemplate>
-  );
+  return <CoinReportPage />;
 }

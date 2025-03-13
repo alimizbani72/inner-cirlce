@@ -563,5 +563,6 @@
   " Logout": "Cerrar sesión",
   "Something went wrong": "Algo salió mal",
   "There was an error processing your request. Please try again.": "Hubo un error al procesar su solicitud. Por favor, intente de nuevo.",
-  "Pricing": "Precios"
+  "Pricing": "Precios",
+  "File size is too large. Please upload a file smaller than 2 MB.": "El tamaño del archivo es demasiado grande. Por favor, sube un archivo menor de 2 MB."
 }

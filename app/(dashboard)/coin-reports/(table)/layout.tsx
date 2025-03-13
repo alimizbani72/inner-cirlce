@@ -5,8 +5,7 @@ import { Stack } from '@mui/material';
 import type { PropsWithChildren } from 'react';
 // ----------------------------------------------------------------------
 
-export default async function CoinReportTemplate({ children }: PropsWithChildren) {
-  // TODO : use next.js template convention
+export default async function CoinReportLayout({ children }: PropsWithChildren) {
   return (
     <Stack gap={3} py={{ md: 4, xs: 3 }}>
       <LearningBanner />

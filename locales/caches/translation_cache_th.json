@@ -563,5 +563,6 @@
   " Logout": "ออกจากระบบ",
   "Something went wrong": "เกิดข้อผิดพลาดบางอย่าง",
   "There was an error processing your request. Please try again.": "เกิดข้อผิดพลาดในการประมวลผลคำขอของคุณ กรุณาลองอีกครั้ง",
-  "Pricing": "ราคา"
+  "Pricing": "ราคา",
+  "File size is too large. Please upload a file smaller than 2 MB.": "ขนาดไฟล์ใหญ่เกินไป กรุณาอัปโหลดไฟล์ที่มีขนาดเล็กกว่า 2 เมกะไบต์"
 }

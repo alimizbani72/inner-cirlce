@@ -2,41 +2,49 @@ import { useResponsive } from '@/hooks/use-responsive';
 import { useTranslate } from '@/locales';
 import { TOTAL_SECONDS } from '@dashboard/coin-reports/_sections/consts';
 import { Box, CircularProgress, Stack, Typography } from '@mui/material';
-import { useCallback, useState } from 'react';
 import { useTimer } from 'react-timer-hook';
 
 interface CountDownUpdateTimeProps {
-  updateTime?: number;
   onNextUpdate: () => void;
+  timeSeconds: Date;
 }
 
-const CountDownUpdateTime = ({ updateTime = 0, onNextUpdate }: CountDownUpdateTimeProps) => {
+const CountDownUpdateTime = ({ onNextUpdate, timeSeconds }: CountDownUpdateTimeProps) => {
   const { t } = useTranslate();
-  const [timeSeconds, setTimeSeconds] = useState(updateTime);
   const isLarge = useResponsive('up', 'lg');
-  const getTimer = useCallback(() => {
-    const now = new Date();
-    const expire = new Date(now.getTime() + timeSeconds * 1000);
-    return expire;
-  }, [timeSeconds]);
+  // const getTimer = useCallback(() => {
+  //   const now = new Date();
+  //   const expire = new Date(now.getTime() + timeSeconds * 1000);
+  //   return expire;
+  // }, [timeSeconds]);
 
   const { minutes, seconds, restart, totalSeconds } = useTimer({
-    expiryTimestamp: getTimer(),
+    expiryTimestamp: timeSeconds,
     autoStart: true,
-    onExpire: () => {
-      onNextUpdate?.();
-      setTimeout(() => {
-        const now = new Date();
-        const expire = new Date(now.getTime() + TOTAL_SECONDS * 1000);
-        setTimeSeconds(TOTAL_SECONDS);
-        restart(expire, true);
-      }, 3000);
+    onExpire: async () => {
+      await onNextUpdate?.();
+      restart(timeSeconds, true);
+      // restart(getTimer(), true);
+      // setTimeout(() => {
+      //   const now = new Date();
+      //   const expire = new Date(now.getTime() + TOTAL_SECONDS * 1000);
+      //   setTimeSeconds(TOTAL_SECONDS);
+      //   restart(timeSeconds, true);
+      // }, 3000);
     },
   });
 
   const formatTime = (time: number) => String(time).padStart(2, '0');
 
   const progress = totalSeconds ? ((TOTAL_SECONDS - totalSeconds) / TOTAL_SECONDS) * 100 : 0;
+
+  // useEffect(() => {
+  //   console.log('inside efect');
+
+  //   return () => {
+  //     restart(dayjs().add(timeSeconds, 'second'), true);
+  //   };
+  // }, [timeSeconds]);
 
   return (
     <Stack direction={'row'} alignItems="center">

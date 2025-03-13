@@ -17,6 +17,7 @@ import { formatCurrency } from '@/utils/toNumber';
 import { Box, Button, Stack, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
 import DownloadModal from './DownloadModal';
+import dayjs from 'dayjs';
 
 const datePickerStyle = {
   '.MuiIconButton-root': {
@@ -199,6 +200,7 @@ const AffPayoutsTabTable: FC = () => {
                     <DatePicker
                       format="DD.MM.YYYY"
                       value={dates?.[0] || null}
+                      maxDate={dayjs()}
                       slotProps={slotProps}
                       sx={datePickerStyle}
                       onChange={(value) => {
@@ -215,6 +217,8 @@ const AffPayoutsTabTable: FC = () => {
 
                     <DatePicker
                       format="DD.MM.YYYY"
+                      minDate={dates?.[0]}
+                      maxDate={dayjs()}
                       slotProps={slotProps}
                       value={dates?.[1] || null}
                       sx={datePickerStyle}

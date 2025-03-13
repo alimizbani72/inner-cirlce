@@ -563,5 +563,6 @@
   " Logout": "लॉग आउट",
   "Something went wrong": "कुछ गलत हो गया",
   "There was an error processing your request. Please try again.": "आपके अनुरोध को संसाधित करने में एक त्रुटि हुई। कृपया पुनः प्रयास करें।",
-  "Pricing": "मूल्य निर्धारण"
+  "Pricing": "मूल्य निर्धारण",
+  "File size is too large. Please upload a file smaller than 2 MB.": "फ़ाइल का आकार बहुत बड़ा है। कृपया 2 MB से छोटी फ़ाइल अपलोड करें।"
 }

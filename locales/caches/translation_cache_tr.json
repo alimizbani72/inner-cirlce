@@ -563,5 +563,6 @@
   " Logout": "Çıkış Yap",
   "Something went wrong": "Bir şeyler ters gitti",
   "There was an error processing your request. Please try again.": "İsteğiniz işlenirken bir hata oluştu. Lütfen tekrar deneyin.",
-  "Pricing": "Fiyatlandırma"
+  "Pricing": "Fiyatlandırma",
+  "File size is too large. Please upload a file smaller than 2 MB.": "Dosya boyutu çok büyük. Lütfen 2 MB'dan daha küçük bir dosya yükleyin."
 }

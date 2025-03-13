@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
       preventFullImport: true,
     },
   },
+  serverExternalPackages: ['@react-pdf/renderer'],
   compiler: {
     removeConsole: process.env.NODE_ENV !== 'development',
   },
