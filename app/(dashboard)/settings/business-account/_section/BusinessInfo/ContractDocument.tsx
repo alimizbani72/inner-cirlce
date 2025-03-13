@@ -1,7 +1,7 @@
 'use client';
 import type { AuthHttpBusinessInfoResponse } from '@/services/minecraft/minecraftAPI.schemas';
 import { fDate } from '@/utils/format-time';
-import { Document, Page, Text, View, Image, Font } from '@react-pdf/renderer';
+import { Document, Font, Image, Page, Text, View } from '@react-pdf/renderer';
 import type { FC } from 'react';
 
 type ContractDocumentProps = {
@@ -222,7 +222,7 @@ const ContractDocument: FC<ContractDocumentProps> = ({ info }) => {
                 .
               </Text>
               <Text style={{ fontSize: 12, fontWeight: 'medium', color: '#404365' }}>
-                Company Address::
+                Company Address:
               </Text>
               <Text
                 style={{ fontSize: 12, fontWeight: 'medium', color: '#070720' }}

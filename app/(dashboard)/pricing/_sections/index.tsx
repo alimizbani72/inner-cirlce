@@ -1,21 +1,21 @@
 'use client';
 
+import { Scrollbar } from '@/components/scrollbar';
 import { plans as plansConfig } from '@/configs/plans';
 import { getUserPlanType } from '@/consts';
+import { usePricingData } from '@/hooks/usePricingData';
 import { useTranslate } from '@/locales';
 import { useAppRouter } from '@/routes/hooks';
-import { Stack, Typography } from '@mui/material';
+import { useGetMe } from '@/services/minecraft/auth/auth';
 import { useGetFinancialPaymentsActive } from '@/services/minecraft/financial/financial';
+import PricingTable from '@app-components/PricingTable';
+import { Stack, Typography } from '@mui/material';
 import { useState } from 'react';
+import { toast } from 'sonner';
 import ActiveNotice from './ActiveNotice';
 import ActivePlan from './ActivePlan';
-import PlanCard from './PlanCard';
-import { useGetMe } from '@/services/minecraft/auth/auth';
-import { toast } from 'sonner';
-import { Scrollbar } from '@/components/scrollbar';
-import { usePricingData } from '@/hooks/usePricingData';
-import PricingTable from '@app-components/PricingTable';
 import LoadingCard from './LoadingCard';
+import PlanCard from './PlanCard';
 
 const PricingSection = () => {
   const { t } = useTranslate();
@@ -43,7 +43,8 @@ const PricingSection = () => {
         push(`/checkout?plan_type=${plan_type}`);
       }
     } catch (error) {
-      toast.error(error?.body?.message);
+      // TODO : check message and add || "some text"
+      toast.error(error?.response?.data?.message);
     }
   };
 

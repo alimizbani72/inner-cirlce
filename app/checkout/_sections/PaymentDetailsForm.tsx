@@ -95,7 +95,7 @@ const PaymentDetailsForm: FC<PaymentDetailsFormProps> = ({ planType }) => {
             replace(`/checkout/qr-wallet?plan_type=${planType}&id=${response?.data?.id}`);
           })
           .catch((error) => {
-            toast.error(error?.body?.message || 'An error occurred');
+            toast.error(error?.response?.data?.message || 'An error occurred');
           });
       })
       .catch(() => toast.error(t('formErrors.formError')));

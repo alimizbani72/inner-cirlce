@@ -1,28 +1,28 @@
 'use client';
 
-import DialogTitle from '@mui/material/DialogTitle';
+import { getQueryClient } from '@/app/_providers/customQueryClient';
 import CustomDialog from '@/components/CustomDialog';
-import DialogContent from '@mui/material/DialogContent';
-import { Button, DialogActions, Divider, IconButton, Stack, Typography } from '@mui/material';
-import type { FC } from 'react';
-import { formatCurrency, toNumber } from '@/utils/toNumber';
-import { useForm } from 'react-hook-form';
 import { RHFTextField } from '@/components/hook-form';
 import FormProvider from '@/components/hook-form/form-provider';
-import { useTranslate } from '@/locales';
-import { LoadingButton } from '@mui/lab';
-import { getQueryClient } from '@/app/_providers/customQueryClient';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
 import useOTP from '@/hooks/useOTP';
-import { useGetWalletDefault } from '@/services/minecraft/wallet/wallet';
+import { useTranslate } from '@/locales';
 import {
   getGetFinancialInfoQueryKey,
   useGetFinancialInfo,
   usePostFinancialWithdraw,
 } from '@/services/minecraft/financial/financial';
 import type { PayoutHttpWithdrawRequest } from '@/services/minecraft/minecraftAPI.schemas';
+import { useGetWalletDefault } from '@/services/minecraft/wallet/wallet';
+import { formatCurrency, toNumber } from '@/utils/toNumber';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { LoadingButton } from '@mui/lab';
+import { Button, DialogActions, Divider, IconButton, Stack, Typography } from '@mui/material';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import { type FC, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
+import { z } from 'zod';
 import Icon from './icon';
 
 type Props = {
@@ -41,41 +41,38 @@ const WithdrawDialog: FC<Props> = ({ close, open }) => {
     address: z.string().nonempty(t('withdraw.requiredWallet')),
   });
 
+  useEffect(() => {
+    if (walletDefault?.data?.address) {
+      setValue('address', walletDefault?.data?.address);
+    }
+  }, [walletDefault?.data?.address]);
+
   const methods = useForm({
     resolver: zodResolver(schema),
     defaultValues: { amount: '', address: `${walletDefault?.data?.address || ''}` },
     mode: 'onSubmit',
   });
-  const { handleSubmit, reset, resetField, watch } = methods;
+  const { handleSubmit, reset, resetField, watch, setValue } = methods;
   const { serviceHandler } = useOTP();
 
   const onSubmit = handleSubmit((data) => {
     const withdrawFunc = async (otp: string) => {
       try {
-        await mutateAsync(
-          {
-            data: {
-              otp,
-              //TODO: Fix This , check with backend
-              amount: { value: data.amount, currency_code: 'USD' },
-              wallet_id: `${walletDefault?.data?.id}`,
-            } as PayoutHttpWithdrawRequest,
-          },
-          {
-            onSuccess: () => {
-              queryClient.invalidateQueries({ queryKey: getGetFinancialInfoQueryKey() });
-              toast.success(t('withdraw.submitRequest'));
-              close();
-              reset();
-              resetField('amount');
-            },
-            onError: (error: any) => {
-              toast.error(error?.body?.message || t('formErrors.formError'));
-            },
-          }
-        );
+        await mutateAsync({
+          data: {
+            otp,
+            //TODO: Fix This , check with backend
+            amount: { value: data.amount, currency_code: 'USD' },
+            wallet_id: `${walletDefault?.data?.id}`,
+          } as PayoutHttpWithdrawRequest,
+        });
+        queryClient.invalidateQueries({ queryKey: getGetFinancialInfoQueryKey() });
+        toast.success(t('withdraw.submitRequest'));
+        close();
+        reset();
+        resetField('amount');
       } catch (error) {
-        toast.error(error?.body?.message || t('formErrors.formError'));
+        toast.error(error?.response?.data?.message || t('formErrors.formError'));
       }
     };
 

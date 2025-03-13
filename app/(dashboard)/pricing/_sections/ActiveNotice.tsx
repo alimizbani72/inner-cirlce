@@ -1,19 +1,19 @@
 'use client';
 
-import Icon from '@/components/icon';
+import { getQueryClient } from '@/app/_providers/customQueryClient';
 import CustomDialog from '@/components/CustomDialog';
-import DialogContent from '@mui/material/DialogContent';
-import { Button, Stack, Typography } from '@mui/material';
-import type { FC } from 'react';
+import Icon from '@/components/icon';
+import LoadingButton from '@/components/loading-button';
 import { useIsMobile } from '@/hooks/use-responsive';
+import { useTranslate } from '@/locales';
 import {
   getGetFinancialPaymentsActiveQueryKey,
   usePostFinancialPaymentsActiveCancel,
 } from '@/services/minecraft/financial/financial';
-import { getQueryClient } from '@/app/_providers/customQueryClient';
+import { Button, Stack, Typography } from '@mui/material';
+import DialogContent from '@mui/material/DialogContent';
+import type { FC } from 'react';
 import { toast } from 'sonner';
-import { useTranslate } from '@/locales';
-import LoadingButton from '@/components/loading-button';
 
 type Props = {
   onClose: VoidFunction;
@@ -36,7 +36,8 @@ const ActiveNotice: FC<Props> = ({ onClose, open, handlePay, handleOnContinue })
       });
       handlePay(open);
     } catch (error) {
-      toast.error(error?.body?.message);
+      // TODO : check message and add || "some text"
+      toast.error(error?.response?.data?.message);
     }
   };
   return (
