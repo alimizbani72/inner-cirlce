@@ -2,14 +2,14 @@
 
 import Icon from '@/components/icon';
 import { useIsMobile } from '@/hooks/use-responsive';
+import { useTranslate } from '@/locales';
+import { useGetMe } from '@/services/minecraft/auth/auth';
+import { snipText } from '@/utils/string';
 import IntercomMessenger from '@app-components/IntercomMessenger';
-import { Avatar, Box, Divider, Menu, MenuItem, Stack, Typography } from '@mui/material';
+import { Avatar, Box, Divider, IconButton, Menu, MenuItem, Stack, Typography } from '@mui/material';
+import { useRouter } from 'next/navigation';
 import { type MouseEvent, useState } from 'react';
 import LogoutDialog from './LogoutDialog';
-import { useGetMe } from '@/services/minecraft/auth/auth';
-import { useTranslate } from '@/locales';
-import { useRouter } from 'next/navigation';
-import { snipText } from '@/utils/string';
 
 type Props = {
   isCollapsed?: boolean;
@@ -91,9 +91,15 @@ const SidebarUserInfo = ({ isCollapsed }: Props) => {
             }}
           />
         )}
-        {isFetching ? (
-          <Box className="loading-skeleton" width={40} height={40} borderRadius={20} />
-        ) : (
+
+        <Stack
+          className={isFetching ? 'loading-skeleton' : ''}
+          direction={'row'}
+          alignItems={'center'}
+          gap={1}
+          sx={{ width: '100%', cursor: 'pointer' }}
+          onClick={handleMenuOpen}
+        >
           <Avatar
             sx={{
               width: 40,
@@ -108,77 +114,62 @@ const SidebarUserInfo = ({ isCollapsed }: Props) => {
           >
             {userInfo?.full_name?.at(0)}
           </Avatar>
-        )}
-
-        {!isCollapsed && (
-          <Box flex={1}>
-            <Stack
-              onClick={handleMenuOpen}
-              direction="row"
-              alignItems="center"
-              sx={{ cursor: 'pointer' }}
-              flex={1}
-            >
-              <Typography
-                ml={1.5}
-                mr={'auto'}
-                variant="p2-medium"
-                className={isFetching ? 'loading-skeleton' : ''}
-                minWidth={80}
-                sx={snipText(2)}
-              >
+          {!isCollapsed && (
+            <>
+              <Typography variant="p2-medium" sx={{ ...snipText(1) }}>
                 {userInfo?.full_name}
               </Typography>
-
-              <Box tabIndex={0} height={24}>
+              <IconButton disableFocusRipple disableRipple disableTouchRipple sx={{ ml: 'auto' }}>
                 <Icon name="MoreIcon" />
-              </Box>
-            </Stack>
-            <Menu
-              anchorEl={anchorEl}
-              open={!!anchorEl}
-              onClose={handleMenuClose}
-              anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-              disableScrollLock
-              sx={{
-                '& .MuiPaper-root': {
-                  backgroundColor: 'dark.2',
-                  color: 'white',
-                  boxShadow: '0px 16px 32px 0px rgba(0, 0, 0, 0.16)',
-                  border: '1px solid',
-                  borderColor: 'dark.3',
-                  backgroundImage: 'none',
-                  p: 2,
-                },
-              }}
-            >
-              <MenuItem onClick={() => push('/terms-and-condition')}>
-                <Stack direction={'row'} alignItems={'center'} width={'100%'} spacing={1}>
-                  <Icon name="WarningIcon" />
-
-                  <Typography variant="p2-medium">{t('profileDialog.privacy')}</Typography>
-                </Stack>
-              </MenuItem>
-              <Divider
-                flexItem
-                sx={{
-                  borderColor: 'dark.3',
-                  width: '100%',
-                  borderWidth: '1.5px',
-                }}
-              />
-              <MenuItem onClick={() => setOpenDialog(true)}>
-                <Stack direction={'row'} alignItems={'center'} width={'100%'} spacing={1}>
-                  <Icon name="LogoutIcon" stroke="danger.main" />
-
-                  <Typography variant="p2-medium">{t('profileDialog.logout')}</Typography>
-                </Stack>
-              </MenuItem>
-            </Menu>
-          </Box>
-        )}
+              </IconButton>
+            </>
+          )}
+        </Stack>
       </Stack>
+      {/* TODO : use customPopover */}
+      {!!anchorEl && (
+        <Menu
+          anchorEl={anchorEl}
+          open={!!anchorEl}
+          onClose={handleMenuClose}
+          anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+          disableScrollLock
+          sx={{
+            '& .MuiPaper-root': {
+              backgroundColor: 'dark.2',
+              color: 'white',
+              boxShadow: '0px 16px 32px 0px rgba(0, 0, 0, 0.16)',
+              border: '1px solid',
+              borderColor: 'dark.3',
+              backgroundImage: 'none',
+              p: 2,
+            },
+          }}
+        >
+          <MenuItem onClick={() => push('/terms-and-condition')}>
+            <Stack direction={'row'} alignItems={'center'} width={'100%'} spacing={1}>
+              <Icon name="WarningIcon" />
 
+              <Typography variant="p2-medium">{t('profileDialog.privacy')}</Typography>
+            </Stack>
+          </MenuItem>
+          <Divider
+            flexItem
+            sx={{
+              borderColor: 'dark.3',
+              width: '100%',
+              borderWidth: '1.5px',
+            }}
+          />
+          <MenuItem onClick={() => setOpenDialog(true)}>
+            <Stack direction={'row'} alignItems={'center'} width={'100%'} spacing={1}>
+              <Icon name="LogoutIcon" stroke="danger.main" />
+
+              <Typography variant="p2-medium">{t('profileDialog.logout')}</Typography>
+            </Stack>
+          </MenuItem>
+        </Menu>
+      )}
       {openDialog && <LogoutDialog open={openDialog} close={() => setOpenDialog(false)} />}
     </>
   );
