@@ -1,5 +1,6 @@
 'use client';
 
+import { generateIntercomHash } from '@/app/_actions/intercom';
 import Icon from '@/components/icon';
 import { useIsMobile } from '@/hooks/use-responsive';
 import { useTranslate } from '@/locales';
@@ -8,12 +9,13 @@ import { snipText } from '@/utils/string';
 import IntercomMessenger from '@app-components/IntercomMessenger';
 import { Avatar, Box, Divider, IconButton, Menu, MenuItem, Stack, Typography } from '@mui/material';
 import { useRouter } from 'next/navigation';
-import { type MouseEvent, useState } from 'react';
+import { type MouseEvent, useEffect, useState } from 'react';
 import LogoutDialog from './LogoutDialog';
 
 type Props = {
   isCollapsed?: boolean;
 };
+
 const SidebarUserInfo = ({ isCollapsed }: Props) => {
   const isMobile = useIsMobile();
   const { push } = useRouter();
@@ -22,6 +24,16 @@ const SidebarUserInfo = ({ isCollapsed }: Props) => {
   const { data, isFetching } = useGetMe();
   const userInfo = data?.data;
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [intercomHash, setIntercomHash] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (userInfo?.id) {
+      generateIntercomHash(userInfo.id)
+        .then(setIntercomHash)
+        .catch((error) => console.error('Error generating Intercom hash:', error));
+    }
+  }, [userInfo?.id]);
+
   const handleMenuOpen = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -32,7 +44,9 @@ const SidebarUserInfo = ({ isCollapsed }: Props) => {
 
   return (
     <>
-      {userInfo && <IntercomMessenger user={userInfo} />}
+      {userInfo && userInfo.id && intercomHash && (
+        <IntercomMessenger user={userInfo} userHash={intercomHash} />
+      )}
 
       <Stack
         sx={{
