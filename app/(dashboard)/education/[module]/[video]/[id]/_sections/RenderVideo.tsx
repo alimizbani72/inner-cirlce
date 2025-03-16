@@ -62,7 +62,7 @@ const RenderVideo: FC = () => {
 
   // Video player loading skeleton
   if (isVideoLoading) {
-    return <ContentStack className="loading-skeleton" sx={{ width: '100%' }} />;
+    return <ContentStack className="loading-skeleton" sx={{ aspectRatio: 16 / 9 }} />;
   }
 
   // No video URL - show upgrade message
@@ -70,11 +70,13 @@ const RenderVideo: FC = () => {
     return (
       <Stack
         width="100%"
+        height="100%"
         alignItems="center"
         sx={{
           border: '1.5px solid',
           borderColor: 'dark.3',
           borderRadius: 2,
+          aspectRatio: 16 / 9,
         }}
       >
         <Empty
@@ -86,6 +88,8 @@ const RenderVideo: FC = () => {
       </Stack>
     );
   }
+
+  const videoRatio = videoContent ? videoContent.width / videoContent.height : 16 / 9;
 
   return (
     <Stack spacing={3}>
@@ -103,6 +107,7 @@ const RenderVideo: FC = () => {
           sx={{
             iframe: {
               borderRadius: 2,
+              aspectRatio: videoRatio,
               width: '100% !important',
               minHeight: 'max-content',
               height: 'auto !important',
