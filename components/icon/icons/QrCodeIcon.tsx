@@ -1,0 +1,119 @@
+import type { IconProps } from '../types';
+
+export const QrCodeIcon: IconProps = ({ stroke }) => {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M8 9H4C3.448 9 3 8.552 3 8V4C3 3.448 3.448 3 4 3H8C8.552 3 9 3.448 9 4V8C9 8.552 8.552 9 8 9Z"
+        stroke={stroke}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M8 21H4C3.448 21 3 20.552 3 20V16C3 15.448 3.448 15 4 15H8C8.552 15 9 15.448 9 16V20C9 20.552 8.552 21 8 21Z"
+        stroke={stroke}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M20 9H16C15.448 9 15 8.552 15 8V4C15 3.448 15.448 3 16 3H20C20.552 3 21 3.448 21 4V8C21 8.552 20.552 9 20 9Z"
+        stroke={stroke}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M7 12H9"
+        stroke={stroke}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12 5V3"
+        stroke={stroke}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M16 12H13C12.448 12 12 11.552 12 11V9"
+        stroke={stroke}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4 12H3"
+        stroke={stroke}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M15 18H13C12.448 18 12 18.448 12 19V21"
+        stroke={stroke}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12 15H18"
+        stroke={stroke}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M21 15V20C21 20.552 20.552 21 20 21H15"
+        stroke={stroke}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6 5.99C5.997 5.99 5.995 5.992 5.995 5.995C5.995 5.998 5.997 6 6 6C6.003 6 6.005 5.998 6.005 5.995C6.005 5.992 6.003 5.99 6 5.99"
+        stroke={stroke}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M17.995 5.995C17.992 5.995 17.99 5.997 17.99 6C17.99 6.003 17.992 6.005 17.995 6.005C17.998 6.005 18 6.003 18 6C18 5.997 17.998 5.995 17.995 5.995"
+        stroke={stroke}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M18.995 11.995C18.992 11.995 18.99 11.997 18.99 12C18.99 12.003 18.992 12.005 18.995 12.005C18.998 12.005 19 12.003 19 12C19 11.997 18.998 11.995 18.995 11.995"
+        stroke={stroke}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M17.995 17.995C17.992 17.995 17.99 17.997 17.99 18C17.99 18.003 17.992 18.005 17.995 18.005C17.998 18.005 18 18.003 18 18C18 17.997 17.998 17.995 17.995 17.995"
+        stroke={stroke}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6.005 17.995C6.002 17.995 6 17.997 6 18C6 18.003 6.002 18.005 6.005 18.005C6.008 18.005 6.01 18.003 6.01 18C6.01 17.997 6.008 17.995 6.005 17.995"
+        stroke={stroke}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};

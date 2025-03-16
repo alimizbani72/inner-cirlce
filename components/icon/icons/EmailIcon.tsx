@@ -1,0 +1,26 @@
+import type { IconProps } from '../types';
+
+export const EmailIcon: IconProps = ({ stroke }) => {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M7.49811 9.74905L10.4248 11.5534C11.3905 12.1488 12.6094 12.1488 13.5752 11.5534L16.5019 9.74905"
+        stroke={stroke}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <rect
+        x="2.99622"
+        y="4.99707"
+        width="18.0075"
+        height="14.0058"
+        rx="3"
+        stroke={stroke}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};

@@ -1,0 +1,26 @@
+{
+  "businessAccount": {
+    "contract": "Contract",
+    "contractType": "Contract Type",
+    "date": "Date",
+    "accountholdername": "Account holder name",
+    "companyname": "Company name",
+    "Companyregistrationnumber": "Company registration number",
+    "businessAccount": "Business Account",
+    "note": "NOTE",
+    "provideCorrectData": "Please provide correct data; it will be verified.",
+    "isrequired": "This field is required",
+    "submittedsuccessmessage": "Your business account request has been submitted successfully.",
+    "AccountholdernamePlaceholder": "Enter account holder name",
+    "companynamePlaceholder": "Enter Company name",
+    "emailPlaceholder": "Enter your email address",
+    "countryPlaceholder": "Enter your email address",
+    "email": "Email",
+    "companyregistrationnumber": "Company registration number",
+    "companyregistrationplaceholder": "Enter company registration number",
+    "changeInfo": "Change Info",
+    "whatyouWillGet": "What you will get in “Business Account”?",
+    "makemyAccountTobusiness": "Make My Account To “Business”",
+    "vatNumber": "VAT number"
+  }
+}

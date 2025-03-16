@@ -1,0 +1,9 @@
+{
+  "pricing": {
+    "continuePreviousPayment": "Continue Previous Payment",
+    "wouldYouLikeToProceed": "Would you like to proceed with your previous payment attempt, or start a new payment?",
+    "continue": "continue",
+    "gatewayPayment": "Gateway Payment",
+    "newPayment": "newPayment"
+  }
+}

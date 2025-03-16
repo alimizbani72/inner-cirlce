@@ -10,8 +10,8 @@ domainName: "staging-front.chainmind.com"
 
 app:
   url: "https://staging.innercircle-chainmind.com/"
-  nextauth_url: ""
-  nextauth_secret: ""
+  auth_trust_host: ""
+  auth_secret: ""
   google_client_id: ""
   google_client_secret: ""
 

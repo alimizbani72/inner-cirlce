@@ -8,7 +8,7 @@ node_modules
 /public/sw.js
 /public/robots.txt
 /public/*.xml
-/src/services
+/services
 
 # testing
 coverage
@@ -45,9 +45,11 @@ public/*.js
 # Sentry Config File
 .sentryclirc
 
-
 # Ignore generated translation files
-/src/locales/langs/translated/
-/src/locales/langs/merged/
+/locales/langs/translated/
+/locales/langs/merged/
 
-/src/locales/hashes/
+/locales/hashes/
+
+# Ignore icons svg files
+/components/icon-final/icons.ts

@@ -1,0 +1,7 @@
+{
+  "errorPage": {
+    "title": "Service Unavailable - Please Try Again Later",
+    "description": " We're currently experiencing technical difficulties and are unable to process your request at the moment. Our team is working hard to resolve the issue. Please check back shortly. Thank you for your patience!",
+    "refresh": "Retry"
+  }
+}
