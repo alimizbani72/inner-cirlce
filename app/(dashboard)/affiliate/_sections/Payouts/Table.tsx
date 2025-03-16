@@ -89,8 +89,8 @@ const AffPayoutsTabTable: FC = () => {
   const [dates, setDates] = useState<any>([]);
   const filter = {
     filters: {
-      ...(dates?.[0] && { from_created_at: fDate(dates?.[0], 'yyyy-MM-dd') }),
-      ...(dates?.[1] && { to_created_at: fDate(dates?.[1], 'yyyy-MM-dd') }),
+      ...(dates?.[0] && { from_created_at: fDate(dates?.[0], 'YYYY-MM-DD') }),
+      ...(dates?.[1] && { to_created_at: fDate(dates?.[1], 'YYYY-MM-DD') }),
     },
     sorts: { created_at: false },
     page: page,
