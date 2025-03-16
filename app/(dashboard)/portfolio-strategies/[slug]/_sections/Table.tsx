@@ -8,13 +8,12 @@ import { useTranslate } from '@/locales';
 import type { PlansType } from '@/routes/type';
 import type { PortfolioStrategyCoin } from '@/services/minecraft/minecraftAPI.schemas';
 import { useGetPortfolioStrategyPlan } from '@/services/minecraft/portfolio-strategy/portfolio-strategy';
+import { customSort } from '@/utils/customSort';
 import { toNumber } from '@/utils/toNumber';
 import ContentStack from '@app-components/ContentStack';
 import { CustomMenuItem, CustomSelect } from '@app-components/CustomSelect';
 import { useColumns } from '@dashboard/portfolio-strategies/[slug]/_sections/useColumns';
 import { Box, InputLabel, Stack, TextField, Typography } from '@mui/material';
-import { isFinite as checkInifinte, isNaN as checkNumber } from 'lodash';
-import orderBy from 'lodash/orderBy';
 import { type FC, useEffect, useMemo, useState } from 'react';
 
 interface TableProps {
@@ -58,30 +57,9 @@ const PortfolioTable: FC<TableProps> = ({ plan }) => {
   const coins = useMemo(() => {
     const data = content?.data?.find((item) => item.strategy === value)?.coins;
     if (sort && data?.length) {
-      const rows = [...data!];
-      const key = Object.keys(sort)?.[0] as keyof PortfolioStrategyCoin;
-
-      const sorted = orderBy(
-        rows,
-        [
-          (item) => {
-            const value = item[key];
-            // Check if the value is a number or can be parsed as a number
-            if (
-              !checkNumber(parseFloat(value as string)) &&
-              checkInifinte(parseFloat(value as string))
-            ) {
-              return parseFloat(value as string);
-            }
-            // Otherwise, handle as a string for proper sorting
-            return value?.toString()?.toLowerCase();
-          },
-        ],
-        [sort[key] ? 'asc' : 'desc']
-      );
-      return sorted;
+      const key = Object.keys(sort)[0] as keyof PortfolioStrategyCoin;
+      return customSort(data, key, sort[key] ? 'asc' : 'desc');
     }
-
     return data;
   }, [value, sort]);
 
