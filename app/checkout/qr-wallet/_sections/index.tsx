@@ -281,7 +281,7 @@ const CheckoutQRWalletSection: FC<Props> = ({ planType, id }) => {
                 width={48}
                 inputName="Count down"
               /> */}
-              <PayoutTimer duration={toNumber(data?.data?.duration)} />
+              <PayoutTimer duration={toNumber(data?.data?.duration)} isLoading={isLoading} />
 
               <Divider orientation="vertical" flexItem />
 

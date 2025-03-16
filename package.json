@@ -73,7 +73,6 @@
     "react-number-format": "^5.4.3",
     "react-phone-number-input": "^3.4.12",
     "react-redux": "^9.2.0",
-    "react-timer-hook": "^3.0.8",
     "simplebar-react": "^3.3.0",
     "slate": "^0.112.0",
     "sonner": "^1.7.4",

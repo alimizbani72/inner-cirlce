@@ -20,10 +20,12 @@ const CoinReportFavoritePage = () => {
   );
 
   useEffect(() => {
-    if (data?.meta?.next_update) {
+    if (isFetching) {
+      dispatch(setCoinsTimer(toNumber(0)));
+    } else if (data?.meta?.next_update) {
       dispatch(setCoinsTimer(toNumber(data?.meta?.next_update)));
     }
-  }, [data?.meta?.next_update]);
+  }, [data?.meta?.next_update, isFetching]);
 
   return (
     <CoinReportTable

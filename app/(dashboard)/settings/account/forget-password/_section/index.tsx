@@ -10,7 +10,6 @@ import { useForm } from 'react-hook-form';
 import { RHFCode, RHFTextField } from '@/components/hook-form';
 import { useTranslate } from '@/locales';
 import { Button } from '@mui/material';
-import { useTimer } from 'react-timer-hook';
 import zod from 'zod';
 
 import CustomDialog from '@/components/CustomDialog';
@@ -25,12 +24,9 @@ import {
 } from '@/services/minecraft/auth/auth';
 import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
+import useTimer from '@/hooks/use-timer';
 
-const getTimer = () => {
-  const time = new Date();
-  time.setSeconds(time.getSeconds() + 90);
-  return time;
-};
+const SECONDS = 90;
 
 const ForgetPasswordDialog = () => {
   const open = useModalActivation('/forget-password');
@@ -40,7 +36,7 @@ const ForgetPasswordDialog = () => {
   const [formState, setFormState] = useState(1);
   const { data } = useGetMe();
   const userInfo = data?.data;
-  const { minutes, seconds, totalSeconds, restart } = useTimer({ expiryTimestamp: getTimer() });
+  const { minutes, seconds, totalSeconds, restart } = useTimer({ expiryTimestamp: SECONDS });
   const { mutateAsync: sendCode, isPending: sendCodeLoading } = usePostAuthSendCode();
   const { mutateAsync: exchangeCode, data: exchangeData } = usePostAuthGuestToken();
 
@@ -105,7 +101,7 @@ const ForgetPasswordDialog = () => {
   const resendHandler = () => {
     sendCode({ data: { email: userInfo?.email || '' } })
       .then(() => {
-        restart(getTimer());
+        restart(SECONDS);
       })
       .catch(() => setError('verifyCode', { message: t('formErrors.formError') }));
   };
@@ -184,7 +180,7 @@ const ForgetPasswordDialog = () => {
                     sx={{ width: '100%', textAlign: 'center', cursor: 'pointer' }}
                     color="blue.light"
                     variant="p2-medium"
-                    onClick={resendHandler}
+                    onClick={!sendCodeLoading ? resendHandler : undefined}
                   >
                     {t('emailVerification.resend')}
                   </Typography>

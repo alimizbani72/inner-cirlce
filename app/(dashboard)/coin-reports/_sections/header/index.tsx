@@ -3,7 +3,6 @@ import { selectCoinsTimer } from '@/lib/features/timer/timerSlice';
 import { useAppSelector } from '@/lib/hooks';
 import { useTranslate } from '@/locales';
 import { Stack, Typography } from '@mui/material';
-import dayjs from 'dayjs';
 import type { FilterFormDataType } from '../types';
 import CountDownUpdateTime from './CountDownUpdateTime';
 import FilterButton from './FilterButton';
@@ -20,7 +19,6 @@ export const Header = ({ onFilterChange, filters, onNextUpdate }: HeaderProps) =
   const { t } = useTranslate();
   const isMobile = useIsMobile();
   const timeSeconds = useAppSelector(selectCoinsTimer);
-
   const handleChangeFilter = (value: any, name?: string) => {
     onFilterChange?.(name ? { ...filters, [name]: value } : value);
   };
@@ -37,10 +35,7 @@ export const Header = ({ onFilterChange, filters, onNextUpdate }: HeaderProps) =
           {t('coinReportTable.allCoins')}
         </Typography>
         {!!timeSeconds && (
-          <CountDownUpdateTime
-            onNextUpdate={onNextUpdate}
-            timeSeconds={dayjs().add(timeSeconds, 'second') as any}
-          />
+          <CountDownUpdateTime onNextUpdate={onNextUpdate} timeSeconds={timeSeconds} />
         )}
 
         <TimeFrames

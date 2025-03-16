@@ -5,8 +5,6 @@ import { useForm } from 'react-hook-form';
 import { RHFCode } from '@/components/hook-form';
 import FormProvider from '@/components/hook-form/form-provider';
 import z from 'zod';
-import { useTimer } from 'react-timer-hook';
-import { toNumber } from '@/utils/toNumber';
 import { usePostAuthGuestToken, usePostAuthSendCode } from '@/services/minecraft/auth/auth';
 import { useTranslate } from '@/locales';
 
@@ -23,12 +21,9 @@ import {
 import Icon from '@/components/icon';
 import { signUp } from '@/auth';
 import { useAppRouter } from '@/routes/hooks';
+import useTimer from '@/hooks/use-timer';
 
-const getTimer = () => {
-  const time = new Date();
-  time.setSeconds(time.getSeconds() + toNumber(90));
-  return time;
-};
+const SECONDS = 90;
 
 const EmailConfirm: FC = () => {
   const { push } = useAppRouter();
@@ -39,7 +34,7 @@ const EmailConfirm: FC = () => {
   const registerStep = useSelector(getRegisterStep);
   const email = registerStep === 2 ? registerInfo.email : forgotPasswordInfo.email;
 
-  const { minutes, seconds, totalSeconds, restart } = useTimer({ expiryTimestamp: getTimer() });
+  const { minutes, seconds, totalSeconds, restart } = useTimer({ expiryTimestamp: SECONDS });
 
   const methods = useForm({
     resolver: zodResolver(
@@ -64,7 +59,7 @@ const EmailConfirm: FC = () => {
   const resendHandler = () => {
     sendCode({ data: { email } })
       .then(() => {
-        restart(getTimer());
+        restart(SECONDS);
       })
       .catch(() => setError('verifyCode', { message: t('formErrors.formError') }));
   };
@@ -156,7 +151,7 @@ const EmailConfirm: FC = () => {
             sx={{ width: '100%', textAlign: 'center', cursor: 'pointer' }}
             color="blue.light"
             variant="p2-medium"
-            onClick={resendHandler}
+            onClick={!sendCodeLoading ? resendHandler : undefined}
           >
             {t('emailVerification.resend')}
           </Typography>

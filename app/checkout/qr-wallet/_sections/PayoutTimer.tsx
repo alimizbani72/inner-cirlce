@@ -1,46 +1,45 @@
 'use client';
 
 import RiveComp from '@/components/rive-loader';
+import useTimer from '@/hooks/use-timer';
 import { useTranslate } from '@/locales';
 import { Stack, Typography } from '@mui/material';
 import { type FC, useEffect, useMemo, useState } from 'react';
-import { useTimer } from 'react-timer-hook';
 
 // TODO : check and refactor
 
+const HALF_TIME_SECONDS = 1800;
+
 type PayoutTimerProps = {
   duration: number;
+  isLoading: boolean;
 };
 
-const PayoutTimer: FC<PayoutTimerProps> = ({ duration }) => {
+const PayoutTimer: FC<PayoutTimerProps> = ({ duration, isLoading }) => {
   const { t } = useTranslate();
   const [isExpired, setIsExpired] = useState(false);
   const [riveInput, setRiveInput] = useState<any>(null);
-  const [isReady, setIsReady] = useState(false);
   const expiryTimestamp = useMemo(() => {
     if (duration && duration > 0) {
-      const now = new Date();
-      return new Date(now.getTime() + duration * 1000);
+      return duration;
     }
-    return null;
+    return 0;
   }, [duration]);
-
   //  Initialize the timer only when we have a valid expiryTimestamp
   const { minutes, seconds, totalSeconds, restart } = useTimer({
-    expiryTimestamp: expiryTimestamp ?? new Date(),
-    autoStart: !!expiryTimestamp, // Only start if expiryTimestamp exists
+    expiryTimestamp: expiryTimestamp,
     onExpire: () => {
       setIsExpired(true);
     },
   });
-  const countdownValue = duration > 0 ? 61 - (totalSeconds / duration) * 60 : 61;
+  const countdownValue = duration > 0 ? 60 - (totalSeconds / HALF_TIME_SECONDS) * 60 : 61;
 
   useEffect(() => {
-    if (expiryTimestamp) {
-      restart(expiryTimestamp, true);
-      setIsReady(true);
+    if (expiryTimestamp && !totalSeconds) {
+      restart(expiryTimestamp);
+      setIsExpired(false);
     }
-  }, [expiryTimestamp, restart]);
+  }, [expiryTimestamp, totalSeconds]);
 
   useEffect(() => {
     if (riveInput) {
@@ -50,7 +49,7 @@ const PayoutTimer: FC<PayoutTimerProps> = ({ duration }) => {
 
   return (
     <Stack justifyContent="center" alignItems="center" sx={{ flex: 1 }} spacing={1}>
-      {isReady && (
+      {!isLoading && (
         <RiveComp
           src="/assets/rive/hourglass.riv"
           height={48}
@@ -60,7 +59,7 @@ const PayoutTimer: FC<PayoutTimerProps> = ({ duration }) => {
         />
       )}
 
-      {isExpired ? (
+      {!isLoading && isExpired ? (
         <Typography color="danger.main" variant="p2-medium" textTransform={'uppercase'}>
           {t('checkout.expired')}
         </Typography>
