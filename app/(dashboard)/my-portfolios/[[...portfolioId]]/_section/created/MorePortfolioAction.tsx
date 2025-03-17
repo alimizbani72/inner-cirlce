@@ -36,7 +36,6 @@ const MorePortfolioAction = ({ portfolio }: Props) => {
         portfolioId: getportfolioId,
         invalidateHistory: true,
         invalidatePortfolio: true,
-        invalidatePortfolioId: true,
       });
 
       router.replace('/my-portfolios');

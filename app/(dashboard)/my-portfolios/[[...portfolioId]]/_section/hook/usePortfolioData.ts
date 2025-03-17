@@ -11,7 +11,6 @@ const usePortfolioData = () => {
     {
       query: {
         enabled: !!activePortfolioId,
-        refetchOnMount: 'always',
       },
     }
   );
