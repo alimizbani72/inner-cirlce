@@ -1,23 +1,23 @@
-import type { Theme, Components } from '@mui/material/styles';
-import { inputBaseClasses } from '@mui/material';
+import { inputBaseClasses } from "@mui/material/InputBase";
+import type { Components, Theme } from "@mui/material/styles";
 
-const MuiTextField: Components<Theme>['MuiTextField'] = {
+const MuiTextField: Components<Theme>["MuiTextField"] = {
   defaultProps: {
-    variant: 'outlined',
+    variant: "outlined",
   },
 };
 
-const MuiFormLabel: Components<Theme>['MuiFormLabel'] = {
+const MuiFormLabel: Components<Theme>["MuiFormLabel"] = {
   styleOverrides: {
     root: ({ theme }) => ({
       marginBottom: `${theme.spacing(1)} !important`,
-      transform: 'none !important',
-      ...theme.typography['caption-semi-bold'],
+      transform: "none !important",
+      ...theme.typography["caption-semi-bold"],
     }),
   },
 };
 
-const MuiInputBase: Components<Theme>['MuiInputBase'] = {
+const MuiInputBase: Components<Theme>["MuiInputBase"] = {
   styleOverrides: {
     root: ({ theme }) => ({
       marginTop: `0 !important`,
@@ -26,7 +26,7 @@ const MuiInputBase: Components<Theme>['MuiInputBase'] = {
 
       [`&.${inputBaseClasses.focused}`]: {
         backgroundColor: theme.vars.palette.dark[1],
-        '& .MuiOutlinedInput-notchedOutline': {
+        "& .MuiOutlinedInput-notchedOutline": {
           borderColor: `${theme.palette.blue.dark} !important`,
         },
       },
@@ -34,7 +34,7 @@ const MuiInputBase: Components<Theme>['MuiInputBase'] = {
     input: ({ theme }) => ({
       color: theme.vars.palette.common.white,
       padding: `${theme.spacing(2.25)} !important`,
-      '&::placeholder': {
+      "&::placeholder": {
         opacity: 1,
         color: theme.vars.palette.grey.dark,
       },
@@ -45,24 +45,24 @@ const MuiInputBase: Components<Theme>['MuiInputBase'] = {
   },
 };
 
-const MuiOutlinedInput: Components<Theme>['MuiOutlinedInput'] = {
+const MuiOutlinedInput: Components<Theme>["MuiOutlinedInput"] = {
   styleOverrides: {
     root: ({ theme }) => ({
-      '&:hover .MuiOutlinedInput-notchedOutline': {
+      "&:hover .MuiOutlinedInput-notchedOutline": {
         borderColor: theme.vars.palette.dark[1],
       },
     }),
     notchedOutline: ({ theme }) => ({
-      borderWidth: '2px',
+      borderWidth: "2px",
       borderColor: theme.palette.dark[3],
     }),
   },
 };
 
-const MuiFormHelperText: Components<Theme>['MuiFormHelperText'] = {
+const MuiFormHelperText: Components<Theme>["MuiFormHelperText"] = {
   styleOverrides: {
     root: ({ theme }) => ({
-      ...theme.typography['caption-medium'],
+      ...theme.typography["caption-medium"],
       color: theme.palette.grey.light,
       marginTop: theme.spacing(1),
       marginLeft: 0,

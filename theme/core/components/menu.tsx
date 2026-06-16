@@ -1,17 +1,17 @@
-import type { Theme, Components } from '@mui/material/styles';
+import type { Components, Theme } from "@mui/material/styles";
 
-import { menuItem } from '../../styles';
-import { menuClasses } from '@mui/material';
+import { menuClasses } from "@mui/material/Menu";
+import { menuItem } from "../../styles";
 
 // ----------------------------------------------------------------------
 
-const MuiMenuItem: Components<Theme>['MuiMenuItem'] = {
+const MuiMenuItem: Components<Theme>["MuiMenuItem"] = {
   /** **************************************
    * STYLE
    *************************************** */
   styleOverrides: { root: ({ theme }) => ({ ...menuItem(theme) }) },
 };
-const MuiMenu: Components<Theme>['MuiMenu'] = {
+const MuiMenu: Components<Theme>["MuiMenu"] = {
   /** **************************************
    * STYLE
    *************************************** */

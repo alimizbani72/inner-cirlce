@@ -1,6 +1,7 @@
 "use client";
 import Empty from "@/components/Empty";
-import { Stack, styled } from "@mui/material";
+import { Stack } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import usePortfolioData from "../../_section/hook/usePortfolioData";
 import { useGetPortfolios } from "../../_section/hooks";
 import RenderContent from "./RenderContent";

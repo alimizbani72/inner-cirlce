@@ -1,20 +1,22 @@
-import Stack, { type StackProps } from '@mui/material/Stack';
-import Step from '@mui/material/Step';
-import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
-import type { StepIconProps } from '@mui/material/StepIcon';
-import StepLabel from '@mui/material/StepLabel';
-import Stepper from '@mui/material/Stepper';
-import { styled } from '@mui/material/styles';
-import type { FC } from 'react';
-import Icon from './icon';
-import { Typography } from '@mui/material';
-import { useIsMobile } from '@/hooks/use-responsive';
+import { useIsMobile } from "@/hooks/use-responsive";
+import { Typography } from "@mui/material";
+import Stack, { type StackProps } from "@mui/material/Stack";
+import Step from "@mui/material/Step";
+import StepConnector, {
+  stepConnectorClasses,
+} from "@mui/material/StepConnector";
+import type { StepIconProps } from "@mui/material/StepIcon";
+import StepLabel from "@mui/material/StepLabel";
+import Stepper from "@mui/material/Stepper";
+import { styled } from "@mui/material/styles";
+import type { FC } from "react";
+import Icon from "./icon";
 
 const CustomConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
     top: 10,
-    left: 'calc(-50% )',
-    right: 'calc(50% )',
+    left: "calc(-50% )",
+    right: "calc(50% )",
   },
   [`&.${stepConnectorClasses.active}`]: {
     [`& .${stepConnectorClasses.line}`]: {
@@ -33,28 +35,28 @@ const CustomConnector = styled(StepConnector)(({ theme }) => ({
   },
 }));
 
-const CustomStepIconRoot = styled('div')<{ ownerState: { active?: boolean } }>(
+const CustomStepIconRoot = styled("div")<{ ownerState: { active?: boolean } }>(
   ({ theme, ownerState }) => ({
     color: theme.palette.grey[200],
-    display: 'flex',
+    display: "flex",
     height: 24,
-    alignItems: 'center',
+    alignItems: "center",
     ...(ownerState.active && {
       color: theme.palette.primary.main,
     }),
-    '& .CustomStepIcon-completedIcon': {
+    "& .CustomStepIcon-completedIcon": {
       color: theme.palette.primary.main,
       zIndex: 1,
       fontSize: 18,
     },
-    '& .CustomStepIcon-circle': {
+    "& .CustomStepIcon-circle": {
       width: 24,
       height: 24,
-      borderRadius: '50%',
-      padding: '6px',
+      borderRadius: "50%",
+      padding: "6px",
       backgroundColor: theme.palette.dark[3],
     },
-  })
+  }),
 );
 
 function CustomStepIcon(props: StepIconProps) {
@@ -62,14 +64,20 @@ function CustomStepIcon(props: StepIconProps) {
 
   return (
     <CustomStepIconRoot ownerState={{ active }} className={className}>
-      {completed && <Icon name="FillstepIcon" fill="success.main" stroke="dark.3" />}
-      {active && <Icon name="CurrentstepIcon" stroke="dark.3" fill="pink.dark" />}
-      {!completed && !active && <Icon name="RemainstepIcon" fill="grey.dark" stroke="dark.3" />}
+      {completed && (
+        <Icon name="FillstepIcon" fill="success.main" stroke="dark.3" />
+      )}
+      {active && (
+        <Icon name="CurrentstepIcon" stroke="dark.3" fill="pink.dark" />
+      )}
+      {!completed && !active && (
+        <Icon name="RemainstepIcon" fill="grey.dark" stroke="dark.3" />
+      )}
     </CustomStepIconRoot>
   );
 }
 
-const steps = ['KYC Information', 'Two-Factor Authentication'];
+const steps = ["KYC Information", "Two-Factor Authentication"];
 
 type CustomizedSteppersProps = StackProps & {
   activeStep: number;
@@ -77,20 +85,23 @@ type CustomizedSteppersProps = StackProps & {
 
 const CustomizedSteppers: FC<CustomizedSteppersProps> = ({ activeStep }) => {
   const isMobile = useIsMobile();
-  const direction = isMobile ? 'column' : 'row';
+  const direction = isMobile ? "column" : "row";
   return (
-    <Stack direction={direction} justifyContent={'space-between'} gap={2}>
+    <Stack direction={direction} justifyContent={"space-between"} gap={2}>
       <Typography variant="p2-medium">
-        <Typography component={'span'} variant="p2-medium" color={'grey.light'}>
+        <Typography component={"span"} variant="p2-medium" color={"grey.light"}>
           {`0${activeStep + 1} -`}
-        </Typography>{' '}
+        </Typography>{" "}
         {steps[activeStep]}
       </Typography>
-      <Stack sx={{ flex: 1, maxWidth: isMobile ? '100%' : '153px' }}>
+      <Stack sx={{ flex: 1, maxWidth: isMobile ? "100%" : "153px" }}>
         <Stepper
           activeStep={activeStep}
           connector={<CustomConnector />}
-          sx={{ '.MuiStep-root ': { padding: 0 }, '.MuiStepLabel-iconContainer': { padding: 0 } }}
+          sx={{
+            ".MuiStep-root ": { padding: 0 },
+            ".MuiStepLabel-iconContainer": { padding: 0 },
+          }}
         >
           {steps.map((label) => (
             <Step key={label}>
