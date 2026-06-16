@@ -45,10 +45,10 @@ public/*.js
 .sentryclirc
 
 # Ignore generated translation files
-/locales/langs/translated/
-/locales/langs/merged/
+# /locales/langs/translated/
+# /locales/langs/merged/
 
-/locales/hashes/
+# /locales/hashes/
 
 # Ignore icons svg files
-/components/icon-final/icons.ts
+# /components/icon-final/icons.ts
