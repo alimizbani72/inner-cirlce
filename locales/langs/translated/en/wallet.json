@@ -1,0 +1,13 @@
+{
+  "wallet": {
+    "requiredAddress": "Se requiere dirección de billetera USDC Polygon (Matic)",
+    "requiredName": "Se requiere el nombre",
+    "successMessage": "Tu dirección de billetera ha sido actualizada exitosamente.",
+    "setupWallet": "Configura tu billetera",
+    "addressInputLabel": "Dirección de billetera USDC Polygon (Matic)",
+    "addressInputPlaceholder": "Ingresa la dirección de billetera USDC Polygon (Matic)",
+    "nameInputLabel": "Tu pseudónimo individual",
+    "nameInputPlaceholder": "Ingresa tu pseudónimo individual",
+    "saveButton": "Guardar billetera"
+  }
+}

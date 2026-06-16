@@ -1,0 +1,8 @@
+{
+  "transaction": {
+    "editTransaction": "Editar Transacción",
+    "deleteTransaction": "Eliminar Transacción",
+    "transactiondeleteSuccessMessage": "Transacción eliminada con éxito",
+    "transactiondeleteErrorMessage": "Transacción eliminada con éxito"
+  }
+}

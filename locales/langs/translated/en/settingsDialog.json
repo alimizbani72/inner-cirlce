@@ -1,0 +1,15 @@
+{
+  "settingsDialog": {
+    "account": "Cuenta",
+    "email": "Dirección de correo electrónico",
+    "profileSettings": "Configuración del perfil",
+    "nameRequired": "Se requiere el nombre",
+    "invalidCharacter": "Tu nombre no puede contener números",
+    "nameUpdateSuccess": "¡Tu nombre se actualizó con éxito!",
+    "nameUpdateFailed": "¡Error al actualizar el nombre!",
+    "fullName": "Nombre completo",
+    "password": "Contraseña",
+    "change": "Cambiar",
+    "changePassword": "Cambiar contraseña"
+  }
+}

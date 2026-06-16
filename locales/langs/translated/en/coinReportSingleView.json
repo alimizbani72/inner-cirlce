@@ -1,0 +1,32 @@
+{
+  "coinReportSingleView": {
+    "currentPrice": "Precio actual",
+    "currentMarketCap": "Capitalización de mercado actual",
+    "liquidity": "Liquidez",
+    "category": "Categoría",
+    "totalsupply": "Suministro total",
+    "maxsupply": "Suministro máximo",
+    "circulatingSupply": "Suministro circulante",
+    "evaluation": "Evaluación",
+    "rtl": "RTL",
+    "ds": "DS",
+    "potentialMultiplier": "Multiplicador potencial",
+    "targetPrice": "Precio objetivo",
+    "howTobuy": "Cómo comprar",
+    "watchVideo": "Ver video",
+    "inDepthReport": "Informe detallado",
+    "tableOfContent": "Tabla de contenido",
+    "upgradeYourAccount": "¡Actualiza tu cuenta!",
+    "upgradeDescription": "Al actualizar, los suscriptores pueden acceder a beneficios adicionales, funcionalidades mejoradas y contenido premium no disponible en su plan actual.",
+    "upgradeNow": "Actualizar ahora",
+    "basedonmarketreadings": "Basado en lecturas de mercado",
+    "recommended": "Recomendado",
+    "reportSummary": "Resumen del informe",
+    "briefonOurEvaluation": "Resumen de nuestra evaluación",
+    "addedSuccess": "Añadido exitosamente a tus favoritos.",
+    "removedSuccess": "Eliminado exitosamente de tus favoritos.",
+    "addedError": "No se pudo añadir a tus favoritos. Por favor, intenta de nuevo.",
+    "removedError": "No se pudo eliminar de tus favoritos. Por favor, intenta de nuevo.",
+    "briefonOurEvaluationDescription": "Realizamos una evaluación exhaustiva basada en los datos disponibles. Mientras nos esforzamos por un análisis completo, el volumen de datos influyó en nuestras conclusiones. Para obtener una visión detallada de nuestra metodología y hallazgos, por favor haz clic aquí."
+  }
+}

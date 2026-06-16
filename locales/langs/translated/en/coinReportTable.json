@@ -1,0 +1,22 @@
+{
+  "coinReportTable": {
+    "standardCoinReports": "Rapports de pièces standard",
+    "allCoins": "Toutes les pièces",
+    "favorites": "Favoris",
+    "coinReports": "Rapports de pièces",
+    "preSale": "Prévente",
+    "nextUpdateIn": "Mise à jour dans :",
+    "filter": "Filtre",
+    "filters": "Filtres",
+    "clearAll": "Tout effacer",
+    "submitFilter": "Soumettre le filtre",
+    "selectPackage": "Sélectionner le paquet",
+    "selectSignal": "Sélectionner le signal",
+    "selectCategory": "Sélectionner la catégorie",
+    "category": "Categoría",
+    "signal": "Signal",
+    "package": "Paquet",
+    "sortBy": "Trier par",
+    "timeFrame": "Période"
+  }
+}

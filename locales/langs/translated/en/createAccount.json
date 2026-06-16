@@ -1,0 +1,23 @@
+{
+  "createAccount": {
+    "title": "Crea tu cuenta",
+    "subtitle": "¡Ve tu crecimiento y obtén soporte de consultoría!",
+    "registerWithGoogle": "Regístrate con Google",
+    "orContinueWithEmail": "O continúa con el correo electrónico",
+    "fullNameLabel": "Nombre completo",
+    "fullNamePlaceholder": "Ingresa tu nombre completo",
+    "emailLabel": "Dirección de correo electrónico",
+    "emailPlaceholder": "Ingrese su dirección de correo electrónico",
+    "passwordLabel": "Contraseña",
+    "passwordPlaceholder": "Ingresa tu contraseña",
+    "inviteCodeLabel": "Tu patrocinador",
+    "agreeToTerms": "Estoy de acuerdo con",
+    "termsAndConditions": "He leído los {{termsAndConditions}} y el {{disclaimer}} y los acepto expresamente como parte del contrato. También estoy de acuerdo y entiendo que al comprar y acceder inmediatamente al contenido digital, {{refundWaiver}}.",
+    "createAccountButton": "Crear cuenta",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "login": "Iniciar sesión",
+    "firstPart": "He leído el",
+    "and": "y el",
+    "lastPart": "y los acepto expresamente como parte del contrato. También estoy de acuerdo y entiendo que al comprar y acceder inmediatamente a contenido digital,"
+  }
+}

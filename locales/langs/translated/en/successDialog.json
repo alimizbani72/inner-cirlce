@@ -1,0 +1,7 @@
+{
+  "successDialog": {
+    "requestSent": "¡Solicitud enviada!",
+    "reviewMessage": "Los administradores la revisarán y enviarán el resultado a tu correo electrónico en las próximas 24 horas.",
+    "backToHome": "Torna alla Home"
+  }
+}

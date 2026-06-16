@@ -1,0 +1,13 @@
+{
+  "emailVerification": {
+    "title": "Verificación de correo electrónico",
+    "subtitle": "Introduce el código de 6 dígitos que enviamos a",
+    "placeholderEmail": "Ricknovak@example.com",
+    "verifyCodeLabel": "Verificar código",
+    "backButton": "Atrás",
+    "resend": "Reenviar",
+    "resendWithTimer": "Reenviar",
+    "checkSpam": "¿No recibiste el correo electrónico? Revisa tu filtro de spam o intenta con otra dirección de correo.",
+    "error": "Hubo un error al procesar su solicitud. Por favor, intente de nuevo."
+  }
+}

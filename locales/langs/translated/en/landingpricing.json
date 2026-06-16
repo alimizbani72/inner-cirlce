@@ -1,0 +1,21 @@
+{
+  "landingpricing": {
+    "plankton": "Plankton",
+    "planktondescription": "22 informes de monedas +1 estrategia de cartera",
+    "shrimp": "Camarón",
+    "shrimpdescription": "Sumérgete. Conceptos básicos de cripto tan simples, que hasta los camarones los entienden.",
+    "fish": "Pez",
+    "fishdescription": "Nada hacia el cripto. Consejos y trucos para el pez ambicioso.",
+    "Shark": "Tiburón",
+    "sharkdescription": "Sumérgete a fondo. Perspectivas de depredador apex para dominar el mar cripto.",
+    "whale": "Ballena",
+    "whaledescription": "Crea olas. Acceso exclusivo para aquellos listos para jugar a ser ballenas.",
+    "highlyLimited": "Muy limitado",
+    "fisherman": "Pescador",
+    "captaincryptoMessage": "Capitanea los mares cripto. Navega, asesora y captura los grandes. Estrategias personalizadas exclusivas para resultados máximos.",
+    "applyForFisherman": "Solicitar ser Pescador",
+    "popular": "Popular",
+    "getStarted": "Comenzar",
+    "choosePlan": "Elegir Plan"
+  }
+}

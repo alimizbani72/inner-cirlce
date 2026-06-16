@@ -1,0 +1,12 @@
+{
+  "affCommissionsTabTable": {
+    "userID": "ID de usuario",
+    "userEmail": "Correo electrónico del usuario",
+    "amount": "Cantidad",
+    "packageName": "Nombre del paquete",
+    "percentage": "Porcentaje",
+    "commissionDate": "Fecha de la comisión",
+    "commissionsTitle": "Comisiones",
+    "noRecord": "Aún no tienes ningún registro de comisiones"
+  }
+}

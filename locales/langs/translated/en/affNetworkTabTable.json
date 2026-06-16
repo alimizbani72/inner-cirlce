@@ -1,0 +1,8 @@
+{
+  "affNetworkTabTable": {
+    "username": "Nombre de usuario",
+    "package": "Paquet",
+    "joinedDate": "Fecha de registro",
+    "moneyMade": "Volumen de negocios"
+  }
+}

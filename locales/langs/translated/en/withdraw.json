@@ -1,0 +1,14 @@
+{
+  "withdraw": {
+    "Withdraw": "Retirar",
+    "requiredAmount": "Se requiere cantidad",
+    "requiredWallet": "Se requiere dirección de billetera",
+    "submitRequest": "Tu solicitud se ha enviado con éxito.",
+    "availableWithdraw": "Disponible para retirar",
+    "amount": "Cantidad",
+    "enterAmount": "Ingresa la cantidad",
+    "address": "Dirección",
+    "feeWithdrawal": "Habrá una comisión del 3% por retiro.",
+    "minimumAmount": "La cantidad mínima para retiro son 100 dólares."
+  }
+}

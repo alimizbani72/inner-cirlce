@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start -p 7500",
     "dev:build": "next build",
-    "prebuild": "bun run ignore-type",
+    "prebuild": "bun run codegen && bun run dictgen && bun run ignore-type",
     "codegen": "orval --config orval.config.ts",
     "icongen": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' scripts/icongen.ts && bun forlint",
     "translate": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' scripts/translate.ts",

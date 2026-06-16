@@ -1,0 +1,11 @@
+{
+  "twoFactorDialog": {
+    "title": "Deveniți partener",
+    "securityMessage": "Para mayor seguridad, configure la Autenticación de Dos Factores (2FA).",
+    "qrInstruction": "Escanee el código QR con una aplicación de autenticación e ingrese el código a continuación.",
+    "authCodeLabel": "Código de Autenticación",
+    "authCodePlaceholder": "Ingrese el Código de Autenticación",
+    "backButton": "Atrás",
+    "nextStepButton": "Prossimo Passo"
+  }
+}

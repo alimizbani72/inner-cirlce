@@ -1,0 +1,15 @@
+{
+  "telegramChannel": {
+    "copy": "Copiar",
+    "chainmindChannel": "Canal Chainmind",
+    "unlockaccessMessage": "Desbloquea acceso a nuestro canal de Telegram premium, exclusivamente para suscriptores Whale.",
+    "realTimeMarketInsights": "Perspectivas del mercado en tiempo real",
+    "directCommunication": "Comunicación directa",
+    "joinOurPublicChatRoom": "Únete a nuestro chat público",
+    "connectedwith": "Conectado con:",
+    "exclusiveWhaleChannel": "Canal exclusivo Whale",
+    "premium": "premium",
+    "joinPremiumTelegramChannel": "Únete a nuestro canal de Telegram premium, exclusivamente para usuarios Whale.",
+    "joinPremiumChatRoom": "Únete a nuestra sala de chat premium"
+  }
+}

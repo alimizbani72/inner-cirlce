@@ -1,0 +1,13 @@
+{
+  "coinReportTabTable": {
+    "name": "NOME",
+    "package": "PACOTE",
+    "category": "CATEGORIA",
+    "cmr": "CMR",
+    "eeSignal": "Sinal E/E",
+    "potentialMultiplicator": "POT.MULT.",
+    "rtl": "RTL",
+    "riskLevel": "NÍVEL DE RISCO",
+    "currentPrice": "PREÇO ATUAL"
+  }
+}

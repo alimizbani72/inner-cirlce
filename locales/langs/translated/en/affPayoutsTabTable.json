@@ -1,0 +1,19 @@
+{
+  "affPayoutsTabTable": {
+    "userId": "ID de usuario",
+    "walletId": "ID de Cartera",
+    "amount": "Cantidad",
+    "date": "Fecha",
+    "status": "Estado",
+    "payouts": "Pagos",
+    "emptyTitle": "Aún no tienes pagos",
+    "emptySubtitle": "Rastrea ganancias, pérdidas y valoración todo en un solo lugar.",
+    "from": "DE",
+    "to": "A",
+    "dateAndTime": "Fecha y Hora",
+    "dwonloadStatement": "Descargar Declaraciones",
+    "downloadBtn": "Descargar",
+    "cancelBtn": "Annulla",
+    "format": "Formato"
+  }
+}

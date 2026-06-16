@@ -1,0 +1,17 @@
+{
+  "login": {
+    "title": "Inicia sesión en tu cuenta",
+    "loginWithGoogle": "Inicia sesión con Google",
+    "rememberMe": "Recuérdame",
+    "forgotPassword": "¿Olvidaste la contraseña?",
+    "loginButton": "Iniciar sesión",
+    "noAccount": "¿No tienes una cuenta?",
+    "register": "Regístrate",
+    "loginError": "Error de inicio de sesión",
+    "AnErrorOccurred": "Ocurrió un error",
+    "continueWithGoogle": "Continuar con Google",
+    "errorLoginWithGoogle": "¡Ups! Algo salió mal con el proceso de inicio de sesión de Google. Por favor, intenta de nuevo o utiliza un método diferente para iniciar sesión. Si continúas experimentando problemas, no dudes en contactar a nuestro equipo de soporte para obtener ayuda.",
+    "enterOtp": "Ingresa el código de seis dígitos de tu aplicación de autenticación",
+    "TwoFactorAuthentication": "Autenticación de dos factores"
+  }
+}

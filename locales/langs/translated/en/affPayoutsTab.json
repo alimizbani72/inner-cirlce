@@ -1,0 +1,8 @@
+{
+  "affPayoutsTab": {
+    "setupWalletMessage": "Configura tu cartera para que podamos enviarte el dinero.",
+    "changeWallet": "Cambiar cartera",
+    "setupWallet": "Configurar cartera",
+    "noDataToDownload": "No hay datos para descargar."
+  }
+}

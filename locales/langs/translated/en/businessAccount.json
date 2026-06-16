@@ -1,0 +1,26 @@
+{
+  "businessAccount": {
+    "contract": "Contrato",
+    "contractType": "Tipo de contrato",
+    "date": "Fecha",
+    "accountholdername": "Nombre del titular de la cuenta",
+    "companyname": "Nombre de la empresa",
+    "Companyregistrationnumber": "Número de registro de la empresa",
+    "businessAccount": "Cuenta de negocio",
+    "note": "NOTA",
+    "provideCorrectData": "Proporcione datos correctos; serán verificados.",
+    "isrequired": "Este campo es obligatorio",
+    "submittedsuccessmessage": "Su solicitud de cuenta de negocio ha sido enviada con éxito.",
+    "AccountholdernamePlaceholder": "Ingrese el nombre del titular de la cuenta",
+    "companynamePlaceholder": "Ingrese el nombre de la empresa",
+    "emailPlaceholder": "Ingrese su dirección de correo electrónico",
+    "countryPlaceholder": "Ingrese su dirección de correo electrónico",
+    "email": "Correo electrónico",
+    "companyregistrationnumber": "Número de registro de la empresa",
+    "companyregistrationplaceholder": "Ingrese el número de registro de la empresa",
+    "changeInfo": "Cambiar información",
+    "whatyouWillGet": "¿Qué obtendrás en \"Cuenta de Negocio\"?",
+    "makemyAccountTobusiness": "Convertir mi cuenta a \"Negocio\"",
+    "vatNumber": "Número de IVA"
+  }
+}

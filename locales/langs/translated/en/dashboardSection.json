@@ -1,0 +1,6 @@
+{
+  "dashboardSection": {
+    "incompletePaymentAlert": "Alerta de Pago Incompleto",
+    "incompletePaymentDescription": "Tu actualización al Paquete {{planType}} está pendiente debido a un pago incompleto. Por favor, completa tu pago para finalizar la actualización."
+  }
+}

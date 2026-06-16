@@ -1,0 +1,10 @@
+{
+  "payment": {
+    "successTitle": "¡Pago exitoso!",
+    "successSubtitle": "Tu pago ha sido procesado exitosamente. Tu membresía ahora está activa. ¡Gracias por tu compra!",
+    "successTexture": "Exitoso • Exitoso • Exitoso",
+    "failTitle": "¡Pago fallido!",
+    "failSubtitle": "No se pudo procesar tu pago. Tu membresía no ha sido activada. Por favor, inténtalo de nuevo o contacta al soporte para obtener ayuda.",
+    "failTexture": "Fallido • Fallido • Fallido • Fallido"
+  }
+}

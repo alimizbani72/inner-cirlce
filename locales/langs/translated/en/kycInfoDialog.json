@@ -1,0 +1,9 @@
+{
+  "kycInfoDialog": {
+    "title": "Deveniți partener",
+    "description": "Para completar seu cadastro, você precisará completar o processo de KYC. Será necessário fornecer documentos de identidade e outras informações necessárias.",
+    "doKycNow": "Faça o KYC agora",
+    "backButton": "Atrás",
+    "nextStepButton": "Prossimo Passo"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "services": "Servicios",
+    "community": "Comunidad",
+    "dashboard": "Panel de control",
+    "coin-reports": "Rapports de pièces",
+    "portfolio": "Portafolio",
+    "my-portfolios": "Mis portafolios",
+    "portfolio-strategies": "Estrategias de portafolio",
+    "affiliate": "Afiliado",
+    "education": "Educación",
+    "help-center": "Centro de ayuda",
+    "secret-hunts": "Cacerías secretas",
+    "settings": "Configuración",
+    "telegram-channel": "Canal de Telegram",
+    "affiliate-dashboard": "Panel de afiliados",
+    "how-it-works": "Cómo funciona",
+    "marketing-assets": "Activos de marketing",
+    "marketing-rules": "Reglas de marketing",
+    "pricing": "Prețuri"
+  }
+}

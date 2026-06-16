@@ -1,0 +1,9 @@
+{
+  "affCommissionsTab": {
+    "totalTurnover": "Volumen Total",
+    "totalCommission": "Comisión total",
+    "availableForWithdraw": "Disponible para retirar",
+    "withdraw": "Retirar",
+    "noDataToDownload": "No hay datos para descargar."
+  }
+}

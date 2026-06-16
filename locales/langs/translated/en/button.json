@@ -1,0 +1,17 @@
+{
+  "button": {
+    "cancel": "Annulla",
+    "continue": "Continua",
+    "upgrade": "Aggiorna",
+    "buyNow": "Acquista Ora",
+    "backHome": "Torna alla Home",
+    "back": "Atrás",
+    "nextStep": "Prossimo Passo",
+    "seeStrategies": "Vedi Strategie",
+    "later": "Più Tardi",
+    "enable": "Attiva",
+    "verify": "Verifica",
+    "submit": "Invia",
+    "saveChanges": "Guardar cambios"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "afDashboardTab": {
+    "totalTurnover": "Volumen Total",
+    "commissionWallet": "Cartera de Comisiones",
+    "withdraw": "Retirar",
+    "currentRank": "Rango Actual",
+    "overrideBonus": "Bono de Sobrepaso",
+    "goldCoins": "Monedas de Oro",
+    "first": "Primero",
+    "second": "Segundo",
+    "third": "Tercero",
+    "other": "Otro",
+    "overall": "General",
+    "nextRank": "Siguiente Rango",
+    "teamMembers": "Miembros del Equipo",
+    "firstLineVolume": "Volumen de la Primera Línea"
+  }
+}

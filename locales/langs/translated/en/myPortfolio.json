@@ -1,0 +1,21 @@
+{
+  "myPortfolio": {
+    "updatePortfolio": "Actualizar Portafolio",
+    "getStartedFirstPortfolio": "¡Comencemos con tu primer portafolio!",
+    "trackProfitsAndlossesMessage": "Rastrea ganancias, pérdidas y valoración todo en un solo lugar.",
+    "addPortfolio": "Añadir Portafolio",
+    "cancel": "Annulla",
+    "create": "Crear",
+    "createPortfolio": "Crear Portafolio",
+    "update": "Actualizar",
+    "avatar": "Avatar",
+    "change": "Cambiar",
+    "changeAvatar": "Cambiar Avatar",
+    "portfolionamePlaceholder": "Ingresar nombre del portafolio",
+    "portfolioname": "Nombre del portafolio",
+    "feelingAboutPortfolioText": "¿Cómo te sientes respecto a este portafolio?",
+    "saveChanges": "Guardar cambios",
+    "errorcreateMessage": "falló al crear el portafolio",
+    "errorUpdateMessage": "falló al actualizar el portafolio"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "welcomeBanner": {
+    "hi": "Hola {{name}}",
+    "welcomeBack": "👋, ¡Bienvenido de nuevo!",
+    "knowledgeMessage": "El conocimiento es poder en el mercado; la sabiduría es saber cómo usarlo.",
+    "welcomeVideo": "Video de bienvenida",
+    "youAre": "Eres un"
+  }
+}

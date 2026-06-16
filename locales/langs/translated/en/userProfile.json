@@ -1,0 +1,13 @@
+{
+  "userProfile": {
+    "title": "Perfil del usuario",
+    "choosePicError": "¡Elige tu foto!",
+    "avatarUpdatedSuccess": "¡Avatar actualizado con éxito!",
+    "avatarUpdateFailed": "¡Error al actualizar el avatar!",
+    "avatarRemovedSuccess": "¡Avatar eliminado con éxito!",
+    "avatarRemoveFailed": "¡Error al eliminar el avatar!",
+    "uploadPicture": "Subir foto",
+    "remove": "Eliminar",
+    "errorSizePicture": "La taille du fichier est trop grande. Veuillez télécharger un fichier de moins de 2 Mo."
+  }
+}

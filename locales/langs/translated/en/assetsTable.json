@@ -1,0 +1,29 @@
+{
+  "assetsTable": {
+    "total": "Total",
+    "assets": "Activos",
+    "assetsTotalValue": "Valor Total de los Activos",
+    "transactions": "Transacciones",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "quantity": "Cantidad",
+    "pricePerCoin": "PRECIO POR MONEDA",
+    "fee": "COMISIÓN",
+    "dateAndTime": "FECHA Y HORA",
+    "note": "Nota",
+    "name": "nombre",
+    "currentHoldings": "Posesiones Actuales",
+    "actualPrice": "Precio Real",
+    "actualValue": "Valor Real",
+    "distribution": "Distribución",
+    "exitProximity": "Proximidad de Salida",
+    "totalBought": "Total comprado",
+    "totalSold": "Total vendido",
+    "totalInvest": "Total Invertido",
+    "realizedPNL": "PNL Realizado",
+    "unrealizedpnl": "PNL No Realizado",
+    "profit": "Beneficio",
+    "assetDeletesuccessMessage": "Eliminado con éxito",
+    "assetDeleteerrorMessage": "Error al eliminar"
+  }
+}

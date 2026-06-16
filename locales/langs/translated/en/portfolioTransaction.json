@@ -1,0 +1,32 @@
+{
+  "portfolioTransaction": {
+    "dateAndTime": "Fecha",
+    "date": "Fecha",
+    "time": "Tiempo",
+    "cancel": "Annulla",
+    "changeDateTime": "Cambiar Fecha",
+    "addNote": "Añadir Nota",
+    "note": "Nota",
+    "quantityIsRequired": "Se requiere cantidad",
+    "feeIsRequired": "Se requiere tarifa",
+    "addTransaction": "Añadir Transacción",
+    "quantity": "Cantidad",
+    "coins": "monedas",
+    "enterQuantity": "Introducir Cantidad",
+    "topQuantityHelpText": "Aquí hay un texto de ayuda sobre la entrada.",
+    "topPricePerCoinHelpText": "Aquí hay un texto de ayuda sobre la entrada.",
+    "pricePerCoin": "Precio por moneda",
+    "udateErrorMessage": "No se pudo actualizar la transacción",
+    "createErrorMessage": "No se pudo crear la transacción",
+    "fee": "Tarifa",
+    "topFeeHelpText": "La tarifa de transacción introducida se incluirá como parte del cálculo de Ganancia/Pérdida.",
+    "enterTheFee": "Introducir la Tarifa",
+    "notes": "Notas",
+    "totalSpent": "Total Gastado",
+    "totalReceived": "Total Recibido",
+    "buy": "Comprar",
+    "sell": "Vender",
+    "notePlaceholder": "Escribe tu nota aquí...",
+    "updateTransaction": "Actualizar Transacción"
+  }
+}

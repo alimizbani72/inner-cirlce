@@ -1,0 +1,15 @@
+{
+  "profileDialog": {
+    "title": "Perfil",
+    "copyright": "Derechos de autor © {{year}} {{company}}. Todos los derechos reservados.",
+    "enable2FA": "Activar 2FA",
+    "profileSetting": "Configuración del perfil",
+    "termsOfService": "Términos de uso | Política de privacidad",
+    "becomePartner": "Deveniți partener",
+    "descriptyion": "¿Estás seguro de que quieres cerrar sesión en tu cuenta de ChainMind?",
+    "noBtn": "No, Cancelar",
+    "yesBtn": "Sí, Cerrar sesión",
+    "privacy": "Política de Privacidade",
+    "logout": "Sair"
+  }
+}

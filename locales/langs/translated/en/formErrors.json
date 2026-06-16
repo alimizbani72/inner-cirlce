@@ -1,0 +1,28 @@
+{
+  "formErrors": {
+    "requiredName": "Por favor, ingrese su nombre completo",
+    "requiredPassword": "Por favor, ingrese su contraseña",
+    "confirmPassword": "Ambas contraseñas deben coincidir.",
+    "passwordPattern": "Debe contener 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial",
+    "invalidEmail": "La dirección de correo electrónico es incorrecta",
+    "requiredEmail": "Por favor, ingrese su dirección de correo electrónico",
+    "requiredTerms": "Se deben aceptar los términos y condiciones.",
+    "formError": "Algo salió mal, por favor intente de nuevo",
+    "requiredCode": "El valor es incorrecto, intente de nuevo.",
+    "userNotFound": "El correo electrónico no existe",
+    "emailExists": "El correo electrónico ya existe",
+    "requiredNewPassword": "Por favor, ingrese su nueva contraseña",
+    "newPasswordPattern": "Debe contener 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial",
+    "requiredCurrentPassword": "Por favor, ingrese su contraseña actual",
+    "required": "Este campo es obligatorio",
+    "invalidWallet": "Dirección de billetera Polygon inválida",
+    "unexpectedError": "Ocurrió un error. Por favor, intente de nuevo.",
+    "reqiredFirstName": "Por favor, ingrese su primer nombre",
+    "reqiredLastName": "Por favor, ingrese su apellido",
+    "reqiredZipCode": "Por favor, ingrese su código postal",
+    "reqiredCountry": "Por favor, ingrese su país",
+    "reqiredCity": "Por favor, ingrese su ciudad",
+    "reqiredAddress": "Por favor, ingrese su dirección",
+    "somethingWentWrong": "Algo salió mal"
+  }
+}
