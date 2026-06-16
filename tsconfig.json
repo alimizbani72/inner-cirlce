@@ -7,8 +7,9 @@
       "@auth/*": ["app/(auth)/*"],
       "@dashboard/*": ["app/(dashboard)/*"],
       "@app-components/*": ["app/_components/*"],
-      "@/*": ["./*"]
+      "@/*": ["./"]
     },
+
     "module": "ESNext",
     "target": "ES2019",
     "lib": ["dom", "dom.iterable", "esnext", "WebWorker"],
