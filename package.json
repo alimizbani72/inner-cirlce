@@ -16,6 +16,7 @@
     "ignore-type": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' scripts/ignore-ts-errors.ts",
     "clear-all": "rm -rf node_modules .next out dist build",
     "re-start": "rm -rf node_modules .next out dist build && bun install && bun run dev",
+    "dictgen": "bun run translate && bun run build:translations",
     "re-build": "rm -rf node_modules .next out dist build && bun install && bun run build"
   },
   "dependencies": {
