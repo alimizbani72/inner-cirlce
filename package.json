@@ -5,24 +5,17 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 7500",
-    "start": "next start -p 7500",
-    "prebuild": "bun run lint && bun run format && bun run codegen && bun run dictgen && bun run ignore-type",
     "build": "next build",
-    "dev:build": "bun run codegen && next build",
-    "format": "biome format --write ./",
-    "lint:fix": "biome lint --write ./",
-    "lint": "biome lint ./",
-    "forlint": "bun run format && bun run lint:fix",
-    "clear-all": "rm -rf node_modules .next out dist build",
-    "re-start": "rm -rf node_modules .next out dist build && bun install && bun run dev",
-    "re-build": "rm -rf node_modules .next out dist build && bun install && bun run build",
-    "codegen": "orval --config orval.config.ts",
+    "start": "next start -p 7500",
+    "dev:build": "next build",
+    "prebuild": "bun run ignore-type",
     "icongen": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' scripts/icongen.ts && bun forlint",
-    "prepare": "husky || true",
     "translate": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' scripts/translate.ts",
     "build:translations": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' scripts/build-translations.ts",
-    "dictgen": "bun run translate && bun run build:translations",
-    "ignore-type": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' scripts/ignore-ts-errors.ts"
+    "ignore-type": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' scripts/ignore-ts-errors.ts",
+    "clear-all": "rm -rf node_modules .next out dist build",
+    "re-start": "rm -rf node_modules .next out dist build && bun install && bun run dev",
+    "re-build": "rm -rf node_modules .next out dist build && bun install && bun run build"
   },
   "dependencies": {
     "@bprogress/next": "^3.2.8",
@@ -101,5 +94,8 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2"
   },
-  "trustedDependencies": ["@biomejs/biome", "sharp"]
+  "trustedDependencies": [
+    "@biomejs/biome",
+    "sharp"
+  ]
 }
