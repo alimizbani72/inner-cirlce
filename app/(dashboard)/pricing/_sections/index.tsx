@@ -1,50 +1,73 @@
-'use client';
+"use client";
 
-import { Scrollbar } from '@/components/scrollbar';
-import { plans as plansConfig } from '@/configs/plans';
-import { getUserPlanType } from '@/consts';
-import { usePricingData } from '@/hooks/usePricingData';
-import { useTranslate } from '@/locales';
-import { useAppRouter } from '@/routes/hooks';
-import { useGetMe } from '@/services/minecraft/auth/auth';
-import { useGetFinancialPaymentsActive } from '@/services/minecraft/financial/financial';
-import PricingTable from '@app-components/PricingTable';
-import { Stack, Typography } from '@mui/material';
-import { useState } from 'react';
-import { toast } from 'sonner';
-import ActiveNotice from './ActiveNotice';
-import ActivePlan from './ActivePlan';
-import LoadingCard from './LoadingCard';
-import PlanCard from './PlanCard';
+import { Scrollbar } from "@/components/scrollbar";
+import { plans as plansConfig } from "@/configs/plans";
+import { getUserPlanType } from "@/consts";
+import { usePricingData } from "@/hooks/usePricingData";
+import { useTranslate } from "@/locales";
+import { useAppRouter } from "@/routes/hooks";
+import { useGetMe } from "@/services/minecraft/default/default";
+import PricingTable from "@app-components/PricingTable";
+import { Stack, Typography } from "@mui/material";
+import { useState } from "react";
+import { toast } from "sonner";
+import ActiveNotice from "./ActiveNotice";
+import ActivePlan from "./ActivePlan";
+import LoadingCard from "./LoadingCard";
+import PlanCard from "./PlanCard";
 
 const PricingSection = () => {
   const { t } = useTranslate();
-  const [open, setOpen] = useState('');
+  const [open, setOpen] = useState("");
   const { plans, rows, isLoading } = usePricingData();
   const { data: userData } = useGetMe();
   const userInfo = userData?.data;
   const { push } = useAppRouter();
-  const { refetch, data, isSuccess } = useGetFinancialPaymentsActive({
-    query: {
-      enabled: false,
-      retry: false,
-    },
-  });
+
+  // 🔹 Dummy active payment state
+  const [activePayment, setActivePayment] = useState<{
+    id?: string;
+    plan_type?: string;
+  } | null>(null);
+
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  // 🔹 Fake refetch (simulate API)
+  const refetch = async () => {
+    return new Promise<void>((resolve) => {
+      setTimeout(() => {
+        const hasActive = true; // 👉 toggle this for testing
+
+        if (hasActive) {
+          const mock = { id: "999", plan_type: "premium" };
+          setActivePayment(mock);
+        } else {
+          setActivePayment(null);
+        }
+
+        setIsSuccess(true);
+        resolve();
+      }, 700);
+    });
+  };
+
   const handleOnContinue = () => {
-    push(`/checkout/qr-wallet?plan_type=${data?.data?.plan_type}&id=${data?.data?.id}`);
+    push(
+      `/checkout/qr-wallet?plan_type=${activePayment?.plan_type}&id=${activePayment?.id}`,
+    );
   };
 
   const handleCheckActivePayment = async (plan_type: string) => {
     try {
       await refetch();
-      if (isSuccess && data?.data?.id) {
+
+      if (isSuccess && activePayment?.id) {
         setOpen(plan_type);
       } else {
         push(`/checkout?plan_type=${plan_type}`);
       }
-    } catch (error) {
-      // TODO : check message and add || "some text"
-      toast.error(error?.response?.data?.message);
+    } catch (error: any) {
+      toast.error(error?.message || "Something went wrong");
     }
   };
 
@@ -52,23 +75,23 @@ const PricingSection = () => {
     <>
       <Stack
         sx={{
-          '.os-scrollbar-handle': {
-            cursor: 'pointer',
-            backgroundColor: 'grey.dark',
-            '&:hover': { backgroundColor: 'grey.dark' },
+          ".os-scrollbar-handle": {
+            cursor: "pointer",
+            backgroundColor: "grey.dark",
+            "&:hover": { backgroundColor: "grey.dark" },
           },
         }}
       >
         <ActivePlan />
 
-        <Stack py={{ md: 4, xs: 3 }} maxWidth="100%" overflow={'hidden'} gap={4}>
+        <Stack py={{ md: 4, xs: 3 }} maxWidth="100%" overflow="hidden" gap={4}>
           <Scrollbar>
             <Stack
-              direction={'row'}
+              direction="row"
               gap={2.5}
               px={{ md: 4, xs: 3 }}
               pb={3}
-              minWidth={'max-content'}
+              minWidth="max-content"
             >
               {isLoading ? (
                 <LoadingCard />
@@ -79,8 +102,11 @@ const PricingSection = () => {
                     key={plan.id}
                     {...plan}
                     disabled={
-                      plansConfig[getUserPlanType(userInfo) as keyof typeof plansConfig]?.order >=
-                      plansConfig[plan.plan_type as keyof typeof plansConfig]?.order
+                      plansConfig[
+                        getUserPlanType(userInfo) as keyof typeof plansConfig
+                      ]?.order >=
+                      plansConfig[plan.plan_type as keyof typeof plansConfig]
+                        ?.order
                     }
                   />
                 ))
@@ -91,13 +117,13 @@ const PricingSection = () => {
           {plans?.length && (
             <Stack gap={2}>
               <Typography px={{ md: 4, xs: 3 }} variant="h4-semi-bold">
-                {t('plan.compares')}
+                {t("plan.compares")}
               </Typography>
 
               <Stack
                 pb={3}
                 px={{ md: 4, xs: 0 }}
-                maxWidth={{ md: 'calc(100vw - 64px)', xs: 'calc(100vw )' }}
+                maxWidth={{ md: "calc(100vw - 64px)", xs: "calc(100vw )" }}
               >
                 <PricingTable
                   plansData={plans}
@@ -110,10 +136,11 @@ const PricingSection = () => {
           )}
         </Stack>
       </Stack>
+
       {open && (
         <ActiveNotice
           open={open}
-          onClose={() => setOpen('')}
+          onClose={() => setOpen("")}
           handlePay={(plan_type) => push(`/checkout?plan_type=${plan_type}`)}
           handleOnContinue={handleOnContinue}
         />

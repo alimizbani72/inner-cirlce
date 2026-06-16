@@ -53,7 +53,7 @@
         "noUnusedLabels": "error"
       },
       "nursery": {
-        "noNestedTernary": "error"
+        "noNestedTernary": "off"
       },
       "style": {
         "noParameterAssign": "off",

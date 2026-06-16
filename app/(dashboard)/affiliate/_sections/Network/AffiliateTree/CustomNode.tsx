@@ -1,10 +1,10 @@
-import Icon from '@/components/icon';
-import { useGetMe } from '@/services/minecraft/auth/auth';
-import { toNumber } from '@/utils/toNumber';
-import { Avatar, Box, Stack, Typography } from '@mui/material';
-import { Handle, Position } from '@xyflow/react';
-import { type FC, useState } from 'react';
-import type { CustomNodeProps } from './types';
+import Icon from "@/components/icon";
+import { useGetMe } from "@/services/minecraft/default/default";
+import { toNumber } from "@/utils/toNumber";
+import { Avatar, Box, Stack, Typography } from "@mui/material";
+import { Handle, Position } from "@xyflow/react";
+import { type FC, useState } from "react";
+import type { CustomNodeProps } from "./types";
 
 const CustomNode: FC<CustomNodeProps> = ({ data, isConnectable }) => {
   const { data: user } = useGetMe();
@@ -18,41 +18,41 @@ const CustomNode: FC<CustomNodeProps> = ({ data, isConnectable }) => {
       sx={{
         p: detailedView ? 2 : 3,
         borderRadius: 2,
-        border: '1.5px solid',
-        borderColor: detailedView ? 'dark.3' : 'dark.3',
-        bgcolor: detailedView ? 'dark.3' : 'dark.2',
-        width: '168px',
-        height: '140px',
-        cursor: 'pointer',
+        border: "1.5px solid",
+        borderColor: detailedView ? "dark.3" : "dark.3",
+        bgcolor: detailedView ? "dark.3" : "dark.2",
+        width: "168px",
+        height: "140px",
+        cursor: "pointer",
       }}
       gap={1.5}
-      justifyContent={detailedView ? 'flex-start' : 'center'}
-      alignItems={detailedView ? 'flex-start' : 'center'}
+      justifyContent={detailedView ? "flex-start" : "center"}
+      alignItems={detailedView ? "flex-start" : "center"}
     >
       {!isMine && (
         <Handle
           type="target"
           position={Position.Top}
           isConnectable={isConnectable}
-          style={{ top: '-8px', background: '#FF008A', borderColor: '#FF008A' }}
+          style={{ top: "-8px", background: "#FF008A", borderColor: "#FF008A" }}
         />
       )}
       {!detailedView ? (
         <>
-          <Box sx={{ position: 'relative' }}>
+          <Box sx={{ position: "relative" }}>
             {isMine && (
               <Box
                 sx={{
-                  display: 'inline-flex',
-                  padding: '2px 12px 0px 12px',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  gap: '8px',
-                  position: 'absolute',
-                  height: '20px',
+                  display: "inline-flex",
+                  padding: "2px 12px 0px 12px",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "8px",
+                  position: "absolute",
+                  height: "20px",
                   top: -10,
                   zIndex: 2,
-                  borderRadius: '12px',
+                  borderRadius: "12px",
                   background: (theme) => theme.palette.gradient.pink,
                 }}
               >
@@ -64,23 +64,23 @@ const CustomNode: FC<CustomNodeProps> = ({ data, isConnectable }) => {
             </Avatar>
           </Box>
 
-          <Typography variant="p2-medium" sx={{ textAlign: 'center' }}>
+          <Typography variant="p2-medium" sx={{ textAlign: "center" }}>
             {data.username}
           </Typography>
         </>
       ) : (
         <>
-          <Stack direction={'row'} gap={1}>
+          <Stack direction={"row"} gap={1}>
             <Icon name="SubscriptionIcon" />
             <Typography variant="p2-medium">{data.plan_type}</Typography>
           </Stack>
-          <Stack direction={'row'} gap={1}>
+          <Stack direction={"row"} gap={1}>
             <Icon name="ClockIcon" />
             <Typography variant="p2-medium">
               {new Date(data.created_at!).toLocaleDateString()}
             </Typography>
           </Stack>
-          <Stack direction={'row'} gap={1}>
+          <Stack direction={"row"} gap={1}>
             <Icon name="MoneyIcon" stroke="common.white" />
             <Typography variant="p2-medium">${data.turnover?.value}</Typography>
           </Stack>
@@ -91,7 +91,7 @@ const CustomNode: FC<CustomNodeProps> = ({ data, isConnectable }) => {
           type="source"
           position={Position.Bottom}
           isConnectable={isConnectable}
-          style={{ background: '#070720', borderColor: '#FF008A' }}
+          style={{ background: "#070720", borderColor: "#FF008A" }}
         />
       )}
     </Stack>

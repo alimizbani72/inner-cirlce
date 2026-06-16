@@ -1,18 +1,18 @@
-'use client';
-import { setCoinsTimer } from '@/lib/features/timer/timerSlice';
-import { useAppDispatch } from '@/lib/hooks';
-import { useGetCoinReport } from '@/services/minecraft/coin-report/coin-report';
-import { toNumber } from '@/utils/toNumber';
-import { defaultValuesFilters } from '@dashboard/coin-reports/_sections/consts';
-import CoinReportTable from '@dashboard/coin-reports/_sections/table';
-import type { FilterFormDataType } from '@dashboard/coin-reports/_sections/types';
-import { useEffect, useState } from 'react';
+"use client";
+import { setCoinsTimer } from "@/lib/features/timer/timerSlice";
+import { useAppDispatch } from "@/lib/hooks";
+import { useGetCoinReport } from "@/services/minecraft/default/default";
+import { toNumber } from "@/utils/toNumber";
+import { defaultValuesFilters } from "@dashboard/coin-reports/_sections/consts";
+import CoinReportTable from "@dashboard/coin-reports/_sections/table";
+import type { FilterFormDataType } from "@dashboard/coin-reports/_sections/types";
+import { useEffect, useState } from "react";
 
 export const handleOptsForService = (filters: FilterFormDataType) => {
   return JSON.stringify({
     filters: {
       timeframe: filters.timeFrame,
-      plans: filters.packages?.map((pack) => pack.value),
+      plans: filters.packages?.map((pack) => pack.value) || [],
       signals: filters?.signals?.map((signal) => signal?.value),
       categories: filters?.categories?.map((category) => category.value),
       query: filters?.query || undefined,
@@ -25,11 +25,12 @@ export const handleOptsForService = (filters: FilterFormDataType) => {
 
 const CoinReportPage = () => {
   const dispatch = useAppDispatch();
-  const [filters, setFilters] = useState<FilterFormDataType>(defaultValuesFilters);
+  const [filters, setFilters] =
+    useState<FilterFormDataType>(defaultValuesFilters);
 
   const { data, refetch, isFetching } = useGetCoinReport(
     { opts: handleOptsForService(filters) },
-    { query: { refetchOnMount: 'always' } }
+    { query: { refetchOnMount: "always" } },
   );
 
   useEffect(() => {

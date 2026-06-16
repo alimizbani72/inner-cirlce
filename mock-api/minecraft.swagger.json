@@ -1,0 +1,621 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Mock Minecraft API",
+    "version": "1.0.0"
+  },
+
+  "paths": {
+    "/coin-report/{slug}/favorite": {
+      "post": {
+        "operationId": "postCoinReportSlugFavorite",
+        "summary": "Add coin report favorite",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK" }
+        }
+      },
+      "delete": {
+        "operationId": "deleteCoinReportSlugFavorite",
+        "summary": "Remove coin report favorite",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK" }
+        }
+      }
+    },
+    "/coin-report": {
+      "get": {
+        "operationId": "getCoinReport",
+        "summary": "Get coin report list",
+        "parameters": [
+          {
+            "name": "opts",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoinReportResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/coin-report/categories": {
+      "get": {
+        "operationId": "getCoinReportCategories",
+        "summary": "Get coin report categories",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoinReportCategoriesResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/global-video-global": {
+      "get": {
+        "operationId": "getGlobalsVideoGlobal",
+        "summary": "Get global video content",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GlobalsVideoGlobalResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/global-socialmedia": {
+      "get": {
+        "operationId": "getGlobalsSocialMedia",
+        "summary": "Get global social media",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GlobalsSocialMediaResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/roadmaps": {
+      "get": {
+        "operationId": "getRoadmaps",
+        "summary": "Get roadmaps",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoadmapsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/global-livefeed": {
+      "get": {
+        "operationId": "getGlobalsLiveFeed",
+        "summary": "Get global live feed",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GlobalsLiveFeedResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/affiliate/how-it-works": {
+      "get": {
+        "operationId": "getGlobalsAffiliateHowItWorks",
+        "summary": "Get affiliate how it works",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AffiliateHowItWorksResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/auth/me": {
+      "get": {
+        "operationId": "getMe",
+        "summary": "Get current user",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/global-dropzone": {
+      "get": {
+        "operationId": "getGlobalsDropZone",
+        "summary": "Get global drop zone",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GlobalsDropZoneResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/affiliate/me": {
+      "get": {
+        "operationId": "getAffiliateMe",
+        "summary": "Get affiliate me",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AffiliateMeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/items": {
+      "get": {
+        "operationId": "getItems",
+        "summary": "Get items",
+        "responses": {
+          "200": {
+            "description": "Items list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": { "type": "string" },
+                          "name": { "type": "string" },
+                          "price": { "type": "number" }
+                        },
+                        "required": ["id", "name", "price"]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/financial/payments/active": {
+      "get": {
+        "operationId": "getFinancialPaymentsActive",
+        "summary": "Get active payment",
+        "responses": {
+          "200": {
+            "description": "Active payment",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": { "type": "string" },
+                        "plan_type": { "type": "string" },
+                        "status": { "type": "string" }
+                      },
+                      "required": ["id", "plan_type", "status"]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "components": {
+    "schemas": {
+      "CoinReportFavoriteResponse": {
+        "type": "object",
+        "properties": {
+          "success": { "type": "boolean" }
+        }
+      },
+      "CoinReportResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CoinReportItem"
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "next_update": { "type": "number" },
+              "total_count": { "type": "number" }
+            }
+          }
+        }
+      },
+
+      "CoinReportItem": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "price": { "type": "number" },
+          "category": { "type": "string" },
+          "signal": { "type": "string" }
+        }
+      },
+      "CoinReportCategoriesResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CoinReportCategory"
+            }
+          }
+        }
+      },
+      "CoinReportCategory": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "slug": { "type": "string" }
+        }
+      },
+      "GlobalsVideoGlobalResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "videos": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/VideoGlobalItem"
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "VideoGlobalItem": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string" },
+          "videoLink": { "type": "string" },
+          "videoPage": { "type": "string" }
+        }
+      },
+      "GlobalsSocialMediaResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "socialLinks": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SocialLink"
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "SocialLink": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "url": { "type": "string" },
+          "icon": {
+            "type": "object",
+            "properties": {
+              "url": { "type": "string" }
+            }
+          }
+        }
+      },
+      "RoadmapsResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "docs": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RoadmapItem"
+                }
+              }
+            },
+            "required": ["docs"]
+          }
+        }
+      },
+
+      "RoadmapItem": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string" },
+          "dateOnly": { "type": "string" },
+          "descriptionText": { "type": "string" },
+          "status": { "type": "string" },
+          "image": {
+            "type": "object",
+            "properties": {
+              "sizes": {
+                "type": "object",
+                "properties": {
+                  "roadmap": {
+                    "type": "object",
+                    "properties": {
+                      "url": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "required": ["title", "dateOnly", "descriptionText", "status"]
+      },
+      "GlobalsLiveFeedResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "author": { "type": "string" },
+              "title": { "type": "string" },
+              "text": { "type": "string" }
+            },
+            "required": ["author", "title", "text"]
+          }
+        }
+      },
+      "MeResponse": {
+        "type": "object",
+        "properties": {
+          "data": { "$ref": "#/components/schemas/User" }
+        }
+      },
+
+      "User": {
+        "type": "object",
+        "required": ["id", "email"],
+        "properties": {
+          "id": { "type": "string" },
+          "email": { "type": "string" },
+          "avatar_url": { "type": "string" },
+          "full_name": { "type": "string" },
+          "kyc_status": { "type": "boolean" },
+          "plan_type": { "type": "string" },
+          "rank_type": { "type": "string" },
+          "has_2fa": { "type": "boolean" },
+          "banned": { "type": "boolean" },
+          "suspended": { "type": "boolean" },
+          "telegram_group_joined": { "type": "boolean" },
+          "telegram_id": { "type": "string" },
+
+          "business_info": {
+            "type": ["object", "null"],
+            "properties": {
+              "address": { "type": "string" },
+              "city": { "type": "string" },
+              "company_name": { "type": "string" },
+              "country": { "type": "string" },
+              "email": { "type": "string" },
+              "holder_name": { "type": "string" },
+              "zip_code": { "type": "string" },
+              "vat_number": { "type": "string" },
+              "registration_number": { "type": "string" },
+              "created_at": { "type": "string" }
+            }
+          }
+        }
+      },
+      "AffiliateHowItWorksResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "layout": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CMSBlock"
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "CMSBlock": {
+        "type": "object",
+        "properties": {
+          "blockType": { "type": "string" },
+          "blockTitle": { "type": "string" },
+          "title": { "type": "string" },
+          "text": { "type": "string" },
+          "buttonText": { "type": "string" },
+          "buttonLink": { "type": "string" },
+          "layout": {
+            "type": "array",
+            "items": { "type": "object" }
+          }
+        }
+      },
+
+      "GlobalsDropZoneResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string",
+                "enum": ["active", "inactive"]
+              },
+              "message": { "type": "string" },
+              "timestampUnix": { "type": "number" },
+              "coins": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DropZoneCoin"
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "DropZoneCoin": {
+        "type": "object",
+        "required": ["name", "cmrValue", "potentialMultiplicator"],
+        "properties": {
+          "name": { "type": "string" },
+          "cmrValue": { "type": "number" },
+          "potentialMultiplicator": { "type": "number" },
+          "icon": {
+            "type": "object",
+            "properties": {
+              "url": { "type": "string" }
+            }
+          },
+          "membership": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "slug": { "type": "string" }
+              }
+            }
+          }
+        }
+      },
+
+      "AffiliateMeResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "turnover": { "type": "number" },
+              "agreed_to_tos": { "type": "boolean" },
+
+              "goldCoins": { "type": "number" },
+
+              "rank": {
+                "type": "object",
+                "properties": {
+                  "type": { "type": "string" },
+                  "percent": { "type": "number" }
+                }
+              },
+
+              "next_rank": {
+                "type": "object",
+                "properties": {
+                  "gold_coins": { "type": "number" }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

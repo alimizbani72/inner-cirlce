@@ -1,35 +1,25 @@
-import { useParams } from 'next/navigation';
-import { getActivePortfolioId } from '../utils';
-import { useGetOverview, useGetPortfoliosId } from '@/services/minecraft/portfolio/portfolio';
+import { useParams } from "next/navigation";
+import { useGetOverview, useGetPortfoliosId } from "../hooks";
+import { getActivePortfolioId } from "../utils";
 
 const usePortfolioData = () => {
   const { portfolioId } = useParams();
   const activePortfolioId = getActivePortfolioId(portfolioId);
 
-  const { data: portfolioDetail, isLoading: isLoadingPortfolioDetail } = useGetPortfoliosId(
-    activePortfolioId,
-    {
-      query: {
-        enabled: !!activePortfolioId,
-      },
-    }
-  );
+  const { data: portfolioDetail, isLoading: isLoadingPortfolioDetail } =
+    useGetPortfoliosId(activePortfolioId);
 
-  const { data: overview, isLoading: isLoadingOverview } = useGetOverview({
-    query: {
-      enabled: !activePortfolioId,
-      refetchOnMount: 'always',
-    },
-  });
+  const { data: overview, isLoading: isLoadingOverview } =
+    useGetOverview(!activePortfolioId);
 
   const selectedPortfolio = activePortfolioId ? portfolioDetail : overview;
-  const isLoading = isLoadingPortfolioDetail || isLoadingOverview;
+
   return {
     selectedPortfolio,
     portfolioDetail,
     overview,
     portfolioId: activePortfolioId,
-    isLoading,
+    isLoading: isLoadingPortfolioDetail || isLoadingOverview,
   };
 };
 

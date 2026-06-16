@@ -1,62 +1,86 @@
-import { useTranslate } from '@/locales';
-import { useGetTelegramLink } from '@/services/minecraft/telegram/telegram';
-import { toast } from 'sonner';
-import SubscriptionButton from './SubscriptionButton';
-import ContentStack from '@app-components/ContentStack';
-import CustomButton from './CustomButton';
-import ConnectedStatus from './ConnectedStatus';
-import { useGetMe } from '@/services/minecraft/auth/auth';
-import { plans } from '@/configs/plans';
-import { getUserPlanType } from '@/consts';
+import { useTranslate } from "@/locales";
+import ContentStack from "@app-components/ContentStack";
+import { useState } from "react";
+import { toast } from "sonner";
+import ConnectedStatus from "./ConnectedStatus";
+import CustomButton from "./CustomButton";
+import SubscriptionButton from "./SubscriptionButton";
 
 const RenderWhaleContent = () => {
   const { t } = useTranslate();
-  const { refetch, isLoading } = useGetTelegramLink({
-    query: {
-      retry: 0,
-      retryOnMount: false,
-      refetchOnWindowFocus: false,
-    },
-  });
 
-  const { data: userInfo } = useGetMe();
-  const needsUpgrade = plans[getUserPlanType(userInfo?.data) as keyof typeof plans]?.order < 6;
+  // ✅ fake loading
+  const [isLoading, setIsLoading] = useState(false);
+
+  // ✅ dummy user
+  const userInfo = {
+    data: {
+      plan: "premium", // change to "basic" to test upgrade
+      telegram_group_joined: false,
+      telegram_id: "123456789",
+    },
+  };
+
+  // ✅ simulate plan check
+  const needsUpgrade = userInfo.data.plan !== "premium";
+
+  // ✅ fake API: get telegram link
+  const fakeGetTelegramLink = () =>
+    new Promise<string>((resolve, reject) => {
+      setIsLoading(true);
+
+      setTimeout(() => {
+        setIsLoading(false);
+
+        // simulate success or failure
+        const success = true;
+
+        if (success) {
+          resolve("https://t.me/example_private_group");
+        } else {
+          reject(new Error("Failed to fetch link"));
+        }
+      }, 1000);
+    });
 
   const handleJoinClick = async () => {
     try {
-      const result = await refetch();
+      const link = await fakeGetTelegramLink();
 
-      if (result?.data?.data) {
-        window.location.href = result.data.data;
-      } else if (result.error) {
-        toast.error(t('formErrors.formError'));
+      if (link) {
+        window.location.href = link;
+      } else {
+        toast.error(t("formErrors.formError"));
       }
     } catch (_err) {
-      toast.error(t('formErrors.unexpectedError'));
+      toast.error(t("formErrors.unexpectedError"));
     }
   };
 
+  // ✅ loading state
   if (isLoading) {
     return (
       <ContentStack
         className="loading-skeleton"
-        sx={{ height: '51px', borderRadius: 4, width: '100%' }}
+        sx={{ height: "51px", borderRadius: 4, width: "100%" }}
       />
     );
   }
 
+  // ✅ upgrade required
   if (needsUpgrade) {
     return <SubscriptionButton />;
   }
 
-  return !userInfo?.data?.telegram_group_joined ? (
+  // ✅ main UI
+  return !userInfo.data.telegram_group_joined ? (
     <CustomButton
       onClick={handleJoinClick}
-      buttonText={t('telegramChannel.joinPremiumChatRoom')}
+      buttonText={t("telegramChannel.joinPremiumChatRoom")}
       iconName="LinkIcon"
     />
   ) : (
-    <ConnectedStatus telegramId={userInfo?.data?.telegram_id} />
+    <ConnectedStatus telegramId={userInfo.data.telegram_id} />
   );
 };
 

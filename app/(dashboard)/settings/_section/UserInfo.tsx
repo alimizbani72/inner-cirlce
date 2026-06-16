@@ -1,18 +1,18 @@
-import { useGetMe } from '@/services/minecraft/auth/auth';
-import ContentStack from '@app-components/ContentStack';
-import { Avatar, Box, Stack, Typography } from '@mui/material';
+import { useGetMe } from "@/services/minecraft/default/default";
+import ContentStack from "@app-components/ContentStack";
+import { Avatar, Box, Stack, Typography } from "@mui/material";
 
 const UserInfo = () => {
   const { data, isLoading } = useGetMe();
   const userInfo = data?.data;
 
   return (
-    <Stack direction={'row'} spacing={2} alignItems={'center'}>
+    <Stack direction={"row"} spacing={2} alignItems={"center"}>
       {isLoading ? (
         <>
           <ContentStack
             className="loading-skeleton"
-            sx={{ width: '56px', height: '56px', borderRadius: '50%' }}
+            sx={{ width: "56px", height: "56px", borderRadius: "50%" }}
           />
           <Stack spacing={2}>
             {Array.from({ length: 2 }).map((_, index) => (
@@ -22,8 +22,8 @@ const UserInfo = () => {
                 component="span"
                 sx={{
                   borderRadius: 4,
-                  width: '100px',
-                  height: '12px',
+                  width: "100px",
+                  height: "12px",
                 }}
               />
             ))}

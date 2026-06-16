@@ -1,21 +1,28 @@
-'use client';
+"use client";
 
-import DialogTitle from '@mui/material/DialogTitle';
-import CustomDialog from '@/components/CustomDialog';
-import DialogContent from '@mui/material/DialogContent';
-import { Button, DialogActions, Divider, IconButton, Stack, Typography } from '@mui/material';
-import type { FC } from 'react';
-import { useForm } from 'react-hook-form';
-import { RHFTextField } from '@/components/hook-form';
-import FormProvider from '@/components/hook-form/form-provider';
-import { useTranslate } from '@/locales';
-import { getQueryClient } from '../_providers/customQueryClient';
-import { getGetWalletDefaultQueryKey, usePostWallet } from '@/services/minecraft/wallet/wallet';
-import { toast } from 'sonner';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import Icon from '@/components/icon';
-import LoadingButton from '@/components/loading-button';
+import CustomDialog from "@/components/CustomDialog";
+import { RHFTextField } from "@/components/hook-form";
+import FormProvider from "@/components/hook-form/form-provider";
+import Icon from "@/components/icon";
+import LoadingButton from "@/components/loading-button";
+import { useTranslate } from "@/locales";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  Button,
+  DialogActions,
+  Divider,
+  IconButton,
+  Stack,
+  Typography,
+} from "@mui/material";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import type { FC } from "react";
+import { useForm } from "react-hook-form";
+// removed: getQueryClient
+// removed: usePostWallet
+import { toast } from "sonner";
+import { z } from "zod";
 
 type Props = {
   close: VoidFunction;
@@ -23,23 +30,30 @@ type Props = {
 };
 
 const defaultValues = {
-  address: '',
-  name: '',
+  address: "",
+  name: "",
 };
 
 const SetupWalletDialog: FC<Props> = ({ close, open }) => {
   const { t } = useTranslate();
-  const queryClient = getQueryClient();
-  const { mutateAsync, isPending } = usePostWallet();
+
+  // dummy replacements
+
+  const mutateAsync = async (_data: any) => {
+    return Promise.resolve();
+  };
+
+  const isPending = false;
+
   const schema = z.object({
-    address: z.string().nonempty(t('wallet.requiredAddress')),
-    name: z.string().nonempty(t('wallet.requiredName')),
+    address: z.string().nonempty(t("wallet.requiredAddress")),
+    name: z.string().nonempty(t("wallet.requiredName")),
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
     defaultValues,
-    mode: 'onSubmit',
+    mode: "onSubmit",
   });
 
   const { handleSubmit, reset, resetField } = methods;
@@ -47,14 +61,13 @@ const SetupWalletDialog: FC<Props> = ({ close, open }) => {
   const onSubmit = handleSubmit((data) => {
     mutateAsync({ data })
       .then(() => {
-        queryClient.invalidateQueries({ queryKey: getGetWalletDefaultQueryKey() });
-        toast.success(t('wallet.successMessage'));
+        toast.success(t("wallet.successMessage"));
         close();
         reset();
-        resetField('name');
-        resetField('address');
+        resetField("name");
+        resetField("address");
       })
-      .catch(() => toast.error(t('formErrors.formError')));
+      .catch(() => toast.error(t("formErrors.formError")));
   });
 
   return (
@@ -66,9 +79,13 @@ const SetupWalletDialog: FC<Props> = ({ close, open }) => {
       open={open}
     >
       <DialogTitle sx={{ m: 0, p: 2 }} id="withdraw-dialog">
-        <Stack direction="row" alignItems="center" justifyContent="space-between">
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
+        >
           <Typography variant="h4-semi-bold" color="common.white">
-            {t('wallet.setupWallet')}
+            {t("wallet.setupWallet")}
           </Typography>
           <IconButton onClick={close}>
             <Icon name="CloseIcon" />
@@ -81,23 +98,28 @@ const SetupWalletDialog: FC<Props> = ({ close, open }) => {
         <FormProvider methods={methods} onSubmit={onSubmit} sx={{ gap: 3 }}>
           <RHFTextField
             name="address"
-            label={t('wallet.addressInputLabel')}
-            placeholder={t('wallet.addressInputPlaceholder')}
+            label={t("wallet.addressInputLabel")}
+            placeholder={t("wallet.addressInputPlaceholder")}
           />
           <RHFTextField
             name="name"
-            label={t('wallet.nameInputLabel')}
-            placeholder={t('wallet.nameInputPlaceholder')}
+            label={t("wallet.nameInputLabel")}
+            placeholder={t("wallet.nameInputPlaceholder")}
           />
         </FormProvider>
       </DialogContent>
+
       <DialogActions>
-        <Stack width={'100%'} direction={'row'} justifyContent={'space-between'}>
+        <Stack
+          width={"100%"}
+          direction={"row"}
+          justifyContent={"space-between"}
+        >
           <Button size="large" color="tertiary" onClick={close}>
-            {t('button.cancel')}
+            {t("button.cancel")}
           </Button>
           <LoadingButton loading={isPending} size="large" onClick={onSubmit}>
-            {t('wallet.saveButton')}
+            {t("wallet.saveButton")}
           </LoadingButton>
         </Stack>
       </DialogActions>

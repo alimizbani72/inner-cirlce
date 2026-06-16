@@ -1,38 +1,39 @@
-'use client';
-import { toTitleCase } from '@/utils/change-case';
-import { useAppRouter } from '@/routes/hooks';
-import { useTranslate } from '@/locales';
-import { useGetFinancialPaymentsActive } from '@/services/minecraft/financial/financial';
-import StaticAlert from '@app-components/StaticAlert';
+"use client";
+
+import { useTranslate } from "@/locales";
+import { useAppRouter } from "@/routes/hooks";
+import { toTitleCase } from "@/utils/change-case";
+import StaticAlert from "@app-components/StaticAlert";
+import { useState } from "react";
 
 const PaymentNotice = () => {
   const { push } = useAppRouter();
-  const { data, isSuccess } = useGetFinancialPaymentsActive({
-    query: {
-      retry: false,
-      refetchInterval: (response) => {
-        // retry 10 minutes later to get the fresh data
-        if (response?.state?.data?.data?.status === 'created') {
-          return 10 * 60 * 1000;
-        }
-
-        return false;
-      },
-    },
-  });
   const { t } = useTranslate();
 
+  // 🔹 Dummy API response
+  const [data] = useState({
+    data: {
+      id: "12345",
+      plan_type: "premium",
+      status: "created", // change to test behavior
+    },
+  });
+
+  const isSuccess = false;
+
   const handleOnContinue = () => {
-    push(`/checkout/qr-wallet?plan_type=${data?.data?.plan_type}&id=${data?.data?.id}`);
+    push(
+      `/checkout/qr-wallet?plan_type=${data?.data?.plan_type}&id=${data?.data?.id}`,
+    );
   };
 
   return (
     <>
-      {isSuccess && data?.data?.id && (
+      {isSuccess && data?.data?.id && data?.data?.status === "created" && (
         <StaticAlert
-          title={t('dashboardSection.incompletePaymentAlert')}
-          description={t('dashboardSection.incompletePaymentDescription', {
-            planType: toTitleCase(data?.data?.plan_type!),
+          title={t("dashboardSection.incompletePaymentAlert")}
+          description={t("dashboardSection.incompletePaymentDescription", {
+            planType: toTitleCase(data.data.plan_type),
           })}
           onContinue={handleOnContinue}
         />

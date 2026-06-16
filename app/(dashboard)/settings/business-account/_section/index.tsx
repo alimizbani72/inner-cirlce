@@ -1,11 +1,11 @@
-'use client';
-import Icon from '@/components/icon';
-import { useTranslate } from '@/locales';
-import { useGetMe } from '@/services/minecraft/auth/auth';
-import { Button, Stack, Typography } from '@mui/material';
-import { useState } from 'react';
-import BusinessAccountDialog from './BusinessAccountDialog';
-import RenderContent from './RenderContent';
+"use client";
+import Icon from "@/components/icon";
+import { useTranslate } from "@/locales";
+import { useGetMe } from "@/services/minecraft/default/default";
+import { Button, Stack, Typography } from "@mui/material";
+import { useState } from "react";
+import BusinessAccountDialog from "./BusinessAccountDialog";
+import RenderContent from "./RenderContent";
 
 const BusinessAccountSection = () => {
   const { data, isLoading } = useGetMe();
@@ -24,11 +24,11 @@ const BusinessAccountSection = () => {
           width={1}
           gap={2}
           justifyContent="space-between"
-          alignItems={{ md: 'center' }}
-          direction={{ md: 'row' }}
+          alignItems={{ md: "center" }}
+          direction={{ md: "row" }}
         >
           <Typography variant="p1-medium" color="white">
-            {t('businessAccount.businessAccount')}
+            {t("businessAccount.businessAccount")}
           </Typography>
 
           <Button
@@ -37,13 +37,21 @@ const BusinessAccountSection = () => {
             startIcon={<Icon name="PenIcon" />}
             onClick={() => setOpenDialog(true)}
           >
-            {t('businessAccount.changeInfo')}
+            {t("businessAccount.changeInfo")}
           </Button>
         </Stack>
       </Stack>
-      <RenderContent businessInfo={data?.data?.business_info} isLoading={isLoading} />
+      <RenderContent
+        businessInfo={data?.data?.business_info}
+        isLoading={isLoading}
+      />
 
-      {openDialog && <BusinessAccountDialog open={openDialog} close={() => setOpenDialog(false)} />}
+      {openDialog && (
+        <BusinessAccountDialog
+          open={openDialog}
+          close={() => setOpenDialog(false)}
+        />
+      )}
     </>
   );
 };

@@ -1,18 +1,15 @@
-import {
-  getGetPortfoliosIdHistoryQueryKey,
-  getGetPortfoliosIdQueryKey,
-  getGetPortfoliosQueryKey,
-  getGetPortfolioTransactionsQueryKey,
-} from '@/services/minecraft/portfolio/portfolio';
-import type { QueryClient } from '@tanstack/react-query';
+import type { QueryClient } from "@tanstack/react-query";
+
 interface InvalidateOptions {
-  portfolioId: any;
+  portfolioId: string;
   activeSymbol?: string;
+
   invalidateTransactions?: boolean;
   invalidatePortfolio?: boolean;
   invalidatePortfolioId?: boolean;
   invalidateHistory?: boolean;
 }
+
 export const invalidatePortfolioQueries = (
   queryClient: QueryClient,
   {
@@ -22,37 +19,33 @@ export const invalidatePortfolioQueries = (
     invalidateTransactions = false,
     invalidatePortfolio = false,
     invalidateHistory = false,
-  }: InvalidateOptions
+  }: InvalidateOptions,
 ) => {
+  // ✅ Transactions
   if (invalidateTransactions) {
     queryClient.invalidateQueries({
-      queryKey: getGetPortfolioTransactionsQueryKey({
-        opts: JSON.stringify({
-          filters: {
-            slug: activeSymbol,
-            portfolio_id: portfolioId,
-          },
-          page: 1,
-          per_page: 20,
-        }),
-      }),
+      queryKey: ["portfolio-transactions", activeSymbol, portfolioId],
     });
   }
 
+  // ✅ Portfolio list (all portfolios)
   if (invalidatePortfolio) {
     queryClient.invalidateQueries({
-      queryKey: getGetPortfoliosQueryKey(),
+      queryKey: ["portfolios"],
     });
   }
 
+  // ✅ Single portfolio detail
   if (invalidatePortfolioId) {
     queryClient.invalidateQueries({
-      queryKey: getGetPortfoliosIdQueryKey(portfolioId),
+      queryKey: ["portfolio-detail", portfolioId],
     });
   }
+
+  // ✅ Portfolio history
   if (invalidateHistory) {
     queryClient.invalidateQueries({
-      queryKey: getGetPortfoliosIdHistoryQueryKey(portfolioId),
+      queryKey: ["portfolio-history", portfolioId],
     });
   }
 };

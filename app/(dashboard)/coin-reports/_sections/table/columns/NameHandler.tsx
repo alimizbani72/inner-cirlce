@@ -1,7 +1,7 @@
-import Icon from '@/components/icon';
-import { useFavoriteToggle } from '@/hooks/useFavoriteToggle';
-import CryptoIcon from '@app-components/CryptoIcon';
-import { IconButton, Stack } from '@mui/material';
+import Icon from "@/components/icon";
+import { useFavoriteToggle } from "@/hooks/useFavoriteToggle";
+import CryptoIcon from "@app-components/CryptoIcon";
+import { IconButton, Stack } from "@mui/material";
 
 interface NameHandlerProps {
   is_favorite: boolean;
@@ -11,22 +11,28 @@ interface NameHandlerProps {
   logo: string;
 }
 
-const NameHandler = ({ is_favorite, name, logo, symbol, slug }: NameHandlerProps) => {
+const NameHandler = ({
+  is_favorite,
+  name,
+  logo,
+  symbol,
+  slug,
+}: NameHandlerProps) => {
   const { isFavorite, toggleFavorite } = useFavoriteToggle(is_favorite, slug);
   return (
     <Stack
       direction="row"
       alignItems="center"
       gap={1}
-      sx={{ '&:hover > button': { visibility: 'visible' } }}
+      sx={{ "&:hover > button": { visibility: "visible" } }}
     >
       <IconButton
         sx={{
-          visibility: { xs: 'visible', md: isFavorite ? 'visible' : 'hidden' },
-          cursor: 'pointer',
+          visibility: { xs: "visible", md: isFavorite ? "visible" : "hidden" },
+          cursor: "pointer",
           p: 0,
-          '& > svg ': {
-            position: 'absolute',
+          "& > svg ": {
+            position: "absolute",
             top: 4,
             left: 4,
           },
@@ -40,11 +46,15 @@ const NameHandler = ({ is_favorite, name, logo, symbol, slug }: NameHandlerProps
         }}
       >
         {slug && (
-          <Icon name={'Star2Icon'} fill={isFavorite ? 'warning.main' : 'grey.dark'} size={30} />
+          <Icon
+            name={"Star2Icon"}
+            fill={isFavorite ? "warning.main" : "grey.dark"}
+            size={30}
+          />
         )}
       </IconButton>
 
-      <CryptoIcon name={name} symbol={slug ? symbol : ''} logoUrl={logo} />
+      <CryptoIcon name={name} symbol={slug ? symbol : ""} logoUrl={logo} />
     </Stack>
   );
 };

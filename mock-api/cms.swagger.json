@@ -1,0 +1,29 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Mock CMS API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/pages": {
+      "get": {
+        "summary": "Get pages",
+        "responses": {
+          "200": {
+            "description": "Mock response"
+          }
+        }
+      }
+    },
+    "/packages": {
+      "get": {
+        "summary": "Get packages",
+        "responses": {
+          "200": {
+            "description": "Mock response"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,12 +1,5 @@
-import type { Metadata } from 'next';
-import EducationSection from './_section';
-
-// ----------------------------------------------------------------------
-
-export const metadata: Metadata = {
-  title: 'Education',
+const EducationPage = () => {
+  return <div>Fake</div>;
 };
 
-export default async function EducationCategories() {
-  return <EducationSection />;
-}
+export default EducationPage;

@@ -1,17 +1,41 @@
-'use client';
-import { MenuItem } from '@mui/material';
-import { IconButton, Stack } from '@mui/material';
-import ActionItem from './ActionItem';
-import { useTranslate } from '@/locales';
-import { useParams } from 'next/navigation';
-import { useQueryClient } from '@tanstack/react-query';
-import { getActivePortfolioId } from '../../_section/utils';
-import { invalidatePortfolioQueries } from '../../_section/InvaidatePorfolioQueries';
-import Icon from '@/components/icon';
-import CustomMenu from '@/components/CustomMenu';
-import { toast } from 'sonner';
-import { useDeletePortfoliosIdAssetsSlug } from '@/services/minecraft/portfolio/portfolio';
-import usePopover from '@/components/custom-popover/use-popover';
+"use client";
+import CustomMenu from "@/components/CustomMenu";
+import usePopover from "@/components/custom-popover/use-popover";
+import Icon from "@/components/icon";
+import { useTranslate } from "@/locales";
+import { IconButton, MenuItem, Stack } from "@mui/material";
+import { useQueryClient } from "@tanstack/react-query";
+import { useParams } from "next/navigation";
+import { toast } from "sonner";
+import { invalidatePortfolioQueries } from "../../_section/InvaidatePorfolioQueries";
+import { getActivePortfolioId } from "../../_section/utils";
+import ActionItem from "./ActionItem";
+
+import { useMutation } from "@tanstack/react-query";
+
+type DeleteAssetParams = {
+  id: string;
+  slug: string;
+};
+
+// 👉 fake API (since no backend exists)
+const deleteAssetApi = async ({ id, slug }: DeleteAssetParams) => {
+  // simulate network delay
+  await new Promise((res) => setTimeout(res, 500));
+
+  // simulate success response
+  return {
+    success: true,
+    id,
+    slug,
+  };
+};
+
+export const useDeletePortfoliosIdAssetsSlug = () => {
+  return useMutation({
+    mutationFn: deleteAssetApi,
+  });
+};
 type MoreTableProps = {
   slug: string;
 };
@@ -35,13 +59,15 @@ const MoreTableAction = ({ slug }: MoreTableProps) => {
             invalidatePortfolio: true,
           });
 
-          toast.success(`${slug} ${t('assetsTable.assetDeletesuccessMessage')}`);
+          toast.success(
+            `${slug} ${t("assetsTable.assetDeletesuccessMessage")}`,
+          );
           onClose();
         },
         onError: () => {
-          toast.error(`${t('assetsTable.assetDeleteerrorMessage')} ${slug}`);
+          toast.error(`${t("assetsTable.assetDeleteerrorMessage")} ${slug}`);
         },
-      }
+      },
     );
   };
 
@@ -63,7 +89,7 @@ const MoreTableAction = ({ slug }: MoreTableProps) => {
             <Divider /> */}
             <ActionItem
               iconName="TrashIcon"
-              label={t('assetsTable.delete')}
+              label={t("assetsTable.delete")}
               onClick={handleDelete}
             />
           </Stack>

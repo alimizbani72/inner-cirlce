@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import Icon from '@/components/icon';
-import LoadingButton from '@/components/loading-button';
-import RiveComp from '@/components/rive-loader';
-import { Scrollbar } from '@/components/scrollbar';
-import { plans } from '@/configs/plans';
-import { useIsMobile } from '@/hooks/use-responsive';
-import { fCurrency } from '@/utils/format-number';
-import { Box, Paper, Stack, type SxProps, Typography } from '@mui/material';
-import Table from '@mui/material/Table';
-import TableBody, { tableBodyClasses } from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead, { tableHeadClasses } from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import type { FC } from 'react';
+import Icon from "@/components/icon";
+import LoadingButton from "@/components/loading-button";
+import RiveComp from "@/components/rive-loader";
+import { Scrollbar } from "@/components/scrollbar";
+import { plans } from "@/configs/plans";
+import { useIsMobile } from "@/hooks/use-responsive";
+import { fCurrency } from "@/utils/format-number";
+import { Box, Paper, Stack, type SxProps, Typography } from "@mui/material";
+import Table from "@mui/material/Table";
+import TableBody, { tableBodyClasses } from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead, { tableHeadClasses } from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import type { FC } from "react";
 
 export type SortType = Record<string, Boolean | undefined>;
 
@@ -45,18 +45,19 @@ const PricingTable: FC<Props> = ({
   TableContainerSx,
 }) => {
   const isMobile = useIsMobile();
+  const mockData = plansData ?? [];
 
   return (
     <Stack
       sx={(theme) => ({
         borderRadius: { xs: 0, md: 2 },
-        bgcolor: 'dark.2',
-        width: '100%',
-        height: '100%',
-        ...(isMobile && { borderLeft: 'unset', borderRight: 'unset' }),
+        bgcolor: "dark.2",
+        width: "100%",
+        height: "100%",
+        ...(isMobile && { borderLeft: "unset", borderRight: "unset" }),
         [`& .${tableHeadClasses.root} `]: {
-          '& > tr > th:first-child': {
-            position: 'sticky',
+          "& > tr > th:first-child": {
+            position: "sticky",
             left: 0,
             top: 0,
             backgroundColor: theme.palette.dark[2],
@@ -64,9 +65,9 @@ const PricingTable: FC<Props> = ({
           },
         },
         [`& .${tableBodyClasses.root} > tr`]: {
-          borderLeft: 'unset',
-          '& > td:first-child': {
-            position: 'sticky',
+          borderLeft: "unset",
+          "& > td:first-child": {
+            position: "sticky",
             left: 0,
             backgroundColor: theme.palette.dark[1],
             zIndex: 3,
@@ -81,15 +82,15 @@ const PricingTable: FC<Props> = ({
             xs: `calc(100dvh -  220px)`,
             md: `calc(100dvh -  170px)`,
           },
-          width: '100%',
-          overflow: 'auto',
+          width: "100%",
+          overflow: "auto",
         }}
         slotProps={{
           contentWrapper: {
             style: {
-              width: '100%',
-              overflowX: 'auto',
-              overflowY: 'auto',
+              width: "100%",
+              overflowX: "auto",
+              overflowY: "auto",
             },
           },
         }}
@@ -97,53 +98,56 @@ const PricingTable: FC<Props> = ({
         <TableContainer
           component={Paper}
           sx={{
-            bgcolor: 'dark.2',
+            bgcolor: "dark.2",
             borderRadius: 0,
-            width: 'auto',
-            overflow: 'visible',
-            '& .MuiTableCell-head': {
-              position: 'sticky',
+            width: "auto",
+            overflow: "visible",
+            "& .MuiTableCell-head": {
+              position: "sticky",
               top: 0,
               zIndex: 2,
-              bgcolor: 'dark.2',
-              typography: 'p2-medium',
-              textTransform: 'uppercase',
-              color: 'grey.light',
-              border: (theme) => `1px solid ${theme.palette.dark[3]} !important`,
+              bgcolor: "dark.2",
+              typography: "p2-medium",
+              textTransform: "uppercase",
+              color: "grey.light",
+              border: (theme) =>
+                `1px solid ${theme.palette.dark[3]} !important`,
             },
-            '.MuiTableCell-root:not(.MuiTableCell-head)': {
+            ".MuiTableCell-root:not(.MuiTableCell-head)": {
               minWidth: 150,
-              typography: 'p2-medium',
-              bgcolor: 'dark.1',
-              color: 'white',
+              typography: "p2-medium",
+              bgcolor: "dark.1",
+              color: "white",
               p: 0,
               py: 2,
               border: (theme) => `1px solid ${theme.palette.dark[3]}`,
               px: 1,
             },
-            '.MuiTableRow-head': { height: 40 },
-            '.MuiTableRow-root:not(.MuiTableRow-head)': { height: 56 },
+            ".MuiTableRow-head": { height: 40 },
+            ".MuiTableRow-root:not(.MuiTableRow-head)": { height: 56 },
             ...TableContainerSx,
           }}
         >
           <Table
             aria-label="customized table"
             sx={{
-              height: '100%',
-              width: '100%',
-              tableLayout: 'auto',
-              borderCollapse: 'collapse',
+              height: "100%",
+              width: "100%",
+              tableLayout: "auto",
+              borderCollapse: "collapse",
             }}
             stickyHeader
           >
             <TableHead>
               <TableRow>
-                <TableCell sx={{ borderTopLeftRadius: 16, minWidth: 156 }}>plan</TableCell>
-                {plansData?.map((head) => (
+                <TableCell sx={{ borderTopLeftRadius: 16, minWidth: 156 }}>
+                  plan
+                </TableCell>
+                {mockData?.map((head) => (
                   <TableCell
                     align="left"
                     key={head.title}
-                    sx={{ textAlign: 'center !important', minWidth: 168 }}
+                    sx={{ textAlign: "center !important", minWidth: 168 }}
                   >
                     {head.title}
                   </TableCell>
@@ -160,29 +164,32 @@ const PricingTable: FC<Props> = ({
                     <TableCell
                       align="left"
                       key={index}
-                      sx={{ textAlign: 'center !important', minWidth: 156 }}
+                      sx={{ textAlign: "center !important", minWidth: 156 }}
                     >
                       <Box>
-                        {typeof item === 'boolean' ? (
+                        {typeof item === "boolean" ? (
                           <Box
                             component={Icon}
-                            name={item ? 'CheckIcon' : 'CloseIcon'}
-                            stroke={item ? 'success.main' : 'danger.main'}
+                            name={item ? "CheckIcon" : "CloseIcon"}
+                            stroke={item ? "success.main" : "danger.main"}
                           />
-                          // biome-ignore lint/nursery/noNestedTernary: <explanation>
-                        ) : key?.includes('Gold') ? (
+                        ) : // biome-ignore lint/nursery/noNestedTernary: <explanation>
+                        key?.includes("Gold") ? (
                           <Stack
                             direction="row"
                             alignItems="center"
                             justifyContent="center"
-                            position={'relative'}
+                            position={"relative"}
                           >
                             <RiveComp
                               src="/assets/rive/coin_rotation_2.riv"
                               width={40}
                               height={40}
                             />
-                            <Typography variant="p2-medium">{item || 0}</Typography>
+
+                            <Typography variant="p2-medium">
+                              {item || 0}
+                            </Typography>
                           </Stack>
                         ) : (
                           <Typography variant="p2-medium">{item}</Typography>
@@ -202,33 +209,42 @@ const PricingTable: FC<Props> = ({
                 >
                   Price
                 </TableCell>
-                {plansData?.map((plan, index) => (
+                {mockData?.map((plan, index) => (
                   <TableCell
                     sx={{
-                      textAlign: 'center !important',
+                      textAlign: "center !important",
                       bgcolor: (theme) => `${theme.palette.dark[2]} !important`,
                     }}
                     key={`price-${index}`}
                   >
-                    <Typography key={`${plan}-${index}`} sx={{ color: 'blue.light' }}>
+                    <Typography
+                      key={`${plan}-${index}`}
+                      sx={{ color: "blue.light" }}
+                    >
                       {fCurrency(plan.cost)}
                     </Typography>
                   </TableCell>
                 ))}
               </TableRow>
               <TableRow>
-                <TableCell sx={{ border: 'unset !important' }} />
-                {plansData?.map((plan, index) => (
+                <TableCell sx={{ border: "unset !important" }} />
+                {mockData?.map((plan, index) => (
                   <TableCell
-                    sx={{ textAlign: 'center ', borderBottom: 'unset !important' }}
+                    sx={{
+                      textAlign: "center ",
+                      borderBottom: "unset !important",
+                    }}
                     key={`loadingButton-${index}`}
                   >
                     <LoadingButton
                       loading={isPending}
-                      onClick={() => buttonClick(plan?.plan_type)}
+                      onClick={() =>
+                        plan?.plan_type && buttonClick(plan.plan_type)
+                      }
                       disabled={
-                        plans[userType as keyof typeof plans].order >=
-                        plans[plan.plan_type as keyof typeof plans].order
+                        (plans?.[userType as keyof typeof plans]?.order ?? 0) >=
+                        (plans?.[plan.plan_type as keyof typeof plans]?.order ??
+                          0)
                       }
                     >
                       {plan.buttonText}

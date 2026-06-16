@@ -1,6 +1,6 @@
-'use client';
-import { useGetMe } from '@/services/minecraft/auth/auth';
-import { notFound } from 'next/navigation';
+"use client";
+import { useGetMe } from "@/services/minecraft/default/default";
+import { notFound } from "next/navigation";
 
 const KYCWrapper = () => {
   const { data: userInfo, isLoading } = useGetMe();

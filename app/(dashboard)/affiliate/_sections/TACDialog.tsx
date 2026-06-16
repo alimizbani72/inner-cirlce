@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import CustomDialog from '@/components/CustomDialog';
-import DialogContent from '@mui/material/DialogContent';
+import CustomDialog from "@/components/CustomDialog";
+import LoadingButton from "@/components/loading-button";
 import {
   Checkbox,
   DialogActions,
@@ -10,19 +10,19 @@ import {
   FormControlLabel,
   Stack,
   Typography,
-} from '@mui/material';
-import { useState, type FC } from 'react';
-import { selectLang } from '@/lib/features/dictionary/dicSlice';
-import { useAppSelector } from '@/lib/hooks';
-import dynamic from 'next/dynamic';
-import LoadingButton from '@/components/loading-button';
-import { toast } from 'sonner';
-import { usePostAffiliateTos } from '@/services/minecraft/affiliate/affiliate';
-import { useGetGlobalsAffilateTerms } from '@/services/cms/global-affilateterms/global-affilateterms';
-import { useTranslate } from '@/locales';
-import { Scrollbar } from '@/components/scrollbar';
+} from "@mui/material";
+import DialogContent from "@mui/material/DialogContent";
+import dynamic from "next/dynamic";
+import { type FC, useState } from "react";
+import { toast } from "sonner";
 
-const CMSContentParser = dynamic(() => import('@app-components/CMSContentParser'), { ssr: false });
+import { Scrollbar } from "@/components/scrollbar";
+import { useTranslate } from "@/locales";
+
+const CMSContentParser = dynamic(
+  () => import("@app-components/CMSContentParser"),
+  { ssr: false },
+);
 
 type Props = {
   close: VoidFunction;
@@ -30,28 +30,49 @@ type Props = {
 };
 
 const TACDialog: FC<Props> = ({ close, open }) => {
-  const lang = useAppSelector(selectLang);
   const { t } = useTranslate();
   const [value, setValue] = useState(false);
-  const { data } = useGetGlobalsAffilateTerms({ locale: lang });
 
-  const { mutateAsync, isPending } = usePostAffiliateTos();
+  const [isPending, setIsPending] = useState(false);
+
+  // ✅ dummy CMS data
+  const data = {
+    data: {
+      layout: [
+        {
+          type: "text",
+          content: `
+          <h2>Affiliate Terms & Conditions</h2>
+          <p>1. You agree to follow platform rules.</p>
+          <p>2. Affiliate rewards may change anytime.</p>
+          <p>3. Fraud will result in account suspension.</p>
+        `,
+        },
+      ],
+    },
+  };
+
   const handleSubmit = async () => {
-    mutateAsync()
-      .then(() => {
-        close();
-        toast.success(t('tacDialog.success'));
-      })
-      .catch((error) => {
-        toast.error(error.message);
-      });
+    try {
+      setIsPending(true);
+
+      // simulate API delay
+      await new Promise((res) => setTimeout(res, 800));
+
+      close();
+      toast.success(t("tacDialog.success"));
+    } catch (error: any) {
+      toast.error(error.message);
+    } finally {
+      setIsPending(false);
+    }
   };
 
   return (
     <CustomDialog
       disableEscapeKeyDown
       onClose={(_event, reason) => {
-        if (reason !== 'backdropClick') {
+        if (reason !== "backdropClick") {
           close();
         }
       }}
@@ -62,7 +83,9 @@ const TACDialog: FC<Props> = ({ close, open }) => {
       <DialogTitle>
         <Stack direction="row" justifyContent="space-between">
           <Stack gap={1} mr={{ md: undefined, xs: 4 }}>
-            <Typography variant="h4-semi-bold">{t('tacDialog.title')}</Typography>
+            <Typography variant="h4-semi-bold">
+              {t("tacDialog.title")}
+            </Typography>
           </Stack>
           {/* <IconButton onClick={close} sx={{ mt: { xs: 0.5, md: 1 } }}>
             <Icon name="CloseIcon" />
@@ -73,20 +96,29 @@ const TACDialog: FC<Props> = ({ close, open }) => {
       <Scrollbar>
         <DialogContent>
           <Stack gap={3}>
-            <CMSContentParser layout={data?.data.layout} />
+            <CMSContentParser layout={data?.data?.layout as any} />
           </Stack>
         </DialogContent>
       </Scrollbar>
       <DialogActions sx={{ p: 3 }}>
-        <Stack flex={1} direction={{ md: 'row' }} gap={2} justifyContent="space-between">
+        <Stack
+          flex={1}
+          direction={{ md: "row" }}
+          gap={2}
+          justifyContent="space-between"
+        >
           <FormControlLabel
             value={value}
             onChange={(_event, checked) => setValue(checked)}
             control={<Checkbox />}
-            label={t('tacDialog.description')}
+            label={t("tacDialog.description")}
           />
-          <LoadingButton disabled={!value} onClick={handleSubmit} loading={isPending}>
-            {t('tacDialog.btn')}
+          <LoadingButton
+            disabled={!value}
+            onClick={handleSubmit}
+            loading={isPending}
+          >
+            {t("tacDialog.btn")}
           </LoadingButton>
         </Stack>
       </DialogActions>

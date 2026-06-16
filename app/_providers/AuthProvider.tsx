@@ -1,33 +1,40 @@
-'use client';
-import { getToken } from '@/utils/getToken';
-import { RedirectType, redirect, usePathname } from 'next/navigation';
-import type { ReactNode } from 'react';
+"use client";
 
-interface AuthProviderProps {
-  children: ReactNode;
-  accessToken?: string;
-}
-const authRoutes = [`/login`, `/register`];
-const forgotPasswordRoutes = [`/forgotpass`, '/resetpass'];
-const publicRoutes = [
-  `/terms-and-condition`,
-  `/disclaimer`,
-  `/privacy-policy`,
-  `/imprint`,
-  `/guest`,
-];
-export default function AuthProvider({ children, accessToken }: AuthProviderProps) {
+import { usePathname, useRouter } from "next/navigation";
+import { type ReactNode, useEffect, useState } from "react";
+
+const authRoutes = ["/login", "/register"];
+
+export default function AuthProvider({ children }: { children: ReactNode }) {
   const pathname = usePathname();
+  const router = useRouter();
 
-  const token = accessToken ?? getToken();
-  if (pathname !== '/') {
-    if (!token && ![...authRoutes, ...forgotPasswordRoutes, ...publicRoutes].includes(pathname)) {
-      redirect('/login', RedirectType.replace);
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
+  // ✅ wait until client is ready
+  const token = hydrated ? localStorage.getItem("token") : null;
+  useEffect(() => {
+    if (!hydrated) {
+      return;
     }
 
-    if (token && authRoutes.includes(pathname)) {
-      redirect('/dashboard', RedirectType.replace);
+    const isPublic = authRoutes.includes(pathname);
+
+    if (!token && !isPublic) {
+      router.replace("/login");
     }
+
+    if (token && isPublic) {
+      router.replace("/dashboard");
+    }
+  }, [token, pathname, hydrated, router]);
+
+  // optional: prevent flicker
+  if (!hydrated) {
+    return null;
   }
 
   return <>{children}</>;

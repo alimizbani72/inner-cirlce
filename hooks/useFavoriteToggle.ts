@@ -1,23 +1,25 @@
-import { useTranslate } from '@/locales';
+import { useTranslate } from "@/locales";
 import {
   useDeleteCoinReportSlugFavorite,
   usePostCoinReportSlugFavorite,
-} from '@/services/minecraft/coin-report/coin-report';
-import { useState } from 'react';
-import { toast } from 'sonner';
+} from "@/services/minecraft/default/default";
+
+import { useState } from "react";
+import { toast } from "sonner";
 export const useFavoriteToggle = (favStatus: boolean, slug: string) => {
   const { t } = useTranslate();
   const [isFavorite, setIsFavorite] = useState(favStatus);
   const { mutateAsync: mutateAddFavorite } = usePostCoinReportSlugFavorite();
-  const { mutateAsync: mutateRemoveFavorite } = useDeleteCoinReportSlugFavorite();
+  const { mutateAsync: mutateRemoveFavorite } =
+    useDeleteCoinReportSlugFavorite();
 
   const toggleFavorite = async () => {
     const successMessage = isFavorite
-      ? t('coinReportSingleView.removedSuccess')
-      : t('coinReportSingleView.addedSuccess');
+      ? t("coinReportSingleView.removedSuccess")
+      : t("coinReportSingleView.addedSuccess");
     const errorMessage = isFavorite
-      ? t('coinReportSingleView.removedError')
-      : t('coinReportSingleView.addedError');
+      ? t("coinReportSingleView.removedError")
+      : t("coinReportSingleView.addedError");
 
     try {
       if (isFavorite) {

@@ -1,19 +1,20 @@
-'use client';
-import { Box, Stack } from '@mui/material';
-import { memo, useEffect, useRef } from 'react';
+"use client";
+import { Box, Stack } from "@mui/material";
+import { memo, useEffect, useRef } from "react";
 
 function TradingViewWidget({ rawSymbol }: { rawSymbol: string }) {
   const container = useRef<HTMLDivElement | null>(null);
-  const formattedSymbol = `${rawSymbol.toUpperCase()}USDT`;
+  const formattedSymbol = `${rawSymbol}USDT`;
   useEffect(() => {
     if (!container.current) {
       return;
     }
-    container.current.innerHTML = '';
+    container.current.innerHTML = "";
 
-    const script = document.createElement('script');
-    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
-    script.type = 'text/javascript';
+    const script = document.createElement("script");
+    script.src =
+      "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
+    script.type = "text/javascript";
     script.async = true;
     script.innerHTML = `
       {
@@ -43,7 +44,7 @@ function TradingViewWidget({ rawSymbol }: { rawSymbol: string }) {
     // Cleanup function to remove appended script on unmount
     return () => {
       if (container.current) {
-        container.current.innerHTML = '';
+        container.current.innerHTML = "";
       }
     };
   }, []);
@@ -53,10 +54,10 @@ function TradingViewWidget({ rawSymbol }: { rawSymbol: string }) {
       <Box
         ref={container}
         sx={{
-          aspectRatio: '16/4',
-          width: '100%',
+          aspectRatio: "16/4",
+          width: "100%",
           borderRadius: 1,
-          overflow: 'hidden',
+          overflow: "hidden",
         }}
       ></Box>
     </Stack>

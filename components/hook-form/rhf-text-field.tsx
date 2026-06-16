@@ -1,10 +1,10 @@
-import { IconButton, InputLabel, Stack } from '@mui/material';
-import type { TextFieldProps } from '@mui/material/TextField';
-import TextField from '@mui/material/TextField';
-import { forwardRef } from 'react';
-import { Controller, useFormContext } from 'react-hook-form';
-import { NumericFormat, type NumericFormatProps } from 'react-number-format';
-import Icon from '../icon';
+import { IconButton, InputLabel, Stack } from "@mui/material";
+import type { TextFieldProps } from "@mui/material/TextField";
+import TextField from "@mui/material/TextField";
+import { forwardRef } from "react";
+import { Controller, useFormContext } from "react-hook-form";
+import { NumericFormat, type NumericFormatProps } from "react-number-format";
+import Icon from "../icon";
 
 // ----------------------------------------------------------------------
 
@@ -27,7 +27,7 @@ export const NumericFormatCustom = forwardRef<NumericFormatProps, CustomProps>(
         thousandSeparator=","
       />
     );
-  }
+  },
 );
 
 // ----------------------------------------------------------------------
@@ -55,13 +55,13 @@ export function RHFTextField({
       name={name}
       control={control}
       render={({ field, fieldState: { error } }) => (
-        <Stack sx={{ width: '100%' }}>
+        <Stack sx={{ width: "100%" }}>
           {label && (
             <InputLabel
               sx={{
-                typography: 'body2-medium',
-                textTransform: 'uppercase',
-                color: 'common.white',
+                typography: "body2-medium",
+                textTransform: "uppercase",
+                color: "common.white",
                 mb: 1,
               }}
               htmlFor={id || name}
@@ -73,22 +73,34 @@ export function RHFTextField({
             {...field}
             id={id || name}
             fullWidth
-            type={type === 'number' ? 'text' : type}
-            value={type === 'number' && field.value === 0 ? '' : field.value}
+            type={type === "number" ? "text" : type}
+            value={
+              isMoney || type === "number"
+                ? field.value === null ||
+                  field.value === undefined ||
+                  field.value === ""
+                  ? ""
+                  : String(field.value)
+                : field.value
+            }
             onChange={(event) => {
-              if (type === 'number') {
+              if (type === "number") {
                 field.onChange(Number(event.target.value));
               } else {
                 field.onChange(event.target.value);
               }
             }}
             error={!!error}
-            helperText={ignoreErrorMessage || !error ? helperText : error?.message}
+            helperText={
+              ignoreErrorMessage || !error ? helperText : error?.message
+            }
             {...other}
             autoComplete="nope"
             slotProps={{
               input: {
-                inputComponent: isMoney ? (NumericFormatCustom as any) : 'input',
+                inputComponent: isMoney
+                  ? (NumericFormatCustom as any)
+                  : "input",
                 ...other.slotProps?.input,
 
                 endAdornment: (
@@ -97,7 +109,7 @@ export function RHFTextField({
                     {error && (
                       <IconButton
                         onClick={() => {
-                          setValue(name, '');
+                          setValue(name, "");
                           resetField(name);
                         }}
                       >
@@ -108,11 +120,11 @@ export function RHFTextField({
                 ),
               },
               htmlInput: {
-                ...(type === 'number'
+                ...(type === "number"
                   ? {
-                      inputMode: 'numeric',
-                      pattern: '[0-9]*',
-                      sx: { textAlign: 'left' },
+                      inputMode: "numeric",
+                      pattern: "[0-9]*",
+                      sx: { textAlign: "left" },
                     }
                   : {}),
                 ...other?.slotProps?.htmlInput,

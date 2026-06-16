@@ -1,40 +1,21 @@
-'use client';
+"use client";
 
-import { useMemo, useState, type FC } from 'react';
-import { Stack } from '@mui/material';
-import AffNetworkTabTable from './Table';
-import AffNetworkTabChart from './Chart';
-import { useTranslate } from '@/locales';
-import Toggle from '@/components/Toggle';
+import { Stack } from "@mui/material";
+import { type FC, useMemo, useState } from "react";
+import AffNetworkTabTable from "./Table";
+
+import Toggle from "@/components/Toggle";
+import { useTranslate } from "@/locales";
 
 const AffNetworkTab: FC = () => {
   const { t } = useTranslate();
 
   const buttons = useMemo(
     () => [
-      { label: t('affNetworkTab.table'), value: 1 },
-      { label: t('affNetworkTab.chart'), value: 2 },
-      // {
-      //   label: (
-      //     <Stack direction="row" gap={1} alignItems="center">
-      //       {t('affNetworkTab.chart')}
-      //       <Stack
-      //         alignItems={'center'}
-      //         justifyContent={'center'}
-      //         sx={{ borderRadius: 1.5, backgroundColor: 'rgba(98, 101, 131, 0.12)' }}
-      //         px={1}
-      //         height={24}
-      //       >
-      //         <Typography variant="caption-semi-bold" color={'pink.light'}>
-      //           {t('affNetworkTab.comingSoon')}
-      //         </Typography>
-      //       </Stack>
-      //     </Stack>
-      //   ),
-      //   value: 2,
-      // },
+      { label: t("affNetworkTab.table"), value: 1 },
+      // { label: t("affNetworkTab.chart"), value: 2 },
     ],
-    [t]
+    [t],
   );
 
   const [value, setValue] = useState<any>(buttons[0].value);
@@ -46,11 +27,11 @@ const AffNetworkTab: FC = () => {
   return (
     <>
       <Stack px={{ md: 4, xs: 3 }} pt={3} flex={1} gap={3}>
-        <Stack alignItems={'flex-start'}>
+        <Stack alignItems={"flex-start"}>
           <Toggle setValue={handleChange} buttons={buttons} value={value} />
         </Stack>
       </Stack>
-      {value === 1 ? <AffNetworkTabTable /> : <AffNetworkTabChart />}
+      <AffNetworkTabTable />
     </>
   );
 };

@@ -1,67 +1,110 @@
-'use client';
+"use client";
 
-import { plans } from '@/configs/plans';
-import { useFavoriteToggle } from '@/hooks/useFavoriteToggle';
-import { Box, IconButton, Stack, Typography } from '@mui/material';
-import { useParams } from 'next/navigation';
-import Entry from './Entry';
-import Icon from '@/components/icon';
-import { Image } from '@/components/image';
+import Icon from "@/components/icon";
+import { Image } from "@/components/image";
+import { plans } from "@/configs/plans";
+import { useFavoriteToggle } from "@/hooks/useFavoriteToggle";
+import { Box, IconButton, Stack, Typography } from "@mui/material";
+import { useParams } from "next/navigation";
+import Entry from "./Entry";
 type Props = {
-  logo: string | undefined;
+  logo?: string | undefined;
   name: string | undefined;
   symbol: string | undefined;
   plan_type: string;
   ee_signal: string | undefined;
   isFavorite: boolean;
 };
-const Header = ({ logo, name, symbol, plan_type, ee_signal, isFavorite: favStatus }: Props) => {
+const Header = ({
+  name,
+  symbol,
+  plan_type,
+  ee_signal,
+  isFavorite: favStatus,
+}: Props) => {
   const { coinId: slug } = useParams();
-  const { isFavorite, toggleFavorite } = useFavoriteToggle(favStatus, slug as string);
+  const { isFavorite, toggleFavorite } = useFavoriteToggle(
+    favStatus,
+    slug as string,
+  );
 
   return (
     <Stack
       sx={{
         borderRadius: 2,
-        border: '1.5px solid',
-        borderColor: 'dark.3',
+        border: "1.5px solid",
+        borderColor: "dark.3",
         p: 3,
-        bgcolor: 'dark.2',
+        bgcolor: "dark.2",
       }}
-      direction={'row'}
-      flexWrap={'wrap'}
-      alignItems={'center'}
+      direction={"row"}
+      flexWrap={"wrap"}
+      alignItems={"center"}
       spacing={2}
-      width={'100%'}
-      justifyContent={'space-between'}
+      width={"100%"}
+      justifyContent={"space-between"}
     >
-      <Stack direction={'row'} spacing={2} alignItems={'center'}>
+      <Stack direction={"row"} spacing={2} alignItems={"center"}>
         <IconButton
           sx={{
-            '& > svg': {
-              position: 'absolute',
+            "& > svg": {
+              position: "absolute",
               top: 0,
               left: 0,
             },
           }}
           onClick={toggleFavorite}
         >
-          <Icon name={'Star2Icon'} fill={isFavorite ? 'warning.main' : 'grey.dark'} size={45} />
+          <Icon
+            name={"Star2Icon"}
+            fill={isFavorite ? "warning.main" : "grey.dark"}
+            size={45}
+          />
         </IconButton>
-        <Stack direction={'row'} alignItems={'center'} spacing={1}>
-          <Image src={logo} alt={name} width={32} height={32} />
-          <Typography variant="p2-regular" textTransform={'capitalize'}>
+        <Stack direction={"row"} alignItems={"center"} spacing={1}>
+          {plans[plan_type as keyof typeof plans]?.image && (
+            <Image
+              src={plans[plan_type as keyof typeof plans]?.image}
+              width={32}
+              height={32}
+            />
+          )}
+          <Typography variant="p2-regular" textTransform={"capitalize"}>
             {name}
           </Typography>
-          <Box sx={{ width: '4px', height: '4px', borderRadius: '50%', bgcolor: 'dark.3' }} />
-          <Typography variant="p2-regular" color={'grey.light'} textTransform={'uppercase'}>
+          <Box
+            sx={{
+              width: "4px",
+              height: "4px",
+              borderRadius: "50%",
+              bgcolor: "dark.3",
+            }}
+          />
+          <Typography
+            variant="p2-regular"
+            color={"grey.light"}
+            textTransform={"uppercase"}
+          >
             {symbol}
           </Typography>
         </Stack>
-        <Box sx={{ width: '4px', height: '4px', borderRadius: '50%', bgcolor: 'dark.3' }} />
-        <Image src={plans[plan_type as keyof typeof plans]?.image} width={32} height={32} />
+        <Box
+          sx={{
+            width: "4px",
+            height: "4px",
+            borderRadius: "50%",
+            bgcolor: "dark.3",
+          }}
+        />
+        {plans[plan_type as keyof typeof plans]?.image && (
+          <Image
+            src={plans[plan_type as keyof typeof plans]?.image}
+            width={32}
+            height={32}
+          />
+        )}
       </Stack>
-      <Stack direction={'row'} spacing={{ xs: 3, md: 2 }} flexWrap={'wrap'}>
+      <Stack direction={"row"} spacing={{ xs: 3, md: 2 }} flexWrap={"wrap"}>
         <Entry signal={ee_signal} />
         {/* Needs API  */}
         {/* <ButtonAction /> */}

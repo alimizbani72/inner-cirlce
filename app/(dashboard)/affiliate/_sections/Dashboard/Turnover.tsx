@@ -1,11 +1,10 @@
-'use client';
+"use client";
 
-import Icon from '@/components/icon';
-import { useTranslate } from '@/locales';
-import { useGetAffiliateMe } from '@/services/minecraft/affiliate/affiliate';
-import { formatCurrency } from '@/utils/toNumber';
-import ContentStack from '@app-components/ContentStack';
-import { Stack, Typography } from '@mui/material';
+import Icon from "@/components/icon";
+import { useTranslate } from "@/locales";
+import { useGetAffiliateMe } from "@/services/minecraft/default/default";
+import ContentStack from "@app-components/ContentStack";
+import { Stack, Typography } from "@mui/material";
 
 const Turnover = () => {
   const { t } = useTranslate();
@@ -13,21 +12,27 @@ const Turnover = () => {
   return (
     <ContentStack
       direction="row"
-      height={'106px'}
+      height={"106px"}
       gap={2}
       flex={1}
-      alignItems={{ md: 'center' }}
-      className={isLoading ? 'loading-skeleton' : ''}
+      alignItems={{ md: "center" }}
+      className={isLoading ? "loading-skeleton" : ""}
     >
       {me?.data?.turnover && (
         <>
-          <Stack p={2} bgcolor="dark.3" width={56} height={56} borderRadius="28px">
+          <Stack
+            p={2}
+            bgcolor="dark.3"
+            width={56}
+            height={56}
+            borderRadius="28px"
+          >
             <Icon name="MoneyfillIcon" />
           </Stack>
           <Stack>
-            <Typography variant="h4-semi-bold">{formatCurrency(me?.data?.turnover)}</Typography>
+            <Typography variant="h4-semi-bold">{me?.data?.turnover}</Typography>
             <Typography variant="p2-medium" color="grey.light">
-              {t('afDashboardTab.totalTurnover')}
+              {t("afDashboardTab.totalTurnover")}
             </Typography>
           </Stack>
         </>

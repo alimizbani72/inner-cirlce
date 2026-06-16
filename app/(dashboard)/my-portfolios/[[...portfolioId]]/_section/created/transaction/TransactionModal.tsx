@@ -1,47 +1,73 @@
-'use client';
-import CustomDialog from '@/components/CustomDialog';
-import { RHFTextField } from '@/components/hook-form';
-import FormProvider from '@/components/hook-form/form-provider';
-import { DialogActions, DialogContent, Stack, Typography } from '@mui/material';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { useTranslate } from '@/locales';
+"use client";
+import CustomDialog from "@/components/CustomDialog";
+import { RHFTextField } from "@/components/hook-form";
+import FormProvider from "@/components/hook-form/form-provider";
+import { useTranslate } from "@/locales";
+import { DialogActions, DialogContent, Stack, Typography } from "@mui/material";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 
-import { useParams } from 'next/navigation';
-import { getActivePortfolioId, parseToNumber } from '../../utils';
-import Bullets from '../../Bullets';
+import Toggle from "@/components/Toggle";
+import { Image } from "@/components/image";
+import LoadingButton from "@/components/loading-button";
 import {
   closeTransactionModal,
   selectActiveSymbol,
   selectIsEditMode,
   selectIsModalOpen,
   selectTransactionToEdit,
-} from '@/lib/features/portfolio/transactionSlice';
-import { useAppDispatch, useAppSelector } from '@/lib/hooks';
-import { useQueryClient } from '@tanstack/react-query';
-import CoinsList from './CoinsList';
-import PriceInput from './PriceInput';
-import { invalidatePortfolioQueries } from '../../InvaidatePorfolioQueries';
-import Total from './Total';
-import FeeTooltip from './FeeTooltip';
-import { toast } from 'sonner';
-import Toggle from '@/components/Toggle';
-import { Image } from '@/components/image';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  useGetCoinsSlugPrice,
-  usePostPortfolioTransactions,
-  usePutPortfolioTransactionsId,
-} from '@/services/minecraft/portfolio/portfolio';
-import dayjs, { type Dayjs } from 'dayjs';
-import DateInput from './DateInput';
-import type {
-  TransactionHttpTransactionCreateRequest,
-  TransactionHttpTransactionUpdateRequest,
-} from '@/services/minecraft/minecraftAPI.schemas';
-import LoadingButton from '@/components/loading-button';
+} from "@/lib/features/portfolio/transactionSlice";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { customInstance } from "@/scripts/fetcher";
 
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import dayjs, { type Dayjs } from "dayjs";
+import { useParams } from "next/navigation";
+import { toast } from "sonner";
+import { z } from "zod";
+import Bullets from "../../Bullets";
+import { invalidatePortfolioQueries } from "../../InvaidatePorfolioQueries";
+import { getActivePortfolioId, parseToNumber } from "../../utils";
+import CoinsList from "./CoinsList";
+import DateInput from "./DateInput";
+import FeeTooltip from "./FeeTooltip";
+import PriceInput from "./PriceInput";
+import Total from "./Total";
+const useGetCoinsSlugPrice = (slug?: string, options?: any) => {
+  return useQuery({
+    queryKey: ["coin-price", slug],
+    queryFn: async () => {
+      return customInstance({
+        url: `/coins/${slug}/price`,
+      });
+    },
+    enabled: options?.query?.enabled ?? !!slug,
+  });
+};
+
+const usePostPortfolioTransactions = () => {
+  return useMutation({
+    mutationFn: async (payload: any) => {
+      return customInstance({
+        url: `/portfolio-transactions`,
+        method: "POST",
+        data: payload.data,
+      });
+    },
+  });
+};
+const usePutPortfolioTransactionsId = () => {
+  return useMutation({
+    mutationFn: async (payload: any) => {
+      return customInstance({
+        url: `/portfolio-transactions/${payload.id}`,
+        method: "PUT",
+        data: payload.data,
+      });
+    },
+  });
+};
 const formSchema = z.object({
   coins: z.any().nullable(),
   quantity: z.number(),
@@ -56,7 +82,7 @@ const TransactionModal = () => {
       label: (
         <Stack direction="row" alignItems="center" spacing={1}>
           <Bullets bgcolor="success.main" />
-          {t('portfolioTransaction.buy')}
+          {t("portfolioTransaction.buy")}
         </Stack>
       ),
       value: 1,
@@ -65,7 +91,7 @@ const TransactionModal = () => {
       label: (
         <Stack direction="row" alignItems="center" spacing={1}>
           <Bullets bgcolor="danger.main" />
-          {t('portfolioTransaction.sell')}
+          {t("portfolioTransaction.sell")}
         </Stack>
       ),
       value: 2,
@@ -79,10 +105,11 @@ const TransactionModal = () => {
   const dispatch = useAppDispatch();
   const activeSymbol = useAppSelector(selectActiveSymbol);
   const transactionToEdit = useAppSelector(selectTransactionToEdit);
-  const initialDate = isEditMode && transactionToEdit ? dayjs(transactionToEdit.date) : null;
+  const initialDate =
+    isEditMode && transactionToEdit ? dayjs(transactionToEdit.date) : null;
   const [dateTime, setDateTime] = useState<Dayjs | null>(initialDate);
   const [btnValue, setBtnValue] = useState<number>(
-    isEditMode && transactionToEdit?.type === 'sell' ? 2 : 1
+    isEditMode && transactionToEdit?.type === "sell" ? 2 : 1,
   );
 
   const { mutateAsync: createTransaction, isPending: createIsPending } =
@@ -92,16 +119,16 @@ const TransactionModal = () => {
 
   const defaultValues = {
     coins: transactionToEdit ? transactionToEdit.symbol : null,
-    quantity: transactionToEdit ? +transactionToEdit.quantity : '',
-    price: transactionToEdit ? +transactionToEdit.price : '',
+    quantity: transactionToEdit ? +transactionToEdit.quantity : "",
+    price: transactionToEdit ? +transactionToEdit.price : "",
     fee: transactionToEdit ? +transactionToEdit.fee : undefined,
-    note: transactionToEdit ? transactionToEdit.note : '',
+    note: transactionToEdit ? transactionToEdit.note : "",
   };
 
   const methods = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: defaultValues,
-    mode: 'onSubmit',
+    mode: "onSubmit",
   });
 
   const handleButtonChange = (newValue: any) => {
@@ -109,10 +136,10 @@ const TransactionModal = () => {
   };
 
   const { handleSubmit, watch } = methods;
-  const selectedCoinSymbol = (watch('coins') as any)?.slug;
-  const quantity = parseToNumber(watch('quantity'));
-  const fee = parseToNumber(watch('fee'));
-  const price = parseToNumber(watch('price'));
+  const selectedCoinSymbol = (watch("coins") as any)?.slug;
+  const quantity = parseToNumber(watch("quantity"));
+  const fee = parseToNumber(watch("fee"));
+  const price = parseToNumber(watch("price"));
 
   const { data: perCoinPrice } = useGetCoinsSlugPrice(selectedCoinSymbol, {
     query: {
@@ -123,8 +150,10 @@ const TransactionModal = () => {
   const activePortfolioId = getActivePortfolioId(portfolioId);
 
   const onSubmit = handleSubmit(async (data) => {
-    const formattedDate = dateTime ? dayjs(dateTime).format('YYYY-MM-DD') : undefined;
-    const transactionType = btnValue === 1 ? 'buy' : 'sell';
+    const formattedDate = dateTime
+      ? dayjs(dateTime).format("YYYY-MM-DD")
+      : undefined;
+    const transactionType = btnValue === 1 ? "buy" : "sell";
 
     const requestBody = {
       type: transactionType,
@@ -139,12 +168,12 @@ const TransactionModal = () => {
     try {
       if (isEditMode && transactionToEdit) {
         await updateTransaction({
-          data: requestBody as TransactionHttpTransactionUpdateRequest,
+          data: requestBody as any,
           id: transactionToEdit.id as any,
         });
       } else {
         await createTransaction({
-          data: requestBody as TransactionHttpTransactionCreateRequest,
+          data: requestBody as any,
         });
       }
       invalidatePortfolioQueries(queryClient, {
@@ -159,13 +188,13 @@ const TransactionModal = () => {
       dispatch(closeTransactionModal());
     } catch (_error) {
       const errorMessage = isEditMode
-        ? t('portfolioTransaction.udateErrorMessage')
-        : t('portfolioTransaction.createErrorMessage');
+        ? t("portfolioTransaction.udateErrorMessage")
+        : t("portfolioTransaction.createErrorMessage");
 
       toast.error(errorMessage);
     }
   });
-  const isSubmitDisabled = !dateTime || quantity === 0;
+  // const isSubmitDisabled = !dateTime || quantity === 0;
 
   return (
     <CustomDialog
@@ -176,8 +205,8 @@ const TransactionModal = () => {
       open={isModalOpen}
       title={
         isEditMode
-          ? t('portfolioTransaction.updateTransaction')
-          : t('portfolioTransaction.addTransaction')
+          ? t("portfolioTransaction.updateTransaction")
+          : t("portfolioTransaction.addTransaction")
       }
     >
       <DialogContent sx={{ p: 3 }}>
@@ -191,40 +220,51 @@ const TransactionModal = () => {
           />
           {isEditMode ? (
             <Stack
-              direction={'row'}
+              direction={"row"}
               p={2}
               spacing={1}
-              sx={{ border: '2px solid', borderColor: 'dark.3', borderRadius: 1.5, width: '100%' }}
+              sx={{
+                border: "2px solid",
+                borderColor: "dark.3",
+                borderRadius: 1.5,
+                width: "100%",
+              }}
             >
-              <Image src={transactionToEdit?.logo} style={{ width: '24px', height: '24px' }} />
+              <Image
+                src={transactionToEdit?.logo}
+                style={{ width: "24px", height: "24px" }}
+              />
               <Typography>{transactionToEdit?.name}</Typography>
               <Typography>{transactionToEdit?.symbol}</Typography>
             </Stack>
           ) : (
             <CoinsList />
           )}
-          <Stack direction={{ xs: 'column', md: 'row' }} spacing={3}>
+          <Stack direction={{ xs: "column", md: "row" }} spacing={3}>
             <RHFTextField
               name="quantity"
-              label={t('portfolioTransaction.quantity')}
-              placeholder={t('portfolioTransaction.enterQuantity')}
+              label={t("portfolioTransaction.quantity")}
+              placeholder={t("portfolioTransaction.enterQuantity")}
               type="number"
               isMoney
             />
             <PriceInput
               name="price"
-              label={t('portfolioTransaction.pricePerCoin')}
+              label={t("portfolioTransaction.pricePerCoin")}
               isEditMode={isEditMode}
-              perCoinPrice={perCoinPrice?.data}
+              perCoinPrice={perCoinPrice}
             />
           </Stack>
-          <Stack direction={{ xs: 'column', md: 'row' }} spacing={3}>
-            <DateInput onConfirm={(dateTime) => setDateTime(dateTime)} initialDate={dateTime} />
-            <Stack spacing={0.5} width={'100%'}>
+          <Stack direction={{ xs: "column", md: "row" }} spacing={3}>
+            <DateInput
+              onConfirm={(dateTime) => setDateTime(dateTime)}
+              initialDate={dateTime}
+            />
+            <Stack spacing={0.5} width={"100%"}>
               <FeeTooltip />
               <RHFTextField
                 name="fee"
-                placeholder={t('portfolioTransaction.enterTheFee')}
+                placeholder={t("portfolioTransaction.enterTheFee")}
                 type="number"
                 isMoney
               />
@@ -232,27 +272,36 @@ const TransactionModal = () => {
           </Stack>
           <RHFTextField
             name="note"
-            label={t('portfolioTransaction.note')}
+            label={t("portfolioTransaction.note")}
             multiline
-            placeholder={t('portfolioTransaction.notePlaceholder')}
+            placeholder={t("portfolioTransaction.notePlaceholder")}
           />
         </FormProvider>
       </DialogContent>
 
       <DialogActions>
-        <Stack width={'100%'} direction={'row'} justifyContent={'space-between'}>
+        <Stack
+          width={"100%"}
+          direction={"row"}
+          justifyContent={"space-between"}
+        >
           <Stack>
-            <Total btnValue={btnValue} fee={fee} price={price} quantity={quantity} />
+            <Total
+              btnValue={btnValue}
+              fee={fee}
+              price={price}
+              quantity={quantity}
+            />
           </Stack>
           <LoadingButton
             onClick={onSubmit}
             size="large"
-            disabled={isSubmitDisabled}
+            disabled={true}
             loading={createIsPending || updateIsPending}
           >
             {isEditMode
-              ? t('portfolioTransaction.updateTransaction')
-              : t('portfolioTransaction.addTransaction')}
+              ? t("portfolioTransaction.updateTransaction")
+              : t("portfolioTransaction.addTransaction")}
           </LoadingButton>
         </Stack>
       </DialogActions>

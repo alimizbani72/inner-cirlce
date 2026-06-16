@@ -1,8 +1,7 @@
-'use client';
-import { Box, Divider, Stack } from '@mui/material';
-import BoxItems from './BoxItem';
-import { useTranslate } from '@/locales';
-import { toTitleCase } from '@/utils/change-case';
+"use client";
+import { useTranslate } from "@/locales";
+import { Box, Divider, Stack } from "@mui/material";
+import BoxItems from "./BoxItem";
 type Props = {
   current_price: string | undefined;
   liquidity_index: string | undefined;
@@ -27,44 +26,44 @@ const BoxList = ({
   return (
     <Box>
       <Stack
-        direction={{ xs: 'column', md: 'row' }}
+        direction={{ xs: "column", md: "row" }}
         sx={{
-          flexWrap: 'wrap',
-          border: '1px solid',
-          borderColor: 'dark.3',
+          flexWrap: "wrap",
+          border: "1px solid",
+          borderColor: "dark.3",
           borderRadius: 2,
-          bgcolor: 'dark.2',
-          overflow: 'hidden',
+          bgcolor: "dark.2",
+          overflow: "hidden",
         }}
       >
         <BoxItems
-          title={t('coinReportSingleView.currentPrice')}
+          title={t("coinReportSingleView.currentPrice")}
           value={current_price}
           hasRightBorder
           hasCurrency
         />
         <Divider />
         <BoxItems
-          title={t('coinReportSingleView.currentMarketCap')}
+          title={t("coinReportSingleView.currentMarketCap")}
           value={market_cap}
           hasRightBorder
           hasCurrency
         />
         <Divider />
         <BoxItems
-          title={t('coinReportSingleView.liquidity')}
+          title={t("coinReportSingleView.liquidity")}
           value={liquidity_index}
           hasRightBorder
           symbol="%"
         />
         <Divider />
         <BoxItems
-          title={t('coinReportSingleView.category')}
-          value={toTitleCase(category as string)}
+          title={t("coinReportSingleView.category")}
+          value={category?.toUpperCase() as string}
         />
         <Divider />
         <BoxItems
-          title={t('coinReportSingleView.totalsupply')}
+          title={t("coinReportSingleView.totalsupply")}
           value={total_supply}
           hasRightBorder
           hasTopBorder
@@ -72,7 +71,7 @@ const BoxList = ({
         />
         <Divider />
         <BoxItems
-          title={t('coinReportSingleView.maxsupply')}
+          title={t("coinReportSingleView.maxsupply")}
           value={max_supply}
           hasTopBorder
           hasRightBorder
@@ -80,7 +79,7 @@ const BoxList = ({
         />
         <Divider />
         <BoxItems
-          title={t('coinReportSingleView.circulatingSupply')}
+          title={t("coinReportSingleView.circulatingSupply")}
           value={circulating_supply}
           hasTopBorder
           width="50%"

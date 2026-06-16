@@ -1,54 +1,69 @@
-import { useGetPackages } from '@/services/cms/packages/packages';
-import { packageNameModifier } from '@/utils/string';
-import { useMemo } from 'react';
+// import { packageNameModifier } from "@/utils/string";
+import { mockPackages } from "@/mock/mockdata";
+import { useMemo } from "react";
 
 export const usePricingData = () => {
-  const { data, isLoading } = useGetPackages();
+  const data = mockPackages;
+  const isLoading = false;
 
   const { plans, rows } = useMemo(() => {
-    const plansData = data?.data?.docs?.map((apiPlan) => ({
-      id: apiPlan.name,
-      title: apiPlan.name,
-      plan_type: packageNameModifier(apiPlan.name),
-      description: apiPlan.description,
-      cost: apiPlan.price.toString(),
-      buttonText: apiPlan.buttonText,
+    // 🧠 PLAN CARDS (COLUMNS)
+    const plansData = data.map((plan) => ({
+      id: plan.plan_type,
+      title: plan.name,
+      plan_type: plan.plan_type,
+      description: plan.description,
+      cost: plan.price.toString(),
+      buttonText: plan.buttonText,
     }));
 
-    const rowsData = data?.data?.docs?.reduce(
-      (acc, apiPlan) => {
-        apiPlan.featuresTable.forEach((feature) => {
+    // 🧠 FEATURE TABLE (ROWS)
+    const rowsData = data.reduce(
+      (acc, plan) => {
+        plan.featuresTable.forEach((feature) => {
           if (!acc[feature.featureName]) {
             acc[feature.featureName] = [];
           }
+
           switch (feature.featureValue) {
-            case 'number':
-              acc[feature.featureName].push(`${feature.numberValue}${feature.numberSuffix || ''}`);
+            case "number":
+              acc[feature.featureName].push(
+                `${feature.numberValue ?? ""}${feature.numberSuffix ?? ""}`,
+              );
               break;
-            case 'check':
+
+            case "check":
               acc[feature.featureName].push(true);
               break;
-            case 'xmark':
+
+            case "xmark":
               acc[feature.featureName].push(false);
               break;
-            case 'goldCoins':
-              acc[feature.featureName].push(feature.goldCoinsValue);
+
+            case "text":
+              acc[feature.featureName].push(feature.textValue ?? "");
               break;
-            case 'text':
-              acc[feature.featureName].push(feature.textValue);
-              break;
+
             default:
               acc[feature.featureName].push(null);
               break;
           }
         });
+
         return acc;
       },
-      {} as Record<string, any[]>
+      {} as Record<string, any[]>,
     );
 
-    return { rows: rowsData, plans: plansData };
+    return {
+      plans: plansData,
+      rows: rowsData,
+    };
   }, [data]);
 
-  return { plans, rows, isLoading };
+  return {
+    plans,
+    rows,
+    isLoading,
+  };
 };

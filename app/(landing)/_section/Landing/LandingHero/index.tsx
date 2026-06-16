@@ -1,14 +1,14 @@
-import { useIsMobile } from '@/hooks/use-responsive';
-import animationData from '@/assets/animations/IllustrationAnim.json';
-import { Box, Button, Typography } from '@mui/material';
-import { Stack } from '@mui/system';
-import dynamic from 'next/dynamic';
-import type { FC } from 'react';
-import LandingContainer from '../LandingContainer';
-import HiddenGems from './HiddenGems';
-import Icon from '@/components/icon';
+import animationData from "@/assets/animations/IllustrationAnim.json";
+import Icon from "@/components/icon";
+import { useIsMobile } from "@/hooks/use-responsive";
+import { Box, Button, Typography } from "@mui/material";
+import { Stack } from "@mui/system";
+import dynamic from "next/dynamic";
+import type { FC } from "react";
+import LandingContainer from "../LandingContainer";
+import HiddenGems from "./HiddenGems";
 
-const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 interface LandingHeroProps {
   highlightText: string;
@@ -18,7 +18,7 @@ interface LandingHeroProps {
   buttonLink: string;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'Hero';
+  blockType: "Hero";
   isLoading: boolean;
 }
 
@@ -34,17 +34,21 @@ const LandingHero: FC<LandingHeroProps> = ({
 
   return (
     <LandingContainer
-      minHeight={'calc(100vh - 105px)'}
-      direction={{ md: 'row' }}
+      minHeight={"calc(100vh - 105px)"}
+      direction={{ md: "row" }}
       gap={{ md: 10, xs: 6 }}
       py={{ md: 3, xs: 8 }}
-      alignItems={'center'}
+      alignItems={"center"}
     >
-      <Stack flex={1} alignItems={{ md: 'flex-start', xs: 'center' }} width="100%">
+      <Stack
+        flex={1}
+        alignItems={{ md: "flex-start", xs: "center" }}
+        width="100%"
+      >
         <Stack
-          alignItems={'center'}
-          justifyContent={'center'}
-          sx={{ borderRadius: 1.5, backgroundColor: 'dark.3' }}
+          alignItems={"center"}
+          justifyContent={"center"}
+          sx={{ borderRadius: 1.5, backgroundColor: "dark.3" }}
           px={1}
           height={24}
           mb={3}
@@ -53,8 +57,8 @@ const LandingHero: FC<LandingHeroProps> = ({
             variant="caption-semi-bold"
             sx={{
               background: (theme) => theme.palette.gradient.pink,
-              WebkitTextFillColor: 'transparent',
-              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: "transparent",
+              WebkitBackgroundClip: "text",
             }}
           >
             {isLoading ? (
@@ -66,15 +70,15 @@ const LandingHero: FC<LandingHeroProps> = ({
         </Stack>
 
         <Typography
-          variant={isMobile ? 'h2-semi-bold' : 'h1-semi-bold'}
+          variant={isMobile ? "h2-semi-bold" : "h1-semi-bold"}
           mb={2}
-          textAlign={{ md: 'left', xs: 'center' }}
+          textAlign={{ md: "left", xs: "center" }}
           width="100%"
         >
           {isLoading ? (
             <Box
               className="loading-skeleton"
-              width={'100%'}
+              width={"100%"}
               sx={{ height: { xs: 96, sm: 48, md: 128 } }}
             />
           ) : (
@@ -82,16 +86,16 @@ const LandingHero: FC<LandingHeroProps> = ({
           )}
         </Typography>
         <Typography
-          variant={isMobile ? 'p2-regular' : 'p1-regular'}
+          variant={isMobile ? "p2-regular" : "p1-regular"}
           color="grey.light"
-          textAlign={{ md: 'left', xs: 'center' }}
-          className={isLoading ? 'loading-skeleton' : ''}
+          textAlign={{ md: "left", xs: "center" }}
+          className={isLoading ? "loading-skeleton" : ""}
           width="100%"
         >
           {isLoading ? (
             <Box
               className="loading-skeleton"
-              width={'100%'}
+              width={"100%"}
               sx={{ height: { xs: 48, sm: 24, md: 48 } }}
             />
           ) : (
@@ -99,9 +103,13 @@ const LandingHero: FC<LandingHeroProps> = ({
           )}
         </Typography>
 
-        <Stack py={{ md: 5, xs: 3 }} width={'100%'} maxWidth={'100%'}>
+        <Stack py={{ md: 5, xs: 3 }} width={"100%"} maxWidth={"100%"}>
           {isLoading ? (
-            <Box className="loading-skeleton" width={'100%'} sx={{ height: { xs: 213, md: 98 } }} />
+            <Box
+              className="loading-skeleton"
+              width={"100%"}
+              sx={{ height: { xs: 213, md: 98 } }}
+            />
           ) : (
             <HiddenGems />
           )}
@@ -120,7 +128,7 @@ const LandingHero: FC<LandingHeroProps> = ({
           </Button>
         )}
       </Stack>
-      <Stack flex={1} width={'100%'}>
+      <Stack flex={1} width={"100%"}>
         <Lottie
           animationData={animationData}
           className="flex justify-center items-center"

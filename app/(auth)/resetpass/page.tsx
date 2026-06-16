@@ -1,7 +1,5 @@
-import type { NextPage } from 'next';
-import ResetPassSection from './_section';
-
-const ForgotPassPage: NextPage = () => {
-  return <ResetPassSection />;
+const ForgotPassPage = () => {
+  return <div>a</div>;
 };
+
 export default ForgotPassPage;

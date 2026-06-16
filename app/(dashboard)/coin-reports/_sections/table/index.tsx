@@ -1,32 +1,31 @@
-'use client';
+"use client";
 
-import CustomTable, { type SortType } from '@/components/CustomTable';
-import { useIsMobile } from '@/hooks/use-responsive';
-import { useAppRouter } from '@/routes/hooks';
-import type { ReportCoinReportResponseData } from '@/services/minecraft/minecraftAPI.schemas';
-import { toNumber } from '@/utils/toNumber';
-import UpgradeModal from '@dashboard/coin-reports/[coinId]/_section/UpgradeModal';
-import { defaultValueSort } from '@dashboard/coin-reports/_sections/consts';
-import { Stack, styled } from '@mui/material';
-import { useState } from 'react';
-import { Header } from '../header';
-import type { FilterFormDataType } from '../types.d';
-import { useColumns } from './useColumns';
+import CustomTable, { type SortType } from "@/components/CustomTable";
+import { useIsMobile } from "@/hooks/use-responsive";
+import { useAppRouter } from "@/routes/hooks";
+import { toNumber } from "@/utils/toNumber";
+import UpgradeModal from "@dashboard/coin-reports/[coinId]/_section/UpgradeModal";
+import { defaultValueSort } from "@dashboard/coin-reports/_sections/consts";
+import { Stack, styled } from "@mui/material";
+import { useState } from "react";
+import { Header } from "../header";
+import type { FilterFormDataType } from "../types.d";
+import { useColumns } from "./useColumns";
 
 export interface TableProps {
   filters: FilterFormDataType;
   onFilterChange: (filter: FilterFormDataType) => void;
-  data?: ReportCoinReportResponseData[];
+  data?: any[];
   totalCount: number;
   onNextUpdate: () => void;
   isFetching: boolean;
 }
 
 const ContainerStyle = styled(Stack)(({ theme }) => ({
-  border: '1.5px solid',
+  border: "1.5px solid",
   borderColor: theme.palette.dark[3],
-  alignItems: 'flex-start',
-  overflow: 'hidden',
+  alignItems: "flex-start",
+  overflow: "hidden",
 }));
 
 const CoinReportTable = ({
@@ -62,7 +61,7 @@ const CoinReportTable = ({
       <ContainerStyle
         sx={{
           ...(isMobile
-            ? { borderLeft: 'unset', borderRight: 'unset' }
+            ? { borderLeft: "unset", borderRight: "unset" }
             : {
                 borderRadius: 1.5,
               }),
@@ -71,13 +70,17 @@ const CoinReportTable = ({
         <Header {...{ onNextUpdate, filters, onFilterChange }} />
 
         <CustomTable
-          containerHeight={toNumber(data?.length) > 10 ? undefined : 'max-content'}
+          containerHeight={
+            toNumber(data?.length) > 10 ? undefined : "max-content"
+          }
           perPage={filters.per_page}
           columns={columns}
           data={data || []}
           isPending={isFetching}
           page={filters.page}
-          handleChangePage={(_, newPage) => onFilterChange({ ...filters, page: newPage })}
+          handleChangePage={(_, newPage) =>
+            onFilterChange({ ...filters, page: newPage })
+          }
           totalCount={totalCount}
           onSortChange={handleSortChange}
           sort={filters.sorts}
@@ -86,7 +89,9 @@ const CoinReportTable = ({
           uniqueId="slug"
         />
       </ContainerStyle>
-      {openUpgradeModal && <UpgradeModal open close={() => setOpenUpgradeModal(false)} />}
+      {openUpgradeModal && (
+        <UpgradeModal open close={() => setOpenUpgradeModal(false)} />
+      )}
     </>
   );
 };

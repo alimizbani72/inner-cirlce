@@ -1,11 +1,10 @@
-import { Box, IconButton, Stack, Typography } from '@mui/material';
-import type { FC } from 'react';
-import RoadMapModal from './RoadMapModal';
-import Status, { statusColors } from './Status';
-import { convertRichTextToHTML } from '@/utils/convertRichTextToHTML';
-import useToggleState from '@/hooks/use-toggle-state';
-import Icon from '@/components/icon';
-import { fDate, formatStr } from '@/utils/format-time';
+import Icon from "@/components/icon";
+import useToggleState from "@/hooks/use-toggle-state";
+import { fDate, formatStr } from "@/utils/format-time";
+import { Box, IconButton, Stack, Typography } from "@mui/material";
+import type { FC } from "react";
+import RoadMapModal from "./RoadMapModal";
+import Status, { statusColors } from "./Status";
 
 interface RoadMapItemProps {
   title: string;
@@ -15,7 +14,13 @@ interface RoadMapItemProps {
   descriptionText: any;
 }
 
-const RoadMapItem: FC<RoadMapItemProps> = ({ title, date, status, image, descriptionText }) => {
+const RoadMapItem: FC<RoadMapItemProps> = ({
+  title,
+  date,
+  status,
+  image,
+  descriptionText,
+}) => {
   const [open, toggleModal] = useToggleState();
 
   const color = statusColors[status as keyof typeof statusColors];
@@ -32,49 +37,49 @@ const RoadMapItem: FC<RoadMapItemProps> = ({ title, date, status, image, descrip
         p={2}
         flex={1}
         sx={{
-          cursor: 'pointer',
-          ':hover': {
-            bgcolor: 'dark.1',
-            '& > div:first-of-type': {
-              bgcolor: 'dark.3',
+          cursor: "pointer",
+          ":hover": {
+            bgcolor: "dark.1",
+            "& > div:first-of-type": {
+              bgcolor: "dark.3",
             },
           },
         }}
-        direction={'row'}
+        direction={"row"}
         borderRadius={1.5}
-        bgcolor={open ? 'dark.1' : 'dark.3'}
-        alignItems={{ md: 'center', xs: undefined }}
+        bgcolor={open ? "dark.1" : "dark.3"}
+        alignItems={{ md: "center", xs: undefined }}
       >
         <Box
           sx={{
-            width: '2px',
-            height: { md: '100%', xs: undefined },
-            bgcolor: open ? 'dark.3' : 'dark.1',
-            display: 'flex',
-            alignItems: 'center',
+            width: "2px",
+            height: { md: "100%", xs: undefined },
+            bgcolor: open ? "dark.3" : "dark.1",
+            display: "flex",
+            alignItems: "center",
           }}
         >
-          <Box sx={{ width: '100%', height: '30%', bgcolor: color }} />
+          <Box sx={{ width: "100%", height: "30%", bgcolor: color }} />
         </Box>
-        <Stack gap={1} mr={{ md: undefined, xs: 'auto' }}>
+        <Stack gap={1} mr={{ md: undefined, xs: "auto" }}>
           <Typography variant="p2-medium">{title}</Typography>
-          <Stack direction={'row'} spacing={1} alignItems={'center'}>
-            <Typography variant="caption-regular" color={'grey.light'}>
+          <Stack direction={"row"} spacing={1} alignItems={"center"}>
+            <Typography variant="caption-regular" color={"grey.light"}>
               {fDate(date, formatStr.date)}
             </Typography>
             <Box
               sx={{
-                width: '4px',
-                height: '4px',
-                borderRadius: '50%',
-                bgcolor: '#626583',
+                width: "4px",
+                height: "4px",
+                borderRadius: "50%",
+                bgcolor: "#626583",
               }}
             />
             <Status status={status}>{status}</Status>
           </Stack>
         </Stack>
         <IconButton>
-          <Icon name="ArrowRightIcon" stroke={'grey.light'} />
+          <Icon name="ArrowRightIcon" stroke={"grey.light"} />
         </IconButton>
       </Stack>
       {open && (
@@ -83,7 +88,7 @@ const RoadMapItem: FC<RoadMapItemProps> = ({ title, date, status, image, descrip
           date={date}
           status={status}
           image={image}
-          descriptionText={convertRichTextToHTML(descriptionText)}
+          descriptionText={descriptionText}
           open={open}
           close={() => {
             toggleModal();

@@ -111,7 +111,9 @@ select:-webkit-autofill {
   --yarl__thumbnails_thumbnail_padding: 0;
   --yarl__thumbnails_thumbnail_border: transparent;
   --yarl__color_backdrop: rgba(var(--palette-grey-900Channel) / 0.9);
-  --yarl__slide_captions_container_background: rgba(var(--palette-common-blackChannel) / 0.32);
+  --yarl__slide_captions_container_background: rgba(
+    var(--palette-common-blackChannel) / 0.32
+  );
 }
 .yarl__slide_title {
   font-size: 20px;

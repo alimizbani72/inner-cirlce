@@ -1,13 +1,13 @@
-import { Stack, Typography } from '@mui/material';
-import { useState } from 'react';
-import Chart from './Chart';
-import type { PortfolioHttpAssetResponse } from '@/services/minecraft/minecraftAPI.schemas';
-import { useTranslate } from '@/locales';
-import { parseToNumber } from '../../_section/utils';
-import RenderChips from './RenderChips';
+import { useTranslate } from "@/locales";
+import { Stack, Typography } from "@mui/material";
+import { useState } from "react";
+import type { Asset } from "../../_section/typess";
+import { parseToNumber } from "../../_section/utils";
+import Chart from "./Chart";
+import RenderChips from "./RenderChips";
 
 type Props = {
-  assets: PortfolioHttpAssetResponse[];
+  assets: Asset[];
 };
 const RenderContent = ({ assets }: Props) => {
   const { t } = useTranslate();
@@ -19,11 +19,21 @@ const RenderContent = ({ assets }: Props) => {
 
   return (
     <>
-      <Stack width={'100%'}>
-        <Typography variant="p1-medium">{t('allocation.allocation')}</Typography>
-        <Chart seriesData={seriesData} onHover={setHoveredCrypto} hoveredCrypto={hoveredCrypto} />
+      <Stack width={"100%"}>
+        <Typography variant="p1-medium">
+          {t("allocation.allocation")}
+        </Typography>
+        <Chart
+          seriesData={seriesData}
+          onHover={setHoveredCrypto}
+          hoveredCrypto={hoveredCrypto}
+        />
       </Stack>
-      <RenderChips assets={assets} hoveredCrypto={hoveredCrypto} onHover={setHoveredCrypto} />
+      <RenderChips
+        assets={assets}
+        hoveredCrypto={hoveredCrypto}
+        onHover={setHoveredCrypto}
+      />
     </>
   );
 };

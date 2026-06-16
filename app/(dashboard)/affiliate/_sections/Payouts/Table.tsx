@@ -1,111 +1,90 @@
-'use client';
+"use client";
 
-import type React from 'react';
-import { type ChangeEvent, type FC, useCallback, useMemo, useState } from 'react';
+import type React from "react";
+import {
+  type ChangeEvent,
+  type FC,
+  useCallback,
+  useMemo,
+  useState,
+} from "react";
 
-import CustomTable from '@/components/CustomTable';
-import CustomPopover from '@/components/custom-popover/custom-popover';
-import usePopover from '@/components/custom-popover/use-popover';
-import Icon from '@/components/icon';
-import { useIsMobile } from '@/hooks/use-responsive';
-import useToggleState from '@/hooks/use-toggle-state';
-import { useTranslate } from '@/locales';
-import { useGetFinancialPayouts } from '@/services/minecraft/financial/financial';
-import type { PayoutHttpPayoutResponse } from '@/services/minecraft/minecraftAPI.schemas';
-import { fDate } from '@/utils/format-time';
-import { formatCurrency } from '@/utils/toNumber';
-import { Box, Button, Stack, Typography } from '@mui/material';
-import { DatePicker } from '@mui/x-date-pickers';
-import DownloadModal from './DownloadModal';
-import dayjs from 'dayjs';
-
-const datePickerStyle = {
-  '.MuiIconButton-root': {
-    color: 'white',
-    mr: 0,
-  },
-};
-
-const slotProps = {
-  switchViewButton: { sx: { color: 'white' } },
-  previousIconButton: { sx: { color: 'white' } },
-  nextIconButton: { sx: { color: 'white' } },
-  calendarHeader: { sx: { '.MuiPickersCalendarHeader-label': { color: 'white' } } },
-  desktopPaper: {
-    sx: {
-      '.MuiPickersYear-yearButton': { color: 'white' },
-      backgroundColor: 'dark.2',
-      boxShadow: '0px 24px 64px 0px rgba(0, 0, 0, 0.24)',
-      border: '1px solid',
-      borderColor: 'dark.3',
-    },
-  },
-
-  day: {
-    sx: {
-      color: 'white',
-      typography: 'p2-medium',
-
-      '&.MuiPickersDay-today': {
-        bgcolor: 'white',
-        color: 'dark.1',
-      },
-    },
-  },
-};
+import CustomTable from "@/components/CustomTable";
+import CustomPopover from "@/components/custom-popover/custom-popover";
+import usePopover from "@/components/custom-popover/use-popover";
+import Icon from "@/components/icon";
+import useToggleState from "@/hooks/use-toggle-state";
+import { useTranslate } from "@/locales";
+import { fDate } from "@/utils/format-time";
+import { formatCurrency } from "@/utils/toNumber";
+import { Box, Button, Stack, Typography } from "@mui/material";
+import { DatePicker } from "@mui/x-date-pickers";
+import DownloadModal from "./DownloadModal";
 
 const AffPayoutsTabTable: FC = () => {
   const { t } = useTranslate();
-  const isMobile = useIsMobile();
   const [open, toggle] = useToggleState();
+  const filterPopover = usePopover();
+
+  const [page, setPage] = useState(1);
+  const [dates, setDates] = useState<any>([]);
+
+  // ✅ dummy payout data
+  const data = {
+    data: [
+      {
+        id: 1,
+        user_id: "user_1",
+        wallet_id: "wallet_1",
+        amount: 100,
+        created_at: Date.now(),
+        status: "completed",
+      },
+      {
+        id: 2,
+        user_id: "user_2",
+        wallet_id: "wallet_2",
+        amount: 250,
+        created_at: Date.now(),
+        status: "pending",
+      },
+    ],
+    meta: { total_count: 2 },
+  };
+
+  const isPending = false;
+
   const columns = useMemo(
     () => [
       {
-        title: t('affPayoutsTabTable.userId'),
-        modify: (row: PayoutHttpPayoutResponse) => row.user_id,
+        title: t("affPayoutsTabTable.userId"),
+        modify: (row: any) => row.user_id,
       },
       {
-        title: t('affPayoutsTabTable.walletId'),
-        modify: (row: PayoutHttpPayoutResponse) => row.wallet_id,
+        title: t("affPayoutsTabTable.walletId"),
+        modify: (row: any) => row.wallet_id,
       },
       {
-        title: t('affPayoutsTabTable.amount'),
-        modify: (row: PayoutHttpPayoutResponse) => formatCurrency(row.amount),
+        title: t("affPayoutsTabTable.amount"),
+        modify: (row: any) => formatCurrency(row.amount),
       },
       {
-        title: t('affPayoutsTabTable.date'),
-        modify: (row: PayoutHttpPayoutResponse) => fDate(row.created_at, 'DD.MM.YYYY'),
+        title: t("affPayoutsTabTable.date"),
+        modify: (row: any) => fDate(row.created_at, "DD.MM.YYYY"),
       },
       {
-        title: t('affPayoutsTabTable.status'),
-        modify: (row: PayoutHttpPayoutResponse) => row.status,
+        title: t("affPayoutsTabTable.status"),
+        modify: (row: any) => row.status,
       },
     ],
-    [t]
+    [t],
   );
-
-  const filterPopover = usePopover();
-  const [page, setpage] = useState(1);
-  const [dates, setDates] = useState<any>([]);
-  const filter = {
-    filters: {
-      ...(dates?.[0] && { from_created_at: fDate(dates?.[0], 'YYYY-MM-DD') }),
-      ...(dates?.[1] && { to_created_at: fDate(dates?.[1], 'YYYY-MM-DD') }),
-    },
-    sorts: { created_at: false },
-    page: page,
-    per_page: 10,
-  };
-
-  const { data, isPending } = useGetFinancialPayouts({
-    opts: JSON.stringify(filter),
-  });
 
   const handleOpenFilter = useCallback(
     (event: React.MouseEvent<HTMLElement>) => {
       filterPopover.onOpen(event);
     },
-    [filterPopover]
+    [filterPopover],
   );
 
   const handleCloseFilter = useCallback(() => {
@@ -113,128 +92,68 @@ const AffPayoutsTabTable: FC = () => {
   }, [filterPopover]);
 
   const handleChangePage = (_event: ChangeEvent<unknown>, newPage: number) => {
-    setpage(newPage);
+    setPage(newPage);
   };
 
   return (
     <Stack px={{ md: 4, xs: 0 }} pt={3}>
-      <Stack alignItems="flex-start" maxWidth={{ md: 'calc(100vw - 64px)', xs: '100vw' }}>
-        <CustomTable
-          title={t('affPayoutsTabTable.payouts')}
-          columns={columns}
-          page={page}
-          handleChangePage={handleChangePage}
-          totalCount={data?.meta?.total_count || 0}
-          data={(data?.data as any) || []}
-          isPending={isPending}
-          containerHeight={'max-content'}
-          mobileAction={
-            <Button
-              startIcon={<Icon name="DownloadIcon" />}
-              color={isMobile ? 'primary' : 'tertiary'}
-              sx={{ width: '100%' }}
-              onClick={toggle}
+      <CustomTable
+        title={t("affPayoutsTabTable.payouts")}
+        columns={columns}
+        page={page}
+        handleChangePage={handleChangePage}
+        totalCount={data.meta.total_count}
+        data={data.data}
+        isPending={isPending}
+        emptyTitle={t("affPayoutsTabTable.emptyTitle")}
+        containerHeight="max-content"
+        mobileAction={
+          <Button startIcon={<Icon name="DownloadIcon" />} onClick={toggle}>
+            {t("affPayoutsTabTable.dwonloadStatement")}
+          </Button>
+        }
+        action={
+          <Box>
+            <Stack direction="row" gap={2}>
+              <Box
+                onClick={handleOpenFilter}
+                sx={{ display: "flex", cursor: "pointer" }}
+              >
+                <Typography variant="p2-semi-bold">
+                  {dates.length
+                    ? `${fDate(dates?.[0], "DD.MM.YYYY")} - ${fDate(dates?.[1], "DD.MM.YYYY")}`
+                    : t("affPayoutsTabTable.dateAndTime")}
+                </Typography>
+                <Icon
+                  name={filterPopover.open ? "ArrowUpIcon" : "ArrowDownIcon"}
+                />
+              </Box>
+
+              <Button onClick={toggle} color="tertiary">
+                {t("affPayoutsTabTable.dwonloadStatement")}
+              </Button>
+            </Stack>
+
+            <CustomPopover
+              open={filterPopover.open}
+              onClose={handleCloseFilter}
             >
-              {t('affPayoutsTabTable.dwonloadStatement')}
-            </Button>
-          }
-          emptyTitle={t('affPayoutsTabTable.emptyTitle')}
-          emptySubtitle={t('affPayoutsTabTable.emptySubtitle')}
-          action={
-            <Box>
-              <Stack
-                direction="row"
-                alignItems={'center'}
-                gap={2}
-                pl={isMobile ? 5 : undefined}
-                sx={{
-                  cursor: 'pointer',
-                }}
-              >
-                <Box onClick={handleOpenFilter} sx={{ display: 'flex' }}>
-                  <Typography variant="p2-semi-bold">
-                    {dates.length
-                      ? `${t('affPayoutsTabTable.from')} ${fDate(dates?.[0], 'DD.MM.YYYY') || '-'} ${t(
-                          'affPayoutsTabTable.to'
-                        )} ${fDate(dates?.[1], 'DD.MM.YYYY') || '-'}`
-                      : t('affPayoutsTabTable.dateAndTime')}
-                  </Typography>
-                  <Icon name={filterPopover.open ? 'ArrowUpIcon' : 'ArrowDownIcon'} />
-                </Box>
-                <Stack>
-                  <Button
-                    startIcon={<Icon name="DownloadIcon" />}
-                    color="tertiary"
-                    onClick={toggle}
-                    sx={{ display: { md: 'flex', xs: 'none' } }}
-                  >
-                    {t('affPayoutsTabTable.dwonloadStatement')}
-                  </Button>
-                </Stack>
+              <Stack gap={2}>
+                <DatePicker
+                  value={dates?.[0] || null}
+                  onChange={(v) => setDates((s: any) => [v, s?.[1]])}
+                />
+                <DatePicker
+                  value={dates?.[1] || null}
+                  onChange={(v) => setDates((s: any) => [s?.[0], v])}
+                />
               </Stack>
+            </CustomPopover>
+          </Box>
+        }
+      />
 
-              <CustomPopover
-                open={filterPopover.open}
-                onClose={handleCloseFilter}
-                sx={{
-                  m: 0,
-                  p: 3,
-                  border: '1px solid',
-                  borderRadius: 2,
-                  borderColor: 'dark.3',
-                  backgroundColor: 'dark.2',
-                  boxShadow: '0px 24px 64px 0px rgba(0, 0, 0, 0.24)',
-                  backdropFilter: 'none',
-                  backgroundImage: 'none',
-                  '> span:first-of-type': {
-                    display: 'none',
-                  },
-                }}
-              >
-                <Stack gap={2}>
-                  <Stack gap={2}>
-                    <Typography variant="caption-semi-bold">
-                      {t('affPayoutsTabTable.from')}
-                    </Typography>
-
-                    <DatePicker
-                      format="DD.MM.YYYY"
-                      value={dates?.[0] || null}
-                      maxDate={dayjs()}
-                      slotProps={slotProps}
-                      sx={datePickerStyle}
-                      onChange={(value) => {
-                        setDates((state: any) => [value, state?.[1]]);
-                      }}
-                      desktopModeMediaQuery="@media (min-width: 0px)"
-                    />
-                  </Stack>
-
-                  <Stack gap={2}>
-                    <Typography variant="caption-semi-bold">
-                      {t('affPayoutsTabTable.to')}
-                    </Typography>
-
-                    <DatePicker
-                      format="DD.MM.YYYY"
-                      minDate={dates?.[0]}
-                      maxDate={dayjs()}
-                      slotProps={slotProps}
-                      value={dates?.[1] || null}
-                      sx={datePickerStyle}
-                      onChange={(value) => {
-                        setDates((state: any) => [state?.[0], value]);
-                      }}
-                      desktopModeMediaQuery="@media (min-width: 0px)"
-                    />
-                  </Stack>
-                </Stack>
-              </CustomPopover>
-            </Box>
-          }
-        />
-        {open && <DownloadModal open={open} close={toggle} />}
-      </Stack>
+      {open && <DownloadModal open={open} close={toggle} />}
     </Stack>
   );
 };

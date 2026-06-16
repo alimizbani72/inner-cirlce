@@ -1,40 +1,40 @@
-import DialogTitle from '@mui/material/DialogTitle';
-import Icon from '@/components/icon';
+import CustomDialog from "@/components/CustomDialog";
+import { RHFCode } from "@/components/hook-form";
+import FormProvider from "@/components/hook-form/form-provider";
+import Icon from "@/components/icon";
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
+import { modifyUser } from "@/lib/features/user/userSlice";
+import { useAppDispatch } from "@/lib/hooks";
+import { snipText } from "@/utils/string";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { LoadingButton } from "@mui/lab";
 import {
+  Box,
+  Button,
   DialogActions,
+  DialogContent,
   Divider,
   IconButton,
+  Stack,
   Typography,
-  Button,
-  DialogContent,
-} from '@mui/material';
-import CustomDialog from '@/components/CustomDialog';
-import { Stack } from '@mui/material';
-import zod from 'zod';
-import FormProvider from '@/components/hook-form/form-provider';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import dynamic from 'next/dynamic';
-import { Box } from '@mui/material';
-import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard';
-import { snipText } from '@/utils/string';
-import { RHFCode } from '@/components/hook-form';
-import { LoadingButton } from '@mui/lab';
-import { useAppDispatch } from '@/lib/hooks';
-import { modifyUser } from '@/lib/features/user/userSlice';
-import { getGetMeQueryKey, useGet2fa, usePatch2fa } from '@/services/minecraft/auth/auth';
-import { toast } from 'sonner';
-import { getQueryClient } from '@/app/_providers/customQueryClient';
-const QRCodeWithIcon = dynamic(() => import('@/components/QRCodeWithIcon'), {
+} from "@mui/material";
+import DialogTitle from "@mui/material/DialogTitle";
+import dynamic from "next/dynamic";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import zod from "zod";
+
+const QRCodeWithIcon = dynamic(() => import("@/components/QRCodeWithIcon"), {
   ssr: false,
   loading: () => <Box sx={{ width: 140, height: 140 }} />,
 });
+
 const UpdateUserSchema = zod.object({
-  verifyCode: zod.string().nonempty('The value is wrong, try again.'),
+  verifyCode: zod.string().nonempty("The value is wrong, try again."),
 });
 
 const defaultValues = {
-  verifyCode: '',
+  verifyCode: "",
 };
 
 type FilterDialogProps = {
@@ -43,100 +43,105 @@ type FilterDialogProps = {
 };
 
 export default function EnableModal({ open, close }: FilterDialogProps) {
-  const { data: twofaRes } = useGet2fa();
-  const queryClient = getQueryClient();
-
   const dispatch = useAppDispatch();
   const { copy } = useCopyToClipboard();
-  const handleCopy = () => {
-    copy(twofaRes?.data?.secret!);
+
+  // ✅ DUMMY DATA (no API)
+  const twofaRes = {
+    data: {
+      url: "otpauth://totp/demo-app?secret=DEMOSECRET123",
+      secret: "DEMOSECRET123",
+    },
   };
+
+  const handleCopy = () => {
+    copy(twofaRes.data.secret);
+    toast.success("Copied");
+  };
+
   const methods = useForm({
     resolver: zodResolver(UpdateUserSchema),
     defaultValues,
-    mode: 'onSubmit',
+    mode: "onSubmit",
   });
-  const { mutateAsync, isPending } = usePatch2fa();
 
   const { handleSubmit } = methods;
-  const onSubmit = handleSubmit(async (data) => {
-    try {
-      await mutateAsync(
-        { data: { enabled: true, otp: data.verifyCode } },
-        {
-          onSuccess() {
-            toast.success('Your 2FA enabled successfully.');
-            dispatch(modifyUser({ has_2fa: true }));
 
-            queryClient.invalidateQueries({ queryKey: getGetMeQueryKey() });
-            close();
-          },
-        }
-      );
-    } catch (_error) {
-      toast.error('You’re not connected to the 2FA yet.');
-    }
+  const onSubmit = handleSubmit(async () => {
+    toast.success("2FA enabled successfully (mock)");
+    dispatch(modifyUser({ has_2fa: true }));
+    close();
   });
 
   return (
-    <CustomDialog fullWidth maxWidth="sm" onClose={close} aria-labelledby="enable-2fa" open={open}>
-      <DialogTitle sx={{ m: 0, p: 2 }} id="enable-2fa">
-        <Stack direction="row" alignItems="center" justifyContent="space-between">
-          <Typography variant="h4-semi-bold">Enable 2FA</Typography>
+    <CustomDialog fullWidth maxWidth="sm" onClose={close} open={open}>
+      <DialogTitle sx={{ m: 0, p: 2 }}>
+        <Stack direction="row" justifyContent="space-between">
+          <Typography variant="h4-semi-bold">Enable 2FA (Mock)</Typography>
           <IconButton onClick={close}>
             <Icon name="CloseIcon" />
           </IconButton>
         </Stack>
       </DialogTitle>
+
       <Divider />
 
-      <DialogContent dividers sx={{ p: 3 }}>
+      <DialogContent sx={{ p: 3 }}>
         <Stack gap={3}>
-          <Stack gap={2}>
-            <Typography variant="p2-regular">
-              For added security, please set up Two-Factor Authentication (2FA).
-            </Typography>
-            <Typography variant="p2-regular">
-              Scan the QR code with authentication app and enter the code below.
-            </Typography>
-          </Stack>
-          <Stack direction={'row'} gap={3} alignItems={'center'}>
-            <QRCodeWithIcon value={twofaRes?.data?.url!} iconSrc="/logo/logo.svg" size={140} />
+          <Typography>
+            Scan QR code and enter the authentication code.
+          </Typography>
+
+          <Stack direction="row" gap={3} alignItems="center">
+            <QRCodeWithIcon
+              value={twofaRes.data.url}
+              iconSrc="/logo/logo.svg"
+              size={140}
+            />
+
             <Stack gap={1}>
               <Typography variant="caption-semi-bold">Secret Key</Typography>
+
               <Stack
-                sx={{ height: 56, borderRadius: '28px', backgroundColor: 'dark.3', p: 1, pl: 2 }}
-                direction={'row'}
-                alignItems={'center'}
+                sx={{
+                  height: 56,
+                  borderRadius: "28px",
+                  backgroundColor: "dark.3",
+                  p: 1,
+                  pl: 2,
+                }}
+                direction="row"
+                alignItems="center"
                 justifyContent="space-between"
               >
                 <Typography
                   variant="p2-medium"
                   color="blue.light"
-                  pr={2}
-                  sx={{ textOverflow: 'ellipsis', wordBreak: 'break-all', ...snipText(1) }}
+                  sx={{ ...snipText(1) }}
                 >
-                  {twofaRes?.data?.secret}
+                  {twofaRes.data.secret}
                 </Typography>
-                <IconButton onClick={handleCopy} color="primary">
+
+                <IconButton onClick={handleCopy}>
                   <Icon name="CopyIcon" />
                 </IconButton>
               </Stack>
             </Stack>
           </Stack>
-          <FormProvider methods={methods} onSubmit={onSubmit} sx={{ gap: 3 }}>
-            <RHFCode name="verifyCode" label="Authentication Code" loading={isPending} />
+
+          <FormProvider methods={methods} onSubmit={onSubmit}>
+            <RHFCode name="verifyCode" label="Authentication Code" />
           </FormProvider>
         </Stack>
       </DialogContent>
+
       <DialogActions>
-        <Stack width={'100%'} direction={'row'} justifyContent={'space-between'}>
-          <Button color="tertiary" onClick={close}>
+        <Stack direction="row" width="100%" justifyContent="space-between">
+          <Button onClick={close} color="tertiary">
             Cancel
           </Button>
-          <LoadingButton loading={isPending} type="button" onClick={onSubmit}>
-            Verify & Enable
-          </LoadingButton>
+
+          <LoadingButton onClick={onSubmit}>Verify & Enable</LoadingButton>
         </Stack>
       </DialogActions>
     </CustomDialog>

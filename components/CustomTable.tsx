@@ -1,25 +1,25 @@
-'use client';
+"use client";
 
-import { useIsMobile } from '@/hooks/use-responsive';
-import { Divider, Pagination, Paper, Stack, Typography } from '@mui/material';
-import Table from '@mui/material/Table';
-import TableBody, { tableBodyClasses } from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead, { tableHeadClasses } from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import type React from 'react';
-import type { ReactNode } from 'react';
-import { Fragment, useState } from 'react';
-import Empty from './Empty';
-import Loading from './Loading';
-import Icon from './icon';
-import { Scrollbar } from './scrollbar';
+import { useIsMobile } from "@/hooks/use-responsive";
+import { Divider, Pagination, Paper, Stack, Typography } from "@mui/material";
+import Table from "@mui/material/Table";
+import TableBody, { tableBodyClasses } from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead, { tableHeadClasses } from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import type React from "react";
+import type { ReactNode } from "react";
+import { Fragment, useState } from "react";
+import Empty from "./Empty";
+import Loading from "./Loading";
+import Icon from "./icon";
+import { Scrollbar } from "./scrollbar";
 
 const levelColorLine = {
-  0: '#090A23',
-  1: '#565CE4',
-  2: '#FF7DBC',
+  0: "#090A23",
+  1: "#565CE4",
+  2: "#FF7DBC",
 };
 
 export type SortType = Record<string, Boolean | undefined>;
@@ -28,7 +28,10 @@ type PropType = {
   totalCount?: number;
   page?: number;
   perPage?: number;
-  handleChangePage?: (_event: React.ChangeEvent<unknown>, newPage: number) => void;
+  handleChangePage?: (
+    _event: React.ChangeEvent<unknown>,
+    newPage: number,
+  ) => void;
   title?: ReactNode;
   columns: {
     title: string;
@@ -72,9 +75,11 @@ const CustomTable = ({
   onRowClick,
   containerHeight,
   isStickyFirstColumn,
-  uniqueId = 'id',
+  uniqueId = "id",
 }: PropType) => {
-  const [expandedRows, setExpandedRows] = useState<{ [key: string]: boolean }>({});
+  const [expandedRows, setExpandedRows] = useState<{ [key: string]: boolean }>(
+    {},
+  );
   const isMobile = useIsMobile();
   const handleToggleExpand = (id: string) => {
     setExpandedRows((prev) => ({
@@ -85,7 +90,7 @@ const CustomTable = ({
 
   const handleSortChange = (fieldName: string) => {
     if (sort && Object.keys(sort)?.[0] === fieldName) {
-      onSortChange?.(sort[fieldName] ? { [fieldName]: false } : undefined); // set (desc or undefined)
+      onSortChange?.(sort[fieldName] ? { [fieldName]: false } : undefined);
     } else {
       onSortChange?.({ [fieldName]: true }); //set asc
     }
@@ -93,10 +98,10 @@ const CustomTable = ({
 
   const renderRows = (rows: any[], level: number = 0) => {
     return rows.map((row) => (
-      <Fragment key={row[uniqueId]}>
+      <Fragment key={row[uniqueId] ?? row.id}>
         <TableRow
           sx={(_theme) => ({
-            '&.MuiTableRow-root': {
+            "&.MuiTableRow-root": {
               borderLeft: `${level ? 2 : 1}px solid`,
               borderColor: levelColorLine[level as keyof typeof levelColorLine],
             },
@@ -111,27 +116,37 @@ const CustomTable = ({
           {row.children && row.children.length > 0 && (
             <TableCell align="right">
               <Stack
-                direction={'row'}
+                direction={"row"}
                 gap={0.5}
                 onClick={() => handleToggleExpand(row[uniqueId])}
-                justifyContent={'flex-end'}
-                alignItems={'center'}
+                justifyContent={"flex-end"}
+                alignItems={"center"}
               >
                 <Typography
                   variant="caption-regular"
-                  color={expandedRows[row[uniqueId]] ? 'common.white' : 'grey.light'}
+                  color={
+                    expandedRows[row[uniqueId]] ? "common.white" : "grey.light"
+                  }
                 >
                   {level + 1}
                 </Typography>
                 <Icon
-                  name={expandedRows[row[uniqueId]] ? 'ArrowUpIcon' : 'ArrowDownIcon'}
-                  stroke={expandedRows[row[uniqueId]] ? 'common.white' : 'grey.light'}
+                  name={
+                    expandedRows[row[uniqueId]]
+                      ? "ArrowUpIcon"
+                      : "ArrowDownIcon"
+                  }
+                  stroke={
+                    expandedRows[row[uniqueId]] ? "common.white" : "grey.light"
+                  }
                 />
               </Stack>
             </TableCell>
           )}
         </TableRow>
-        {expandedRows[row[uniqueId]] && row.children && renderRows(row.children, level + 1)}
+        {expandedRows[row[uniqueId]] &&
+          row.children &&
+          renderRows(row.children, level + 1)}
       </Fragment>
     ));
   };
@@ -140,20 +155,20 @@ const CustomTable = ({
     <Stack
       sx={(theme) => ({
         borderRadius: { xs: 0, md: 2 },
-        border: '1.5px solid',
-        borderColor: 'dark.3',
-        bgcolor: 'dark.2',
-        width: width ?? '100%',
-        overflow: 'hidden',
-        height: '100%',
+        border: "1.5px solid",
+        borderColor: "dark.3",
+        bgcolor: "dark.2",
+        width: width ?? "100%",
+        overflow: "hidden",
+        height: "100%",
         [`& .${tableBodyClasses.root} > tr:hover > td`]: {
           backgroundColor: `${theme.palette.dark[3]} !important`,
         },
-        ...(isMobile && { borderLeft: 'unset', borderRight: 'unset' }),
+        ...(isMobile && { borderLeft: "unset", borderRight: "unset" }),
         ...(isStickyFirstColumn && {
           [`& .${tableHeadClasses.root} `]: {
-            '& > tr > th:first-child': {
-              position: 'sticky',
+            "& > tr > th:first-child": {
+              position: "sticky",
               left: 0,
               top: 0,
               backgroundColor: theme.palette.dark[3],
@@ -161,9 +176,9 @@ const CustomTable = ({
             },
           },
           [`& tbody > tr`]: {
-            borderLeft: 'unset',
-            '& > td:first-child': {
-              position: 'sticky',
+            borderLeft: "unset",
+            "& > td:first-child": {
+              position: "sticky",
               left: 0,
               backgroundColor: theme.palette.dark[2],
               zIndex: 3,
@@ -174,7 +189,7 @@ const CustomTable = ({
 
         ...(!!onRowClick && {
           [`& .${tableBodyClasses.root} > tr`]: {
-            cursor: 'pointer',
+            cursor: "pointer",
           },
         }),
       })}
@@ -183,9 +198,9 @@ const CustomTable = ({
         <>
           <Stack
             direction="row"
-            width={'100%'}
-            alignItems={'center'}
-            justifyContent={'space-between'}
+            width={"100%"}
+            alignItems={"center"}
+            justifyContent={"space-between"}
             p={3}
             pb={2}
           >
@@ -194,8 +209,8 @@ const CustomTable = ({
             {action && action}
           </Stack>
           {!!mobileAction && (
-            <Stack px={3} pb={3} display={{ xs: 'flex', md: 'none' }}>
-              {' '}
+            <Stack px={3} pb={3} display={{ xs: "flex", md: "none" }}>
+              {" "}
               {mobileAction}
             </Stack>
           )}
@@ -207,15 +222,15 @@ const CustomTable = ({
             xs: `calc(100dvh - ${totalCount > 10 ? 258 : 200}px)`,
             md: `calc(100dvh - ${totalCount > 10 ? 202 : 147}px)`,
           },
-          width: '100%',
-          overflow: 'auto',
+          width: "100%",
+          overflow: "auto",
         }}
         slotProps={{
           contentWrapper: {
             style: {
-              width: '100%',
-              overflowX: 'auto',
-              overflowY: 'auto',
+              width: "100%",
+              overflowX: "auto",
+              overflowY: "auto",
             },
           },
         }}
@@ -223,50 +238,50 @@ const CustomTable = ({
         <TableContainer
           component={Paper}
           sx={{
-            bgcolor: 'dark.2',
+            bgcolor: "dark.2",
             borderRadius: 0,
-            width: 'auto',
-            overflow: 'visible',
-            '& .MuiTableCell-head': {
-              position: 'sticky',
+            width: "auto",
+            overflow: "visible",
+            "& .MuiTableCell-head": {
+              position: "sticky",
               top: 0,
               zIndex: 2,
-              borderBottom: 'none',
-              bgcolor: 'dark.3',
-              typography: 'caption-medium',
-              textTransform: 'uppercase',
-              color: 'grey.light',
+              borderBottom: "none",
+              bgcolor: "dark.3",
+              typography: "caption-medium",
+              textTransform: "uppercase",
+              color: "grey.light",
               p: 0,
               py: 1,
-              '&:first-of-type': { paddingLeft: 3 },
-              '&:last-of-type': { paddingRight: 3 },
-              '&:not(:last-of-type)': { paddingRight: '14px' },
+              "&:first-of-type": { paddingLeft: 3 },
+              "&:last-of-type": { paddingRight: 3 },
+              "&:not(:last-of-type)": { paddingRight: "14px" },
             },
-            '.MuiTableCell-root:not(.MuiTableCell-head)': {
+            ".MuiTableCell-root:not(.MuiTableCell-head)": {
               minWidth: minWidthCell ?? 150,
-              typography: 'p2-medium',
-              color: 'white',
-              textAlign: 'start',
+              typography: "p2-medium",
+              color: "white",
+              textAlign: "start",
               p: 0,
               py: 2,
-              borderBottomStyle: 'solid',
-              borderColor: 'dark.3',
-              borderWidth: '1.5px',
-              '&:first-of-type': { paddingLeft: 3 },
-              '&:last-of-type': { paddingRight: 3 },
-              '&:not(:last-of-type)': { paddingRight: '14px' },
+              borderBottomStyle: "solid",
+              borderColor: "dark.3",
+              borderWidth: "1.5px",
+              "&:first-of-type": { paddingLeft: 3 },
+              "&:last-of-type": { paddingRight: 3 },
+              "&:not(:last-of-type)": { paddingRight: "14px" },
             },
-            '.MuiTableRow-head': { height: '40px' },
-            '.MuiTableRow-root:not(.MuiTableRow-head)': { height: '56px' },
+            ".MuiTableRow-head": { height: "40px" },
+            ".MuiTableRow-root:not(.MuiTableRow-head)": { height: "56px" },
           }}
         >
           <Table
             aria-label="customized table"
             sx={{
-              height: '100%',
-              width: '100%',
-              tableLayout: 'auto',
-              borderCollapse: 'collapse',
+              height: "100%",
+              width: "100%",
+              tableLayout: "auto",
+              borderCollapse: "collapse",
             }}
             stickyHeader
           >
@@ -278,32 +293,35 @@ const CustomTable = ({
                       <Stack
                         direction="row"
                         alignItems="center"
-                        onClick={() => handleSortChange(head?.fieldName || '')}
+                        onClick={() => handleSortChange(head?.fieldName || "")}
                         sx={(theme) => ({
-                          cursor: 'pointer',
-                          '& svg  path': {
-                            '&:first-child': {
-                              stroke: sort?.[head?.fieldName || '']
+                          cursor: "pointer",
+                          "& svg  path": {
+                            "&:first-child": {
+                              stroke: sort?.[head?.fieldName || ""]
                                 ? theme.vars.palette.common.white
                                 : theme.vars.palette.grey.light,
                             },
-                            '&:last-child': {
+                            "&:last-child": {
                               stroke:
-                                sort?.[head?.fieldName || ''] === false
+                                sort?.[head?.fieldName || ""] === false
                                   ? theme.vars.palette.common.white
                                   : theme.vars.palette.grey.light,
                             },
                           },
                         })}
                       >
-                        {head.title} {head?.sortable && <Icon name="ArrowsortIcon" />}
+                        {head.title}{" "}
+                        {head?.sortable && <Icon name="ArrowsortIcon" />}
                       </Stack>
                     ) : (
                       head.title
                     )}
                   </TableCell>
                 ))}
-                {data.some((item) => item.children && item.children.length > 0) && <TableCell />}
+                {data.some(
+                  (item) => item.children && item.children.length > 0,
+                ) && <TableCell />}
               </TableRow>
             </TableHead>
             <TableBody>
@@ -315,7 +333,10 @@ const CustomTable = ({
                     <Stack
                       justifyContent="center"
                       alignItems="center"
-                      width={{ xs: 'calc(100vw - 52px)!important', md: '100% !important' }}
+                      width={{
+                        xs: "calc(100vw - 52px)!important",
+                        md: "100% !important",
+                      }}
                       height="100%"
                     >
                       {isPending ? (
@@ -335,7 +356,7 @@ const CustomTable = ({
       {totalCount > 10 && (
         <>
           <Divider flexItem orientation="horizontal" />
-          <Stack direction={'row'} justifyContent={'center'} py={1.5}>
+          <Stack direction={"row"} justifyContent={"center"} py={1.5}>
             <Pagination
               count={Math.ceil(totalCount / (perPage || 10))}
               defaultPage={1}

@@ -1,19 +1,28 @@
-import Icon from '@/components/icon';
-import { Stack, Typography } from '@mui/material';
-import { useState } from 'react';
+import Icon from "@/components/icon";
+import { Stack, Typography } from "@mui/material";
+import { useState } from "react";
 
-import BillingAddressAlertDialog from '../AlertDialog';
-import BillingAddressDialog from '../BillingAddressDialog';
-import ViewInvoiceButton from './ViewInvoiceButton';
-import DownloadInvoiceButton from './DownloadInvoiceButton';
-import { useTranslate } from '@/locales';
-import { useGetBillingAddress } from '@/services/minecraft/financial/financial';
-import type { PaymentHttpPaymentItemResponse } from '@/services/minecraft/minecraftAPI.schemas';
+import { useTranslate } from "@/locales";
+import BillingAddressAlertDialog from "../AlertDialog";
+import BillingAddressDialog from "../BillingAddressDialog";
+import DownloadInvoiceButton from "./DownloadInvoiceButton";
+import ViewInvoiceButton from "./ViewInvoiceButton";
+const billingInfo = {
+  data: {
+    first_name: "Ali",
+    last_name: "Mizbani",
+    country: "Türkiye",
+    city: "Istanbul",
+    zipcode: "34000",
+    address: "Esenyurt, Istanbul",
+  },
+};
 
-const ActionButtons = ({ row }: { row: PaymentHttpPaymentItemResponse }) => {
-  const { data: billingInfo } = useGetBillingAddress();
-  const [openBillingAddressDialog, setOpenBillingAddressDialog] = useState(false);
-  const [openBillingAddressAlertDialog, setOpenBillingAddressAlertDialog] = useState(false);
+const ActionButtons = ({ row }: { row: any }) => {
+  const [openBillingAddressDialog, setOpenBillingAddressDialog] =
+    useState(false);
+  const [openBillingAddressAlertDialog, setOpenBillingAddressAlertDialog] =
+    useState(false);
   const { t } = useTranslate();
   const handleSetupBillingAddress = () => {
     setOpenBillingAddressAlertDialog(true);
@@ -22,7 +31,12 @@ const ActionButtons = ({ row }: { row: PaymentHttpPaymentItemResponse }) => {
   return (
     <>
       {billingInfo?.data?.address ? (
-        <Stack gap={2} direction="row" alignItems="center" justifyContent="flex-end">
+        <Stack
+          gap={2}
+          direction="row"
+          alignItems="center"
+          justifyContent="flex-end"
+        >
           <ViewInvoiceButton invoice={row} billingInfo={billingInfo.data} />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -41,10 +55,12 @@ const ActionButtons = ({ row }: { row: PaymentHttpPaymentItemResponse }) => {
           gap={0.5}
           alignItems="center"
           onClick={handleSetupBillingAddress}
-          sx={{ cursor: 'pointer' }}
+          sx={{ cursor: "pointer" }}
         >
-          <Icon name={'HomeIcon'} />
-          <Typography variant="p2-medium">{t('billinghistory.setAddress')}</Typography>
+          <Icon name={"HomeIcon"} />
+          <Typography variant="p2-medium">
+            {t("billinghistory.setAddress")}
+          </Typography>
         </Stack>
       )}
 

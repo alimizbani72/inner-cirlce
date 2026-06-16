@@ -1,63 +1,99 @@
-import { useIsMobile } from '@/hooks/use-responsive';
-import { Divider, Stack, Typography } from '@mui/material';
-import type { FC } from 'react';
-import { useTranslate } from '@/locales';
-import { useGetBillingAddress } from '@/services/minecraft/financial/financial';
-import ContentStack from '@app-components/ContentStack';
+import { useIsMobile } from "@/hooks/use-responsive";
+import { useTranslate } from "@/locales";
+import ContentStack from "@app-components/ContentStack";
+import { Divider, Stack, Typography } from "@mui/material";
+import type { FC } from "react";
+const data = {
+  data: {
+    first_name: "Ali",
+    last_name: "Mizbani",
+    country: "Türkiye",
+    city: "Istanbul",
+    zipcode: "34000",
+    address: "Esenyurt, Istanbul",
+  },
+};
 
 interface BillingInfoProps {}
 
 const BillingInfo: FC<BillingInfoProps> = () => {
   const isMobile = useIsMobile();
   const { t } = useTranslate();
-  const { data } = useGetBillingAddress();
 
   return (
     <>
-      <ContentStack direction={{ md: 'row' }} gap={3} justifyContent="space-between">
-        <Stack direction={{ md: 'row' }} gap={3}>
+      <ContentStack
+        direction={{ md: "row" }}
+        gap={3}
+        justifyContent="space-between"
+      >
+        <Stack direction={{ md: "row" }} gap={3}>
           <Stack gap={0.5}>
-            <Typography variant="p2-medium">{data?.data?.first_name || '---'}</Typography>
+            <Typography variant="p2-medium">
+              {data?.data?.first_name || "---"}
+            </Typography>
             <Typography variant="caption-medium" color="grey.light">
-              {t('billinghistory.firstName')}
+              {t("billinghistory.firstName")}
             </Typography>
           </Stack>
-          <Divider orientation={isMobile ? 'horizontal' : 'vertical'} flexItem />
+          <Divider
+            orientation={isMobile ? "horizontal" : "vertical"}
+            flexItem
+          />
           <Stack gap={0.5}>
-            <Typography variant="p2-medium">{data?.data?.last_name || '---'}</Typography>
+            <Typography variant="p2-medium">
+              {data?.data?.last_name || "---"}
+            </Typography>
             <Typography variant="caption-medium" color="grey.light">
-              {t('billinghistory.lastName')}
+              {t("billinghistory.lastName")}
             </Typography>
           </Stack>
-          <Divider orientation={isMobile ? 'horizontal' : 'vertical'} flexItem />
+          <Divider
+            orientation={isMobile ? "horizontal" : "vertical"}
+            flexItem
+          />
           <Stack gap={0.5}>
-            <Typography variant="p2-medium">{data?.data?.country || '---'}</Typography>
+            <Typography variant="p2-medium">
+              {data?.data?.country || "---"}
+            </Typography>
             <Typography variant="caption-medium" color="grey.light">
-              {t('billinghistory.country')}
+              {t("billinghistory.country")}
             </Typography>
           </Stack>
-          <Divider orientation={isMobile ? 'horizontal' : 'vertical'} flexItem />
+          <Divider
+            orientation={isMobile ? "horizontal" : "vertical"}
+            flexItem
+          />
           <Stack direction="row" gap={3}>
-            <Stack mr={{ md: 'unset', xs: 'auto' }} gap={0.5}>
-              <Typography variant="p2-medium">{data?.data?.city || '---'}</Typography>
+            <Stack mr={{ md: "unset", xs: "auto" }} gap={0.5}>
+              <Typography variant="p2-medium">
+                {data?.data?.city || "---"}
+              </Typography>
               <Typography variant="caption-medium" color="grey.light">
-                {t('billinghistory.city')}
+                {t("billinghistory.city")}
               </Typography>
             </Stack>
             <Divider orientation="vertical" flexItem />
-            <Stack mr={{ md: 'unset', xs: 'auto' }} gap={0.5}>
-              <Typography variant="p2-medium">{data?.data?.zipcode || '---'}</Typography>
+            <Stack mr={{ md: "unset", xs: "auto" }} gap={0.5}>
+              <Typography variant="p2-medium">
+                {data?.data?.zipcode || "---"}
+              </Typography>
               <Typography variant="caption-medium" color="grey.light">
-                {t('billinghistory.zipCode')}
+                {t("billinghistory.zipCode")}
               </Typography>
             </Stack>
           </Stack>
 
-          <Divider orientation={isMobile ? 'horizontal' : 'vertical'} flexItem />
+          <Divider
+            orientation={isMobile ? "horizontal" : "vertical"}
+            flexItem
+          />
           <Stack gap={0.5}>
-            <Typography variant="p2-medium">{data?.data?.address || '---'}</Typography>
+            <Typography variant="p2-medium">
+              {data?.data?.address || "---"}
+            </Typography>
             <Typography variant="caption-medium" color="grey.light">
-              {t('billinghistory.address')}
+              {t("billinghistory.address")}
             </Typography>
           </Stack>
         </Stack>

@@ -1,24 +1,46 @@
-import { Divider, MenuItem } from '@mui/material';
-import { IconButton } from '@mui/material';
-import ActionItem from './ActionItem';
-import { useTranslate } from '@/locales';
-import { useAppDispatch, useAppSelector } from '@/lib/hooks';
-import { openEditMode, selectActiveSymbol } from '@/lib/features/portfolio/transactionSlice';
-import { useQueryClient } from '@tanstack/react-query';
-import { useParams } from 'next/navigation';
-import { getActivePortfolioId } from '../../_section/utils';
-import { Stack } from '@mui/material';
-import { invalidatePortfolioQueries } from '../../_section/InvaidatePorfolioQueries';
-import { toast } from 'sonner';
-import CustomMenu from '@/components/CustomMenu';
-import Icon from '@/components/icon';
-import { useDeletePortfolioTransactionsId } from '@/services/minecraft/portfolio/portfolio';
-import usePopover from '@/components/custom-popover/use-popover';
+import CustomMenu from "@/components/CustomMenu";
+import Icon from "@/components/icon";
+import {
+  openEditMode,
+  selectActiveSymbol,
+} from "@/lib/features/portfolio/transactionSlice";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { useTranslate } from "@/locales";
+import { Divider, IconButton, MenuItem, Stack } from "@mui/material";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useParams } from "next/navigation";
+import { toast } from "sonner";
+import { invalidatePortfolioQueries } from "../../_section/InvaidatePorfolioQueries";
+import { getActivePortfolioId } from "../../_section/utils";
+import ActionItem from "./ActionItem";
+
+import usePopover from "@/components/custom-popover/use-popover";
+
+type DeleteTransactionParams = {
+  id: string;
+};
+
+// 👉 fake API (no backend yet)
+const deleteTransactionApi = async ({ id }: DeleteTransactionParams) => {
+  // simulate network delay
+  await new Promise((res) => setTimeout(res, 500));
+
+  return {
+    success: true,
+    id,
+  };
+};
+
+export const useDeletePortfolioTransactionsId = () => {
+  return useMutation({
+    mutationFn: deleteTransactionApi,
+  });
+};
 type TransactionType = {
   id: string;
   symbol: string;
   slug: string;
-  type: 'buy' | 'sell';
+  type: "buy" | "sell";
   quantity: string;
   fee: string;
   price: string;
@@ -59,11 +81,11 @@ const MoreTransactionAction = ({ transaction }: Props) => {
         activeSymbol: activeSymbol!,
       });
 
-      toast.success(t('transaction.transactiondeleteSuccessMessage'));
+      toast.success(t("transaction.transactiondeleteSuccessMessage"));
       onClose();
     } catch (error) {
-      toast.error(t('transaction.transactiondeleteErrorMessage'));
-      console.error('Error deleting transaction:', error);
+      toast.error(t("transaction.transactiondeleteErrorMessage"));
+      console.error("Error deleting transaction:", error);
     }
   };
 
@@ -77,13 +99,19 @@ const MoreTransactionAction = ({ transaction }: Props) => {
         <Stack direction="column" spacing={1}>
           <Stack>
             <MenuItem onClick={handleEditClick}>
-              <ActionItem iconName="PenIcon" label={t('transaction.editTransaction')} />
+              <ActionItem
+                iconName="PenIcon"
+                label={t("transaction.editTransaction")}
+              />
             </MenuItem>
           </Stack>
           <Divider />
           <Stack>
             <MenuItem onClick={handleDelete}>
-              <ActionItem iconName="TrashIcon" label={t('transaction.deleteTransaction')} />
+              <ActionItem
+                iconName="TrashIcon"
+                label={t("transaction.deleteTransaction")}
+              />
             </MenuItem>
           </Stack>
         </Stack>

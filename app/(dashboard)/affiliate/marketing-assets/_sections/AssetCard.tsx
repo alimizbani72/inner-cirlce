@@ -1,68 +1,111 @@
-'use client';
-import { Button, IconButton, Stack, type SxProps, Typography } from '@mui/material';
-import { useMemo, type FC } from 'react';
-import { useFileDownload, useZipFileDownload } from './download-actions';
-import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard';
-import { useTranslate } from '@/locales';
-import { useLightBox } from '@/hooks/useLightBox';
-import Icon from '@/components/icon';
-import type { IconNames } from '@/components/icon/types';
-import LoadingButton from '@/components/loading-button';
-import { Lightbox } from '@/components/lightbox';
-import type { MarketingAssetHttpPublishedMarketingAssetResponse } from '@/services/minecraft/minecraftAPI.schemas';
+"use client";
+import Icon from "@/components/icon";
+import type { IconNames } from "@/components/icon/types";
+import { Lightbox } from "@/components/lightbox";
+import LoadingButton from "@/components/loading-button";
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
+import { useLightBox } from "@/hooks/useLightBox";
+import { useTranslate } from "@/locales";
+import {
+  Button,
+  IconButton,
+  Stack,
+  type SxProps,
+  Typography,
+} from "@mui/material";
+import { type FC, useMemo } from "react";
+import { useFileDownload, useZipFileDownload } from "./download-actions";
 
-interface AssetCardProps extends MarketingAssetHttpPublishedMarketingAssetResponse {
+interface AssetCardProps {
+  type?: "image" | "video" | "pdf" | "link";
+  title?: string;
+  description?: string;
+  items?: string[];
   sx?: SxProps;
 }
-const icon: Record<string, string> = {
-  image: 'ImageIcon',
-  video: 'PlayIcon',
-  pdf: 'PdfIcon',
-  link: 'LinkIcon',
+
+const icon: Record<string, IconNames> = {
+  image: "ImageIcon",
+  video: "PlayIcon",
+  pdf: "PdfIcon",
+  link: "LinkIcon",
 };
 
-const AssetCard: FC<AssetCardProps> = ({ description, items, title, type, sx }) => {
+const AssetCard: FC<AssetCardProps> = ({
+  description,
+  items = [],
+  title,
+  type = "image",
+  sx,
+}) => {
   const { t } = useTranslate();
+
+  // ✅ safer slides
   const slides = useMemo(() => {
-    if (type === 'image') {
-      return items?.map((item) => ({ src: item }));
+    if (!items.length) {
+      return [];
     }
-    if (type === 'video') {
-      return items?.map((item) => ({
-        type: 'video' as any,
+
+    if (type === "image") {
+      return items.map((item) => ({ src: item }));
+    }
+
+    if (type === "video") {
+      return items.map((item) => ({
+        type: "video" as const,
         width: 1280,
         height: 720,
-        poster: 'video',
-        sources: [{ src: item, type: 'video/mp4' }],
+        sources: [{ src: item, type: "video/mp4" }],
       }));
     }
 
     return [];
-  }, [items]);
+  }, [items, type]);
 
-  const lightbox = useLightBox(slides || []);
+  const lightbox = useLightBox(slides);
   const { isLoading, downloadFile } = useFileDownload();
   const { isLoading: isZipFileLoading, downloadZipFile } = useZipFileDownload();
   const { copy } = useCopyToClipboard();
-  const handleCopy = (link: string) => {
-    copy(link);
+
+  const firstItem = items[0];
+
+  const handleCopy = () => {
+    if (firstItem) {
+      copy(firstItem);
+    }
   };
 
   const handleDownload = () => {
-    if (type === 'image') {
-      return downloadZipFile(items?.map((item) => item)!);
+    if (!items.length) {
+      return;
     }
 
-    return downloadFile(items?.[0]!);
+    if (type === "image") {
+      return downloadZipFile(items);
+    }
+
+    return downloadFile(firstItem);
   };
 
   const handlePreview = () => {
-    lightbox.onOpen(type === 'video' ? 'video' : items?.[0]!);
+    if (!slides.length) {
+      return;
+    }
+
+    lightbox.onOpen(0 as any); // ✅ FIXED (was wrong before)
   };
 
   return (
     <>
-      <Stack border="1.5px solid" borderColor="dark.3" borderRadius={1.5} p={2} gap={2} sx={sx}>
+      <Stack
+        border="1.5px solid"
+        borderColor="dark.3"
+        borderRadius={1.5}
+        p={2}
+        gap={2}
+        sx={sx}
+      >
+        {/* ICON */}
         <Stack
           width={48}
           height={48}
@@ -70,11 +113,12 @@ const AssetCard: FC<AssetCardProps> = ({ description, items, title, type, sx }) 
           borderRadius={1}
           alignItems="center"
           justifyContent="center"
-          sx={{ path: { stroke: 'white' } }}
+          sx={{ path: { stroke: "white" } }}
         >
-          <Icon name={icon[type!] as IconNames} />
+          <Icon name={icon[type]} />
         </Stack>
 
+        {/* TEXT */}
         <Stack gap={1}>
           <Typography variant="p2-medium">{title}</Typography>
           <Typography variant="caption-regular" color="grey.light">
@@ -82,13 +126,15 @@ const AssetCard: FC<AssetCardProps> = ({ description, items, title, type, sx }) 
           </Typography>
         </Stack>
 
-        {type === 'link' ? (
+        {/* ACTIONS */}
+        {type === "link" ? (
           <Button
             fullWidth
             color="tertiary"
-            sx={{ mt: 'auto', px: 2 }}
+            sx={{ mt: "auto", px: 2 }}
             endIcon={<Icon name="CopyIcon" />}
-            onClick={() => handleCopy(items?.[0]!)}
+            onClick={handleCopy}
+            disabled={!firstItem}
           >
             <Typography
               variant="p2-medium"
@@ -96,7 +142,7 @@ const AssetCard: FC<AssetCardProps> = ({ description, items, title, type, sx }) 
               textOverflow="ellipsis"
               overflow="hidden"
             >
-              {items?.[0]!}
+              {firstItem || "—"}
             </Typography>
           </Button>
         ) : (
@@ -107,16 +153,26 @@ const AssetCard: FC<AssetCardProps> = ({ description, items, title, type, sx }) 
               color="tertiary"
               startIcon={<Icon name="DownloadIcon" />}
               onClick={handleDownload}
+              disabled={!items.length}
             >
-              {t('marketingassetTab.dwonload')}
+              {t("marketingassetTab.dwonload")}
             </LoadingButton>
 
-            {type === 'pdf' ? (
-              <IconButton color="tertiary" target="_blank" href={items?.[0]!}>
+            {type === "pdf" ? (
+              <IconButton
+                color="tertiary"
+                target="_blank"
+                href={firstItem || "#"}
+                disabled={!firstItem}
+              >
                 <Icon name="EyeOnIcon" />
               </IconButton>
             ) : (
-              <IconButton color="tertiary" onClick={handlePreview}>
+              <IconButton
+                color="tertiary"
+                onClick={handlePreview}
+                disabled={!slides.length}
+              >
                 <Icon name="EyeOnIcon" />
               </IconButton>
             )}
@@ -124,7 +180,8 @@ const AssetCard: FC<AssetCardProps> = ({ description, items, title, type, sx }) 
         )}
       </Stack>
 
-      {!!['video', 'image'].includes(type!) && (
+      {/* LIGHTBOX */}
+      {["video", "image"].includes(type) && slides.length > 0 && (
         <Lightbox
           open={lightbox.open}
           close={lightbox.onClose}

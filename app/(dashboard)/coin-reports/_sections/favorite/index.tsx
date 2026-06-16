@@ -1,22 +1,36 @@
-'use client';
-import { setCoinsTimer } from '@/lib/features/timer/timerSlice';
-import { useAppDispatch } from '@/lib/hooks';
-import { useGetCoinReportFavorites } from '@/services/minecraft/coin-report/coin-report';
-import { toNumber } from '@/utils/toNumber';
-import { handleOptsForService } from '@dashboard/coin-reports/_sections';
-import { defaultValuesFilters } from '@dashboard/coin-reports/_sections/consts';
-import CoinReportTable from '@dashboard/coin-reports/_sections/table';
-import type { FilterFormDataType } from '@dashboard/coin-reports/_sections/types';
-import { useEffect, useState } from 'react';
+"use client";
+import { setCoinsTimer } from "@/lib/features/timer/timerSlice";
+import { useAppDispatch } from "@/lib/hooks";
+import { customInstance } from "@/scripts/fetcher";
+import { toNumber } from "@/utils/toNumber";
+import { handleOptsForService } from "@dashboard/coin-reports/_sections";
+import { defaultValuesFilters } from "@dashboard/coin-reports/_sections/consts";
+import CoinReportTable from "@dashboard/coin-reports/_sections/table";
+import type { FilterFormDataType } from "@dashboard/coin-reports/_sections/types";
+import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 
+const useCoinReportFavorites = (opts: any) => {
+  return useQuery({
+    queryKey: ["coin-report-favorites", opts],
+    queryFn: async () => {
+      const res = await customInstance<any>({
+        url: "/coin-report",
+      });
+
+      return {
+        ...res,
+        data: res.data.filter((item: any) => item.is_favorite),
+      };
+    },
+  });
+};
 const CoinReportFavoritePage = () => {
   const dispatch = useAppDispatch();
-  const [filters, setFilters] = useState<FilterFormDataType>(defaultValuesFilters);
-  const { data, refetch, isFetching } = useGetCoinReportFavorites(
-    {
-      opts: handleOptsForService(filters),
-    },
-    { query: { refetchOnMount: 'always' } }
+  const [filters, setFilters] =
+    useState<FilterFormDataType>(defaultValuesFilters);
+  const { data, refetch, isFetching } = useCoinReportFavorites(
+    handleOptsForService(filters),
   );
 
   useEffect(() => {

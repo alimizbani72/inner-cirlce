@@ -1,7 +1,7 @@
-import { useIsMobile } from '@/hooks/use-responsive';
-import { Stack, Typography } from '@mui/material';
-import numeral from 'numeral';
-import type { FC } from 'react';
+import { useIsMobile } from "@/hooks/use-responsive";
+import { Stack, Typography } from "@mui/material";
+import numeral from "numeral";
+import type { FC } from "react";
 
 type RevenueBoxProps = {
   title: string;
@@ -20,32 +20,36 @@ const BoxItems: FC<RevenueBoxProps> = ({
   symbol,
   hasTopBorder,
   hasCurrency,
-  width = '25%',
+  width = "25%",
 }) => {
   const isMobile = useIsMobile();
   return (
     <Stack
-      direction={'column'}
+      direction={"column"}
       sx={{
         width: width,
-        borderRight: !isMobile && hasRightBorder ? '1px solid ' : 'none',
-        borderTop: !isMobile && hasTopBorder ? '1px solid ' : 'none',
-        borderColor: 'dark.3',
+        borderRight: !isMobile && hasRightBorder ? "1px solid " : "none",
+        borderTop: !isMobile && hasTopBorder ? "1px solid " : "none",
+        borderColor: "dark.3",
         p: 3,
-        bgcolor: 'dark.2',
+        bgcolor: "dark.2",
       }}
     >
-      <Typography variant="p2-medium" whiteSpace={'pre'}>
-        {hasCurrency && '$'}
-        {value > 1 ? numeral(value).format('0,0.00') : value}{' '}
+      <Typography variant="p2-medium" whiteSpace={"pre"}>
+        {hasCurrency && "$"}
+        {value > 1 ? numeral(value).format("0,0.00") : value}{" "}
         {!!symbol && (
-          <Typography variant="p2-medium" textTransform={'uppercase'}>
+          <Typography variant="p2-medium" textTransform={"uppercase"}>
             {symbol}
           </Typography>
         )}
       </Typography>
 
-      <Typography variant="caption-medium" color={'grey.light'} whiteSpace={'pre'}>
+      <Typography
+        variant="caption-medium"
+        color={"grey.light"}
+        whiteSpace={"pre"}
+      >
         {title}
       </Typography>
     </Stack>

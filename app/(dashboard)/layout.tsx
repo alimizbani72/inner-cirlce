@@ -1,16 +1,16 @@
-import TwoFASubmitter from '@app-components/TwoFASubmitter';
-import DesktopSidebar from '@app-components/sidebar/Desktop';
-import MobileDrawer from '@app-components/sidebar/MobileDrawer';
-import { Box, Stack } from '@mui/material';
-import type { Metadata } from 'next';
-import type { ReactNode } from 'react';
-import PaymentNotice from './_section/PaymentNotice';
-import DashboardHeader from './dashboard/_section/Header';
+import TwoFASubmitter from "@app-components/TwoFASubmitter";
+import DesktopSidebar from "@app-components/sidebar/Desktop";
+import MobileDrawer from "@app-components/sidebar/MobileDrawer";
+import { Box, Stack } from "@mui/material";
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import PaymentNotice from "./_section/PaymentNotice";
+import DashboardHeader from "./dashboard/_section/Header";
 
 // ----------------------------------------------------------------------
 
 export const metadata: Metadata = {
-  title: { default: 'Dashboard', template: '%s | ChainMind' },
+  title: { default: "Dashboard", template: "%s | ChainMind" },
 };
 
 export type LayoutProps = {
@@ -18,19 +18,19 @@ export type LayoutProps = {
   modal: ReactNode;
 };
 
-export default function DashboardLayout({ children, modal }: LayoutProps) {
+export default function DashboardLayout({ children }: LayoutProps) {
   return (
     <>
-      {modal}
+      {/* {modal} */}
       <TwoFASubmitter />
-      <Box sx={{ display: 'flex', height: '100dvh' }}>
+      <Box sx={{ display: "flex", height: "100dvh" }}>
         {/* Desktop sidebar - only visible on md screens and above */}
         <Box
           component="aside"
           sx={{
-            width: { md: 'auto' },
+            width: { md: "auto" },
             flexShrink: 0,
-            display: { xs: 'none', md: 'block' },
+            display: { xs: "none", md: "block" },
           }}
         >
           <DesktopSidebar />
@@ -43,15 +43,15 @@ export default function DashboardLayout({ children, modal }: LayoutProps) {
           component="main"
           sx={{
             flexGrow: 1,
-            width: '100%',
-            overflow: 'hidden',
+            width: "100%",
+            overflow: "hidden",
           }}
         >
           {/* Header with menu button */}
           <DashboardHeader />
 
           {/* Content area with scrolling */}
-          <Box sx={{ flexGrow: 1, overflow: 'auto' }}>
+          <Box sx={{ flexGrow: 1, overflow: "auto" }}>
             <PaymentNotice />
             {children}
           </Box>

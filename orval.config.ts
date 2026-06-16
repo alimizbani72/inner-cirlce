@@ -1,17 +1,18 @@
-const { CMS_API_DOCS, CMS_BASE_URL_ENDPOINT, MINECRAFT_API_DOCS } = require('./consts');
+const path = require("path");
 
 module.exports = {
   minecraft: {
-    input: MINECRAFT_API_DOCS,
+    input: path.resolve(__dirname, "./mock-api/minecraft.swagger.json"),
     output: {
-      mode: 'tags-split',
-      target: './services/minecraft',
-      client: 'react-query',
+      mode: "tags-split",
+      target: "./services/minecraft",
+      client: "react-query",
       mock: false,
       override: {
         mutator: {
-          path: './scripts/fetcher.ts',
-          name: 'customInstance',
+          path: "./scripts/fetcher.ts",
+          name: "customInstance",
+          returnType: "data",
         },
         query: {
           useQuery: true,
@@ -20,20 +21,25 @@ module.exports = {
       },
     },
   },
+
   cms: {
-    input: CMS_API_DOCS,
+    input: path.resolve(__dirname, "./mock-api/cms.swagger.json"),
     output: {
-      mode: 'tags-split',
-      target: './services/cms',
-      client: 'react-query',
+      mode: "tags-split",
+      target: "./services/cms",
+      client: "react-query",
       mock: false,
       override: {
+        mutator: {
+          path: "./scripts/fetcher.ts",
+          name: "customInstance",
+          returnType: "data",
+        },
         query: {
           useQuery: true,
           usePrefetch: true,
         },
       },
-      baseUrl: CMS_BASE_URL_ENDPOINT,
     },
   },
 };

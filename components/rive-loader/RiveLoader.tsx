@@ -1,9 +1,13 @@
-'use client';
+"use client";
 
-import { RuntimeLoader, useRive, useStateMachineInput } from '@rive-app/react-canvas';
-import { type FC, useEffect } from 'react';
+import {
+  RuntimeLoader,
+  useRive,
+  useStateMachineInput,
+} from "@rive-app/react-canvas";
+import { type FC, useEffect } from "react";
 
-RuntimeLoader.setWasmUrl('/assets/rive.wasm');
+RuntimeLoader.setWasmUrl("/assets/rive.wasm");
 
 type RiveCompProps = {
   src: string;
@@ -18,10 +22,13 @@ const RiveLoader: FC<RiveCompProps> = ({
   src,
   height,
   width,
-  stateMachineName = 'State Machine 1',
-  inputName = '',
+  stateMachineName = "State Machine 1",
+  inputName = "",
   onInputReady,
 }) => {
+  if (!src) {
+    return null;
+  }
   const { RiveComponent, rive } = useRive({
     src,
     stateMachines: stateMachineName,
@@ -36,7 +43,11 @@ const RiveLoader: FC<RiveCompProps> = ({
     }
   }, [input, onInputReady]);
 
-  return <RiveComponent style={{ width: width ?? '100%', height: height ?? '100%' }} />;
+  return (
+    <RiveComponent
+      style={{ width: width ?? "100%", height: height ?? "100%" }}
+    />
+  );
 };
 
 export default RiveLoader;
